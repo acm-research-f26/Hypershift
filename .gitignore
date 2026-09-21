@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local Notes
+local-notes/
+
+# Ethan Personal Settings (I turned off autosuggestions)
+.vscode/settings.json
