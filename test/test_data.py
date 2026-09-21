@@ -203,6 +203,7 @@ def test_download_adapter_passes_required_arguments_without_real_network(
     assert recorded["auto_adjust"] is True
     assert recorded["group_by"] == "ticker"
     assert recorded["progress"] is False
+    assert recorded["threads"] is False
 
 
 def test_zero_return_baseline_is_target_mean_square() -> None:

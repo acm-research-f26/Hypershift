@@ -128,6 +128,7 @@ def test_train_restores_the_best_validation_state(monkeypatch: pytest.MonkeyPatc
         model,
         object(),
         object(),
+        nn.MSELoss(),
         epochs=10,
         patience=2,
         device="cpu",
@@ -150,6 +151,7 @@ def test_end_to_end_training_reduces_validation_mse() -> None:
         model,
         train_loader,
         validation_loader,
+        nn.MSELoss(),
         epochs=60,
         patience=15,
         learning_rate=0.02,
@@ -160,3 +162,42 @@ def test_end_to_end_training_reduces_validation_mse() -> None:
 
     assert history["best_epoch"] >= 1
     assert after < before
+
+
+def test_train_can_stop_on_small_parameter_infinity_norm(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    class ScalarModel(nn.Module):
+        def __init__(self) -> None:
+            super().__init__()
+            self.value = nn.Parameter(torch.tensor(0.0))
+
+    def fake_train_epoch(*args: object, **kwargs: object) -> float:
+        del kwargs
+        model = args[0]
+        assert isinstance(model, ScalarModel)
+        with torch.no_grad():
+            model.value.add_(1e-7)
+        return 0.0
+
+    def fake_evaluate(*args: object, **kwargs: object) -> dict[str, float]:
+        del args, kwargs
+        return {"mse": 1.0, "mae": 1.0, "directional_accuracy": 1.0}
+
+    monkeypatch.setattr(train_module, "train_epoch", fake_train_epoch)
+    monkeypatch.setattr(train_module, "evaluate", fake_evaluate)
+
+    history = train_module.train(
+        ScalarModel(),
+        object(),
+        object(),
+        nn.MSELoss(),
+        epochs=10,
+        patience=5,
+        tolerance=1e-6,
+        device="cpu",
+    )
+
+    assert history["epochs_ran"] == 1
+    assert history["stopped_by_tolerance"] is True
+    assert history["parameter_change_inf_norm"] == pytest.approx([1e-7])
