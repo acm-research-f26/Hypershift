@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Generated tutorial data, checkpoints, and experiment outputs
+data/
+runs/

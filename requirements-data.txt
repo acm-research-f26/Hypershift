@@ -1,0 +1,2 @@
+# Optional: only needed by download_prices.py.
+yfinance>=0.2.54,<2
