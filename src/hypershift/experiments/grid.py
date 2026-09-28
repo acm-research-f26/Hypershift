@@ -8,7 +8,7 @@ from hypershift.config import RunConfig, load_yaml
 
 SEEDS_FINAL = tuple(range(25))
 SEEDS_SWEEP = tuple(range(15))   # verdict-capable: min p = 6e-5, Holm floor for m = 8 is 5e-4
-SEEDS_SCREEN = tuple(range(5))   # descriptive only (min p = 0.0625)
+SEEDS_SCREEN = tuple(range(3))   # D7: t_run > 15 min
 MEMORY_LIGHT = {"micro_batch_days": 1}   # for clique/decomposition arms; identical math, less GPU memory
 FRESH_DAILY_NAME = "sp500_daily"
 FRESH_HOURLY_NAME = "sp500_1h"
