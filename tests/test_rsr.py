@@ -55,4 +55,4 @@ def test_real_shapes():
     ny = load_rsr(REAL, "NYSE", norm="paper")
     assert ny.features.shape == (1737, 1245, 5)
     na = load_rsr(REAL, "NASDAQ", norm="paper")
-    assert na.features.shape == (1026, 1244, 5)
+    assert na.features.shape == (1026, 1245, 5)

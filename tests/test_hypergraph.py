@@ -115,7 +115,7 @@ def test_build_rsr_hypergraph_cache(tmp_path):
 @pytest.mark.data
 @pytest.mark.skipif(not REAL.exists(), reason="RSR data not downloaded")
 def test_real_nyse_hypergraph_stats():
-    hg = build_rsr_hypergraph(REAL, "NYSE")
+    hg = build_rsr_hypergraph(REAL, "NYSE", cache=False)
     assert hg.num_nodes == 1737
     assert 250 <= len(hg.edges) <= 400             # prototype: 312
     assert hg.edge_sizes().max() == 500            # matches paper Fig 3a axis
