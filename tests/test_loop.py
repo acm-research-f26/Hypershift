@@ -109,3 +109,29 @@ def test_train_raises_on_nan(synthetic_market, synthetic_hypergraph, tmp_path):
     bad.features[:, 5, :] = np.nan
     with pytest.raises(FloatingPointError):
         train_one_run(small_cfg(tmp_path, label="nan"), bad, synthetic_hypergraph)
+
+
+def test_apply_input_mode_relative_and_level():
+    from hypershift.train.loop import apply_input_mode
+    x = np.random.default_rng(0).uniform(1, 5, size=(2, 3, 6, 5)).astype(np.float32)
+    r = apply_input_mode(x, "relative")
+    assert r.dtype == np.float32 and r.shape == x.shape
+    np.testing.assert_array_equal(r[:, :, -1, -1], 0.0)              # last-day close -> exactly 0
+    x2 = x.copy()
+    x2[0, 1, 2, 0] = 1.1 * x2[0, 1, -1, -1]                           # MA5 = 1.1 x close
+    assert apply_input_mode(x2, "relative")[0, 1, 2, 0] == pytest.approx(0.1, abs=1e-5)
+    lv = apply_input_mode(x, "level")
+    np.testing.assert_array_equal(lv, x)
+    x3 = x.copy()
+    x3[0, 0, -1, -1] = 0.0                                            # degenerate denominator -> 1
+    np.testing.assert_allclose(apply_input_mode(x3, "relative")[0, 0, 0], x3[0, 0, 0] - 1, rtol=1e-6)
+    with pytest.raises(ValueError):
+        apply_input_mode(x, "bogus")
+
+
+def test_train_one_run_relative_mode(synthetic_market, synthetic_hypergraph, tmp_path):
+    cfg = small_cfg(tmp_path, label="rel", input_mode="relative", batch_days=2, micro_batch_days=1)
+    m = train_one_run(cfg, synthetic_market, synthetic_hypergraph)
+    assert (cfg.run_dir() / "metrics.json").exists()
+    assert np.isfinite(m["val"]["sr"]) and np.isfinite(m["test"]["sr"]) and np.isfinite(m["test_oracle_sr"])
+    assert m["config"]["input_mode"] == "relative"
