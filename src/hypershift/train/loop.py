@@ -51,6 +51,18 @@ def gather_batch(data: MarketData, offsets: np.ndarray, seq: int):
             base.astype(np.float32), gt.astype(np.float32))
 
 
+def apply_input_mode(x: np.ndarray, mode: str) -> np.ndarray:
+    """x: [B, N, seq, C] with last feature = close. 'relative' divides every feature of a window by
+    that window's last-day close and subtracts 1 (stationary, near 0 -> near the ball origin)."""
+    if mode == "level":
+        return np.asarray(x, dtype=np.float32)
+    if mode == "relative":
+        den = x[:, :, -1:, -1:]
+        den = np.where(den <= 1e-8, 1.0, den)
+        return (x / den - 1.0).astype(np.float32)
+    raise ValueError(f"unknown input_mode: {mode!r}")
+
+
 @functools.lru_cache(maxsize=4)
 def _load_market_cached(market: str, data_root: str, norm: str, fresh_name: str) -> MarketData:
     """One parse per process: run_grid trains hundreds of runs on the same market. Never mutate the result."""
@@ -128,6 +140,7 @@ def predict_split(model, data, thg, cfg, split, device):
     preds, gts, masks = [], [], []
     for i in range(0, len(offs), step):
         x, m, b, g = gather_batch(data, offs[i:i + step], cfg.seq)
+        x = apply_input_mode(x, cfg.input_mode)
         out = model(torch.as_tensor(x, device=device), thg)
         preds.append(_to_return(out, torch.as_tensor(b, device=device), cfg.target).cpu().numpy())
         gts.append(g)
@@ -163,7 +176,9 @@ def train_one_run(cfg: RunConfig, data: MarketData | None = None, hg: Hypergraph
                 step_loss = 0.0
                 for j in range(0, len(batch), micro):   # gradient accumulation == one unsplit step
                     chunk = batch[j:j + micro]
-                    x, m, b, g = (torch.as_tensor(a, device=device) for a in gather_batch(data, chunk, cfg.seq))
+                    x, m, b, g = gather_batch(data, chunk, cfg.seq)
+                    x = apply_input_mode(x, cfg.input_mode)
+                    x, m, b, g = (torch.as_tensor(a, device=device) for a in (x, m, b, g))
                     pred = _to_return(model(x, thg), b, cfg.target)
                     loss, _, _ = rank_mse_loss(pred, g, m, cfg.alpha)
                     if not torch.isfinite(loss):

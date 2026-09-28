@@ -27,7 +27,8 @@ class RunConfig:
     spatial: str = "hyp"                    # hyp | euc
     attn_score: str = "mobius"              # mobius | concat
     attn_dist: str = "mult"                 # mult | neg | off
-    target: str = "return"                  # return | price
+    input_mode: str = "level"               # level | relative
+    target: str = "return"                # return | price
     shuffle_train_labels: bool = False
     seq: int = 16
     kernel: int = 4

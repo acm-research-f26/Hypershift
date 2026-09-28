@@ -10,7 +10,7 @@ from sklearn.metrics import f1_score
 
 from hypershift.config import RunConfig, dump_json
 from hypershift.models.think import THINK
-from hypershift.train.loop import gather_batch, prepare, set_seed, window_offsets
+from hypershift.train.loop import apply_input_mode, gather_batch, prepare, set_seed, window_offsets
 
 
 def tertile_thresholds(data, seq) -> np.ndarray:
@@ -25,6 +25,7 @@ def _f1(model, data, thg, cfg, split, th, device) -> float:
     with torch.no_grad():
         for i in range(0, len(offs), max(1, cfg.batch_days)):
             x, m, _, g = gather_batch(data, offs[i:i + max(1, cfg.batch_days)], cfg.seq)
+            x = apply_input_mode(x, cfg.input_mode)
             pred = model(torch.as_tensor(x, device=device), thg).argmax(-1).cpu().numpy()
             keep = m > 0.5
             ys.append(np.digitize(g, th)[keep])
@@ -54,6 +55,7 @@ def train_clf_run(cfg: RunConfig, data=None, hg=None) -> dict:
         rng.shuffle(offs)
         for i in range(0, len(offs), cfg.batch_days):
             x, m, _, g = gather_batch(data, offs[i:i + cfg.batch_days], cfg.seq)
+            x = apply_input_mode(x, cfg.input_mode)
             logits = model(torch.as_tensor(x, device=device), thg)
             y = torch.as_tensor(np.digitize(g, th), device=device)
             mt = torch.as_tensor(m, device=device).reshape(-1)
