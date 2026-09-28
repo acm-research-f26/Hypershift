@@ -1,0 +1,5 @@
+exp: manual
+label: THINK_NASDAQ
+market: NASDAQ
+data_root: data/raw/rsr/data
+alpha: 0.1
