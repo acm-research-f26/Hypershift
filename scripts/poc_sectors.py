@@ -18,6 +18,7 @@ from hypershift.config import RunConfig
 from hypershift.data.hypergraph import build_rsr_hypergraph, induced_subgraph
 from hypershift.data.rsr import load_rsr, read_ticker_file
 from hypershift.eval.baselines import evaluate_baselines
+from hypershift.eval.metrics import evaluate_all
 from hypershift.eval.stats import holm, sharpe_contrast_ci, sharpe_diff_ci, verdict, wilcoxon_one_sample, wilcoxon_paired
 from hypershift.run import parse_seeds
 from hypershift.train.loop import train_one_run
@@ -44,46 +45,108 @@ def universe():
     return data.subset(np.array(keep)), induced_subgraph(hg, np.array(keep))
 
 
-def cfg(label, geo, st, seed, epochs):
-    return RunConfig(exp=EXP, label=label, market="NYSE", structure=st, seed=seed, batch_days=8,
-                     epochs=epochs, patience=10, **GEOMS[geo])
+GRID_LR = (5e-4, 1e-3, 3e-3)
+GRID_ALPHA = (0.1, 1.0, 10.0)
 
 
-def run(seeds, epochs):
+def exp_name(variant):
+    return f"POC_sectors_{variant}" if variant else EXP
+
+
+def tuned_path(exp):
+    return Path("results", exp, "tuned.json")
+
+
+def cfg(label, geo, st, seed, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, tuned=None):
+    if tuned is not None:
+        lr, alpha = tuned[geo]["lr"], tuned[geo]["alpha"]
+    return RunConfig(exp=exp, label=label, market="NYSE", structure=st, seed=seed, batch_days=8,
+                     epochs=epochs, patience=10, input_mode=input_mode, lr=lr, alpha=alpha, **GEOMS[geo])
+
+
+def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tuned=False):
     data, hg = universe()
     print(f"universe: {data.num_nodes} stocks, {len(hg.edges)} hyperedges, "
           f"{int((hg.node_degree() > 0).sum())} stocks in >=1 hyperedge")
+    tuned = json.loads(tuned_path(exp).read_text()) if use_tuned else None
     for s in seeds:
         for geo in GEOMS:
             for st in STRUCTS:
-                m = train_one_run(cfg(f"{geo}_{st}", geo, st, s, epochs), data, hg)
+                m = train_one_run(cfg(f"{geo}_{st}", geo, st, s, epochs, exp, input_mode, lr, alpha, tuned), data, hg)
                 print(f"seed {s} {geo}_{st}: val_sr {m['val']['sr']:.3f} test_sr {m['test']['sr']:.3f}", flush=True)
 
 
-def load(label):
+def tune_label(geo, lr, alpha):
+    return f"tune_{geo}_lr{lr:g}_a{alpha:g}"
+
+
+def tune(seeds, epochs, exp=EXP, input_mode="level"):
+    data, hg = universe()
+    for geo in GEOMS:
+        for lr in GRID_LR:
+            for alpha in GRID_ALPHA:
+                for s in seeds:
+                    m = train_one_run(cfg(tune_label(geo, lr, alpha), geo, "hyper", s, epochs, exp, input_mode, lr, alpha),
+                                      data, hg)
+                    print(f"tune {geo} lr={lr:g} alpha={alpha:g} seed {s}: val_sr {m['val']['sr']:.3f}", flush=True)
+
+
+def tune_select(exp=EXP):
+    """Pick, per geometry, the combo with the highest mean validation Sharpe (never test)."""
+    best = {}
+    for geo in GEOMS:
+        scores = []
+        for lr in GRID_LR:
+            for alpha in GRID_ALPHA:
+                r = load(tune_label(geo, lr, alpha), exp)
+                if r:
+                    scores.append((float(np.mean([m["val"]["sr"] for m, _ in r.values()])), len(r), lr, alpha))
+        if not scores:
+            raise SystemExit(f"no tuning runs found for {geo} under results/{exp}")
+        full = max(n for _, n, _, _ in scores)
+        val, n, lr, alpha = max((s for s in scores if s[1] == full), key=lambda s: s[0])
+        best[geo] = {"lr": lr, "alpha": alpha}
+        print(f"{geo}: lr={lr:g} alpha={alpha:g} mean val Sharpe {val:.3f} over {n} seeds "
+              f"({len(scores)} combos, {full} seeds each)")
+    tuned_path(exp).write_text(json.dumps(best, indent=2))
+    print(f"wrote {tuned_path(exp)}")
+
+
+def load(label, exp=EXP):
     out = {}
-    for d in sorted(Path("results", EXP, label).glob("seed_*")):
+    for d in sorted(Path("results", exp, label).glob("seed_*")):
         if (d / "metrics.json").exists():
             m = json.loads((d / "metrics.json").read_text())
             out[int(d.name.split("_")[1])] = (m, np.load(d / "test_daily.npy"))
     return out
 
 
-def summarize():
+def ensemble_metrics(exp, label, seeds):
+    """Average test predictions over seeds (files share masks and gt), then evaluate."""
+    ps = [np.load(Path("results", exp, label, f"seed_{s}", "test_pred.npy")) for s in seeds]
+    d = Path("results", exp, label, f"seed_{seeds[0]}")
+    return evaluate_all(np.mean(ps, axis=0), np.load(d / "test_gt.npy"), np.load(d / "test_mask.npy"))
+
+
+def summarize(exp=EXP):
     data, hg = universe()
-    runs = {f"{g}_{s}": load(f"{g}_{s}") for g in GEOMS for s in STRUCTS}
+    runs = {f"{g}_{s}": load(f"{g}_{s}", exp) for g in GEOMS for s in STRUCTS}
     base = evaluate_baselines(data)
     L = [f"# THINK proof of concept — {data.num_nodes} NYSE stocks (Energy/Utilities + Finance)", "",
          f"{len(hg.edges)} hyperedges; test period = 2017 (237 days); Sharpe = mean/std of daily top-5 return x sqrt(252).", "",
-         "| arm | seeds | test Sharpe (mean ± std) | val Sharpe | NDCG@5 |", "|---|---|---|---|---|"]
+         "| arm | seeds | test Sharpe (mean ± std) | val Sharpe | NDCG@5 | best-test-epoch Sharpe (paper protocol) "
+         "| seed-ensemble Sharpe | seed-ensemble NDCG@5 |", "|---|---|---|---|---|---|---|---|"]
     for k, r in runs.items():
         if r:
             t = [m["test"]["sr"] for m, _ in r.values()]
             v = [m["val"]["sr"] for m, _ in r.values()]
             nd = [m["test"]["ndcg5"] for m, _ in r.values()]
-            L.append(f"| {k} | {len(r)} | {np.mean(t):.3f} ± {np.std(t):.3f} | {np.mean(v):.3f} | {np.mean(nd):.3f} |")
+            o = [m["test_oracle_sr"] for m, _ in r.values()]
+            e = ensemble_metrics(exp, k, sorted(r))
+            L.append(f"| {k} | {len(r)} | {np.mean(t):.3f} ± {np.std(t):.3f} | {np.mean(v):.3f} | {np.mean(nd):.3f} "
+                     f"| {np.mean(o):.3f} ± {np.std(o):.3f} | {e['sr']:.3f} | {e['ndcg5']:.3f} |")
     for k in ("market", "random", "momentum", "oracle"):
-        L.append(f"| baseline: {k} | - | {base[k]['sr']:.3f} | - | - |")
+        L.append(f"| baseline: {k} | - | {base[k]['sr']:.3f} | - | - | - | - | - |")
 
     def series(key, seeds):
         return np.mean([runs[key][s][1] for s in seeds], axis=0), np.array([runs[key][s][0]["test"]["sr"] for s in seeds])
@@ -120,7 +183,8 @@ def summarize():
     L += ["", "Verdicts: STRONG = Holm p < 0.01 and CI excludes 0; SEED-ROBUST ONLY = Holm p < 0.01 but CI includes 0 "
           "(consistent across seeds, within market noise); NO EVIDENCE otherwise. With n seeds the smallest possible "
           "Wilcoxon p is 2/2^n."]
-    out = Path("results", EXP, "summary.md")
+    out = Path("results", exp, "summary.md")
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L))
 
@@ -128,8 +192,22 @@ def summarize():
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["run", "summarize"])
-    ap.add_argument("--seeds", default="0-9")
+    ap.add_argument("cmd", choices=["run", "summarize", "tune", "tune-select"])
+    ap.add_argument("--seeds", default=None, help="default: 0-9 (run), 0-2 (tune)")
     ap.add_argument("--epochs", type=int, default=30)
+    ap.add_argument("--variant", default="")
+    ap.add_argument("--input-mode", choices=["level", "relative"], default="level")
+    ap.add_argument("--lr", type=float, default=1e-3)
+    ap.add_argument("--alpha", type=float, default=1.0)
+    ap.add_argument("--use-tuned", action="store_true")
     a = ap.parse_args()
-    run(parse_seeds(a.seeds), a.epochs) if a.cmd == "run" else summarize()
+    exp = exp_name(a.variant)
+    if a.cmd == "run":
+        run(parse_seeds(a.seeds or "0-9"), a.epochs, exp, a.input_mode, a.lr, a.alpha, a.use_tuned)
+    elif a.cmd == "tune":
+        tune(parse_seeds(a.seeds or "0-2"), a.epochs, exp, a.input_mode)
+        tune_select(exp)   # partial-seed workers: rerun tune-select once all seeds are done
+    elif a.cmd == "tune-select":
+        tune_select(exp)
+    else:
+        summarize(exp)
