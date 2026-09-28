@@ -102,8 +102,10 @@ def experiment(name: str) -> list[RunConfig]:
     elif name == "E9_fresh_daily":
         for g in ("HH", "EE"):
             for st in ("hyper", "clique", "none"):
+                light = MEMORY_LIGHT if st == "clique" else {}
                 E += _mk(name, f"{g}_{st}", SEEDS_SWEEP, **_geo(g, market="FRESH", fresh_name=FRESH_DAILY_NAME,
-                                                               sources=("subindustry",), structure=st, alpha=1.0))
+                                                               sources=("subindustry",), structure=st, alpha=1.0,
+                                                               **light))
     elif name == "E10_hourly":
         # hday: 112 hourly bars = 16 trading days, first kernel 28 bars = 4 days -> 4 steps, exactly like the
         # daily arm (16 days, kernel 4). Same look-back, target, trades and architecture; only granularity differs.

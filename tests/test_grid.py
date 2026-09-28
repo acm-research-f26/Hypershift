@@ -23,6 +23,12 @@ def test_sizes():
     assert all(c.micro_batch_days == 1 for c in experiment("E5_structure") if c.structure == "clique")
 
 
+def test_e9_fresh_daily_clique_is_memory_light():
+    e9 = experiment("E9_fresh_daily")
+    assert all(c.micro_batch_days == 1 for c in e9 if c.structure == "clique")
+    assert all(c.micro_batch_days == 0 for c in e9 if c.structure == "hyper")   # RunConfig default, not forced
+
+
 def _seeds(key):
     exp, label = key.split("/")
     return {c.seed for c in experiment(exp) if c.label == label}
