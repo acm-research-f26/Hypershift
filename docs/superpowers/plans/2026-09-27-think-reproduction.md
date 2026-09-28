@@ -30,7 +30,7 @@
   - Clamp the `sinh` argument in the Poincaré FC layer to `[-15, 15]`.
 - Data splits for the RSR data (NYSE and NASDAQ), from the original code:
   - `valid_index = 756`, `test_index = 1008`.
-  - NYSE has T = 1245 days. NASDAQ has T = 1244 days, because its last row is dropped.
+  - NYSE has T = 1245 days. NASDAQ raw files have 1246 rows, and the last row is all-missing and dropped, so NASDAQ also has T = 1245.
 - Default hyperparameters (from STHAN-SR/RSR commands and the paper). `lr` and `alpha` get tuned per geometry in Task 14 Phase C; everything else stays fixed:
   - `seq = 16`, `kernel K = 4` (so 16 → 4 → 1), `hidden = 32`
   - `lr = 1e-3`, `weight_decay = 5e-4`, `epochs = 100`, `patience = 20`
@@ -192,7 +192,7 @@ The executor walks this tree top to bottom. Each node says what to check, what t
 - `relation.tar.gz` fails to extract: download it directly from `https://raw.githubusercontent.com/fulifeng/Temporal_Relational_Stock_Ranking/master/data/relation.tar.gz` (7.3 MB).
 
 **D2 — Data validation** (Task 2 integration test)
-- NYSE must be `features.shape == (1737, 1245, 5)`. NASDAQ must be `(1026, 1244, 5)`.
+- NYSE must be `features.shape == (1737, 1245, 5)`. NASDAQ must be `(1026, 1245, 5)`.
 - Mismatch: STOP. Print the ticker count and the row count of the first file, and report to the user. Do not "fix" it by truncating.
 - The folder has more files than tickers (1769 NYSE and 1048 NASDAQ files). This is expected: always use the ticker list file.
 
@@ -584,7 +584,7 @@ def test_real_shapes():
     ny = load_rsr(REAL, "NYSE", norm="paper")
     assert ny.features.shape == (1737, 1245, 5)
     na = load_rsr(REAL, "NASDAQ", norm="paper")
-    assert na.features.shape == (1026, 1244, 5)
+    assert na.features.shape == (1026, 1245, 5)
 ```
 
 - [ ] **Step 3: Run the tests to verify they fail**
