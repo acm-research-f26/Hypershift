@@ -9,6 +9,7 @@ Universe = Energy/Utilities + Finance industries (~300 stocks). The RSR "n/a" in
 """
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -125,6 +126,7 @@ def summarize():
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["run", "summarize"])
     ap.add_argument("--seeds", default="0-9")
