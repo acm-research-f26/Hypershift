@@ -1,0 +1,5 @@
+exp: manual
+label: THINK
+market: NYSE
+data_root: data/raw/rsr/data
+alpha: 1.0
