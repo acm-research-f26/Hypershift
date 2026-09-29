@@ -9,6 +9,7 @@
   - THINK comes out best, at Sharpe **2.28**.
   - Hyperedges beat pairwise edges, which beat no relations.
 - **Scored leak-free (epoch picked on the validation year), the advantage disappears.** THINK gets −0.56, no comparison is statistically significant, and nothing beats simply holding the 309 stocks (0.75).
+- *Correction:* THINK's attention (eq. 14) used a close but not exact formula. It is now fixed, and the two affected arms are being rerun (§4d). All other findings are unaffected.
 - We found a hyperbolic-specific cause: **inputs sit at the edge of the hyperbolic ball.** A one-line fix (relative inputs) lifts THINK to +0.48 and puts hyperbolic ahead of Euclidean. It is still not significant.
 
 ## 2. What THINK does (the paper's method)
@@ -39,7 +40,7 @@
 | Hyperedges | industry + Wikidata relations | same construction, restricted to the 309 stocks (73 hyperedges) | Same method, smaller graph |
 | Hyperbolic temporal conv | eq. 9–12 | eq. 9–12, kernel 4 | Same |
 | DHHAN | eq. 13–15 | eq. 13–15 | Same (see the next row) |
-| Attention formula (eq. 14) | `aᵀ(u ? z)·d(u, z)`; the symbol is lost in the PDF | Möbius addition ⊕ (literal reading) | Best guess |
+| Attention formula (eq. 14) | `α = aᵀ ⊗ (u ⊕ z) ⊙ d(u, z)` | **Results in §4 used** `aᵀ·(u ⊕ z)·d(u, z)`: a plain dot product instead of the Möbius product ⊗ (`tanh(aᵀ·log₀(·))`). **Now corrected to the exact formula; THINK arms rerunning (§4d)** | **Was slightly different, now fixed** |
 | Loss | not stated | MSE + pairwise ranking loss (their earlier STHAN-SR code) | Same as their code |
 | Hyperparameters | not stated | window 16, hidden 32, lr 1e-3, weight decay 5e-4, ranking weight 1 (their earlier code) | Same as their code |
 | Batch / epochs | 1 day per step; ~100 epochs (earlier code) | **8 days** per step; **max 30 epochs**, early-stopped (~17 in practice) | **Different** (compute budget) |
@@ -47,7 +48,17 @@
 | Epoch selection | **not stated in the paper**. Their earlier STHAN-SR code prints both the 2016 and 2017 scores every epoch, with no selection rule | **both** reported: best test epoch, and epoch chosen on validation | Both shown |
 | Trading rule and Sharpe | top-5 daily, mean/std × √252 | same | Same |
 | NDCG | computed incorrectly in their code (see §7) | standard NDCG@5 | **Different** (fixed) |
-| Seeds | 25 | 10 per arm | Fewer |
+| Seeds | 25 runs ("mean of 25 runs") | 10 per arm | Fewer |
+
+**What the differences mean, in plain terms:**
+
+- **Price normalization.** Stock prices vary wildly (one stock trades at \$5, another at \$500), so each stock's prices are divided by that stock's **highest price**, putting every stock on a 0–1 scale.
+  - The dataset the paper uses takes that highest price **from all five years, including 2017**, the year we test on. That quietly tells the model something about the future: a stock whose 2016 prices sit far below 1 must rise later.
+  - We divide by the highest price **from 2013–2015 only**, so nothing from the test period leaks in.
+- **Batch and epochs.** A *batch* is how many trading days the model learns from before each update: their earlier code used 1 day, we used 8, which is about 7× faster. An *epoch* is one full pass over the training years: they used about 100, we capped at 30 and stopped early once the validation score hadn't improved for 10 epochs. In short, we trained less, to fit the compute budget.
+- **Hyperparameter tuning.** Learning rate, ranking-loss weight and the like were not tuned. We used the values from the authors' earlier code. Tuning, equal for all arms and chosen on 2016 only, is built but not yet run.
+- **NDCG.** A second score the paper reports (0.86 for THINK). It measures whether the model's top-5 picks are the stocks that *actually* went up most. We **did** compute it: the standard NDCG@5 in the §4 tables, about 0.55. The authors' code computes it incorrectly (§7): it scores stock ID numbers instead of returns, and uses only the last test day. With their code, a model that ranks stocks in exactly the reverse order still gets 1.000. So their 0.86 can't be compared with ours or trusted, and we report the standard version.
+- **Seeds.** A neural net starts from random numbers, so training the same model twice gives different results. Each "seed" is one full training run with different starting randomness. The paper averages 25 runs; we ran 10 per model. That's fewer, but it is enough for our significance tests (the smallest possible p-value with 10 seeds is 0.002).
 
 **Ablation arms (each is 10 seeds):**
 - THINK: hyperbolic + hyperedges.
@@ -112,6 +123,18 @@ The one change: each 16-day window is divided by its last close, so features bec
   - After correction, every comparison is "no evidence".
   - Hyperedges vs pairwise edges shows no difference.
   - No model reliably beats holding the market.
+
+### 4d. Correction: exact eq. 14 attention (rerun in progress)
+
+- **What happened.** The results above used a close but not exact form of the attention formula: `aᵀ·(u ⊕ z)` instead of the paper's `aᵀ ⊗ (u ⊕ z) = tanh(aᵀ·log₀(u ⊕ z))`. Before this, only the text-extracted PDF was available, and its ⊗ symbol was lost; the exact formula has since been confirmed from the PDF. The code is now corrected.
+- **How much it can matter.** Attention decides how a stock *weights* its hyperedges. **80% of the 309 stocks are in exactly one hyperedge**, and their weight is 100% whatever the formula. So the change only affects the ~20% of stocks in several hyperedges (mainly big banks and oil majors).
+- **What is affected:** only the two arms that use this attention, *THINK (hyp + hyperedges)* and *hyp + pairwise*. Both are being rerun with 10 seeds each, faithful (v1) and relative-input (v2).
+- **What is unaffected:**
+  - the Euclidean and no-relation arms, and the baselines;
+  - the epoch-choice gap, which appears in the Euclidean arms too (2.07 vs 0.32);
+  - the ball-boundary diagnosis, which is measured on the inputs;
+  - the 2016-vs-2017 regime change, and the NDCG and n/a-bucket findings.
+- Results: `results/POC_sectors_eq14/summary.md` (v1) and `results/POC_sectors_rel_eq14/summary.md` (v2).
 
 ## 5. Scientific assessment
 
