@@ -1,9 +1,11 @@
+import json
 from pathlib import Path
 import numpy as np
 import pytest
 from hypershift.data.hypergraph import (
     Hypergraph, canonical, clique_expand, correlation_hyperedges, decompose, drop_hub_edges,
-    hub_schedule, induced_subgraph, industry_hyperedges, random_like, wiki_hyperedges,
+    hub_schedule, induced_subgraph, industry_hyperedges, random_like, wiki_hyperedges, wiki_first_order_channels,
+    HYPERGRAPH_CACHE_VERSION,
     build_rsr_hypergraph,
 )
 from hypershift.data.universe import select_universe
@@ -27,15 +29,35 @@ def test_industry_hyperedges():
     assert sorted(industry_hyperedges(_industry_rel())) == [(0, 1, 2), (3, 4)]
 
 
-def test_wiki_star_hyperedges_ignore_self_channel():
+def test_wiki_first_order_star_second_order_pairs_ignore_self_channel():
     N = 5
-    rel = np.zeros((N, N, 3), int)
-    rel[0, 1, 0] = rel[0, 2, 0] = 1
-    rel[3, 4, 1] = 1
-    rel[2, 2, 0] = 1                  # diagonal inside a real channel must be ignored
+    rel = np.zeros((N, N, 4), int)
+    rel[0, 1, 0] = rel[0, 2, 0] = 1            # channel 0: first-order -> star {0,1,2}
+    rel[3, 4, 1] = 1                           # channel 1: first-order, one target -> {3,4}
+    rel[2, 2, 0] = 1                           # diagonal inside a real channel must be ignored
+    rel[0, 3, 2] = rel[3, 0, 2] = rel[0, 4, 2] = rel[4, 0, 2] = 1   # channel 2: second-order -> pairs, not a star
     for i in range(N):
         rel[i, i, -1] = 1
-    assert sorted(canonical(wiki_hyperedges(rel))) == [(0, 1, 2), (3, 4)]
+    fo = np.array([True, True, False])
+    assert sorted(canonical(wiki_hyperedges(rel, fo))) == [(0, 1, 2), (0, 3), (0, 4), (3, 4)]
+    star_all = sorted(canonical(wiki_hyperedges(rel, np.array([True, True, True]))))
+    assert (0, 3, 4) in star_all and (0, 3, 4) not in canonical(wiki_hyperedges(rel, fo))       # what the old (buggy) builder produced
+    with pytest.raises(ValueError):
+        wiki_hyperedges(rel, [True])
+
+
+def test_wiki_first_order_channels_detected_from_connections():
+    N = 4
+    rel = np.zeros((N, N, 4), int)
+    rel[0, 1, 0] = rel[0, 2, 0] = 1            # channel 0 == pairs of single-property path P127
+    rel[1, 2, 1] = rel[2, 1, 1] = rel[1, 3, 1] = rel[3, 1, 1] = 1   # channel 1 == two-property path (P31, P31)
+    for i in range(N):
+        rel[i, i, -1] = 1
+    q = ["Q0", "Q1", "Q2", "Q3"]
+    con = {"Q0": {"Q1": [["P127"], ["P414", "P414"]], "Q2": [["P127"]]},
+           "Q1": {"Q2": [["P31", "P31"]], "Q3": [["P31", "P31"]]},
+           "Q2": {"Q1": [["P31", "P31"]]}, "Q3": {"Q1": [["P31", "P31"]]}}
+    assert wiki_first_order_channels(rel, con, q).tolist() == [True, False, False]
 
 
 def test_canonical_dedup_and_min_size():
@@ -97,13 +119,20 @@ def test_induced_subgraph_and_universe(synthetic_market, synthetic_hypergraph):
     assert d.tickers == d2.tickers  # deterministic
 
 
-def test_build_rsr_hypergraph_cache(tmp_path):
+def _write_tiny_rsr(tmp_path):
     (tmp_path / "relation" / "sector_industry").mkdir(parents=True)
     (tmp_path / "relation" / "wikidata").mkdir(parents=True)
     np.save(tmp_path / "relation" / "sector_industry" / "NYSE_industry_relation.npy", _industry_rel())
     wiki = np.zeros((5, 5, 2), int)
     wiki[0, 3, 0] = 1
     np.save(tmp_path / "relation" / "wikidata" / "NYSE_wiki_relation.npy", wiki)
+    (tmp_path / "relation" / "wikidata" / "NYSE_connections.json").write_text(
+        json.dumps({"Q0": {"Q3": [["P31", "P31"]]}}))                       # second-order pair
+    (tmp_path / "NYSE_wiki.csv").write_text("\n".join(f"T{i},Q{i}" for i in range(5)))
+
+
+def test_build_rsr_hypergraph_cache(tmp_path):
+    _write_tiny_rsr(tmp_path)
     first = build_rsr_hypergraph(tmp_path, "NYSE")
     assert first.edges == ((0, 1, 2), (3, 4), (0, 3))
     assert list((tmp_path / "hypergraph_cache").glob("*.json"))
@@ -112,11 +141,38 @@ def test_build_rsr_hypergraph_cache(tmp_path):
     assert build_rsr_hypergraph(tmp_path, "NYSE", ("wiki",), cache=False).edges == ((0, 3),)
 
 
+def test_stale_cache_version_is_rebuilt(tmp_path):
+    _write_tiny_rsr(tmp_path)
+    cache = tmp_path / "hypergraph_cache"
+    cache.mkdir()
+    f = cache / "NYSE_industry-wiki.json"
+    f.write_text(json.dumps({"num_nodes": 5, "edges": [[0, 1, 2, 3, 4]]}))          # v1 file: no version key
+    assert build_rsr_hypergraph(tmp_path, "NYSE").edges == ((0, 1, 2), (3, 4), (0, 3))
+    assert json.loads(f.read_text())["version"] == HYPERGRAPH_CACHE_VERSION
+
+
 @pytest.mark.data
 @pytest.mark.skipif(not REAL.exists(), reason="RSR data not downloaded")
 def test_real_nyse_hypergraph_stats():
     hg = build_rsr_hypergraph(REAL, "NYSE", cache=False)
     assert hg.num_nodes == 1737
-    assert 250 <= len(hg.edges) <= 400             # prototype: 312
-    assert hg.edge_sizes().max() == 500            # matches paper Fig 3a axis
-    assert 20 <= hg.node_degree().max() <= 60      # prototype: 37
+    # first-order wiki -> stars, second-order wiki -> pairs (paper App. B). Measured: 4350 edges (was 312 with all-star).
+    assert len(hg.edges) == 4350
+    sizes = hg.edge_sizes()
+    assert sizes.max() == 500                      # matches paper Fig 3a axis
+    assert int((sizes == 2).sum()) == 4250
+    assert hg.node_degree().max() == 114           # was 37 with all-star
+    assert int((hg.node_degree() == 0).sum()) == 17
+    rel = np.load(REAL / "relation" / "wikidata" / "NYSE_wiki_relation.npy")
+    import csv
+    con = json.loads((REAL / "relation" / "wikidata" / "NYSE_connections.json").read_text())
+    qids = [r[1] for r in csv.reader(open(REAL / "NYSE_wiki.csv"))]
+    assert np.nonzero(wiki_first_order_channels(rel, con, qids))[0].tolist() == [0, 1, 23]
+
+
+@pytest.mark.data
+@pytest.mark.skipif(not REAL.exists(), reason="RSR data not downloaded")
+def test_real_nasdaq_hypergraph_stats():
+    hg = build_rsr_hypergraph(REAL, "NASDAQ", cache=False)
+    assert hg.num_nodes == 1026 and len(hg.edges) == 1066 and hg.edge_sizes().max() == 156
+    assert hg.node_degree().max() == 55

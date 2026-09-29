@@ -1,7 +1,8 @@
 """Small-scale proof of concept: THINK ablations on a few NYSE sectors.
 
 Universe = Energy/Utilities + Finance industries (~300 stocks). The RSR "n/a" industry bucket
-(500 stocks with no known industry) is excluded. Arms: {HH, EE} x {hyper, clique, none}.
+(500 stocks with no known industry) is excluded. Arms: {HH, EE} x {hyper, clique, none}; optional EH (Euclidean temporal conv + hyperbolic
+hypergraph attention = the paper's only "Euclidean" ablation, p852 Sec V.A) x {hyper, clique}.
 
   python scripts/poc_sectors.py run --seeds 0-4        # one worker
   python scripts/poc_sectors.py run --seeds 5-9        # second worker, in parallel
@@ -32,8 +33,23 @@ INDUSTRIES = {
     "Finance": ["Major Banks", "Commercial Banks", "Property-Casualty Insurers", "Life Insurance",
                 "Investment Managers", "Finance: Consumer Services", "Investment Bankers/Brokers/Service"],
 }
-GEOMS = {"HH": {"temporal": "hyp", "spatial": "hyp"}, "EE": {"temporal": "euc", "spatial": "euc"}}
+GEOMS = {"HH": {"temporal": "hyp", "spatial": "hyp"}, "EE": {"temporal": "euc", "spatial": "euc"},
+         "EH": {"temporal": "euc", "spatial": "hyp"}}
+DEFAULT_GEOMS = ("HH", "EE")     # EH is opt-in (--geoms / --arms) so existing invocations and tuned.json keep working
 STRUCTS = ("hyper", "clique", "none")
+
+
+def structs_for(geo):
+    """EH_none would be identical to EE_none (structure none has no spatial layer), so it is not an arm."""
+    return tuple(st for st in STRUCTS if not (geo == "EH" and st == "none"))
+
+
+def pick_geoms(arms=None, geoms=None):
+    if geoms:
+        return tuple(geoms)
+    if arms:
+        return tuple(g for g in GEOMS if any(a.startswith(g + "_") for a in arms))
+    return DEFAULT_GEOMS
 
 
 def universe():
@@ -72,14 +88,18 @@ def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tune
     print(f"universe: {data.num_nodes} stocks, {len(hg.edges)} hyperedges, "
           f"{int((hg.node_degree() > 0).sum())} stocks in >=1 hyperedge")
     tuned = json.loads(tuned_path(exp).read_text()) if use_tuned else None
+    if tuned is not None:
+        missing = [g for g in pick_geoms(arms) if g not in tuned]
+        if missing:
+            raise SystemExit(f"{tuned_path(exp)} has no tuned lr/alpha for {missing}; run `tune --geoms {' '.join(missing)}` first")
     base_model = next((o.split("=", 1)[1] for o in (overrides or []) if o.startswith("model=")), "think")
     for s in seeds:
         if base_model != "think":     # R8 baseline: one arm, labelled by the model (graph structure is built in)
             m = train_one_run(cfg(base_model, "HH", "hyper", s, epochs, exp, input_mode, lr, alpha, tuned, overrides), data, hg)
             print(f"seed {s} {base_model}: val_sr {m['val']['sr']:.3f} test_sr {m['test']['sr']:.3f}", flush=True)
             continue
-        for geo in GEOMS:
-            for st in STRUCTS:
+        for geo in pick_geoms(arms):
+            for st in structs_for(geo):
                 if arms and f"{geo}_{st}" not in arms:
                     continue
                 m = train_one_run(cfg(f"{geo}_{st}", geo, st, s, epochs, exp, input_mode, lr, alpha, tuned, overrides), data, hg)
@@ -90,9 +110,9 @@ def tune_label(geo, lr, alpha):
     return f"tune_{geo}_lr{lr:g}_a{alpha:g}"
 
 
-def tune(seeds, epochs, exp=EXP, input_mode="level", overrides=None):
+def tune(seeds, epochs, exp=EXP, input_mode="level", overrides=None, geoms=None):
     data, hg = universe()
-    for geo in GEOMS:
+    for geo in pick_geoms(geoms=geoms):
         for lr in GRID_LR:
             for alpha in GRID_ALPHA:
                 for s in seeds:
@@ -101,10 +121,11 @@ def tune(seeds, epochs, exp=EXP, input_mode="level", overrides=None):
                     print(f"tune {geo} lr={lr:g} alpha={alpha:g} seed {s}: val_sr {m['val']['sr']:.3f}", flush=True)
 
 
-def tune_select(exp=EXP):
-    """Pick, per geometry, the combo with the highest mean validation Sharpe (never test)."""
-    best = {}
-    for geo in GEOMS:
+def tune_select(exp=EXP, geoms=None):
+    """Pick, per geometry, the combo with the highest mean validation Sharpe (never test).
+    Geometries already present in tuned.json but not selected here are kept."""
+    best = json.loads(tuned_path(exp).read_text()) if tuned_path(exp).exists() and geoms else {}
+    for geo in pick_geoms(geoms=geoms):
         scores = []
         for lr in GRID_LR:
             for alpha in GRID_ALPHA:
@@ -140,7 +161,7 @@ def ensemble_metrics(exp, label, seeds):
 
 def summarize(exp=EXP):
     data, hg = universe()
-    runs = {f"{g}_{s}": load(f"{g}_{s}", exp) for g in GEOMS for s in STRUCTS}
+    runs = {f"{g}_{s}": load(f"{g}_{s}", exp) for g in GEOMS for s in structs_for(g)}
     base = evaluate_baselines(data)
     L = [f"# THINK proof of concept — {data.num_nodes} NYSE stocks (Energy/Utilities + Finance)", "",
          f"{len(hg.edges)} hyperedges; test period = 2017 (237 days); Sharpe = mean/std of daily top-5 return x sqrt(252).", "",
@@ -165,7 +186,12 @@ def summarize(exp=EXP):
              ("HH_hyper", "HH_clique", "hyperedges vs pairwise edges (hyperbolic)"),
              ("HH_hyper", "HH_none", "relations vs none (hyperbolic)"),
              ("EE_hyper", "EE_clique", "hyperedges vs pairwise edges (Euclidean)"),
-             ("EE_hyper", "EE_none", "relations vs none (Euclidean)")]
+             ("EE_hyper", "EE_none", "relations vs none (Euclidean)"),
+             # EH = the paper's "Euclidean" ablation (TCONV + DHHAN): only temporal geometry differs from HH
+             ("HH_hyper", "EH_hyper", "hyperbolic vs Euclidean temporal conv (paper ablation, hyperedges)"),
+             ("HH_clique", "EH_clique", "hyperbolic vs Euclidean temporal conv (paper ablation, pairwise edges)"),
+             ("EH_hyper", "EH_clique", "hyperedges vs pairwise edges (Euclidean temporal conv)"),
+             ("EH_hyper", "EE_hyper", "hyperbolic vs Euclidean hypergraph attention (Euclidean temporal conv)")]
     rows, ps = [], {}
     for a, b, q in pairs:
         common = sorted(set(runs[a]) & set(runs[b]))
@@ -210,7 +236,8 @@ if __name__ == "__main__":
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--alpha", type=float, default=1.0)
     ap.add_argument("--use-tuned", action="store_true")
-    ap.add_argument("--arms", nargs="*", default=None, help="subset of arms for run, e.g. HH_hyper HH_clique")
+    ap.add_argument("--arms", nargs="*", default=None, help="subset of arms for run, e.g. HH_hyper HH_clique EH_hyper")
+    ap.add_argument("--geoms", nargs="*", default=None, help="tune/tune-select geometries (default HH EE; EH is opt-in)")
     ap.add_argument("--set", nargs="*", default=None, metavar="K=V", dest="overrides",
                     help="RunConfig overrides for run/tune, e.g. shuffle_train_labels=true attn_dist=off decompose_size=10")
     a = ap.parse_args()
@@ -218,9 +245,9 @@ if __name__ == "__main__":
     if a.cmd == "run":
         run(parse_seeds(a.seeds or "0-9"), a.epochs, exp, a.input_mode, a.lr, a.alpha, a.use_tuned, a.arms, a.overrides)
     elif a.cmd == "tune":
-        tune(parse_seeds(a.seeds or "0-2"), a.epochs, exp, a.input_mode, a.overrides)
-        tune_select(exp)   # partial-seed workers: rerun tune-select once all seeds are done
+        tune(parse_seeds(a.seeds or "0-2"), a.epochs, exp, a.input_mode, a.overrides, a.geoms)
+        tune_select(exp, a.geoms)   # partial-seed workers: rerun tune-select once all seeds are done
     elif a.cmd == "tune-select":
-        tune_select(exp)
+        tune_select(exp, a.geoms)
     else:
         summarize(exp)

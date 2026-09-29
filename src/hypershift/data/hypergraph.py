@@ -1,6 +1,7 @@
 """Stock hypergraphs: construction from RSR relations (paper appendix B) and ablation transforms."""
 from __future__ import annotations
 
+import csv
 import itertools
 import json
 from dataclasses import dataclass
@@ -70,15 +71,71 @@ def industry_hyperedges(rel: np.ndarray) -> list[tuple[int, ...]]:
     return out
 
 
-def wiki_hyperedges(rel: np.ndarray) -> list[tuple[int, ...]]:
-    """Star hyperedge per (source stock, wiki relation channel): {i} U {j : rel[i,j,k]=1}."""
+# Bump when the construction of any cached hypergraph changes; stale cache files are rebuilt.
+# v1: star hyperedge for every wiki channel. v2: first-order channels star, second-order channels pairs (paper App. B).
+HYPERGRAPH_CACHE_VERSION = 2
+
+
+def wiki_first_order_channels(rel: np.ndarray, connections: dict, qids: list[str]) -> np.ndarray:
+    """bool [R-1]: is wiki channel k a first-order relation (single Wikidata property, X -R1-> Y)?
+
+    RSR's `<market>_connections.json` maps qid_i -> qid_j -> list of property paths. A path with ONE property is
+    first-order; a path with TWO properties (X -R2-> Z <-R3- Y) is second-order. `rel[i, j, k]` carries no path
+    label, but every channel is exactly the set of directed pairs sharing one path type, so channel k is first-order
+    iff its pair set equals the pair set of some single-property path. (A channel whose pair set equals both a
+    first-order and a second-order path is only possible for tiny channels, and there a star equals a pair.)
+    """
+    idx: dict[str, list[int]] = {}
+    for i, q in enumerate(qids):
+        idx.setdefault(q, []).append(i)
+    first: dict[str, set] = {}
+    for qa, d in connections.items():
+        for qb, paths in d.items():
+            for path in paths:
+                if len(path) == 1:
+                    first.setdefault(path[0], set()).update(
+                        (i, j) for i in idx.get(qa, ()) for j in idx.get(qb, ()) if i != j)
+    first_sets = [s for s in first.values() if s]
+    out = np.zeros(rel.shape[2] - 1, dtype=bool)
+    for k in range(rel.shape[2] - 1):
+        ii, jj = np.nonzero(rel[:, :, k])
+        pairs = {(int(i), int(j)) for i, j in zip(ii, jj) if i != j}
+        out[k] = bool(pairs) and any(pairs == s for s in first_sets)
+    return out
+
+
+def wiki_hyperedges(rel: np.ndarray, first_order) -> list[tuple[int, ...]]:
+    """Wiki hyperedges (paper App. B, [A854]).
+
+    first-order channel k: one star hyperedge per source stock, {i} U {j : rel[i,j,k]=1}.
+    second-order channel k ("pairwise in nature"): one 2-node hyperedge {i, j} per related pair.
+    first_order: bool per wiki channel (length R-1), see `wiki_first_order_channels`. The last channel is the self-relation.
+    """
+    first_order = np.asarray(first_order, dtype=bool)
+    if first_order.shape != (rel.shape[2] - 1,):
+        raise ValueError(f"first_order must have length {rel.shape[2] - 1}, got {first_order.shape}")
     out = []
     for k in range(rel.shape[2] - 1):
         a = rel[:, :, k].copy()
         np.fill_diagonal(a, 0)
-        for i in np.nonzero(a.sum(axis=1) > 0)[0]:
-            out.append((int(i), *(int(j) for j in np.nonzero(a[i])[0])))
+        if first_order[k]:
+            for i in np.nonzero(a.sum(axis=1) > 0)[0]:
+                out.append((int(i), *(int(j) for j in np.nonzero(a[i])[0])))
+        else:
+            out.extend((int(i), int(j)) for i, j in zip(*np.nonzero(a)))
     return out
+
+
+def load_wiki_hyperedges(root, market: str) -> list[tuple[int, ...]]:
+    root = Path(root)
+    wdir = root / "relation" / "wikidata"
+    rel = np.load(wdir / f"{market}_wiki_relation.npy")
+    connections = json.loads((wdir / f"{market}_connections.json").read_text())
+    with open(root / f"{market}_wiki.csv", newline="") as f:
+        qids = [r[1] for r in csv.reader(f)]
+    if len(qids) != rel.shape[0]:
+        raise ValueError(f"{market}_wiki.csv has {len(qids)} rows but relation has {rel.shape[0]} nodes")
+    return wiki_hyperedges(rel, wiki_first_order_channels(rel, connections, qids))
 
 
 def build_rsr_hypergraph(root, market: str, sources=("industry", "wiki"), cache: bool = True) -> Hypergraph:
@@ -86,7 +143,8 @@ def build_rsr_hypergraph(root, market: str, sources=("industry", "wiki"), cache:
     cache_file = root / "hypergraph_cache" / f"{market}_{'-'.join(sorted(sources))}.json"
     if cache and cache_file.exists():
         d = json.loads(cache_file.read_text())
-        return Hypergraph(d["num_nodes"], tuple(tuple(e) for e in d["edges"]))
+        if d.get("version") == HYPERGRAPH_CACHE_VERSION:
+            return Hypergraph(d["num_nodes"], tuple(tuple(e) for e in d["edges"]))
     edges: list[tuple[int, ...]] = []
     n = None
     if "industry" in sources:
@@ -96,13 +154,14 @@ def build_rsr_hypergraph(root, market: str, sources=("industry", "wiki"), cache:
     if "wiki" in sources:
         rel = np.load(root / "relation" / "wikidata" / f"{market}_wiki_relation.npy")
         n = rel.shape[0]
-        edges += wiki_hyperedges(rel)
+        edges += load_wiki_hyperedges(root, market)
     if n is None:
         raise ValueError("sources must include industry and/or wiki")
     hg = Hypergraph(n, canonical(edges))
     if cache:
         cache_file.parent.mkdir(parents=True, exist_ok=True)
-        cache_file.write_text(json.dumps({"num_nodes": n, "edges": [list(e) for e in hg.edges]}))
+        cache_file.write_text(json.dumps({"version": HYPERGRAPH_CACHE_VERSION, "num_nodes": n,
+                                          "edges": [list(e) for e in hg.edges]}))
     return hg
 
 
