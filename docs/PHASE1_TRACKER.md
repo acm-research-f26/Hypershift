@@ -25,14 +25,14 @@ Status words: **DONE**, **PARTIAL**, **RUNNING**, **TODO**, **BLOCKED** (cannot 
 
 | ID | Task | Paper | Status | Evidence / next step |
 |---|---|---|---|---|
-| R1 | Twitter tennis, node regression (MSE) | 0.58 | TODO | Not implemented. Research how the paper builds this graph and where to get the data (PyG-Temporal). |
-| R2 | Chickenpox (MSE) | 1.09 | TODO | Same as R1. |
-| R3 | Windmill (MSE) | 1.05 | TODO | Same as R1. |
-| R4 | China stock risk (MSE) | 0.32 | TODO | Check whether the data can be obtained; likely BLOCKED. |
+| R1 | Twitter tennis, node regression (MSE) | 0.58 | TODO (order 3) | Data obtainable (PyG-T JSON; Table I matches `rg17`). Paper's baselines (~2.05) are about 5× worse than a constant predictor (0.42), so the setup is unclear. Est. 10–16 eng-h. See `docs/phase1/R_feasibility.md`. |
+| R2 | Chickenpox (MSE) | 1.09 | TODO (order 1) | Data obtainable (220 KB JSON). Agent calibration: mean predictor 1.047, AR(4) 0.72, so the paper's 1.09 is worse than a constant *(own split, not yet independently checked)*. Est. 6–10 eng-h, <0.5 GPU-h. |
+| R3 | Windmill (MSE) | 1.05 | TODO (order 2) | Data obtainable (47 MB). Stored series has lag-1 autocorrelation ≈ 0, and the mean predictor scores 1.02 *(not yet independently checked)*. The graph is complete, so the hyperedge cut the paper never states is decisive. Est. 6–10 eng-h. |
+| R4 | China stock risk (MSE) | 0.32 | BLOCKED | No public dataset matches Table I (85 nodes, 1293 steps). The cited [35] is a US 10-K text paper; the CSE dataset [22] has 91 stocks over 2 years. |
 | R5 | NYSE ranking (Sharpe / NDCG) | 1.18 / 0.86 | PARTIAL | Full NYSE with the paper protocol (paper normalization, 100 epochs), **5 seeds, pre-eq.14 attention**: THINK best-test 2.40 ± 0.20, leak-free −0.05. Needs an **eq.14 rerun with 25 seeds** (see Decisions). NDCG 0.86 is not comparable because of the evaluator bug (E3). |
 | R6 | TSE ranking | 1.19 / 0.81 | BLOCKED | TSE data is not public. Revisit only if the authors share it. |
-| R7 | NASDAQ 3-class movement (F1) | 0.49 | TODO | `scripts/run_clf.py` is implemented (25 seeds × {HH, EH, EE}, macro-F1) but has never been run. The up/down/neutral thresholds and the F1 averaging still need checking against the paper. |
-| R8 | Paper baselines (STHGCN, RSR-I) | Table II | TODO | Not implemented. Our Euclidean twins are not the paper's baselines. |
+| R7 | NASDAQ 3-class movement (F1) | 0.49 | TODO (order 4) | Thresholds resolved: the STHGCN code uses tertiles of pooled training returns, which matches our `clf.py`. Open: lookback (their 50, ours 16) and macro vs micro F1 (report both). Chance macro-F1 is 0.33. Est. 3–6 eng-h, 6–12 GPU-h. |
+| R8 | Paper baselines (STHGCN, RSR-I) | Table II | TODO (order 5) | RSR-I: public TF1 code, 8–12 eng-h. STHGCN: repo unrunnable (hard-coded 423 nodes, dead data link), so reimplement in PyTorch, 12–20 eng-h. |
 | R9 | Hyperbolicity (Table I) | δ_hg 0.5, δ_rel 0.087 | DONE | δ_hg gap explained by sampling (ELIMINATED as a data difference). δ_rel is unresolved because the paper doesn't define its features. |
 
 ## Phase 1: the paper's own ablations
@@ -88,6 +88,7 @@ The GPU queue is `scripts/queues/phase1_gpu.sh`, launched detached. Its log is `
 
 | Decision | Options | Cost |
 |---|---|---|
+| Non-stock tasks R1–R3: worth doing? | The paper's numbers sit at or near a constant predictor. Protocol options: leak-free split vs the PyG-T convention (run both?), windmill hyperedge cut (threshold vs top-k), tennis target (log1p vs raw) | ~25–35 eng-h, <10 GPU-h in total |
 | Full-NYSE R5 eq.14 rerun | 25 seeds × {HH, EH, EE, HE}, paper protocol, 100 epochs | Measured: HH 21.6 s/epoch → 36 min/seed; EH 29 min; EE 16 min. 25 seeds × 3 arms ≈ **34 GPU-hours**. Adding HE ≈ +12 h. 10 seeds ≈ 14 h. |
 
 ## Blockers
@@ -99,3 +100,4 @@ The GPU queue is `scripts/queues/phase1_gpu.sh`, launched detached. Its log is `
 
 - 2026-09-29: Found every GPU run stopped with no traceback (killed at session end). The full-NYSE runs and the tuning runs used the pre-eq.14 attention. Restarted the queue with a fresh eq.14 tuning variant.
 - 2026-09-29: Correctness controls C2, C4, C5 and C6 added and passing for all 12 variants (0898b50). No leak or bug found.
+- 2026-09-29: R-series feasibility researched (`docs/phase1/R_feasibility.md`, c327be5). R4 blocked; R1–R3 obtainable but near-trivial targets; R7 thresholds resolved.
