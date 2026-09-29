@@ -15,7 +15,7 @@ def test_experiment_unique_runs(name):
 
 def test_sizes():
     assert len(experiment("E2_geometry")) == 3 * 25
-    assert len({c.label for c in experiment("E_attn")}) == 6
+    assert len({c.label for c in experiment("E_attn")}) == 9
     assert len(experiment("E_tune")) == 4 * 2 * 3 * 3            # 4 geometries x lr x alpha x 3 seeds
     assert {c.label.split("_")[0] for c in experiment("E_tune")} == {"HH", "HE", "EH", "EE"}
     hday = [c for c in experiment("E10_hourly") if c.label.startswith("hday_")]
