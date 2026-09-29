@@ -123,7 +123,16 @@ def prepare(cfg: RunConfig, data: MarketData | None = None, hg: Hypergraph | Non
     return data, hg
 
 
-def build_model(cfg: RunConfig, in_dim: int) -> THINK:
+def build_model(cfg: RunConfig, in_dim: int, data: MarketData | None = None):
+    if cfg.model == "rsr_i":
+        from hypershift.models.baselines import RSRI, relation_entries
+        pi, pj, ep, ec, K = relation_entries(cfg.data_root, cfg.market, data.tickers)
+        return RSRI(in_dim, cfg.hidden, pi, pj, ep, ec, K)
+    if cfg.model == "sthgcn":
+        from hypershift.models.baselines import STHGCN
+        return STHGCN(in_dim, cfg.seq, data.num_nodes)
+    if cfg.model != "think":
+        raise ValueError(f"unknown model {cfg.model!r}")
     return THINK(in_dim=in_dim, hidden=cfg.hidden, seq=cfg.seq, kernel=cfg.kernel, temporal=cfg.temporal,
                  spatial=cfg.spatial, structure=cfg.structure, attn_score=cfg.attn_score, attn_dist=cfg.attn_dist)
 
@@ -158,7 +167,7 @@ def train_one_run(cfg: RunConfig, data: MarketData | None = None, hg: Hypergraph
     device = torch.device(cfg.device if (cfg.device == "cpu" or torch.cuda.is_available()) else "cpu")
     data, hg = prepare(cfg, data, hg)
     thg = hg.to_torch(device)
-    model = build_model(cfg, data.features.shape[2]).to(device)
+    model = build_model(cfg, data.features.shape[2], data).to(device)
     opt = torch.optim.Adam(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
     train_offs = window_offsets(data, cfg.seq, "train")
     rng = np.random.default_rng(cfg.seed)

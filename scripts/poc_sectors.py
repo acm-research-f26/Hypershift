@@ -72,7 +72,12 @@ def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tune
     print(f"universe: {data.num_nodes} stocks, {len(hg.edges)} hyperedges, "
           f"{int((hg.node_degree() > 0).sum())} stocks in >=1 hyperedge")
     tuned = json.loads(tuned_path(exp).read_text()) if use_tuned else None
+    base_model = next((o.split("=", 1)[1] for o in (overrides or []) if o.startswith("model=")), "think")
     for s in seeds:
+        if base_model != "think":     # R8 baseline: one arm, labelled by the model (graph structure is built in)
+            m = train_one_run(cfg(base_model, "HH", "hyper", s, epochs, exp, input_mode, lr, alpha, tuned, overrides), data, hg)
+            print(f"seed {s} {base_model}: val_sr {m['val']['sr']:.3f} test_sr {m['test']['sr']:.3f}", flush=True)
+            continue
         for geo in GEOMS:
             for st in STRUCTS:
                 if arms and f"{geo}_{st}" not in arms:

@@ -17,6 +17,7 @@ class RunConfig:
     norm: str = "train"                     # train | paper
     sources: tuple = ("industry", "wiki")   # industry, wiki, corr, sector, subindustry, random
     corr_clusters: int = 100
+    model: str = "think"                    # think | rsr_i | sthgcn (baselines ignore temporal/spatial/attn_*)
     structure: str = "hyper"                # hyper | clique | none
     decompose_mode: str = "none"            # none | large_first | small_first
     decompose_size: int = 0
