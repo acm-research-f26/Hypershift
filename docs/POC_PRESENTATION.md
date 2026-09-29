@@ -9,7 +9,7 @@
   - THINK comes out best, at Sharpe **2.28**.
   - Hyperedges beat pairwise edges, which beat no relations.
 - **Scored leak-free (epoch picked on the validation year), the advantage disappears.** THINK gets −0.56, no comparison is statistically significant, and nothing beats simply holding the 309 stocks (0.75).
-- *Correction:* THINK's attention (eq. 14) used a close but not exact formula. It is now fixed, and the two affected arms are being rerun (§4d). All other findings are unaffected.
+- *Correction:* THINK's attention (eq. 14) used a close but not exact formula. It is now fixed and the two affected arms were rerun (§4d). **No conclusion changed:** the numbers moved by less than their seed-to-seed noise, and every statistical comparison is still "no evidence".
 - **None of the models predicts returns.** Their squared error is no better than predicting 0 for every stock, their rankings score at or below a random ranking (NDCG@5), and their predictions collapse to near-constant values (THINK: ~1% of the real spread). So the high best-test-epoch Sharpe reflects choosing the epoch on the test year, not skill (§4b, cause 3).
 - We found a hyperbolic-specific cause: **inputs sit at the edge of the hyperbolic ball.** A one-line fix (relative inputs) lifts THINK to +0.48 and puts hyperbolic ahead of Euclidean. It is still not significant.
 
@@ -41,7 +41,7 @@
 | Hyperedges | industry + Wikidata relations | same construction, restricted to the 309 stocks (73 hyperedges) | Same method, smaller graph |
 | Hyperbolic temporal conv | eq. 9–12 | eq. 9–12, kernel 4 | Same |
 | DHHAN | eq. 13–15 | eq. 13–15 | Same (see the next row) |
-| Attention formula (eq. 14) | `α = aᵀ ⊗ (u ⊕ z) ⊙ d(u, z)` | **Results in §4 used** `aᵀ·(u ⊕ z)·d(u, z)`: a plain dot product instead of the Möbius product ⊗ (`tanh(aᵀ·log₀(·))`). **Now corrected to the exact formula; THINK arms rerunning (§4d)** | **Was slightly different, now fixed** |
+| Attention formula (eq. 14) | `α = aᵀ ⊗ (u ⊕ z) ⊙ d(u, z)` | **Results in §4 used** `aᵀ·(u ⊕ z)·d(u, z)`: a plain dot product instead of the Möbius product ⊗ (`tanh(aᵀ·log₀(·))`). **Now corrected to the exact formula; THINK arms rerun (§4d), same conclusions** | **Was slightly different, now fixed** |
 | Loss | not stated | MSE + pairwise ranking loss (their earlier STHAN-SR code) | Same as their code |
 | Hyperparameters | not stated | window 16, hidden 32, lr 1e-3, weight decay 5e-4, ranking weight 1 (their earlier code) | Same as their code |
 | Batch / epochs | 1 day per step; ~100 epochs (earlier code) | **8 days** per step; **max 30 epochs**, early-stopped (~17 in practice) | **Different** (compute budget) |
@@ -57,7 +57,7 @@
   - The dataset the paper uses takes that highest price **from all five years, including 2017**, the year we test on. That quietly tells the model something about the future: a stock whose 2016 prices sit far below 1 must rise later.
   - We divide by the highest price **from 2013–2015 only**, so nothing from the test period leaks in.
 - **Batch and epochs.** A *batch* is how many trading days the model learns from before each update: their earlier code used 1 day, we used 8, which is about 7× faster. An *epoch* is one full pass over the training years: they used about 100, we capped at 30 and stopped early once the validation score hadn't improved for 10 epochs. In short, we trained less, to fit the compute budget.
-- **Hyperparameter tuning.** Learning rate, ranking-loss weight and the like were not tuned. We used the values from the authors' earlier code. Tuning, equal for all arms and chosen on 2016 only, is built but not yet run.
+- **Hyperparameter tuning.** Learning rate, ranking-loss weight and the like were not tuned. We used the values from the authors' earlier code. Equal-budget tuning, chosen on 2016 only, has since been run for the relative-input variant (§4d): it doesn't change the conclusions.
 - **NDCG.** A second score the paper reports (0.86 for THINK). It measures whether the model's top-5 picks are the stocks that *actually* went up most. We **did** compute it: the standard NDCG@5 in the §4 tables, about 0.55. The authors' code computes it incorrectly (§7): it scores stock ID numbers instead of returns, and uses only the last test day. With their code, a model that ranks stocks in exactly the reverse order still gets 1.000. So their 0.86 can't be compared with ours or trusted, and we report the standard version.
 - **Seeds.** A neural net starts from random numbers, so training the same model twice gives different results. Each "seed" is one full training run with different starting randomness. The paper averages 25 runs; we ran 10 per model. That's fewer, but it is enough for our significance tests (the smallest possible p-value with 10 seeds is 0.002).
 
@@ -143,17 +143,34 @@ The one change: each 16-day window is divided by its last close, so features bec
   - Hyperedges vs pairwise edges shows no difference.
   - No model reliably beats holding the market.
 
-### 4d. Correction: exact eq. 14 attention (rerun in progress)
+### 4d. Correction: exact eq. 14 attention (rerun done, nothing changed)
 
 - **What happened.** The results above used a close but not exact form of the attention formula: `aᵀ·(u ⊕ z)` instead of the paper's `aᵀ ⊗ (u ⊕ z) = tanh(aᵀ·log₀(u ⊕ z))`. Before this, only the text-extracted PDF was available, and its ⊗ symbol was lost; the exact formula has since been confirmed from the PDF. The code is now corrected.
-- **How much it can matter.** Attention decides how a stock *weights* its hyperedges. **80% of the 309 stocks are in exactly one hyperedge**, and their weight is 100% whatever the formula. So the change only affects the ~20% of stocks in several hyperedges (mainly big banks and oil majors).
-- **What is affected:** only the two arms that use this attention, *THINK (hyp + hyperedges)* and *hyp + pairwise*. Both are being rerun with 10 seeds each, faithful (v1) and relative-input (v2).
-- **What is unaffected:**
-  - the Euclidean and no-relation arms, and the baselines;
-  - the epoch-choice gap, which appears in the Euclidean arms too (2.07 vs 0.32);
-  - the ball-boundary diagnosis, which is measured on the inputs;
-  - the 2016-vs-2017 regime change, and the NDCG and n/a-bucket findings.
-- Results: `results/POC_sectors_eq14/summary.md` (v1) and `results/POC_sectors_rel_eq14/summary.md` (v2).
+- **Why it should matter little.** Attention decides how a stock *weights* its hyperedges. **80% of the 309 stocks are in exactly one hyperedge**, and their weight is 100% whatever the formula. Only the ~20% of stocks in several hyperedges (mainly big banks and oil majors) are affected.
+- **What we reran.** The two arms that use this attention, *THINK (hyp + hyperedges)* and *hyp + pairwise*: 10 seeds each, faithful (v1) and relative-input (v2). The other four arms don't use it and were copied.
+
+| Arm | Inputs | Leak-free Sharpe, before → after | Best test epoch, before → after |
+|---|---|---|---|
+| THINK (hyp + hyperedges) | v1 (level) | −0.56 → −0.30 | 2.28 → 2.19 |
+| THINK (hyp + hyperedges) | v2 (relative) | +0.48 → +0.57 | 2.13 → 2.04 |
+| Hyp + pairwise | v1 (level) | −0.38 → −0.13 | 1.24 → 1.27 |
+| Hyp + pairwise | v2 (relative) | +0.59 → +0.36 | 2.02 → 1.98 |
+
+- **Result: the picture is the same.**
+  - Every change is smaller than the seed-to-seed spread (±0.5 to ±1.4). A paired test of before vs after finds nothing (p from 0.25 to 0.85).
+  - **No statistical verdict changed.** All six comparisons are "no evidence" before and after, in both variants. For example, hyperbolic vs Euclidean is −0.62 (v1) and +0.69 (v2), still not significant after correction (Holm p 0.79 and 0.29).
+  - At the best test epoch, hyperedges still beat pairwise edges in v1 (2.19 vs 1.27) and are level in v2 (2.04 vs 1.98). Leak-free, the two are indistinguishable.
+  - The ball-boundary diagnosis, the epoch-choice gap, the NDCG and n/a-bucket findings were never affected.
+
+**Follow-up checks with the corrected attention** (all 309 stocks, 10 seeds unless stated):
+
+- **Shuffled labels (control).** We trained on randomly shuffled labels (5 seeds). The models must then learn nothing.
+  - Rank correlation with real returns is zero (−0.016 and +0.006), as it should be.
+  - Leak-free Sharpe is −0.48 (hyperbolic) and +0.97 (Euclidean). That looks off the 0.34 random line, but the models pick almost the same few stocks every day, and a *fixed* random 5-stock portfolio scores 0.62 ± 0.92 across draws, which covers both.
+  - **The best test epoch still scores 2.2 (hyperbolic) and 2.1 (Euclidean), the same as with real labels (2.19 and 2.08).** So a high best-test-epoch score says nothing about whether the model learned anything. It is what picking the luckiest epoch on the test year gives you.
+- **Attention without the distance term (A10).** Removing it changes nothing: −0.59 vs −0.30 leak-free (v1, p 0.43) and +0.70 vs +0.57 (v2, p 1.0).
+- **Equal-budget tuning (relative inputs).** Learning rate and ranking weight were tuned on the 2016 validation year with the same grid for hyperbolic and Euclidean (3 seeds per setting; both ended at the largest ranking weight tried, 10). With tuned settings, hyperbolic vs Euclidean is +1.10 Sharpe (bootstrap CI +0.21 to +2.02) and the hyperbolic advantage from hyperedges is +1.07 (CI +0.05 to +2.54), but neither survives correction for the six comparisons made (Holm p 0.15 and 0.059). Much of the gap comes from the Euclidean hyperedge model getting worse (−0.40). Tuned vs untuned within any single arm is not significant.
+- Results: `results/POC_sectors_eq14/summary.md` (v1), `results/POC_sectors_rel_eq14/summary.md` (v2), `results/POC_sectors_rel_tuned_eq14/summary.md` (tuned), `results/POC_sectors_C1_shuffled/`, `results/POC_sectors_{,rel_}A10_nodist/`.
 
 ## 5. Scientific assessment
 
@@ -172,7 +189,7 @@ The one change: each 16-day window is divided by its last close, so features bec
 | Question | Answer |
 |---|---|
 | Is the implementation right? | Every equation was checked in independent reviews, and 112 automated tests pass. At the best test epoch it reproduces the paper's ordering and exceeds its numbers. |
-| You didn't tune it. | True. Equal-budget tuning (same grid for hyperbolic and Euclidean, chosen on validation only) is built and partly run; results next. |
+| You didn't tune it. | True. Equal-budget tuning (same grid for hyperbolic and Euclidean, chosen on validation only) has been run for the relative-input variant: hyperbolic vs Euclidean +1.10, not significant after correction (§4d). |
 | Did the authors pick the best test epoch? | Unknown: the paper doesn't say. Their earlier code prints the test score every epoch with no selection rule. We show the leak-free and the most favourable scores so the range is visible. Next step: email the authors. |
 | Why only 309 stocks? | The full study takes about a week on our GPU. The full-NYSE check (THINK 2.40 at its best test epoch) is in the handoff. |
 | Is relative input still THINK? | It is reported as a modification, separately. It targets a known hyperbolic failure mode (points at the ball boundary). |
