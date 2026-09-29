@@ -56,7 +56,7 @@ def experiment(name: str) -> list[RunConfig]:
                     kw = {**GEOMS[g], **_read("configs/global.yaml"), "lr": lr, "alpha": alpha}
                     E += _mk(name, f"{g}_lr{lr}_a{alpha}", (0, 1, 2), **kw)
     elif name == "E_attn":
-        for sc in ("mobius", "concat"):
+        for sc in ("eq14", "mobius", "concat"):
             for di in ("mult", "neg", "off"):
                 E += _mk(name, f"{sc}_{di}", SEEDS_SCREEN, **_geo("HH", attn_score=sc, attn_dist=di))
     elif name == "E1_main":

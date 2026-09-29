@@ -22,10 +22,10 @@ def segment_softmax(scores: torch.Tensor, index: torch.Tensor, num_segments: int
 class _Base(nn.Module):
     def __init__(self, dim: int, score: str, dist: str):
         super().__init__()
-        if score not in ("mobius", "concat") or dist not in ("mult", "neg", "off"):
+        if score not in ("mobius", "concat", "eq14") or dist not in ("mult", "neg", "off"):
             raise ValueError((score, dist))
         self.score, self.dist = score, dist
-        self.a = nn.Parameter(torch.randn(dim if score == "mobius" else 2 * dim) * dim ** -0.5)
+        self.a = nn.Parameter(torch.randn(dim if score in ("mobius", "eq14") else 2 * dim) * dim ** -0.5)
         self.gamma = nn.Parameter(torch.zeros(()))
 
     def _combine(self, base: torch.Tensor, d: torch.Tensor) -> torch.Tensor:
@@ -37,19 +37,25 @@ class _Base(nn.Module):
 
 
 class HypHypergraphAttention(_Base):
-    def __init__(self, dim: int, score: str = "mobius", dist: str = "mult"):
+    def __init__(self, dim: int, score: str = "eq14", dist: str = "mult"):
         super().__init__(dim, score, dist)
         self.fc = PoincareLinear(dim, dim)
+
+    def _scores(self, uj: torch.Tensor, zi: torch.Tensor) -> torch.Tensor:
+        """Pre-softmax score per incidence."""
+        if self.score == "eq14":   # a^T (x) (u_j (+) z_i) = tanh(a . log0(u_j (+) z_i)), then (.) d_B
+            base = torch.tanh(logmap0(mobius_add(uj, zi)) @ self.a)
+        elif self.score == "mobius":
+            base = mobius_add(uj, zi) @ self.a
+        else:
+            base = torch.cat([logmap0(uj), logmap0(zi)], dim=-1) @ self.a
+        return self._combine(base, poincare_dist(uj, zi))
 
     def forward(self, u: torch.Tensor, hg: TorchHypergraph) -> torch.Tensor:
         z = gyromidpoint(u, hg.node_idx, hg.edge_idx, hg.num_edges)          # eq 13
         uj = u.index_select(-2, hg.node_idx)
         zi = z.index_select(-2, hg.edge_idx)
-        if self.score == "mobius":
-            base = mobius_add(uj, zi) @ self.a
-        else:
-            base = torch.cat([logmap0(uj), logmap0(zi)], dim=-1) @ self.a
-        alpha = segment_softmax(self._combine(base, poincare_dist(uj, zi)), hg.node_idx, hg.num_nodes)  # eq 14
+        alpha = segment_softmax(self._scores(uj, zi), hg.node_idx, hg.num_nodes)  # eq 14
         msg = logmap0(self.fc(z)).index_select(-2, hg.edge_idx) * alpha.unsqueeze(-1)
         agg = u.new_zeros(u.shape).index_add(-2, hg.node_idx, msg)
         out = expmap0(F.relu(agg))                                             # eq 15
@@ -57,7 +63,7 @@ class HypHypergraphAttention(_Base):
 
 
 class EucHypergraphAttention(_Base):
-    def __init__(self, dim: int, score: str = "mobius", dist: str = "mult"):
+    def __init__(self, dim: int, score: str = "eq14", dist: str = "mult"):
         super().__init__(dim, score, dist)
         self.fc = nn.Linear(dim, dim)
 
@@ -67,7 +73,8 @@ class EucHypergraphAttention(_Base):
         z = z / hg.edge_size[:, None]
         uj = u.index_select(-2, hg.node_idx)
         zi = z.index_select(-2, hg.edge_idx)
-        base = (uj + zi) @ self.a if self.score == "mobius" else torch.cat([uj, zi], dim=-1) @ self.a
+        # eq14 Euclidean analogue: the Mobius matvec becomes the ordinary one, so same as "mobius".
+        base = (uj + zi) @ self.a if self.score in ("mobius", "eq14") else torch.cat([uj, zi], dim=-1) @ self.a
         alpha = segment_softmax(self._combine(base, (uj - zi).norm(dim=-1)), hg.node_idx, hg.num_nodes)
         msg = self.fc(z).index_select(-2, hg.edge_idx) * alpha.unsqueeze(-1)
         out = F.relu(u.new_zeros(u.shape).index_add(-2, hg.node_idx, msg))

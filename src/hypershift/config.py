@@ -25,7 +25,7 @@ class RunConfig:
     universe_seed: int = 0
     temporal: str = "hyp"                   # hyp | euc
     spatial: str = "hyp"                    # hyp | euc
-    attn_score: str = "mobius"              # mobius | concat
+    attn_score: str = "eq14"                # eq14 (paper) | mobius | concat
     attn_dist: str = "mult"                 # mult | neg | off
     input_mode: str = "level"               # level | relative
     target: str = "return"                # return | price

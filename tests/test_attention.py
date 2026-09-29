@@ -1,7 +1,7 @@
 import pytest
 import torch
 from hypershift.data.hypergraph import Hypergraph
-from hypershift.geometry.poincare import expmap0
+from hypershift.geometry.poincare import expmap0, logmap0, mobius_add, poincare_dist
 from hypershift.models.attention import EucHypergraphAttention, HypHypergraphAttention, segment_softmax
 
 torch.manual_seed(0)
@@ -17,7 +17,7 @@ def test_segment_softmax_sums_to_one():
 
 
 @pytest.mark.parametrize("cls", [HypHypergraphAttention, EucHypergraphAttention])
-@pytest.mark.parametrize("score", ["mobius", "concat"])
+@pytest.mark.parametrize("score", ["eq14", "mobius", "concat"])
 @pytest.mark.parametrize("dist", ["mult", "neg", "off"])
 def test_attention_shapes_and_finite(cls, score, dist):
     layer = cls(4, score=score, dist=dist)
@@ -46,3 +46,26 @@ def test_hyp_attention_permutation_equivariant():
     out = layer(u, HG.to_torch("cpu"))
     out_p = layer(u[..., perm, :], hg_p.to_torch("cpu"))
     torch.testing.assert_close(out_p, out[..., perm, :], atol=1e-5, rtol=1e-4)
+
+
+def test_eq14_scores_match_hand_computation():
+    torch.manual_seed(1)
+    layer = HypHypergraphAttention(4, score="eq14", dist="mult")
+    hg = HG.to_torch("cpu")
+    uj = expmap0(torch.randn(hg.node_idx.numel(), 4) * 0.5)
+    zi = expmap0(torch.randn(hg.node_idx.numel(), 4) * 0.5)
+    want = torch.tanh(logmap0(mobius_add(uj, zi)) @ layer.a) * poincare_dist(uj, zi)
+    torch.testing.assert_close(layer._scores(uj, zi), want)
+    # softmax over the hyperedges containing node 2 (edges 0, 1, 2)
+    sel = (hg.node_idx == 2).nonzero().squeeze(-1)
+    alpha = segment_softmax(layer._scores(uj, zi), hg.node_idx, hg.num_nodes)
+    torch.testing.assert_close(alpha[sel], torch.softmax(want[sel], dim=-1))
+
+
+def test_defaults_are_eq14():
+    import inspect
+
+    from hypershift.config import RunConfig
+    from hypershift.models.think import THINK
+    assert RunConfig().attn_score == "eq14"
+    assert inspect.signature(THINK.__init__).parameters["attn_score"].default == "eq14"

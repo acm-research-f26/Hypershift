@@ -13,7 +13,7 @@ from hypershift.models.layers import EucTemporalConv, HypTemporalConv
 class THINK(nn.Module):
     def __init__(self, in_dim: int = 5, hidden: int = 32, seq: int = 16, kernel: int = 4,
                  temporal: str = "hyp", spatial: str = "hyp", structure: str = "hyper",
-                 attn_score: str = "mobius", attn_dist: str = "mult", out_dim: int = 1):
+                 attn_score: str = "eq14", attn_dist: str = "mult", out_dim: int = 1):
         super().__init__()
         if seq % kernel:
             raise ValueError("seq must be a multiple of kernel")
