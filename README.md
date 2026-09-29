@@ -1,5 +1,54 @@
 # Hypershift: a first stock-market GNN
 
+## THINK reproduction attempt
+
+[The reproduction report](THINK_REPRODUCTION.md) distinguishes the earlier teaching
+model from a new equation-mapped architecture and full-universe NYSE daily ranking
+pipeline. It records unresolved author settings, problems in the cited baseline
+evaluator, and the limits of a short execution pilot. This is not a verified
+one-to-one reproduction or a completed 25-run benchmark.
+
+## Hourly data and independent THINK audit
+
+Read [the hourly forecasting explanation](HOURLY_FORECASTING.md) for the real
+12-stock hourly snapshot, timestamp handling, actual next-hour outcomes, and what
+a live predictor would require. An hourly classifier has not yet been trained.
+
+Read [the independent THINK geometry audit](THINK_AUDIT.md) for source provenance,
+worked four-point calculations, exact results and sampled bounds. It covers
+available CPox, WMill, NYSE, NASDAQ and both DTT variants. Matching TSE/CSE inputs
+and the authors' exact processed hypergraphs remain unavailable, so the paper's
+full table is not verified. Reproduction scripts and assumptions are included.
+
+See [the performance-table scoring audit](PERFORMANCE_TABLE_AUDIT.md) for an
+explanation of THINK Table II and independently recomputed F1, NDCG and Sharpe
+scores for our saved experiment. This rescoring does not verify THINK's results.
+
+## Direction classification and hypergraphs
+
+The latest experiment predicts **up versus down/flat over 21 trading sessions**.
+Start with [the direction and PyTorch tutorial](DIRECTION_TUTORIAL.md) and
+[the historical results](runs/direction/REPORT.md). It compares logistic regression,
+a graph-free network, an ordinary GNN, and Euclidean/hyperbolic hypergraph models
+using the existing real historical dataset and five training seeds.
+
+The hyperbolic model has mean AUC **0.441** and net annualized Sharpe **0.383**,
+versus **1.101** for the equal-weight basket. It has not demonstrated a useful edge.
+The tutorial explains hyperedges, exact Gromov hyperbolicity diagnostics, PyTorch
+training, F1/NDCG/Sharpe, and why this is THINK-inspired rather than a reproduction.
+
+```powershell
+.\.venv\Scripts\python.exe train_direction.py --csv data\prices.csv --horizon 21 --out runs\my_direction
+.\.venv\Scripts\python.exe report_direction.py --run runs\my_direction
+.\.venv\Scripts\python.exe predict_direction.py --checkpoint runs\direction\hyperbolic_7.pt --csv data\prices.csv
+.\.venv\Scripts\python.exe -m unittest -v test_stock_gnn test_direction
+```
+
+Choose a fresh training output directory. No new dependencies are required.
+The saved model scores the last date in the CSV, not today's live market.
+
+## Original return forecasting experiment
+
 Train a small graph neural network to predict each stock's total return over the next **21 trading sessions** (approximately one month),
 then compare its forecasts with real historical outcomes and four baselines.
 The main example uses **12 US stocks, 2018–2025 Yahoo Finance adjusted closes**.
