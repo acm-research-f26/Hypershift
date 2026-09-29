@@ -83,6 +83,13 @@ The GPU queue is `scripts/queues/phase1_gpu.sh`, launched detached. Its log is `
 1. eq.14 reruns: HH_hyper and HH_clique, 10 seeds, v1 and v2 → `results/POC_sectors_eq14/`, `results/POC_sectors_rel_eq14/`.
 2. Equal-budget tuning with eq.14 (HH and EE grids, lr × α, 3 seeds, validation only) → `results/POC_sectors_rel_tuned_eq14/`, followed by a tuned 10-seed rerun.
    - `results/POC_sectors_rel_tuned/` is **superseded**: it was started with the pre-eq.14 attention.
+3. **Queue 2** (`scripts/queues/phase1_gpu_2.sh`) waits for queue 1 to log "phase1 queue done", then runs on 309 stocks with eq.14, ~6–7 h:
+   - C1 shuffled labels (HH, EE, 5 seeds) → `results/POC_sectors_C1_shuffled/`
+   - A10 no distance, level and relative inputs (HH, 10 seeds) → `results/POC_sectors_{,rel_}A10_nodist/`
+   - G2 decomposition: `large_first` 30 and 15, `small_first` 5 (HH, 5 seeds) → `results/POC_sectors_G2_decomp_*/`
+   - G12 hub removal at degree 12, 8 and 5 (HH, 5 seeds) → `results/POC_sectors_G12_hub*/`
+   - R7 NASDAQ 3-class (25 seeds × HH, EH, EE; macro and micro F1) → `results/E11_clf/`
+   - Levels were rescaled to the 309-stock graph (largest edge 47, max degree 27); see the comments in the script.
 
 ## Decisions pending
 
@@ -101,3 +108,4 @@ The GPU queue is `scripts/queues/phase1_gpu.sh`, launched detached. Its log is `
 - 2026-09-29: Found every GPU run stopped with no traceback (killed at session end). The full-NYSE runs and the tuning runs used the pre-eq.14 attention. Restarted the queue with a fresh eq.14 tuning variant.
 - 2026-09-29: Correctness controls C2, C4, C5 and C6 added and passing for all 12 variants (0898b50). No leak or bug found.
 - 2026-09-29: R-series feasibility researched (`docs/phase1/R_feasibility.md`, c327be5). R4 blocked; R1–R3 obtainable but near-trivial targets; R7 thresholds resolved.
+- 2026-09-29: Added `poc_sectors --set` overrides and queue 2 (e35c6cb); launched it waiting on queue 1.
