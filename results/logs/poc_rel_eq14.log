@@ -1,0 +1,4 @@
+universe: 309 stocks, 73 hyperedges, 309 stocks in >=1 hyperedge
+seed 0 HH_hyper: val_sr 0.426 test_sr 1.658
+seed 0 HH_clique: val_sr 0.991 test_sr 0.910
+seed 1 HH_hyper: val_sr 0.995 test_sr 0.951

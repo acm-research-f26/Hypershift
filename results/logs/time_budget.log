@@ -1,0 +1,7 @@
+{
+  "HH": 63.53340848286947,
+  "HH_clique": 303.0882830619812
+}
+t_run ~ 63.5 min (60 epochs incl. early stopping)
+estimated total for RSR experiments: 919.1 GPU hours
+D7: <=6 min/run keep; 6-15 -> configs/global.yaml batch_days: 4; >15 -> batch_days: 8, epochs: 60

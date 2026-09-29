@@ -1,0 +1,15 @@
+$GEV: 1h data not available for startTime=1711546200 and endTime=1790583619. The requested range must be within the last 730 days.
+
+1 Failed download:
+['GEV']: 1h data not available for startTime=1711546200 and endTime=1790583619. The requested range must be within the last 730 days.
+$RDDT: 1h data not available for startTime=1711027800 and endTime=1790583634. The requested range must be within the last 730 days.
+
+1 Failed download:
+['RDDT']: 1h data not available for startTime=1711027800 and endTime=1790583634. The requested range must be within the last 730 days.
+$SOLV: 1h data not available for startTime=1711459800 and endTime=1790583641. The requested range must be within the last 730 days.
+
+1 Failed download:
+['SOLV']: 1h data not available for startTime=1711459800 and endTime=1790583641. The requested range must be within the last 730 days.
+universe: 503 tickers (current S&P 500 -> survivorship-biased, see D17)
+hourly (485, 5072, 5) valid/test 3046 4050
+daily (485, 730, 5) valid/test 438 584

@@ -1,0 +1,546 @@
+[
+ {
+  "rel_err": 0.12510855380932678,
+  "norm": "paper",
+  "feature": "(stock,day) 5-feat points[train] z-scored",
+  "agg": "mean",
+  "NYSE": 0.09775907602700869,
+  "NASDAQ": 0.12054080367738064
+ },
+ {
+  "rel_err": 0.1251700688925501,
+  "norm": "paper",
+  "feature": "(stock,day) 5-feat points[train]",
+  "agg": "mean",
+  "NYSE": 0.0977659102323968,
+  "NASDAQ": 0.12054556261810391
+ },
+ {
+  "rel_err": 0.2553536346982035,
+  "norm": "paper",
+  "feature": "(stock,day) 5-feat points[train]",
+  "agg": "max",
+  "NYSE": 0.10860294765931754,
+  "NASDAQ": 0.13507653530188707
+ },
+ {
+  "rel_err": 0.2554135855059954,
+  "norm": "paper",
+  "feature": "(stock,day) 5-feat points[train] z-scored",
+  "agg": "max",
+  "NYSE": 0.10860441280760322,
+  "NASDAQ": 0.135087562810771
+ },
+ {
+  "rel_err": 0.27052633210960286,
+  "norm": "train",
+  "feature": "(stock,day) 5-feat points[train] z-scored",
+  "agg": "mean",
+  "NYSE": 0.10745643992346304,
+  "NASDAQ": 0.1397335652805292
+ },
+ {
+  "rel_err": 0.27176443977607856,
+  "norm": "train",
+  "feature": "(stock,day) 5-feat points[train]",
+  "agg": "mean",
+  "NYSE": 0.10760325786377067,
+  "NASDAQ": 0.13981795113020193
+ },
+ {
+  "rel_err": 0.2732754381401087,
+  "norm": "paper",
+  "feature": "(stock,day) 5-feat points[all] z-scored",
+  "agg": "mean",
+  "NYSE": 0.13445783593785174,
+  "NASDAQ": 0.10711326048209663
+ },
+ {
+  "rel_err": 0.27391179918845454,
+  "norm": "paper",
+  "feature": "(stock,day) 5-feat points[all]",
+  "agg": "mean",
+  "NYSE": 0.13440369620521106,
+  "NASDAQ": 0.1073160273946329
+ },
+ {
+  "rel_err": 0.29846652146720365,
+  "norm": "train",
+  "feature": "(stock,day) 5-feat points[all] z-scored",
+  "agg": "max",
+  "NYSE": 0.10381910586918665,
+  "NASDAQ": 0.06381373139455833
+ },
+ {
+  "rel_err": 0.2992645339739434,
+  "norm": "train",
+  "feature": "(stock,day) 5-feat points[all]",
+  "agg": "max",
+  "NYSE": 0.10279225442712568,
+  "NASDAQ": 0.062380047473282414
+ },
+ {
+  "rel_err": 0.32432060472923946,
+  "norm": "paper",
+  "feature": "16-day window[last-test]",
+  "agg": "mean",
+  "NYSE": 0.12433880258378248,
+  "NASDAQ": 0.13048217405039372
+ },
+ {
+  "rel_err": 0.3303971000550819,
+  "norm": "train",
+  "feature": "(stock,day) 5-feat points[all] z-scored",
+  "agg": "mean",
+  "NYSE": 0.07654612615818877,
+  "NASDAQ": 0.04915208381894581
+ },
+ {
+  "rel_err": 0.3344456578276429,
+  "norm": "train",
+  "feature": "16-day window[last-test]",
+  "agg": "max",
+  "NYSE": 0.057741698617039774,
+  "NASDAQ": 0.07141297690277802
+ },
+ {
+  "rel_err": 0.3354379167867646,
+  "norm": "train",
+  "feature": "(stock,day) 5-feat points[all]",
+  "agg": "mean",
+  "NYSE": 0.0756952251153549,
+  "NASDAQ": 0.049119859516333825
+ },
+ {
+  "rel_err": 0.34641056292160743,
+  "norm": "train",
+  "feature": "16-day window[last-test]",
+  "agg": "mean",
+  "NYSE": 0.05571162079664576,
+  "NASDAQ": 0.07134924958947604
+ },
+ {
+  "rel_err": 0.503906672291276,
+  "norm": "train",
+  "feature": "(stock,day) 5-feat points[train] z-scored",
+  "agg": "max",
+  "NYSE": 0.11938057295690975,
+  "NASDAQ": 0.17501164503827163
+ },
+ {
+  "rel_err": 0.505442033793241,
+  "norm": "train",
+  "feature": "(stock,day) 5-feat points[train]",
+  "agg": "max",
+  "NYSE": 0.1200716461121257,
+  "NASDAQ": 0.17449027185247254
+ },
+ {
+  "rel_err": 0.5201110745901311,
+  "norm": "paper",
+  "feature": "(stock,day) 5-feat points[all] z-scored",
+  "agg": "max",
+  "NYSE": 0.17235635412439235,
+  "NASDAQ": 0.11332526546447215
+ },
+ {
+  "rel_err": 0.524591329129786,
+  "norm": "paper",
+  "feature": "(stock,day) 5-feat points[all]",
+  "agg": "max",
+  "NYSE": 0.17263795350603672,
+  "NASDAQ": 0.11393770506428075
+ },
+ {
+  "rel_err": 0.567986554729359,
+  "norm": "paper",
+  "feature": "16-day window[last-test]",
+  "agg": "max",
+  "NYSE": 0.15283219600045475,
+  "NASDAQ": 0.14758308855060398
+ },
+ {
+  "rel_err": 0.6613759043343577,
+  "norm": "paper",
+  "feature": "16-day window[last-train]",
+  "agg": "mean",
+  "NYSE": 0.1579836831922465,
+  "NASDAQ": 0.1612326722451344
+ },
+ {
+  "rel_err": 0.7342631526406411,
+  "norm": "paper",
+  "feature": "16-day window[last-train]",
+  "agg": "max",
+  "NYSE": 0.16924107159849777,
+  "NASDAQ": 0.16298524959568036
+ },
+ {
+  "rel_err": 0.873294732952542,
+  "norm": "paper",
+  "feature": "16-day window[first]",
+  "agg": "mean",
+  "NYSE": 0.1331176548834726,
+  "NASDAQ": 0.23716565822504432
+ },
+ {
+  "rel_err": 0.9393359710360392,
+  "norm": "train",
+  "feature": "16-day window[first]",
+  "agg": "mean",
+  "NYSE": 0.13279564198142332,
+  "NASDAQ": 0.2516945220314561
+ },
+ {
+  "rel_err": 1.0556468578595968,
+  "norm": "paper",
+  "feature": "16-day window[first]",
+  "agg": "max",
+  "NYSE": 0.14761327465192528,
+  "NASDAQ": 0.258361066803149
+ },
+ {
+  "rel_err": 1.0669957731282862,
+  "norm": "train",
+  "feature": "16-day window[last-train]",
+  "agg": "mean",
+  "NYSE": 0.18492356269739743,
+  "NASDAQ": 0.21490236891357364
+ },
+ {
+  "rel_err": 1.1040913624399746,
+  "norm": "train",
+  "feature": "16-day window[first]",
+  "agg": "max",
+  "NYSE": 0.14692114683164537,
+  "NASDAQ": 0.2695794284473723
+ },
+ {
+  "rel_err": 1.1395755693935268,
+  "norm": "train",
+  "feature": "16-day window[last-train]",
+  "agg": "max",
+  "NYSE": 0.19575632916464825,
+  "NASDAQ": 0.21711138770518756
+ },
+ {
+  "rel_err": 1.1828200532030315,
+  "norm": "paper",
+  "feature": "returns[train] z-scored",
+  "agg": "mean",
+  "NYSE": 0.150108077105064,
+  "NASDAQ": 0.2825078103481861
+ },
+ {
+  "rel_err": 1.1828200532030315,
+  "norm": "train",
+  "feature": "returns[train] z-scored",
+  "agg": "mean",
+  "NYSE": 0.150108077105064,
+  "NASDAQ": 0.2825078103481861
+ },
+ {
+  "rel_err": 1.3192169925031143,
+  "norm": "paper",
+  "feature": "returns[train]",
+  "agg": "mean",
+  "NYSE": 0.1683497402238641,
+  "NASDAQ": 0.2892616064651669
+ },
+ {
+  "rel_err": 1.3192169925031143,
+  "norm": "train",
+  "feature": "returns[train]",
+  "agg": "mean",
+  "NYSE": 0.1683497402238641,
+  "NASDAQ": 0.2892616064651669
+ },
+ {
+  "rel_err": 1.353785912847214,
+  "norm": "paper",
+  "feature": "returns[all] z-scored",
+  "agg": "mean",
+  "NYSE": 0.17018620296347833,
+  "NASDAQ": 0.29440071733674994
+ },
+ {
+  "rel_err": 1.353785912847214,
+  "norm": "train",
+  "feature": "returns[all] z-scored",
+  "agg": "mean",
+  "NYSE": 0.17018620296347833,
+  "NASDAQ": 0.29440071733674994
+ },
+ {
+  "rel_err": 1.3661697117761356,
+  "norm": "paper",
+  "feature": "returns[train] z-scored",
+  "agg": "max",
+  "NYSE": 0.1678946115215541,
+  "NASDAQ": 0.2998692443797908
+ },
+ {
+  "rel_err": 1.3661697117761356,
+  "norm": "train",
+  "feature": "returns[train] z-scored",
+  "agg": "max",
+  "NYSE": 0.1678946115215541,
+  "NASDAQ": 0.2998692443797908
+ },
+ {
+  "rel_err": 1.3760353881588032,
+  "norm": "train",
+  "feature": "close[all]",
+  "agg": "mean",
+  "NYSE": 0.27330785225913706,
+  "NASDAQ": 0.17233432948290725
+ },
+ {
+  "rel_err": 1.3933785759194834,
+  "norm": "train",
+  "feature": "5feat-series[all]",
+  "agg": "mean",
+  "NYSE": 0.27932209872426417,
+  "NASDAQ": 0.16864893980428364
+ },
+ {
+  "rel_err": 1.4664087381011925,
+  "norm": "train",
+  "feature": "close[all]",
+  "agg": "max",
+  "NYSE": 0.28448158660978246,
+  "NASDAQ": 0.1779318174565664
+ },
+ {
+  "rel_err": 1.488239570660324,
+  "norm": "paper",
+  "feature": "returns[train]",
+  "agg": "max",
+  "NYSE": 0.18266288722397803,
+  "NASDAQ": 0.30782891256998
+ },
+ {
+  "rel_err": 1.488239570660324,
+  "norm": "train",
+  "feature": "returns[train]",
+  "agg": "max",
+  "NYSE": 0.18266288722397803,
+  "NASDAQ": 0.30782891256998
+ },
+ {
+  "rel_err": 1.507311290804174,
+  "norm": "train",
+  "feature": "5feat-series[all]",
+  "agg": "max",
+  "NYSE": 0.29267958394265875,
+  "NASDAQ": 0.17660236931411058
+ },
+ {
+  "rel_err": 1.5161454719574265,
+  "norm": "paper",
+  "feature": "returns[all] z-scored",
+  "agg": "max",
+  "NYSE": 0.1815513155978834,
+  "NASDAQ": 0.31516788078080277
+ },
+ {
+  "rel_err": 1.5161454719574265,
+  "norm": "train",
+  "feature": "returns[all] z-scored",
+  "agg": "max",
+  "NYSE": 0.1815513155978834,
+  "NASDAQ": 0.31516788078080277
+ },
+ {
+  "rel_err": 1.536819647245033,
+  "norm": "paper",
+  "feature": "returns[all]",
+  "agg": "mean",
+  "NYSE": 0.19262736452651866,
+  "NASDAQ": 0.30596988721920143
+ },
+ {
+  "rel_err": 1.536819647245033,
+  "norm": "train",
+  "feature": "returns[all]",
+  "agg": "mean",
+  "NYSE": 0.19262736452651866,
+  "NASDAQ": 0.30596988721920143
+ },
+ {
+  "rel_err": 1.7351009591916022,
+  "norm": "paper",
+  "feature": "returns[all]",
+  "agg": "max",
+  "NYSE": 0.209616169914407,
+  "NASDAQ": 0.3275078100849161
+ },
+ {
+  "rel_err": 1.7351009591916022,
+  "norm": "train",
+  "feature": "returns[all]",
+  "agg": "max",
+  "NYSE": 0.209616169914407,
+  "NASDAQ": 0.3275078100849161
+ },
+ {
+  "rel_err": 2.4539145116464143,
+  "norm": "paper",
+  "feature": "close[train] z-scored",
+  "agg": "mean",
+  "NYSE": 0.3828392616708625,
+  "NASDAQ": 0.2682894181500075
+ },
+ {
+  "rel_err": 2.4639033010320697,
+  "norm": "paper",
+  "feature": "close[train]",
+  "agg": "mean",
+  "NYSE": 0.3792662239586025,
+  "NASDAQ": 0.2748214447706277
+ },
+ {
+  "rel_err": 2.475371924145417,
+  "norm": "paper",
+  "feature": "5feat-series[train]",
+  "agg": "mean",
+  "NYSE": 0.3795178849083554,
+  "NASDAQ": 0.2769662160752338
+ },
+ {
+  "rel_err": 2.6629204165522093,
+  "norm": "train",
+  "feature": "close[all] z-scored",
+  "agg": "mean",
+  "NYSE": 0.4088544788545149,
+  "NASDAQ": 0.28102095491880386
+ },
+ {
+  "rel_err": 2.819691878506399,
+  "norm": "paper",
+  "feature": "close[all] z-scored",
+  "agg": "mean",
+  "NYSE": 0.37556298717682424,
+  "NASDAQ": 0.35551475593232107
+ },
+ {
+  "rel_err": 2.8202408646401453,
+  "norm": "paper",
+  "feature": "close[train] z-scored",
+  "agg": "max",
+  "NYSE": 0.42745135376199794,
+  "NASDAQ": 0.29181551224524643
+ },
+ {
+  "rel_err": 2.8604535196389893,
+  "norm": "paper",
+  "feature": "5feat-series[all]",
+  "agg": "mean",
+  "NYSE": 0.37811647271663235,
+  "NASDAQ": 0.3610972534248165
+ },
+ {
+  "rel_err": 2.8885303766449892,
+  "norm": "paper",
+  "feature": "close[all]",
+  "agg": "mean",
+  "NYSE": 0.3785308801511155,
+  "NASDAQ": 0.3665960273127246
+ },
+ {
+  "rel_err": 2.892874479303656,
+  "norm": "paper",
+  "feature": "close[train]",
+  "agg": "max",
+  "NYSE": 0.43093786307928583,
+  "NASDAQ": 0.30307110007117094
+ },
+ {
+  "rel_err": 2.9191983435557187,
+  "norm": "train",
+  "feature": "close[all] z-scored",
+  "agg": "max",
+  "NYSE": 0.4416581923305238,
+  "NASDAQ": 0.29551963426384276
+ },
+ {
+  "rel_err": 2.9381638326708375,
+  "norm": "paper",
+  "feature": "5feat-series[train]",
+  "agg": "max",
+  "NYSE": 0.43539346058373873,
+  "NASDAQ": 0.30728314889891495
+ },
+ {
+  "rel_err": 2.9403672344221308,
+  "norm": "train",
+  "feature": "close[train] z-scored",
+  "agg": "mean",
+  "NYSE": 0.3883607307694465,
+  "NASDAQ": 0.365599528484373
+ },
+ {
+  "rel_err": 3.0660091144088164,
+  "norm": "paper",
+  "feature": "close[all] z-scored",
+  "agg": "max",
+  "NYSE": 0.40504987639425155,
+  "NASDAQ": 0.3719611599756141
+ },
+ {
+  "rel_err": 3.1085159104864966,
+  "norm": "train",
+  "feature": "5feat-series[train]",
+  "agg": "mean",
+  "NYSE": 0.39862411875177023,
+  "NASDAQ": 0.38896055764365717
+ },
+ {
+  "rel_err": 3.1278105024007603,
+  "norm": "paper",
+  "feature": "5feat-series[all]",
+  "agg": "max",
+  "NYSE": 0.40736114798693307,
+  "NASDAQ": 0.3823440586102932
+ },
+ {
+  "rel_err": 3.1513598811772736,
+  "norm": "train",
+  "feature": "close[train]",
+  "agg": "mean",
+  "NYSE": 0.4026936177044293,
+  "NASDAQ": 0.39312415141821316
+ },
+ {
+  "rel_err": 3.1752406839815275,
+  "norm": "paper",
+  "feature": "close[all]",
+  "agg": "max",
+  "NYSE": 0.41228091210112217,
+  "NASDAQ": 0.3864433730982529
+ },
+ {
+  "rel_err": 3.235898574297292,
+  "norm": "train",
+  "feature": "close[train] z-scored",
+  "agg": "max",
+  "NYSE": 0.4093708051888828,
+  "NASDAQ": 0.4030032586328335
+ },
+ {
+  "rel_err": 3.527490752739735,
+  "norm": "train",
+  "feature": "close[train]",
+  "agg": "max",
+  "NYSE": 0.4409957248550143,
+  "NASDAQ": 0.426508968678412
+ },
+ {
+  "rel_err": 3.5326399919284395,
+  "norm": "train",
+  "feature": "5feat-series[train]",
+  "agg": "max",
+  "NYSE": 0.43916904818322794,
+  "NASDAQ": 0.4298575082082562
+ }
+]

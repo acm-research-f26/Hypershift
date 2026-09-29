@@ -1,0 +1,274 @@
+{
+  "NYSE_full": {
+    "hg": {
+      "delta_max": 1.0,
+      "delta_mean": 1.0,
+      "diam": 6.0,
+      "delta_rel": 0.3333333333333333,
+      "lcc_size": 1530
+    },
+    "rel": {
+      "delta_max": 0.14434295892715454,
+      "delta_mean": 0.1255470335483551,
+      "diam": 1.6243434943945936,
+      "delta_rel": 0.17772467390704497
+    },
+    "num_edges": 312
+  },
+  "NYSE_N50_u0": {
+    "hg": {
+      "delta_max": 0.0,
+      "delta_mean": 0.0,
+      "diam": 2.0,
+      "delta_rel": 0.0,
+      "lcc_size": 14
+    },
+    "rel": {
+      "delta_max": 0.057313770055770874,
+      "delta_mean": 0.05542818307876587,
+      "diam": 0.9514521371001039,
+      "delta_rel": 0.1204764124666437
+    },
+    "num_edges": 6
+  },
+  "NYSE_N50_u1": {
+    "hg": {
+      "delta_max": 0.0,
+      "delta_mean": 0.0,
+      "diam": 1.0,
+      "delta_rel": 0.0,
+      "lcc_size": 15
+    },
+    "rel": {
+      "delta_max": 0.08400753140449524,
+      "delta_mean": 0.07742251753807068,
+      "diam": 1.1452286308993014,
+      "delta_rel": 0.1467087516638971
+    },
+    "num_edges": 10
+  },
+  "NYSE_N50_u2": {
+    "hg": {
+      "delta_max": 0.0,
+      "delta_mean": 0.0,
+      "diam": 1.0,
+      "delta_rel": 0.0,
+      "lcc_size": 15
+    },
+    "rel": {
+      "delta_max": 0.09024059772491455,
+      "delta_mean": 0.0847391664981842,
+      "diam": 1.2537491573219681,
+      "delta_rel": 0.14395319382334848
+    },
+    "num_edges": 9
+  },
+  "NYSE_N100_u0": {
+    "hg": {
+      "delta_max": 0.0,
+      "delta_mean": 0.0,
+      "diam": 1.0,
+      "delta_rel": 0.0,
+      "lcc_size": 25
+    },
+    "rel": {
+      "delta_max": 0.08407974243164062,
+      "delta_mean": 0.07491891980171203,
+      "diam": 1.1971644551514415,
+      "delta_rel": 0.14046481595714352
+    },
+    "num_edges": 16
+  },
+  "NYSE_N100_u1": {
+    "hg": {
+      "delta_max": 1.0,
+      "delta_mean": 1.0,
+      "diam": 5.0,
+      "delta_rel": 0.4,
+      "lcc_size": 50
+    },
+    "rel": {
+      "delta_max": 0.07758158445358276,
+      "delta_mean": 0.06847765445709228,
+      "diam": 1.0252361493449842,
+      "delta_rel": 0.15134383332688583
+    },
+    "num_edges": 27
+  },
+  "NYSE_N100_u2": {
+    "hg": {
+      "delta_max": 0.0,
+      "delta_mean": 0.0,
+      "diam": 1.0,
+      "delta_rel": 0.0,
+      "lcc_size": 29
+    },
+    "rel": {
+      "delta_max": 0.09150579571723938,
+      "delta_mean": 0.08567725419998169,
+      "diam": 1.2391443197467915,
+      "delta_rel": 0.14769191006893823
+    },
+    "num_edges": 19
+  },
+  "NYSE_N250_u0": {
+    "hg": {
+      "delta_max": 0.0,
+      "delta_mean": 0.0,
+      "diam": 1.0,
+      "delta_rel": 0.0,
+      "lcc_size": 74
+    },
+    "rel": {
+      "delta_max": 0.09022387862205505,
+      "delta_mean": 0.08348168730735779,
+      "diam": 1.43639088004073,
+      "delta_rel": 0.12562580266382184
+    },
+    "num_edges": 63
+  },
+  "NYSE_N250_u1": {
+    "hg": {
+      "delta_max": 1.0,
+      "delta_mean": 1.0,
+      "diam": 6.0,
+      "delta_rel": 0.3333333333333333,
+      "lcc_size": 158
+    },
+    "rel": {
+      "delta_max": 0.10349676012992859,
+      "delta_mean": 0.0902371883392334,
+      "diam": 1.5021381669073635,
+      "delta_rel": 0.13779925496868253
+    },
+    "num_edges": 62
+  },
+  "NYSE_N250_u2": {
+    "hg": {
+      "delta_max": 0.5,
+      "delta_mean": 0.5,
+      "diam": 7.0,
+      "delta_rel": 0.14285714285714285,
+      "lcc_size": 91
+    },
+    "rel": {
+      "delta_max": 0.10159668326377869,
+      "delta_mean": 0.09263672232627869,
+      "diam": 1.1601157576104748,
+      "delta_rel": 0.17514921695924623
+    },
+    "num_edges": 65
+  },
+  "NYSE_N500_u0": {
+    "hg": {
+      "delta_max": 1.0,
+      "delta_mean": 1.0,
+      "diam": 7.0,
+      "delta_rel": 0.2857142857142857,
+      "lcc_size": 328
+    },
+    "rel": {
+      "delta_max": 0.11983901262283325,
+      "delta_mean": 0.11123852133750915,
+      "diam": 1.5106440683714664,
+      "delta_rel": 0.1586594951543078
+    },
+    "num_edges": 98
+  },
+  "NYSE_N500_u1": {
+    "hg": {
+      "delta_max": 1.0,
+      "delta_mean": 1.0,
+      "diam": 6.0,
+      "delta_rel": 0.3333333333333333,
+      "lcc_size": 338
+    },
+    "rel": {
+      "delta_max": 0.1405748724937439,
+      "delta_mean": 0.12797607779502868,
+      "diam": 1.4863005970457484,
+      "delta_rel": 0.1891607562738764
+    },
+    "num_edges": 115
+  },
+  "NYSE_N500_u2": {
+    "hg": {
+      "delta_max": 1.5,
+      "delta_mean": 1.5,
+      "diam": 8.0,
+      "delta_rel": 0.375,
+      "lcc_size": 373
+    },
+    "rel": {
+      "delta_max": 0.10805639624595642,
+      "delta_mean": 0.10160953998565674,
+      "diam": 1.3506009761129911,
+      "delta_rel": 0.16001231771198784
+    },
+    "num_edges": 114
+  },
+  "NYSE_N1000_u0": {
+    "hg": {
+      "delta_max": 1.0,
+      "delta_mean": 1.0,
+      "diam": 7.0,
+      "delta_rel": 0.2857142857142857,
+      "lcc_size": 780
+    },
+    "rel": {
+      "delta_max": 0.14530938863754272,
+      "delta_mean": 0.13719838857650757,
+      "diam": 1.6243434943945936,
+      "delta_rel": 0.17891460659520264
+    },
+    "num_edges": 199
+  },
+  "NYSE_N1000_u1": {
+    "hg": {
+      "delta_max": 1.5,
+      "delta_mean": 1.1,
+      "diam": 6.0,
+      "delta_rel": 0.5,
+      "lcc_size": 854
+    },
+    "rel": {
+      "delta_max": 0.14174383878707886,
+      "delta_mean": 0.13445940613746643,
+      "diam": 1.4962674077498148,
+      "delta_rel": 0.1894632444079532
+    },
+    "num_edges": 212
+  },
+  "NYSE_N1000_u2": {
+    "hg": {
+      "delta_max": 1.0,
+      "delta_mean": 1.0,
+      "diam": 6.0,
+      "delta_rel": 0.3333333333333333,
+      "lcc_size": 827
+    },
+    "rel": {
+      "delta_max": 0.154382586479187,
+      "delta_mean": 0.13970633149147033,
+      "diam": 1.6086330656382126,
+      "delta_rel": 0.19194257506815193
+    },
+    "num_edges": 214
+  },
+  "NASDAQ_full": {
+    "hg": {
+      "delta_max": 1.5,
+      "delta_mean": 1.2,
+      "diam": 7.0,
+      "delta_rel": 0.42857142857142855,
+      "lcc_size": 601
+    },
+    "rel": {
+      "delta_max": 0.3580496311187744,
+      "delta_mean": 0.32423077821731566,
+      "diam": 2.219198183888771,
+      "delta_rel": 0.32268378166329675
+    },
+    "num_edges": 162
+  }
+}
