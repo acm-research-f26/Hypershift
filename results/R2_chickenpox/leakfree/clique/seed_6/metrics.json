@@ -1,0 +1,9 @@
+{
+ "val_mse": 0.6515947580337524,
+ "test_mse": 0.8152391314506531,
+ "best_epoch": 91,
+ "test_oracle_mse": 0.7930254340171814,
+ "epochs_run": 100,
+ "seconds": 68.46462273597717,
+ "num_hyperedges": 41
+}
