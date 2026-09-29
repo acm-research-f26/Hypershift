@@ -32,7 +32,7 @@ def paired(exp_pairs, names, fname, title):
     style(ax, title); ax.legend(frameon=False, fontsize=9, loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=2)
     fig.tight_layout(); fig.savefig(f"docs/figures/{fname}", dpi=160); plt.close(fig)
 
-paired([("POC_sectors", 1), ("POC_sectors", 0)], ["best test epoch (paper's protocol)", "epoch chosen on validation (leak-free)"],
+paired([("POC_sectors", 1), ("POC_sectors", 0)], ["best test epoch (upper bound)", "epoch chosen on validation (leak-free)"],
        "fig1_protocol_gap.png", "Fig 1. Same models, two ways of picking the epoch (faithful THINK, v1)")
 paired([("POC_sectors", 0), ("POC_sectors_rel", 0)], ["v1: faithful inputs (price levels)", "v2: relative inputs (fix)"],
        "fig2_fix_effect.png", "Fig 2. Leak-free Sharpe before and after the relative-input fix")

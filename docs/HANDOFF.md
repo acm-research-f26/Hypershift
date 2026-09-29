@@ -2,14 +2,14 @@
 
 ## 1. Bottom line
 
-1. **Scored the way the paper's code scores, we reproduce the paper, and exceed it.**
+1. **If the reported epoch is the one with the best 2017 test score, we reproduce the paper and exceed it.** (The paper doesn't say how it chose; the authors' earlier code prints the test score every epoch with no selection rule.)
    - On all 1737 NYSE stocks, THINK reaches a Sharpe of **2.40**. The paper reports 1.18.
    - Our TCONV+DHHAN variant reaches 1.64 (paper: 1.14).
    - THINK comes out on top, as in the paper.
 2. **Scored honestly, the advantage disappears.** "Honestly" means the training epoch is chosen on the validation year, never on the test year.
    - Full NYSE: THINK gets **−0.05**, and TCONV+DHHAN gets 0.72.
    - Small scale: no comparison is statistically significant.
-   - The paper's protocol picks the best of 100 epochs by *test* score, which inflates results.
+   - The paper doesn't say how it picked the epoch. The authors' earlier code prints the 2017 test score every epoch with no selection rule. Picking the best of those would inflate results, but whether they did that is **unverified**; ask the authors.
 3. **We found a concrete reason THINK underperforms, and a fix that helps.**
    - The raw inputs sit at the edge of the hyperbolic ball, where hyperbolic math breaks down.
    - Normalizing each input window (relative inputs) moved small-scale THINK from −0.56 to +0.48.
@@ -61,7 +61,7 @@ These parts follow the paper and verified reference code exactly:
 
 | Aspect | THINK paper / its code base | Ours | Why |
 |---|---|---|---|
-| Model selection | Evaluates test every epoch, reports the best (implied by the authors' STHAN-SR code) | **Pick the epoch by validation (2016) Sharpe.** We also record "best test epoch" to reproduce theirs | Choosing by test score is look-ahead |
+| Model selection | Not stated. Their STHAN-SR code prints the val and test scores every epoch, with no selection rule and no checkpointing | **Pick the epoch by validation (2016) Sharpe.** We also record "best test epoch" to reproduce theirs | Choosing by test score is look-ahead |
 | Price normalization | Divide by the max close over the **whole** 2013–2017 period | Default: max over the **training period only**. The paper-protocol runs use theirs | Theirs leaks future price levels |
 | Eq 14 attention operator | Symbol lost in the PDF | Möbius addition ⊕ × distance (literal reading) | Ambiguous source |
 | Euclidean baseline | Not fully specified | Same structure with linear convs, a mean aggregator and Euclidean distance | Closest twin |
@@ -73,17 +73,17 @@ These parts follow the paper and verified reference code exactly:
 
 ## 5. Experiments and results
 
-### 5a. Paper recreation: full NYSE, paper's protocol (running; 4–5 of 5 seeds done)
+### 5a. Paper recreation: full NYSE, paper's setup (full-period normalization, 100 epochs) (running; 4–5 of 5 seeds done)
 Setup: 1737 stocks, full-period normalization, 100 epochs, level inputs.
 
-| Model | Best-test-epoch Sharpe (paper's way) | Validation-selected Sharpe (honest) | NDCG@5 (ours) | Paper |
+| Model | Best-test-epoch Sharpe (upper bound) | Validation-selected Sharpe (honest) | NDCG@5 (ours) | Paper |
 |---|---|---|---|---|
 | THINK (4 seeds) | **2.40 ± 0.20** | −0.05 ± 0.42 | 0.563 | 1.18 |
 | TCONV+DHHAN (5 seeds) | 1.64 ± 0.35 | 0.72 ± 0.64 | 0.565 | 1.14 |
 | Euclidean (EE) | running | running | — | — |
 
 What this shows:
-- **Good:** under the paper's protocol we reproduce the ordering, THINK > TCONV+DHHAN, with higher absolute numbers. The implementation behaves like theirs.
+- **Good:** at the best test epoch we reproduce the ordering, THINK > TCONV+DHHAN, with higher absolute numbers. The implementation behaves like theirs.
 - **Bad:** chosen honestly, THINK is about 0 and below its Euclidean-time variant.
 - In 2017, holding every NYSE stock earned 1.53, above the paper's reported 1.18.
 - The per-epoch test Sharpe swings between −0.8 and +1.9, so "best of 100 epochs" can reach 2+ by chance.
@@ -102,7 +102,7 @@ Setup: 309 NYSE stocks in 12 Energy/Utilities and Finance industries, 73 hypered
 | Hold all 309 (market) | 0.75 | 0.75 |
 
 - **Result: bad for THINK.** No significant differences, and THINK was nominally worst (vs Euclidean: −0.87, raw p = 0.037, Holm-corrected p = 0.19).
-- The paper-protocol column again reproduces the paper's ordering.
+- The best-test-epoch column again reproduces the paper's ordering.
 
 ### 5c. Diagnosis: why it fails
 1. **The validation and test years disagree.** Across training epochs, THINK's 2016 Sharpe and 2017 Sharpe have a rank correlation of **−0.63**. Improving on 2016 hurts 2017, so honest selection picks a bad epoch. The market regime also changed: Sharpe 1.17 in 2016 vs 0.75 in 2017.
@@ -185,8 +185,8 @@ The only change from v1: each 16-day window is divided by its last close, so fea
 | Pushback | Answer |
 |---|---|
 | "You didn't tune." | Equal-budget tuning is running (results tonight) and is chosen on validation only. |
-| "Your implementation is wrong." | Under the paper's protocol it reproduces their numbers and ordering. Every module was reviewed against the equations, and 112 tests pass. |
-| "Everyone picks the best epoch." | It uses the test year to choose the model. We report both numbers side by side. |
+| "Your implementation is wrong." | At the best test epoch it reproduces their ordering and exceeds their numbers. Every module was reviewed against the equations, and 112 tests pass. |
+| "Did they pick the best test epoch?" | Unknown: the paper is silent, and their code only prints the test score every epoch. We report the leak-free and the most favourable numbers side by side. Email the authors to settle it. |
 | "One test year is noise." | Agreed: a 237-day Sharpe has a standard error of ~1, which is why we use bootstrap CIs. Planned: the 2015–2026 S&P 500 test, with data already downloaded. |
 | "309 stocks isn't the paper." | Correct; the full-NYSE runs in 5a cover that. |
 | "Relative inputs isn't THINK." | It's reported separately as a modification. It targets a documented hyperbolic failure mode (boundary saturation). |

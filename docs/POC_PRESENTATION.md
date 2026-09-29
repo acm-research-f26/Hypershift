@@ -5,7 +5,7 @@
 ## 1. One-slide summary
 
 - We reimplemented **THINK** (Temporal Hypergraph Hyperbolic Network, ICDM 2022) from scratch. The authors' code repo is empty.
-- On a 309-stock NYSE subset, **scored the way the paper's code scores (best test epoch), we reproduce the paper's story**:
+- On a 309-stock NYSE subset, **if the reported epoch is the one with the best 2017 (test) score, we reproduce the paper's story. The authors' earlier code allows that choice: it prints the test score every epoch and has no selection rule**:
   - THINK comes out best, at Sharpe **2.28**.
   - Hyperedges beat pairwise edges, which beat no relations.
 - **Scored leak-free (epoch picked on the validation year), the advantage disappears.** THINK gets −0.56, no comparison is statistically significant, and nothing beats simply holding the 309 stocks (0.75).
@@ -44,7 +44,7 @@
 | Hyperparameters | not stated | window 16, hidden 32, lr 1e-3, weight decay 5e-4, ranking weight 1 (their earlier code) | Same as their code |
 | Batch / epochs | 1 day per step; ~100 epochs (earlier code) | **8 days** per step; **max 30 epochs**, early-stopped (~17 in practice) | **Different** (compute budget) |
 | Hyperparameter tuning | unknown | **none** | **Different** |
-| Epoch selection | best **test** epoch (inferred from their earlier code) | **both** reported: best test epoch, and epoch chosen on validation | Both shown |
+| Epoch selection | **not stated in the paper**. Their earlier STHAN-SR code prints both the 2016 and 2017 scores every epoch, with no selection rule | **both** reported: best test epoch, and epoch chosen on validation | Both shown |
 | Trading rule and Sharpe | top-5 daily, mean/std × √252 | same | Same |
 | NDCG | computed incorrectly in their code (see §7) | standard NDCG@5 | **Different** (fixed) |
 | Seeds | 25 | 10 per arm | Fewer |
@@ -62,7 +62,7 @@
 
 ![Fig 1](figures/fig1_protocol_gap.png)
 
-| Model | Best test epoch (paper's way) | Epoch picked on validation (leak-free) |
+| Model | Best test epoch (upper bound) | Epoch picked on validation (leak-free) |
 |---|---|---|
 | **THINK (hyp + hyperedges)** | **2.28 ± 0.58** | −0.56 ± 0.86 |
 | Euclidean + hyperedges | 2.07 ± 0.47 | 0.32 ± 0.81 |
@@ -74,7 +74,7 @@
 | *Baseline:* random 5 stocks | 0.34 | 0.34 |
 | *Baseline:* 5-day momentum | −0.28 | −0.28 |
 
-- **Left column (the paper's protocol):** the paper's full ordering reproduces. THINK is best, hyperedges > pairwise > none, and hyperbolic ≥ Euclidean.
+- **Left column (best test epoch, the most favourable choice the authors' setup allows):** the paper's full ordering reproduces. THINK is best, hyperedges > pairwise > none, and hyperbolic ≥ Euclidean.
 - **Right column (leak-free):** the ordering vanishes. Statistical tests (paired Wilcoxon over seeds, Holm correction, bootstrap CI) find **no significant difference** anywhere. THINK vs Euclidean is −0.87 Sharpe, with p = 0.037 before correction and 0.19 after.
 
 ### 4b. Why it breaks: two measured causes
@@ -82,7 +82,7 @@
 ![Fig 3](figures/fig3_val_vs_test.png)
 
 1. **Validation and test years disagree.** Over training, THINK's 2016 Sharpe and 2017 Sharpe have a rank correlation of **−0.63**: what helps 2016 hurts 2017.
-   - So an epoch picked on 2016 is a bad one for 2017, while picking on 2017 itself (the paper's way) looks great.
+   - So an epoch picked on 2016 is a bad one for 2017, while picking on 2017 itself (possible in the authors' setup) looks great.
    - The market also changed: Sharpe 1.17 in 2016 vs 0.75 in 2017.
 2. **The inputs sit at the edge of the hyperbolic ball.** Price-level features have norm ~1.8, so after `exp₀` they land at radius **~0.95** (the edge is 1.0).
    - In 2017, **15%** of inputs are past 0.99, because prices exceed the training range.
@@ -106,7 +106,7 @@ The one change: each 16-day window is divided by its last close, so features bec
 - **Better:**
   - THINK improves by about 1 Sharpe.
   - Hyperbolic now beats Euclidean (THINK vs Euclidean + hyperedges: +0.61).
-  - Under the paper's protocol, THINK is again the top model.
+  - At its best test epoch, THINK is again the top model.
 - **Not yet enough to claim anything:**
   - The seed-to-seed spread is huge (±1.3).
   - After correction, every comparison is "no evidence".
@@ -115,9 +115,9 @@ The one change: each 16-day window is divided by its last close, so features bec
 
 ## 5. Scientific assessment
 
-- **Reproduction:** our implementation behaves like THINK. Under the paper's protocol it gives the paper's ordering, and the same happens on the full NYSE, where THINK scores 2.40 vs the paper's 1.18.
+- **Reproduction:** our implementation behaves like THINK. At the best test epoch it gives the paper's ordering, and the same happens on the full NYSE, where THINK scores 2.40 vs the paper's 1.18.
 - **Claim under test:** "hyperbolic space and hyperedges improve stock ranking." At small scale, with leak-free evaluation, **not supported yet.** The faithful model is nominally worst, and the fixed model is nominally better but not significant.
-- **What the gap suggests:** most of THINK's reported advantage comes from **choosing the epoch on the test year**. The per-epoch test Sharpe swings between about −0.8 and +1.9, so the best of many epochs looks strong even when the model isn't.
+- **What the gap suggests:** THINK's reported advantage **could** come from how the epoch was chosen. This is an open question, not a finding. The paper doesn't say how it chose, and the authors' earlier code prints the test score every epoch with no rule. Our leak-free score (−0.56 small scale, ≈0 full NYSE) and best-test score (2.28 / 2.40) bracket the paper's 1.18. The paper also reports THINK as 1.18 **± 0.004** over 25 runs, while our seeds vary by ±0.2 to ±0.9. That spread is unusually tight and worth asking the authors about. The per-epoch test Sharpe swings between about −0.8 and +1.9, so the best of many epochs looks strong even when the model isn't.
 - **Limits of this test:**
   - 309 stocks, not 1737
   - one test year (a 237-day Sharpe has a standard error of about 1)
@@ -129,10 +129,10 @@ The one change: each 16-day window is divided by its last close, so features bec
 
 | Question | Answer |
 |---|---|
-| Is the implementation right? | Every equation was checked in independent reviews, and 112 automated tests pass. Under the paper's protocol it reproduces the paper's ordering and exceeds its numbers. |
+| Is the implementation right? | Every equation was checked in independent reviews, and 112 automated tests pass. At the best test epoch it reproduces the paper's ordering and exceeds its numbers. |
 | You didn't tune it. | True. Equal-budget tuning (same grid for hyperbolic and Euclidean, chosen on validation only) is built and partly run; results next. |
-| Isn't picking the best epoch standard? | It picks the model using the test answers. We show both numbers so the difference is visible. |
-| Why only 309 stocks? | The full study takes about a week on our GPU. The full-NYSE paper-protocol check (THINK 2.40) is in the handoff. |
+| Did the authors pick the best test epoch? | Unknown: the paper doesn't say. Their earlier code prints the test score every epoch with no selection rule. We show the leak-free and the most favourable scores so the range is visible. Next step: email the authors. |
+| Why only 309 stocks? | The full study takes about a week on our GPU. The full-NYSE check (THINK 2.40 at its best test epoch) is in the handoff. |
 | Is relative input still THINK? | It is reported as a modification, separately. It targets a known hyperbolic failure mode (points at the ball boundary). |
 
 ## 7. Other findings about the paper
