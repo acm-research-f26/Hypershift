@@ -151,7 +151,17 @@ The only change from v1: each 16-day window is divided by its last close, so fea
   | δ_hg | 1.0 | 0.5 | 1.5 | 1.0 |
   | δ_rel | 0.18 | 0.087 | 0.32 | 0.107 |
 
-  δ_hg matches within tolerance. δ_rel is about 2× the paper's, likely a different feature definition.
+  δ_hg matches within tolerance. δ_rel is about 2× the paper's. Both gaps were then tested (`scripts/hyperbolicity_sensitivity.py`):
+  - **δ_hg is explained by sampling size, not by different data or a different graph.**
+    - Computed exactly on our full graph, δ = 1.5 (our sampled table value, 1.0, was an underestimate).
+    - Changing the graph doesn't bring it near 0.5: without the n/a bucket it is 1.5, and with s = 2 it is also 1.5. Industry-only is degenerate (disjoint cliques, δ = 0).
+    - The sampled estimate is a lower bound that shrinks as the sample shrinks. With 30 sampled nodes, 90% of draws give ≤ 0.5; with 500, none do.
+    - So the paper's 0.5 is consistent with a small sample. It does not show a more tree-like graph.
+  - **δ_rel depends almost entirely on which features are used, which the paper doesn't specify.**
+    - Train returns: 0.17
+    - The 16-day model-input window: 0.16
+    - The normalized close series: 0.40
+    - None reproduces 0.087, so this gap stays open, and the paper's number can't be checked without its feature definition.
 - **Paper issue:** the 500-stock "industry" hyperedge in their data and Fig 3a is the **"n/a" bucket**, stocks with no industry label.
 
 ## 7. How to report it
