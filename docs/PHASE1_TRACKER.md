@@ -2,6 +2,10 @@
 
 *Started 2026-09-29. This is the running record of what has been tested, what is ruled out, and what is still open. Update it whenever a run finishes or a decision is made. Evidence lives in `results/`, `docs/HANDOFF.md` and `docs/POC_PRESENTATION.md`.*
 
+> **PROMINENT NOTE (2026-09-29): every stock result before commit `de20f8e` used the pre-fix hypergraph.** The builder made a star hyperedge for every Wikidata relation channel. The paper says first-order relations are stars and second-order relations are pairs ([A854] Sec. B, "Stock Datasets"). The corrected graph: **NYSE 4350 hyperedges, max node degree 114** (old: 312 and 37); NASDAQ 1066 hyperedges, max degree 55 (old: 162); 309-stock small-scale graph 558 edges (old: 73). Rows below that depend on the graph are marked **PARTIAL, "old graph; rerun queued on g2"**. Non-graph results (R2 chickenpox, controls C2-C10, NDCG bug, baselines) are unaffected. Also: our small-scale "hyperbolic vs Euclidean" contrasts are HH vs EE, **not the paper's HH vs EH** (see "Paper-audit findings").
+>
+> Citations in this file: `pNNN` = page of `05-Hypershift-OA.pdf` (pp849-853); `[A854]` = page 854 (appendices, Algorithm 1, refs 17-38) of `data/raw/icdm22-think.pdf`.
+
 ## Phases
 
 - **Phase 1 (current): reproduce THINK.** Rebuild each headline result and the paper's own ablations under the paper's protocol, and alongside it under a leak-free protocol.
@@ -13,9 +17,10 @@ Status words: **DONE**, **PARTIAL**, **RUNNING**, **TODO**, **BLOCKED** (cannot 
 
 | Rule | Current state |
 |---|---|
-| Dataset, universe, splits | RSR NYSE/NASDAQ: train 2013–15, val 2016, test 2017 (T = 1245). Small-scale universe: 309 NYSE stocks (Energy/Utilities + Finance). |
+| Dataset, universe, splits | RSR NYSE/NASDAQ: train 2013–15, val 2016, test 2017 (T = 1245; the paper gives T = 1245 and 1737 NYSE nodes, p850 Table I, but no split: our split is `INFERRED (not in paper)`, from the RSR code). Small-scale universe: 309 NYSE stocks (Energy/Utilities + Finance). |
+| Sharpe definition | Ours: top-5, mean/std × √252, R_f = 0 (RSR [1] code). The paper writes `E[R_a − R_f]/std[R_a − R_f]`, top-k, no annualization (p852 Sec. IV-B); k and R_f unspecified. Our SR is not like-for-like with the paper's 1.18. |
 | Matched ablations | Same dates, inputs, seeds and tuning budget for every compared arm (CLAUDE.md). |
-| Seeds | Paper: 25. Ours: 10 small scale, 5 full NYSE. **Gap** (see R5). |
+| Seeds | Paper: 25 (p852 Table II caption). Ours: 10 small scale, 5 full NYSE (old graph); the g2 full-NYSE rerun uses 25 for THINK and EH, 10 for EE and HE. |
 | Epoch selection | Always report both the leak-free choice (best validation Sharpe) and the paper-style choice (best test epoch, an upper bound). |
 | Uncertainty | Paired Wilcoxon over seeds, Holm correction, stationary block bootstrap over dates (`eval/stats.py`). |
 | Pre-registration | Every variant run is listed in this file. |
@@ -25,33 +30,33 @@ Status words: **DONE**, **PARTIAL**, **RUNNING**, **TODO**, **BLOCKED** (cannot 
 
 | ID | Task | Paper | Status | Evidence / next step |
 |---|---|---|---|---|
-| R1 | Twitter tennis, node regression (MSE) | 0.58 | TODO (order 3) | Data obtainable (PyG-T JSON; Table I matches `rg17`). Paper's baselines (~2.05) are about 5× worse than a constant predictor (0.42), so the setup is unclear. Est. 10–16 eng-h. See `docs/phase1/R_feasibility.md`. |
-| R2 | Chickenpox (MSE) | 1.09 | DONE (paper not matched) | `docs/phase1/R2_chickenpox.md` (7b9c388), 10 seeds, untuned, both protocols agree within 0.005. THINK 0.956, EE 0.886, pairwise 0.823, **no relations 0.733**, AR(4) 0.725, mean 1.047. Our THINK beats the paper's 1.09. The paper's 1.09 (and its baselines, 1.11–1.14) is worse than predicting the mean. **Adding relations makes it worse, and hyperbolic is worse than Euclidean.** Nothing beats a linear AR(4). |
+| R1 | Twitter tennis, node regression (MSE) | 0.58 | TODO (order 3) | Data obtainable (PyG-T JSON; Table I matches `rg17`). Seven of nine paper baselines (2.03–2.06) are about 5× worse than a constant predictor (0.42); STHGCN is 1.03 and RSR-I has no DTT entry (p852 Table II), so the setup is unclear. Est. 10–16 eng-h. See `docs/phase1/R_feasibility.md`. |
+| R2 | Chickenpox (MSE) | 1.09 | DONE (paper not matched) | `docs/phase1/R2_chickenpox.md` (7b9c388), 10 seeds, untuned, both protocols agree within 0.005. THINK 0.956, EE 0.886, pairwise 0.823, **no relations 0.733**, AR(4) 0.725, mean 1.047. Our THINK beats the paper's 1.09. The paper's 1.09 (and its baselines, 1.11–1.14) is worse than predicting the mean. **Adding relations makes it worse, and hyperbolic is worse than Euclidean.** Nothing beats a linear AR(4). Deviation: the paper's Sørensen–Dice merge is legible ([A854] Sec. B: merged "until no two pairs had an SCD score lower than a threshold"; threshold unspecified, stopping rule reads inverted), and we skipped it. Not affected by the stock-graph fix. |
 | R3 | Windmill (MSE) | 1.05 | TODO (order 2) | Data obtainable (47 MB). Stored series has lag-1 autocorrelation ≈ 0, and the mean predictor scores 1.02 *(not yet independently checked)*. The graph is complete, so the hyperedge cut the paper never states is decisive. Est. 6–10 eng-h. |
-| R4 | China stock risk (MSE) | 0.32 | BLOCKED | No public dataset matches Table I (85 nodes, 1293 steps). The cited [35] is a US 10-K text paper; the CSE dataset [22] has 91 stocks over 2 years. |
-| R5 | NYSE ranking (Sharpe / NDCG) | 1.18 / 0.86 | PARTIAL | Full NYSE with the paper protocol (paper normalization, 100 epochs), **5 seeds, pre-eq.14 attention**: THINK best-test 2.40 ± 0.20, leak-free −0.05. **Plan chosen: eq.14 rerun, 25 seeds THINK (HH) and EH, 10 seeds EE and HE** → `results/R5_eq14/` (queue 3, waiting on queue 2). The eq.14 change does not alter small-scale conclusions (see the ruled-out table), so the old numbers are expected to hold up. NDCG 0.86 is not comparable because of the evaluator bug (E3). |
+| R4 | China stock risk (MSE) | 0.32 | BLOCKED | No public dataset matches Table I (85 nodes, 1293 steps; p850). The cited [35] is a US 10-K text paper; the CSE dataset [22] has 91 stocks over 2 years (from that paper, not THINK). **Correction:** the paper says it built industry and Wiki hyperedges for CSE and TSE as well ([A854] Sec. B), so "RSR-style hyperedges do not exist" was wrong as a statement about the paper; the block is the missing price data. |
+| R5 | NYSE ranking (Sharpe / NDCG) | 1.18 / 0.86 (p852 Table II) | PARTIAL (old graph; rerun queued on g2) | Full NYSE with the paper protocol (paper normalization, 100 epochs), **5 seeds, pre-eq.14 attention, old graph**: THINK best-test 2.40 ± 0.20, leak-free −0.05. **Plan: `R5_g2` on the corrected graph, exact eq.14: 25 seeds THINK (HH) and EH, 10 seeds EE and HE** → `results/R5_g2/` (`scripts/queues/phase1_gpu_3.sh`; starts after R7 g2 logs "g2 clf done"; supersedes `R5_eq14`, which never ran on the corrected graph and is not to be used). Old numbers are **not** expected to hold: the graph changed (312 → 4350 hyperedges). NDCG 0.86 is not comparable because of the evaluator bug (E3). The paper's Sharpe is not the same formula as ours (top-k, no √252, R_f; p852). |
 | R6 | TSE ranking | 1.19 / 0.81 | BLOCKED | TSE data is not public. Revisit only if the authors share it. |
-| R7 | NASDAQ 3-class movement (F1) | 0.49 | TODO (order 4; queued at the end of queue 2, not started) | Thresholds resolved: the STHGCN code uses tertiles of pooled training returns, which matches our `clf.py`. Open: lookback (their 50, ours 16) and macro vs micro F1 (report both). Chance macro-F1 is 0.33. Est. 3–6 eng-h, 6–12 GPU-h. |
+| R7 | NASDAQ 3-class movement (F1) | 0.49 | TODO (order 4; queued on g2 as `phase1_g2_clf.sh` → `results/E11_clf_g2/`, after the small-scale g2 queue; the corrected NASDAQ graph has 1066 hyperedges) | Thresholds resolved: the STHGCN code uses tertiles of pooled training returns, which matches our `clf.py`. Open: lookback (their 50, ours 16) and macro vs micro F1 (report both). Chance macro-F1 is 0.33. Est. 3–6 eng-h, 6–12 GPU-h. |
 | R8 | Paper baselines (STHGCN, RSR-I) | Table II | TODO (order 5) | RSR-I: public TF1 code, 8–12 eng-h. STHGCN: repo unrunnable (hard-coded 423 nodes, dead data link), so reimplement in PyTorch, 12–20 eng-h. |
-| R9 | Hyperbolicity (Table I) | δ_hg 0.5, δ_rel 0.087 | DONE | δ_hg gap explained by sampling (ELIMINATED as a data difference). δ_rel is unresolved because the paper doesn't define its features. |
+| R9 | Hyperbolicity (Table I) | NYSE δ_hg 0.5, δ_rel 0.087; NASDAQ δ_hg 1.0, δ_rel 0.107 (p850 Table I) | DONE (recomputed on the corrected graph 2026-09-29) | **Corrected graph, δ_hg: NYSE sampled 1.5 (mean over 5 samples of 1000 nodes 1.4; exact, 4 base points: 1.5), NASDAQ sampled 1.5 (mean 1.2; exact, 4 base points: 1.5).** Old graph: NYSE sampled 1.0, exact 1.5; NASDAQ sampled 1.5. So the corrected graph does not move δ_hg toward the paper: ours 1.5 vs paper 0.5 (NYSE) and 1.5 vs 1.0 (NASDAQ). δ_rel does not depend on the graph: NYSE 0.178, NASDAQ 0.323 (paper 0.087, 0.107); it depends on the unstated feature choice (0.16–0.40 across choices we tried). Old claim "δ_hg gap explained by sampling" is downgraded, see the ruled-out table. `results/hyperbolicity.json` was regenerated on the corrected graph. Note its `hg.delta_rel` field is 2δ/diam of the graph metric, **not** the paper's feature-based δ_rel. |
 
 ## Phase 1: the paper's own ablations
 
 | ID | Ablation | Status | Evidence / next step |
 |---|---|---|---|
-| A5 | TCONV + DHHAN (Euclidean temporal) | PARTIAL | Full NYSE `R_paperProtocol/EH`, 5 seeds, pre-eq.14: best-test 1.64, leak-free 0.72. Rerun with eq.14 as part of R5. |
-| A9 | Geometry 2×2 | PARTIAL | HH, EH and EE exist on full NYSE (5 seeds). **HE (hyperbolic temporal, Euclidean spatial) is missing.** Small scale has only HH and EE. |
-| A10 | Attention without distance | DONE (small scale) | `results/POC_sectors_{,rel_}A10_nodist/`, HH, eq.14, 10 seeds, vs `HH_hyper` in `POC_sectors_{,rel_}eq14` paired by seed. **Removing the distance term changes nothing.** Level inputs: leak-free −0.59 vs −0.30 (diff −0.29, Wilcoxon p 0.43, bootstrap CI [−0.45, +0.07]); best-test 2.24 vs 2.19 (p 0.32). Relative inputs: +0.70 vs +0.57 (diff +0.14, p 1.00, CI [−0.85, +0.44]); best-test 2.10 vs 2.04 (p 0.50). Not run on full NYSE. |
-| G1 | Hyperedges vs pairwise clique expansion | DONE (small scale) | Small scale, 10 seeds, exact eq.14 (`POC_sectors{,_rel}_eq14`): hyperbolic hyperedges − pairwise = −0.18 (level, Holm p 1.00) and +0.21 (relative, Holm p 1.00), both NO EVIDENCE. Best-test epoch: 2.19 vs 1.27 (level), 2.04 vs 1.98 (relative). Same with tuned settings (+0.12, Holm p 0.49). Pre-eq.14 gave the same picture. Full NYSE not run: clique arms are ~50× slower (P2). |
-| G2 | Hyperedge decomposition by size (Fig 3) | RUNNING | Queue 2. `large_first` 30 is at seed 2 of 0–4 (`results/POC_sectors_G2_decomp_large30/`); `large_first` 15 and `small_first` 5 follow. |
-| G5 | No hyperedges | PARTIAL | Small scale HH_none / EE_none, 10 seeds. |
-| G12 | Hub removal (Fig 3) | TODO (queued) | Queue 2, after G2: degree 12, 8, 5. Not started. |
+| A5 | TCONV + DHHAN (Euclidean temporal) = the paper's Euclidean arm (EH; p852 Sec. V.A, Table II) | PARTIAL (old graph; rerun queued on g2) | Full NYSE `R_paperProtocol/EH`, 5 seeds, pre-eq.14, old graph: best-test 1.64, leak-free 0.72. Rerun as `R5_g2` (25 seeds) on the corrected graph with exact eq.14. Small scale: EH arms are in the g2 rerun (`POC_sectors{,_rel}_g2`); the old small-scale results had **no EH arm**. |
+| A9 | Geometry 2×2 (HH, EH, HE, EE). The paper ran only HH and EH (p852 Table II; p853 Fig. 3 caption); EE and HE are our additions | PARTIAL (old graph; rerun queued on g2) | HH, EH and EE exist on full NYSE (5 seeds, old graph). HE is missing; it is in `R5_g2` (10 seeds). Small scale (old graph) has only HH and EE; EH is in the g2 rerun. |
+| A10 | Attention without distance | PARTIAL (small scale; old graph; rerun queued on g2: `POC_sectors{,_rel}_A10_g2`) | `results/POC_sectors_{,rel_}A10_nodist/`, HH, eq.14, 10 seeds, vs `HH_hyper` in `POC_sectors_{,rel_}eq14` paired by seed. **Removing the distance term changes nothing.** Level inputs: leak-free −0.59 vs −0.30 (diff −0.29, Wilcoxon p 0.43, bootstrap CI [−0.45, +0.07]); best-test 2.24 vs 2.19 (p 0.32). Relative inputs: +0.70 vs +0.57 (diff +0.14, p 1.00, CI [−0.85, +0.44]); best-test 2.10 vs 2.04 (p 0.50). Not run on full NYSE. |
+| G1 | Hyperedges vs pairwise clique expansion | PARTIAL (small scale; old graph; rerun queued on g2: `HH_clique`, `EH_clique` arms in `POC_sectors{,_rel}_g2`). On the corrected graph most Wikidata hyperedges are already pairs, so the contrast will differ | Small scale, 10 seeds, exact eq.14 (`POC_sectors{,_rel}_eq14`): hyperbolic hyperedges − pairwise = −0.18 (level, Holm p 1.00) and +0.21 (relative, Holm p 1.00), both NO EVIDENCE. Best-test epoch: 2.19 vs 1.27 (level), 2.04 vs 1.98 (relative). Same with tuned settings (+0.12, Holm p 0.49). Pre-eq.14 gave the same picture. Full NYSE not run: clique arms are ~50× slower (P2). |
+| G2 | Hyperedge decomposition by size (Fig 3a) | PARTIAL (old graph; rerun queued on g2) | Old-graph partial run `results/POC_sectors_G2_decomp_large30/` is superseded (old graph) and should not be used. g2: HH and EH (EH = the paper's "Euclidean THINK", p853 Fig. 3 caption), 5 seeds, levels re-derived for the 558-edge graph: `large_first` 30 and 15, `small_first` 20 (`POC_sectors_G2_decomp_*_g2`). Paper axis: 500, 15, 9, 5, 3 on full NYSE (p853). |
+| G5 | No hyperedges | PARTIAL | Small scale HH_none / EE_none, 10 seeds. These arms use no graph, so the graph fix does not change them; rerun in g2 anyway for the matched comparison (with EH_none = EE_none, not a separate arm). |
+| G12 | Hub removal (Fig 3b) | TODO (queued on g2) | HH and EH, 5 seeds, drop hubs at degree ≥ 35, 24, 16, 10 on the 309-stock corrected graph (`POC_sectors_G12_hub*_g2`). The old plan (degrees 12, 8, 5) assumed the old graph. Paper x-axis: node degree 31, 28, 22, 16, 2 (p853 Fig. 3b), see the ambiguities section. |
 
 ## Correctness controls (prerequisite for trusting any result)
 
 | ID | Control | Status | Evidence / next step |
 |---|---|---|---|
-| C1 | Shuffled training labels collapse to chance | DONE (passes, with a caveat) | `results/POC_sectors_C1_shuffled/`, HH and EE, 5 seeds, level inputs, eq.14. **IC is zero**: HH −0.016 ± 0.006, EE +0.006 ± 0.004 (real labels: −0.010 and −0.007). Leak-free Sharpe HH −0.48 ± 0.80, EE +0.97 ± 0.44. Those are not on the 0.34 random-5 line, but the yardstick is wrong: the models pick a nearly fixed portfolio (HH picks only 14–30 distinct stocks over the year, and its five most-picked stocks are each picked on 72–237 of the 237 days), and a fixed random 5-stock portfolio has Sharpe 0.62 ± 0.92 (2000 draws), which contains both values. **Best-test-epoch Sharpe with shuffled labels is 2.23 (HH) and 2.14 (EE), the same as with real labels (2.19, 2.08).** The paper-protocol score carries no information about the labels. |
+| C1 | Shuffled training labels collapse to chance | PARTIAL (old-graph result: passes, with a caveat; old graph; rerun queued on g2: `POC_sectors_C1_g2`, HH and EH) | `results/POC_sectors_C1_shuffled/`, HH and EE, 5 seeds, level inputs, eq.14. **IC is zero**: HH −0.016 ± 0.006, EE +0.006 ± 0.004 (real labels: −0.010 and −0.007). Leak-free Sharpe HH −0.48 ± 0.80, EE +0.97 ± 0.44. Those are not on the 0.34 random-5 line, but the yardstick is wrong: the models pick a nearly fixed portfolio (HH picks only 14–30 distinct stocks over the year, and its five most-picked stocks are each picked on 72–237 of the 237 days), and a fixed random 5-stock portfolio has Sharpe 0.62 ± 0.92 (2000 draws), which contains both values. **Best-test-epoch Sharpe with shuffled labels is 2.23 (HH) and 2.14 (EE), the same as with real labels (2.19, 2.08).** The paper-protocol score carries no information about the labels. |
 | C2 | Changing data after time t leaves the prediction at t unchanged | DONE | `tests/test_controls.py` (0898b50): all 12 variants, `level` and `relative`. Features, mask, gt and base price mutated from the target day onward; predictions identical. Non-vacuity check included. |
 | C3 | Future hyperedge injection is rejected | P2 | Hypergraphs are static in RSR, so this doesn't apply until time-varying edges exist. |
 | C4 | Relabelling stock IDs permutes predictions consistently | DONE | `tests/test_controls.py`: node permutation and hyperedge reordering, all variants. |
@@ -64,42 +69,77 @@ Status words: **DONE**, **PARTIAL**, **RUNNING**, **TODO**, **BLOCKED** (cannot 
 
 ## What has been ruled out or established
 
+*All small-scale and full-NYSE rows here are old-graph results unless they say otherwise (see the note at the top). Rows marked "old graph" are to be re-checked after the g2 reruns; do not treat them as final.*
+
 | Finding | Status | Evidence |
 |---|---|---|
-| Implementation broken | ELIMINATED (mostly) | At the best test epoch we reproduce the paper's ordering and exceed its numbers (small scale 2.28, full NYSE 2.40). Every equation was reviewed and 216 tests pass, including correctness controls C2/C4/C5/C6. |
+| Implementation broken | ELIMINATED (mostly); **the hypergraph builder WAS wrong until `de20f8e`** | At the best test epoch we reproduce the paper's ordering and exceed its numbers (small scale 2.28, full NYSE 2.40; old graph, and a different Sharpe definition from the paper's). Every equation was reviewed and 216 tests pass, including correctness controls C2/C4/C5/C6. |
 | Paper's NDCG 0.86 shows skill | ELIMINATED | The authors' evaluator scores index numbers on the last day only. 43% of random models score ≥ 0.86 (`scripts/ndcg_bug_demo.py`). |
-| δ_hg difference means a different graph | ELIMINATED | It is a sampling effect: computed exactly, δ_hg = 1.5 (`scripts/hyperbolicity_sensitivity.py`). |
+| δ_hg difference means a different graph | **NOT ESTABLISHED (was ELIMINATED)** | Exact δ_hg = 1.5 on both the old and the corrected NYSE graph (`scripts/hyperbolicity_sensitivity.py`); paper 0.5 (p850 Table I). A 30-node sample gives δ ≤ 0.5 in 80% of draws on the corrected graph (was 90% on the old), so a small sample *could* give 0.5, but the paper never says δ_hg is sampled or what `s` is (Algorithm 1 takes `s` as input, [A854]), so that is an inference, not a finding. The Fig. 3b degree mismatch (31 vs our 114) leaves a different graph open. |
 | Largest RSR "industry" is a real industry | ELIMINATED | It is the `n/a` bucket (500 stocks). |
-| Leak-free THINK beats simpler arms | NOT SUPPORTED (small scale) | No Holm-significant comparison, v1 or v2 (`results/POC_sectors*/summary.md`). |
+| Leak-free THINK beats simpler arms | NOT SUPPORTED (small scale, old graph) | No Holm-significant comparison, v1 or v2 (`results/POC_sectors*/summary.md`). |
 | Models predict returns | NOT SUPPORTED | MSE ≥ predicting 0, IC ≈ 0, NDCG at random level, predictions collapsed (THINK spread 1.4%). POC_PRESENTATION §4b cause 3. |
 | THINK's relation/hyperbolic layers help on non-stock data | NOT SUPPORTED (R2) | Chickenpox: no relations < pairwise < Euclidean hyperedges < THINK in MSE (lower is better). The best arm only ties AR(4). |
-| Inputs at the Poincaré ball boundary hurt the hyperbolic model | ESTABLISHED | Radius ~0.95; 15% of inputs past 0.99 in 2017. The relative-input fix gives +1 Sharpe (not significant). |
+| Inputs at the Poincaré ball boundary hurt the hyperbolic model | ESTABLISHED (old graph; the mechanism does not depend on the graph) | Radius ~0.95; 15% of inputs past 0.99 in 2017. The relative-input fix gives +1 Sharpe (not significant). |
 | Validation and test years disagree | ESTABLISHED | Rank correlation between THINK's per-epoch 2016 and 2017 Sharpe is −0.63. |
-| The eq.14 formula error changes conclusions | ELIMINATED | Rerun done, 10 seeds, v1 and v2 (`POC_sectors{,_rel}_eq14/summary.md`). Leak-free THINK −0.56 → −0.30 (v1) and +0.48 → +0.57 (v2); best-test 2.28 → 2.19 and 2.13 → 2.04; pairwise −0.38 → −0.13 and +0.59 → +0.36. Paired Wilcoxon old vs new p ≥ 0.25 everywhere. **No Holm verdict changed: all NO EVIDENCE before and after.** |
-| Shuffled labels still give a high best-test Sharpe | ESTABLISHED (C1) | 2.2 with random labels vs 2.2 with real labels (5 seeds). The best-test-epoch number is selection on the test year, not skill. |
-| Attention distance term matters (A10) | NOT SUPPORTED | Removing it moves leak-free Sharpe by −0.29 (level) and +0.14 (relative); both p > 0.4. |
-| Equal-budget tuning rescues hyperbolic or hyperedges | NOT SUPPORTED | Tuned relative-input arms (`POC_sectors_rel_tuned_eq14`, 10 seeds, same grid per geometry): hyperbolic vs Euclidean +1.10, bootstrap CI [+0.21, +2.02] but Holm p 0.15; interaction +1.07, Holm p 0.059. All NO EVIDENCE. Tuned vs untuned per arm: no change is significant (all p ≥ 0.1). |
+| The eq.14 formula error changes conclusions | ELIMINATED (old graph; eq.14 ⊗ now matches p851, ⊙ and softmax inferred) | Rerun done, 10 seeds, v1 and v2 (`POC_sectors{,_rel}_eq14/summary.md`). Leak-free THINK −0.56 → −0.30 (v1) and +0.48 → +0.57 (v2); best-test 2.28 → 2.19 and 2.13 → 2.04; pairwise −0.38 → −0.13 and +0.59 → +0.36. Paired Wilcoxon old vs new p ≥ 0.25 everywhere. **No Holm verdict changed: all NO EVIDENCE before and after.** |
+| Shuffled labels still give a high best-test Sharpe | ESTABLISHED (C1, old graph; a graph-independent property, recheck on g2) | 2.2 with random labels vs 2.2 with real labels (5 seeds). The best-test-epoch number is selection on the test year, not skill. |
+| Attention distance term matters (A10) | NOT SUPPORTED (old graph) | Removing it moves leak-free Sharpe by −0.29 (level) and +0.14 (relative); both p > 0.4. |
+| Equal-budget tuning rescues hyperbolic or hyperedges | NOT SUPPORTED (old graph; HH vs EE, not the paper's HH vs EH; α grid stopped at the top value 10 for both geometries, so g2 widens it to 100) | Tuned relative-input arms (`POC_sectors_rel_tuned_eq14`, 10 seeds, same grid per geometry): hyperbolic vs Euclidean +1.10, bootstrap CI [+0.21, +2.02] but Holm p 0.15; interaction +1.07, Holm p 0.059. All NO EVIDENCE. Tuned vs untuned per arm: no change is significant (all p ≥ 0.1). |
 
 ## Runs in flight
 
-Log: `results/logs/driver.log`. Status as of 2026-09-29 ~9:00.
+Log: `results/logs/driver.log`. Queue plan as of 2026-09-29 ~11:20. **Everything below runs on the corrected hypergraph (cache v2) and writes to new `*_g2` folders.** The earlier queues (1, 2 and the old queue 3 `R5_eq14`) used the old graph and are superseded; queue 1 finished before the fix, and queue 2 (old-graph C1/A10 done, G2 partial) is replaced by the g2 queues.
 
-1. **Queue 1** (`scripts/queues/phase1_gpu.sh`): DONE (7:36). eq.14 reruns, eq.14 tuning (HH lr 1e-3, α 10; EE lr 3e-3, α 10, both chosen at the top of the α grid) and the tuned 10-seed rerun `results/POC_sectors_rel_tuned_eq14/`. `POC_sectors_rel_tuned/` is superseded (pre-eq.14).
-2. **Queue 2** (`scripts/queues/phase1_gpu_2.sh`), started 7:37, on 309 stocks with eq.14:
-   - C1 shuffled: DONE. A10 (level and relative): DONE.
-   - G2 decomposition (`large_first` 30 and 15, `small_first` 5; HH, 5 seeds): RUNNING, `large_first` 30 at seed 2.
-   - G12 hub removal (degree 12, 8, 5; HH, 5 seeds): waiting.
-   - R7 NASDAQ 3-class (25 seeds × HH, EH, EE; macro and micro F1) → `results/E11_clf/`: waiting.
-   - Levels were rescaled to the 309-stock graph (largest edge 47, max degree 27); see the comments in the script.
-3. **Queue 3** (`scripts/queues/phase1_gpu_3.sh`) waits for "phase1 queue 2 done", then runs the full-NYSE paper protocol with eq.14 → `results/R5_eq14/`: 25 seeds THINK (HH) and EH, 10 seeds EE and HE, 100 epochs, two parallel workers. It doesn't run `aggregate.py`.
-4. **R8 baselines**: another agent is building the baseline queue (code changes in `src/hypershift`). Nothing is running yet.
+1. **g2 small** (`scripts/queues/phase1_g2_small.sh`, started 11:18), 309 stocks, 558 edges, exact eq.14, in order:
+   - a. HH, EE, EH × hyper/clique/none, 10 seeds, 30 epochs, level and relative inputs → `POC_sectors_g2/`, `POC_sectors_rel_g2/`.
+   - b. Equal-budget tuning HH/EE/EH, relative inputs, lr ∈ {5e-4, 1e-3, 3e-3} × α ∈ {1, 10, 30, 100} (α widened to 100 because the old tuning ended at the top value 10), 3 seeds, chosen on validation → `POC_sectors_rel_tuned_g2/`; tuned 10-seed rerun.
+   - c. A10 (HH, level and relative, 10 seeds); C1 shuffled labels (HH and EH, 5 seeds); G2 decomposition and G12 hub removal for **HH and EH**, 5 seeds.
+2. **g2 clf** (`phase1_g2_clf.sh`): R7 NASDAQ 3-class, 25 seeds × HH, EH, EE → `results/E11_clf_g2/`. Waits for "g2 small done".
+3. **g2 full NYSE** (`phase1_gpu_3.sh`): R5_g2, paper protocol (norm paper, 100 epochs), **25 seeds THINK (HH) and EH, 10 seeds EE and HE** → `results/R5_g2/`, two parallel workers. Waits for "g2 clf done". Does not run `aggregate.py`.
+4. **R8 baselines** (`phase1_gpu_r8.sh`): RSR-I and STHGCN, another agent's queue, after the small-scale g2 queue.
+
+## Paper-audit findings (2026-09-29, `docs/phase1/paper_audit.md`)
+
+Audit of our docs and code against the paper: 180 claims, 109 confirmed, 21 contradicted, 50 not in the paper. Docs were corrected in this pass (plan Part 0, HANDOFF, POC_PRESENTATION, R_feasibility, R2_chickenpox, this tracker); only the graph builder needed a code fix.
+
+| ID | Finding | Status | Where |
+|---|---|---|---|
+| PA1 | **Wiki hyperedges: first-order relations are stars, second-order are pairs** ([A854] Sec. B). Old builder starred every channel. Channel order recovered from RSR `connections.json` (NYSE 3 of 32 channels first-order, NASDAQ 7 of 42; `INFERRED (not in paper)` reconstruction) | Code DONE (`de20f8e`); reruns queued on g2 | All graph-dependent rows above |
+| PA2 | **The paper's Euclidean ablation is EH (Euclidean temporal conv + hyperbolic attention), not EE.** p852 Sec. V.A, Table II "TCONV + DHHAN", p853 Fig. 3 caption. The paper has no EE and no HE. Our small-scale "hyperbolic vs Euclidean" results are HH vs EE | Docs corrected; EH arms in g2 small and R5_g2 | A5, A9, G2, G12, POC_PRESENTATION |
+| PA3 | **Eq. 14 is legible: `aᵀ ⊗ (u_j ⊕ z_i) ⊙ d_B(u_j, z_i)`** (p851). ⊗ = eq. 8 matvec (not eq. 7), ⊙ = eq. 7, which is ill-formed as printed (p850). Softmax not printed. Code `eq14` implements the ⊗ form; ⊙ as plain product and the softmax are `INFERRED (not in paper)` | Docs corrected; ⊙ unresolved (needs the authors) | Plan 0.2, D8, HANDOFF §4 |
+| PA4 | **Sharpe as the paper writes it:** `E[R_a − R_f]/std[R_a − R_f]`, top-k, no annualization (p852 Sec. IV-B). Ours: top-5, ×√252, R_f = 0 (RSR [1] code). k, R_f unstated | Docs corrected; code unchanged. **TODO/DECISION:** also report an unannualized Sharpe next to ours? Whether the paper annualized is unknown | Ground rules, POC_PRESENTATION §2–3 |
+| PA5 | NDCG-evaluator inference rests on "Following [1]" (RSR, p852) plus shared authors/data, not on [38] (cited only for hypergraph construction) | Docs corrected | HANDOFF §6, POC_PRESENTATION §7 |
+| PA6 | SCD (Sørensen–Dice) merge sentence is legible, not garbled: "merged them until no two pairs had an SCD score lower than a threshold" ([A854] Sec. B). Threshold unspecified, rule reads inverted. `pygt.py` skips the merge: a deviation from a stated step | Docs corrected; **DECISION** for R1/R3: implement a merge with a chosen threshold, or keep skipping | R1, R2, R3 |
+| PA7 | R4: the paper says it built industry and Wiki hyperedges for CSE and TSE ([A854] Sec. B) | Docs corrected; R4 stays BLOCKED (no price data) | R4, R6 |
+| PA8 | Eq. 10 as printed uses the unnormalized `⟨x, z_k⟩` (p850); ours divides by `‖z_k‖` (HNN++ [25]). Only reparametrizes `z_k`; low impact | Docs corrected; code unchanged. **DECISION:** add a paper-literal variant? | Plan 0.2 |
+| PA9 | Default hyperparameters come from the STHAN-SR/RSR code; the paper states none (pp849–854) | Docs corrected | Plan Global Constraints |
+| PA10 | R1 baseline numbers: seven of nine baselines are 2.03–2.06, STHGCN 1.03, RSR-I "−" (p852 Table II) | Docs corrected | R1, `R_feasibility.md` |
+| PA11 | Fig. 3b x-axis starts at node degree 31; our corrected NYSE graph has max degree 114 (old graph 37) | Open, see ambiguities | G12 |
+| PA12 | The repo PDF has no p854 (pp849–853 only): refs 17–38, Algorithm 1 and the appendices are cited from `data/raw/icdm22-think.pdf` p854 | Open, see ambiguities | All `[A854]` cites |
+| PA13 | The 500-stock "industry" is the n/a bucket: our identification, not stated in the paper | Docs relabelled `INFERRED` | HANDOFF §6 |
+
+## Paper ambiguities (asked user)
+
+Things the paper does not settle. None is guessed at in code; where we chose, the choice is labelled `INFERRED (not in paper)`.
+
+| # | Ambiguity | Location | What is needed |
+|---|---|---|---|
+| U1 | **p854 is missing from the repo PDF** (`05-Hypershift-OA.pdf` ends at p853, mid-reference list). Appendices, Algorithm 1 and refs 17–38 are read from `data/raw/icdm22-think.pdf` p854, which shows the same IEEE Xplore stamp as the repo copy. | Repo PDF | User: confirm that `data/raw/icdm22-think.pdf` p854 is acceptable as the source for every `[A854]` cite, or supply p854 |
+| U2 | **Eq. 7's ⊙ is ill-formed**: `x ⊙ y = tan((‖xy‖/y) arctan⁻¹(‖y‖)) ‖xy‖/‖y‖` (`tan`/`arctan` rather than `tanh`/`artanh`; a bare `y` in a denominator). Eq. 14 uses ⊙, so it cannot be implemented literally. | p850 eq. 7, p851 eq. 14 | The authors' code or an erratum. Our plain-product reading is `INFERRED` |
+| U3 | **± is never defined** (std, standard error, or CI?). Every ± in Table II is e-3/e-4 (THINK NYSE 1.18 ± 4e-3). | p852 Table II | The authors |
+| U4 | **EGCN-H Risk column prints 0.39 ± 8e-2**, while every other ± is e-3/e-4: probable typo. | p852 Table II | Confirm typo or leave as printed |
+| U5 | **Fig. 3b's y-axis is clipped**: THINK's curve leaves the frame near node degree 31, so its starting value (>1.15) is not readable. | p853 Fig. 3b | A copy with the full axis, or the underlying numbers |
+| U6 | **Fig. 3b's x-axis starts at node degree 31, but under the literal pairwise reading our NYSE max degree is 114 (37 under the old all-star reading).** Neither matches; the paper does not say how node degree is counted, and Fig. 3a/3b show 9–10 points but only 5 labelled ticks. | p853 Fig. 3a/3b; graph from `de20f8e` | Underlying data or the authors' degree definition and hub-removal schedule |
+| U7 | k in "top-k" and the value of R_f are not given; no annualization is stated. | p852 Sec. IV-B | The authors |
+| U8 | δ_hg: eq. 2 (p850) says "minimal value greater than zero", [A854] eq. 19 says "smallest non-negative"; Algorithm 1 takes `s` as an input and no value is given; whether δ_hg is sampled is not stated. δ_rel's features are "the temporal features" ([A854] App. A), not specified. | p850 eq. 2; [A854] Alg. 1, App. A | The authors |
 
 ## Decisions pending
 
 | Decision | Options | Cost |
 |---|---|---|
 | Non-stock tasks R1–R3: worth doing? **In progress** (R2 done; R3 and R1 next; another agent is on the PyG-T loaders). Original options: | The paper's numbers sit at or near a constant predictor. Protocol options: leak-free split vs the PyG-T convention (run both?), windmill hyperedge cut (threshold vs top-k), tennis target (log1p vs raw) | ~25–35 eng-h, <10 GPU-h in total |
-| Full-NYSE R5 eq.14 rerun | **Decided:** 25 seeds HH and EH, 10 seeds EE and HE (queue 3) | HH 21.6 s/epoch → 36 min/seed; EH 29 min; EE 16 min. Roughly 25 × (36 + 29) min + 20 × 16 min ≈ 32 GPU-hours (two workers share the GPU, so wall time may differ). |
+| Full-NYSE R5 rerun on the corrected graph (`R5_g2`) | **Decided:** 25 seeds HH and EH, 10 seeds EE and HE (g2 full queue) | HH 21.6 s/epoch → 36 min/seed; EH 29 min; EE 16 min. Roughly 25 × (36 + 29) min + 20 × 16 min ≈ 32 GPU-hours (two workers share the GPU, so wall time may differ). |
 
 ## Blockers
 
@@ -114,3 +154,4 @@ Log: `results/logs/driver.log`. Status as of 2026-09-29 ~9:00.
 - 2026-09-29: Added `poc_sectors --set` overrides and queue 2 (e35c6cb); launched it waiting on queue 1.
 - 2026-09-29: R2 chickenpox done (7b9c388). The paper's number is worse than a mean predictor; in our runs relations and hyperbolic geometry both hurt MSE; AR(4) is unbeaten.
 - 2026-09-29: eq.14 reruns, tuning and tuned rerun finished. eq.14 did not change any verdict (all NO EVIDENCE). Tuning does not rescue hyperbolic. C1 and A10 done: shuffled labels still give best-test Sharpe 2.2, so the paper-protocol number is selection, not skill; the distance term has no effect. G2 running; G12 and R7 waiting; queue 3 (R5_eq14, 25 seeds) waits on queue 2.
+- 2026-09-29 (`de20f8e`, audit, R9): paper audit found the Wikidata hyperedges were built wrongly (second-order relations must be pairs). Fixed: NYSE 312 → 4350 hyperedges, max degree 37 → 114; 309-stock graph 73 → 558. **All stock results before this used the old graph**; graph-dependent rows set to PARTIAL and reruns queued on g2 (small scale HH/EE/EH, tuning with α up to 100, A10, G2/G12 HH+EH, C1, R7, R8, then full-NYSE R5_g2). Also corrected in the docs: the paper's Euclidean arm is EH, not EE; eq.14 notation (⊗ eq. 8, ⊙ eq. 7 ill-formed); Sharpe as the paper writes it; SCD merge is legible. R9 recomputed on the corrected graph: δ_hg NYSE 1.5, NASDAQ 1.5 (paper 0.5, 1.0); the "sampling explains the gap" claim is downgraded to NOT ESTABLISHED.

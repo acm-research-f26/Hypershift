@@ -4,6 +4,8 @@
 
 Labels: **[V]** = verified by reading the source or running a probe; **[I]** = inferred, needs a decision or a check.
 
+*Corrections 2026-09-29 (paper audit, `docs/phase1/paper_audit.md`):* the Sorensen-Dice sentence in [A854] Sec. B is legible, not garbled (R2 point 2); the paper says it built industry and Wiki hyperedges for the Chinese exchange data too (R4); the R1 baseline range is 2.03-2.06 for **seven** of nine baselines, with STHGCN at 1.03 and RSR-I "-" (p852 Table II). Citation key: `pNNN` = page of `05-Hypershift-OA.pdf`; `[A854]` = page 854 of `data/raw/icdm22-think.pdf`.
+
 Sources:
 - **Paper**: Agarwal, Sawhney et al., ICDM 2022, https://tylersnetwork.github.io/papers/icdm22-think.pdf. Six pages plus a one-page appendix (proceedings pp. 849-854). Hyperparameters, splits, lookbacks and scaling are **not stated anywhere** in it [V].
 - **Official code**: https://github.com/shivamag125/ICDM22-THINK (empty, per CLAUDE.md).
@@ -17,7 +19,7 @@ Sources:
 |---|---|---|---|---|---|
 | R2 | Chickenpox MSE (1.09) | **Yes** [V]. 220 KB JSON on GitHub raw, no torch-geometric-temporal needed | Low: data and loader defaults known; lags, split, hypergraph threshold and MSE averaging inferred | 6-10 h eng, <0.5 GPU-h (CPU fine, 20 nodes) | **Do first.** Report next to a mean predictor (1.047) and an AR(4) (0.72) |
 | R3 | Windmill MSE (1.05) | **Yes** [V]. 47 MB JSON via the Box link in the PyG-T loader (graphmining.ai mirror is dead) | Low: as R2, and the graph is complete so the hyperedge threshold is unspecified and decisive | 6-10 h eng (after R2), ~2-4 GPU-h [I] | **Do second.** Series has ~zero autocorrelation: any model lands near 1.02 |
-| R1 | Twitter tennis MSE (0.58) | **Yes** [V]. ~2 MB JSON per event on GitHub raw; Table I matches `rg17` | Low-medium: snapshots and target are in the loader; feature mode, split, window, scale inferred | 10-16 h eng, ~2-4 GPU-h [I] | **Do third.** Paper baselines (2.05) are 5x worse than a constant predictor (0.42): the paper's scale is doubtful |
+| R1 | Twitter tennis MSE (0.58) | **Yes** [V]. ~2 MB JSON per event on GitHub raw; Table I matches `rg17` | Low-medium: snapshots and target are in the loader; feature mode, split, window, scale inferred | 10-16 h eng, ~2-4 GPU-h [I] | **Do third.** Seven of nine paper baselines (2.03-2.06) are 5x worse than a constant predictor (0.42), STHGCN (1.03) is 2.5x worse: the paper's scale is doubtful |
 | R7 | NASDAQ 3-class F1 (0.49) | **Yes** (RSR data already local) | Medium: STHGCN repo shows tertile labels and macro+micro F1 [V]; the paper text does not | 3-6 h eng, ~6-12 GPU-h for 25 seeds x {HH,EH,EE} [I] | **Do fourth.** Code exists, never run. Fix the mismatches below first |
 | R8 | STHGCN and RSR-I baselines | **Code yes, data partly.** RSR: code public, our RSR data already local. STHGCN: repo unfinished, data link 404 | RSR-I: high. STHGCN: medium (architecture readable, protocol not) | RSR-I 8-12 h eng, ~3 GPU-h; STHGCN 12-20 h eng, ~5-8 GPU-h [I] | **Do fifth.** Reimplement in PyTorch on our data; do not port the TF1 / legacy code |
 | R4 | China stock risk MSE (0.32) | **No.** No public dataset with this shape found | Very low: dataset and target both undefined | n/a (weeks for a proxy) | **BLOCKED**, like R6 TSE. Proxy only if the user wants it |
@@ -25,7 +27,7 @@ Sources:
 ## Biggest surprises
 
 1. **The PyG-T windmill series has essentially zero temporal autocorrelation as stored** (lag-1 -0.002, lag-24 -0.004 [V]), and chickenpox has lag-1 autocorrelation -0.51 [V]. On standardized targets the mean predictor scores 1.02 (windmill) and 1.047 (chickenpox). The paper's THINK numbers (1.05, 1.09) are at or *above* the mean predictor, and all listed baselines are worse. R2 and R3 test "not worse than a constant", not skill.
-2. **The tennis baselines (~2.05) are 5x worse than a constant predictor** (0.42 on `rg17`, 80/20 split) [V]. The paper's DTT scale is not the PyG-T default scale, or the baselines were run badly. THINK's 0.58 is also above the constant.
+2. **Seven of the nine tennis baselines (2.03-2.06) are about 5x worse than a constant predictor** (0.42 on `rg17`, 80/20 split) [V]. STHGCN is 1.03 (2.5x worse) and RSR-I has no DTT entry ("-"), all p852 Table II. The paper's DTT scale is not the PyG-T default scale, or the baselines were run badly. THINK's 0.58 and TCONV+DHHAN's 0.61 are also above the constant.
 3. **The STHGCN repo answers the R7 threshold question** that our plan (Task 18) calls "not published": the default `label_proportion = [1,1,1]` means tertiles of pooled training returns, and the evaluator reports both macro and micro F1 [V]. Our `clf.py` already does tertiles and macro-F1. But that repo is an S&P500 pipeline (423 stocks, 1652 days, lookback 50), not the RSR NASDAQ data.
 4. **The STHGCN repo does not run as shipped**: 423 nodes and lookback 50 hard-coded, undefined variables in `evaluator.py`, data on a Google Drive link that now ends in 404 [V].
 5. **The windmill graph is complete**: 101,761 edges = 319^2, all ordered pairs plus self-loops [V]. "Neighbourhood hyperedges" only make sense after an edge-weight cut the paper does not give.
@@ -42,7 +44,7 @@ Sources:
 - Table I: 522 timesteps, 20 nodes, δ_hg 1.5, δ_rel 0.190. Off by one from 521 rows; immaterial.
 
 **2. How THINK is applied.**
-- Hypergraph (Appendix B, p. 854) [V]: for each node v take neighbours N(v), form {(v, N(v))}, then merge pairs by Sorensen-Dice coefficient (SCD) "until no two pairs had an SCD score lower than a threshold", following [37] (Sun et al., WSDM 2021). The sentence is garbled: merging until no pair is below a threshold would merge everything. Most likely intended: merge while SCD is above a threshold [I]. The threshold is not given [V]. With 20 nodes there are at most 20 hyperedges before merging.
+- Hypergraph ([A854] Sec. B, "DTT, CPox, WMill") [V]: for each node v take neighbours N(v), form {(v, N(v))}, then merge pairs by Sorensen-Dice coefficient (SCD) "until no two pairs had an SCD score lower than a threshold", following [37] (Sun et al., WSDM 2021). **The sentence is legible, not garbled.** What is missing is the threshold value, and the stated stopping rule reads inverted: taken literally, merging continues until every pair's SCD is at least the threshold, which does not describe a similarity-based merge. Our reading, "merge while SCD is above a threshold", is `INFERRED (not in paper)`. With 20 nodes there are at most 20 hyperedges before merging. Note that our implementation (`pygt.py`) skips the merge entirely: that is a deviation from a stated step, not the resolution of a garbled one.
 - Features, lookback, horizon, split, scaling: **not in the paper** [V].
 - PyG-T loader defaults [V, from source]: `lags=4`, target = value at the next week, one channel, chronological `temporal_signal_split(train_ratio=0.8)` in the examples.
 - THINK's temporal conv needs tau = n*K; with 4 lags that means K=2, n=2 [I].
@@ -94,7 +96,7 @@ In the row order stored, the series behaves like i.i.d. noise. Either the JSON's
 
 ---
 
-## R1: Twitter tennis, DTT (paper MSE 0.58, baselines 2.03-2.06)
+## R1: Twitter tennis, DTT (paper MSE 0.58; baselines 2.03-2.06 for seven of nine, STHGCN 1.03, RSR-I "-")
 
 **1. Data.**
 - Paper cites [18] Beres et al. 2019 (Applied Network Science), "Node embeddings in dynamic graphs" [V]. The PyG-T loader `TwitterTennisDatasetLoader` takes `event_id` in {`rg17`, `uo17`} (Roland-Garros 2017, US Open 2017).
@@ -103,7 +105,7 @@ In the row order stored, the series behaves like i.i.d. noise. Either the JSON's
 - Each snapshot has `index, edges, weights, y, X`: about 89 edges among 1000 nodes at t=0 (sparse), `X` is (1000, 2) raw degree and transitivity, `y` is (1000,) next-snapshot mention counts [V].
 
 **2. How THINK is applied.**
-- Hypergraph: neighbourhood + Dice merge (Appendix B) [V]. The graph is dynamic, so one hypergraph per snapshot [I] (the paper says only that DTT is "dynamic"). DHHAN is applied per snapshot (eq. 16), so this is compatible, but our `Hypergraph` class is static; a per-snapshot list is needed.
+- Hypergraph: neighbourhood + Dice merge ([A854] Sec. B) [V]. The graph is dynamic, so one hypergraph per snapshot [I] (the paper says only that DTT is "dynamic"). DHHAN is applied per snapshot (eq. 16), so this is compatible, but our `Hypergraph` class is static; a per-snapshot list is needed.
 - Loader defaults [V]: `feature_mode="encoded"` = 5 one-hot bins of log-degree + 11 one-hot bins of transitivity = 16 features (or raw 2, or identity); `target_offset=1`; target `y = log(1 + y)`; all 1000 nodes.
 - The natural task is one snapshot in, one out, so THINK's temporal conv has no obvious lookback. The paper gives none [V]; a window of k snapshots is an inference [I].
 
@@ -115,7 +117,7 @@ In the row order stored, the series behaves like i.i.d. noise. Either the JSON's
 | Per-node training-mean | 0.307 (0.326) |
 | Persistence | 0.240 (0.228) |
 
-The paper's baselines (2.03-2.06 for eight of nine) are 5-10x worse than any constant; THINK's 0.58 is worse than a constant. The setup differs (a target without log, another split, or mis-run baselines). Near-identical 2.04-2.06 across very different architectures suggests a shared failure such as a collapsed output on a differently-scaled target [I]. **Do not treat 0.58 as a reproducible target** until the setup is pinned; report our result against the constant and persistence references.
+The paper's baselines (2.03-2.06 for seven of nine; STHGCN 1.03; RSR-I not reported on DTT; p852 Table II) are 2.5-5x worse than the constant 0.42; THINK's 0.58 is worse than a constant. The setup differs (a target without log, another split, or mis-run baselines). Near-identical 2.03-2.06 across seven very different architectures suggests a shared failure such as a collapsed output on a differently-scaled target [I]. **Do not treat 0.58 as a reproducible target** until the setup is pinned; report our result against the constant and persistence references.
 
 **4. Unspecified, to infer:** rg17 vs uo17, feature mode, target transform, offset, split (80/20 leaves only 24 test snapshots), temporal window, Dice threshold, per-snapshot hypergraphs, MSE averaging.
 
@@ -208,7 +210,7 @@ THINK's Table II baselines: GConvGRU, EGCN-O, DCRNN, TGCN, ST-TGCN, DyGrAE (PyG-
 
 **3. Feasibility.** BLOCKED as an exact reproduction. A proxy is possible, for example free CSI 300 constituent daily bars (baostock / akshare / tushare; not probed [I]) with target = log realized volatility over the next 5-20 days. That would be our own task, and a comparison with 0.32 would be meaningless. Record R4 as BLOCKED (same status as R6 TSE) unless the authors share data. A proxy costs about 10-16 engineering hours plus data cleaning; only worth it if the user wants "does hyperbolic help on volatility" as a separate question.
 
-**4. Unspecified:** everything (universe, dates, features, target formula, horizon, scaling, split; RSR-style industry/Wiki hyperedges do not exist for Chinese stocks).
+**4. Unspecified:** universe, dates, features, target formula, horizon, scaling, split. **Hyperedges:** the paper says it built them for the Chinese exchanges too: [A854] Sec. B, "Stock Datasets: NYSE, NASDAQ, TSE and CSE ... (i) industry hyperedges and (ii) Wiki corporate hyperedges". (An earlier version of this file said RSR-style hyperedges "do not exist" for Chinese stocks; that was wrong as a statement about the paper. Whether the industry and Wikidata source data are publicly available for those 85 stocks is a separate question we have not checked.)
 
 ---
 
@@ -220,7 +222,7 @@ Across R1-R4, R7, R8 the paper gives none of the following [V: read the whole PD
 2. Train/validation/test splits for DTT, CPox, WMill, CSE, and whether model selection used validation or test.
 3. Feature scaling for the non-stock tasks. PyG-T loaders standardize over the full series, which leaks the future.
 4. Lookback and horizon for the regression tasks (PyG-T defaults 4, 8 and 1 are only a guess).
-5. The Dice merge threshold, the direction of the inequality, and how neighbourhoods are defined on weighted or complete graphs (windmill).
+5. The Dice merge threshold (the stopping rule as printed, "until no two pairs had an SCD score lower than a threshold", reads inverted; [A854] Sec. B), and how neighbourhoods are defined on weighted or complete graphs (windmill).
 6. Whether the DTT hypergraph is rebuilt per snapshot.
 7. The DTT target transform (log1p in the loader) and the MSE scale.
 8. Up/down/neutral thresholds and F1 averaging for R7, the NASDAQ lookback, and whether the setup is RSR's split rather than STHGCN's rolling phases.

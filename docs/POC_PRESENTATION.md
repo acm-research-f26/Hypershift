@@ -1,10 +1,18 @@
 # THINK: Small-Scale Reproduction (309 NYSE stocks)
 
-*Team update, 2026-09-28. Scope: the small-scale test only. The full-scale study is paused.*
+*Team update, 2026-09-28; corrections added 2026-09-29. Scope: the small-scale test only. The full-scale study is paused.*
+
+> **Read this first (2026-09-29).**
+> 1. **Every result in this document used the pre-fix hypergraph** (a star hyperedge for every Wikidata relation channel; 73 hyperedges on the 309 stocks). The paper builds second-order relations as pairs ([A854] Sec. B), and commit `de20f8e` fixed the builder (309-stock graph: now 558 edges). **Reruns on the corrected graph are queued on the second GPU queue ("g2")**; until they finish, all numbers below are old-graph numbers. See "Correction 2" in §4e.
+> 2. **Our small-scale "hyperbolic vs Euclidean" contrasts compare HH with EE. That is not the paper's comparison.** The paper's Euclidean model is Euclidean temporal convolution + hyperbolic hypergraph attention (our EH; "TCONV + DHHAN", p852 Table II and Sec. V.A). The paper has no fully-Euclidean model.
+> 3. **Our Sharpe is not the paper's formula.** The paper writes `E[R_a - R_f] / std[R_a - R_f]` with top-k and no annualization (p852 Sec. IV-B); ours is top-5, × √252, no R_f (RSR [1] code).
+>
+> Citations: `pNNN` = page of `05-Hypershift-OA.pdf` (pp849-853); `[A854]` = page 854 (appendices, Algorithm 1, refs 17-38) of `data/raw/icdm22-think.pdf`.
 
 ## 1. One-slide summary
 
-- We reimplemented **THINK** (Temporal Hypergraph Hyperbolic Network, ICDM 2022) from scratch. The authors' code repo is empty.
+- We reimplemented **THINK** (Temporal Hypergraph Hyperbolic Network, ICDM 2022) from scratch. The authors' code repo is empty (p852 footnote 1 names the URL; the emptiness is our own check).
+- **All numbers in this document are on the pre-fix hypergraph; corrected-graph reruns are queued (see the note at the top and §4e).**
 - On a 309-stock NYSE subset, **if the reported epoch is the one with the best 2017 (test) score, we reproduce the paper's story. The authors' earlier code allows that choice: it prints the test score every epoch and has no selection rule**:
   - THINK comes out best, at Sharpe **2.28**.
   - Hyperedges beat pairwise edges, which beat no relations.
@@ -18,16 +26,16 @@
 1. **Data:** RSR NYSE daily prices, 2013–2017.
    - Per stock-day features: the 5/10/20/30-day moving averages of close, and the close, each divided by the stock's max price.
    - The model sees 16 days × 5 features and predicts the next day's return.
-2. **Hypergraph** (paper appendix B):
-   - one hyperedge per industry;
-   - plus Wikidata company-relation hyperedges (a company and all companies linked to it by the same relation).
+2. **Hypergraph** ([A854] Sec. B, "Stock Datasets"):
+   - industry hyperedges (stocks in the same industry);
+   - plus Wikidata corporate hyperedges. First-order relation: "a hyperedge of a source stock and a set of target stocks related to it via the same Wikidata relation". Second-order relation (`X -R2-> Z <-R3- Y`): "pairwise in nature", i.e. a 2-node hyperedge.
 3. **Model** (paper eq. 17): `ŷ = log₀(TConv₂(DHHAN(TConv₁(exp₀(X))), G))`
    - `exp₀` maps the features onto the Poincaré ball (hyperbolic space).
    - A hyperbolic temporal convolution (β-concatenation + Poincaré fully-connected layer) runs 16 days → 4 steps → 1.
    - DHHAN (distance-aware hyperbolic hypergraph attention) mixes information between stocks that share a hyperedge.
 4. **Trading rule and metric:**
-   - Each test day, buy the top 5 predicted stocks at the close and sell at the next close.
-   - Sharpe = mean / std of daily returns × √252, with no risk-free rate and no costs.
+   - **Paper (p852 Sec. IV-B):** "Following [1], we adopt a daily-buy-hold trading strategy": rank all stocks by predicted return ratio, buy the top-k, sell at the next close. `SR = E[R_a - R_f] / std[R_a - R_f]`, where R_f is "a risk-free return". **k and R_f are not given, and there is no √252.**
+   - **Ours (RSR [1] / STHAN-SR code definition; that the paper uses it is `INFERRED (not in paper)`):** buy the top 5 predicted stocks each test day, Sharpe = mean / std of the daily top-5 return × √252, R_f = 0, no costs. Our Sharpe values are therefore not directly comparable to the paper's 1.18.
 5. **Paper's NYSE numbers:** THINK Sharpe **1.18**, TCONV+DHHAN 1.14, STHGCN 1.10.
 
 ## 3. What we did in the small-scale test
@@ -38,16 +46,16 @@
 | Train / val / test | 2013–15 / 2016 / 2017 | same | Same |
 | Features | MA5, MA10, MA20, MA30, close; 16-day window | same | Same |
 | Price normalization | ÷ max over **all** years (includes the test year) | ÷ max over **training years only** | **Different** (theirs peeks at the future) |
-| Hyperedges | industry + Wikidata relations | same construction, restricted to the 309 stocks (73 hyperedges) | Same method, smaller graph |
+| Hyperedges | industry + Wikidata relations; second-order relations are pairs ([A854] Sec. B) | **Pre-fix builder (all results here): a star for every Wikidata channel**, restricted to the 309 stocks (73 hyperedges). Corrected builder (`de20f8e`, reruns queued): first-order stars, second-order pairs, 558 edges | **Different for every result here** (fixed since) |
 | Hyperbolic temporal conv | eq. 9–12 | eq. 9–12, kernel 4 | Same |
 | DHHAN | eq. 13–15 | eq. 13–15 | Same (see the next row) |
-| Attention formula (eq. 14) | `α = aᵀ ⊗ (u ⊕ z) ⊙ d(u, z)` | **Results in §4 used** `aᵀ·(u ⊕ z)·d(u, z)`: a plain dot product instead of the Möbius product ⊗ (`tanh(aᵀ·log₀(·))`). **Now corrected to the exact formula; THINK arms rerun (§4d), same conclusions** | **Was slightly different, now fixed** |
+| Attention formula (eq. 14, p851) | `α = aᵀ ⊗ (u ⊕ z) ⊙ d_B(u, z)`; ⊗ is the eq. 8 Möbius matvec, ⊙ is eq. 7 (ill-formed as printed, p850); no softmax printed | **Results in §4a-4c used** `aᵀ·(u ⊕ z)·d(u, z)`. Now `tanh(aᵀ·log₀(u ⊕ z))·d(u, z)` (the ⊗ of eq. 8), THINK arms rerun (§4d), same conclusions. The ⊙ as a plain product and the softmax over a node's hyperedges are `INFERRED (not in paper)` | **⊗ now matches; ⊙ and softmax are our reading** |
 | Loss | not stated | MSE + pairwise ranking loss (their earlier STHAN-SR code) | Same as their code |
 | Hyperparameters | not stated | window 16, hidden 32, lr 1e-3, weight decay 5e-4, ranking weight 1 (their earlier code) | Same as their code |
 | Batch / epochs | 1 day per step; ~100 epochs (earlier code) | **8 days** per step; **max 30 epochs**, early-stopped (~17 in practice) | **Different** (compute budget) |
 | Hyperparameter tuning | unknown | **none** | **Different** |
 | Epoch selection | **not stated in the paper**. Their earlier STHAN-SR code prints both the 2016 and 2017 scores every epoch, with no selection rule | **both** reported: best test epoch, and epoch chosen on validation | Both shown |
-| Trading rule and Sharpe | top-5 daily, mean/std × √252 | same | Same |
+| Trading rule and Sharpe | top-k daily (k unspecified); `E[R_a - R_f]/std[R_a - R_f]`, no √252 (p852 Sec. IV-B) | top-5 daily, mean/std × √252, R_f = 0 (RSR [1] code) | **Different definition** (k, R_f, annualization) |
 | NDCG | computed incorrectly in their code (see §7) | standard NDCG@5 | **Different** (fixed) |
 | Seeds | 25 runs ("mean of 25 runs") | 10 per arm | Fewer |
 
@@ -65,7 +73,7 @@
 - THINK: hyperbolic + hyperedges.
 - Same model with pairwise edges: each hyperedge split into all its stock pairs.
 - Same model with no relations.
-- All three again with Euclidean layers instead of hyperbolic ones.
+- All three again with fully Euclidean layers (**EE**: Euclidean temporal conv and Euclidean attention). **This is not the paper's Euclidean arm.** The paper's is EH (Euclidean temporal conv + hyperbolic attention, p852 Sec. V.A); there is no EH arm at small scale in the results below, so "hyperbolic vs Euclidean" here means HH vs EE, which the paper never ran. EH arms are in the g2 rerun.
 - Comparison baselines: hold all 309 stocks (market), random 5 stocks, 5-day momentum.
 
 ## 4. Results
@@ -145,7 +153,7 @@ The one change: each 16-day window is divided by its last close, so features bec
 
 ### 4d. Correction: exact eq. 14 attention (rerun done, nothing changed)
 
-- **What happened.** The results above used a close but not exact form of the attention formula: `aᵀ·(u ⊕ z)` instead of the paper's `aᵀ ⊗ (u ⊕ z) = tanh(aᵀ·log₀(u ⊕ z))`. Before this, only the text-extracted PDF was available, and its ⊗ symbol was lost; the exact formula has since been confirmed from the PDF. The code is now corrected.
+- **What happened.** The results above used a close but not exact form of the attention formula: `aᵀ·(u ⊕ z)` instead of the paper's `aᵀ ⊗ (u ⊕ z) = tanh(aᵀ·log₀(u ⊕ z))`. Before this, only a text-extracted PDF was available, and its ⊗ symbol was lost. Eq. 14 is legible in the PDF (p851): `α_ij = aᵀ ⊗ (u_j ⊕ z_i) ⊙ d_B(u_j, z_i)`, with ⊗ the Möbius matvec of eq. 8 (p850). The code now implements the ⊗. **What is still not confirmed:** ⊙ is defined by eq. 7, which is ill-formed as printed (p850), so treating it as a plain product is `INFERRED (not in paper)`; the paper also prints no softmax, so the per-node softmax is inferred too.
 - **Why it should matter little.** Attention decides how a stock *weights* its hyperedges. **80% of the 309 stocks are in exactly one hyperedge**, and their weight is 100% whatever the formula. Only the ~20% of stocks in several hyperedges (mainly big banks and oil majors) are affected.
 - **What we reran.** The two arms that use this attention, *THINK (hyp + hyperedges)* and *hyp + pairwise*: 10 seeds each, faithful (v1) and relative-input (v2). The other four arms don't use it and were copied.
 
@@ -172,11 +180,29 @@ The one change: each 16-day window is divided by its last close, so features bec
 - **Equal-budget tuning (relative inputs).** Learning rate and ranking weight were tuned on the 2016 validation year with the same grid for hyperbolic and Euclidean (3 seeds per setting; both ended at the largest ranking weight tried, 10). With tuned settings, hyperbolic vs Euclidean is +1.10 Sharpe (bootstrap CI +0.21 to +2.02) and the hyperbolic advantage from hyperedges is +1.07 (CI +0.05 to +2.54), but neither survives correction for the six comparisons made (Holm p 0.15 and 0.059). Much of the gap comes from the Euclidean hyperedge model getting worse (−0.40). Tuned vs untuned within any single arm is not significant.
 - Results: `results/POC_sectors_eq14/summary.md` (v1), `results/POC_sectors_rel_eq14/summary.md` (v2), `results/POC_sectors_rel_tuned_eq14/summary.md` (tuned), `results/POC_sectors_C1_shuffled/`, `results/POC_sectors_{,rel_}A10_nodist/`.
 
+### 4e. Correction 2: hypergraph construction (all results above are pre-fix)
+
+- **What was wrong.** The paper says the Wikidata hyperedges come in two kinds ([A854] Sec. B, "Stock Datasets"): a first-order relation gives "a hyperedge of a source stock and a set of target stocks related to it via the same Wikidata relation" (a star), and "the second-order relation is pairwise in nature" (a 2-node hyperedge). Our builder made a star for every relation channel.
+- **How it was fixed (`de20f8e`).** The channel order is recoverable: RSR's `connections.json` lists the property path behind every stock pair, and a channel is first-order iff its pair set equals the pair set of a single-property path (`INFERRED (not in paper)` reconstruction; the paper gives no channel list). NYSE: 3 of 32 wiki channels are first-order; NASDAQ: 7 of 42. Second-order channels now become pairs.
+- **Effect on the graphs.**
+
+  | Graph | Old (all results here) | Corrected |
+  |---|---|---|
+  | Full NYSE | 312 hyperedges, max node degree 37 | **4350 hyperedges** (4250 of size 2), max size 500, **max node degree 114** |
+  | Full NASDAQ | 162 hyperedges | 1066 hyperedges, max size 156, max node degree 55 |
+  | 309-stock small-scale universe | 73 hyperedges | **558 edges** |
+
+- **Consequences for this document.**
+  - The 80%-of-stocks-in-one-hyperedge argument in §4d described the old graph. The corrected graph has many more (mostly size-2) hyperedges (73 to 558 edges), so a stock will typically sit in more hyperedges; the new degree distribution has not been measured yet, so the "attention matters little" argument is void until it is.
+  - Wikidata hyperedges are now mostly pairs, so the hyperedge-vs-pairwise contrast (G1, clique expansion) will differ from before (expected, not yet measured).
+  - Every arm that uses relations may change. The "no relations" arms do not use the graph and are unaffected.
+- **Status.** Reruns on the corrected graph are queued on g2: small scale HH/EE/EH, then tuning (ranking weight up to 100), then A10, G2/G12 (HH and EH), C1, R7, R8, then full NYSE R5_g2 (25 seeds THINK and EH, 10 seeds EE and HE). Until they finish, **none of the numbers in §1-§7 should be read as evidence about the paper's method on the paper's graph.**
+
 ## 5. Scientific assessment
 
-- **Reproduction:** our implementation behaves like THINK. At the best test epoch it gives the paper's ordering, and the same happens on the full NYSE, where THINK scores 2.40 vs the paper's 1.18.
+- **Reproduction (old graph):** our implementation behaves like THINK. At the best test epoch it gives the paper's ordering, and the same happens on the full NYSE, where THINK scores 2.40 vs the paper's 1.18. The scores are not like-for-like (different Sharpe definition, above) and the graph was the pre-fix one (§4e).
 - **Claim under test:** "hyperbolic space and hyperedges improve stock ranking." At small scale, with leak-free evaluation, **not supported yet.** The faithful model is nominally worst, and the fixed model is nominally better but not significant.
-- **What the gap suggests:** THINK's reported advantage **could** come from how the epoch was chosen. This is an open question, not a finding. The paper doesn't say how it chose, and the authors' earlier code prints the test score every epoch with no rule. Our leak-free score (−0.56 small scale, ≈0 full NYSE) and best-test score (2.28 / 2.40) bracket the paper's 1.18. The paper also reports THINK as 1.18 **± 0.004** over 25 runs, while our seeds vary by ±0.2 to ±0.9. That spread is unusually tight and worth asking the authors about. The per-epoch test Sharpe swings between about −0.8 and +1.9, so the best of many epochs looks strong even when the model isn't.
+- **What the gap suggests:** THINK's reported advantage **could** come from how the epoch was chosen. This is an open question, not a finding. The paper doesn't say how it chose, and the authors' earlier code prints the test score every epoch with no rule. Our leak-free score (−0.56 small scale, ≈0 full NYSE) and best-test score (2.28 / 2.40) bracket the paper's 1.18. The paper also reports THINK as 1.18 **± 4e-3** over 25 runs (p852 Table II), while our seeds vary by ±0.2 to ±0.9. The paper never says what ± is (std, standard error or confidence interval), so it is not established that the spreads are comparable; worth asking the authors. The per-epoch test Sharpe swings between about −0.8 and +1.9, so the best of many epochs looks strong even when the model isn't.
 - **Limits of this test:**
   - 309 stocks, not 1737
   - one test year (a 237-day Sharpe has a standard error of about 1)
@@ -188,7 +214,7 @@ The one change: each 16-day window is divided by its last close, so features bec
 
 | Question | Answer |
 |---|---|
-| Is the implementation right? | Every equation was checked in independent reviews, and 112 automated tests pass. At the best test epoch it reproduces the paper's ordering and exceeds its numbers. |
+| Is the implementation right? | Eq. 9-17 were checked in independent reviews and 112 automated tests passed at the time of this review. Known differences from the printed equations: eq. 10 normalizes `z_k`, and eq. 14's ⊙ and softmax are inferred because eq. 7 is ill-formed. The Wikidata hyperedges were built wrongly until `de20f8e` (§4e). At the best test epoch (old graph) it reproduces the paper's ordering and exceeds its numbers, but under a different Sharpe definition. |
 | You didn't tune it. | True. Equal-budget tuning (same grid for hyperbolic and Euclidean, chosen on validation only) has been run for the relative-input variant: hyperbolic vs Euclidean +1.10, not significant after correction (§4d). |
 | Did the authors pick the best test epoch? | Unknown: the paper doesn't say. Their earlier code prints the test score every epoch with no selection rule. We show the leak-free and the most favourable scores so the range is visible. Next step: email the authors. |
 | Why only 309 stocks? | The full study takes about a week on our GPU. The full-NYSE check (THINK 2.40 at its best test epoch) is in the handoff. |
@@ -200,9 +226,9 @@ The one change: each 16-day window is divided by its last close, so features bec
   - The authors' earlier evaluator scores NDCG on stock *index numbers*, and only on the last test day.
   - With that code, a model that ranks stocks in exactly the reverse order scores **1.000** on a toy example and 0.886 on NYSE 2017.
   - 43% of random models score ≥ 0.86.
-  - Reproduce with `scripts/ndcg_bug_demo.py`. THINK's own code is unpublished, so we infer that it used this evaluator.
-- **The largest "industry" hyperedge in their data (500 stocks) is actually the "n/a" group**, stocks with no industry label. Excluded here.
-- **Hyperbolicity:** the paper's δ = 0.5 for NYSE is consistent with estimating it from a small sample. Computed exactly, we get 1.5.
+  - Reproduce with `scripts/ndcg_bug_demo.py`. THINK's own code is unpublished, so that it used this evaluator is `INFERRED (not in paper)`. The paper says "Following [1]" (RSR) for both the ranking formulation and the daily buy-hold strategy (p852 Sec. IV-B); it cites [38] (STHAN-SR) only for hypergraph construction. The inference rests on "Following [1]" plus shared authors and data, not on the paper following [38].
+- **The largest "industry" hyperedge in the RSR data (500 stocks) is actually the "n/a" group**, stocks with no industry label (our identification, not stated in the paper). The paper's Fig. 3a axis starts at 500 (p853); that the paper's 500 is this group is `INFERRED (not in paper)`. It is excluded from the 309-stock universe.
+- **Hyperbolicity (p850 Table I: NYSE 0.5, NASDAQ 1.0):** on the old graph we found sampled δ_hg = 1.0 and exact 1.5 for NYSE. On the corrected graph (2026-09-29) the sampled estimate is 1.5 (exact with 4 base points: 1.5) for NYSE and 1.5 for NASDAQ. The paper's Algorithm 1 takes an unspecified `s` and does not say whether δ is sampled ([A854]); the paper's 0.5 is consistent with a small sample but that is not shown.
 
 ## 8. Files
 

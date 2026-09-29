@@ -31,15 +31,15 @@
 - Data splits for the RSR data (NYSE and NASDAQ), from the original code:
   - `valid_index = 756`, `test_index = 1008`.
   - NYSE has T = 1245 days. NASDAQ raw files have 1246 rows, and the last row is all-missing and dropped, so NASDAQ also has T = 1245.
-- Default hyperparameters (from STHAN-SR/RSR commands and the paper). `lr` and `alpha` get tuned per geometry in Task 14 Phase C; everything else stays fixed:
+- Default hyperparameters (from the STHAN-SR/RSR code and commands; **the THINK paper states none of them**, pp849-854 give no K, hidden size, lookback, lr, epochs, batch, optimizer or split; audit item P44). `lr` and `alpha` get tuned per geometry in Task 14 Phase C; everything else stays fixed:
   - `seq = 16`, `kernel K = 4` (so 16 → 4 → 1), `hidden = 32`
   - `lr = 1e-3`, `weight_decay = 5e-4`, `epochs = 100`, `patience = 20`
   - `alpha` (ranking-loss weight): NYSE 1.0, NASDAQ 0.1
   - `top-k = 5`, `grad_clip = 1.0`
   - `batch_days = 1` (days per optimizer step) and `micro_batch_days = 0` (0 = no split). `micro_batch_days` splits a step into gradient-accumulated chunks. It is mathematically identical to the unsplit step and only saves GPU memory, so it may differ between arms. `batch_days` may **not** differ between compared arms.
 - Metric definitions are fixed (Task 7). **"Short ratio" in the request = Sharpe Ratio (SR)** in the paper's Table II:
-  - SR = `mean(daily top-5 return) / std(daily top-5 return) * sqrt(252)`.
-  - No risk-free rate, no transaction costs (paper-compatible).
+  - Ours: SR = `mean(daily top-5 return) / std(daily top-5 return) * sqrt(252)`. No risk-free rate, no transaction costs. This is the RSR [1] / STHAN-SR code definition.
+  - The paper writes `SR = E[R_a - R_f] / std[R_a - R_f]` with R_f "a risk-free return" (value not given), "we buy the top-k stocks" (k not given), and no annualization; "Following [1]" (p852 Sec. IV-B). So top-5, `sqrt(252)` and `R_f = 0` are `INFERRED (not in paper)`, not "paper-compatible" facts, and a numeric gap to the paper's 1.18 is not like-for-like.
   - The constant `15.87` in the STHAN-SR code is `sqrt(252)`.
 - Model selection is by the **validation** Sharpe ratio. Test metrics are never used to pick epochs or hyperparameters. The paper-compat "best test epoch" number is logged only as a diagnostic, labelled `test_oracle_sr`.
 - Default feature normalization is `norm="train"`: each stock is divided by its max close over the training period. The paper's full-series max (`norm="paper"`) leaks future price levels into the features. Use it only in the E1 comparison.
@@ -60,7 +60,7 @@
   - Configs live in `configs/`, docs in `docs/`.
 - Shell: Windows machine. Every command below is given in Git Bash syntax. Activate the venv with `source .venv/Scripts/activate`.
 - **Keep the venv inside the project (`.venv`), never under `%TEMP%`.** Windows Application Control on this machine blocks pandas' compiled DLLs when they load from the Temp folder ("An Application Control policy has blocked this file").
-- Library versions the plan's code was verified against (2026-09-27): torch 2.14, pandas 3.0.6, scikit-learn 1.9.1, scipy 1.18.1. All test code in this plan passed there: 109 passed, and 2 skipped for lack of the full dataset. The real NYSE hypergraph build was re-checked with the on-disk cache: 312 edges, max size 500, max degree 37, and the cached copy is identical (cold 9 s, cached < 0.1 s). (`scripts/aggregate.py`, `plots.py` and `run_grid.py` were smoke-run on fabricated results.)
+- Library versions the plan's code was verified against (2026-09-27): torch 2.14, pandas 3.0.6, scikit-learn 1.9.1, scipy 1.18.1. All test code in this plan passed there: 109 passed, and 2 skipped for lack of the full dataset. The real NYSE hypergraph build was re-checked with the on-disk cache: 312 edges, max size 500, max degree 37, and the cached copy is identical (cold 9 s, cached < 0.1 s). **[2026-09-29: that was the pre-fix all-star graph. After `de20f8e` the corrected NYSE graph has 4350 edges, max size 500, max degree 114; NASDAQ 1066 edges, max size 156, max degree 55. See Part 0.4.]** (`scripts/aggregate.py`, `plots.py` and `run_grid.py` were smoke-run on fabricated results.)
 
 ## Review Focus
 
@@ -98,12 +98,12 @@ THINK predicts next-day returns for every stock, ranks the stocks, buys the top 
 | Distance (eq 4) | `d(x,y) = 2 artanh(‖(-x) ⊕ y‖)` |
 | Exp map at 0 (eq 5, x=0) | `exp_0(v) = tanh(‖v‖) v/‖v‖` |
 | Log map at 0 (eq 6, x=0) | `log_0(y) = artanh(‖y‖) y/‖y‖` |
-| Möbius scalar mult (the `M = r·I` case of eq 7's Möbius matrix-vector mult; used by eq 13) | `r ⊗ x = tanh(r · artanh(‖x‖)) x/‖x‖` |
-| Poincaré FC (eq 9-10, HNN++) | For output unit k with params `z_k ∈ R^n`, `r_k ∈ R`: `v_k(x) = 2‖z_k‖ asinh( λ_x ⟨x, z_k/‖z_k‖⟩ cosh(2 r_k) − (λ_x − 1) sinh(2 r_k) )`; `w = sinh(v(x))`; output `y = w / (1 + sqrt(1 + ‖w‖²))` |
+| Möbius scalar mult (the `M = r·I` case of eq 8's Möbius matrix-vector mult `W ⊗ x = exp_o(W log_o x)`, p850; used by eq 13) | `r ⊗ x = tanh(r · artanh(‖x‖)) x/‖x‖` |
+| Poincaré FC (eq 9-10, HNN++) | For output unit k with params `z_k ∈ R^n`, `r_k ∈ R`: `v_k(x) = 2‖z_k‖ asinh( λ_x ⟨x, z_k/‖z_k‖⟩ cosh(2 r_k) − (λ_x − 1) sinh(2 r_k) )`; `w = sinh(v(x))`; output `y = w / (1 + sqrt(1 + ‖w‖²))`. **Note (audit P7):** the paper's eq. 10 (p850) prints the unnormalized `⟨x, z_k⟩`; the `z_k/‖z_k‖` form is HNN++ [25], which the paper cites. It only reparametrizes `z_k`. Our layer uses the normalized form, a deliberate deviation from the printed equation. |
 | β-concat (eq 11) | Inputs `x_i ∈ B^{n_i}`, total `n = Σ n_i`, `β_m = B(m/2, 1/2)` (Beta function): `y = exp_0( [ (β_n/β_{n_1}) log_0(x_1), …, (β_n/β_{n_M}) log_0(x_M) ] )` |
 | Hyperbolic temporal conv (eq 12) | Input length τ = nK. For each of the n windows, β-concat the K points of shape `[N, C]` into `[N, KC]`, then apply Poincaré FC. Output length is n. |
 | Node→hyperedge (eq 13, gyromidpoint) | `z_i = ½ ⊗ ( Σ_{k∈e_i} λ_{u_k} u_k / Σ_{k∈e_i} (λ_{u_k} − 1) )` |
-| Attention (eq 14) | `α_ij = softmax over {i : v_j ∈ e_i} of  a^T (u_j ⊕ z_i) · d(u_j, z_i)`. The PDF glyph between `u_j` and `z_i` is lost. It is most likely ⊕ (Möbius add), since the paper defines ⊕ in eq 3. Alternatives are handled in decision node D8. |
+| Attention (eq 14, p851; legible) | Paper: `α_ij = aᵀ ⊗ (u_j ⊕ z_i) ⊙ d_B(u_j, z_i)`. Here `⊕` is Möbius addition (eq 3), `⊗` is the Möbius matrix-vector product of **eq 8** (`W ⊗ x = exp_o(W log_o x)`, so for a vector `a` it gives the scalar `tanh(a · log_0(u_j ⊕ z_i))` at `o = 0`), and `⊙` is the operator of **eq 7**. **Eq 7 is ill-formed as printed** (`x ⊙ y = tan((‖xy‖/y) arctan⁻¹(‖y‖)) ‖xy‖/‖y‖`: `tan`/`arctan` instead of `tanh`/`artanh`, a bare `y` in a denominator; p850), so `⊙` cannot be implemented literally. Our default `attn_score="eq14"` uses `tanh(a · log_0(u_j ⊕ z_i)) · d_B(u_j, z_i)` with `⊙` read as a plain product: `INFERRED (not in paper)`. The **softmax over `{i : v_j ∈ e_i}` is also `INFERRED (not in paper)`**: Sec. III-B says only that the layer "learns the attention coefficient". Alternatives are in decision node D8. |
 | Hyperedge→node (eq 15) | `u'_j = exp_0( ReLU( Σ_{i: v_j∈e_i} α_ij · log_0( FC(z_i) ) ) )` |
 | Per-timestep (eq 16) | Apply the same layer to every time slice. |
 
@@ -116,6 +116,8 @@ THINK predicts next-day returns for every stock, ranks the stocks, buys the top 
 | TCONV + DHHAN (Euclidean temporal conv, hyperbolic hypergraph) | 1.14 | 0.81 | 1.11 | 0.76 | 0.44 |
 | **THINK** | **1.18 ± 4e-3** | **0.86 ± 9e-4** | **1.19** | **0.81** | **0.49** |
 
+**Which Euclidean arm the paper ran.** The paper's only Euclidean ablation is Euclidean temporal convolution + hyperbolic hypergraph attention (our **EH**; Table II row "TCONV + DHHAN", Sec. V.A, and the Fig. 3 caption "Euclidean temporal convolution + hypergraph attention", p852-853). It reports no fully Euclidean model (our EE) and no HE. Any HH-vs-EE contrast is ours, not the paper's; the paper-matched contrast is HH vs EH.
+
 The table reports hyperbolicity for NYSE as δ_hg = 0.5 and δ_rel = 0.087. For NASDAQ it is δ_hg = 1.0 and δ_rel = 0.107. The paper reports **no NASDAQ Sharpe**: its NASDAQ column is movement-classification F1 only (Task 18).
 
 **Which of our numbers is comparable to the paper's 1.18.** The paper's protocol follows STHAN-SR, whose training loop evaluates the test set after every epoch and has no validation-based checkpointing. The paper also uses the full-series-max feature normalization. The apples-to-apples number is therefore `norm=paper` + all 100 epochs + best test epoch. That is `test_oracle_sr` of `E1_main/THINK_paperProtocol`, a dedicated arm with no early stopping: an early-stopped run would take its max over fewer epochs and understate the protocol. That number is optimistic by construction. Our honest headline is the validation-selected `test_sr` of `E1_main/THINK` (`norm=train`). Report both, side by side (D9).
@@ -123,7 +125,7 @@ The table reports hyperbolicity for NYSE as δ_hg = 0.5 and δ_rel = 0.087. For 
 
 - **Fig 2** (THINK vs HHN, where HHN = THINK without distance attention) uses only DTT/CPox. We run the same ablation on NYSE instead.
 - **Fig 3a** (NYSE): the hyperedge-decomposition x-axis runs 500, 15, 9, 5, 3. SR falls from about 1.2 to about 0.9 for THINK, and the Euclidean curve sits below it.
-- **Fig 3b** (NYSE): the hub-removal x-axis is node degree 31, 28, 22, 16, 2. SR falls from about 1.1 to about 0.8.
+- **Fig 3b** (NYSE): the hub-removal x-axis is node degree 31, 28, 22, 16, 2 (p853). SR falls from about 1.1 to about 0.8; the y-axis is clipped, so THINK's value at degree 31 is not readable. Our corrected NYSE graph has max node degree **114** under the literal pairwise reading (37 under the old all-star reading), so the paper's starting degree of 31 does not match either; the paper does not state how node degree is counted. The graphs differ or the counting differs; the PDF cannot tell which.
 
 **NDCG warning:** the published STHAN-SR evaluator (the paper family's code) computes `ndcg_score` on *sets of ticker indices* and keeps only the last test day. The paper's NDCG therefore cannot be reproduced meaningfully. We report a correct NDCG@5 as `ndcg5`, plus a re-implementation of the buggy one (`ndcg_sthan`) for reference only. **Compare SR, not NDCG, against the paper.**
 
@@ -131,15 +133,16 @@ The table reports hyperbolicity for NYSE as δ_hg = 0.5 and δ_rel = 0.087. For 
 
 The paper follows STHAN-SR [38] and appendix B. Hyperedges come from the RSR dataset (Feng et al. 2019, `relation.tar.gz`):
 
-1. **Industry hyperedges.** One hyperedge per industry, containing all stocks in that industry. The source tensor is `relation/sector_industry/NYSE_industry_relation.npy`, shape `[1737, 1737, 108]`. The last channel is a self-loop channel and is ignored. The largest NYSE industry has **500 stocks**, which matches the "500" on the Fig 3a axis. That confirms the construction.
-2. **Wiki corporate hyperedges.**
-   - First-order (`X –R1→ Y`): one hyperedge = a source stock plus all target stocks linked to it by the same Wikidata relation.
-   - Second-order (`X –R2→ Z ←R3– Y`): pairwise.
-   - The source is `relation/wikidata/NYSE_wiki_relation.npy`, shape `[1737, 1737, 33]`, last channel = self. The channel-to-path mapping was built from an unordered Python `set`, so first- and second-order channels cannot be separated reliably. Only 29 of 758,189 paths are first-order.
-   - Our construction ("star per (source, relation)"): for each channel k and source i, hyperedge = `{i} ∪ {j : rel[i,j,k] = 1}`. Second-order relations with a single target become pairs, as the paper describes.
+1. **Industry hyperedges.** One hyperedge per industry, containing all stocks in that industry ([A854] Sec. B: "the former connect stocks belonging to the same industry"). The source tensor is `relation/sector_industry/NYSE_industry_relation.npy`, shape `[1737, 1737, 108]`. The last channel is a self-loop channel and is ignored. The largest NYSE industry has **500 stocks**, which matches the "500" on the Fig 3a axis (p853). That is a consistency check, not proof of the construction; the 500-stock group is the `n/a` (no industry label) bucket.
+2. **Wiki corporate hyperedges** ([A854] Sec. B, "Stock Datasets").
+   - First-order (`X –R1→ Y`): "a hyperedge of a source stock and a set of target stocks related to it via the same Wikidata relation". One star hyperedge per (source, relation channel).
+   - Second-order (`X –R2→ Z ←R3– Y`): "pairwise in nature". One 2-node hyperedge per related pair.
+   - The source is `relation/wikidata/NYSE_wiki_relation.npy`, shape `[1737, 1737, 33]`, last channel = self.
+   - **Channel order is recoverable (commit `de20f8e`, supersedes the earlier "unrecoverable" note).** `rel[i, j, k]` carries no path label, but each channel is exactly the set of directed pairs sharing one path type. RSR's `NYSE_connections.json` maps `qid_i → qid_j → list of property paths`, and a path with one property is first-order, with two properties second-order. Channel k is called first-order iff its pair set equals the pair set of some single-property path (`wiki_first_order_channels`). This mapping is our reconstruction (`INFERRED (not in paper)`), and the equality test can misclassify only tiny channels, where a star equals a pair anyway. Result: NYSE 3 of 32 wiki channels are first-order; NASDAQ 7 of 42.
+   - Construction: first-order channel k, source i: `{i} ∪ {j : rel[i,j,k] = 1}`; second-order channel k: `{i, j}` for each `rel[i,j,k] = 1`. (The v1 builder starred every channel; every result before `de20f8e` used that graph.)
 3. Merge both lists and **deduplicate** identical hyperedges. Drop hyperedges with fewer than 2 nodes.
 
-Expected NYSE result (prototype-verified): **312 hyperedges**, 107 of them industry. Max hyperedge size is 500. Max node degree is 37. 17 stocks have no hyperedge. Expected NASDAQ result: 162 hyperedges, max size 156.
+Expected NYSE result **after `de20f8e`** (measured 2026-09-29): **4350 hyperedges** (4250 of size 2), max size 500, **max node degree 114**, 17 stocks with no hyperedge. NASDAQ: 1066 hyperedges, max size 156, max node degree 55, 15 uncovered. (Pre-fix all-star graph, now obsolete: NYSE 312 edges / degree 37, NASDAQ 162 edges.) The 309-stock small-scale universe has 558 edges (old: 73).
 
 The authors' own `hypergraph_nyse.npy` was never published, so an exact match is impossible. Tolerances are given in decision node D3.
 
@@ -197,7 +200,7 @@ The executor walks this tree top to bottom. Each node says what to check, what t
 - The folder has more files than tickers (1769 NYSE and 1048 NASDAQ files). This is expected: always use the ticker list file.
 
 **D3 — Hypergraph sanity** (Task 3 integration test)
-- NYSE target: #edges in [250, 400], max size = 500, max node degree in [20, 60].
+- NYSE target (updated for the corrected graph, `de20f8e`): #edges = 4350 (the test pins it), max size = 500, max node degree = 114. The earlier target (edges in [250, 400], degree in [20, 60]) described the obsolete all-star graph.
 - Off target: check that the last (self) channel is excluded, that the diagonal is zeroed for wiki, and that deduplication happens. After that, still off by more than 30%: continue anyway, but record the actual numbers in `docs/report.md` under "Deviations".
 - `build_rsr_hypergraph` caches its edge list in `data/raw/rsr/data/hypergraph_cache/`. The NYSE industry tensor is 2.6 GB, so it is loaded only once. **Delete that folder whenever you change any construction code**, or you will keep getting the old hypergraph.
 - The first build needs about 4 GB of free RAM. On `MemoryError`, close other programs and retry.
@@ -247,7 +250,7 @@ Measure seconds per epoch `t_e` for HH on the full NYSE, with `batch_days = 1`. 
 
 **D8 — Attention variant** (Task 14 Phase D, from E_attn with 5 seeds)
 - Pick `(attn_score, attn_dist)` with the best mean **validation** SR among mobius/concat × mult/neg.
-- If `mobius_mult` (the literal reading of the paper) is within 1 std (the top variant's seed std) of the top variant, pick `mobius_mult` instead. `aggregate.py --select-attn` implements exactly this rule.
+- If `mobius_mult` is within 1 std (the top variant's seed std) of the top variant, pick `mobius_mult` instead. **[2026-09-29 note: `mobius_mult` is `aᵀ(u ⊕ z)·d`, which is not the literal reading. Eq. 14 (p851) is `aᵀ ⊗ (u ⊕ z) ⊙ d_B`, with ⊗ from eq. 8; the code's `eq14` score implements the ⊗ form, and ⊙ (eq. 7, ill-formed as printed) is inferred as a product. `eq14` is the closest to the paper.]** `aggregate.py --select-attn` implements exactly this rule.
 - Write the choice into `configs/chosen.yaml`. All later HH/EH experiments use it. Euclidean spatial variants use the same `(score, dist)` names in their Euclidean form.
 
 **D9 — Main result vs paper** (Task 14 Phase E, E1)
@@ -910,9 +913,9 @@ def test_build_rsr_hypergraph_cache(tmp_path):
 def test_real_nyse_hypergraph_stats():
     hg = build_rsr_hypergraph(REAL, "NYSE")
     assert hg.num_nodes == 1737
-    assert 250 <= len(hg.edges) <= 400             # prototype: 312
+    assert 250 <= len(hg.edges) <= 400             # v1 prototype (all-star graph): 312. Superseded: the shipped test pins 4350 (de20f8e)
     assert hg.edge_sizes().max() == 500            # matches paper Fig 3a axis
-    assert 20 <= hg.node_degree().max() <= 60      # prototype: 37
+    assert 20 <= hg.node_degree().max() <= 60      # v1 prototype: 37. Superseded: the shipped test pins 114 (de20f8e)
 ```
 
 - [ ] **Step 2: Run the tests to verify they fail**
@@ -4200,8 +4203,8 @@ python scripts/plots.py
 
 ## Setup
 - Data: RSR NYSE (1737 stocks) / NASDAQ (1026), daily 2013-01-02..2017-12-08; train 756 / val 252 / test ⟨237 NYSE⟩ days.
-- Hypergraph: industry + wiki star hyperedges, deduplicated: ⟨#edges, max size, max node degree from test_real_nyse_hypergraph_stats⟩.
-- Metric: SR = mean/std(daily top-5 return) * sqrt(252), no rf, no costs. Selection by validation SR.
+- Hypergraph: industry hyperedges + wiki hyperedges (first-order channels stars, second-order channels pairs, [A854] Sec. B), deduplicated: ⟨#edges, max size, max node degree from test_real_nyse_hypergraph_stats⟩.
+- Metric: SR = mean/std(daily top-5 return) * sqrt(252), no rf, no costs (RSR [1] code definition; the paper's formula has R_f, top-k and no annualization, p852). Selection by validation SR.
 - Seeds: 25 for answer tables; 15 for E4/E9/E10; 5 for curves (descriptive).
 - Tuning: lr × alpha per geometry (HH, HE, EH, EE), 3 seeds each, selected on validation SR. Structure and grouping variants reuse their geometry's setting, which slightly favours the default "hyper" structure.
 - Bootstrap CIs are on the Sharpe of the seed-ensemble portfolio (daily returns averaged over the common seeds), not the mean per-seed SR.
@@ -4402,4 +4405,4 @@ git add src/hypershift/train/clf.py scripts/run_clf.py tests/test_clf.py
 git commit -m "feat(optional): NASDAQ movement classification (macro-F1)"
 ```
 
-**Explicitly out of scope (tell the user, don't build):** the paper's graph-RNN baselines (GConvGRU, EGCN-O/H, DCRNN, TGCN, ST-TGCN, DyGrAE, RSR-I). The EE variant (Euclidean temporal conv + Euclidean hypergraph attention, which is STHGCN-like) and the five non-learned baselines serve as references. If the user wants the full baseline table, write a separate plan using `torch-geometric-temporal` on the clique-expanded graph.
+**Explicitly out of scope (tell the user, don't build):** the paper's graph-RNN baselines (GConvGRU, EGCN-O/H, DCRNN, TGCN, ST-TGCN, DyGrAE, RSR-I). The EE variant (Euclidean temporal conv + Euclidean hypergraph attention; calling it STHGCN-like is `INFERRED (not in paper)`, and it is not the paper's Euclidean arm, which is EH = TCONV+DHHAN, p852 Sec. V.A) and the five non-learned baselines serve as references. If the user wants the full baseline table, write a separate plan using `torch-geometric-temporal` on the clique-expanded graph.
