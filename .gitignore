@@ -219,6 +219,7 @@ __marimo__/
 
 # Local Notes
 local-notes/
+local-data/
 
 # Ethan Personal Settings (I turned off autosuggestions)
 .vscode/settings.json
