@@ -1,6 +1,6 @@
 """R1/R2/R3 (PyG-T tasks): train THINK arms / baselines on tennis, chickenpox, windmill. CPU-friendly.
 
-  python scripts/run_pygt.py --dataset chickenpox|tennis|windmill --protocol pygt|leakfree       --arm THINK|EE|none|clique|baselines --seeds 0-9 [--hg topk|quantile] [--label NAME]
+  python scripts/run_pygt.py --dataset chickenpox|tennis|windmill --protocol pygt|leakfree       --arm THINK|EE|EH|none|clique|baselines --seeds 0-9 [--hg topk|quantile] [--label NAME]
 Writes results/R{1_tennis,2_chickenpox,3_windmill}/<protocol>/<label>/seed_k/metrics.json (skipped if present).
 """
 from __future__ import annotations
@@ -24,6 +24,7 @@ from hypershift.models.think import THINK  # noqa: E402
 ARMS = {  # temporal, spatial, structure, hypergraph
     "THINK": ("hyp", "hyp", "hyper", "nbhd"),
     "EE": ("euc", "euc", "hyper", "nbhd"),
+    "EH": ("euc", "hyp", "hyper", "nbhd"),   # paper's TCONV+DHHAN: Euclidean temporal conv + hyperbolic hypergraph attention
     "none": ("hyp", "hyp", "none", "nbhd"),
     "clique": ("hyp", "hyp", "clique", "pair"),
     "EE_none": ("euc", "euc", "none", "nbhd"),

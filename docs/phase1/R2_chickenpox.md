@@ -8,12 +8,22 @@ Code: `src/hypershift/data/pygt.py`, `scripts/run_pygt.py`, `tests/test_pygt.py`
 |---|---|---|
 | THINK (hyp/hyp, neighbourhood hyperedges) | 0.956 ± 0.007 | 0.957 ± 0.010 |
 | EE (Euclid/Euclid, neighbourhood hyperedges) | 0.886 ± 0.003 | 0.890 ± 0.006 |
+| EH (Euclid temporal conv + hyperbolic hypergraph attention = paper's TCONV+DHHAN) | 0.969 ± 0.009 | 0.964 ± 0.008 |
 | THINK, structure none (temporal conv only) | 0.733 ± 0.006 | 0.738 ± 0.007 |
 | THINK, pairwise/clique (41 undirected 2-node edges) | 0.823 ± 0.017 | 0.821 ± 0.010 |
 | Baseline: train mean | 1.047 | 1.060 |
 | Baseline: persistence y_t = y_{t-1} | 3.013 | 3.054 |
 | Baseline: AR(4), pooled lstsq (+intercept) | 0.725 | 0.737 |
 | Baseline: AR(4), per node | 0.734 | 0.748 |
+
+**Paired THINK vs EH (paper's comparison; Sec. V.A p.852, Table II), 10 seeds, EH - THINK (positive = THINK better):**
+
+| Protocol | THINK | EH | mean diff | Wilcoxon p (two-sided) | seeds EH better / THINK better |
+|---|---|---|---|---|---|
+| `pygt` | 0.9561 | 0.9686 | +0.0124 | 0.037 | 1 / 9 |
+| `leakfree` | 0.9571 | 0.9640 | +0.0069 | 0.084 | 2 / 8 |
+
+THINK is better than EH in the paper's direction (paper: 1.09 vs TCONV+DHHAN, Table II), by a small margin: significant at 0.05 under `pygt`, not under `leakfree`. Uncorrected, untuned, one configuration. Regenerate with `scripts/compare_eh.py`.
 
 Paper (Table II): THINK 1.09, baselines 1.11-1.14. (The paper's numbers are worse than the train-mean predictor; ours are below it.)
 

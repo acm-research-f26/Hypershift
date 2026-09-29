@@ -11,12 +11,22 @@ Paper facts used (`docs/paper/icdm22-think.pdf`): Table I p.850 (WMill: 17,472 t
 | THINK (hyp/hyp, top-5 neighbourhood hyperedges, 249 edges) | 1.0212 +- 0.0016 | 1.0232 +- 0.0012 |
 | THINK, quantile hyperedges (top 10% of weights, 283 edges) | 1.0212 +- 0.0016 | 1.0233 +- 0.0015 |
 | EE (Euclid/Euclid, top-5 hyperedges) | 1.0225 +- 0.0020 | 1.0246 +- 0.0022 |
+| EH (Euclid temporal conv + hyperbolic hypergraph attention = paper's TCONV+DHHAN, top-5 hyperedges) | 1.0219 +- 0.0014 | 1.0243 +- 0.0009 |
 | THINK, structure none | 1.0236 +- 0.0006 | 1.0289 +- 0.0032 |
 | THINK, pairwise/clique (top-5 pairs, 999 edges) | 1.0212 +- 0.0012 | 1.0234 +- 0.0011 |
 | Baseline: train mean | 1.0202 | 1.0215 |
 | Baseline: persistence | 2.0270 | 2.0283 |
 | Baseline: AR(8) pooled | 1.0203 | 1.0216 |
 | Baseline: AR(8) per node | 1.0206 | 1.0219 |
+
+**Paired THINK vs EH (paper's comparison), 5 seeds (same caps as the other arms), EH - THINK (positive = THINK better):**
+
+| Protocol | THINK | EH | mean diff | Wilcoxon p (two-sided) | seeds EH better / THINK better |
+|---|---|---|---|---|---|
+| `pygt` | 1.0212 | 1.0219 | +0.0007 | 0.81 | 2 / 3 |
+| `leakfree` | 1.0232 | 1.0243 | +0.0010 | 0.125 | 1 / 4 |
+
+THINK is nominally ahead in the paper's direction but the gap (0.001) is noise-level (with 5 seeds the smallest attainable two-sided exact p is 0.0625); both sit at the mean predictor. No evidence either way. Regenerate with `scripts/compare_eh.py`.
 
 Paper (Table II, p.852): THINK 1.05, TCONV+DHHAN 1.08, STHGCN 1.19, EGCN-H 1.21, RSR-I 1.23, ST-TGCN 1.24, DyGrAE 1.24, TGCN 1.27, DCRNN 1.28, EGCN-O 1.36, GConvGRU 1.38.
 

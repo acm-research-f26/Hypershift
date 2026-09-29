@@ -10,6 +10,7 @@ Paper facts used (`docs/paper/icdm22-think.pdf`): Table I p.850 (DTT: 120 timest
 |---|---|---|
 | THINK (hyp/hyp, neighbourhood hyperedges), 10 seeds | 0.405 +- 0.001 | 0.407 +- 0.003 |
 | EE (Euclid/Euclid, neighbourhood hyperedges), 10 seeds | 0.329 +- 0.018 | 0.354 +- 0.024 |
+| EH (Euclid temporal conv + hyperbolic hypergraph attention = paper's TCONV+DHHAN, neighbourhood hyperedges), 10 seeds | 0.384 +- 0.023 | 0.391 +- 0.019 |
 | THINK, structure none (temporal conv only), 10 seeds | 0.284 +- 0.002 | 0.285 +- 0.002 |
 | THINK, pairwise/clique (~11k 2-node edges), 5 seeds | 0.357 +- 0.003 | 0.361 +- 0.002 |
 | Baseline: global train mean | 0.420 | 0.420 |
@@ -22,14 +23,23 @@ Paper (Table II, p.852): THINK 0.58, TCONV+DHHAN 0.61, STHGCN 1.03, GConvGRU 2.0
 
 Secondary, raw counts (`pygt` protocol, 3 seeds, MSE in count units): mean 13054, per-node mean 11737, persistence 16017, AR(4) 13898; THINK 13048, EE 12422, none 13029. Counts are heavy-tailed (max 13,196); all models collapse to about the mean, so this variant carries no information. log1p is primary.
 
-Caveat: our "EE" makes both temporal and spatial layers Euclidean; the paper's Euclidean variant (Fig. 3 caption, p.853) is Euclidean temporal conv + hypergraph attention (EH), which was not run.
+Caveat: our "EE" makes both temporal and spatial layers Euclidean; the paper's Euclidean variant (TCONV+DHHAN, Sec. V.A p.852, Table II, Fig. 3 caption p.853) is Euclidean temporal conv + hyperbolic hypergraph attention, which is our `EH` arm (same hyperedges, hyperparameters and seeds 0-9 as THINK; run afterwards).
+
+**Paired THINK vs EH (the paper's comparison), 10 seeds, test MSE, EH - THINK (negative = EH better):**
+
+| Protocol | THINK | EH | mean diff | Wilcoxon p (two-sided) | seeds EH better / THINK better |
+|---|---|---|---|---|---|
+| `pygt` | 0.4049 | 0.3840 | -0.0209 | 0.0098 | 9 / 1 |
+| `leakfree` | 0.4069 | 0.3912 | -0.0157 | 0.0137 | 8 / 2 |
+
+The paper reports THINK 0.58 better than TCONV+DHHAN 0.61 (Table II, p.852). Here the sign is reversed: EH is better than THINK, consistently. EH's best epoch is ~93 (pygt) / ~88 (leakfree) of a 100-epoch cap, so it is still improving when stopped (same cap as every arm). Regenerate with `scripts/compare_eh.py`.
 
 Test MSE of the best test epoch (diagnostic): pygt THINK 0.404, EE 0.328, none 0.283, clique 0.356.
 
 ## Findings
 
 - THINK (0.405) beats only the global train mean (0.420), marginally. It loses to the per-node mean (0.32), persistence (0.23) and AR(4) (0.19). The AR and persistence baselines see previous **labels**; the neural models see only the structural features, so they are not like-for-like. The fairer comparison is the per-node mean (0.32): the best neural arm (structure none, 0.284) beats it, THINK does not.
-- Relations hurt here: none 0.284 < EE 0.33 < clique 0.36 < THINK 0.405. Paired by seed, every seed of none, EE and clique beats THINK (10/10, 10/10, 5/5). Hyperbolic is worse than Euclidean by about 0.08 (pygt) / 0.05 (leakfree). One fixed configuration, no per-arm tuning: an observation, not a verdict.
+- Relations hurt here: none 0.284 < EE 0.33 < clique 0.36 < THINK 0.405. Paired by seed, every seed of none, EE and clique beats THINK (10/10, 10/10, 5/5). Hyperbolic is worse than Euclidean by about 0.08 (pygt) / 0.05 (leakfree). Against the paper's actual ablation (EH), THINK is also worse: EH 0.384 < THINK 0.405 (9/10 and 8/10 seeds, p 0.01), so the paper's THINK > TCONV+DHHAN ordering is not reproduced on tennis. One fixed configuration, no per-arm tuning: an observation, not a verdict.
 - The two protocols agree to about 0.02 (pointwise features and target, so they differ only in split and train-only edges). Both use the same 24 test windows.
 - Paper scale is not reproduced: the paper's THINK 0.58 and baselines near 2.05 sit far above the constant predictor (0.42) here. The paper's setup (target transform, split, features) evidently differs; our absolute numbers are not comparable to it.
 
