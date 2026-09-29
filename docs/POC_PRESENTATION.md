@@ -10,6 +10,7 @@
   - Hyperedges beat pairwise edges, which beat no relations.
 - **Scored leak-free (epoch picked on the validation year), the advantage disappears.** THINK gets −0.56, no comparison is statistically significant, and nothing beats simply holding the 309 stocks (0.75).
 - *Correction:* THINK's attention (eq. 14) used a close but not exact formula. It is now fixed, and the two affected arms are being rerun (§4d). All other findings are unaffected.
+- **None of the models predicts returns.** Their squared error is no better than predicting 0 for every stock, their rankings score at or below a random ranking (NDCG@5), and their predictions collapse to near-constant values (THINK: ~1% of the real spread). So the high best-test-epoch Sharpe reflects choosing the epoch on the test year, not skill (§4b, cause 3).
 - We found a hyperbolic-specific cause: **inputs sit at the edge of the hyperbolic ball.** A one-line fix (relative inputs) lifts THINK to +0.48 and puts hyperbolic ahead of Euclidean. It is still not significant.
 
 ## 2. What THINK does (the paper's method)
@@ -88,7 +89,7 @@
 - **Left column (best test epoch, the most favourable choice the authors' setup allows):** the paper's full ordering reproduces. THINK is best, hyperedges > pairwise > none, and hyperbolic ≥ Euclidean.
 - **Right column (leak-free):** the ordering vanishes. Statistical tests (paired Wilcoxon over seeds, Holm correction, bootstrap CI) find **no significant difference** anywhere. THINK vs Euclidean is −0.87 Sharpe, with p = 0.037 before correction and 0.19 after.
 
-### 4b. Why it breaks: two measured causes
+### 4b. Why it breaks: three measured causes
 
 ![Fig 3](figures/fig3_val_vs_test.png)
 
@@ -98,6 +99,24 @@
 2. **The inputs sit at the edge of the hyperbolic ball.** Price-level features have norm ~1.8, so after `exp₀` they land at radius **~0.95** (the edge is 1.0).
    - In 2017, **15%** of inputs are past 0.99, because prices exceed the training range.
    - Hyperbolic distances and gradients break down near the edge. The Euclidean model has no edge, which is why THINK trails its Euclidean twin.
+3. **The models barely predict anything.** Same runs as §4a (10 seeds, 2017 test year, price-level inputs). Fig 1 panels (b)-(d) and the table below compare each model with trivial baselines.
+
+   | Model | MSE ÷ MSE of predicting 0: best-test / leak-free | NDCG@5: best-test / leak-free (random = 0.551) | IC (leak-free) | Sign hit rate (leak-free) | Prediction spread ÷ actual (leak-free) |
+   |---|---|---|---|---|---|
+   | **THINK (hyp + hyperedges)** | 1.001 / 1.007 | 0.552 / 0.542 | −0.012 | 50.2% | 0.014 |
+   | Hyperbolic + pairwise | 1.010 / 1.004 | 0.551 / 0.544 | −0.015 | 50.0% | 0.013 |
+   | Hyperbolic, no relations | 1.119 / 1.670 | 0.556 / 0.550 | −0.011 | 49.5% | 0.411 |
+   | Euclidean + hyperedges | 1.036 / 1.021 | 0.554 / 0.547 | −0.007 | 49.5% | 0.039 |
+   | Euclidean + pairwise | 1.019 / 1.040 | 0.555 / 0.546 | −0.005 | 49.9% | 0.061 |
+   | Euclidean, no relations | 1.064 / 1.057 | 0.556 / 0.551 | −0.013 | 49.9% | 0.157 |
+
+   *IC = daily rank correlation between predicted and actual returns, averaged over the 2017 test days. Hit rate = share of stock-days where the predicted sign matches the actual sign (the ~2% of days with an exactly zero return are excluded). Spread = standard deviation of predictions ÷ standard deviation of actual returns across stocks on the same day. The best-test-epoch columns exist only for MSE and NDCG, because predictions were saved only for the validation-chosen epoch.*
+
+   - **Error is no better than guessing "no change".** Every model has MSE ≥ 1.0 times that of predicting 0 for every stock (THINK 1.001 to 1.007). Values above 1 mean worse than predicting no change.
+   - **Predictions collapse to near-constant.** THINK's predicted returns vary across stocks by ~1.4% as much as real returns do. The model has learned to output roughly the same tiny number for everyone, so its top-5 picks come from tiny differences that are effectively noise. The no-relations hyperbolic model is the one that does not collapse (0.41), and it has the worst error (1.67), so its extra spread is noise, not signal.
+   - **No ranking skill.** IC is near zero and, if anything, slightly negative for all six models. The hit rate is a coin flip (49.5% to 50.2%).
+   - **NDCG@5 is at or below random.** At the validation-chosen epoch, every model scores below the 0.551 of a random ranking (THINK 0.542). At the best test epoch the models are at most 0.005 above it.
+   - **So the 2.28 Sharpe is not skill.** With MSE at the predict-0 level and NDCG at the random level even at the best test epoch, the high Sharpe there comes from picking the luckiest epoch on the test year itself, on near-random top-5 picks.
 
 ### 4c. Fix (v2): relative inputs
 
