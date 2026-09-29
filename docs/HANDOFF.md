@@ -162,6 +162,13 @@ The only change from v1: each 16-day window is divided by its last close, so fea
     - The 16-day model-input window: 0.16
     - The normalized close series: 0.40
     - None reproduces 0.087, so this gap stays open, and the paper's number can't be checked without its feature definition.
+- **NDCG bug, verified** (`scripts/ndcg_bug_demo.py`).
+  - **Evidence.** The authors' STHAN-SR evaluator (`training/evaluator.py`, line 43; github.com/NDS-VU/STHAN-SR-AAAI21, commit 8d7861c) calls `ndcg_score(list(gt_top5), list(pre_top5))`. Both arguments are sets of **stock index numbers**, and the call sits inside the per-day loop (line 19), so it is overwritten each day and only the **last day** counts.
+  - **Toy example.** A model that ranks stocks in exactly the *reverse* order scores **1.000** with their code (standard NDCG@5: 0.471).
+  - **NYSE 2017.** The inverse-oracle scores 0.886 with their code (standard: 0.145). 200 random models average 0.829, and 43% of them score ≥ 0.86, the paper's value for THINK.
+  - **Our THINK runs:** 0.784 with their code, 0.563 standard.
+  - **Conclusion:** the paper's NDCG of 0.86 is indistinguishable from random under that metric.
+  - **Caveat:** THINK's own code is unpublished. That THINK used this evaluator is an inference: same authors, same dataset, same metric, and the paper says it follows [38].
 - **Paper issue:** the 500-stock "industry" hyperedge in their data and Fig 3a is the **"n/a" bucket**, stocks with no industry label.
 
 ## 7. How to report it
