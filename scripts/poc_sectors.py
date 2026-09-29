@@ -64,7 +64,7 @@ def cfg(label, geo, st, seed, epochs, exp=EXP, input_mode="level", lr=1e-3, alph
                      epochs=epochs, patience=10, input_mode=input_mode, lr=lr, alpha=alpha, **GEOMS[geo])
 
 
-def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tuned=False):
+def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tuned=False, arms=None):
     data, hg = universe()
     print(f"universe: {data.num_nodes} stocks, {len(hg.edges)} hyperedges, "
           f"{int((hg.node_degree() > 0).sum())} stocks in >=1 hyperedge")
@@ -72,6 +72,8 @@ def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tune
     for s in seeds:
         for geo in GEOMS:
             for st in STRUCTS:
+                if arms and f"{geo}_{st}" not in arms:
+                    continue
                 m = train_one_run(cfg(f"{geo}_{st}", geo, st, s, epochs, exp, input_mode, lr, alpha, tuned), data, hg)
                 print(f"seed {s} {geo}_{st}: val_sr {m['val']['sr']:.3f} test_sr {m['test']['sr']:.3f}", flush=True)
 
@@ -200,10 +202,11 @@ if __name__ == "__main__":
     ap.add_argument("--lr", type=float, default=1e-3)
     ap.add_argument("--alpha", type=float, default=1.0)
     ap.add_argument("--use-tuned", action="store_true")
+    ap.add_argument("--arms", nargs="*", default=None, help="subset of arms for run, e.g. HH_hyper HH_clique")
     a = ap.parse_args()
     exp = exp_name(a.variant)
     if a.cmd == "run":
-        run(parse_seeds(a.seeds or "0-9"), a.epochs, exp, a.input_mode, a.lr, a.alpha, a.use_tuned)
+        run(parse_seeds(a.seeds or "0-9"), a.epochs, exp, a.input_mode, a.lr, a.alpha, a.use_tuned, a.arms)
     elif a.cmd == "tune":
         tune(parse_seeds(a.seeds or "0-2"), a.epochs, exp, a.input_mode)
         tune_select(exp)   # partial-seed workers: rerun tune-select once all seeds are done
