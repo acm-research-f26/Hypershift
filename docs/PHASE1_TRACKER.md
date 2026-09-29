@@ -4,7 +4,7 @@
 
 > **PROMINENT NOTE (2026-09-29): every stock result before commit `de20f8e` used the pre-fix hypergraph.** The builder made a star hyperedge for every Wikidata relation channel. The paper says first-order relations are stars and second-order relations are pairs ([A854] Sec. B, "Stock Datasets"). The corrected graph: **NYSE 4350 hyperedges, max node degree 114** (old: 312 and 37); NASDAQ 1066 hyperedges, max degree 55 (old: 162); 309-stock small-scale graph 558 edges (old: 73). Rows below that depend on the graph are marked **PARTIAL, "old graph; rerun queued on g2"**. Non-graph results (R2 chickenpox, controls C2-C10, NDCG bug, baselines) are unaffected. Also: our small-scale "hyperbolic vs Euclidean" contrasts are HH vs EE, **not the paper's HH vs EH** (see "Paper-audit findings").
 >
-> Citations in this file: `pNNN` = page of `05-Hypershift-OA.pdf` (pp849-853); `[A854]` = page 854 (appendices, Algorithm 1, refs 17-38) of `data/raw/icdm22-think.pdf`.
+> Citations in this file: `pNNN` = page of `05-Hypershift-OA.pdf` (pp849-853); `[A854]` = page 854 (appendices, Algorithm 1, refs 17-38) of `data/raw/icdm22-think.pdf`, a source the user approved on 2026-09-29 (now stored at `docs/paper/icdm22-think.pdf`).
 
 ## Phases
 
@@ -125,7 +125,7 @@ Things the paper does not settle. None is guessed at in code; where we chose, th
 
 | # | Ambiguity | Location | What is needed |
 |---|---|---|---|
-| U1 | **p854 is missing from the repo PDF** (`05-Hypershift-OA.pdf` ends at p853, mid-reference list). Appendices, Algorithm 1 and refs 17–38 are read from `data/raw/icdm22-think.pdf` p854, which shows the same IEEE Xplore stamp as the repo copy. | Repo PDF | User: confirm that `data/raw/icdm22-think.pdf` p854 is acceptable as the source for every `[A854]` cite, or supply p854 |
+| U1 | **p854 is missing from the repo PDF** (`05-Hypershift-OA.pdf` ends at p853, mid-reference list). Appendices, Algorithm 1 and refs 17–38 are read from `data/raw/icdm22-think.pdf` p854, which shows the same IEEE Xplore stamp as the repo copy. | Repo PDF | **RESOLVED 2026-09-29:** user approved the author-hosted copy (`https://tylersnetwork.github.io/papers/icdm22-think.pdf`, pp. 849-854) as the source of truth for every `[A854]` cite. It is now at `docs/paper/icdm22-think.pdf`. |
 | U2 | **Eq. 7's ⊙ is ill-formed**: `x ⊙ y = tan((‖xy‖/y) arctan⁻¹(‖y‖)) ‖xy‖/‖y‖` (`tan`/`arctan` rather than `tanh`/`artanh`; a bare `y` in a denominator). Eq. 14 uses ⊙, so it cannot be implemented literally. | p850 eq. 7, p851 eq. 14 | The authors' code or an erratum. Our plain-product reading is `INFERRED` |
 | U3 | **± is never defined** (std, standard error, or CI?). Every ± in Table II is e-3/e-4 (THINK NYSE 1.18 ± 4e-3). | p852 Table II | The authors |
 | U4 | **EGCN-H Risk column prints 0.39 ± 8e-2**, while every other ± is e-3/e-4: probable typo. | p852 Table II | Confirm typo or leave as printed |
@@ -155,3 +155,4 @@ Things the paper does not settle. None is guessed at in code; where we chose, th
 - 2026-09-29: R2 chickenpox done (7b9c388). The paper's number is worse than a mean predictor; in our runs relations and hyperbolic geometry both hurt MSE; AR(4) is unbeaten.
 - 2026-09-29: eq.14 reruns, tuning and tuned rerun finished. eq.14 did not change any verdict (all NO EVIDENCE). Tuning does not rescue hyperbolic. C1 and A10 done: shuffled labels still give best-test Sharpe 2.2, so the paper-protocol number is selection, not skill; the distance term has no effect. G2 running; G12 and R7 waiting; queue 3 (R5_eq14, 25 seeds) waits on queue 2.
 - 2026-09-29 (`de20f8e`, audit, R9): paper audit found the Wikidata hyperedges were built wrongly (second-order relations must be pairs). Fixed: NYSE 312 → 4350 hyperedges, max degree 37 → 114; 309-stock graph 73 → 558. **All stock results before this used the old graph**; graph-dependent rows set to PARTIAL and reruns queued on g2 (small scale HH/EE/EH, tuning with α up to 100, A10, G2/G12 HH+EH, C1, R7, R8, then full-NYSE R5_g2). Also corrected in the docs: the paper's Euclidean arm is EH, not EE; eq.14 notation (⊗ eq. 8, ⊙ eq. 7 ill-formed); Sharpe as the paper writes it; SCD merge is legible. R9 recomputed on the corrected graph: δ_hg NYSE 1.5, NASDAQ 1.5 (paper 0.5, 1.0); the "sampling explains the gap" claim is downgraded to NOT ESTABLISHED.
+- 2026-09-29: U1 resolved. User approved the author-hosted full paper (pp. 849-854, incl. appendix on p. 854) as the source for all `[A854]` cites; copied to `docs/paper/icdm22-think.pdf`.

@@ -1,5 +1,7 @@
 # Paper audit: THINK (ICDM 2022) vs our docs and code
 
+> **U1 resolved (2026-09-29):** the user approved the author-hosted full paper (pp. 849-854, `docs/paper/icdm22-think.pdf`) as the source of truth for every `[A854]` cite.
+
 *Audited 2026-09-29 against `05-Hypershift-OA.pdf` (repo root). Read-only audit: no model code or other doc was changed.*
 
 **Citation key.** `p849`-`p853` = pages of `05-Hypershift-OA.pdf`. `[A854]` = page 854 (references 17-38, Algorithm 1, appendices A and B) of the author-hosted copy `https://tylersnetwork.github.io/papers/icdm22-think.pdf`. I diffed the text of pages 849-853 of both files and they are identical. `[A854]` is not in the repo PDF. Classes: CONFIRMED (cite given), CONTRADICTED (PDF quoted or described), NOT IN PAPER (fine to keep, must be labelled inferred). Eq/Fig/Table numbers are the paper's. Where a row says "code", the file:line is in the working tree.
