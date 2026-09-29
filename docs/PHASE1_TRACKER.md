@@ -52,11 +52,11 @@ Status words: **DONE**, **PARTIAL**, **RUNNING**, **TODO**, **BLOCKED** (cannot 
 | ID | Control | Status | Evidence / next step |
 |---|---|---|---|
 | C1 | Shuffled training labels collapse to chance | TODO | Knob `shuffle_train_labels` and grid label `E1_main/THINK_shuffled` exist. Never run. |
-| C2 | Changing data after time t leaves the prediction at t unchanged | PARTIAL | Window construction is tested; an end-to-end model mutation test is missing. |
+| C2 | Changing data after time t leaves the prediction at t unchanged | DONE | `tests/test_controls.py` (0898b50): all 12 variants, `level` and `relative`. Features, mask, gt and base price mutated from the target day onward; predictions identical. Non-vacuity check included. |
 | C3 | Future hyperedge injection is rejected | P2 | Hypergraphs are static in RSR, so this doesn't apply until time-varying edges exist. |
-| C4 | Relabelling stock IDs permutes predictions consistently | TODO | No test. |
-| C5 | Batch isolation: dates batched together or separately give identical predictions | PARTIAL | `test_micro_batch_matches_full_batch` covers gradients; an explicit prediction test is missing. |
-| C6 | An isolated node gives a finite prediction | TODO | No test. |
+| C4 | Relabelling stock IDs permutes predictions consistently | DONE | `tests/test_controls.py`: node permutation and hyperedge reordering, all variants. |
+| C5 | Batch isolation: dates batched together or separately give identical predictions | DONE | `tests/test_controls.py`: days sit on a separate tensor axis, so no hyperedge can span dates. 1×5, 5×1, reversed and 2+3 batchings match. |
+| C6 | An isolated node gives a finite prediction | DONE | `tests/test_controls.py`: an uncovered node passes through the attention unchanged (`torch.where(has_edge, out, u)`), equals its no-graph value, and is finite. Size-1 hyperedges give finite gradients. |
 | C7 | Geometry numerics | DONE | `tests/test_poincare.py`, `tests/test_layers.py`, `tests/test_attention.py`. |
 | C8 | Recompute metrics from saved predictions | DONE | Fig 1 diagnostics recomputed MSE, NDCG, IC, hit rate and spread from `test_*.npy` and matched `metrics.json` (commit 18abfc7). |
 | C9 | Normalization is fitted on training data only | DONE | `norm: train` is the default; `norm: paper` is kept only for paper-protocol runs. |
@@ -66,7 +66,7 @@ Status words: **DONE**, **PARTIAL**, **RUNNING**, **TODO**, **BLOCKED** (cannot 
 
 | Finding | Status | Evidence |
 |---|---|---|
-| Implementation broken | ELIMINATED (mostly) | At the best test epoch we reproduce the paper's ordering and exceed its numbers (small scale 2.28, full NYSE 2.40). Every equation was reviewed and 122 tests pass. |
+| Implementation broken | ELIMINATED (mostly) | At the best test epoch we reproduce the paper's ordering and exceed its numbers (small scale 2.28, full NYSE 2.40). Every equation was reviewed and 216 tests pass, including correctness controls C2/C4/C5/C6. |
 | Paper's NDCG 0.86 shows skill | ELIMINATED | The authors' evaluator scores index numbers on the last day only. 43% of random models score ≥ 0.86 (`scripts/ndcg_bug_demo.py`). |
 | δ_hg difference means a different graph | ELIMINATED | It is a sampling effect: computed exactly, δ_hg = 1.5 (`scripts/hyperbolicity_sensitivity.py`). |
 | Largest RSR "industry" is a real industry | ELIMINATED | It is the `n/a` bucket (500 stocks). |
@@ -98,3 +98,4 @@ The GPU queue is `scripts/queues/phase1_gpu.sh`, launched detached. Its log is `
 ## Log
 
 - 2026-09-29: Found every GPU run stopped with no traceback (killed at session end). The full-NYSE runs and the tuning runs used the pre-eq.14 attention. Restarted the queue with a fresh eq.14 tuning variant.
+- 2026-09-29: Correctness controls C2, C4, C5 and C6 added and passing for all 12 variants (0898b50). No leak or bug found.
