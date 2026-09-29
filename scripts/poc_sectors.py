@@ -10,11 +10,12 @@ Universe = Energy/Utilities + Finance industries (~300 stocks). The RSR "n/a" in
 import argparse
 import json
 import sys
+from dataclasses import replace
 from pathlib import Path
 
 import numpy as np
 
-from hypershift.config import RunConfig
+from hypershift.config import RunConfig, apply_overrides
 from hypershift.data.hypergraph import build_rsr_hypergraph, induced_subgraph
 from hypershift.data.rsr import load_rsr, read_ticker_file
 from hypershift.eval.baselines import evaluate_baselines
@@ -57,14 +58,16 @@ def tuned_path(exp):
     return Path("results", exp, "tuned.json")
 
 
-def cfg(label, geo, st, seed, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, tuned=None):
+def cfg(label, geo, st, seed, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, tuned=None, overrides=None):
+    """overrides: list of "k=v" strings (same parser as hypershift.run --set), applied last, recorded in config.json."""
     if tuned is not None:
         lr, alpha = tuned[geo]["lr"], tuned[geo]["alpha"]
-    return RunConfig(exp=exp, label=label, market="NYSE", structure=st, seed=seed, batch_days=8,
-                     epochs=epochs, patience=10, input_mode=input_mode, lr=lr, alpha=alpha, **GEOMS[geo])
+    c = RunConfig(exp=exp, label=label, market="NYSE", structure=st, seed=seed, batch_days=8,
+                  epochs=epochs, patience=10, input_mode=input_mode, lr=lr, alpha=alpha, **GEOMS[geo])
+    return replace(c, **apply_overrides({}, overrides)) if overrides else c
 
 
-def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tuned=False, arms=None):
+def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tuned=False, arms=None, overrides=None):
     data, hg = universe()
     print(f"universe: {data.num_nodes} stocks, {len(hg.edges)} hyperedges, "
           f"{int((hg.node_degree() > 0).sum())} stocks in >=1 hyperedge")
@@ -74,7 +77,7 @@ def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tune
             for st in STRUCTS:
                 if arms and f"{geo}_{st}" not in arms:
                     continue
-                m = train_one_run(cfg(f"{geo}_{st}", geo, st, s, epochs, exp, input_mode, lr, alpha, tuned), data, hg)
+                m = train_one_run(cfg(f"{geo}_{st}", geo, st, s, epochs, exp, input_mode, lr, alpha, tuned, overrides), data, hg)
                 print(f"seed {s} {geo}_{st}: val_sr {m['val']['sr']:.3f} test_sr {m['test']['sr']:.3f}", flush=True)
 
 
@@ -82,13 +85,13 @@ def tune_label(geo, lr, alpha):
     return f"tune_{geo}_lr{lr:g}_a{alpha:g}"
 
 
-def tune(seeds, epochs, exp=EXP, input_mode="level"):
+def tune(seeds, epochs, exp=EXP, input_mode="level", overrides=None):
     data, hg = universe()
     for geo in GEOMS:
         for lr in GRID_LR:
             for alpha in GRID_ALPHA:
                 for s in seeds:
-                    m = train_one_run(cfg(tune_label(geo, lr, alpha), geo, "hyper", s, epochs, exp, input_mode, lr, alpha),
+                    m = train_one_run(cfg(tune_label(geo, lr, alpha), geo, "hyper", s, epochs, exp, input_mode, lr, alpha, overrides=overrides),
                                       data, hg)
                     print(f"tune {geo} lr={lr:g} alpha={alpha:g} seed {s}: val_sr {m['val']['sr']:.3f}", flush=True)
 
@@ -203,12 +206,14 @@ if __name__ == "__main__":
     ap.add_argument("--alpha", type=float, default=1.0)
     ap.add_argument("--use-tuned", action="store_true")
     ap.add_argument("--arms", nargs="*", default=None, help="subset of arms for run, e.g. HH_hyper HH_clique")
+    ap.add_argument("--set", nargs="*", default=None, metavar="K=V", dest="overrides",
+                    help="RunConfig overrides for run/tune, e.g. shuffle_train_labels=true attn_dist=off decompose_size=10")
     a = ap.parse_args()
     exp = exp_name(a.variant)
     if a.cmd == "run":
-        run(parse_seeds(a.seeds or "0-9"), a.epochs, exp, a.input_mode, a.lr, a.alpha, a.use_tuned, a.arms)
+        run(parse_seeds(a.seeds or "0-9"), a.epochs, exp, a.input_mode, a.lr, a.alpha, a.use_tuned, a.arms, a.overrides)
     elif a.cmd == "tune":
-        tune(parse_seeds(a.seeds or "0-2"), a.epochs, exp, a.input_mode)
+        tune(parse_seeds(a.seeds or "0-2"), a.epochs, exp, a.input_mode, a.overrides)
         tune_select(exp)   # partial-seed workers: rerun tune-select once all seeds are done
     elif a.cmd == "tune-select":
         tune_select(exp)

@@ -18,7 +18,7 @@ def tertile_thresholds(data, seq) -> np.ndarray:
     return np.quantile(g[m > 0.5], [1 / 3, 2 / 3])
 
 
-def _f1(model, data, thg, cfg, split, th, device) -> float:
+def _f1(model, data, thg, cfg, split, th, device) -> tuple[float, float]:
     model.eval()
     ys, ps = [], []
     offs = window_offsets(data, cfg.seq, split)
@@ -30,7 +30,8 @@ def _f1(model, data, thg, cfg, split, th, device) -> float:
             keep = m > 0.5
             ys.append(np.digitize(g, th)[keep])
             ps.append(pred[keep])
-    return float(f1_score(np.concatenate(ys), np.concatenate(ps), average="macro"))
+    y, p = np.concatenate(ys), np.concatenate(ps)
+    return float(f1_score(y, p, average="macro")), float(f1_score(y, p, average="micro"))
 
 
 def train_clf_run(cfg: RunConfig, data=None, hg=None) -> dict:
@@ -66,9 +67,9 @@ def train_clf_run(cfg: RunConfig, data=None, hg=None) -> dict:
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), cfg.grad_clip)
             opt.step()
-        v, t = _f1(model, data, thg, cfg, "val", th, device), _f1(model, data, thg, cfg, "test", th, device)
-        if best is None or v > best["val_f1"]:
-            best, bad = {"best_epoch": epoch, "val_f1": v, "test_f1": t}, 0
+        (v, vmi), (t, tmi) = _f1(model, data, thg, cfg, "val", th, device), _f1(model, data, thg, cfg, "test", th, device)
+        if best is None or v > best["val_f1"]:   # selection on validation macro-F1
+            best, bad = {"best_epoch": epoch, "val_f1": v, "test_f1": t, "val_micro_f1": vmi, "test_micro_f1": tmi}, 0
         else:
             bad += 1
             if bad >= cfg.patience:
