@@ -62,8 +62,27 @@ def universe():
     return data.subset(np.array(keep)), induced_subgraph(hg, np.array(keep))
 
 
+def dry_train(c, data, hg):
+    """--dry-run: print what would be trained (no training, no files written)."""
+    print(f"DRY {c.exp}/{c.label}/seed_{c.seed} attn_score={c.attn_score} attn_dist={c.attn_dist} input={c.input_mode} "
+          f"lr={c.lr:g} alpha={c.alpha:g} temporal={c.temporal} spatial={c.spatial} structure={c.structure} epochs={c.epochs} "
+          f"decompose={c.decompose_mode}/{c.decompose_size} hub={c.drop_hub_degree} shuffle={c.shuffle_train_labels} "
+          f"micro={c.micro_batch_days} model={c.model}")
+    return {"val": {"sr": 0.0}, "test": {"sr": 0.0}}
+
+
+TRAIN = train_one_run
 GRID_LR = (5e-4, 1e-3, 3e-3)
-GRID_ALPHA = (0.1, 1.0, 10.0)
+GRID_ALPHA = (0.1, 1.0, 10.0)   # default kept so old tuned.json / tune-select stay reproducible; override with --grid-alpha
+
+
+def set_grid(lr=None, alpha=None):
+    """Override the tuning grid (tune and tune-select must use the same one)."""
+    global GRID_LR, GRID_ALPHA
+    if lr:
+        GRID_LR = tuple(float(x) for x in lr)
+    if alpha:
+        GRID_ALPHA = tuple(float(x) for x in alpha)
 
 
 def exp_name(variant):
@@ -95,14 +114,14 @@ def run(seeds, epochs, exp=EXP, input_mode="level", lr=1e-3, alpha=1.0, use_tune
     base_model = next((o.split("=", 1)[1] for o in (overrides or []) if o.startswith("model=")), "think")
     for s in seeds:
         if base_model != "think":     # R8 baseline: one arm, labelled by the model (graph structure is built in)
-            m = train_one_run(cfg(base_model, "HH", "hyper", s, epochs, exp, input_mode, lr, alpha, tuned, overrides), data, hg)
+            m = TRAIN(cfg(base_model, "HH", "hyper", s, epochs, exp, input_mode, lr, alpha, tuned, overrides), data, hg)
             print(f"seed {s} {base_model}: val_sr {m['val']['sr']:.3f} test_sr {m['test']['sr']:.3f}", flush=True)
             continue
         for geo in pick_geoms(arms):
             for st in structs_for(geo):
                 if arms and f"{geo}_{st}" not in arms:
                     continue
-                m = train_one_run(cfg(f"{geo}_{st}", geo, st, s, epochs, exp, input_mode, lr, alpha, tuned, overrides), data, hg)
+                m = TRAIN(cfg(f"{geo}_{st}", geo, st, s, epochs, exp, input_mode, lr, alpha, tuned, overrides), data, hg)
                 print(f"seed {s} {geo}_{st}: val_sr {m['val']['sr']:.3f} test_sr {m['test']['sr']:.3f}", flush=True)
 
 
@@ -116,7 +135,7 @@ def tune(seeds, epochs, exp=EXP, input_mode="level", overrides=None, geoms=None)
         for lr in GRID_LR:
             for alpha in GRID_ALPHA:
                 for s in seeds:
-                    m = train_one_run(cfg(tune_label(geo, lr, alpha), geo, "hyper", s, epochs, exp, input_mode, lr, alpha, overrides=overrides),
+                    m = TRAIN(cfg(tune_label(geo, lr, alpha), geo, "hyper", s, epochs, exp, input_mode, lr, alpha, overrides=overrides),
                                       data, hg)
                     print(f"tune {geo} lr={lr:g} alpha={alpha:g} seed {s}: val_sr {m['val']['sr']:.3f}", flush=True)
 
@@ -238,15 +257,22 @@ if __name__ == "__main__":
     ap.add_argument("--use-tuned", action="store_true")
     ap.add_argument("--arms", nargs="*", default=None, help="subset of arms for run, e.g. HH_hyper HH_clique EH_hyper")
     ap.add_argument("--geoms", nargs="*", default=None, help="tune/tune-select geometries (default HH EE; EH is opt-in)")
+    ap.add_argument("--grid-lr", nargs="*", type=float, default=None, help="tune/tune-select learning-rate grid (default 5e-4 1e-3 3e-3)")
+    ap.add_argument("--grid-alpha", nargs="*", type=float, default=None, help="tune/tune-select alpha grid (default 0.1 1 10)")
+    ap.add_argument("--dry-run", action="store_true", help="run/tune: print every config that would be trained, then exit")
     ap.add_argument("--set", nargs="*", default=None, metavar="K=V", dest="overrides",
                     help="RunConfig overrides for run/tune, e.g. shuffle_train_labels=true attn_dist=off decompose_size=10")
     a = ap.parse_args()
     exp = exp_name(a.variant)
+    set_grid(a.grid_lr, a.grid_alpha)
+    if a.dry_run:
+        TRAIN = dry_train
     if a.cmd == "run":
         run(parse_seeds(a.seeds or "0-9"), a.epochs, exp, a.input_mode, a.lr, a.alpha, a.use_tuned, a.arms, a.overrides)
     elif a.cmd == "tune":
         tune(parse_seeds(a.seeds or "0-2"), a.epochs, exp, a.input_mode, a.overrides, a.geoms)
-        tune_select(exp, a.geoms)   # partial-seed workers: rerun tune-select once all seeds are done
+        if not a.dry_run:
+            tune_select(exp, a.geoms)   # partial-seed workers: rerun tune-select once all seeds are done
     elif a.cmd == "tune-select":
         tune_select(exp, a.geoms)
     else:
