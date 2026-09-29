@@ -26,7 +26,7 @@ Status words: **DONE**, **PARTIAL**, **RUNNING**, **TODO**, **BLOCKED** (cannot 
 | ID | Task | Paper | Status | Evidence / next step |
 |---|---|---|---|---|
 | R1 | Twitter tennis, node regression (MSE) | 0.58 | TODO (order 3) | Data obtainable (PyG-T JSON; Table I matches `rg17`). Paper's baselines (~2.05) are about 5× worse than a constant predictor (0.42), so the setup is unclear. Est. 10–16 eng-h. See `docs/phase1/R_feasibility.md`. |
-| R2 | Chickenpox (MSE) | 1.09 | TODO (order 1) | Data obtainable (220 KB JSON). Agent calibration: mean predictor 1.047, AR(4) 0.72, so the paper's 1.09 is worse than a constant *(own split, not yet independently checked)*. Est. 6–10 eng-h, <0.5 GPU-h. |
+| R2 | Chickenpox (MSE) | 1.09 | DONE (paper not matched) | `docs/phase1/R2_chickenpox.md` (7b9c388), 10 seeds, untuned, both protocols agree within 0.005. THINK 0.956, EE 0.886, pairwise 0.823, **no relations 0.733**, AR(4) 0.725, mean 1.047. Our THINK beats the paper's 1.09. The paper's 1.09 (and its baselines, 1.11–1.14) is worse than predicting the mean. **Adding relations makes it worse, and hyperbolic is worse than Euclidean.** Nothing beats a linear AR(4). |
 | R3 | Windmill (MSE) | 1.05 | TODO (order 2) | Data obtainable (47 MB). Stored series has lag-1 autocorrelation ≈ 0, and the mean predictor scores 1.02 *(not yet independently checked)*. The graph is complete, so the hyperedge cut the paper never states is decisive. Est. 6–10 eng-h. |
 | R4 | China stock risk (MSE) | 0.32 | BLOCKED | No public dataset matches Table I (85 nodes, 1293 steps). The cited [35] is a US 10-K text paper; the CSE dataset [22] has 91 stocks over 2 years. |
 | R5 | NYSE ranking (Sharpe / NDCG) | 1.18 / 0.86 | PARTIAL | Full NYSE with the paper protocol (paper normalization, 100 epochs), **5 seeds, pre-eq.14 attention**: THINK best-test 2.40 ± 0.20, leak-free −0.05. Needs an **eq.14 rerun with 25 seeds** (see Decisions). NDCG 0.86 is not comparable because of the evaluator bug (E3). |
@@ -72,6 +72,7 @@ Status words: **DONE**, **PARTIAL**, **RUNNING**, **TODO**, **BLOCKED** (cannot 
 | Largest RSR "industry" is a real industry | ELIMINATED | It is the `n/a` bucket (500 stocks). |
 | Leak-free THINK beats simpler arms | NOT SUPPORTED (small scale) | No Holm-significant comparison, v1 or v2 (`results/POC_sectors*/summary.md`). |
 | Models predict returns | NOT SUPPORTED | MSE ≥ predicting 0, IC ≈ 0, NDCG at random level, predictions collapsed (THINK spread 1.4%). POC_PRESENTATION §4b cause 3. |
+| THINK's relation/hyperbolic layers help on non-stock data | NOT SUPPORTED (R2) | Chickenpox: no relations < pairwise < Euclidean hyperedges < THINK in MSE (lower is better). The best arm only ties AR(4). |
 | Inputs at the Poincaré ball boundary hurt the hyperbolic model | ESTABLISHED | Radius ~0.95; 15% of inputs past 0.99 in 2017. The relative-input fix gives +1 Sharpe (not significant). |
 | Validation and test years disagree | ESTABLISHED | Rank correlation between THINK's per-epoch 2016 and 2017 Sharpe is −0.63. |
 | The eq.14 formula error changes conclusions | RUNNING | 80% of stocks are in exactly one hyperedge, so the effect should be small. Rerun queued. |
@@ -109,3 +110,4 @@ The GPU queue is `scripts/queues/phase1_gpu.sh`, launched detached. Its log is `
 - 2026-09-29: Correctness controls C2, C4, C5 and C6 added and passing for all 12 variants (0898b50). No leak or bug found.
 - 2026-09-29: R-series feasibility researched (`docs/phase1/R_feasibility.md`, c327be5). R4 blocked; R1–R3 obtainable but near-trivial targets; R7 thresholds resolved.
 - 2026-09-29: Added `poc_sectors --set` overrides and queue 2 (e35c6cb); launched it waiting on queue 1.
+- 2026-09-29: R2 chickenpox done (7b9c388). The paper's number is worse than a mean predictor; in our runs relations and hyperbolic geometry both hurt MSE; AR(4) is unbeaten.
