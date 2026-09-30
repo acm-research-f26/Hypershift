@@ -317,3 +317,64 @@ Figure: `docs/figures/g12_g2.png` (both protocols, mean ± std).
 - **Best-test protocol: the direction, not the shape.** Sharpe falls from the full graph (HH 2.46, EH 2.26) to hub 10 (HH 1.59, EH 1.15). Full beats hub 24 and hub 10 in 5/5 seeds for HH (p = 0.0625, the minimum with 5 seeds) and hub 24 in 5/5 for EH. It is **not monotone**: HH goes 2.46, 2.01, 1.51, **1.98**, 1.59 (hub 16 jumps back up by 0.47); EH goes 2.26, 1.43, 1.20, **1.34**, 1.15. THINK is above EH at every level (3/5 seeds each, diffs +0.21 to +0.63) but none is significant (p >= 0.31), and 3/5 is what a coin flip gives. Hub 10 and hub 16 are close to the no-relations reference (HH_none best-test 1.108, 10 seeds), so a decline toward "all hyperedges removed" is what one expects from a model losing its graph. C1 shows that the best-test value with *shuffled* labels is 2.4 to 2.5, so this curve cannot be read as the model using the hubs' information.
 - **Verdict: Fig. 3b's monotone decline and THINK > EH are not reproduced under either protocol at a level that can be called significant.** Leak-free, the trend has the opposite sign and THINK < EH. Best-test, the direction matches the paper (decline, THINK > EH) but is non-monotone and not significant, and it is a protocol that the shuffled-label control shows to be uninformative. The paper's x-axis (node degree 31 to 2, max hyperedge size 500) is not the graph we have (max node degree 35 here, 114 on full NYSE; PA11 and `docs/phase1/fig3_degree_reconcile.md`), so the levels are not aligned even in principle.
 - Caveats: 5 seeds (min p = 0.0625), one test year, 309 stocks, no tuning, 30 epochs. Hubs are removed from a graph whose hyperedges are mostly pairs (545 of 558), so "hub removal" here mostly deletes Wikidata pair edges around high-degree stocks.
+
+## Step (c): G2, hyperedge decomposition (paper Fig. 3a), HH_hyper and EH_hyper, level inputs, 5 seeds
+
+*2026-09-30. Exps `POC_sectors_G2_decomp_large30_g2`, `POC_sectors_G2_decomp_large15_g2`, `POC_sectors_G2_decomp_small20_g2` (read-only here; the older `POC_sectors_G2_decomp_large30` is the superseded old-graph run and is not used). Same setup, definitions and statistics as the G12 section above (309 stocks, corrected 558-edge graph, eq. 14, 30 epochs, no tuning, level inputs; leak-free = best 2016 validation epoch scored on 2017, best-test = max over epochs of the 2017 Sharpe; paired Wilcoxon two-sided, raw p; block-bootstrap CI for leak-free only). **With 5 seeds the smallest possible p is 0.0625.** Every number was recomputed from `metrics.json`, `history.jsonl` and `test_daily.npy`. The leak-free and best-test values re-derived from the per-epoch history match `metrics.json` in all 50 runs (5 seeds x 2 arms x 5 levels). The run configs confirm the switch (`decompose_mode`, `decompose_size`, `micro_batch_days`).*
+
+Levels, ordered by how much is decomposed (edges left in the model, from `num_edges` in `metrics.json`; all 309 stocks stay covered at every level):
+
+| level | switch | edges | note |
+|---|---|---|---|
+| full | none | 558 | 545 pairs + 13 larger industry edges (sizes 3 to 47) |
+| small20 | `small_first`, S = 20 | 1326 | splits the seven size 13 to 20 industry edges into pairs (6 big edges left) |
+| large30 | `large_first`, S = 30 | 3488 | splits every edge with more than 30 nodes (9 big edges left) |
+| large15 | `large_first`, S = 15 | 4719 | 3 big edges left |
+| all pairs | `*_clique` arms | 4897 | every hyperedge to all pairs, deduplicated; the queue comment expected 5067 pairs, `num_edges` says 4897 |
+
+`large30` and `large15` ran with `micro_batch_days=1` (identical gradients, less memory). The arms stop early at different epochs (`epochs_run` 11 to 30), which matters for best-test, a maximum over however many epochs were run.
+
+### G2a. Sharpe per level (mean ± std, 5 seeds; "full" = `POC_sectors_g2` seeds 0-4, "all pairs" = the `*_clique` arms, seeds 0-4)
+
+| level | HH leak-free | EH leak-free | HH best-test | EH best-test |
+|---|---|---|---|---|
+| full (558) | -0.497 ± 1.526 | -0.092 ± 1.231 | 2.463 ± 0.484 | 2.256 ± 0.729 |
+| small20 (1326) | -0.644 ± 0.581 | +0.266 ± 0.635 | 1.798 ± 0.141 | 1.774 ± 0.962 |
+| large30 (3488) | -0.035 ± 0.592 | +0.242 ± 1.075 | 1.033 ± 0.470 | 1.381 ± 0.875 |
+| large15 (4719) | -0.456 ± 0.038 | +0.205 ± 0.704 | 1.245 ± 0.557 | 1.952 ± 0.271 |
+| all pairs (4897) | -0.424 ± 0.487 | +0.546 ± 0.916 | 1.638 ± 0.351 | 1.673 ± 0.473 |
+
+(All pairs on all 10 seeds, section 1: HH -0.542 / 1.817, EH +0.158 / 1.392.) Figure: `docs/figures/g2_g2.png` (both protocols, mean ± std).
+
+### G2b. Each decomposed level minus the full graph (paired by seed)
+
+| arm | level | leak-free diff | p | CI (leak-free) | best-test diff | p | full higher in (best-test) |
+|---|---|---|---|---|---|---|---|
+| HH | small20 | -0.147 | 0.63 | [-0.56, +0.78] | -0.665 | 0.0625 | 5/5 |
+| HH | large30 | +0.463 | 0.63 | [-0.37, +1.69] | -1.430 | 0.0625 | 5/5 |
+| HH | large15 | +0.042 | 0.63 | [-0.65, +1.62] | -1.219 | 0.0625 | 5/5 |
+| HH | all pairs | +0.073 | 0.63 | [-0.74, +1.46] | -0.825 | 0.125 | 4/5 |
+| EH | small20 | +0.358 | 0.31 | [-0.27, +1.79] | -0.482 | 0.0625 | 5/5 |
+| EH | large30 | +0.334 | 0.125 | [-0.32, +1.31] | -0.875 | 0.0625 | 5/5 |
+| EH | large15 | +0.297 | 0.44 | [-0.23, +1.55] | -0.304 | 0.44 | 4/5 |
+| EH | all pairs | +0.638 | 0.44 | [+0.07, +2.00] | -0.583 | 0.125 | 4/5 |
+
+### G2c. THINK (HH) minus Euclidean temporal (EH) at each level (positive = the paper's direction)
+
+| level | leak-free diff | p | HH higher in | CI (leak-free) | best-test diff | p | HH higher in |
+|---|---|---|---|---|---|---|---|
+| full | -0.405 | 0.44 | 1/5 | [-0.65, +0.19] | +0.207 | 0.63 | 3/5 |
+| small20 | -0.910 | 0.31 | 1/5 | [-1.69, -0.05] | +0.025 | 0.81 | 2/5 |
+| large30 | -0.277 | 0.63 | 2/5 | [-0.53, +0.41] | -0.349 | 0.81 | 3/5 |
+| large15 | -0.661 | 0.125 | 1/5 | [-0.92, +0.09] | -0.707 | 0.125 | 1/5 |
+| all pairs | -0.970 | 0.0625 | 0/5 | [-1.61, -0.26] | -0.035 | 1.00 | 3/5 |
+
+### Does Fig. 3a reproduce?
+
+Paper (p853 Sec. V.C "Impact of Hypergraph Learning", Fig. 3a; values read off the plot, approximate): NYSE Sharpe falls steadily as hyperedges are decomposed into pairs, from about 1.18 (THINK) and 1.10 (Euclidean THINK) with no decomposition to about 0.95 and 0.92 when everything is decomposed; the THINK curve stays above the Euclidean curve at every level. The text: each hyperedge of degree n is decomposed into C(n,2) pairs "in increasing order of hyperedge degree", and "the worst performance is achieved when all hyperedges are decomposed". The x-axis (hyperedge degree 500, 15, 9, 5, 3) reads like a shrinking maximum remaining degree, which points to decomposing large edges first, while the text says increasing order. The paper does not settle which (INFERRED, not in paper: either reading is possible); we ran both (`large_first` 30 and 15, `small_first` 20). The paper's levels belong to full NYSE, whose largest edge has 500 nodes, so they cannot be matched on our 309-stock graph (max size 47).
+
+- **Leak-free protocol: no.** There is no decline. HH is flat and noisy (-0.50, -0.64, -0.04, -0.46, -0.42 across the five levels, seed std 0.04 to 1.5) and every decomposed level is within noise of the full graph (diffs -0.15 to +0.46, all p = 0.63, all CIs include 0). EH goes the other way: it rises from -0.09 (full) to +0.21 to +0.55 at every decomposed level (diffs +0.30 to +0.64, p 0.125 to 0.44; the all-pairs CI [+0.07, +2.00] excludes 0 but the seed-level test does not, and the CI treats one 237-day test year as the only noise). THINK is below the Euclidean model at all five levels (-0.28 to -0.97, HH higher in 0 to 2 of 5 seeds), the wrong direction for the paper. The largest gap (all pairs, -0.97, HH lower in 5/5 seeds, p 0.0625, CI [-1.61, -0.26]) is the strongest result 5 seeds allow, and it is against the paper.
+- **Best-test protocol: the direction shows, the shape does not.** Every decomposed level is below the full graph on average (HH 2.46 falling to 1.03 to 1.80, EH 2.26 falling to 1.38 to 1.95). The full graph beats the decomposed level in 5/5 seeds in 5 of the 8 arm-level pairs (p 0.0625, the 5-seed minimum); the other three are 4/5 (p 0.125 to 0.44). It is **not monotone**: ordered by edges left, HH goes 2.46, 1.80, 1.03, 1.25, 1.64 (the fully pairwise arm is above large30) and EH goes 2.26, 1.77, 1.38, 1.95, 1.67 (large15 rebounds to 1.95, the second-best level). Per seed, the best-test curve declines at every step in only 1 of 5 seeds for HH and 1 of 5 for EH. **THINK above Euclidean does not hold either:** HH minus EH is +0.21 and +0.03 at full and small20, and -0.35, -0.71, -0.04 at large30, large15 and all pairs; none is significant (p >= 0.125).
+- **C1 caveat applies in full.** Best-test is a maximum over epochs of the test-year Sharpe. With shuffled training labels the full graph gives 2.50 (HH) and 2.36 (EH) (section C1), the same as the real-label 2.46 and 2.26. So the full graph's high best-test is not information, and the decline when the graph is decomposed cannot be read as "hyperedges carry information that pairs lose". There is also a confound in the best-test number: the arms stop at different epochs (HH mean epochs run: full 17.4, small20 20.2, large30 13.8, large15 18.8, all pairs 21.0), and a maximum over fewer epochs tends to be lower. I did not quantify this.
+- **Verdict: Fig. 3a (monotone decline with decomposition, THINK above Euclidean at every level) is not reproduced under either protocol.** Leak-free shows no decline for THINK and a rise for EH, with THINK below EH throughout. Best-test shows a decline in direction (largest at the first decomposition steps) but not monotone, and THINK is above EH only at the two least decomposed levels, not significantly. This is the same picture as G12 (Fig. 3b). The paper's curves are smooth and nearly monotone with narrow error bands (25 runs, p853 Fig. 3 caption; band width read off the plot, roughly 0.02 to 0.03, approximate). Our seed std is 0.04 to 1.5, and a single 237-day Sharpe has a standard error near 1.
+- Caveats: 5 seeds (min p 0.0625), one test year, 309 stocks, no tuning, 30 epochs, levels defined for our graph (edges of 3 to 47 nodes; 545 of 558 edges are already pairs), so decomposition here touches only 13 hyperedges, although the edge count grows from 558 to 4897. Relative inputs were not run for G2.
