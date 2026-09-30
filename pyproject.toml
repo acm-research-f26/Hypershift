@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
+    "exchange-calendars>=4.13.2",
     "geoopt>=0.5.1",
     "pydantic>=2.13.5",
     "pytest>=9.1.1",
