@@ -232,3 +232,88 @@ Rows lr, columns alpha, `hyper` structure. **Bold** = chosen.
 ### T6. Does tuning change any conclusion?
 
 **No verdict changed.** All 10 comparisons are NO EVIDENCE, as in the untuned g2 run (and in the old-graph tuned run, `POC_sectors_rel_tuned_eq14`). Nothing beats the market leak-free. Models still do not predict returns. Three point estimates changed: HH vs EH flipped from +0.31 to -0.10; HH hyperedges vs pairwise flipped from -0.46 to +0.05; and the HH best-test artefact (1.924) is gone. Caveats: 309 stocks, one test year, 30 epochs, 3 seeds per tuning cell, grids not extended for HH (alpha edge) or EE (low corner). A10, C1, G2 and G12 on g2 (step c) are separate.
+
+
+
+## Step (c): A10, C1 and G12 on g2 (309 stocks, corrected graph, eq. 14, 30 epochs, no tuning)
+
+*2026-09-30. Exps `POC_sectors_A10_g2`, `POC_sectors_rel_A10_g2`, `POC_sectors_C1_g2`, `POC_sectors_G12_hub{35,24,16,10}_g2` (all read-only here). Every number was recomputed from `metrics.json`, `test_daily.npy` and `test_{pred,gt,mask}.npy` with a separate script; the config of each run confirms the switch (`attn_dist` off vs mult, `shuffle_train_labels` True, `drop_hub_degree`). Same definitions as above: leak-free = epoch with best 2016 validation Sharpe, scored on 2017; best-test = max over epochs of the 2017 Sharpe (selects on the test year). Comparisons are paired by seed: Wilcoxon two-sided, raw p (not Holm-corrected: targeted diagnostics, not a family); bootstrap CI = stationary block bootstrap of the Sharpe difference of the seed-averaged daily return series (same routine as `summarize`). **The bootstrap CI exists only for leak-free**, because `test_daily.npy` holds the leak-free epoch only; best-test rows have no CI. **With 5 seeds the smallest possible two-sided Wilcoxon p is 2/2^5 = 0.0625**, so no 5-seed comparison here can reach p < 0.05, whatever the effect. With 10 seeds the minimum is 0.002.*
+
+### A10. Attention without the distance term (`attn_dist=off`), HH_hyper, 10 seeds
+
+Paper: the claim is that hyperbolic distance-guided message propagation is what lets THINK capture a node's impact (p853, text after Fig. 3a/3b, Sec. V.B/V.C). If the distance term mattered, removing it should hurt.
+
+| inputs | leak-free, no distance | leak-free, with distance | diff (no dist - dist) | Wilcoxon p | no-dist better in | 95% bootstrap CI |
+|---|---|---|---|---|---|---|
+| level | -0.421 ± 1.093 | -0.681 ± 1.219 | +0.261 | 0.160 | 8/10 | [-0.01, +0.50] |
+| relative | -0.033 ± 0.786 | +0.007 ± 0.781 | -0.040 | 0.695 | 5/10 | [-0.79, +0.26] |
+
+Best-test: level 2.482 ± 0.527 (no dist) vs 2.513 ± 0.421 (diff -0.032, p 0.49, no-dist higher in 3/10). Relative: 1.924 ± 0.000 in both; all 20 runs (10 with, 10 without the distance term) sit at the constant-prediction artefact 1.9244 described in section 1, so the relative best-test carries no information.
+
+- **The distance term has no detectable effect**, in either variant; p is at least 0.16. The level-input point estimate is nominally in favour of *removing* the distance term (+0.26, 8/10 seeds, CI just touches 0), the relative one is about 0 (-0.04). On the old graph the signs were the other way round (level -0.29, relative +0.14, both p > 0.4): the sign flips, as noise does. Both are far inside the seed std (0.8 to 1.2).
+- Caveat: leak-free Sharpe of these arms is near or below zero (predictions are collapsed, section 3), so "no effect on a number that measures nothing" is the honest reading. A10 cannot say the distance term is useless in a model that works.
+
+### C1. Shuffled training labels (leakage null), HH_hyper and EH_hyper, level inputs, 5 seeds
+
+The training returns are permuted across stocks within each training day (`shuffle_train_labels` in `loop.py`), so no learnable signal remains. Validation and test labels are real. Compared with the real-label runs of the same seeds 0-4 in `POC_sectors_g2`.
+
+| arm | protocol | shuffled labels | real labels | diff (shuf - real) | Wilcoxon p | shuf higher in |
+|---|---|---|---|---|---|---|
+| HH_hyper | leak-free | -0.695 ± 1.110 | -0.497 ± 1.526 | -0.198 | 0.625 | 2/5 |
+| HH_hyper | best-test | **2.499 ± 0.592** | **2.463 ± 0.484** | +0.035 | 0.8125 | 3/5 |
+| EH_hyper | leak-free | -0.255 ± 0.756 | -0.092 ± 1.231 | -0.163 | 1.000 | 2/5 |
+| EH_hyper | best-test | **2.363 ± 0.537** | **2.256 ± 0.729** | +0.107 | 0.8125 | 2/5 |
+
+Bootstrap CI of the leak-free Sharpe difference: HH [-0.41, +0.28], EH [-0.30, +0.59] (both include 0). IC (mean daily rank correlation between prediction and 2017 return, from `test_pred/gt/mask`, leak-free epoch): HH shuffled -0.011 ± 0.012 vs real -0.011 ± 0.014; EH shuffled -0.004 ± 0.016 vs real +0.001 ± 0.022. Validation Sharpe at the selected epoch: HH 1.692 ± 0.139 shuffled vs 1.864 ± 0.278 real; EH 2.091 ± 0.415 vs 1.949 ± 0.276.
+
+- **Yes, the old-graph C1 result still holds on g2.** Old graph (HH, 5 seeds): best-test 2.23 with shuffled labels vs 2.19 with real labels. Now: 2.50 vs 2.46 (HH) and 2.36 vs 2.26 (EH). Shuffled labels give the same best-test Sharpe as real labels in both arms, with differences of +0.04 and +0.11 and p >= 0.81.
+- **Reading.** A model trained on noise labels reaches a best-test Sharpe of about 2.4 to 2.5 (the paper reports 1.18 for THINK on NYSE, p852 Table II, on its own Sharpe formula and universe). So the best-test number of the paper protocol (the max over epochs of the test Sharpe) is produced by picking the luckiest epoch on the test year, and cannot be read as evidence that the model learned anything. This is also why the best-test ordering "hyperedges > pairwise > none" (section 1) cannot be taken as support for THINK. Validation Sharpe is also high (1.7 to 2.1) with noise labels, the same disconnect as in the tuning section (2016 Sharpe high, 2017 near zero).
+- Shuffled labels do not lower the leak-free Sharpe or the IC either (differences within noise, IC at zero for both label types), consistent with section 3 (real-label models carry no ranking signal on 2017). This does not show that the pipeline is leak-free (that is C2/C4 and the tests); it shows the *metric* cannot tell signal from noise at this scale.
+
+### G12. Hub removal (paper Fig. 3b), HH_hyper and EH_hyper, level inputs, 5 seeds
+
+Hub removal drops every hyperedge that touches a node of degree >= t (levels as derived in `scripts/queues/phase1_g2_small.sh`). Edges left and the share of the 309 stocks still in at least one hyperedge (`covered_frac` in `metrics.json`; identical for both arms): full graph 558 edges (100%), t = 35: 426 (85.1%), t = 24: 194 (71.5%), t = 16: 40 (11.0%), t = 10: 16 (7.8%). Reference "none" arms (10 seeds, section 1): HH_none 0.279 leak-free / 1.108 best-test, EE_none 0.203 / 1.184 (EH_none would equal EE_none).
+
+Sharpe, mean ± std over 5 seeds. "Full" = `POC_sectors_g2` seeds 0-4 (the same seeds).
+
+| graph | HH leak-free | EH leak-free | HH best-test | EH best-test |
+|---|---|---|---|---|
+| full (558 edges) | -0.497 ± 1.526 | -0.092 ± 1.231 | 2.463 ± 0.484 | 2.256 ± 0.729 |
+| hub 35 (426) | -0.537 ± 0.675 | +0.063 ± 0.612 | 2.005 ± 0.325 | 1.428 ± 0.836 |
+| hub 24 (194) | -0.050 ± 0.499 | +0.251 ± 0.477 | 1.505 ± 0.461 | 1.198 ± 0.794 |
+| hub 16 (40) | +0.924 ± 0.887 | +1.006 ± 0.878 | 1.976 ± 0.322 | 1.344 ± 0.989 |
+| hub 10 (16) | +0.284 ± 0.631 | +0.843 ± 0.810 | 1.587 ± 0.299 | 1.152 ± 0.867 |
+
+Figure: `docs/figures/g12_g2.png` (both protocols, mean ± std).
+
+**Paired against the full graph** (Wilcoxon raw p; bootstrap CI for leak-free only):
+
+| arm | level | leak-free diff (hub - full) | p | CI | best-test diff | p | full higher in (best-test) |
+|---|---|---|---|---|---|---|---|
+| HH | hub 35 | -0.040 | 0.81 | [-0.36, +0.82] | -0.459 | 0.44 | 3/5 |
+| HH | hub 24 | +0.447 | 0.63 | [-0.27, +1.69] | -0.958 | 0.0625 | 5/5 |
+| HH | hub 16 | +1.422 | 0.125 | [+0.34, +3.42] | -0.488 | 0.31 | 3/5 |
+| HH | hub 10 | +0.781 | 0.63 | [-0.64, +3.00] | -0.876 | 0.0625 | 5/5 |
+| EH | hub 35 | +0.155 | 0.81 | [-0.12, +1.57] | -0.828 | 0.31 | 4/5 |
+| EH | hub 24 | +0.343 | 0.81 | [-0.01, +1.58] | -1.058 | 0.0625 | 5/5 |
+| EH | hub 16 | +1.098 | 0.125 | [+0.53, +2.60] | -0.912 | 0.31 | 4/5 |
+| EH | hub 10 | +0.935 | 0.19 | [+0.44, +2.46] | -1.104 | 0.31 | 4/5 |
+
+("Full higher in" counts the seeds where the full graph beats the hub-dropped graph on best-test; 5/5 with p = 0.0625 is the strongest result possible with 5 seeds.)
+
+**THINK (HH) minus Euclidean temporal (EH), paired by seed** (positive = the paper's direction):
+
+| graph | leak-free diff | p | HH higher in | CI (leak-free) | best-test diff | p | HH higher in |
+|---|---|---|---|---|---|---|---|
+| full | -0.405 | 0.44 | 1/5 | [-0.65, +0.19] | +0.207 | 0.63 | 3/5 |
+| hub 35 | -0.600 | 0.31 | 1/5 | [-1.34, -0.09] | +0.577 | 0.31 | 3/5 |
+| hub 24 | -0.301 | 0.63 | 2/5 | [-0.89, +0.32] | +0.307 | 0.63 | 3/5 |
+| hub 16 | -0.081 | 0.81 | 2/5 | [-0.84, +1.05] | +0.632 | 0.63 | 3/5 |
+| hub 10 | -0.559 | 0.31 | 1/5 | [-2.05, +1.07] | +0.435 | 0.44 | 3/5 |
+
+**Does Fig. 3b reproduce?** Paper (p853 Sec. V.C "Impact of Hyperbolic Learning", Fig. 3b): both THINK and its Euclidean variant lose Sharpe as hubs are removed and are worst when all hyperedges are gone; THINK stays above the Euclidean variant throughout (curve levels read off the plot, approximate: THINK from about 1.15 at node-degree threshold 31 to about 0.88 at 2; Euclidean roughly 1.0 to 0.83).
+
+- **Leak-free protocol: no, the trend has the opposite sign.** Sharpe does not decline; it rises as hubs are removed (HH -0.50 to +0.92 at hub 16; EH -0.09 to +1.01), then dips at hub 10. Full vs hub 16: +1.42 (HH, CI [+0.34, +3.42], p 0.125) and +1.10 (EH, CI [+0.53, +2.60], p 0.125). The bootstrap CIs exclude 0, but the seed-level test cannot (p 0.125; 4/5 seeds agree), and the CI treats one 237-day test year as the only noise source. Hub 16 and 10 keep only 8 to 11% of stocks in any hyperedge, so the model is nearly a no-relations model there; the no-relations arms give 0.28 (HH_none) and 0.20 (EE_none) on 10 seeds, and seed std here is 0.5 to 1.5. This is not evidence that hubs hurt. THINK is *below* EH at all five graph levels (1 or 2 of 5 seeds above; diffs -0.08 to -0.60, all p >= 0.31), the wrong direction for the paper; the one CI excluding 0 (hub 35, [-1.34, -0.09]) is also against the paper and is not supported by the seed-level p (0.31).
+- **Best-test protocol: the direction, not the shape.** Sharpe falls from the full graph (HH 2.46, EH 2.26) to hub 10 (HH 1.59, EH 1.15). Full beats hub 24 and hub 10 in 5/5 seeds for HH (p = 0.0625, the minimum with 5 seeds) and hub 24 in 5/5 for EH. It is **not monotone**: HH goes 2.46, 2.01, 1.51, **1.98**, 1.59 (hub 16 jumps back up by 0.47); EH goes 2.26, 1.43, 1.20, **1.34**, 1.15. THINK is above EH at every level (3/5 seeds each, diffs +0.21 to +0.63) but none is significant (p >= 0.31), and 3/5 is what a coin flip gives. Hub 10 and hub 16 are close to the no-relations reference (HH_none best-test 1.108, 10 seeds), so a decline toward "all hyperedges removed" is what one expects from a model losing its graph. C1 shows that the best-test value with *shuffled* labels is 2.4 to 2.5, so this curve cannot be read as the model using the hubs' information.
+- **Verdict: Fig. 3b's monotone decline and THINK > EH are not reproduced under either protocol at a level that can be called significant.** Leak-free, the trend has the opposite sign and THINK < EH. Best-test, the direction matches the paper (decline, THINK > EH) but is non-monotone and not significant, and it is a protocol that the shuffled-label control shows to be uninformative. The paper's x-axis (node degree 31 to 2, max hyperedge size 500) is not the graph we have (max node degree 35 here, 114 on full NYSE; PA11 and `docs/phase1/fig3_degree_reconcile.md`), so the levels are not aligned even in principle.
+- Caveats: 5 seeds (min p = 0.0625), one test year, 309 stocks, no tuning, 30 epochs. Hubs are removed from a graph whose hyperedges are mostly pairs (545 of 558), so "hub removal" here mostly deletes Wikidata pair edges around high-degree stocks.
