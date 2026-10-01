@@ -15,6 +15,13 @@ for label in ("EE", "HE", "EH"):
     c = next(c for c in experiment("E2_geometry") if c.label == label)
     d = config_from_dict(apply_overrides(replace(c, seed=3).to_dict(), P)).to_dict()
     out[f"R5_g2/{label}"] = d
+# Preset 4 arms (G5 / A10); the base arms are the existing R5_g2 THINK_paperProtocol and EE.
+think = next(c for c in experiment("E1_main") if c.label == "THINK_paperProtocol")
+ee = next(c for c in experiment("E2_geometry") if c.label == "EE")
+for label, base, extra in (("THINK_paperProtocol", think, []), ("THINK_nodist", think, ["attn_dist=off"]),
+                           ("HH_none", think, ["structure=none"]), ("EE_none", ee, ["structure=none"])):
+    out[f"R5_g2/{label}"] = config_from_dict(apply_overrides(replace(base, seed=3).to_dict(), ["exp=R5_g2", "norm=paper", "epochs=100", "patience=1000"] + ([f"label={label}"] if label != "THINK_paperProtocol" else []) + extra)).to_dict()
+out["R5_g2/EE"] = config_from_dict(apply_overrides(replace(ee, seed=3).to_dict(), P)).to_dict()
 for label, model, mb in (("RSR_I", "rsr_i", "2"), ("STHGCN", "sthgcn", "4")):
     d = config_from_dict({**apply_overrides(load_yaml("configs/think_nyse.yaml"), R8 + [f"label={label}", f"model={model}", f"micro_batch_days={mb}"]), "seed": 3}).to_dict()
     out[f"R8/{label}"] = d

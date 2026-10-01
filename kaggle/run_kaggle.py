@@ -9,7 +9,7 @@ import gzip, json, os, queue, re, shlex, shutil, signal, subprocess, sys, thread
 from pathlib import Path
 
 T0 = time.time()
-SESSION = "1"        # PARAM  "1" = R8 small + R5_g2 EE/HE | "2" = R5_g2 EH (seeds 0-24) then R8 full NYSE | "all" = both | "3" = RSR_I full NYSE seeds 4-9 | "custom" = fill COMMANDS yourself
+SESSION = "1"        # PARAM  "1" = R8 small + R5_g2 EE/HE | "2" = R5_g2 EH (seeds 0-24) then R8 full NYSE | "all" = both | "3" = RSR_I full NYSE seeds 4-9 | "4" = R5_g2 G5 (HH_none, EE_none) + A10 (THINK_nodist) | "custom" = fill COMMANDS yourself
 TAG = "s1"           # PARAM  names the output zip: results_<TAG>.zip
 N_WORKERS = 3        # parallel training processes (4 vCPU; THINK is launch/CPU bound, ~1.6 GB VRAM each, so 16 GB is not the limit)
 SESSION_LIMIT_H = 12.0   # Kaggle hard limit for a GPU session
@@ -182,7 +182,15 @@ print("EH seeds complete locally at build time (skipped):", EH_DONE_LOCAL, "| EH
 S2 = [r5("EH", s, est_min=30) for s in EH_TODO] +      [c for s in SEEDS for c in (r8_full("RSR_I", "rsr_i", 2, s), r8_full("STHGCN", "sthgcn", 4, s))]
 # Preset 3: only full-NYSE RSR-I seeds 4-9 (s1/s2 RSR-I failed on the relation-dir bug; local GPU queue does seeds 0-1).
 S3 = [r8_full("RSR_I", "rsr_i", 2, s) for s in range(4, 10)]
-COMMANDS = {"1": S1, "2": S2, "3": S3, "all": S1 + S2, "custom": []}[SESSION]
+# Preset 4 (Phase 1 G5 + A10 on full NYSE, same protocol as R5_g2 THINK/EE): structure=none first (no graph, fast), then THINK without the attention distance term.
+# Output goes to results/R5_g2/<label>/seed_<k> so the arms pair by seed with THINK_paperProtocol / EE already there.
+def r5x(kind, grid, base_label, label, extra, s, est_min):
+    return dict(kind=kind, est_min=est_min, done=f"results/R5_g2/{label}/seed_{s}",
+                cmd=f"{{py}} scripts/run_grid.py {grid} --labels {base_label} --seeds {s} {R5P} label={label} {extra}")
+S4 = ([r5x("R5_HH_none", "E1_main", "THINK_paperProtocol", "HH_none", "structure=none", s, 15) for s in SEEDS] +
+      [r5x("R5_EE_none", "E2_geometry", "EE", "EE_none", "structure=none", s, 15) for s in SEEDS] +
+      [r5x("R5_THINK_nodist", "E1_main", "THINK_paperProtocol", "THINK_nodist", "attn_dist=off", s, 35) for s in SEEDS])
+COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard
