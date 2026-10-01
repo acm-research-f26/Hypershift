@@ -220,3 +220,7 @@ __marimo__/
 /data/
 /results/
 /.venv/
+
+# Kaggle bundle output and private CLI venv
+kaggle/build/
+kaggle/.venv-kaggle/
