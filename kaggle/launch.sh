@@ -5,6 +5,7 @@
 #      FORCE_DATA=1 (re-version the big data dataset even if it exists), KAGGLE_USER, TIMEOUT_S (default 43200)
 # Exit code 2 = no Kaggle credentials yet (nothing was uploaded).
 set -u
+# NOTE: datasets are uploaded with a bare relative -p from inside $B: the CLI builds its upload-state file name from the path and fails on "a/b/c" (Windows).
 SESSION="${1:-1}"; TAG="${2:-s$SESSION}"; ACCEL="${ACCEL:-NvidiaTeslaT4}"
 source "$(dirname "$0")/_kaggle_cli.sh" || exit $?
 cd "$ROOT" || exit 1
@@ -17,9 +18,9 @@ push_dataset() {  # $1 = slug, $2 = force (1 = version even if it exists)
   st=$(kg datasets status "$KUSER/$slug" 2>&1 | tr -d '\r' | tail -1)
   if echo "$st" | grep -qi "ready"; then
     if [ "$slug" = hypershift-rsr-data ] && [ "${FORCE_DATA:-0}" != 1 ]; then echo "$slug exists and is ready; keeping (FORCE_DATA=1 to re-version)"; return 0; fi
-    kg datasets version -p "$B/$slug" -m "bundle $(date +%F_%H%M) $(git rev-parse --short HEAD)" --dir-mode zip || return 1
+    (cd "$B" && kg datasets version -p "$slug" -m "bundle $(date +%F_%H%M) $(git rev-parse --short HEAD)" --dir-mode zip) || return 1
   else
-    kg datasets create -p "$B/$slug" --dir-mode zip || return 1
+    (cd "$B" && kg datasets create -p "$slug" --dir-mode zip) || return 1
   fi
   for i in $(seq 1 60); do
     st=$(kg datasets status "$KUSER/$slug" 2>&1 | tr -d '\r' | tail -1)
