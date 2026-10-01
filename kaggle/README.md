@@ -6,7 +6,7 @@ Checked against Kaggle sources on 2026-10-01 (search results quoting the Kaggle 
 
 - GPU sessions are limited to 12 h (TPU 9 h); weekly GPU quota is 30 h "or sometimes higher", resets Saturday 00:00 UTC. The quota counts wall-clock session time, so running several training processes in one session is the way to get more out of it.
 - Accelerators: 1x P100 or 2x T4, each with 4 CPU cores and 29 GB RAM. T4 x2 counts against the same quota.
-- Private datasets: archives (zip, gz) you upload are auto-extracted and the size limits apply after extraction. Ours is about 0.4 GB extracted, far below any limit.
+- Private datasets: archives (zip, gz) you upload are auto-extracted and the size limits apply after extraction. Ours is about 222 MB as uploaded; if Kaggle auto-extracts the `.gz` relation tensors it grows to about 4.8 GB (2.6 + 0.8 NYSE, 0.8 + 0.36 NASDAQ), still far below the limits.
 - **P100 risk**: newer Kaggle images ship a torch build without `sm_60` kernels, so a P100 can fail with "CUDA capability sm_60 is not compatible" ([Kaggle/docker-python#1546](https://github.com/Kaggle/docker-python/issues/1546)). Use **T4 x2** (launch.sh does by default). The notebook runs a CUDA matmul test first and stops with a clear message instead of failing hours later.
 - The `kaggle` CLI (v2.2.4, tested only up to `--help`; no token available here) takes `--accelerator NvidiaTeslaT4` (= GPU T4 x2) on `kernels push` and `kernel-metadata.json` accepts `enable_gpu`, `enable_internet`, `dataset_sources`, `machine_shape` ([kernel metadata docs](https://github.com/Kaggle/kaggle-cli/blob/main/docs/kernels_metadata.md)).
 
@@ -34,7 +34,7 @@ Time estimates, **unmeasured on Kaggle** (serial = one process at a time at loca
 | 2 | 20 full | 5.7-13 h | about 2.5-6.5 h |
 | all | 60 | 18-26 h | about 8-12 h, borderline |
 
-Run preset 1, then preset 2 (about 8-12 h of the 30 h weekly quota in total). The time guard does not start a run that cannot finish before `12 h - 25 min`, kills leftovers 15 min before the limit, then zips; anything skipped is picked up by re-running (resumable, via `results_*.zip` as a prior-results input, or by merging and re-launching).
+Session 1 runs EE/HE first (time critical), then the short small-scale R8 runs fill the tail. The table is a best case: Kaggle's "4 CPU" may be 2 physical cores, so per-process speed can be below the 3050 and 3-worker scaling below 2x; use `N_WORKERS = 2` if the first completions show slowdowns. Run preset 1, then preset 2 (about 8-12 h of the 30 h weekly quota in total). The time guard does not start a run that cannot finish before `12 h - 25 min`, kills leftovers 15 min before the limit, then zips; anything skipped is picked up by re-running (resumable, via `results_*.zip` as a prior-results input, or by merging and re-launching).
 
 ## Steps for you
 
@@ -61,7 +61,7 @@ Run preset 1, then preset 2 (about 8-12 h of the 30 h weekly quota in total). Th
 
 ## Merge rules (`merge_results.sh`)
 
-Copies only complete runs (folder has `metrics.json`). Never overwrites: a local run with `metrics.json` is a reported CONFLICT (local kept); a local folder without it is reported LOCAL-PARTIAL and left alone (a local job may be writing). Kaggle runs without `metrics.json` are listed as KAGGLE-INCOMPLETE and ignored. Kaggle logs land in `results/logs_kaggle/`. Always try `--dry-run` first.
+Copies only complete runs (folder has `metrics.json`). Never overwrites: a local run with `metrics.json` is a reported CONFLICT (local kept); a local folder without it is reported LOCAL-PARTIAL and left alone (a local job may be writing). Kaggle runs without `metrics.json` are listed as KAGGLE-INCOMPLETE and ignored. Kaggle logs land in `results/logs_kaggle/`. Always try `--dry-run` first. A LOCAL-PARTIAL with no live local job is stale (for example a killed run): delete that one folder and merge again. Locally `POC_sectors_R8_rsr_i_g2/rsr_i/seed_0` is already complete (from the stopped R8 queue), so session 1 skips it and the merge would report it as a conflict if it were included.
 
 ## Avoiding duplicate work with the local queue
 
@@ -69,7 +69,7 @@ The local queue (`phase1_gpu_3.sh`) runs THINK, then EH, then EE/HE. It will rea
 
 - Merge the Kaggle EE/HE results into `results/R5_g2` **before** the local queue reaches EE/HE: the local run skips every seed that already has `metrics.json`.
 - If not merged in time, both machines compute those seeds. The merge then keeps the local copy and reports the conflict (results differ in the last digits between a 3050 and a T4, so never mix: pick one source per seed, which the merge already does).
-- If Kaggle is late, tell the orchestrator so it can stop the local queue at that point.
+- A committed kernel's output is only downloadable once the whole version finishes, so merging before the local queue reaches EE/HE needs Kaggle's queue wait plus all of session 1 to end within about 9 h, which is not guaranteed. Safer: stop the local queue after EH and let Kaggle do EE/HE (the orchestrator's call).
 
 ## Risks
 

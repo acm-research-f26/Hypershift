@@ -39,6 +39,11 @@ code_src = find_dir("pyproject.toml")
 if REPO.exists():
     shutil.rmtree(REPO)
 shutil.copytree(code_src, REPO, ignore=shutil.ignore_patterns("__pycache__", "dataset-metadata.json"))
+for z in list(REPO.glob("*.zip")):                 # --dir-mode zip uploads that Kaggle did not auto-extract (src/, scripts/, configs/)
+    zipfile.ZipFile(z).extractall(REPO)
+    z.unlink()
+for need in ("src/hypershift/run.py", "scripts/run_grid.py", "configs/think_nyse.yaml"):
+    assert (REPO / need).exists(), f"{need} missing in the code dataset copy"
 os.chdir(REPO)
 print((REPO / "BUNDLE_INFO.txt").read_text())
 assert not (REPO / "results/tuned.json").exists() and not (REPO / "configs/chosen.yaml").exists(), "unexpected config overrides in bundle"
@@ -56,6 +61,8 @@ if not DRYRUN:
 chk = subprocess.run([PY, "-c", "import hypershift, numpy, torch; print('hypershift ok, numpy', numpy.__version__, 'torch', torch.__version__)"],
                      capture_output=True, text=True, env=ENV)
 print(chk.stdout, chk.stderr[-500:])
+if chk.returncode:
+    raise SystemExit("import hypershift/numpy/torch failed (see above); all runs would fail, stopping now")
 
 # %% Cell 3: data -> data/raw/rsr/data  (real dir in /kaggle/temp so it is not part of the notebook output)
 data_in = find_dir("NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
@@ -147,7 +154,9 @@ def r8_full(label, model, micro, s):
     return dict(kind=f"R8_{label}", est_min=40, done=f"results/R8_baselines_g2/{label}/seed_{s}",
                 cmd=f"{{py}} -m hypershift.run {R8C} label={label} model={model} micro_batch_days={micro} --seeds {s}")
 
-S1 = [r8_small(m, s) for m in ("rsr_i", "sthgcn") for s in SEEDS] + [r5(l, s) for s in SEEDS for l in ("EE", "HE")]
+# EE/HE first (time critical, longest); the short small-scale runs last so they can fill the tail if the time guard stops launches.
+# POC_sectors_R8_rsr_i_g2 seed 0 already has metrics.json locally (R8 queue, stopped), so it is not repeated here.
+S1 = [r5(l, s) for s in SEEDS for l in ("EE", "HE")] +      [r8_small(m, s) for m in ("rsr_i", "sthgcn") for s in SEEDS if (m, s) != ("rsr_i", 0)]
 S2 = [c for s in SEEDS for c in (r8_full("RSR_I", "rsr_i", 2, s), r8_full("STHGCN", "sthgcn", 4, s))]
 COMMANDS = {"1": S1, "2": S2, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
