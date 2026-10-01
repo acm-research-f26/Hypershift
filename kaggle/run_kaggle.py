@@ -5,7 +5,7 @@
 # Everything is resumable: a run folder with `metrics.json` is skipped. Output = /kaggle/working/results_<TAG>.zip.
 
 # %% Cell 1: parameters
-import gzip, json, os, queue, shlex, shutil, signal, subprocess, sys, threading, time, zipfile
+import gzip, json, os, queue, re, shlex, shutil, signal, subprocess, sys, threading, time, zipfile
 from pathlib import Path
 
 T0 = time.time()
@@ -88,18 +88,35 @@ if (data_in / "hypergraph_cache").exists():
 if (data_in / "2013-01-01").exists():
     link_or_copy(data_in / "2013-01-01", DATA / "2013-01-01")
 rel_src = data_in / "relation" if (data_in / "relation").exists() else DATA / "relation"
+def place_relation(f, dst, unpack):
+    """Put one relation file at dst (a real .npy). Kaggle may have left `X.npy.gz` as is, or auto-extracted it into a
+    DIRECTORY named `X.npy` (name without .gz, holding the content): that directory was symlinked as the .npy and RSR-I
+    died with IsADirectoryError (Phase 1 R8, 2026-10-01). Handle file, .gz and directory."""
+    if f.is_dir():                                       # auto-extracted archive: take the payload file(s) inside
+        inner = sorted(p for p in f.rglob("*") if p.is_file())
+        assert inner, f"{f} is an empty directory"
+        for p in inner:
+            if p.name.endswith((".npy", ".npy.gz", ".npy.gzb")):
+                return place_relation(p, dst, unpack)
+        assert len(inner) == 1, f"{f} is a directory with unknown content: {[p.name for p in inner]}"
+        return place_relation(inner[0], dst, unpack)
+    if f.name.endswith((".gz", ".gzb")):
+        if unpack and not DRYRUN:
+            with gzip.open(f, "rb") as fi, open(dst, "wb") as fo:
+                shutil.copyfileobj(fi, fo, 1 << 24)
+            print("unpacked", dst.name, dst.stat().st_size >> 20, "MB")
+    elif not dst.exists():
+        link_or_copy(f, dst)
+
+
 for sub in ("sector_industry", "wikidata"):
     (DATA / "relation" / sub).mkdir(parents=True, exist_ok=True)
     for f in sorted((rel_src / sub).glob("*")):
-        dst = DATA / "relation" / sub / f.name.removesuffix(".gz")
-        market = f.name.split("_")[0]
-        if f.name.endswith(".gz"):
-            if market in UNPACK_RELATION_FOR and not DRYRUN:
-                with gzip.open(f, "rb") as fi, open(dst, "wb") as fo:
-                    shutil.copyfileobj(fi, fo, 1 << 24)
-                print("unpacked", dst.name, dst.stat().st_size >> 20, "MB")
-        elif not dst.exists():
-            link_or_copy(f, dst)
+        dst = DATA / "relation" / sub / re.sub(r"\.gzb?$", "", f.name)
+        place_relation(f, dst, f.name.split("_")[0] in UNPACK_RELATION_FOR)
+for m in UNPACK_RELATION_FOR:                            # fail here, not hours later inside a training run
+    for p in sorted((DATA / "relation").glob(f"*/{m}_*_relation.npy")) if not DRYRUN else []:
+        assert p.is_file() and p.stat().st_size > 1_000_000, f"{p} is not a real relation tensor ({p.resolve()})"
 for need in ("2013-01-01", "hypergraph_cache"):
     assert (DATA / need).exists(), f"{need} missing in the data dataset"
 target = REPO / "data/raw/rsr"

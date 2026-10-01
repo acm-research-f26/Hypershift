@@ -2,7 +2,7 @@
 
   kaggle/build/hypershift-code/       src/, scripts/ (no queues), configs/, pyproject.toml, requirements-kaggle.txt
   kaggle/build/hypershift-rsr-data/   RSR ticker lists, price CSVs, wiki csv, v2 hypergraph cache,
-                                      relation tensors (gzip; only RSR-I needs them, the cache covers everything else)
+                                      relation tensors (gzip, stored as .npy.gzb so Kaggle does not auto-extract them into a directory; only RSR-I needs them, the cache covers everything else)
 
 Usage (repo root):  .venv/Scripts/python.exe kaggle/build_bundle.py --username <kaggle-user> [--no-relation] [--markets NYSE NASDAQ]
 Run with CUDA_VISIBLE_DEVICES=-1 if you run it next to the GPU queue (it does not import torch anyway).
@@ -109,12 +109,12 @@ def build_data(user: str, markets, relation: bool):
         sub.mkdir(parents=True, exist_ok=True)
         shutil.copy2(RSR / "relation/sector_industry" / f"{m}_industry_ticker.json", sub / f"{m}_industry_ticker.json")
         if relation:
-            gz(RSR / "relation/sector_industry" / f"{m}_industry_relation.npy", sub / f"{m}_industry_relation.npy.gz")
+            gz(RSR / "relation/sector_industry" / f"{m}_industry_relation.npy", sub / f"{m}_industry_relation.npy.gzb")
             wsub = d / "relation" / "wikidata"
-            gz(RSR / "relation/wikidata" / f"{m}_wiki_relation.npy", wsub / f"{m}_wiki_relation.npy.gz")
+            gz(RSR / "relation/wikidata" / f"{m}_wiki_relation.npy", wsub / f"{m}_wiki_relation.npy.gzb")
             shutil.copy2(RSR / "relation/wikidata" / f"{m}_connections.json", wsub / f"{m}_connections.json")
     (d / "DATA_INFO.txt").write_text(f"markets: {markets}\nhypergraph cache version: {ver}\nrelation tensors (gz): {relation}\n"
-                                     "Relation .npy.gz are only read by model=rsr_i (R8 RSR-I); the unpack step in run_kaggle handles .npy or .npy.gz.\n")
+                                     "Relation .npy.gzb (gzip) are only read by model=rsr_i (R8 RSR-I); the unpack step in run_kaggle handles .npy, .npy.gz/.gzb and auto-extracted directories.\n")
     meta(d, user, "hypershift-rsr-data", "hypershift-rsr-data", "RSR NYSE/NASDAQ prices, wiki csv, hypergraph cache v2, relation tensors.")
     return d
 
@@ -132,7 +132,7 @@ def main():
     r = build_data(a.username, a.markets, not a.no_relation)
     print(f"{c}: {human(du(c))}  ({sum(1 for _ in c.rglob('*') if _.is_file())} files)")
     print(f"{r}: {human(du(r))}  ({sum(1 for _ in r.rglob('*') if _.is_file())} files)")
-    for f in sorted(r.rglob("*.gz")):
+    for f in sorted(r.rglob("*.gz*")):
         print(f"   {f.relative_to(r)}: {human(f.stat().st_size)}")
 
 
