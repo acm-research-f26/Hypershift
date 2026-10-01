@@ -178,7 +178,7 @@ def load_alpaca_panel(group, window, nodes) -> ObservationPanel:
     units = {f: "USD" for f in ("open", "high", "low", "close", "vwap")}
     units.update(volume="shares", trade_count="trades")
     return ObservationPanel(
-        timestamps=grid.index,
+        timestamps=pd.DatetimeIndex(grid.index),
         node_ids=node_ids,
         field_names=BAR_COLUMNS,
         values=values,
@@ -186,7 +186,7 @@ def load_alpaca_panel(group, window, nodes) -> ObservationPanel:
         eligible_mask=eligible,
         session_ids=pd.DatetimeIndex(grid["session_id"]),
         bar_starts=pd.DatetimeIndex(grid["bar_start"]),
-        availability_times=grid.index + delay,
+        availability_times=pd.DatetimeIndex(grid.index + delay),
         expected_minutes=grid["expected_minutes"].to_numpy(dtype="int64"),
         observed_minutes=counts,
         is_partial=grid["is_partial"].to_numpy(dtype=bool),
