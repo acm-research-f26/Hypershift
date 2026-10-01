@@ -9,7 +9,7 @@ import gzip, json, os, queue, re, shlex, shutil, signal, subprocess, sys, thread
 from pathlib import Path
 
 T0 = time.time()
-SESSION = "1"        # PARAM  "1" = R8 small + R5_g2 EE/HE | "2" = R5_g2 EH (seeds 0-24) then R8 full NYSE | "all" = both | "custom" = fill COMMANDS yourself
+SESSION = "1"        # PARAM  "1" = R8 small + R5_g2 EE/HE | "2" = R5_g2 EH (seeds 0-24) then R8 full NYSE | "all" = both | "3" = RSR_I full NYSE seeds 4-9 | "custom" = fill COMMANDS yourself
 TAG = "s1"           # PARAM  names the output zip: results_<TAG>.zip
 N_WORKERS = 3        # parallel training processes (4 vCPU; THINK is launch/CPU bound, ~1.6 GB VRAM each, so 16 GB is not the limit)
 SESSION_LIMIT_H = 12.0   # Kaggle hard limit for a GPU session
@@ -180,7 +180,9 @@ S1 = [r5(l, s) for s in SEEDS for l in ("EE", "HE")] +      [r8_small(m, s) for 
 EH_TODO = [s for s in EH_SEEDS if s not in EH_DONE_LOCAL]
 print("EH seeds complete locally at build time (skipped):", EH_DONE_LOCAL, "| EH seeds queued:", EH_TODO)
 S2 = [r5("EH", s, est_min=30) for s in EH_TODO] +      [c for s in SEEDS for c in (r8_full("RSR_I", "rsr_i", 2, s), r8_full("STHGCN", "sthgcn", 4, s))]
-COMMANDS = {"1": S1, "2": S2, "all": S1 + S2, "custom": []}[SESSION]
+# Preset 3: only full-NYSE RSR-I seeds 4-9 (s1/s2 RSR-I failed on the relation-dir bug; local GPU queue does seeds 0-1).
+S3 = [r8_full("RSR_I", "rsr_i", 2, s) for s in range(4, 10)]
+COMMANDS = {"1": S1, "2": S2, "3": S3, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard
