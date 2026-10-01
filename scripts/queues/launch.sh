@@ -9,4 +9,6 @@ cmd="scripts/queues/run_$q.cmd"
 printf '@echo off\r\ncd /d "%s"\r\n"C:\\Program Files\\Git\\bin\\bash.exe" scripts/queues/%s.sh >> results\\logs\\task_%s.log 2>&1\r\n' "$repo" "$q" "$q" > "$cmd"
 # SD far in the future: a ONCE task with the default start date would fire AGAIN at 23:59 today (duplicate GPU owner); we start it via /Run.
 schtasks //Create //F //TN "Hypershift_$q" //SC ONCE //ST 23:59 //SD 01/01/2030 //TR "\"$repo\\scripts\\queues\\run_$q.cmd\"" > /dev/null
+# Keep running on battery (Windows default stops the task when unplugged).
+powershell -NoProfile -c '$s = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Days 7); Set-ScheduledTask -TaskName Hypershift_'"$q"' -Settings $s' > /dev/null
 schtasks //Run //TN "Hypershift_$q"

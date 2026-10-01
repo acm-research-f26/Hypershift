@@ -2,6 +2,8 @@
 
 *Started 2026-09-29. This is the running record of what has been tested, what is ruled out, and what is still open. Update it whenever a run finishes or a decision is made. Evidence lives in `results/`, `docs/HANDOFF.md` and `docs/POC_PRESENTATION.md`.*
 
+> **Handoff (2026-10-01): see `docs/phase1/HANDOFF_2026-10-01.md` for what is running, next steps and open decisions.**
+
 > **PROMINENT NOTE (2026-09-29): every stock result before commit `de20f8e` used the pre-fix hypergraph.** The builder made a star hyperedge for every Wikidata relation channel. The paper says first-order relations are stars and second-order relations are pairs ([A854] Sec. B, "Stock Datasets"). The corrected graph: **NYSE 4350 hyperedges, max node degree 114** (old: 312 and 37); NASDAQ 1066 hyperedges, max degree 55 (old: 162); 309-stock small-scale graph 558 edges (old: 73). Rows below that depend on the graph are marked **PARTIAL, "old graph"** until their g2 rerun lands. Status 2026-10-01: the small-scale g2 reruns, R7 and the R9 recomputation are done; the full-NYSE `R5_g2` is running on the laptop (THINK 20/25 seeds finished) and the R8 baselines are pending (moved to Kaggle). Non-graph results (R2 chickenpox, controls C2-C10, NDCG bug, baselines) are unaffected. Also: our small-scale "hyperbolic vs Euclidean" contrasts are HH vs EE, **not the paper's HH vs EH** (see "Paper-audit findings").
 >
 > Citations in this file: `pNNN` = page of `05-Hypershift-OA.pdf` (pp849-853); `[A854]` = page 854 (appendices, Algorithm 1, refs 17-38) of `data/raw/icdm22-think.pdf`, a source the user approved on 2026-09-29 (now stored at `docs/paper/icdm22-think.pdf`).
@@ -180,3 +182,4 @@ Things the paper does not settle. None is guessed at in code; where we chose, th
 - 2026-10-01: Diagnosed the slowdown: Roblox (and Edge/Copilot) held VRAM, so training memory spilled into shared system RAM, about 10x slower (7 min/epoch vs 41 s for THINK). Closed those apps and restarted the workers; speed back to ~40 s/epoch.
 - 2026-10-01: Scheduled tasks now allow battery operation (`launch.sh`: AllowStartIfOnBatteries, DontStopIfGoingOnBatteries); unplugging used to stop the queues.
 - 2026-10-01: Laptop/Kaggle split. Laptop: `R5_g2` THINK (25) and EH (25); metrics.json today THINK 20/25, EH 0/25. Kaggle: `R5_g2` EE (10) and HE (10), plus R8 (RSR-I, STHGCN; small scale and full NYSE, 10 seeds each). The local R8 queue was stopped; R8 is implemented (c4426fe) but not yet run on the corrected graph. Added a status count (19/26 strict) and a proposal for A10, G1, G5 at the top.
+- 2026-10-01: Wrote `docs/phase1/HANDOFF_2026-10-01.md` (state, running jobs, ordered next steps, lessons, open decisions).
