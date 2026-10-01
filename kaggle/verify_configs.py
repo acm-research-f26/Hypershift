@@ -1,4 +1,4 @@
-"""Print the resolved configs of the Kaggle commands (EE, HE, RSR_I, STHGCN) + hypergraph cache check; run from a repo/bundle root.
+"""Print the resolved configs of the Kaggle commands (EE, HE, EH, RSR_I, STHGCN) + hypergraph cache check; run from a repo/bundle root.
   python kaggle/verify_configs.py > a.json   (diff the output of the real repo and of the bundle copy: must be identical)"""
 import hashlib
 import json
@@ -11,7 +11,7 @@ from hypershift.experiments.grid import experiment
 P = "exp=R5_g2 norm=paper epochs=100 patience=1000".split()
 R8 = "exp=R8_baselines_g2 norm=paper epochs=100 patience=1000 batch_days=8".split()
 out = {}
-for label in ("EE", "HE"):
+for label in ("EE", "HE", "EH"):
     c = next(c for c in experiment("E2_geometry") if c.label == label)
     d = config_from_dict(apply_overrides(replace(c, seed=3).to_dict(), P)).to_dict()
     out[f"R5_g2/{label}"] = d

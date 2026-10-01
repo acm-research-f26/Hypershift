@@ -23,7 +23,7 @@ Checked against Kaggle sources on 2026-10-01 (search results quoting the Kaggle 
 ## Presets (`SESSION` in the notebook, or `launch.sh <session>`)
 
 - `1`: R8 small scale (`POC_sectors_R8_{rsr_i,sthgcn}_g2`, 10 seeds each) + EE and HE on full NYSE into `R5_g2`, seeds 0-9, paper protocol (the `phase1_gpu_3.sh` commands).
-- `2`: R8 full NYSE `R8_baselines_g2`, RSR_I and STHGCN, seeds 0-9 (the `phase1_gpu_r8.sh` commands, without its VRAM gate).
+- `2`: first EH on full NYSE into `R5_g2`, seeds 0-24, paper protocol (the `phase1_gpu_3.sh` EH command, one seed per command; seeds with `results/R5_g2/EH/seed_<k>/metrics.json` locally when the notebook is generated are listed in `EH_DONE_LOCAL` and skipped), then R8 full NYSE `R8_baselines_g2`, RSR_I and STHGCN, seeds 0-9 (the `phase1_gpu_r8.sh` commands, without its VRAM gate). 45 runs.
 - `all`: both in one session. `custom`: fill `COMMANDS` yourself (Cell 6).
 
 Time estimates, **unmeasured on Kaggle** (serial = one process at a time at local RTX 3050 speed): THINK-type 21 s/epoch x 100 = about 35 min per run (measured locally); RSR-I/STHGCN 17-40 min per run (estimate in `docs/phase1/R8_baselines.md`, not measured); small runs 1-3 min.
@@ -31,7 +31,7 @@ Time estimates, **unmeasured on Kaggle** (serial = one process at a time at loca
 | Preset | Runs | Serial time | Wall time with 3 workers (if they scale 2-2.5x; THINK is launch/CPU bound, so it should scale on 4 cores) |
 |---|---|---|---|
 | 1 | 20 small + 20 full | about 12-13 h | about 5-6 h |
-| 2 | 20 full | 5.7-13 h | about 2.5-6.5 h |
+| 2 | 25 EH + 20 R8 (full) | 25 EH x 20-27 min + 20 R8 x 14-32 min = 13-33 h of process time | about 4.3-7.3 h, central about 5.8 h (3 workers; EH 23 min = 1.8x the measured s1 EE 13 min, from local EH 29 vs EE 16 min; R8 per-run time still unmeasured) |
 | all | 60 | 18-26 h | about 8-12 h, borderline |
 
 Session 1 runs EE/HE first (time critical), then the short small-scale R8 runs fill the tail. The table is a best case: Kaggle's "4 CPU" may be 2 physical cores, so per-process speed can be below the 3050 and 3-worker scaling below 2x; use `N_WORKERS = 2` if the first completions show slowdowns. Run preset 1, then preset 2 (about 8-12 h of the 30 h weekly quota in total). The time guard does not start a run that cannot finish before `12 h - 25 min`, kills leftovers 15 min before the limit, then zips; anything skipped is picked up by re-running (resumable, via `results_*.zip` as a prior-results input, or by merging and re-launching).

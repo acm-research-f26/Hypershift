@@ -9,7 +9,7 @@ import gzip, json, os, queue, shlex, shutil, signal, subprocess, sys, threading,
 from pathlib import Path
 
 T0 = time.time()
-SESSION = "1"        # PARAM  "1" = R8 small + R5_g2 EE/HE | "2" = R8 full NYSE | "all" = both | "custom" = fill COMMANDS yourself
+SESSION = "1"        # PARAM  "1" = R8 small + R5_g2 EE/HE | "2" = R5_g2 EH (seeds 0-24) then R8 full NYSE | "all" = both | "custom" = fill COMMANDS yourself
 TAG = "s1"           # PARAM  names the output zip: results_<TAG>.zip
 N_WORKERS = 3        # parallel training processes (4 vCPU; THINK is launch/CPU bound, ~1.6 GB VRAM each, so 16 GB is not the limit)
 SESSION_LIMIT_H = 12.0   # Kaggle hard limit for a GPU session
@@ -136,14 +136,16 @@ if not DRYRUN:
         NGPU = max(1, int(t.stdout.strip().splitlines()[-1]))
 print("GPUs:", NGPU)
 
-# %% Cell 6: COMMANDS  (same commands as scripts/queues/phase1_gpu_3.sh [EE, HE] and phase1_gpu_r8.sh, one run per command)
+# %% Cell 6: COMMANDS  (same commands as scripts/queues/phase1_gpu_3.sh [EE, HE, EH] and phase1_gpu_r8.sh, one run per command)
 SEEDS = range(10)
+EH_SEEDS = range(25)             # phase1_gpu_3.sh runs EH on seeds 0-24
+EH_DONE_LOCAL = []               # BUILD  seeds with results/R5_g2/EH/seed_<k>/metrics.json locally at build time (make_notebook.py rewrites this line)
 R5P = "--set exp=R5_g2 norm=paper epochs=100 patience=1000"
 R8C = "--config configs/think_nyse.yaml --set exp=R8_baselines_g2 norm=paper epochs=100 patience=1000 batch_days=8"
 # est_min = initial wall-clock guess per run (3050: THINK 21 s/epoch x 100 = 35 min; baselines 17-40 min estimated; small ~2-4 min).
 # Replaced by the longest observed duration of that kind once one has finished.
-def r5(label, s):
-    return dict(kind=f"R5_{label}", est_min=40, done=f"results/R5_g2/{label}/seed_{s}",
+def r5(label, s, est_min=40):
+    return dict(kind=f"R5_{label}", est_min=est_min, done=f"results/R5_g2/{label}/seed_{s}",
                 cmd=f"{{py}} scripts/run_grid.py E2_geometry --labels {label} --seeds {s} {R5P}")
 
 def r8_small(m, s):
@@ -157,7 +159,10 @@ def r8_full(label, model, micro, s):
 # EE/HE first (time critical, longest); the short small-scale runs last so they can fill the tail if the time guard stops launches.
 # POC_sectors_R8_rsr_i_g2 seed 0 already has metrics.json locally (R8 queue, stopped), so it is not repeated here.
 S1 = [r5(l, s) for s in SEEDS for l in ("EE", "HE")] +      [r8_small(m, s) for m in ("rsr_i", "sthgcn") for s in SEEDS if (m, s) != ("rsr_i", 0)]
-S2 = [c for s in SEEDS for c in (r8_full("RSR_I", "rsr_i", 2, s), r8_full("STHGCN", "sthgcn", 4, s))]
+# Preset 2: EH first (R5_g2, exact phase1_gpu_3.sh EH command; seeds already complete locally are listed and skipped), then R8 full NYSE.
+EH_TODO = [s for s in EH_SEEDS if s not in EH_DONE_LOCAL]
+print("EH seeds complete locally at build time (skipped):", EH_DONE_LOCAL, "| EH seeds queued:", EH_TODO)
+S2 = [r5("EH", s, est_min=30) for s in EH_TODO] +      [c for s in SEEDS for c in (r8_full("RSR_I", "rsr_i", 2, s), r8_full("STHGCN", "sthgcn", 4, s))]
 COMMANDS = {"1": S1, "2": S2, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 

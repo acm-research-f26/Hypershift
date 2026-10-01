@@ -9,6 +9,8 @@ import json
 import re
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parent.parent
+
 ap = argparse.ArgumentParser()
 ap.add_argument("out")
 ap.add_argument("--session")
@@ -20,6 +22,9 @@ if a.session:
     text = re.sub(r'^SESSION = "[^"]*"', f'SESSION = "{a.session}"', text, flags=re.M)
 if a.tag:
     text = re.sub(r'^TAG = "[^"]*"', f'TAG = "{a.tag}"', text, flags=re.M)
+# EH seeds already complete locally (results/R5_g2/EH/seed_<k>/metrics.json) are written into the notebook so they are listed and skipped.
+eh_done = sorted(int(p.parent.name.split("_")[1]) for p in (ROOT / "results/R5_g2/EH").glob("seed_*/metrics.json"))
+text = re.sub(r"^EH_DONE_LOCAL = \[[^\]]*\]", f"EH_DONE_LOCAL = {eh_done}", text, flags=re.M)
 cells = []
 for chunk in re.split(r"^# %%", text, flags=re.M):
     if not chunk.strip():
