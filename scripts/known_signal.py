@@ -33,7 +33,7 @@ if "--device" not in sys.argv or sys.argv[sys.argv.index("--device") + 1] != "cu
 
 from hypershift.data.hypergraph import Hypergraph
 from hypershift.data.rsr import FILL, MarketData
-from hypershift.eval.metrics import evaluate_all, sharpe, topk_daily_returns
+from hypershift.eval.metrics import daily_ic, evaluate_all, sharpe, topk_daily_returns  # noqa: F401
 
 # (phi, gamma, sigma): own-lag coefficient, group-lag coefficient, daily noise sd
 LEVELS = {
@@ -119,22 +119,6 @@ def reference_metrics(syn: MarketData, A: np.ndarray, phi: float, gamma: float, 
     hold = (gt * m).sum(0) / np.maximum(m.sum(0), 1)
     out["hold"] = {"sr": sharpe(hold)}
     return out
-
-
-def daily_ic(pred, gt, mask) -> float:
-    """Mean over days of the cross-sectional Pearson correlation of prediction and realised return (float64).
-    A day whose predictions are constant (or whose correlation is not finite) counts as IC 0."""
-    pred, gt = np.asarray(pred, dtype=np.float64), np.asarray(gt, dtype=np.float64)
-    ics = []
-    for d in range(pred.shape[1]):
-        i = mask[:, d] > 0.5
-        p = pred[i, d]
-        if i.sum() < 5 or np.ptp(p) == 0:
-            ics.append(0.0)
-            continue
-        c = np.corrcoef(p, gt[i, d])[0, 1]
-        ics.append(c if np.isfinite(c) else 0.0)
-    return float(np.mean(ics))
 
 
 def make_cfg(exp, label, seed, arm, mode, epochs, device="cpu", out_root="results", **kw):

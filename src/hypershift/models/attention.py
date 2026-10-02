@@ -38,8 +38,10 @@ def odot_mobius(s: torch.Tensor, d: torch.Tensor) -> torch.Tensor:
 
 
 class _Base(nn.Module):
-    def __init__(self, dim: int, score: str, dist: str, odot: str = "product", norm: str = "softmax"):
+    def __init__(self, dim: int, score: str, dist: str, odot: str = "product", norm: str = "softmax",
+                 residual: bool = False):
         super().__init__()
+        self.residual = residual
         if score not in ("mobius", "concat", "eq14") or dist not in ("mult", "neg", "off"):
             raise ValueError((score, dist))
         if odot not in ("product", "mobius") or norm not in ("softmax", "none", "sum"):
@@ -65,9 +67,10 @@ class _Base(nn.Module):
 
 
 class HypHypergraphAttention(_Base):
-    def __init__(self, dim: int, score: str = "eq14", dist: str = "mult", odot: str = "product", norm: str = "softmax"):
-        super().__init__(dim, score, dist, odot, norm)
-        self.fc = PoincareLinear(dim, dim)
+    def __init__(self, dim: int, score: str = "eq14", dist: str = "mult", odot: str = "product", norm: str = "softmax",
+                 residual: bool = False, init_gain: float = 1.0):
+        super().__init__(dim, score, dist, odot, norm, residual)
+        self.fc = PoincareLinear(dim, dim, init_gain)
 
     def _scores(self, uj: torch.Tensor, zi: torch.Tensor) -> torch.Tensor:
         """Pre-softmax score per incidence."""
@@ -86,13 +89,17 @@ class HypHypergraphAttention(_Base):
         alpha = self._alpha(self._scores(uj, zi), hg)                            # eq 14 (+ softmax)
         msg = logmap0(self.fc(z)).index_select(-2, hg.edge_idx) * alpha.unsqueeze(-1)
         agg = u.new_zeros(u.shape).index_add(-2, hg.node_idx, msg)
-        out = expmap0(F.relu(agg))                                             # eq 15
+        if self.residual:                                                      # F: DEPARTURE, self path in tangent space
+            out = expmap0(logmap0(u) + F.relu(agg))
+        else:
+            out = expmap0(F.relu(agg))                                         # eq 15
         return torch.where(hg.has_edge[:, None], out, u)
 
 
 class EucHypergraphAttention(_Base):
-    def __init__(self, dim: int, score: str = "eq14", dist: str = "mult", odot: str = "product", norm: str = "softmax"):
-        super().__init__(dim, score, dist, odot, norm)
+    def __init__(self, dim: int, score: str = "eq14", dist: str = "mult", odot: str = "product", norm: str = "softmax",
+                 residual: bool = False, init_gain: float = 1.0):
+        super().__init__(dim, score, dist, odot, norm, residual)
         self.fc = nn.Linear(dim, dim)
 
     def forward(self, u: torch.Tensor, hg: TorchHypergraph) -> torch.Tensor:
@@ -106,4 +113,6 @@ class EucHypergraphAttention(_Base):
         alpha = self._alpha(self._combine(base, (uj - zi).norm(dim=-1)), hg)
         msg = self.fc(z).index_select(-2, hg.edge_idx) * alpha.unsqueeze(-1)
         out = F.relu(u.new_zeros(u.shape).index_add(-2, hg.node_idx, msg))
+        if self.residual:                                                      # F: DEPARTURE
+            out = u + out
         return torch.where(hg.has_edge[:, None], out, u)

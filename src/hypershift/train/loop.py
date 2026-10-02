@@ -18,7 +18,7 @@ from hypershift.data.hypergraph import (
 )
 from hypershift.data.rsr import MarketData, load_rsr
 from hypershift.data.universe import select_universe
-from hypershift.eval.metrics import evaluate_all, topk_daily_returns
+from hypershift.eval.metrics import daily_ic, evaluate_all, topk_daily_returns
 from hypershift.models.think import THINK
 from hypershift.train.loss import rank_mse_loss
 
@@ -61,6 +61,30 @@ def apply_input_mode(x: np.ndarray, mode: str) -> np.ndarray:
         den = np.where(den <= 1e-8, 1.0, den)
         return (x / den - 1.0).astype(np.float32)
     raise ValueError(f"unknown input_mode: {mode!r}")
+
+
+def input_transform(cfg: RunConfig, data: MarketData):
+    """x [B,N,seq,C] -> model input. Default (input_std False, input_scale 1): exactly apply_input_mode.
+    input_std: per-channel (x - mu)/sd with mu/sd from up to 128 TRAIN windows (leak-free), then * input_scale."""
+    if not cfg.input_std and cfg.input_scale == 1.0:
+        return lambda x: apply_input_mode(x, cfg.input_mode)
+    mu = sd = None
+    if cfg.input_std:
+        offs = window_offsets(data, cfg.seq, "train")
+        offs = offs[np.linspace(0, len(offs) - 1, min(128, len(offs))).astype(int)]
+        x, m, _, _ = gather_batch(data, offs, cfg.seq)
+        x = apply_input_mode(x, cfg.input_mode)
+        ok = np.broadcast_to(m[:, :, None, None] > 0.5, x.shape)
+        v = np.where(ok, x, np.nan)
+        mu = np.nanmean(v, axis=(0, 1, 2)).astype(np.float32)
+        sd = np.maximum(np.nanstd(v, axis=(0, 1, 2)), 1e-8).astype(np.float32)
+
+    def f(x):
+        x = apply_input_mode(x, cfg.input_mode)
+        if mu is not None:
+            x = (x - mu) / sd
+        return (x * cfg.input_scale).astype(np.float32)
+    return f
 
 
 @functools.lru_cache(maxsize=4)
@@ -135,7 +159,8 @@ def build_model(cfg: RunConfig, in_dim: int, data: MarketData | None = None):
         raise ValueError(f"unknown model {cfg.model!r}")
     return THINK(in_dim=in_dim, hidden=cfg.hidden, seq=cfg.seq, kernel=cfg.kernel, temporal=cfg.temporal,
                  spatial=cfg.spatial, structure=cfg.structure, attn_score=cfg.attn_score, attn_dist=cfg.attn_dist,
-                 attn_odot=cfg.attn_odot, attn_norm=cfg.attn_norm)
+                 attn_odot=cfg.attn_odot, attn_norm=cfg.attn_norm,
+                 init_gain=cfg.init_gain, head_scale=cfg.head_scale, spatial_residual=cfg.spatial_residual)
 
 
 def _to_return(out, base, target):
@@ -143,14 +168,15 @@ def _to_return(out, base, target):
 
 
 @torch.no_grad()
-def predict_split(model, data, thg, cfg, split, device):
+def predict_split(model, data, thg, cfg, split, device, tf=None):
     model.eval()
+    tf = tf or (lambda x: apply_input_mode(x, cfg.input_mode))
     offs = window_offsets(data, cfg.seq, split)
     step = max(1, cfg.micro_batch_days or cfg.batch_days)
     preds, gts, masks = [], [], []
     for i in range(0, len(offs), step):
         x, m, b, g = gather_batch(data, offs[i:i + step], cfg.seq)
-        x = apply_input_mode(x, cfg.input_mode)
+        x = tf(x)
         out = model(torch.as_tensor(x, device=device), thg)
         preds.append(_to_return(out, torch.as_tensor(b, device=device), cfg.target).cpu().numpy())
         gts.append(g)
@@ -169,7 +195,15 @@ def train_one_run(cfg: RunConfig, data: MarketData | None = None, hg: Hypergraph
     data, hg = prepare(cfg, data, hg)
     thg = hg.to_torch(device)
     model = build_model(cfg, data.features.shape[2], data).to(device)
-    opt = torch.optim.Adam(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
+    tf = input_transform(cfg, data)
+    if cfg.head_scale > 0:                       # the learnable output scale is never weight-decayed
+        hs = [p for n, p in model.named_parameters() if n == "log_head_scale"]
+        rest = [p for n, p in model.named_parameters() if n != "log_head_scale"]
+        groups = [{"params": rest}, {"params": hs, "weight_decay": 0.0}]
+    else:
+        groups = model.parameters()
+    opt_cls = torch.optim.AdamW if cfg.decoupled_wd else torch.optim.Adam
+    opt = opt_cls(groups, lr=cfg.lr, weight_decay=cfg.weight_decay)
     train_offs = window_offsets(data, cfg.seq, "train")
     rng = np.random.default_rng(cfg.seed)
     best, bad, epoch_secs, test_srs = None, 0, [], []
@@ -187,7 +221,7 @@ def train_one_run(cfg: RunConfig, data: MarketData | None = None, hg: Hypergraph
                 for j in range(0, len(batch), micro):   # gradient accumulation == one unsplit step
                     chunk = batch[j:j + micro]
                     x, m, b, g = gather_batch(data, chunk, cfg.seq)
-                    x = apply_input_mode(x, cfg.input_mode)
+                    x = tf(x)
                     x, m, b, g = (torch.as_tensor(a, device=device) for a in (x, m, b, g))
                     pred = _to_return(model(x, thg), b, cfg.target)
                     loss, _, _ = rank_mse_loss(pred, g, m, cfg.alpha)
@@ -195,18 +229,22 @@ def train_one_run(cfg: RunConfig, data: MarketData | None = None, hg: Hypergraph
                         raise FloatingPointError(f"non-finite loss: epoch {epoch}, step {i} (see decision node D5)")
                     (loss * (len(chunk) / len(batch))).backward()
                     step_loss += loss.item() * len(chunk) / len(batch)
-                torch.nn.utils.clip_grad_norm_(model.parameters(), cfg.grad_clip)
+                if cfg.grad_clip > 0:                       # <= 0: clipping off
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), cfg.grad_clip)
                 opt.step()
                 losses.append(step_loss)
-            vp, vg, vm = predict_split(model, data, thg, cfg, "val", device)
-            tp, tg, tm = predict_split(model, data, thg, cfg, "test", device)
+            vp, vg, vm = predict_split(model, data, thg, cfg, "val", device, tf)
+            tp, tg, tm = predict_split(model, data, thg, cfg, "test", device, tf)
             vmet = evaluate_all(vp, vg, vm, cfg.topk, cfg.periods_per_year)
             tmet = evaluate_all(tp, tg, tm, cfg.topk, cfg.periods_per_year)
             sec = time.time() - t0
             epoch_secs.append(sec)
             test_srs.append(tmet["sr"])
-            hist.write(json.dumps({"epoch": epoch, "train_loss": float(np.mean(losses)), "sec": sec,
-                                   "val": vmet, "test": tmet}) + "\n")
+            rec = {"epoch": epoch, "train_loss": float(np.mean(losses)), "sec": sec, "val": vmet, "test": tmet}
+            if cfg.log_ic:                                 # diagnostic only, does not affect selection
+                rec.update(val_ic=daily_ic(vp, vg, vm), test_ic=daily_ic(tp, tg, tm),
+                           test_pred_sd=float(tp[tm > 0.5].std()))
+            hist.write(json.dumps(rec) + "\n")
             hist.flush()
             if best is None or vmet["sr"] > best["val"]["sr"]:
                 best = {"best_epoch": epoch, "val": vmet, "test": tmet}

@@ -31,6 +31,22 @@ def topk_daily_returns_net(pred, gt, mask, k, cost_bps) -> np.ndarray:
     return out
 
 
+def daily_ic(pred, gt, mask) -> float:
+    """Mean over days of the cross-sectional Pearson correlation of prediction and realised return (float64).
+    A day whose predictions are constant (or whose correlation is not finite) counts as IC 0."""
+    pred, gt = np.asarray(pred, dtype=np.float64), np.asarray(gt, dtype=np.float64)
+    ics = []
+    for d in range(pred.shape[1]):
+        i = mask[:, d] > 0.5
+        p = pred[i, d]
+        if i.sum() < 5 or np.ptp(p) == 0:
+            ics.append(0.0)
+            continue
+        c = np.corrcoef(p, gt[i, d])[0, 1]
+        ics.append(c if np.isfinite(c) else 0.0)
+    return float(np.mean(ics))
+
+
 def sharpe(r, periods_per_year=252) -> float:
     sd = float(np.std(r))
     return 0.0 if sd == 0 else float(np.mean(r)) / sd * math.sqrt(periods_per_year)

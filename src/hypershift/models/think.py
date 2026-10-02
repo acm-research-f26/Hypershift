@@ -1,6 +1,8 @@
 """THINK (paper eq. 17): log0(TConv2(DHHAN(TConv1(exp0(X)), G))) with ablation switches."""
 from __future__ import annotations
 
+import math
+
 import torch
 from torch import nn
 
@@ -14,7 +16,8 @@ class THINK(nn.Module):
     def __init__(self, in_dim: int = 5, hidden: int = 32, seq: int = 16, kernel: int = 4,
                  temporal: str = "hyp", spatial: str = "hyp", structure: str = "hyper",
                  attn_score: str = "eq14", attn_dist: str = "mult", out_dim: int = 1,
-                 attn_odot: str = "product", attn_norm: str = "softmax"):
+                 attn_odot: str = "product", attn_norm: str = "softmax",
+                 init_gain: float = 1.0, head_scale: float = 0.0, spatial_residual: bool = False):
         super().__init__()
         if seq % kernel:
             raise ValueError("seq must be a multiple of kernel")
@@ -23,15 +26,17 @@ class THINK(nn.Module):
         self.spatial_hyp = spatial == "hyp"
         self.use_spatial = structure != "none"
         if self.temporal_hyp:
-            self.tconv1 = HypTemporalConv(in_dim, hidden, kernel)
-            self.tconv2 = HypTemporalConv(hidden, out_dim, k2)
+            self.tconv1 = HypTemporalConv(in_dim, hidden, kernel, init_gain)
+            self.tconv2 = HypTemporalConv(hidden, out_dim, k2, init_gain)
         else:
             self.tconv1 = EucTemporalConv(in_dim, hidden, kernel, activation=True)
             self.tconv2 = EucTemporalConv(hidden, out_dim, k2, activation=False)
         if self.use_spatial:
             cls = HypHypergraphAttention if self.spatial_hyp else EucHypergraphAttention
-            self.spatial = cls(hidden, score=attn_score, dist=attn_dist, odot=attn_odot, norm=attn_norm)
-
+            self.spatial = cls(hidden, score=attn_score, dist=attn_dist, odot=attn_odot, norm=attn_norm,
+                            residual=spatial_residual, init_gain=init_gain)
+        # F: optional learnable output scale exp(t) (t0 = log head_scale); 0 = off (paper: none)
+        self.log_head_scale = nn.Parameter(torch.tensor(math.log(head_scale))) if head_scale > 0 else None
     def forward(self, x: torch.Tensor, hg: TorchHypergraph) -> torch.Tensor:
         h = x.permute(0, 2, 1, 3)                      # [B,T,N,C]
         if self.temporal_hyp:
@@ -49,4 +54,6 @@ class THINK(nn.Module):
         if self.temporal_hyp:
             h = logmap0(h)
         h = h[:, 0]
+        if self.log_head_scale is not None:
+            h = h * self.log_head_scale.exp()
         return h.squeeze(-1) if h.shape[-1] == 1 else h

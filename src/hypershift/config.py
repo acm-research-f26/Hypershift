@@ -33,6 +33,13 @@ class RunConfig:
     input_mode: str = "level"               # level | relative
     target: str = "return"                # return | price
     shuffle_train_labels: bool = False
+    input_std: bool = False                 # F: per-channel (x - mu)/sd with train-window stats after input_mode (DEPARTURE; off = paper-agnostic default)
+    input_scale: float = 1.0                # F: multiply inputs after input_mode / input_std (keeps inputs inside the ball)
+    init_gain: float = 1.0                  # F: multiplier on the PoincareLinear z init (hyperbolic layers; 1.0 = HNN++ init)
+    head_scale: float = 0.0                 # F: >0 adds a learnable output scale exp(t), t0 = log(head_scale), excluded from weight decay (DEPARTURE)
+    spatial_residual: bool = False          # F: DHHAN self path, h' = h + relu(agg) in tangent space (DEPARTURE from eq. 15)
+    decoupled_wd: bool = False              # F: AdamW (decoupled weight decay) instead of Adam with coupled L2
+    log_ic: bool = False                    # F: add val/test IC and test pred sd to history.jsonl each epoch (diagnostic only)
     seq: int = 16
     kernel: int = 4
     hidden: int = 32

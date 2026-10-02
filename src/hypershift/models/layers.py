@@ -21,9 +21,9 @@ def beta_concat(xs: list[torch.Tensor]) -> torch.Tensor:
 
 
 class PoincareLinear(nn.Module):
-    def __init__(self, in_dim: int, out_dim: int):
+    def __init__(self, in_dim: int, out_dim: int, init_gain: float = 1.0):
         super().__init__()
-        self.z = nn.Parameter(torch.randn(in_dim, out_dim) * (2 * in_dim * out_dim) ** -0.5)
+        self.z = nn.Parameter(torch.randn(in_dim, out_dim) * (2 * in_dim * out_dim) ** -0.5 * init_gain)
         self.r = nn.Parameter(torch.zeros(out_dim))
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -44,11 +44,11 @@ def _windows(x: torch.Tensor, kernel: int) -> torch.Tensor:
 
 
 class HypTemporalConv(nn.Module):
-    def __init__(self, in_dim: int, out_dim: int, kernel: int):
+    def __init__(self, in_dim: int, out_dim: int, kernel: int, init_gain: float = 1.0):
         super().__init__()
         self.kernel = kernel
         self.scale = beta_fn(kernel * in_dim / 2, 0.5) / beta_fn(in_dim / 2, 0.5)
-        self.fc = PoincareLinear(kernel * in_dim, out_dim)
+        self.fc = PoincareLinear(kernel * in_dim, out_dim, init_gain)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.fc(expmap0(_windows(logmap0(x) * self.scale, self.kernel)))
