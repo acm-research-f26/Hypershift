@@ -1,0 +1,17 @@
+# Generated LaTeX output; keep the editable source and scripts in Git.
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
+main.pdf
+
+# Editor swap files.
+*.swp
+*.swo

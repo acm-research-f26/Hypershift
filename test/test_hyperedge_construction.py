@@ -1,6 +1,6 @@
 """Tests for the first hyperedge builders; no market downloads are needed.
 
-Implement the empty functions in hyperedges/construction.py. The KNN tests
+Exercise common/incidence.py and covariance_knn/constructor.py. The KNN tests
 use orthogonal return series with known correlations, not a second builder
 as an oracle. These are baseline construction tests, not evidence that
 pairwise correlation captures all higher-order relationships.
@@ -15,7 +15,7 @@ import pytest
 
 
 def _call(name, *args, **kwargs):
-    return getattr(import_module("hyperedges.construction"), name)(*args, **kwargs)
+    return getattr(import_module("hyperedges"), name)(*args, **kwargs)
 
 
 def _returns():

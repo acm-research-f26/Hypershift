@@ -1,5 +1,8 @@
 from dataclasses import dataclass, field
-from typing import Any, Literal
+from typing import Any, Literal, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from hyperedges.common.types import HyperedgePipelineConfig
 
 # Contains dataclasses to describe experiment choices. The runner is to resolve and execute components.
 
@@ -107,3 +110,6 @@ class ExperimentConfig:
 
     seeds: tuple[SeedBundle, ...]
     output_directory: str
+
+    # Optional canonical configuration; legacy builder fields remain supported.
+    hyperedge_pipeline: "HyperedgePipelineConfig | None" = None

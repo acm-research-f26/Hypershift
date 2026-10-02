@@ -1,22 +1,25 @@
-"""A common output interface for comparing hyperedge construction methods.
+"""Compatibility imports for the original incidence/KNN convenience module.
 
-The user implements these functions; the assistant supplies tests. Both are
-intentionally empty. Sector, correlation, cover, event, and joint-information
-constructors can all express their stock groups through the first function.
+Implementations live in common/ and covariance_knn/. Prefer those packages
+or the top-level hyperedges API for new code.
 """
 
-from __future__ import annotations
+from .common.incidence import incidence_from_groups
+from .common.validation import validate_identifiers
+from .covariance_knn import (
+    build_covariance_knn_family,
+    correlation_knn_hyperedges,
+    covariance_to_correlation,
+    estimate_covariance,
+    knn_groups_from_similarity,
+)
 
-from collections.abc import Mapping, Sequence
-
-import pandas as pd
-
-
-def incidence_from_groups(node_ids: Sequence[str], groups: Mapping[str, Sequence[str]]) -> pd.DataFrame:
-
-    raise NotImplementedError("Implement incidence_from_groups first")
-
-
-def correlation_knn_hyperedges(returns: pd.DataFrame, *, neighbors: int = 2, absolute: bool = True) -> pd.DataFrame:
-
-    raise NotImplementedError("Implement after incidence_from_groups")
+__all__ = [
+    "incidence_from_groups",
+    "validate_identifiers",
+    "build_covariance_knn_family",
+    "correlation_knn_hyperedges",
+    "covariance_to_correlation",
+    "estimate_covariance",
+    "knn_groups_from_similarity",
+]

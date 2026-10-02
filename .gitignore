@@ -149,6 +149,8 @@ activemq-data/
 
 # Environments
 .env
+.env.*
+!.env.example
 .envrc
 .venv
 env/
@@ -223,4 +225,35 @@ local-data/
 
 # Ethan Personal Settings (I turned off autosuggestions)
 .vscode/settings.json
-hyperbolicity/README.md
+
+# Markdown stays local except for the repository's main README.
+*.[mM][dD]
+*.markdown
+*.MARKDOWN
+!/README.md
+
+# OS metadata and local editor files.
+.DS_Store
+._*
+Thumbs.db
+[Dd]esktop.ini
+.idea/
+*.code-workspace
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
+.vscode/*.local.json
+
+# Local uv cache and generated experiment artifacts.
+.uv-cache/
+/artifacts/
+/outputs/
+/checkpoints/
+/runs/
+/wandb/
+/mlruns/
+/mlartifacts/
+/lightning_logs/
+/tensorboard/
