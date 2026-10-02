@@ -1,9 +1,11 @@
-"""Identifier and scalar validation shared by independent constructors."""
+"""Internal identifier and scalar checks shared by independent constructors."""
 
 from numbers import Integral
 
+__all__ = []
 
-def validate_identifiers(values, kind, *, allow_empty=False):
+
+def _validate_identifiers(values, kind, *, allow_empty=False):
     if isinstance(values, (str, bytes)):
         raise ValueError(f"{kind} identifiers must be a sequence")
     try:
@@ -18,7 +20,7 @@ def validate_identifiers(values, kind, *, allow_empty=False):
 
 
 
-def validate_positive_integer(value, name):
+def _validate_positive_integer(value, name):
     if isinstance(value, bool) or not isinstance(value, Integral) or value < 1:
         raise ValueError(f"{name} must be a positive integer")
 

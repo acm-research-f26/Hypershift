@@ -5,9 +5,12 @@ import torch
 
 from .types import FamilyTensor
 
+__all__ = ["runtime_family_from_incidence", "materialize_family_inputs"]
+
 
 def runtime_family_from_incidence(instance_id, node_ids, edge_ids, incidence, active_nodes, *,
                                   edge_weights=None, valid_edges=None, attributes=None, regularization=None):
+    """Package custom trainable incidence without detaching its gradients."""
     if incidence.ndim != 2 or incidence.shape != (len(node_ids), len(edge_ids)):
         raise ValueError("Runtime incidence axes must match declared node and edge IDs")
     active = torch.as_tensor(active_nodes, device=incidence.device)

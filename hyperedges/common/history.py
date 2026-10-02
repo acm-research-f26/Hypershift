@@ -9,10 +9,12 @@ import pandas as pd
 from data.types import ObservationPanel
 from experiments.config import TimeSpan
 from features.market import log_returns
-from .types import ConstructionHistory, utc_timestamp
+from .types import ConstructionHistory, _utc_timestamp
+
+__all__ = ["prepare_construction_history", "make_construction_context"]
 
 
-def validate_window(window):
+def _validate_window(window):
     if (not isinstance(window, TimeSpan) or isinstance(window.value, bool)
             or not isinstance(window.value, Integral) or window.value < 1
             or window.unit not in {"steps", "minutes", "hours", "days", "weeks", "sessions"}):
@@ -20,8 +22,8 @@ def validate_window(window):
 
 
 def prepare_construction_history(panel, cutoff, window=TimeSpan(60, "sessions")):
-    validate_window(window)
-    cutoff = utc_timestamp(cutoff)
+    _validate_window(window)
+    cutoff = _utc_timestamp(cutoff)
     if isinstance(panel, ObservationPanel):
         returns, valid = log_returns(panel)
         structural = np.zeros(len(panel.timestamps), dtype=bool)

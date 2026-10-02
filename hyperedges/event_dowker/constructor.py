@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from ..common.types import make_hyperedge_family
-from ..common.validation import validate_positive_integer
+from ..common.validation import _validate_positive_integer
 
 
 
@@ -31,11 +31,11 @@ def build_stock_event_relation(history, thresholds, direction="down"):
 
 
 def mine_recurring_groups(relation, min_support, size_bounds, *, candidate_budget=100_000):
-    validate_positive_integer(min_support, "min_support")
-    validate_positive_integer(candidate_budget, "candidate_budget")
+    _validate_positive_integer(min_support, "min_support")
+    _validate_positive_integer(candidate_budget, "candidate_budget")
     minimum, maximum = size_bounds
-    validate_positive_integer(minimum, "minimum group size")
-    validate_positive_integer(maximum, "maximum group size")
+    _validate_positive_integer(minimum, "minimum group size")
+    _validate_positive_integer(maximum, "maximum group size")
     if minimum > maximum or not relation.dtypes.eq(bool).all():
         raise ValueError("Require ordered group sizes and Boolean participation")
     nodes = sorted(relation.columns)
@@ -82,7 +82,7 @@ def measure_group_event_support(groups, relation, validity):
 
 
 def select_event_groups(statistics, edge_budget):
-    validate_positive_integer(edge_budget, "edge_budget")
+    _validate_positive_integer(edge_budget, "edge_budget")
     return sorted(statistics, key=lambda item: (-item["support"], -item["event_rate"], item["members"]))[:edge_budget]
 
 

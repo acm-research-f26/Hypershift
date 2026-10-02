@@ -105,7 +105,7 @@ from experiments.hyperedge_ablation import (
     evaluate_frozen_family_masking,
 )
 
-def show(value):
+def _show(value):
     """Rich notebook tables; readable output when running the paired script."""
     if get_ipython() is None:
         print(value.to_string() if hasattr(value, "to_string") else value)
@@ -167,7 +167,7 @@ torch.manual_seed(SEED)
 np.random.seed(SEED)
 plt.rcParams.update({"figure.figsize": (10, 3.8), "axes.grid": True})
 
-def finish_plot(filename):
+def _finish_plot(filename):
     plt.tight_layout()
     plt.savefig(OUT / filename, dpi=140, bbox_inches="tight")
     if get_ipython() is not None:
@@ -193,7 +193,7 @@ def finish_plot(filename):
 # in the panel and classification family.
 
 # %%
-def make_demo_panel():
+def _make_demo_panel():
     rng = np.random.default_rng(SEED)
     days = pd.bdate_range("2025-01-06", periods=(TRAIN_SESSIONS +
                             VALIDATION_SESSIONS + TEST_SESSIONS))
@@ -232,16 +232,16 @@ def make_demo_panel():
     )
     return panel, days
 
-panel, session_days = make_demo_panel()
+panel, session_days = _make_demo_panel()
 raw_returns, return_mask = log_returns(panel)
 print("Panel [time, stocks, fields]:", panel.values.shape)
-show(pd.DataFrame(panel.values[:6, :, 0], index=panel.timestamps[:6],
+_show(pd.DataFrame(panel.values[:6, :, 0], index=panel.timestamps[:6],
                   columns=panel.node_ids).round(3))
 plt.plot(panel.timestamps, panel.values[:, :4, 0], linewidth=0.8)
 plt.title("Invented close prices: four demo stocks")
 plt.ylabel("Close (USD)")
 plt.legend(panel.node_ids[:4], ncol=4)
-finish_plot("synthetic_prices.png")
+_finish_plot("synthetic_prices.png")
 
 # %% [markdown]
 # ## 3. Split before fitting anything
@@ -258,14 +258,14 @@ finish_plot("synthetic_prices.png")
 # from the panel, independently of this predictor input scaling.
 
 # %%
-def session_open(position):
+def _session_open(position):
     return (session_days[position].tz_localize("America/New_York")
             + pd.Timedelta(hours=9, minutes=30)).tz_convert("UTC")
 
 fold = {
-    "train_start": session_open(0),
-    "fit_cutoff": session_open(TRAIN_SESSIONS),
-    "validation_end": session_open(TRAIN_SESSIONS + VALIDATION_SESSIONS),
+    "train_start": _session_open(0),
+    "fit_cutoff": _session_open(TRAIN_SESSIONS),
+    "validation_end": _session_open(TRAIN_SESSIONS + VALIDATION_SESSIONS),
     "test_end": panel.availability_times[-1] + pd.Timedelta(seconds=1),
 }
 all_samples = tuple(make_forecast_samples(panel, LOOKBACK))
@@ -273,7 +273,7 @@ raw_splits = split_forecast_samples(all_samples, **fold)
 raw_splits = {name: tuple(samples[::SAMPLE_STRIDE])
               for name, samples in raw_splits.items()}
 assert all(raw_splits.values())
-show(pd.DataFrame([
+_show(pd.DataFrame([
     {"split": name, "origins": len(samples), "first_origin": samples[0].origin_time,
      "last_origin": samples[-1].origin_time,
      "supported_targets": sum(int((s.eligible_nodes & s.target_mask).sum())
@@ -290,7 +290,7 @@ scaler = fit_standardizer(raw_returns[:, :, None],
 splits = {name: tuple(transform_forecast_sample(s, scaler) for s in samples)
           for name, samples in raw_splits.items()}
 assert not fit_mask[panel.timestamps >= fold["fit_cutoff"]].any()
-show(pd.DataFrame({"mean": scaler.mean[:, 0], "scale": scaler.scale[:, 0],
+_show(pd.DataFrame({"mean": scaler.mean[:, 0], "scale": scaler.scale[:, 0],
                    "training_input_count": scaler.count[:, 0]}, index=panel.node_ids))
 print("One prepared input:", splits["train"][0].values.shape,
       "target units:", splits["train"][0].target_units)
@@ -315,18 +315,18 @@ manual_groups = {
     "hand:abc_copy": panel.node_ids[:3],
 }
 manual_H = incidence_from_groups(panel.node_ids, manual_groups)
-show(manual_H.astype(int))
+_show(manual_H.astype(int))
 assert manual_H["hand:abc"].equals(manual_H["hand:abc_copy"])
 assert manual_H.loc[panel.node_ids[2]].sum() == 3
 
-def edge_table(family):
+def _edge_table(family):
     rows = []
     for edge in family.edge_ids:
         members = family.incidence.index[family.incidence[edge]].tolist()
         rows.append({"edge_id": edge, "size": len(members), "members": ", ".join(members)})
     return pd.DataFrame(rows, columns=("edge_id", "size", "members"))
 
-def family_summary(families):
+def _family_summary(families):
     rows = []
     for family in families:
         H = family.incidence
@@ -340,9 +340,9 @@ def family_summary(families):
                      "duplicate_memberships": len(members) - len(set(members))})
     return pd.DataFrame(rows)
 
-def inspect_family(family, limit=8):
-    show(family_summary((family,)))
-    show(edge_table(family).head(limit))
+def _inspect_family(family, limit=8):
+    _show(_family_summary((family,)))
+    _show(_edge_table(family).head(limit))
 
 # %% [markdown]
 # ## 5. Covariance → correlation → KNN, one step at a time
@@ -374,8 +374,8 @@ assert strict_H.equals(incidence_from_groups(complete_returns.columns, knn_group
 print("Sessions used:", history.session_ids.nunique(),
       "complete rows:", coverage["complete_rows"],
       "KNN exclusions:", coverage["excluded_nodes"])
-show(pd.Series(coverage["coverage"], name="return_coverage").to_frame())
-show(correlation.round(2))
+_show(pd.Series(coverage["coverage"], name="return_coverage").to_frame())
+_show(correlation.round(2))
 print("Center S00:", knn_groups["knn:S00"])
 assert (strict_H.sum(axis=0) == KNN_NEIGHBORS + 1).all()
 
@@ -430,9 +430,9 @@ baseline_config = HyperedgePipelineConfig((gics_spec, knn_spec))
 baseline_pipeline = fit_hyperedge_pipeline(context, baseline_config)
 baseline_snapshot = build_hyperedge_snapshot(baseline_pipeline)
 baseline_families = {f.instance_id: f for f in baseline_snapshot.families}
-show(family_summary(baseline_snapshot.families))
-inspect_family(baseline_families["gics"])
-inspect_family(baseline_families["knn_absolute"])
+_show(_family_summary(baseline_snapshot.families))
+_inspect_family(baseline_families["gics"])
+_inspect_family(baseline_families["knn_absolute"])
 assert baseline_families["gics"].incidence.loc[panel.node_ids[-1]].any()
 assert not baseline_families["knn_absolute"].incidence.loc[panel.node_ids[-1]].any()
 assert baseline_families["knn_absolute"].incidence.index.tolist() == list(panel.node_ids)
@@ -445,7 +445,7 @@ assert baseline_families["knn_absolute"].incidence.index.tolist() == list(panel.
 # %%
 knn_variants = HyperedgePipelineConfig((knn_spec, signed_spec, covariance_spec))
 variant_snapshot = build_hyperedge_snapshot(fit_hyperedge_pipeline(context, knn_variants))
-show(pd.DataFrame([
+_show(pd.DataFrame([
     {"instance": f.instance_id, "S00_members": ", ".join(
         f.incidence.index[f.incidence["knn:S00"]])}
     for f in variant_snapshot.families
@@ -462,7 +462,7 @@ plt.xticks(range(H.shape[1]), H.columns, rotation=75, ha="right")
 plt.yticks(range(H.shape[0]), H.index)
 plt.title("KNN Boolean incidence: stocks × center edges")
 plt.grid(False)
-finish_plot("knn_incidence.png")
+_finish_plot("knn_incidence.png")
 
 # %% [markdown]
 # ## 7. Other historical construction methods
@@ -492,8 +492,8 @@ events_up = replace(events_down, instance_id="events_up",
                     params={**events_down.params, "direction": "up"})
 recipes.update({s.instance_id: s for s in (events_down, events_up)})
 event_snapshot = build_hyperedge_snapshot(fit_hyperedge_pipeline(context, (events_down, events_up)))
-inspect_family(event_snapshot.families[0])
-show(pd.DataFrame.from_dict(event_snapshot.families[0].attributes, orient="index").head(5))
+_inspect_family(event_snapshot.families[0])
+_show(pd.DataFrame.from_dict(event_snapshot.families[0].attributes, orient="index").head(5))
 
 from hyperedges.event_dowker import mine_recurring_groups
 pairwise_triangle = pd.DataFrame([[1, 1, 0], [1, 0, 1], [0, 1, 1]],
@@ -544,9 +544,9 @@ information_spec = ConstructorSpec("joint", "joint_information", {
 recipes[information_spec.instance_id] = information_spec
 information_snapshot = build_hyperedge_snapshot(fit_hyperedge_pipeline(context, (information_spec,)))
 information_family = information_snapshot.families[0]
-inspect_family(information_family)
+_inspect_family(information_family)
 info_diagnostics = pd.DataFrame(information_family.diagnostics["results"])
-show(info_diagnostics.sort_values("joint_information_bits", ascending=False).head(8))
+_show(info_diagnostics.sort_values("joint_information_bits", ascending=False).head(8))
 # For diagnostics only, use replace(information_spec, params={**information_spec.params,
 #                                                            "mode": "diagnose"}).
 
@@ -573,8 +573,8 @@ mapper_spec = ConstructorSpec("mapper", "mapper_cover", {
 }, CONSTRUCTION_WINDOW)
 recipes[mapper_spec.instance_id] = mapper_spec
 mapper_snapshot = build_hyperedge_snapshot(fit_hyperedge_pipeline(context, (mapper_spec,)))
-inspect_family(mapper_snapshot.families[0])
-show(pd.DataFrame.from_dict(mapper_snapshot.families[0].attributes, orient="index").head(8))
+_inspect_family(mapper_snapshot.families[0])
+_show(pd.DataFrame.from_dict(mapper_snapshot.families[0].attributes, orient="index").head(8))
 
 # %% [markdown]
 # ### 7d. Published Cover Learning: an explicit optional backend
@@ -608,7 +608,7 @@ if RUN_PUBLISHED_COVER:
     }, CONSTRUCTION_WINDOW)
     recipes[cover_spec.instance_id] = cover_spec
     cover_snapshot = build_hyperedge_snapshot(fit_hyperedge_pipeline(context, (cover_spec,)))
-    inspect_family(cover_snapshot.families[0])
+    _inspect_family(cover_snapshot.families[0])
 else:
     print("Cover Learning skipped: RUN_PUBLISHED_COVER=False; no backend was installed by the demo.")
 
@@ -629,7 +629,7 @@ all_historical_specs = (gics_spec, knn_spec, signed_spec, covariance_spec,
                         events_down, events_up, information_spec, mapper_spec)
 all_historical_pipeline = fit_hyperedge_pipeline(context, all_historical_specs)
 all_historical_snapshot = build_hyperedge_snapshot(all_historical_pipeline)
-show(family_summary(all_historical_snapshot.families))
+_show(_family_summary(all_historical_snapshot.families))
 
 retained_knn = next(f for f in all_historical_snapshot.families if f.instance_id == "knn_absolute")
 assert retained_knn.incidence.equals(baseline_families["knn_absolute"].incidence)
@@ -649,20 +649,20 @@ for original, changed in zip(baseline_snapshot.families, same_cutoff_snapshot.fa
     assert original.incidence.equals(changed.incidence)
 print("Verified independent KNN, a valid empty pipeline, and no influence from later prices.")
 
-def config_for(*instance_ids, context_providers=()):
+def _config_for(*instance_ids, context_providers=()):
     return HyperedgePipelineConfig(tuple(recipes[name] for name in instance_ids),
                                    tuple(context_providers))
 
 if RUN_EXTRA_CONSTRUCTOR_TRAINING:
     extra_results = compare_hyperedge_ablations(context, {
-        "gics_knn_events": config_for("gics", "knn_absolute", "events_down"),
-        "gics_knn_information": config_for("gics", "knn_absolute", "joint"),
-        "gics_knn_mapper": config_for("gics", "knn_absolute", "mapper"),
+        "gics_knn_events": _config_for("gics", "knn_absolute", "events_down"),
+        "gics_knn_information": _config_for("gics", "knn_absolute", "joint"),
+        "gics_knn_mapper": _config_for("gics", "knn_absolute", "mapper"),
     }, splits["train"], splits["validation"], splits["test"],
        seed=SEED, hidden_channels=HIDDEN_CHANNELS, epochs=EPOCHS,
        patience=PATIENCE, learning_rate=LEARNING_RATE)
     extra_table = pd.DataFrame({name: r["test_metrics"] for name, r in extra_results.items()}).T
-    show(extra_table)
+    _show(extra_table)
     extra_table.to_csv(OUT / "optional_constructor_ablations.csv")
 
 # %% [markdown]
@@ -704,8 +704,8 @@ custom_spec = ConstructorSpec("volatility", "tutorial_volatility", {"buckets": 3
                               TimeSpan(30, "sessions"))
 recipes[custom_spec.instance_id] = custom_spec
 custom_snapshot = build_hyperedge_snapshot(fit_hyperedge_pipeline(context, (custom_spec,)))
-inspect_family(custom_snapshot.families[0])
-# Try config_for("knn_absolute", "volatility") with the same training functions.
+_inspect_family(custom_snapshot.families[0])
+# Try _config_for("knn_absolute", "volatility") with the same training functions.
 
 # %% [markdown]
 # ## 10. Runtime masks and the incidence-preserving consumer
@@ -724,7 +724,7 @@ inspect_family(custom_snapshot.families[0])
 active_demo = np.zeros(N_STOCKS, dtype=bool)
 active_demo[:2] = True
 runtime_demo = materialize_family_inputs(baseline_snapshot, active_nodes=active_demo, training=False)
-show(pd.DataFrame([
+_show(pd.DataFrame([
     {"family": f.instance_id, "original_edges": len(f.edge_ids),
      "active_edges": int(f.edge_mask.sum()),
      "active_members_per_edge": f.edge_degrees.tolist()}
@@ -732,7 +732,7 @@ show(pd.DataFrame([
 ]))
 assert baseline_families["gics"].incidence.equals(baseline_snapshot.families[0].incidence)
 
-def prepare_sample(sample):
+def _prepare_sample(sample):
     """Flatten [lookback,N,F] to [N,lookback*F] without adding future information."""
     active = sample.eligible_nodes & sample.mask.all(axis=(0, 2))
     values = np.where(sample.mask, sample.values, 0)
@@ -742,7 +742,7 @@ def prepare_sample(sample):
     target = torch.as_tensor(sample.target, dtype=torch.float32)
     return x, active, support, target
 
-first_x, first_active, first_support, first_target = prepare_sample(splits["train"][0])
+first_x, first_active, first_support, first_target = _prepare_sample(splits["train"][0])
 print("Consumer inputs [stocks, temporal channels]:", tuple(first_x.shape))
 
 # %% [markdown]
@@ -766,7 +766,7 @@ print("Consumer inputs [stocks, temporal channels]:", tuple(first_x.shape))
 # Validation selects the best checkpoint; test scoring follows selection.
 
 # %%
-training_config = config_for(*TRAIN_FAMILIES)
+training_config = _config_for(*TRAIN_FAMILIES)
 training_pipeline = fit_hyperedge_pipeline(context, training_config)
 training_snapshot = build_hyperedge_snapshot(training_pipeline)
 torch.manual_seed(SEED)
@@ -795,7 +795,7 @@ for name, module in model.learned_modules.items():
     assert set(runtime.incidence.detach().unique().tolist()) <= {0.0, 1.0}
     print(name, "forecast-only membership gradient norm:", float(forecast_gate_gradients[name].norm()),
           "total gradient norm:", float(module.logits.grad.norm()))
-    show(pd.DataFrame(torch.sigmoid(module.logits).detach().numpy(),
+    _show(pd.DataFrame(torch.sigmoid(module.logits).detach().numpy(),
                       index=panel.node_ids,
                       columns=[f"slot:{i}" for i in range(LEARNED_SLOTS)]).iloc[:, :5].round(3))
 print("First forecast MSE:", float(forecast_loss.detach()),
@@ -815,14 +815,14 @@ assert attached_training.snapshot_id == attached_validation.snapshot_id
 # or different losses later. No validation/test labels update model parameters.
 
 # %%
-def evaluate(model, samples, snapshot, context_by_origin=None):
+def _evaluate(model, samples, snapshot, context_by_origin=None):
     model.eval()
     squared = absolute = 0.0
     correct = count = 0
     forecasts = []
     with torch.no_grad():
         for sample in samples:
-            x, active, support, target = prepare_sample(sample)
+            x, active, support, target = _prepare_sample(sample)
             kwargs = {}
             if context_by_origin is not None:
                 features = context_by_origin[sample.origin_time]
@@ -848,7 +848,7 @@ for epoch in range(EPOCHS):
     model.train()
     total, count = 0.0, 0
     for sample in splits["train"]:
-        x, active, support, target = prepare_sample(sample)
+        x, active, support, target = _prepare_sample(sample)
         if not support.any():
             continue
         optimizer.zero_grad(set_to_none=True)
@@ -859,7 +859,7 @@ for epoch in range(EPOCHS):
         optimizer.step()
         total += float(mse.detach()) * int(support.sum())
         count += int(support.sum())
-    validation_metrics, _ = evaluate(model, splits["validation"], training_snapshot)
+    validation_metrics, _ = _evaluate(model, splits["validation"], training_snapshot)
     training_trace.append({"epoch": epoch + 1, "train_mse": total / count,
                            "validation_mse": validation_metrics["mse"]})
     if validation_metrics["mse"] < best_mse:
@@ -872,7 +872,7 @@ for epoch in range(EPOCHS):
 assert best_state is not None
 model.load_state_dict(best_state)
 print("Manual training seconds:", round(perf_counter() - started, 2))
-show(pd.DataFrame(training_trace))
+_show(pd.DataFrame(training_trace))
 for name, module in model.learned_modules.items():
     change = float((module.logits.detach() - initial_logits[name]).abs().max())
     assert change > 0
@@ -886,7 +886,7 @@ plt.xlabel("Epoch")
 plt.ylabel("Raw log-return MSE")
 plt.title("Validation selects a checkpoint; the test block is untouched here")
 plt.legend()
-finish_plot("training_loss.png")
+_finish_plot("training_loss.png")
 
 # %% [markdown]
 # ### Freeze the selected memberships and score test once
@@ -904,11 +904,11 @@ finish_plot("training_loss.png")
 # %%
 frozen_learned_families = model.freeze_memberships()
 final_snapshot = build_hyperedge_snapshot(training_pipeline)
-manual_test_metrics, manual_forecasts = evaluate(model, splits["test"], final_snapshot)
-show(pd.Series(manual_test_metrics, name="manual_model_test").to_frame())
-show(family_summary((*final_snapshot.families, *frozen_learned_families)))
+manual_test_metrics, manual_forecasts = _evaluate(model, splits["test"], final_snapshot)
+_show(pd.Series(manual_test_metrics, name="manual_model_test").to_frame())
+_show(_family_summary((*final_snapshot.families, *frozen_learned_families)))
 for family in frozen_learned_families:
-    inspect_family(family)
+    _inspect_family(family)
 for name, module in model.learned_modules.items():
     print(name, summarize_learned_memberships(module))
 for family in final_snapshot.families:
@@ -916,7 +916,7 @@ for family in final_snapshot.families:
         assert family.incidence.equals(baseline_families[family.instance_id].incidence)
 
 example = splits["test"][0]
-show(pd.DataFrame({"prediction": manual_forecasts[0]["prediction"],
+_show(pd.DataFrame({"prediction": manual_forecasts[0]["prediction"],
                    "actual": example.target, "scoring_support": manual_forecasts[0]["support"]},
                   index=panel.node_ids))
 
@@ -939,11 +939,11 @@ show(pd.DataFrame({"prediction": manual_forecasts[0]["prediction"],
 
 # %%
 ablation_configs = {
-    "temporal_only": config_for(),
-    "knn": config_for("knn_absolute"),
-    "gics": config_for("gics"),
-    "gics_knn": config_for("gics", "knn_absolute"),
-    "gics_knn_learned": config_for("gics", "knn_absolute", "learned"),
+    "temporal_only": _config_for(),
+    "knn": _config_for("knn_absolute"),
+    "gics": _config_for("gics"),
+    "gics_knn": _config_for("gics", "knn_absolute"),
+    "gics_knn_learned": _config_for("gics", "knn_absolute", "learned"),
 }
 ablation_results = compare_hyperedge_ablations(context,
     {name: ablation_configs[name] for name in ABLATION_NAMES},
@@ -957,7 +957,7 @@ ablation_table = pd.DataFrame([
      "training_seconds": result["training_seconds"]}
     for name, result in ablation_results.items()
 ]).set_index("experiment")
-show(ablation_table)
+_show(ablation_table)
 assert ablation_table.target_count.nunique() == 1
 ablation_table.to_csv(OUT / "retrained_ablations.csv")
 
@@ -968,7 +968,7 @@ mask_results = {
         manual_result, splits["test"], (family,))["test_metrics"]
        for family in TRAIN_FAMILIES},
 }
-show(pd.DataFrame(mask_results).T)
+_show(pd.DataFrame(mask_results).T)
 
 # %% [markdown]
 # ## 13. PH is an actual context input, separate from memberships
@@ -1000,7 +1000,7 @@ ph_spec = ConstructorSpec("ph", "ph_context", {
     "dimensions": [0, 1],
     "summary_spec": ["finite_count", "total_persistence", "max_persistence", "mean_persistence"],
 }, TimeSpan(15, "sessions"))
-ph_config = config_for("gics", "knn_absolute", context_providers=(ph_spec,))
+ph_config = _config_for("gics", "knn_absolute", context_providers=(ph_spec,))
 ph_pipeline = fit_hyperedge_pipeline(context, ph_config)
 ph_snapshot = build_hyperedge_snapshot(ph_pipeline)
 for original, with_ph in zip(baseline_snapshot.families, ph_snapshot.families, strict=True):
@@ -1019,7 +1019,7 @@ ph_transform = fit_context_transform(
 ph_by_origin = {origin: tuple(transform_context_features(f, ph_transform) for f in features)
                 for origin, features in ph_by_origin_raw.items()}
 first_ph = ph_by_origin[splits["test"][0].origin_time][0]
-show(pd.DataFrame({"feature": first_ph.names, "scaled_value": first_ph.values,
+_show(pd.DataFrame({"feature": first_ph.names, "scaled_value": first_ph.values,
                    "valid": first_ph.mask}))
 print("PH channels:", len(first_ph.names), "cloud points:", first_ph.provenance["cloud_points"])
 
@@ -1028,7 +1028,7 @@ ph_result = run_hyperedge_ablation(context, ph_config, splits["train"],
     epochs=EPOCHS, patience=PATIENCE, learning_rate=LEARNING_RATE,
     context_features=ph_by_origin)
 assert ph_result["model"].context_channels == len(first_ph.names)
-show(pd.Series(ph_result["test_metrics"], name="gics_knn_ph_test").to_frame())
+_show(pd.Series(ph_result["test_metrics"], name="gics_knn_ph_test").to_frame())
 # To persist a PH experiment, save its per-origin policy, coordinate scaling,
 # ph_transform, provider recipe, snapshot, predictor weights, and feature scaler.
 
@@ -1064,7 +1064,7 @@ chosen = select_snapshot_for_origin((rolling_initial, rolling_refreshed),
 assert chosen.snapshot_id == rolling_refreshed.snapshot_id
 before_refresh = select_snapshot_for_origin((rolling_initial, rolling_refreshed), refresh_cutoff)
 assert before_refresh.snapshot_id == rolling_initial.snapshot_id
-show(pd.DataFrame([
+_show(pd.DataFrame([
     {"snapshot": s.snapshot_id[:12], "cutoff": s.cutoff,
      "available_at": s.available_at, "effective_time": s.effective_time}
     for s in (rolling_initial, rolling_refreshed)
@@ -1120,7 +1120,7 @@ with np.load(OUT / "feature_scaler.npz", allow_pickle=False) as arrays:
 
 restored_sample = transform_forecast_sample(raw_splits["test"][0], restored_scaler)
 np.testing.assert_allclose(restored_sample.values, splits["test"][0].values, equal_nan=True)
-x, active, support, _ = prepare_sample(restored_sample)
+x, active, support, _ = _prepare_sample(restored_sample)
 model.eval()
 with torch.no_grad():
     original_pred = model(x, final_snapshot, active)
@@ -1230,7 +1230,7 @@ print("CSV panel round trip passed.")
 #    pilot learning controls using validation rather than test results.
 # 5. Inspect the event/information/Mapper additions, enabled by
 #    `RUN_EXTRA_CONSTRUCTOR_TRAINING`. Set it to false for a shorter run. Add
-#    signed/covariance/custom configs to the ablation dictionary using `config_for(...)`.
+#    signed/covariance/custom configs to the ablation dictionary using `_config_for(...)`.
 # 6. Keep PH in `context_providers` and pass real per-origin features and masks.
 # 7. Replace synthetic inputs with real observations and supplied classifications.
 # 8. Repeat the same fold/target/support/encoder/tuning protocol across several

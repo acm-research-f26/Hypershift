@@ -5,8 +5,8 @@ from importlib import import_module
 
 import numpy as np
 
-from ..common.backends import isolated_random_state, require_backend
-from ..common.validation import validate_positive_integer
+from ..common.backends import _isolated_random_state, _require_backend
+from ..common.validation import _validate_positive_integer
 from ..common.descriptors import build_stock_descriptors
 from ..common.types import make_hyperedge_family
 
@@ -22,13 +22,13 @@ def build_cover_neighborhood_graph(descriptors, graph_spec):
     required = {"neighbors", "algorithm", "backend_version"}
     if required != set(graph_spec):
         raise ValueError(f"graph_spec requires {sorted(required)}")
-    validate_positive_integer(graph_spec["neighbors"], "graph neighbors")
+    _validate_positive_integer(graph_spec["neighbors"], "graph neighbors")
     if graph_spec["neighbors"] >= len(descriptors):
         raise ValueError("Cover graph neighbors must be smaller than its stock universe")
-    require_backend("shapediscover", graph_spec["backend_version"])
+    _require_backend("shapediscover", graph_spec["backend_version"])
     seed = int(descriptors.attrs.get("seed", 0))
     graph_from_pointcloud = import_module("shapediscover.weighted_graph").graph_from_pointcloud
-    with isolated_random_state(seed):
+    with _isolated_random_state(seed):
         graph = graph_from_pointcloud(descriptors.to_numpy(), n_neighbors=graph_spec["neighbors"], algorithm=graph_spec["algorithm"])
     return CoverGraph(graph, dict(graph_spec), seed)
 
@@ -38,7 +38,7 @@ def fit_published_cover(descriptors, graph, backend_spec, objective_spec):
         raise ValueError("Published cover backend must explicitly name shapediscover and its version")
     if backend_spec["version"] != graph.recipe["backend_version"]:
         raise ValueError("Cover graph and optimization backend versions must agree")
-    require_backend("shapediscover", backend_spec["version"])
+    _require_backend("shapediscover", backend_spec["version"])
     if set(objective_spec) != {"preset", "parameters"} or objective_spec["preset"] != "ShapeDiscover":
         raise ValueError("Specify the published ShapeDiscover preset and all desired constructor parameters")
     parameters = dict(objective_spec["parameters"])
@@ -50,7 +50,7 @@ def fit_published_cover(descriptors, graph, backend_spec, objective_spec):
     if weights.shape != (4,) or not np.isfinite(weights).all() or (weights < 0).any():
         raise ValueError("ShapeDiscover requires four nonnegative finite loss weights")
     cls = import_module("shapediscover.shapediscover").ShapeDiscover
-    with isolated_random_state(graph.seed):
+    with _isolated_random_state(graph.seed):
         fitted = cls(knn=graph.recipe["neighbors"], graph_algorithm=graph.recipe["algorithm"], **parameters)
         # The published API reconstructs its graph internally from this same declared recipe.
         fitted.fit(descriptors.to_numpy(), seed=graph.seed, verbose=False, plot_loss_curve=False)
@@ -63,7 +63,7 @@ def export_cover_memberships(fitted_cover, membership_rule, *, node_ids):
     threshold, minimum = membership_rule["threshold"], membership_rule["min_size"]
     if not np.isfinite(threshold) or not 0 < threshold <= 1:
         raise ValueError("Cover threshold must be in (0, 1]")
-    validate_positive_integer(minimum, "minimum cover size")
+    _validate_positive_integer(minimum, "minimum cover size")
     values = np.asarray(fitted_cover.cover_)
     if values.ndim != 2 or values.shape[0] != len(node_ids) or not np.isfinite(values).all() or (values < 0).any() or (values > 1).any():
         raise ValueError("Published cover must return a finite stock-by-cover membership matrix in [0, 1]")

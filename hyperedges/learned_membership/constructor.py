@@ -9,7 +9,7 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from ..common.validation import validate_positive_integer
+from ..common.validation import _validate_positive_integer
 from ..common.runtime import runtime_family_from_incidence
 from ..common.types import ConstructorSpec, HyperedgeFamily, validate_hyperedge_family
 
@@ -20,10 +20,10 @@ DEFAULTS = {
 }
 
 
-def initialize_membership_logits(node_ids, slots=16, seed=0, params=None, *, observed_nodes=None):
+def _initialize_membership_logits(node_ids, slots=16, seed=0, params=None, *, observed_nodes=None):
     settings = {**DEFAULTS, **(params or {}), "slots": slots}
-    validate_positive_integer(slots, "slots")
-    validate_positive_integer(settings["initial_size"], "initial size")
+    _validate_positive_integer(slots, "slots")
+    _validate_positive_integer(settings["initial_size"], "initial size")
     high, low = settings["selected_probability"], settings["unselected_probability"]
     if not 0 < low < 0.5 < high < 1:
         raise ValueError("Initialization requires unselected probability < 0.5 < selected probability")
@@ -37,7 +37,7 @@ def initialize_membership_logits(node_ids, slots=16, seed=0, params=None, *, obs
     return torch.from_numpy(logits)
 
 
-def sample_binary_memberships(logits, temperature=0.5, training=True, *, generator=None):
+def _sample_binary_memberships(logits, temperature=0.5, training=True, *, generator=None):
     if not np.isfinite(temperature) or temperature <= 0:
         raise ValueError("Concrete temperature must be positive and finite")
     if training:
@@ -49,10 +49,10 @@ def sample_binary_memberships(logits, temperature=0.5, training=True, *, generat
     return (logits >= 0).to(logits.dtype)
 
 
-def validate_learned_edges(memberships, size_bounds=(3, 25)):
+def _validate_learned_edges(memberships, size_bounds=(3, 25)):
     minimum, maximum = size_bounds
-    validate_positive_integer(minimum, "minimum learned size")
-    validate_positive_integer(maximum, "maximum learned size")
+    _validate_positive_integer(minimum, "minimum learned size")
+    _validate_positive_integer(maximum, "maximum learned size")
     if minimum > maximum:
         raise ValueError("Learned size bounds must be ordered")
     sizes = memberships.detach().sum(dim=0)
@@ -89,7 +89,7 @@ class LearnedMembershipConstructor(nn.Module):
         if set(spec.params) - DEFAULTS.keys():
             raise ValueError("Unknown learned membership parameters")
         for name in ("slots", "initial_size", "min_size", "max_size"):
-            validate_positive_integer(self.settings[name], name)
+            _validate_positive_integer(self.settings[name], name)
         if self.settings["min_size"] > self.settings["max_size"]:
             raise ValueError("Learned size bounds must be ordered")
         for name in ("size_weight", "duplicate_weight", "confidence_weight"):
@@ -115,7 +115,7 @@ class LearnedMembershipConstructor(nn.Module):
             raise ValueError("Too few training-observed stocks for the learned minimum group size")
         self.node_ids = tuple(context.node_ids)
         self.settings["max_size"] = min(self.settings["max_size"], int(observed.sum()))
-        self.logits = nn.Parameter(initialize_membership_logits(self.node_ids, self.settings["slots"], self.seed,
+        self.logits = nn.Parameter(_initialize_membership_logits(self.node_ids, self.settings["slots"], self.seed,
                                                               self.settings, observed_nodes=observed))
         self.observed_nodes = torch.as_tensor(observed, dtype=torch.bool)
         self.provenance = {"cutoff": context.cutoff, "fold_id": context.fold_id, "seed": self.seed,
@@ -130,11 +130,11 @@ class LearnedMembershipConstructor(nn.Module):
             raise ValueError("Frozen memberships cannot sample or train")
         generator = torch.Generator(device="cpu")
         generator.set_state(self.rng_state.cpu())
-        memberships = sample_binary_memberships(self.logits, self.settings["temperature"], training, generator=generator)
+        memberships = _sample_binary_memberships(self.logits, self.settings["temperature"], training, generator=generator)
         if training:
             self.rng_state.copy_(generator.get_state().to(self.rng_state.device))
         memberships = memberships * self.observed_nodes[:, None]
-        valid = validate_learned_edges(memberships, (self.settings["min_size"], self.settings["max_size"]))
+        valid = _validate_learned_edges(memberships, (self.settings["min_size"], self.settings["max_size"]))
         probabilities = torch.sigmoid(self.logits) * self.observed_nodes[:, None]
         regularization = membership_regularization(probabilities, self.settings)["total"]
         if active_nodes is None:
@@ -183,7 +183,7 @@ def freeze_learned_memberships(module):
     runtime = module(training=False)
     # Export original full memberships; runtime masks are kept separate from historical incidence.
     values = (module.logits.detach() >= 0) & module.observed_nodes[:, None]
-    valid = validate_learned_edges(values, (module.settings["min_size"], module.settings["max_size"]))
+    valid = _validate_learned_edges(values, (module.settings["min_size"], module.settings["max_size"]))
     edge_ids = [edge for edge, keep in zip(runtime.edge_ids, valid.cpu().tolist(), strict=True) if keep]
     incidence = pd.DataFrame(values[:, valid].cpu().numpy(), index=module.node_ids, columns=edge_ids, dtype=bool)
     family = HyperedgeFamily(module.spec.instance_id, "learned_membership", incidence,
@@ -198,7 +198,7 @@ def summarize_learned_memberships(module):
         probabilities = torch.sigmoid(module.logits) * module.observed_nodes[:, None]
         hard = (probabilities >= 0.5)
         sizes = hard.sum(dim=0)
-        valid = validate_learned_edges(hard, (module.settings["min_size"], module.settings["max_size"]))
+        valid = _validate_learned_edges(hard, (module.settings["min_size"], module.settings["max_size"]))
         memberships = [tuple(torch.nonzero(hard[:, index]).flatten().tolist()) for index in range(hard.shape[1])]
         return {"sizes": sizes.cpu().tolist(), "expected_sizes": probabilities.sum(dim=0).cpu().tolist(),
                 "empty_slots": int((sizes == 0).sum()), "invalid_slots": int((~valid).sum()),

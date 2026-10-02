@@ -1,4 +1,4 @@
-"""Optional backend version checks and isolation of legacy global random state."""
+"""Internal backend version checks and isolation of legacy global random state."""
 
 from contextlib import contextmanager
 from importlib import import_module, metadata
@@ -6,8 +6,10 @@ import random
 
 import numpy as np
 
+__all__ = []
 
-def require_backend(name, expected_version):
+
+def _require_backend(name, expected_version):
     if not isinstance(expected_version, str) or not expected_version.strip():
         raise ValueError("Optional backend requires an explicit version")
     try:
@@ -21,7 +23,7 @@ def require_backend(name, expected_version):
 
 
 @contextmanager
-def isolated_random_state(seed):
+def _isolated_random_state(seed):
     import torch
     numpy_state, python_state = np.random.get_state(), random.getstate()
     try:

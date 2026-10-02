@@ -10,10 +10,16 @@ import pandas as pd
 
 from experiments.config import TimeSpan
 from .incidence import incidence_from_groups
-from .validation import validate_identifiers
+from .validation import _validate_identifiers
+
+__all__ = [
+    "ConstructorSpec", "HyperedgePipelineConfig", "ConstructionHistory", "ConstructionContext",
+    "HyperedgeFamily", "ContextFeatures", "HyperedgeSnapshot", "FamilyTensor", "HistoricalConstructor",
+    "make_hyperedge_family", "validate_hyperedge_family", "align_family_to_nodes",
+]
 
 
-def utc_timestamp(value):
+def _utc_timestamp(value):
     value = pd.Timestamp(value)
     if pd.isna(value) or value.tzinfo is None:
         raise ValueError("Information times must be present and timezone-aware")
@@ -48,7 +54,7 @@ class ConstructionHistory:
 
     def __post_init__(self):
         values, mask = self.returns, self.mask
-        validate_identifiers(values.columns, "node")
+        _validate_identifiers(values.columns, "node")
         if any(not pd.api.types.is_numeric_dtype(dtype) or pd.api.types.is_bool_dtype(dtype)
                or pd.api.types.is_complex_dtype(dtype) for dtype in values.dtypes):
             raise ValueError("Historical returns must have real numeric dtypes")
@@ -67,7 +73,7 @@ class ConstructionHistory:
             raise ValueError("History availability must be aware and aligned")
         if (available < values.index).any():
             raise ValueError("Return availability cannot precede the observation timestamp")
-        cutoff = utc_timestamp(self.cutoff)
+        cutoff = _utc_timestamp(self.cutoff)
         if len(values) and ((values.index > cutoff).any() or (available > cutoff).any()):
             raise ValueError("Construction history includes future or unavailable observations")
         numeric = values.to_numpy(dtype=float)
@@ -95,15 +101,17 @@ class ConstructionContext:
     params: dict[str, Any] = field(default_factory=dict)
 
     def __post_init__(self):
-        validate_identifiers(self.node_ids, "node")
+        _validate_identifiers(self.node_ids, "node")
         if tuple(self.history.returns.columns) != tuple(self.node_ids):
             raise ValueError("Context and history stock axes must match")
-        if utc_timestamp(self.cutoff) != utc_timestamp(self.history.cutoff):
+        if _utc_timestamp(self.cutoff) != _utc_timestamp(self.history.cutoff):
             raise ValueError("Context and history cutoffs must match")
 
 
 @dataclass(frozen=True)
 class HyperedgeFamily:
+    """Encapsulates incidence matrix for a constructor, edge attributes, diagnostics, provenance, and fitted state."""
+
     instance_id: str
     method: str
     incidence: pd.DataFrame
@@ -131,7 +139,7 @@ class ContextFeatures:
     state: dict[str, Any] = field(default_factory=dict)
 
     def __post_init__(self):
-        validate_identifiers(self.names, "feature")
+        _validate_identifiers(self.names, "feature")
         if self.values.shape != (len(self.names),) or self.mask.shape != self.values.shape or self.mask.dtype.kind != "b":
             raise ValueError("Context feature axes and Boolean masks must match")
         if not np.isfinite(self.values[self.mask]).all():
@@ -155,6 +163,7 @@ class HyperedgeSnapshot:
 
 @dataclass
 class FamilyTensor:
+    """Mask adjusted tensor view of a hyperedge family"""
     instance_id: str
     node_ids: tuple[str, ...]
     edge_ids: tuple[str, ...]
@@ -179,7 +188,7 @@ def make_hyperedge_family(groups, context, attributes=None, *, diagnostics=None,
     history = context.history
     provenance = {
         "builder_version": 1, "parameters": context.params, "seed": context.seed,
-        "cutoff": utc_timestamp(context.cutoff), "fold_id": context.fold_id,
+        "cutoff": _utc_timestamp(context.cutoff), "fold_id": context.fold_id,
         "history_start": history.returns.index[0] if len(history.returns) else None,
         "history_end": history.returns.index[-1] if len(history.returns) else None,
         "history": history.provenance,
@@ -191,13 +200,13 @@ def make_hyperedge_family(groups, context, attributes=None, *, diagnostics=None,
 
 
 def validate_hyperedge_family(family):
-    validate_identifiers((family.instance_id, ), "instance")
-    validate_identifiers((family.method, ), "method")
+    _validate_identifiers((family.instance_id, ), "instance")
+    _validate_identifiers((family.method, ), "method")
     incidence = family.incidence
     if not isinstance(incidence, pd.DataFrame):
         raise ValueError("Family incidence must be a DataFrame")
-    validate_identifiers(incidence.index, "node")
-    validate_identifiers(incidence.columns, "edge", allow_empty=True)
+    _validate_identifiers(incidence.index, "node")
+    _validate_identifiers(incidence.columns, "edge", allow_empty=True)
     if not incidence.dtypes.eq(bool).all() or (incidence.sum(axis=0) == 0).any():
         raise ValueError("Family incidence must be Boolean with no zero-member edges")
     if not set(family.attributes) <= set(incidence.columns):
@@ -210,7 +219,7 @@ def validate_hyperedge_family(family):
 
 def align_family_to_nodes(family, node_ids):
     validate_hyperedge_family(family)
-    node_ids = validate_identifiers(node_ids, "node")
+    node_ids = _validate_identifiers(node_ids, "node")
     if not set(family.node_ids) <= set(node_ids):
         raise ValueError("Family contains stocks outside the canonical axis")
     return replace(family, incidence=family.incidence.reindex(index=node_ids, fill_value=False))

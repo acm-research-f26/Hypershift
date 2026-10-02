@@ -2,15 +2,17 @@
 
 from dataclasses import replace
 
-from .types import utc_timestamp
+from .types import _utc_timestamp
+
+__all__ = ["select_snapshot_for_origin", "attach_snapshot_to_sample"]
 
 
 def select_snapshot_for_origin(snapshots, origin, *, fold_id=None):
-    origin = utc_timestamp(origin)
+    origin = _utc_timestamp(origin)
     eligible = [snapshot for snapshot in snapshots
-                if utc_timestamp(snapshot.available_at) <= origin
-                and utc_timestamp(snapshot.effective_time) <= origin
-                and utc_timestamp(snapshot.cutoff) <= origin
+                if _utc_timestamp(snapshot.available_at) <= origin
+                and _utc_timestamp(snapshot.effective_time) <= origin
+                and _utc_timestamp(snapshot.cutoff) <= origin
                 and (fold_id is None or snapshot.fold_id == fold_id)]
     if not eligible:
         raise ValueError("No snapshot was available at this forecast origin")

@@ -89,6 +89,7 @@ class ExperimentConfig:
     task: TaskConfig
 
     hyperedge_features: tuple[ComponentConfig, ...]
+    # Compatibility fields; new constructor recipes belong in hyperedge_pipeline.
     hyperedge_builders: tuple[ComponentConfig, ...]
     hyperedge_learning: ComponentConfig
 

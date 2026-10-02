@@ -8,16 +8,16 @@ from numbers import Integral
 import numpy as np
 import pandas as pd
 
-from ..common.validation import validate_identifiers
-from ..common.validation import validate_positive_integer
+from ..common.validation import _validate_identifiers
+from ..common.validation import _validate_positive_integer
 from ..common.history import _subset
 from ..common.types import make_hyperedge_family
 
 
 def generate_candidate_groups(node_ids, order=3, budget=1000, seed=0):
-    nodes = sorted(validate_identifiers(node_ids, "node"))
-    validate_positive_integer(order, "order")
-    validate_positive_integer(budget, "candidate budget")
+    nodes = sorted(_validate_identifiers(node_ids, "node"))
+    _validate_positive_integer(order, "order")
+    _validate_positive_integer(budget, "candidate budget")
     if order > len(nodes):
         return ()
     total = comb(len(nodes), order)
@@ -103,7 +103,7 @@ def estimate_joint_distribution(states, smoothing=0.5, *, cardinality=None):
     if not np.isfinite(smoothing) or smoothing < 0:
         raise ValueError("Smoothing must be finite and nonnegative")
     cardinality = int(states.max()) + 1 if cardinality is None else cardinality
-    validate_positive_integer(cardinality, "state cardinality")
+    _validate_positive_integer(cardinality, "state cardinality")
     if (states >= cardinality).any():
         raise ValueError("State exceeds declared cardinality")
     shape = (cardinality,) * states.shape[1]
@@ -132,7 +132,7 @@ def derive_pairwise_marginals(joint_distribution):
 def fit_pairwise_maxent(marginals, tolerance=1e-8, max_iterations=1000):
     if not np.isfinite(tolerance) or tolerance <= 0:
         raise ValueError("Tolerance must be positive and finite")
-    validate_positive_integer(max_iterations, "max_iterations")
+    _validate_positive_integer(max_iterations, "max_iterations")
     if not marginals:
         raise ValueError("Pairwise constraints are required")
     dimensions = max(max(pair) for pair in marginals) + 1
@@ -209,8 +209,8 @@ def select_information_groups(results, selection_spec):
     required = {"edge_budget", "min_holdout_gain_bits", "min_selection_observations"}
     if required != set(selection_spec):
         raise ValueError(f"selection_spec must contain {sorted(required)}")
-    validate_positive_integer(selection_spec["edge_budget"], "edge budget")
-    validate_positive_integer(selection_spec["min_selection_observations"], "min selection observations")
+    _validate_positive_integer(selection_spec["edge_budget"], "edge budget")
+    _validate_positive_integer(selection_spec["min_selection_observations"], "min selection observations")
     threshold = selection_spec["min_holdout_gain_bits"]
     if not np.isfinite(threshold) or threshold < 0:
         raise ValueError("Minimum holdout gain must be finite and nonnegative")
@@ -226,7 +226,7 @@ def build_joint_information_family(context, params):
     mode = params.get("mode", "construct")
     if mode not in {"construct", "diagnose"}:
         raise ValueError("Information mode must be construct or diagnose")
-    validate_positive_integer(params["min_observations"], "min observations")
+    _validate_positive_integer(params["min_observations"], "min observations")
     estimation, selection = split_estimation_selection_history(context.history, params.get("estimation_fraction", 0.8))
     encoder = fit_state_encoder(estimation, params["bin_spec"])
     candidates = generate_candidate_groups(context.node_ids, 3, params["candidate_budget"], context.seed)

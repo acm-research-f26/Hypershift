@@ -6,9 +6,9 @@ from math import comb
 
 import numpy as np
 
-from ..common.backends import require_backend
-from ..common.validation import validate_positive_integer
-from ..common.types import ContextFeatures, utc_timestamp
+from ..common.backends import _require_backend
+from ..common.validation import _validate_positive_integer
+from ..common.types import ContextFeatures, _utc_timestamp
 
 _SUMMARIES = {"finite_count", "total_persistence", "max_persistence", "mean_persistence"}
 
@@ -16,8 +16,8 @@ _SUMMARIES = {"finite_count", "total_persistence", "max_persistence", "mean_pers
 def build_joint_state_cloud(history, node_ids, scaling_state, cloud_spec):
     if set(cloud_spec) != {"max_points", "min_rows"}:
         raise ValueError("cloud_spec requires max_points and min_rows")
-    validate_positive_integer(cloud_spec["max_points"], "cloud point budget")
-    validate_positive_integer(cloud_spec["min_rows"], "minimum cloud observations")
+    _validate_positive_integer(cloud_spec["max_points"], "cloud point budget")
+    _validate_positive_integer(cloud_spec["min_rows"], "minimum cloud observations")
     if tuple(scaling_state["node_ids"]) != tuple(node_ids) or not set(node_ids) <= set(history.returns.columns):
         raise ValueError("PH scaling and stock coordinate axes must match")
     if not node_ids or len(set(node_ids)) != len(node_ids):
@@ -39,7 +39,7 @@ def _native_rips(cloud, dimensions, max_simplices):
     """Exact small-cloud Vietoris--Rips persistence over F2 through H1."""
     if max(dimensions) > 1:
         raise ValueError("native_rips supports H0/H1; select an explicit external backend for higher dimensions")
-    validate_positive_integer(max_simplices, "simplex budget")
+    _validate_positive_integer(max_simplices, "simplex budget")
     order = max(dimensions) + 2
     count = sum(comb(len(cloud), size) for size in range(1, min(order, len(cloud)) + 1))
     if count > max_simplices:
@@ -89,7 +89,7 @@ def compute_persistence(cloud, backend_spec, dimensions=(0, 1)):
     if name == "ripser":
         if set(backend_spec) != {"name", "version"}:
             raise ValueError("Ripser backend requires an explicit version")
-        module = require_backend("ripser", backend_spec["version"])
+        module = _require_backend("ripser", backend_spec["version"])
         diagrams = module.ripser(cloud, maxdim=max(dimensions))["dgms"]
         return {dimension: np.asarray(diagrams[dimension]) for dimension in dimensions}
     raise ValueError("Persistence backend must be native_rips or ripser")
@@ -113,7 +113,7 @@ def summarize_persistence(diagrams, summary_spec):
     return tuple(names), np.asarray(values, dtype=float)
 
 
-def build_ph_context(context, fitted_state, params):
+def _build_ph_context(context, fitted_state, params):
     cloud = build_joint_state_cloud(context.history, tuple(params["node_ids"]), fitted_state, params["cloud_spec"])
     dimensions = tuple(params["dimensions"])
     diagrams = (compute_persistence(cloud, params["backend_spec"], dimensions) if len(cloud)
@@ -149,12 +149,12 @@ class PHContextProvider:
     def build(self, context):
         if self.scaling_state is None:
             raise RuntimeError("Fit PH coordinate scaling first")
-        return build_ph_context(context, self.scaling_state, self.spec.params)
+        return _build_ph_context(context, self.scaling_state, self.spec.params)
 
 
 def fit_context_transform(training_contexts, *, fit_cutoff):
     contexts = tuple(training_contexts)
-    cutoff = utc_timestamp(fit_cutoff)
+    cutoff = _utc_timestamp(fit_cutoff)
     if not contexts:
         raise ValueError("Context scaling requires training contexts")
     names = contexts[0].names
@@ -162,7 +162,7 @@ def fit_context_transform(training_contexts, *, fit_cutoff):
     for context in contexts:
         if context.names != names or context.instance_id != instance:
             raise ValueError("Training context axes must match")
-        if utc_timestamp(context.provenance["cutoff"]) > cutoff:
+        if _utc_timestamp(context.provenance["cutoff"]) > cutoff:
             raise ValueError("Context scaling includes observations after the training cutoff")
     values = np.stack([context.values for context in contexts])
     mask = np.stack([context.mask for context in contexts])

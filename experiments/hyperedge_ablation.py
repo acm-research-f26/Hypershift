@@ -13,7 +13,7 @@ import torch
 
 from hyperedges.common.pipeline import build_hyperedge_snapshot, fit_hyperedge_pipeline, summarize_hyperedge_families
 from hyperedges.common.registry import resolve_pipeline_config
-from hyperedges.common.types import utc_timestamp
+from hyperedges.common.types import _utc_timestamp
 from src.hypergraph import HyperedgeConsumer
 
 
@@ -48,7 +48,7 @@ def _context_input(features, sample, snapshot):
     if [(item.instance_id, item.names) for item in contexts] != expected:
         raise ValueError("Per-origin context feature axes differ from fitted providers")
     for item in contexts:
-        if utc_timestamp(item.provenance["cutoff"]) > utc_timestamp(sample.origin_time):
+        if _utc_timestamp(item.provenance["cutoff"]) > _utc_timestamp(sample.origin_time):
             raise ValueError("Context features contain information after prediction time")
     return {"context_values": np.concatenate([item.values for item in contexts]),
             "context_mask": np.concatenate([item.mask for item in contexts])}
@@ -84,14 +84,14 @@ def run_hyperedge_ablation(context, config, train_samples, validation_samples, t
     train_samples, validation_samples, test_samples = map(tuple, (train_samples, validation_samples, test_samples))
     if not train_samples or not validation_samples or not test_samples or epochs < 1 or patience < 1 or learning_rate <= 0:
         raise ValueError("Require nonempty chronological splits and positive training settings")
-    cutoff = utc_timestamp(context.cutoff)
+    cutoff = _utc_timestamp(context.cutoff)
     axes = (train_samples[0].feature_names, train_samples[0].values.shape)
     for split, samples in (("train", train_samples), ("validation", validation_samples), ("test", test_samples)):
         previous = None
         for sample in samples:
             if (sample.feature_names, sample.values.shape) != axes:
                 raise ValueError("All ablation samples must have the same temporal and feature axes")
-            origin, end, known = map(utc_timestamp, (sample.origin_time, sample.target_end, sample.target_availability))
+            origin, end, known = map(_utc_timestamp, (sample.origin_time, sample.target_end, sample.target_availability))
             if not origin < end <= known or (previous is not None and origin <= previous):
                 raise ValueError("Forecast samples must be chronological with valid label availability")
             previous = origin

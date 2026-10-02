@@ -16,10 +16,10 @@ from pathlib import Path
 import sys
 
 
-def percent_cells(source):
+def _percent_cells(source):
     cells, kind, lines = [], None, []
 
-    def append():
+    def _append():
         if kind is None:
             return
         content = "".join(lines).strip("\n") + "\n"
@@ -32,7 +32,7 @@ def percent_cells(source):
 
     for line in source.splitlines(keepends=True):
         if line.startswith("# %%"):
-            append()
+            _append()
             kind, lines = ("markdown" if "[markdown]" in line else "code"), []
         elif kind == "markdown":
             if not line.strip():
@@ -47,7 +47,7 @@ def percent_cells(source):
             lines.append(line)
         elif line.strip():
             raise ValueError("Content precedes the first cell marker.")
-    append()
+    _append()
     return cells
 
 
@@ -63,7 +63,7 @@ def main():
         "metadata": {"kernelspec": {"display_name": "Python (Hypershift .venv)",
                                     "language": "python", "name": "python3"},
                      "language_info": {"name": "python", "version": sys.version.split()[0]}},
-        "cells": percent_cells(source.read_text(encoding="utf-8")),
+        "cells": _percent_cells(source.read_text(encoding="utf-8")),
     }
     destination.write_text(json.dumps(notebook, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote {len(notebook['cells'])} cells to {destination}", flush=True)
@@ -97,11 +97,11 @@ def main():
     client = NotebookClient(nb, timeout=300, kernel_name="hypershift-tutorial",
                             resources={"metadata": {"path": str(root)}})
 
-    def progress(cell, cell_index, **kwargs):
+    def _progress(cell, cell_index, **kwargs):
         if cell.cell_type == "code":
             print(f"Executing code cell {cell_index + 1}/{len(nb.cells)}", flush=True)
 
-    client.on_cell_start = progress
+    client.on_cell_start = _progress
     try:
         client.execute()
     finally:

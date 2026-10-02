@@ -5,7 +5,7 @@ from numbers import Integral
 
 import pandas as pd
 
-from ..common.types import make_hyperedge_family, utc_timestamp
+from ..common.types import make_hyperedge_family, _utc_timestamp
 
 LEVELS = {"sector", "industry_group", "industry", "sub_industry"}
 
@@ -22,7 +22,7 @@ def load_classification_records(source):
 
 
 def select_classifications_at_cutoff(records, node_ids, cutoff, *, level="industry_group", metadata_protocol="point_in_time"):
-    cutoff = utc_timestamp(cutoff)
+    cutoff = _utc_timestamp(cutoff)
     if level not in LEVELS or level not in records:
         raise ValueError(f"Missing or unsupported GICS level {level!r}")
     if metadata_protocol not in {"point_in_time", "retrospective_static"}:
@@ -32,10 +32,10 @@ def select_classifications_at_cutoff(records, node_ids, cutoff, *, level="indust
         if not {"effective_from", "available_at"} <= set(records.columns):
             raise ValueError("Point-in-time GICS requires effective_from and available_at")
         for column in ("effective_from", "available_at"):
-            records[column] = records[column].map(utc_timestamp)
+            records[column] = records[column].map(_utc_timestamp)
         records = records.loc[(records.effective_from <= cutoff) & (records.available_at <= cutoff)]
         if "effective_to" in records:
-            ends = records.effective_to.map(lambda x: None if pd.isna(x) else utc_timestamp(x))
+            ends = records.effective_to.map(lambda x: None if pd.isna(x) else _utc_timestamp(x))
             if any(end is not None and end <= start for start, end in zip(records.effective_from, ends, strict=True)):
                 raise ValueError("Classification effective_to must follow effective_from")
             records = records.loc[ends.isna() | (ends > cutoff)]

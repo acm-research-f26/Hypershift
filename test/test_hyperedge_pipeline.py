@@ -16,8 +16,8 @@ from hyperedges import (ConstructionContext, ConstructionHistory, ConstructorSpe
 from hyperedges.covariance_knn import covariance_to_correlation, estimate_covariance, knn_groups_from_similarity
 from hyperedges.gics import build_gics_family, load_classification_records, select_classifications_at_cutoff
 from hyperedges.covariance_knn.history import select_covariance_history
-from hyperedges.common.registry import (derive_component_seed, register_constructor, register_context_provider,
-                                resolve_pipeline_config, validate_pipeline_config)
+from hyperedges.common.registry import (_derive_component_seed, register_constructor, register_context_provider,
+                                resolve_pipeline_config)
 from hyperedges.common.types import ContextFeatures, align_family_to_nodes, make_hyperedge_family
 
 
@@ -67,7 +67,7 @@ def test_fixed_families_do_not_depend_on_other_methods_order_or_seeds(context):
     for family in families[1:]:
         pd.testing.assert_frame_equal(family.incidence, families[0].incidence)
         assert family.provenance == families[0].provenance
-    assert derive_component_seed(37, "knn", "construction") != derive_component_seed(37, "events", "construction")
+    assert _derive_component_seed(37, "knn", "construction") != _derive_component_seed(37, "events", "construction")
 
 
 def test_repeated_constructor_types_and_empty_pipeline(context):
@@ -104,7 +104,7 @@ def test_registered_custom_method_needs_no_orchestrator_change(context):
     register_constructor("fixture_custom", Custom)
     snapshot = build_hyperedge_snapshot(fit_hyperedge_pipeline(context, [ConstructorSpec("plugin", "fixture_custom")]))
     assert snapshot.families[0].incidence["custom"].sum() == 3
-    assert snapshot.families[0].provenance["seed"] == derive_component_seed(context.seed, "plugin", "construction")
+    assert snapshot.families[0].provenance["seed"] == _derive_component_seed(context.seed, "plugin", "construction")
 
 
 def test_registered_context_is_separate_from_membership(context):
@@ -132,7 +132,7 @@ def test_registered_context_is_separate_from_membership(context):
 ])
 def test_invalid_configs_fail_before_construction(specs):
     with pytest.raises(ValueError):
-        validate_pipeline_config(HyperedgePipelineConfig(specs))
+        resolve_pipeline_config(HyperedgePipelineConfig(specs))
 
 
 def test_coverage_exclusion_does_not_remove_canonical_stock(context):

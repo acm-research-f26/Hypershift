@@ -5,7 +5,7 @@ from itertools import product
 import numpy as np
 import pandas as pd
 
-from ..common.validation import validate_positive_integer
+from ..common.validation import _validate_positive_integer
 from ..common.types import make_hyperedge_family
 from ..common.descriptors import build_stock_descriptors
 
@@ -22,7 +22,7 @@ def fit_mapper_lens(descriptors, lens_spec):
         if set(lens_spec) != {"kind", "components"}:
             raise ValueError("PCA lens requires components")
         count = lens_spec["components"]
-        validate_positive_integer(count, "PCA components")
+        _validate_positive_integer(count, "PCA components")
         if count > min(descriptors.shape):
             raise ValueError("Too many PCA components")
         mean = descriptors.mean().to_numpy()
@@ -50,9 +50,9 @@ def construct_mapper_cover(lens_values, cover_spec):
     if len(bins) != lens_values.shape[1]:
         raise ValueError("One bin count per lens coordinate is required")
     for count in bins:
-        validate_positive_integer(count, "bins")
+        _validate_positive_integer(count, "bins")
     maximum = cover_spec.get("max_elements", 4096)
-    validate_positive_integer(maximum, "max cover elements")
+    _validate_positive_integer(maximum, "max cover elements")
     if np.prod(bins) > maximum:
         raise ValueError("Cover element budget exceeded")
     intervals = []
@@ -112,10 +112,10 @@ def build_mapper_cover_family(context, params):
     cover = construct_mapper_cover(lens, params["cover_spec"])
     clusters = cluster_mapper_elements(descriptors, cover, params["clustering_spec"])
     minimum = params.get("min_size", 2)
-    validate_positive_integer(minimum, "minimum size")
+    _validate_positive_integer(minimum, "minimum size")
     groups = {edge: members for edge, members in clusters.items() if len(members) >= minimum}
     if "edge_budget" in params:
-        validate_positive_integer(params["edge_budget"], "edge budget")
+        _validate_positive_integer(params["edge_budget"], "edge budget")
         groups = dict(sorted(groups.items())[:params["edge_budget"]])
     return make_hyperedge_family(groups, context,
                                 diagnostics={"descriptor_nodes": list(descriptors.index), "cover_elements": len(cover)},

@@ -8,8 +8,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .validation import validate_identifiers
-from .types import ContextFeatures, HyperedgeFamily, HyperedgeSnapshot, utc_timestamp, validate_hyperedge_family
+from .validation import _validate_identifiers
+from .types import ContextFeatures, HyperedgeFamily, HyperedgeSnapshot, _utc_timestamp, validate_hyperedge_family
+
+__all__ = ["save_hyperedge_snapshot", "load_hyperedge_snapshot"]
 
 
 def _encode(value):
@@ -67,14 +69,14 @@ def _decode(value):
     return {key: _decode(item) for key, item in value.items()}
 
 
-def artifact_digest(value):
+def _artifact_digest(value):
     return sha256(json.dumps(_encode(value), sort_keys=True, separators=(",", ":"), allow_nan=False).encode()).hexdigest()
 
 
 def save_hyperedge_snapshot(snapshot, destination):
     _validate_snapshot(snapshot)
     payload = _encode(asdict(snapshot))
-    envelope = {"schema_version": 1, "sha256": artifact_digest(asdict(snapshot)), "snapshot": payload}
+    envelope = {"schema_version": 1, "sha256": _artifact_digest(asdict(snapshot)), "snapshot": payload}
     destination = Path(destination)
     destination.parent.mkdir(parents=True, exist_ok=True)
     temporary = destination.with_name(destination.name + ".tmp")
@@ -88,7 +90,7 @@ def load_hyperedge_snapshot(source):
     if envelope.get("schema_version") != 1:
         raise ValueError("Unsupported snapshot schema")
     payload = _decode(envelope["snapshot"])
-    if artifact_digest(payload) != envelope["sha256"]:
+    if _artifact_digest(payload) != envelope["sha256"]:
         raise ValueError("Snapshot checksum mismatch")
     payload["families"] = tuple(HyperedgeFamily(**family) for family in payload["families"])
     payload["context_features"] = tuple(ContextFeatures(**feature) for feature in payload["context_features"])
@@ -98,10 +100,10 @@ def load_hyperedge_snapshot(source):
 
 
 def _validate_snapshot(snapshot):
-    validate_identifiers(snapshot.node_ids, "node")
+    _validate_identifiers(snapshot.node_ids, "node")
     if snapshot.protocol not in {"fold_frozen", "rolling"}:
         raise ValueError("Unknown snapshot protocol")
-    if not utc_timestamp(snapshot.cutoff) <= utc_timestamp(snapshot.available_at) <= utc_timestamp(snapshot.effective_time):
+    if not _utc_timestamp(snapshot.cutoff) <= _utc_timestamp(snapshot.available_at) <= _utc_timestamp(snapshot.effective_time):
         raise ValueError("Invalid snapshot timing")
     identifiers = [family.instance_id for family in snapshot.families]
     if len(set(identifiers)) != len(identifiers) or set(identifiers) & set(snapshot.learned_references):
@@ -113,5 +115,5 @@ def _validate_snapshot(snapshot):
     for name, state in snapshot.learned_references.items():
         if tuple(state["node_ids"]) != tuple(snapshot.node_ids) or state["spec"]["instance_id"] != name:
             raise ValueError("Learned checkpoint identities or axes are not aligned")
-        if utc_timestamp(state["provenance"]["cutoff"]) > utc_timestamp(snapshot.available_at):
+        if _utc_timestamp(state["provenance"]["cutoff"]) > _utc_timestamp(snapshot.available_at):
             raise ValueError("Learned checkpoint is unavailable at snapshot completion")

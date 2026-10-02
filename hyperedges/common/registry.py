@@ -7,8 +7,10 @@ from importlib import import_module
 from numbers import Integral
 from time import perf_counter
 
-from .history import validate_window
+from .history import _validate_window
 from .types import ConstructorSpec, HyperedgePipelineConfig
+
+__all__ = ["register_constructor", "register_context_provider", "resolve_pipeline_config"]
 
 _CONSTRUCTORS = {}
 _CONTEXT_PROVIDERS = {}
@@ -32,14 +34,14 @@ def register_context_provider(name, factory, *, required_params=(), allowed_para
     _register(_CONTEXT_PROVIDERS, name, factory, required_params, allowed_params)
 
 
-def derive_component_seed(base_seed, instance_id, purpose):
+def _derive_component_seed(base_seed, instance_id, purpose):
     if isinstance(base_seed, bool) or not isinstance(base_seed, Integral) or base_seed < 0:
         raise ValueError("Seed must be a nonnegative integer")
     digest = sha256(f"{int(base_seed)}\0{instance_id}\0{purpose}".encode()).digest()
     return int.from_bytes(digest[:4], "big")
 
 
-class HistoricalBuilder:
+class _HistoricalBuilder:
     """Adapt a pure family builder to the fit/build lifecycle."""
 
     def __init__(self, spec, seed, builder):
@@ -58,20 +60,21 @@ class HistoricalBuilder:
 
 
 def _historical(module, function):
-    def factory(spec, seed):
+    def _factory(spec, seed):
         builder = getattr(import_module(f"hyperedges.{module}"), function)
-        return HistoricalBuilder(spec, seed, builder)
-    return factory
+        return _HistoricalBuilder(spec, seed, builder)
+    return _factory
 
 
 def _class_factory(module, name):
-    def factory(spec, seed):
+    def _factory(spec, seed):
         return getattr(import_module(f"hyperedges.{module}"), name)(spec, seed)
-    return factory
+    return _factory
 
 
 _KNN_PARAMS = {"neighbors", "similarity", "absolute", "coverage_threshold", "min_rows"}
 register_constructor("covariance_knn", _historical("covariance_knn.constructor", "build_covariance_knn_family"), allowed_params=_KNN_PARAMS)
+# Compatibility method name; new specifications use covariance_knn.
 register_constructor("correlation_knn", _historical("covariance_knn.constructor", "build_covariance_knn_family"), allowed_params=_KNN_PARAMS)
 register_constructor("gics", _historical("gics.constructor", "build_gics_family"),
                      allowed_params={"source", "level", "min_size", "metadata_protocol"})
@@ -94,7 +97,7 @@ register_context_provider("ph_context", _class_factory("ph_context.provider", "P
                           allowed_params={"node_ids", "cloud_spec", "backend_spec", "dimensions", "summary_spec"})
 
 
-def validate_pipeline_config(config):
+def _validate_pipeline_config(config):
     if not isinstance(config, HyperedgePipelineConfig) or config.protocol not in {"fold_frozen", "rolling"}:
         raise ValueError("Expected pipeline configuration with fold_frozen or rolling protocol")
     identifiers = set()
@@ -114,32 +117,33 @@ def validate_pipeline_config(config):
             extra = set() if allowed is None else spec.params.keys() - allowed
             if missing or extra:
                 raise ValueError(f"{spec.instance_id}: missing parameters {sorted(missing)}; unknown parameters {sorted(extra)}")
-            validate_window(spec.history_window)
+            _validate_window(spec.history_window)
     return config
 
 
 def resolve_pipeline_config(experiment_config):
+    """Validate canonical configuration or adapt the legacy experiment fields."""
     if isinstance(experiment_config, HyperedgePipelineConfig):
-        return validate_pipeline_config(deepcopy(experiment_config))
+        return _validate_pipeline_config(deepcopy(experiment_config))
     configured = getattr(experiment_config, "hyperedge_pipeline", None)
     if configured is not None:
-        return validate_pipeline_config(deepcopy(configured))
+        return _validate_pipeline_config(deepcopy(configured))
     specs = []
-    from .storage import artifact_digest
+    from .storage import _artifact_digest
     for component in experiment_config.hyperedge_builders:
         params = deepcopy(component.params)
         identifier = params.pop("instance_id", None)
         if identifier is None:
-            identifier = f"{component.name}:{artifact_digest(params)[:12]}"
+            identifier = f"{component.name}:{_artifact_digest(params)[:12]}"
         specs.append(ConstructorSpec(identifier, component.name, params))
     learning = experiment_config.hyperedge_learning
     if learning.name != "fixed":
         if learning.name != "learned_membership":
             raise ValueError(f"Unsupported legacy hyperedge_learning: {learning.name}")
         specs.append(ConstructorSpec("learned", learning.name, deepcopy(learning.params)))
-    return validate_pipeline_config(HyperedgePipelineConfig(tuple(specs)))
+    return _validate_pipeline_config(HyperedgePipelineConfig(tuple(specs)))
 
 
-def instantiate_component(spec, seed, *, context_provider=False):
+def _instantiate_component(spec, seed, *, context_provider=False):
     registry = _CONTEXT_PROVIDERS if context_provider else _CONSTRUCTORS
     return registry[spec.method][0](deepcopy(spec), seed)

@@ -3,6 +3,8 @@
 import numpy as np
 import pandas as pd
 
+__all__ = ["build_stock_descriptors"]
+
 
 def build_stock_descriptors(history, descriptor_spec):
     if set(descriptor_spec) - {"features", "coverage_threshold", "standardize"}:

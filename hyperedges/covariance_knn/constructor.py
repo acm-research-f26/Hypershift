@@ -6,13 +6,13 @@ import numpy as np
 import pandas as pd
 
 from ..common.incidence import incidence_from_groups
-from ..common.validation import validate_identifiers
+from ..common.validation import _validate_identifiers
 
 
 def _validate_returns(returns):
     if not isinstance(returns, pd.DataFrame) or isinstance(returns.columns, pd.MultiIndex):
         raise ValueError("returns must be a DataFrame with a flat stock axis")
-    validate_identifiers(returns.columns, "node")
+    _validate_identifiers(returns.columns, "node")
     times = returns.index
     if (not isinstance(times, pd.DatetimeIndex) or times.hasnans
             or not times.is_unique or not times.is_monotonic_increasing):
@@ -50,7 +50,7 @@ def covariance_to_correlation(covariance: pd.DataFrame) -> pd.DataFrame:
 def _validate_square(matrix):
     if not isinstance(matrix, pd.DataFrame):
         raise ValueError("Similarity must be a labeled DataFrame")
-    validate_identifiers(matrix.index, "node")
+    _validate_identifiers(matrix.index, "node")
     if not matrix.index.equals(matrix.columns) or not np.isfinite(matrix.to_numpy(dtype=float)).all():
         raise ValueError("Matrix axes must match and values must be finite")
     if not np.allclose(matrix, matrix.T, rtol=1e-10, atol=1e-12):

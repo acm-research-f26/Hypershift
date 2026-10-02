@@ -1,3 +1,9 @@
+"""Daily Yahoo/PyG baseline used by src.main.
+
+The session-aware ObservationPanel/ForecastSample pipeline is the current path
+for masked intraday forecasting. This baseline remains independently runnable.
+"""
+
 from typing import Sequence
 import yfinance as yf
 import pandas as pd
@@ -253,7 +259,7 @@ def prepare_graph_datasets(close: pd.DataFrame, volume: pd.DataFrame, *, lookbac
     training_returns = (log_returns.loc[:training_cutoff, list(tickers)].dropna(how="any"))
     edge_index = build_correlation_edge_index(training_returns, neighbors=neighbors)
 
-    def make_samples(start: int, stop: int) -> list[Data]:
+    def _make_samples(start: int, stop: int) -> list[Data]:
         samples: list[Data] = []
         for sample_index in range(start, stop):
             # $X_t \in \mathbb{R}^{N \times L \times F} \mapsto \mathbb{R}^{N \times (LF)}$
@@ -267,9 +273,9 @@ def prepare_graph_datasets(close: pd.DataFrame, volume: pd.DataFrame, *, lookbac
             )
         return samples
 
-    train = make_samples(0, train_end)
-    validation = make_samples(train_end, validation_end)
-    test = make_samples(validation_end, num_samples)
+    train = _make_samples(0, train_end)
+    validation = _make_samples(train_end, validation_end)
+    test = _make_samples(validation_end, num_samples)
 
     return GraphDatasetSplits(
         train=train,

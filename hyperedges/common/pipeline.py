@@ -7,9 +7,14 @@ from time import perf_counter
 import numpy as np
 
 from .history import prepare_construction_history
-from .registry import derive_component_seed, instantiate_component, resolve_pipeline_config
+from .registry import _derive_component_seed, _instantiate_component, resolve_pipeline_config
 from .types import (ConstructionContext, HyperedgePipelineConfig, HyperedgeSnapshot,
-                    align_family_to_nodes, utc_timestamp, validate_hyperedge_family)
+                    align_family_to_nodes, _utc_timestamp, validate_hyperedge_family)
+
+__all__ = [
+    "FittedHyperedgePipeline", "fit_hyperedge_pipeline", "build_hyperedge_snapshot",
+    "build_context_features", "summarize_hyperedge_families",
+]
 
 
 @dataclass
@@ -27,7 +32,7 @@ def _component_context(context, spec):
         context, history=prepare_construction_history(context.history, context.cutoff, spec.history_window),
         metadata=deepcopy(context.metadata),
         instance_id=spec.instance_id, method=spec.method, params=deepcopy(spec.params),
-        seed=derive_component_seed(context.seed, spec.instance_id, "construction"),
+        seed=_derive_component_seed(context.seed, spec.instance_id, "construction"),
     )
 
 
@@ -37,32 +42,32 @@ def fit_hyperedge_pipeline(context, specs=(), context_specs=(), *, protocol="fol
     pipeline = FittedHyperedgePipeline(config, deepcopy(context))
     for spec in config.constructors:
         component_context = _component_context(context, spec)
-        constructor = instantiate_component(spec, component_context.seed)
+        constructor = _instantiate_component(spec, component_context.seed)
         constructor.fit(component_context)
         destination = pipeline.learned_modules if getattr(constructor, "trainable_membership", False) else pipeline.constructors
         destination[spec.instance_id] = constructor
     for spec in config.context_providers:
         component_context = _component_context(context, spec)
-        provider = instantiate_component(spec, component_context.seed, context_provider=True)
+        provider = _instantiate_component(spec, component_context.seed, context_provider=True)
         provider.fit(component_context)
         pipeline.context_providers[spec.instance_id] = provider
     return pipeline
 
 
 def build_hyperedge_snapshot(fitted_pipeline, context=None, *, available_at=None, effective_time=None):
-    from .storage import artifact_digest
+    from .storage import _artifact_digest
 
     context = fitted_pipeline.context if context is None else context
     fitted = fitted_pipeline.context
     if tuple(context.node_ids) != tuple(fitted.node_ids) or context.fold_id != fitted.fold_id:
         raise ValueError("Snapshot stock axes and fold must match fitted pipeline")
-    cutoff = utc_timestamp(context.cutoff)
-    if fitted_pipeline.config.protocol == "fold_frozen" and cutoff != utc_timestamp(fitted.cutoff):
+    cutoff = _utc_timestamp(context.cutoff)
+    if fitted_pipeline.config.protocol == "fold_frozen" and cutoff != _utc_timestamp(fitted.cutoff):
         raise ValueError("Frozen membership snapshots use the training cutoff; rebuild through the rolling protocol")
     if fitted_pipeline.config.protocol == "rolling" and available_at is None:
         raise ValueError("Rolling snapshots require an explicit build available_at time")
-    available = cutoff if available_at is None else utc_timestamp(available_at)
-    effective = available if effective_time is None else utc_timestamp(effective_time)
+    available = cutoff if available_at is None else _utc_timestamp(available_at)
+    effective = available if effective_time is None else _utc_timestamp(effective_time)
     if not cutoff <= available <= effective:
         raise ValueError("Require cutoff <= available_at <= effective_time")
     families = []
@@ -74,7 +79,7 @@ def build_hyperedge_snapshot(fitted_pipeline, context=None, *, available_at=None
         start = perf_counter()
         if fitted_pipeline.config.protocol == "rolling":
             # A fresh historical fit does not change the trained membership modules.
-            constructor = instantiate_component(spec, component_context.seed)
+            constructor = _instantiate_component(spec, component_context.seed)
             constructor.fit(component_context)
         family = align_family_to_nodes(constructor.build(component_context), context.node_ids)
         validate_hyperedge_family(family)
@@ -89,13 +94,13 @@ def build_hyperedge_snapshot(fitted_pipeline, context=None, *, available_at=None
                      for spec in fitted_pipeline.config.context_providers
                      for provider in (fitted_pipeline.context_providers[spec.instance_id],))
     for name, reference in references.items():
-        if utc_timestamp(reference["provenance"]["cutoff"]) > available:
+        if _utc_timestamp(reference["provenance"]["cutoff"]) > available:
             raise ValueError(f"Learned checkpoint {name!r} was fitted after snapshot availability")
     for feature, spec in zip(features, fitted_pipeline.config.context_providers, strict=True):
         if feature.instance_id != spec.instance_id:
             raise ValueError("Context provider returned a different instance ID")
         fitted_at = feature.provenance.get("scaling_fit_cutoff")
-        if fitted_at is not None and utc_timestamp(fitted_at) > available:
+        if fitted_at is not None and _utc_timestamp(fitted_at) > available:
             raise ValueError("Context scaling was fitted after snapshot availability")
     configuration = asdict(fitted_pipeline.config)
     configuration["availability_policy"] = "declared" if available_at is not None else "offline_cutoff_assumption"
@@ -107,7 +112,7 @@ def build_hyperedge_snapshot(fitted_pipeline, context=None, *, available_at=None
                      for f in families],
         "context": features,
     }
-    return HyperedgeSnapshot(artifact_digest(identity), tuple(context.node_ids), tuple(families),
+    return HyperedgeSnapshot(_artifact_digest(identity), tuple(context.node_ids), tuple(families),
                              cutoff, available, effective, fitted_pipeline.config.protocol,
                              context.fold_id, configuration, references, features)
 
