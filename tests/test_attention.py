@@ -69,3 +69,75 @@ def test_defaults_are_eq14():
     from hypershift.models.think import THINK
     assert RunConfig().attn_score == "eq14"
     assert inspect.signature(THINK.__init__).parameters["attn_score"].default == "eq14"
+
+
+# ---- Phase 1.5 switches: attn_odot / attn_norm (defaults must stay product / softmax) ----
+def test_odot_norm_defaults_unchanged():
+    import inspect
+
+    from hypershift.config import RunConfig
+    from hypershift.models.attention import EucHypergraphAttention, HypHypergraphAttention
+    from hypershift.models.think import THINK
+    assert (RunConfig().attn_odot, RunConfig().attn_norm) == ("product", "softmax")
+    for cls in (THINK, HypHypergraphAttention, EucHypergraphAttention):
+        params = inspect.signature(cls.__init__).parameters
+        key = ("attn_odot", "attn_norm") if cls is THINK else ("odot", "norm")
+        assert (params[key[0]].default, params[key[1]].default) == ("product", "softmax")
+
+
+def test_odot_mobius_formula_and_scores():
+    from hypershift.models.attention import odot_mobius
+    s = torch.tensor([-0.5, 0.0, 0.3, 0.9])
+    d = torch.tensor([1.0, 2.0, 0.7, 3.0])
+    want = torch.sign(s) * s.abs() * torch.tanh(s.abs() * d)
+    torch.testing.assert_close(odot_mobius(s, d), want)
+    # literal eq. 7 with y = tanh(d): tanh((|s y|/|y|) artanh(|y|)) * |s y|/|y|
+    y = torch.tanh(d)
+    lit = torch.tanh((s * y).abs() / y.abs() * torch.atanh(y)) * (s * y).abs() / y.abs() * torch.sign(s)
+    torch.testing.assert_close(odot_mobius(s, d), lit)
+    layer = HypHypergraphAttention(4, score="eq14", dist="mult", odot="mobius")
+    uj = expmap0(torch.randn(9, 4) * 0.5)
+    zi = expmap0(torch.randn(9, 4) * 0.5)
+    base = torch.tanh(logmap0(mobius_add(uj, zi)) @ layer.a)
+    torch.testing.assert_close(layer._scores(uj, zi), odot_mobius(base, poincare_dist(uj, zi)))
+    prod = HypHypergraphAttention(4, score="eq14", dist="mult")
+    prod.load_state_dict(layer.state_dict())
+    assert not torch.allclose(prod._scores(uj, zi), layer._scores(uj, zi))
+
+
+def test_attn_norm_variants():
+    from hypershift.models.attention import segment_sum_norm
+    hg = HG.to_torch("cpu")
+    torch.manual_seed(2)
+    uj = expmap0(torch.randn(hg.node_idx.numel(), 4) * 0.5)
+    zi = expmap0(torch.randn(hg.node_idx.numel(), 4) * 0.5)
+    sel = (hg.node_idx == 2).nonzero().squeeze(-1)
+    raw = HypHypergraphAttention(4, norm="none")
+    sm = HypHypergraphAttention(4, norm="softmax")
+    sm.load_state_dict(raw.state_dict())
+    sc = raw._scores(uj, zi)
+    torch.testing.assert_close(raw._alpha(sc, hg), sc)                       # raw value passes through
+    torch.testing.assert_close(sm._alpha(sc, hg).sum(), torch.tensor(float(len(set(hg.node_idx.tolist())))))
+    sn = segment_sum_norm(sc, hg.node_idx, hg.num_nodes)
+    torch.testing.assert_close(sn[sel].abs().sum(), torch.tensor(1.0))
+
+
+@pytest.mark.parametrize("odot,norm", [("product", "none"), ("product", "sum"), ("mobius", "softmax"),
+                                       ("mobius", "none"), ("mobius", "sum")])
+@pytest.mark.parametrize("spatial", ["hyp", "euc"])
+def test_think_forward_backward_with_switches(odot, norm, spatial):
+    from hypershift.models.think import THINK
+    torch.manual_seed(0)
+    m = THINK(in_dim=5, hidden=8, seq=16, kernel=4, spatial=spatial, temporal="hyp" if spatial == "hyp" else "euc",
+              attn_odot=odot, attn_norm=norm)
+    y = m(torch.rand(2, 6, 16, 5), HG.to_torch("cpu"))
+    assert y.shape == (2, 6) and torch.isfinite(y).all()
+    y.pow(2).mean().backward()
+    assert m.spatial.a.grad is not None and torch.isfinite(m.spatial.a.grad).all()
+
+
+def test_invalid_switch_rejected():
+    with pytest.raises(ValueError):
+        HypHypergraphAttention(4, odot="x")
+    with pytest.raises(ValueError):
+        HypHypergraphAttention(4, norm="x")

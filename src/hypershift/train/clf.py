@@ -45,7 +45,8 @@ def train_clf_run(cfg: RunConfig, data=None, hg=None) -> dict:
     thg = hg.to_torch(device)
     model = THINK(in_dim=data.features.shape[2], hidden=cfg.hidden, seq=cfg.seq, kernel=cfg.kernel,
                   temporal=cfg.temporal, spatial=cfg.spatial, structure=cfg.structure,
-                  attn_score=cfg.attn_score, attn_dist=cfg.attn_dist, out_dim=3).to(device)
+                  attn_score=cfg.attn_score, attn_dist=cfg.attn_dist,
+                  attn_odot=cfg.attn_odot, attn_norm=cfg.attn_norm, out_dim=3).to(device)
     opt = torch.optim.Adam(model.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay)
     th = tertile_thresholds(data, cfg.seq)
     offs = window_offsets(data, cfg.seq, "train")

@@ -134,7 +134,8 @@ def build_model(cfg: RunConfig, in_dim: int, data: MarketData | None = None):
     if cfg.model != "think":
         raise ValueError(f"unknown model {cfg.model!r}")
     return THINK(in_dim=in_dim, hidden=cfg.hidden, seq=cfg.seq, kernel=cfg.kernel, temporal=cfg.temporal,
-                 spatial=cfg.spatial, structure=cfg.structure, attn_score=cfg.attn_score, attn_dist=cfg.attn_dist)
+                 spatial=cfg.spatial, structure=cfg.structure, attn_score=cfg.attn_score, attn_dist=cfg.attn_dist,
+                 attn_odot=cfg.attn_odot, attn_norm=cfg.attn_norm)
 
 
 def _to_return(out, base, target):

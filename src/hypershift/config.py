@@ -28,6 +28,8 @@ class RunConfig:
     spatial: str = "hyp"                    # hyp | euc
     attn_score: str = "eq14"                # eq14 (paper) | mobius | concat
     attn_dist: str = "mult"                 # mult | neg | off
+    attn_odot: str = "product"              # product (default) | mobius: eq. 7 read as tanh/artanh scalar (see attention.odot_mobius)
+    attn_norm: str = "softmax"              # softmax (default) | none (raw eq. 14 value) | sum (s / sum|s|)
     input_mode: str = "level"               # level | relative
     target: str = "return"                # return | price
     shuffle_train_labels: bool = False

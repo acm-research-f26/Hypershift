@@ -13,7 +13,8 @@ from hypershift.models.layers import EucTemporalConv, HypTemporalConv
 class THINK(nn.Module):
     def __init__(self, in_dim: int = 5, hidden: int = 32, seq: int = 16, kernel: int = 4,
                  temporal: str = "hyp", spatial: str = "hyp", structure: str = "hyper",
-                 attn_score: str = "eq14", attn_dist: str = "mult", out_dim: int = 1):
+                 attn_score: str = "eq14", attn_dist: str = "mult", out_dim: int = 1,
+                 attn_odot: str = "product", attn_norm: str = "softmax"):
         super().__init__()
         if seq % kernel:
             raise ValueError("seq must be a multiple of kernel")
@@ -29,7 +30,7 @@ class THINK(nn.Module):
             self.tconv2 = EucTemporalConv(hidden, out_dim, k2, activation=False)
         if self.use_spatial:
             cls = HypHypergraphAttention if self.spatial_hyp else EucHypergraphAttention
-            self.spatial = cls(hidden, score=attn_score, dist=attn_dist)
+            self.spatial = cls(hidden, score=attn_score, dist=attn_dist, odot=attn_odot, norm=attn_norm)
 
     def forward(self, x: torch.Tensor, hg: TorchHypergraph) -> torch.Tensor:
         h = x.permute(0, 2, 1, 3)                      # [B,T,N,C]
