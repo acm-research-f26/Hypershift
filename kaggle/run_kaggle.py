@@ -190,7 +190,21 @@ def r5x(kind, grid, base_label, label, extra, s, est_min):
 S4 = ([r5x("R5_HH_none", "E1_main", "THINK_paperProtocol", "HH_none", "structure=none", s, 15) for s in SEEDS] +
       [r5x("R5_EE_none", "E2_geometry", "EE", "EE_none", "structure=none", s, 15) for s in SEEDS] +
       [r5x("R5_THINK_nodist", "E1_main", "THINK_paperProtocol", "THINK_nodist", "attn_dist=off", s, 35) for s in SEEDS])
-COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "all": S1 + S2, "custom": []}[SESSION]
+# Preset 5 (Phase 1.5 D): known-signal check, scripts/known_signal.py on the 309-stock g2 universe with planted signals.
+# One run per command -> results/known_signal_<level>_<mode>/<arm>/seed_<k>. Seeds outermost so a cut-off session still has full rows.
+KS_LEVELS, KS_ARMS, KS_MODES, KS_SEEDS, KS_EPOCHS = ("none", "own", "group", "mid"), ("HH_hyper", "EH_hyper", "EE_hyper", "HH_none", "EE_none"), ("level", "relative"), range(5), 30
+def ks(level, arm, mode, s, epochs=KS_EPOCHS, exp="known_signal", est_min=6, extra=""):
+    return dict(kind=f"KS_{exp}_{arm}", est_min=est_min, done=f"results/{exp}_{level}_{mode}/{arm}/seed_{s}",
+                cmd=f"{{py}} scripts/known_signal.py --levels {level} --arms {arm} --modes {mode} --seeds {s} --epochs {epochs} --exp {exp} --device cuda" + (f" --set {extra}" if extra else ""))
+S5 = [ks(l, a, m, s) for s in KS_SEEDS for l in KS_LEVELS for m in KS_MODES for a in KS_ARMS]
+# Preset 6: the two extra SNR levels (low, high) of the same grid, so SNR is varied and not only the signal source.
+S6 = [ks(l, a, m, s) for s in KS_SEEDS for l in ("low", "high") for m in KS_MODES for a in KS_ARMS]
+# Preset 7: why does level mode fail? (a) R5-like budget: 100 epochs, no early stop; (b) one day per step like the repos (batch_days=1), 30 epochs.
+S7 = ([ks(l, a, "level", s, 100, "ks_long", 10, "patience=1000") for s in range(3) for l in ("own", "high") for a in ("EE_none", "HH_none", "EE_hyper", "HH_hyper")] +
+      [ks(l, a, "level", s, 30, "ks_bd1", 8, "batch_days=1 patience=1000") for s in range(3) for l in ("own", "high") for a in ("EE_none", "HH_none")])
+# Preset "5s": smoke test of each job type (1 epoch), separate exp name.
+S5S = [ks("group", a, "relative", 0, epochs=1, exp="ks_smoke", est_min=2) for a in ("HH_hyper", "EH_hyper", "EE_hyper", "HH_none", "EE_none")]
+COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard
