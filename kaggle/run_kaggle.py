@@ -226,9 +226,21 @@ F2 = [("f2_c1", "weight_decay=0", ("HH_hyper", "EH_hyper", "HH_none", "EE_none")
       ("f2_c3", "weight_decay=0 spatial_residual=true", ("HH_hyper", "EH_hyper")),
       ("f2_c4", "weight_decay=0 alpha=0 spatial_residual=true", ("HH_hyper", "EH_hyper"))]
 S9 = [fk(n, l, a, "relative", s, x) for s in range(5) for n, x, arms in F2 for l in ("high", "group") for a in arms]
+# Preset 10 (Phase 1.5 F): corrected full-NYSE rerun with the F fix (weight_decay=0) on relative inputs, THINK (HH) and EH,
+# norm=paper (R5_f_paper) and norm=train (R5_f_train), log_ic on. Seeds outermost so a cut-off still has paired rows. EE last, 5 seeds.
+F10 = "input_mode=relative weight_decay=0 log_ic=true epochs=100 patience=1000"
+def r5f(arm, norm, s, exp_prefix="R5_f", epochs=None):
+    grid, base = ("E1_main", "THINK_paperProtocol") if arm == "HH" else ("E2_geometry", arm)
+    exp = f"{exp_prefix}_{norm}"
+    extra = F10 if epochs is None else F10.replace("epochs=100", f"epochs={epochs}")
+    return dict(kind=f"R5f_{arm}_{norm}", est_min=35 if arm == "HH" else 30, done=f"results/{exp}/{arm}/seed_{s}",
+                cmd=f"{{py}} scripts/run_grid.py {grid} --labels {base} --seeds {s} --set exp={exp} norm={norm} {extra} label={arm}")
+S10 = ([r5f(a, n, s) for s in range(10) for n in ("paper", "train") for a in ("HH", "EH")] +
+       [r5f("EE", n, s) for s in range(5) for n in ("paper", "train")])
+S10S = [r5f(a, "train", 0, "R5_f_smoke", epochs=1) for a in ("HH", "EH", "EE")]
 # Preset "5s": smoke test of each job type (1 epoch), separate exp name.
 S5S = [ks("group", a, "relative", 0, epochs=1, exp="ks_smoke", est_min=2) for a in ("HH_hyper", "EH_hyper", "EE_hyper", "HH_none", "EE_none")]
-COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "9": S9, "8s": S8S, "all": S1 + S2, "custom": []}[SESSION]
+COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "9": S9, "10": S10, "10s": S10S, "8s": S8S, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard
