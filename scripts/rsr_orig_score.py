@@ -23,6 +23,20 @@ def ic_daily(pred, gt, mask):
     return float(np.mean(v)), len(v)
 
 
+def sr_random_tiebreak(pred, gt, mask, draws=20, k=5, seed=0):
+    """Sharpe of the daily top-k with TIES BROKEN AT RANDOM (our evaluator's argsort(kind='stable') breaks ties by ticker index)."""
+    rng = np.random.default_rng(seed)
+    out = []
+    for _ in range(draws):
+        r = np.zeros(pred.shape[1])
+        for d in range(pred.shape[1]):
+            i = np.nonzero(mask[:, d] > 0.5)[0]
+            o = np.lexsort((rng.random(len(i)), -pred[i, d]))[:k]
+            r[d] = gt[i[o], d].mean()
+        out.append(sharpe(r))
+    return float(np.mean(out)), float(np.std(out))
+
+
 def hold_all(gt, mask):
     return np.array([gt[mask[:, d] > 0.5, d].mean() for d in range(gt.shape[1])])
 
@@ -62,6 +76,8 @@ def main():
             m = evaluate_all(tp[e], ours_gt, ours_mask)   # PRIMARY: our gt and mask (same as the R8 runs)
             m["sr_their_gt_mask"] = sharpe(topk_daily_returns(tp[e], tg, tm, 5))
             ic, nd = ic_daily(tp[e], ours_gt, ours_mask)
+            m["sr_random_tiebreak_mean"], m["sr_random_tiebreak_sd"] = sr_random_tiebreak(tp[e], ours_gt, ours_mask)
+            m["n_tied_values_per_day"] = float(np.mean([len(np.unique(tp[e][ours_mask[:, d] > .5, d])) for d in range(237)]))
             m.update(ic=ic, ic_days=nd, val_sr=float(val_sr[e]), their_printed=ep[e]["test"], their_printed_valid=ep[e]["valid"],
                      distinct_top5_sets=len({tuple(sorted(np.argsort(-np.where(ours_mask[:, d] > .5, tp[e][:, d], -np.inf), kind="stable")[:5])) for d in range(237)}),
                      pred_std=float(np.std(tp[e][ours_mask > .5])))
