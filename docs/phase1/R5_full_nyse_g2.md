@@ -9,12 +9,12 @@
 
 ## 1. Sharpe per arm (mean ± std over seeds)
 
-| arm | seeds | source | leak-free | best-test | val Sharpe at the selected epoch |
-|---|---|---|---|---|---|
-| HH (THINK) | 25 | laptop | **0.089 ± 0.300** | **2.115 ± 0.386** | 2.884 ± 0.186 |
-| EH (TConv+DHHAN, the paper's Euclidean arm) | 25 | Kaggle | 0.383 ± 0.758 | 2.158 ± 0.462 | 2.471 ± 0.237 |
-| EE | 10 | Kaggle | 0.237 ± 0.752 | 2.361 ± 0.325 | 2.385 ± 0.287 |
-| HE | 10 | Kaggle | 0.193 ± 0.449 | 2.533 ± 0.620 | 2.834 ± 0.292 |
+| arm | seeds | source | leak-free | best-test | leak-free / 15.87 | best-test / 15.87 | val Sharpe at the selected epoch |
+|---|---|---|---|---|---|---|---|
+| HH (THINK) | 25 | laptop | **0.089 ± 0.300** | **2.115 ± 0.386** | 0.0056 | 0.1332 | 2.884 ± 0.186 |
+| EH (TConv+DHHAN, the paper's Euclidean arm) | 25 | Kaggle | 0.383 ± 0.758 | 2.158 ± 0.462 | 0.0241 | 0.1360 | 2.471 ± 0.237 |
+| EE | 10 | Kaggle | 0.237 ± 0.752 | 2.361 ± 0.325 | 0.0149 | 0.1487 | 2.385 ± 0.287 |
+| HE | 10 | Kaggle | 0.193 ± 0.449 | 2.533 ± 0.620 | 0.0122 | 0.1596 | 2.834 ± 0.292 |
 
 **Baselines on the same 237 test days and masks:** hold all 1737 stocks **1.531** (matches HANDOFF's 1.53); random top-5 re-drawn daily 0.856 ± 0.918 (100 draws); a **fixed** random 5-stock set held all year 0.955 ± 0.887 (2000 draws, 5-95% range [-0.48, 2.42]); constant (all-tied) prediction 0.368. The fixed-random line is the right yardstick for near-constant predictors (C1).
 

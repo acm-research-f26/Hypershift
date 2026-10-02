@@ -10,19 +10,19 @@
 
 ## 1. Full NYSE: Sharpe (mean ± std over seeds)
 
-| arm | seeds | leak-free | best-test | val Sharpe at selected epoch | leak-free > hold-all | leak-free > fixed-random mean | best-test > hold-all |
-|---|---|---|---|---|---|---|---|
-| THINK (HH) | 25 | 0.089 ± 0.300 | 2.115 ± 0.386 | 2.884 | 0/25 | 0/25 | 23/25 |
-| TConv+DHHAN (EH) | 25 | 0.383 ± 0.758 | 2.158 ± 0.462 | 2.471 | 3/25 | 6/25 | 23/25 |
-| STHGCN | 10 | 0.649 ± 0.443 | **3.246 ± 0.345** | 2.252 | 0/10 | 3/10 | 10/10 |
-| RSR-I | 10 | **0.879 ± 0.443** | 2.369 ± 0.219 | 2.039 | 2/10 | 3/10 | 10/10 |
+| arm | seeds | leak-free | best-test | leak-free / 15.87 | best-test / 15.87 | val Sharpe at selected epoch | leak-free > hold-all | leak-free > fixed-random mean | best-test > hold-all |
+|---|---|---|---|---|---|---|---|---|---|
+| THINK (HH) | 25 | 0.089 ± 0.300 | 2.115 ± 0.386 | 0.0056 | 0.1332 | 2.884 | 0/25 | 0/25 | 23/25 |
+| TConv+DHHAN (EH) | 25 | 0.383 ± 0.758 | 2.158 ± 0.462 | 0.0241 | 0.1360 | 2.471 | 3/25 | 6/25 | 23/25 |
+| STHGCN | 10 | 0.649 ± 0.443 | **3.246 ± 0.345** | 0.0409 | 0.2045 | 2.252 | 0/10 | 3/10 | 10/10 |
+| RSR-I | 10 | **0.879 ± 0.443** | 2.369 ± 0.219 | 0.0554 | 0.1492 | 2.039 | 2/10 | 3/10 | 10/10 |
 
 Baselines on the same 237 test days and masks: hold all 1737 stocks **1.531**; fixed random 5-stock set held all year **0.955 ± 0.887** (2000 draws, 5-95% [-0.48, 2.42]); random top-5 redrawn daily 0.856; constant (all-tied) prediction 0.368. THINK and EH rows reproduce `R5_g2` exactly.
 
 - **No arm beats holding the market leak-free** (STHGCN 0/10 seeds, RSR-I 2/10, THINK 0/25, EH 3/25). No arm's mean beats the fixed random 5-stock set (0.955); RSR-I is the nearest at 0.879.
 - Best-test beats hold-all for nearly every seed in every arm, but this is selection on the test year (C1).
 - Validation Sharpe at the chosen epoch is 2.0-2.9 for all four arms and the 2017 value at that epoch is 0.1-0.9: the validation-to-test disconnect is the same for the baselines.
-- Unannualized (divide by 15.87): leak-free RSR-I 0.055, STHGCN 0.041, THINK 0.006, EH 0.024.
+- Unannualized = ours / sqrt(252) = 15.87 (columns above; PA4, the paper's formula is not annualized as ours is, so its 1.18 is not directly comparable): leak-free RSR-I 0.055, STHGCN 0.041, THINK 0.006, EH 0.024.
 
 ## 2. Full NYSE: diagnostics at the leak-free epoch
 
@@ -72,15 +72,15 @@ Random NDCG@5 is 0.5639 (100 draws). Constant-prediction check: best-test equals
 
 ## 5. Small scale (309 stocks, level inputs)
 
-| arm | seeds | leak-free | best-test | NDCG@5 (leak-free) | MSE / zero-MSE | IC | hit pp |
-|---|---|---|---|---|---|---|---|
-| HH_hyper (THINK) | 10 | -0.681 ± 1.219 | 2.513 ± 0.421 | 0.5396 | 1.012 | -0.010 | -0.26 |
-| EH_hyper | 10 | -0.268 ± 1.121 | 2.100 ± 0.976 | 0.5433 | 1.043 | -0.001 | +0.26 |
-| EE_hyper | 10 | -0.154 ± 0.879 | 2.134 ± 0.862 | 0.5441 | 1.067 | -0.001 | -0.15 |
-| HH_none | 10 | 0.279 ± 0.350 | 1.108 ± 0.261 | 0.5504 | 1.670 | -0.011 | -0.54 |
-| EE_none | 10 | 0.203 ± 0.583 | 1.184 ± 0.599 | 0.5505 | 1.057 | -0.013 | -0.14 |
-| **STHGCN** | 10 | -0.586 ± 0.770 | 1.997 ± 0.532 | 0.5437 | 1.699 | -0.003 | -0.12 |
-| **RSR-I** | 10 | 0.130 ± 0.646 | 2.096 ± 0.494 | 0.5511 | 1.038 | -0.011 | -1.40 |
+| arm | seeds | leak-free | best-test | leak-free / 15.87 | best-test / 15.87 | NDCG@5 (leak-free) | MSE / zero-MSE | IC | hit pp |
+|---|---|---|---|---|---|---|---|---|---|
+| HH_hyper (THINK) | 10 | -0.681 ± 1.219 | 2.513 ± 0.421 | -0.0429 | 0.1583 | 0.5396 | 1.012 | -0.010 | -0.26 |
+| EH_hyper | 10 | -0.268 ± 1.121 | 2.100 ± 0.976 | -0.0169 | 0.1323 | 0.5433 | 1.043 | -0.001 | +0.26 |
+| EE_hyper | 10 | -0.154 ± 0.879 | 2.134 ± 0.862 | -0.0097 | 0.1344 | 0.5441 | 1.067 | -0.001 | -0.15 |
+| HH_none | 10 | 0.279 ± 0.350 | 1.108 ± 0.261 | 0.0176 | 0.0698 | 0.5504 | 1.670 | -0.011 | -0.54 |
+| EE_none | 10 | 0.203 ± 0.583 | 1.184 ± 0.599 | 0.0128 | 0.0746 | 0.5505 | 1.057 | -0.013 | -0.14 |
+| **STHGCN** | 10 | -0.586 ± 0.770 | 1.997 ± 0.532 | -0.0369 | 0.1258 | 0.5437 | 1.699 | -0.003 | -0.12 |
+| **RSR-I** | 10 | 0.130 ± 0.646 | 2.096 ± 0.494 | 0.0082 | 0.1320 | 0.5511 | 1.038 | -0.011 | -1.40 |
 
 Hold-all 0.752; fixed random 5 stocks 0.598 ± 0.891; random-5 redrawn daily 0.505; constant-prediction Sharpe 1.924; random NDCG@5 0.5504. Arms stop early (patience 10; epochs run 11-30), so best-test is a max over unequal numbers of epochs.
 
