@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`hypershift` is a from-scratch reimplementation of **THINK: Temporal Hypergraph Hyperbolic Network** (Agarwal, Sawhney et al., ICDM 2022). The official repo is empty. The code reproduces the paper's NYSE/NASDAQ stock-ranking results and runs ablations:
+`hypershift` is a from-scratch reimplementation of **THINK: Temporal Hypergraph Hyperbolic Network** (Agarwal, Sawhney et al., ICDM 2022). The official repo is empty. The code attempts to reproduce the paper's NYSE/NASDAQ stock-ranking results and runs ablations:
 - hyperbolic vs Euclidean
 - hyperedges vs pairwise vs none
 - grouping source
@@ -18,11 +18,35 @@ The spec is `docs/superpowers/plans/2026-09-27-think-reproduction.md`:
 
 Read Part 0 before changing any model math. Decisions and results made while executing the plan are logged in `.superpowers/sdd/2026-09-27-think-reproduction/progress.md`. That file is git-ignored; the git log is the durable record.
 
+## Study status
+
+- **Phase 1 (reproduce): done.** `docs/PHASE1_TRACKER.md` is 26/26. Verdict: **not reproduced under validation selection**. This is an inferred-settings reimplementation that has not shown the paper's advantage. It is not a claim about the authors' work. Many details are INFERRED (see the PA/U entries in the tracker and `docs/phase1/paper_audit.md`).
+- **Phase 1.5: fidelity audit** after an external review. Ongoing; notes in `docs/phase1_5/`.
+- **Phase 2: diagnosis** of why (selection protocol, grouping, trading rule).
+- **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
+
+## Docs map
+
+- `docs/PHASE1_TRACKER.md`: running record, verdict, all R/A/G/C/PA/U entries.
+- `docs/phase1/`: `HANDOFF_2026-10-01.md` (what is running, next steps), `paper_audit.md`, `R5_full_nyse_g2.md`, `R8_baselines_results.md` (+ `R8_baselines.md`), `g2_small_results.md`, `A10_G5_full_nyse.md`, `fig3_degree_reconcile.md`, `R1`–`R3`, `R7`.
+- `docs/phase1_5/`: fidelity-audit notes.
+- `docs/HANDOFF.md`, `docs/POC_PRESENTATION.md`: earlier handoff and POC write-up.
+
 ## Environment (Windows, Git Bash)
 
 - Venv: `.venv` in the repo. **Never create a venv under `%TEMP%`**: Windows Application Control blocks pandas DLLs there.
 - In the Bash tool, **call `.venv/Scripts/python.exe` directly**. Running `source .venv/Scripts/activate` breaks `PATH` (`head`/`uname` not found). If that happens, run `export PATH="/usr/bin:/mingw64/bin:$PATH"`.
 - Torch uses a CUDA wheel matched to the driver (currently cu130). The GPU is an RTX 3050 with 4 GB.
+- **CPU-only jobs:** set `CUDA_VISIBLE_DEVICES=-1`. An empty value does not disable CUDA here.
+- **Smart App Control** blocks `kaggle.exe` and sometimes venv DLLs (scipy/sklearn) at import with "An Application Control policy has blocked this file". Retry the command.
+
+## Compute
+
+- **Kaggle is the default for heavy runs** (full-NYSE, clique, baselines). See `kaggle/README.md`. `kaggle/launch.sh <preset>` uploads and starts, `kaggle/fetch.sh` downloads and `kaggle/merge_results.sh` merges without overwriting. Set `KAGGLE_USER=tomphamdustry`; the CLI runs from a private venv: `kaggle/.venv-kaggle/Scripts/python.exe -m kaggle.cli`. Presets 1–4 are listed in the README.
+- **The laptop (RTX 3050, 4 GB) is for small jobs.** Queues live in `scripts/queues/*.sh`; launch with `bash scripts/queues/launch.sh <name>` (Task Scheduler, runs on battery).
+- Queues die on sign-out, restart, sleep or a console Ctrl+C. Relaunch them; finished runs are skipped.
+- Close games, Edge and Copilot before training: VRAM spill to shared RAM makes epochs about 10× slower.
+- **Launch checklist:** 1-epoch smoke test of each job type first. About 5 min after launch, confirm the process survived and epochs advance at the expected s/epoch (THINK full NYSE ≈ 21 s/epoch) and that no other app holds GPU memory (`nvidia-smi`).
 
 ## Commands
 
@@ -40,7 +64,11 @@ $PY scripts/aggregate.py [--select-tuning] [--select-attn] [--costs]   # -> resu
 $PY scripts/plots.py                                      # -> results/figures/
 $PY scripts/baselines.py | hyperbolicity.py | time_budget.py
 $PY scripts/fetch_fresh.py --source yf --kind daily --start 2015-01-01 --end 2026-09-01 --name sp500_daily
-$PY scripts/poc_sectors.py run|tune|tune-select|summarize [--variant V] [--input-mode relative] [--use-tuned] [--seeds 0-9]
+$PY scripts/poc_sectors.py run|tune|tune-select|summarize [--variant V] [--arms ...] [--input-mode relative] [--use-tuned] [--seeds 0-9] [--set K=V ...] [--dry-run]
+$PY scripts/run_pygt.py --dataset chickenpox --protocol leakfree --arm <arm>   # R1-R3 (PyG-T datasets)
+$PY scripts/run_clf.py --exp E11_clf_g2 [--dry-run] [--seeds N]               # R7 NASDAQ 3-class F1
+$PY scripts/r5_g2_analysis.py [--fig] | r8_analysis.py [--fig] | a10_g5_analysis.py   # Phase 1 full-NYSE tables (CPU)
+$PY -m hypershift.run ... --set model=rsr_i|sthgcn         # R8 baselines (RunConfig.model)
 ```
 
 Run scripts from the repo root. Paths like `data/raw/rsr/data`, `configs/*.yaml` and `results/tuned.json` are relative to it.
@@ -53,7 +81,8 @@ The pipeline for one run is `train_one_run(cfg)` in `src/hypershift/train/loop.p
    - Arrays are `[N, T, C]` features, plus `mask`, `gt` (the return from t−1 to t) and `base_price`.
    - The split indices are `valid_index` and `test_index` (RSR: 756 / 1008 / T = 1245).
 2. **Hypergraph.** `base_hypergraph` → `Hypergraph` (`data/hypergraph.py`).
-   - Industry hyperedges, plus Wikidata "star" hyperedges, deduplicated.
+   - Industry hyperedges, plus Wikidata hyperedges, deduplicated. Cache **v2** (`de20f8e`, paper App. B, p. 854): first-order relations are stars per source×relation, second-order relations are pairs.
+   - NYSE: 4350 hyperedges, max node degree 114. The 309-stock POC graph has 558. NASDAQ: 1066. **Results run before `de20f8e` used the old graph** (NYSE 312 edges, max degree 37); don't mix them.
    - The build is cached on disk under `data/raw/rsr/data/hypergraph_cache/`.
    - The largest RSR "industry" (500 stocks) is really the `n/a` bucket: stocks with no industry label.
 3. **`prepare`** applies, in order: universe subset → decomposition → clique expansion → hub dropping → optional label shuffle.
@@ -62,13 +91,14 @@ The pipeline for one run is `train_one_run(cfg)` in `src/hypershift/train/loop.p
    - the target day is `offset + seq`, the day after the last input day
    - `apply_input_mode` (`level` | `relative`) transforms the inputs only
 5. **Model.** `models/think.py` computes `log0(TConv2(DHHAN(TConv1(exp0(X)))))`.
-   - Switches: `temporal`/`spatial` ∈ {hyp, euc}, `structure` ∈ {hyper, clique, none}.
+   - Switches: `temporal`/`spatial` ∈ {hyp, euc}, `structure` ∈ {hyper, clique, none}. Arm labels are temporal+spatial: HH = THINK, **EH (TCONV+DHHAN) = the paper's Euclidean arm** (p. 852 Sec. V.A, Table II), EE and HE are extra ablations. Also `model` ∈ {think, rsr_i, sthgcn} (R8 baselines).
+   - Attention: `attn_score=eq14` is the default (paper eq. 14 as read on p. 851). ⊙ as a plain product and the softmax are INFERRED (not in paper). Switches `attn_odot` (product | mobius) and `attn_norm` (softmax | none | sum) in `config.py` test those readings; `attn_dist` (mult | neg | off) controls the distance term.
    - Hyperbolic math lives in `geometry/poincare.py` (c = 1, with projection and clamps).
    - Layers are in `models/layers.py` (HNN++ Poincaré FC, β-concat) and `models/attention.py` (gyromidpoint, distance-aware attention, segment softmax via `scatter_reduce`/`index_add`; no PyG).
    - A clique is represented as 2-node hyperedges in the same attention layer.
 6. **Loss.** `train/loss.py` is masked MSE plus α × a pairwise ranking hinge (the STHAN-SR objective).
 7. **Evaluation.** Each epoch evaluates val and test with `eval/metrics.evaluate_all`.
-   - Sharpe = `mean/std(daily top-5 return) * sqrt(252)`, with no risk-free rate and no costs. This matches the authors' code.
+   - Sharpe = `mean/std(daily top-5 return) * sqrt(252)`, with no risk-free rate and no costs. The paper's formula differs (PA4 in the tracker), so numbers are not directly comparable; the Phase 1 docs also report unannualized columns (ours / √252).
    - The epoch is **selected on validation Sharpe**.
    - `test_oracle_sr`, the max over epochs of test Sharpe, reproduces the paper's protocol and is a diagnostic only.
 
