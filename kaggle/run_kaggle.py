@@ -202,9 +202,26 @@ S6 = [ks(l, a, m, s) for s in KS_SEEDS for l in ("low", "high") for m in KS_MODE
 # Preset 7: why does level mode fail? (a) R5-like budget: 100 epochs, no early stop; (b) one day per step like the repos (batch_days=1), 30 epochs.
 S7 = ([ks(l, a, "level", s, 100, "ks_long", 10, "patience=1000") for s in range(3) for l in ("own", "high") for a in ("EE_none", "HH_none", "EE_hyper", "HH_hyper")] +
       [ks(l, a, "level", s, 30, "ks_bd1", 8, "batch_days=1 patience=1000") for s in range(3) for l in ("own", "high") for a in ("EE_none", "HH_none")])
+# Preset 8 (Phase 1.5 F): learnability factors on the known-signal benchmark, one factor at a time vs the D baseline
+# (D baseline = existing known_signal_<level>_relative seeds 0-2: wd 5e-4, lr 1e-3, alpha 1). Relative inputs; HH_hyper + EH_hyper; high + group; seeds 0-2.
+F_FACT = {"wd0": "weight_decay=0", "adamw": "decoupled_wd=true", "gain4": "init_gain=4", "head50": "head_scale=50",
+          "wd0_lr3e3": "weight_decay=0 lr=0.003", "wd0_lr1e2": "weight_decay=0 lr=0.01", "wd0_a0": "weight_decay=0 alpha=0",
+          "wd0_a10": "weight_decay=0 alpha=10", "wd0_res": "weight_decay=0 spatial_residual=true",
+          "wd0_bd1": "weight_decay=0 batch_days=1", "wd0_gain4": "weight_decay=0 init_gain=4",
+          "wd0_std": "weight_decay=0 input_std=true input_scale=0.3"}
+F_COMMON = "log_ic=true"
+def fk(name, level, arm, mode, s, extra, epochs=30, est=4):
+    return ks(level, arm, mode, s, epochs, f"f_{name}", est, f"{F_COMMON} {extra}")
+S8 = ([fk(n, l, a, "relative", s, x, est=(12 if "bd1" in n else 4)) for s in range(3) for n, x in F_FACT.items() for l in ("high", "group") for a in ("HH_hyper", "EH_hyper")] +
+      [fk(n, "high", a, "level", s, x) for s in range(3) for n, x in
+       (("lvl_wd0", "weight_decay=0"), ("lvl_wd0_std", "weight_decay=0 input_std=true input_scale=0.3"),
+        ("lvl_wd0_price", "weight_decay=0 target=price")) for a in ("HH_hyper", "EH_hyper", "EE_none")])
+# 8s: 1-epoch smoke of each new job type (all switches on)
+S8S = [fk("smoke", "group", a, m, 0, "weight_decay=0 decoupled_wd=true init_gain=2 head_scale=10 spatial_residual=true input_std=true input_scale=0.3 grad_clip=0" + (" target=price" if m == "level" else ""), epochs=1, est=2)
+       for a, m in (("HH_hyper", "relative"), ("EH_hyper", "relative"), ("EE_none", "level"), ("HH_none", "relative"), ("HH_hyper", "level"))]
 # Preset "5s": smoke test of each job type (1 epoch), separate exp name.
 S5S = [ks("group", a, "relative", 0, epochs=1, exp="ks_smoke", est_min=2) for a in ("HH_hyper", "EH_hyper", "EE_hyper", "HH_none", "EE_none")]
-COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "all": S1 + S2, "custom": []}[SESSION]
+COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "8s": S8S, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard

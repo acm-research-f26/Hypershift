@@ -5,7 +5,7 @@ set -u
 TAG="${1:-s1}"; MERGE="${2:-}"
 source "$(dirname "$0")/_kaggle_cli.sh" || exit $?
 cd "$ROOT" || exit 1
-SLUG="$KUSER/hypershift-run-$TAG"
+SLUG="$KUSER/hypershift-run-${TAG//_/-}"
 ST=$(kg kernels status "$SLUG" 2>&1 | tr -d '\r'); echo "$ST"
 if echo "$ST" | grep -qi "error"; then echo "WARNING: the kernel version ended in ERROR; downloading whatever output exists (may be partial or empty)." >&2
 elif ! echo "$ST" | grep -qi "complete"; then echo "not complete yet (queued/running). Re-run later."; exit 3; fi
