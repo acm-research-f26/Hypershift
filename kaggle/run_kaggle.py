@@ -219,9 +219,16 @@ S8 = ([fk(n, l, a, "relative", s, x, est=(12 if "bd1" in n else 4)) for s in ran
 # 8s: 1-epoch smoke of each new job type (all switches on)
 S8S = [fk("smoke", "group", a, m, 0, "weight_decay=0 decoupled_wd=true init_gain=2 head_scale=10 spatial_residual=true input_std=true input_scale=0.3 grad_clip=0" + (" target=price" if m == "level" else ""), epochs=1, est=2)
        for a, m in (("HH_hyper", "relative"), ("EH_hyper", "relative"), ("EE_none", "level"), ("HH_none", "relative"), ("HH_hyper", "level"))]
+# Preset 9 (Phase 1.5 F stage 2): the winning switches on all arms incl. no-graph, 5 seeds, high + group, relative inputs.
+# c1 = wd0; c2 = wd0 + alpha0; c3 = wd0 + spatial_residual (graph arms only: no-graph arms equal c1); c4 = wd0 + alpha0 + residual (graph arms only; no-graph = c2).
+F2 = [("f2_c1", "weight_decay=0", ("HH_hyper", "EH_hyper", "HH_none", "EE_none")),
+      ("f2_c2", "weight_decay=0 alpha=0", ("HH_hyper", "EH_hyper", "HH_none", "EE_none")),
+      ("f2_c3", "weight_decay=0 spatial_residual=true", ("HH_hyper", "EH_hyper")),
+      ("f2_c4", "weight_decay=0 alpha=0 spatial_residual=true", ("HH_hyper", "EH_hyper"))]
+S9 = [fk(n, l, a, "relative", s, x) for s in range(5) for n, x, arms in F2 for l in ("high", "group") for a in arms]
 # Preset "5s": smoke test of each job type (1 epoch), separate exp name.
 S5S = [ks("group", a, "relative", 0, epochs=1, exp="ks_smoke", est_min=2) for a in ("HH_hyper", "EH_hyper", "EE_hyper", "HH_none", "EE_none")]
-COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "8s": S8S, "all": S1 + S2, "custom": []}[SESSION]
+COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "9": S9, "8s": S8S, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard
