@@ -238,9 +238,18 @@ def r5f(arm, norm, s, exp_prefix="R5_f", epochs=None):
 S10 = ([r5f(a, n, s) for s in range(10) for n in ("paper", "train") for a in ("HH", "EH")] +
        [r5f("EE", n, s) for s in range(5) for n in ("paper", "train")])
 S10S = [r5f(a, "train", 0, "R5_f_smoke", epochs=1) for a in ("HH", "EH", "EE")]
+# Preset 11 (Phase 1.5 F): R8 baselines (RSR-I, STHGCN) on full NYSE with the F fix, same config as preset 10 (relative inputs, wd 0, log_ic, 100 epochs),
+# plus batch_days=8 and micro_batch_days (2 RSR-I / 4 STHGCN) as in preset 2's R8 runs. norm=train (R8_f_train) and norm=paper (R8_f_paper), 5 seeds, seeds outermost.
+def r8f(label, model, micro, norm, s, exp_prefix="R8_f", epochs=None):
+    exp = f"{exp_prefix}_{norm}"
+    extra = F10 if epochs is None else F10.replace("epochs=100", f"epochs={epochs}")
+    return dict(kind=f"R8f_{label}", est_min=40, done=f"results/{exp}/{label}/seed_{s}",
+                cmd=f"{{py}} -m hypershift.run --config configs/think_nyse.yaml --set exp={exp} norm={norm} {extra} batch_days=8 label={label} model={model} micro_batch_days={micro} --seeds {s}")
+S11 = [r8f(l, m, mi, n, s) for s in range(5) for n in ("train", "paper") for l, m, mi in (("RSR_I", "rsr_i", 2), ("STHGCN", "sthgcn", 4))]
+S11S = [r8f(l, m, mi, "train", 0, "R8_f_smoke", epochs=1) for l, m, mi in (("RSR_I", "rsr_i", 2), ("STHGCN", "sthgcn", 4))]
 # Preset "5s": smoke test of each job type (1 epoch), separate exp name.
 S5S = [ks("group", a, "relative", 0, epochs=1, exp="ks_smoke", est_min=2) for a in ("HH_hyper", "EH_hyper", "EE_hyper", "HH_none", "EE_none")]
-COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "9": S9, "10": S10, "10s": S10S, "8s": S8S, "all": S1 + S2, "custom": []}[SESSION]
+COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "9": S9, "10": S10, "10s": S10S, "11": S11, "11s": S11S, "8s": S8S, "all": S1 + S2, "custom": []}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard
