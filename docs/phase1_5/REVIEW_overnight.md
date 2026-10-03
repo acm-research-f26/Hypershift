@@ -45,3 +45,74 @@ Full NYSE, wd 0 + relative inputs, 100 epochs, leak-free (validation-selected) S
 - Codex numbers in the tracker (rows R5_f, R8_f, ablation rows) and the summary sec. 5 table match Tables 1, 4, 5 of the md. Verdict words for the real runs are only NO EVIDENCE / INSUFFICIENT SEEDS; no use of "reproduced".
 - Paper citations: Table II p. 852 values (THINK 1.18 vs 1.14 NYSE SR, Clf 0.49 vs 0.44) and the Sharpe definition in Sec. IV-B "Evaluation Measures" (p. 852) checked on `docs/paper/icdm22-think.pdf`.
 - No old-graph vs new-graph mixing in the R5_f / R8_f comparisons.
+
+---
+
+# Pass 2 (p1f, r5f2)
+
+Scope: `results/POC_sectors_rel_g2_f` (80 runs), `POC_sectors_R8_{rsr_i,sthgcn}_g2_f` (20), `E11_clf_g2_f` (75), `R5_f2_alpha0_train` and `R5_f2_resid_train` (10 each); `docs/phase1_5/F_p1f_results.md`, `F_r5f2_results.md`; Codex edits in 64b787d and bd7e276 (tracker, summary). CPU only. Smoke documents (`*_smoke_results.md`) were not used as evidence.
+
+## Headlines
+
+- p1f, 309 stocks (wd 5e-4 -> 0 is the only change vs Phase 1 `rel_g2`; 10 seeds): HH_hyper 0.985 ± 0.949, EH_hyper -0.242 ± 0.519, hold-all 0.752; THINK minus EH +1.227, raw Wilcoxon p 0.0098, 9/10 wins, Holm 0.088, CI [-0.052, +1.871]: NO EVIDENCE. HH_hyper IC -0.0000, prediction spread/actual 0.000: still a near-constant predictor.
+- p1f, R8 small (10 seeds; two factors changed vs Phase 1: wd and level -> relative inputs): RSR-I 0.064 ± 0.399, STHGCN 0.505 ± 0.432. No Holm family, raw p only (rsr_i - HH_hyper p 0.049; sthgcn - EH_hyper +0.747, p 0.0059); no verdict word in the md.
+- p1f, R7 NASDAQ (25 seeds; two factors changed): macro-F1 HH 0.3726, EH 0.3764, EE 0.3846 (chance 0.333; Phase 1 was 0.28-0.29, below chance). HH - EH NO EVIDENCE (Holm 0.28). **HH - EE and EH - EE are STRONG in favour of the Euclidean arm** (macro-F1 -0.0121 and -0.0083; HH wins 1/25, EH wins 1/25). The tracker and summary do not mention this.
+- r5f2, `norm=train`, 5 seeds each: alpha=0: HH 1.977 ± 0.099, EH 2.049 ± 0.644 (HH - EH -0.072, INSUFFICIENT SEEDS). spatial_residual: HH 1.120 ± 0.511, EH 0.606 ± 0.895 (+0.515, INSUFFICIENT SEEDS). Hold-all 1.531.
+- r5f2 vs `R5_f_train` seeds 0-4 (same seeds, validation-selected Sharpe; computed locally from the run folders with the `r5f_analysis.py` / `eval/stats.py` functions: paired Wilcoxon, stationary block bootstrap CI, Holm over 4; all INSUFFICIENT SEEDS, p floor 0.25 for 5 pairs):
+
+| arm | variant | baseline mean (R5_f_train s0-4) | variant mean | diff | Wilcoxon p | Holm p (4) | block-bootstrap CI | variant wins |
+|---|---|---|---|---|---|---|---|---|
+| HH | alpha=0 | 1.785 | 1.977 | +0.193 | 0.3125 | 0.94 | [-0.831, +1.377] | 3/5 |
+| EH | alpha=0 | 1.516 | 2.049 | +0.534 | 0.3125 | 0.94 | [-0.294, +1.749] | 3/5 |
+| HH | spatial_residual | 1.785 | 1.120 | -0.664 | 0.1875 | 0.75 | [-2.286, +1.436] | 1/5 |
+| EH | spatial_residual | 1.516 | 0.606 | -0.910 | 0.3125 | 0.94 | [-2.583, +0.805] | 2/5 |
+
+  alpha=0 gives no detectable change; spatial_residual points to lower Sharpe, not higher, on full NYSE; neither is resolvable with 5 seeds. (Best-test/oracle diffs: alpha=0 +0.07 HH / +0.11 EH; resid -0.35 / -0.37.) Script: scratchpad only (not committed).
+
+## Findings, ranked by severity
+
+### 1. (High, judgement, NOT changed) Sharpe about 2 in R5_f2 alpha=0 is available at epoch 0; validation selection does not show learning
+- From `history.jsonl` (mean of 5 seeds, test Sharpe by epoch): R5_f2_alpha0 HH e0 2.14, e1 1.98, e2 2.29, e5 2.55, e10 2.30, e50 1.55, last 1.69; EH e0 1.30, e10 2.04, last 1.44. R5_f_train HH e0 1.82, last 1.73. The validation-selected epochs for alpha=0 HH are [8, 32, 0, 1, 2] (`F_r5f2_results.md:27`, "median selected epoch 2"; epoch 0 is after one training pass). IC 0.0035 ± 0.0042 (`:33`), spread/actual 0.013, 26% tie days (`:39`).
+- So "HH 1.977 vs hold-all 1.531, 5/5 above" is a property of a barely trained, nearly constant ranking on the 2017 test year; it is not shown to be skill. Further training does not raise test Sharpe (last-epoch HH 1.69). Validation selection over 100 epochs is itself optimistic (val Sharpe 2.43 at the selected epoch vs 1.21 at the last). Which stocks a flat ranking happens to pick is untested. The md never says this; the summary "Reading" highlights "EH above HH at the validation-selected epoch" for a -0.072 difference well inside noise.
+- Right: "above hold-all, IC about 0, equally high at epoch 0; not evidence of ranking skill".
+
+### 2. (High, judgement, NOT changed) p1f HH arms are still collapsed; "F minus P1" for HH_hyper is not a learning signal
+- `F_p1f_results.md:13-14`: HH_hyper IC -0.0000 ± 0.0112, spread 0.000 ± 0.001; HH_clique spread 0.001. The Phase 1 best-test 1.924 ± 0.000 in the same rows is exactly the Sharpe of the "first five valid stocks by index" basket (recomputed here: 1.924 on the 309-stock test set; the same basket gives 0.368 on full NYSE), the known constant-prediction tie-break artifact (`docs/phase1/g2_small_results.md` note). Under F the HH_hyper per-seed leak-free Sharpe is 1.686, 2.096, 1.699, -0.768, 0.884, 0.734, 2.026, 1.433, 0.538, -0.478, median epochs run 13 (patience 10).
+- The paired THINK - EH of +1.227 compares a near-constant HH with an EH whose IC is -0.0094. No arm has an IC above zero, so no ranking claim is supported. The md shows the IC column but says nothing about it; the summary "Reading" ("corrected p1f THINK is higher than TConv+DHHAN on 309 stocks") omits it.
+- The "one change" statement (`F_p1f_results.md:5`) holds only for the 8 POC arms.
+
+### 3. (Medium, NOT changed) The R7 STRONG results are omitted; R7 and R8-small vs Phase 1 are two-factor changes
+- Omitted: `F_p1f_results.md:68-69, 71-72` (HH - EE and EH - EE STRONG, Euclidean better). `PHASE1_TRACKER.md:28` and the summary p1f rows report only HH - EH. The md words are correct; it is the only STRONG result of the night and runs against the paper's direction (Table II p. 852: THINK 0.49 > TCONV+DHHAN 0.44; EE is not in Table II). Absolute F1 0.37-0.38 vs the paper's 0.49; chance 0.333.
+- R8 small and R7 change wd and level -> relative inputs (stated at `F_p1f_results.md:5` and in `F_learnability.md`, not repeated in the tracker/summary rows). The R7 gain (macro 0.29 -> 0.37) cannot be attributed to wd alone. R7 label definition and F1 averaging are INFERRED (p. 852 silent), stated in the md.
+- R8 small has no verdict word (the md prints raw p, "not Holm"); Codex wrote UNKNOWN, acceptable. The raw p 0.0059 (sthgcn - EH_hyper) is the smallest of four uncorrected values and should not be quoted as evidence.
+
+### 4. (Medium, FIXED) R5_f2 runs called "smoke", norm=paper called UNKNOWN; alpha labels
+- `PHASE1_TRACKER.md:13, 30, 73, 130` and `PHASE1_5_SUMMARY.md` (Sec. 4, Sec. 5, Reading) called the r5f2 results "smoke runs / smokes". They are full 100-epoch runs (config check below). `norm=paper` was labelled UNKNOWN; preset r5f2 only runs `norm=train` (`kaggle/run_kaggle.py:313-325`), so it is "not run". Fixed in those places. The tracker row `R5_f2_smoke` renamed `R5_f2`; added the `spatial_residual` DEPARTURE (eq. 15, p. 851) and "alpha=0 = no ranking loss; loss form INFERRED" labels.
+- Alpha: the paper gives no loss function for stock ranking. Sec. V.A p. 852 only says the task is formulated as ranking following [1]; Sec. IV-B defines SR and NDCG, no training loss; no weight decay either. So MSE + alpha x ranking hinge and alpha=1 are INFERRED (STHAN-SR objective), and alpha=0 is a repo ablation, not a paper setting. `F_learnability.md` already says so; the result md files and tracker did not.
+
+### 5. (Medium, NOT changed) `F_r5f2_results.md` generic-script artifacts
+- Header and Table 6 refer to "R8_f2_none" (no such exp), "Holm over this family of 0", an empty Table 5 and 0-finished EE/RSR-I/STHGCN rows. The root path `/kaggle/working/hypershift` is printed together with "CPU only, recomputed" (it was recomputed in the kernel). Table 6 caption "old optimizer" (lines 53, 121) should say "coupled wd 5e-4" (as pass 1 finding 2), and Table 6 "new minus old" is confounded (wd, relative inputs, log_ic, norm=train vs the old paper norm, n 25 vs 5). Produced by `scripts/r5f_analysis.py`; not edited.
+- Table 4 uses Holm over a family of 1 per variant; over all four variant contrasts the p floor is 0.25 anyway. No change to any verdict word.
+
+### 6. (Low, NOT changed) Other nits
+- `F_p1f_results.md` Sec. 1 uses Holm over 9, the Appendix over 10 (Holm 0.088 vs 0.098 for the same contrast); both stated, but two NO EVIDENCE tables with different Holm p may confuse.
+- HH_hyper best-test (paper protocol) 2.173 ± 0.372 vs validation-selected 0.985: selection noise on a collapsed model, same pattern as R5.
+- `F_learnability.md` "Update 2026-10-03" paragraph still says "none launched yet" and lists r8f-top as queued (stale); "Still to conclude" items 2 and 3 are now marked DONE.
+
+## Checked and fine
+- Run counts: POC_sectors_rel_g2_f 8 arms x 10 seeds (80, matches preset P1F); R8 small rsr_i 10, sthgcn 10; E11_clf_g2_f HH/EH/EE 25 each; R5_f2_alpha0_train and R5_f2_resid_train HH 5 + EH 5. No `failed.json`; every seed folder has `metrics.json`. r8f-top dropped correctly (`kaggle/queue.txt` comment; 20 R8_f runs exist).
+- Configs (config.json; for E11 the config block in metrics.json): all weight_decay 0.0, input_mode relative, norm train. POC / R8 small: epochs 30, patience 10, batch_days 8, lr 1e-3, alpha 1.0, log_ic true, arm switches correct (HH hyp/hyp, EH euc temporal + hyp spatial, EE euc/euc, structure suffix), model think / rsr_i / sthgcn. R5_f2_alpha0: alpha 0.0, spatial_residual False; R5_f2_resid: alpha 1.0, spatial_residual True; both epochs 100, patience 1000, log_ic true. E11: epochs 60, patience 20, alpha 0.1, NASDAQ.
+- Recomputed `scripts/p1f_analysis.py --root . --suffix _f` and `scripts/poc_sectors.py summarize --variant rel_g2_f`: identical to the committed `F_p1f_results.md` (including the appendix). Recomputed `r5f_analysis.py --r5-prefix R5_f2_alpha0` and `R5_f2_resid` with the kernel's args: all tables identical to `F_r5f2_results.md` except the root path and the note text in the header. (The poc summarize step needed a rerun for the Application Control DLL block.)
+- Codex numbers in the tracker (lines 13, 28-30, 73, 130) and the summary (Sec. 5 rows, Reading) match the md tables. Verdict words are only STRONG / NO EVIDENCE / INSUFFICIENT SEEDS (UNKNOWN where no verdict exists); no "reproduced" claim. Smoke numbers are not used as evidence in the new text.
+- Confounds stated in the md: R8-small and R7 two-factor change; seed count 5 with the p floor; the POC arms are a single-factor change (Phase 1 `rel_g2` already used relative inputs). Phase 1 columns in `F_p1f_results.md` match `g2_small_results.md` and `R8_baselines_results.md`.
+- Paper citations checked on `docs/paper/icdm22-think.pdf`: Table II p. 852 (NYSE SR 1.18 / 1.14 / 1.10 / 1.05, NDCG 0.86 / 0.81 / 0.78 / 0.75, Clf F1 0.49 vs 0.44, mean of 25 runs), eq. 15 p. 851 (no self/residual term), Sec. IV-B p. 852, App. B p. 854.
+- `CLAUDE.md` Phase 1.5 bullet updated (p1f / r5f2 done, r8f-top dropped, review pointer).
+
+## Decisions for the user (single list, pass 1 + pass 2)
+1. Final Phase 1 verdict text (tracker banner vs bullets 17-22; "not reproduced under validation selection" is still defensible but the section is internally inconsistent). Evidence now: 309-stock (HH collapsed, IC about 0), full NYSE (IC about 0, Sharpe above hold-all, same at epoch 0), R7 (Euclidean better, STRONG).
+2. Whether to state in the tracker/summary that corrected runs beat hold-all with IC at chance and the same Sharpe at epoch 0 (cause untested), and to mention the R7 STRONG EE > HH/EH result.
+3. Whether to delete the smoke dumps and smoke rows (tracker, summary; `F_p1f_smoke_results.md`, `F_r5f2_smoke_results.md`) instead of relabelling.
+4. Whether to fix `scripts/r5f_analysis.py` output ("old optimizer" -> coupled wd 5e-4; drop empty Table 5/6 rows and the Kaggle root path) and label the figure error bars as one std.
+5. More seeds: R8_f top-up to 10 (5 seeds can only give INSUFFICIENT SEEDS); THINK vs EH at 25 seeds as in the paper (raw p 0.037 vs Holm 0.074, norm=paper); R5_f2 beyond 5 seeds only if alpha/residual matter to the verdict.
+6. Whether to separate the two factors for R8 small and R7 (level inputs wd 0, or relative inputs wd 5e-4) before quoting the 0.29 -> 0.37 macro-F1 change.
+7. Whether to investigate why epoch-0 THINK already gets Sharpe about 2 on 2017 (which stocks the near-constant ranking picks) before more full-NYSE reruns.

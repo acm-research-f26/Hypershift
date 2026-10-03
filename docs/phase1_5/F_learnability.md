@@ -108,6 +108,6 @@ Locally (only if the zips are already merged into `results/`): `CUDA_VISIBLE_DEV
 
 Still to conclude:
 1. (DONE 2026-10-03, see `F_r5f_results.md`: THINK vs EH NO EVIDENCE under both norms.) Fetch, merge and analyse r5f: does THINK beat EH/EE under the corrected optimizer (validation-selected epoch and `test_oracle_sr`), and `norm=paper` vs `norm=train`?
-2. Decide whether the small-scale Phase 1 arms (g2, POC `rel_*`, clique, R8 baselines) need a wd-0 rerun. The same wd 5e-4 applies to RSR-I and STHGCN in this repo (a deviation for the baselines, `D_resolved_configs.md` sec. 5).
-3. Test `alpha=0` and `spatial_residual` on full NYSE (r5f has wd 0 only).
+2. (DONE 2026-10-03 for g2 rel arms, R8 small, R7: `F_p1f_results.md`; level-input g2, tuned, A10/C1/G2/G12, R1-R3 not rerun.) Decide whether the small-scale Phase 1 arms (g2, POC `rel_*`, clique, R8 baselines) need a wd-0 rerun. The same wd 5e-4 applies to RSR-I and STHGCN in this repo (a deviation for the baselines, `D_resolved_configs.md` sec. 5).
+3. (DONE 2026-10-03, `norm=train`, 5 seeds, INSUFFICIENT SEEDS: `F_r5f2_results.md`; vs R5_f_train in `REVIEW_overnight.md` pass 2.) Test `alpha=0` and `spatial_residual` on full NYSE (r5f has wd 0 only).
 4. Update the `docs/PHASE1_TRACKER.md` verdict (currently "not reproduced under validation selection") with the F finding that the setup could not learn.
