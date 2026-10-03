@@ -276,3 +276,55 @@ def project_scores(pred, feats, mask):
         fitted[i, d] = A @ coef
         resid[i, d] = pred[i, d] - fitted[i, d]
     return fitted, resid
+
+
+def null_random_topk(gt, mask, k, B, rng, chunk=500):
+    """== within-day score permutation null (a uniform random k-subset of valid stocks); identical for any scores."""
+    D = gt.shape[1]
+    out = np.zeros((B, D))
+    for d in range(D):
+        idx = np.nonzero(mask[:, d])[0]
+        g = gt[idx, d]
+        kk = min(k, len(idx))
+        for s in range(0, B, chunk):
+            n = min(chunk, B - s)
+            pick = np.argpartition(rng.random((n, len(idx))), kk - 1, axis=1)[:, :kk]
+            out[s:s + n, d] = g[pick].mean(1)
+    return out
+
+
+def null_fixed(gt, mask, k, B, rng):
+    """Random fixed k-baskets of stocks valid on every day, equal weight, daily rebalanced."""
+    always = np.nonzero(mask.all(axis=1))[0]
+    out = np.zeros((B, gt.shape[1]))
+    for b in range(B):
+        out[b] = gt[rng.choice(always, size=k, replace=False)].mean(0)
+    return out
+
+
+def null_label_perm(pred, gt, mask, k, B, rng):
+    """One stock-label permutation per draw, applied on every day: keeps score persistence, breaks score->stock identity."""
+    out = np.zeros((B, gt.shape[1]))
+    for b in range(B):
+        perm = rng.permutation(pred.shape[0])
+        out[b] = portfolio(pred[perm], gt, mask, k)[0]
+    return out
+
+
+def null_matched(baskets, gt, mask, strata, B, rng):
+    """Per day, replace each selected stock with a random valid stock of the same stratum (industry or beta bucket)."""
+    out = np.zeros((B, gt.shape[1]))
+    for d, bk in enumerate(baskets):
+        if not len(bk):
+            continue
+        valid = np.nonzero(mask[:, d])[0]
+        pools = {s: valid[strata[valid] == s] for s in np.unique(strata[bk])}
+        draws = np.stack([rng.choice(pools[strata[i]], size=B) for i in bk], axis=1)
+        out[:, d] = gt[draws, d].mean(1)
+    return out
+
+
+def empirical_p(null, obs, tail="upper"):
+    null = np.asarray(null)
+    hits = (null >= obs).sum() if tail == "upper" else (null <= obs).sum()
+    return float((1 + hits) / (len(null) + 1))

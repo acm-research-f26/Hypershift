@@ -340,8 +340,177 @@ def stage_proxy(a):
     print("proxy written")
 
 
+
+def _null_summary(R, ha_mean, obs_r, obs_ha):
+    srs = F.sr_rows(R)
+    obs = F.perf(obs_r)
+    exc = obs["mean"] - ha_mean
+    return {"sharpe": {"obs": obs["sr"], "pct": float((srs < obs["sr"]).mean() * 100), "p": F.empirical_p(srs, obs["sr"]),
+                       "null_p5_50_95": [float(x) for x in np.percentile(srs, [5, 50, 95])]},
+            "mean": {"obs": obs["mean"], "p": F.empirical_p(R.mean(1), obs["mean"])},
+            "excess_mean": {"obs": exc, "p": F.empirical_p(R.mean(1) - ha_mean, exc)}}, srs
+
+
+def stage_nulls(a):
+    B_N, B_P, N_BT = (500, 100, 200) if a.quick else (F.B_NULL, F.B_PERM, F.N_BOOT)
+    from hypershift.eval.stats import holm, stationary_bootstrap_indices
+    from hypershift.data.rsr import read_ticker_file
+    data = _market()
+    tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
+    ar0 = F.load_run(*PRIMARY, 0, ROOT / "results")
+    gt, mask = ar0.gt, ar0.mask
+    ha = F.hold_all(gt, mask)
+    res = {"quick": bool(a.quick), "B_NULL": B_N, "B_PERM": B_P, "N_BOOT": N_BT,
+           "note": "seeds are repeated runs on the same 237 days; they are not independent samples. "
+                   "random_topk is identical to the within-day score permutation null for every seed/arm.",
+           "hold_all": F.perf(ha), "seeds": {}}
+    R_rand = F.null_random_topk(gt, mask, 5, B_N, F.rng_for("null_random"))
+    R_fix = F.null_fixed(gt, mask, 5, B_N, F.rng_for("null_fixed"))
+    sr_rand, sr_fix = F.sr_rows(R_rand), F.sr_rows(R_fix)
+    res["null_random_topk"] = {"sr_p5_50_95": [float(x) for x in np.percentile(sr_rand, [5, 50, 95])]}
+    res["null_fixed"] = {"sr_p5_50_95": [float(x) for x in np.percentile(sr_fix, [5, 50, 95])]}
+    ind = F.industry_of(tickers, ROOT / DATA_ROOT / "relation" / "sector_industry" / "NYSE_industry_ticker.json")
+    codes = {n: i for i, n in enumerate(sorted(set(ind)))}
+    s_ind = np.array([codes[x] for x in ind])
+    beta = F.train_beta(data.gt, data.mask, data.valid_index)
+    qs = np.nanquantile(beta, [0.2, 0.4, 0.6, 0.8])
+    s_beta = np.where(np.isnan(beta), 5, np.digitize(np.nan_to_num(beta), qs))
+    res["strata"] = {"n_industries": len(codes), "beta_edges": [float(x) for x in qs], "n_beta_nan": int(np.isnan(beta).sum())}
+    # bootstrap indices shared across seeds/stats (paired days)
+    boot = {}
+    for blk in (F.BLOCK,) + tuple(F.BLOCK_SENS):
+        rng = F.rng_for("boot", blk)
+        boot[blk] = np.stack([stationary_bootstrap_indices(237, blk, rng) for _ in range(N_BT)])
+    pooled = {"label_perm": [], "industry": [], "beta": []}
+    per_seed_p = {f: {} for f in ("F1", "F2", "F3", "F4")}
+    for s in SEEDS:
+        ar = F.load_run(*PRIMARY, s, ROOT / "results")
+        r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
+        to = F.turnover(base)
+        ent = {"observed": F.perf(r), "turnover_mean": float(to.mean()),
+               "hold_all_sr": F.perf(ha)["sr"], "excess_over_hold_all_sr": F.perf(r - ha)["sr"]}
+        ent["random_topk"], _ = _null_summary(R_rand, ha.mean(), r, ha)
+        ent["fixed_basket"], _ = _null_summary(R_fix, ha.mean(), r, ha)
+        ent["random_topk"]["mdd_null_median"] = float(np.median([F.perf(x)["mdd"] for x in R_rand[:500]]))
+        R_lp = F.null_label_perm(ar.pred, ar.gt, ar.mask, 5, B_P, F.rng_for("null_perm", s))
+        ent["label_perm"], sp = _null_summary(R_lp, ha.mean(), r, ha); pooled["label_perm"].append(sp)
+        R_i = F.null_matched(base, ar.gt, ar.mask, s_ind, B_P, F.rng_for("null_matched", s))
+        ent["industry_matched"], sp = _null_summary(R_i, ha.mean(), r, ha); pooled["industry"].append(sp)
+        R_b = F.null_matched(base, ar.gt, ar.mask, s_beta, B_P, F.rng_for("null_matched", 100 + s))
+        ent["beta_matched"], sp = _null_summary(R_b, ha.mean(), r, ha); pooled["beta"].append(sp)
+        per_seed_p["F1"][s] = ent["random_topk"]["sharpe"]["p"]
+        per_seed_p["F2"][s] = ent["beta_matched"]["sharpe"]["p"]
+        per_seed_p["F3"][s] = ent["industry_matched"]["sharpe"]["p"]
+        per_seed_p["F4"][s] = ent["label_perm"]["sharpe"]["p"]
+        # block bootstrap
+        bt = {}
+        for blk, idx in boot.items():
+            sr_b = F.sr_rows(r[idx]); ex_b = F.sr_rows((r - ha)[idx])
+            bt[f"block_{blk}"] = {"sharpe_ci95": [float(x) for x in np.percentile(sr_b, [2.5, 97.5])],
+                                  "excess_sharpe_ci95": [float(x) for x in np.percentile(ex_b, [2.5, 97.5])]}
+        ent["bootstrap"] = bt
+        res["seeds"][f"seed_{s}"] = ent
+        print("seed", s, "SR", round(ent["observed"]["sr"], 3), "p:", {k: round(v[s], 4) for k, v in per_seed_p.items()}, flush=True)
+    fam = {k: max(v.values()) for k, v in per_seed_p.items()}
+    res["family"] = {"per_seed_p": {k: {str(s): p for s, p in v.items()} for k, v in per_seed_p.items()},
+                     "iut_family_p_max_over_seeds": fam, "holm_adjusted": holm(fam),
+                     "tests": {"F1": "vs random daily top-5 (== within-day permutation)", "F2": "vs beta-quintile-matched",
+                               "F3": "vs industry-matched", "F4": "vs common label permutation"},
+                     "rule": "intersection-union over seeds (max per-seed p), Holm over F1-F4; 2017 is exploratory"}
+    print("family p", fam, "holm", res["family"]["holm_adjusted"])
+    (DOCS / "nulls.json").write_text(json.dumps(res, indent=1))
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    panels = [("random daily top-5 (= within-day perm.)", sr_rand), ("fixed random basket", sr_fix),
+              ("common label permutation", np.concatenate(pooled["label_perm"])),
+              ("industry-matched", np.concatenate(pooled["industry"])), ("beta-quintile-matched", np.concatenate(pooled["beta"]))]
+    fig, axs = plt.subplots(1, 5, figsize=(20, 3.6), sharex=True)
+    for ax, (t, x) in zip(axs, panels):
+        ax.hist(x, bins=60, color="0.75")
+        for s in SEEDS:
+            ax.axvline(res["seeds"][f"seed_{s}"]["observed"]["sr"], color="r", lw=1)
+        ax.axvline(F.perf(ha)["sr"], color="k", ls="--", lw=1)
+        ax.set_title(t, fontsize=8); ax.set_xlabel("Sharpe")
+    fig.tight_layout(); fig.savefig(FIGS / "phase1_5a_nulls.png", dpi=110)
+    print("nulls written")
+
+
+
+def stage_report(a):
+    """Gate A tables + predeclared outcome checks, built only from the committed json files."""
+    mech = json.loads((DOCS / "mechanism.json").read_text())
+    prox = json.loads((DOCS / "proxy.json").read_text())
+    nl = json.loads((DOCS / "nulls.json").read_text())
+    pk = "%s/%s" % PRIMARY
+    ECON = {"ma5_rel", "ma10_rel", "ma20_rel", "ma30_rel", "ret1", "ret5", "ret20", "vol20", "beta", "close_level"}
+    rows1, rows3, o1, o2, o3, o3_econ = [], [], [], [], [], []
+    for s in SEEDS:
+        m = mech["runs"][pk][f"seed_{s}"]
+        ha = m["hold_all_sr"]
+        c1 = m["stable"]["sr"] > ha and m["random_tie"]["p50"] <= ha and m["reverse"]["sr"] <= ha
+        o1.append(c1)
+        n = nl["seeds"][f"seed_{s}"]
+        c2 = n["beta_matched"]["sharpe"]["p"] > 0.05 or n["industry_matched"]["sharpe"]["p"] > 0.05
+        o2.append(c2)
+        p = prox["runs"][pk][f"seed_{s}"]
+        port = p["portfolios"]
+        thr = 0.8 * p["model_sr"]
+        qual = [k for k, v in port.items() if k != "resid" and v["sr"] >= thr]
+        qual_econ = [k for k in qual if k in ECON or k == "fitted"]
+        rnd_lo, _, rnd_hi = nl["null_random_topk"]["sr_p5_50_95"]
+        resid_in = rnd_lo <= port["resid"]["sr"] <= rnd_hi
+        o3.append(bool(qual) and resid_in)
+        o3_econ.append(bool(qual_econ) and resid_in)
+        top = [(k, round(v["mean_spearman"], 2)) for k, v in p["spearman_ranked"][:3]]
+        rows1.append(f"| {s} | {m['stable']['sr']:.2f} | {m['random_tie']['p5']:.2f} / {m['random_tie']['p50']:.2f} / {m['random_tie']['p95']:.2f} | "
+                     f"{m['reverse']['sr']:.2f} | {ha:.2f} | {m['constant_first5']['sr']:.2f} | {m['tie_days']['n_days']} | {c1} |")
+        rows3.append(f"| {s} | {p['model_sr']:.2f} | {top} | {p['r2_mean']:.2f} | {port['fitted']['sr']:.2f} | {port['resid']['sr']:.2f} | "
+                     f"{qual} | {resid_in} |")
+    rows2 = []
+    for s in SEEDS:
+        n = nl["seeds"][f"seed_{s}"]
+        rows2.append(f"| {s} | {n['observed']['sr']:.2f} | " + " | ".join(
+            f"{n[k]['sharpe']['p']:.3f}" for k in ("random_topk", "beta_matched", "industry_matched", "label_perm", "fixed_basket")) +
+            f" | {n['excess_over_hold_all_sr']:.2f} | {n['bootstrap']['block_10']['sharpe_ci95'][0]:.2f} to {n['bootstrap']['block_10']['sharpe_ci95'][1]:.2f} |")
+    fam = nl["family"]
+    out = {"outcome_1_tie_index_decisive": all(o1), "outcome_2_exposure_sufficient": all(o2),
+           "outcome_3_factor_tilt_sufficient_literal": all(o3), "outcome_3_economic_proxies_only": all(o3_econ),
+           "per_seed": {"o1": o1, "o2": o2, "o3": o3, "o3_econ": o3_econ}}
+    (DOCS / "gate_a.json").write_text(json.dumps(out, indent=1))
+    md = ["# Phase 1.5a report: 2017 Sharpe near 2 (R5_f2 alpha=0 THINK, HH)", "",
+          "Primary: `R5_f2_alpha0_train/HH` seeds 0-4, validation-selected epoch, top-5 equal weight, 237 test days "
+          "(2017-01-03 to 2017-12-08). Seeds are repeated runs on the same days, not independent samples. 2017 is exploratory.",
+          "", "## Gate A", "",
+          f"Hold-all (equal-weight market of valid stocks) Sharpe on the same days: {nl['hold_all']['sr']:.2f} "
+          f"(cap-weighted market: UNKNOWN, not in data).", "",
+          "### Ties and index order (Task 2)", "",
+          "| seed | stable (saved) | random exact-tie order p5 / p50 / p95 | reverse index | hold-all | constant-score first-5 | tie days (of 237) | outcome-1 |",
+          "|---|---|---|---|---|---|---|---|", *rows1, "",
+          f"Random fixed-index basket rule (1000 relabellings, constant scores): Sharpe mean {mech['random_fixed_index_basket_rule']['mean']:.2f}, "
+          f"p5/p50/p95 {mech['random_fixed_index_basket_rule']['p5']:.2f} / {mech['random_fixed_index_basket_rule']['p50']:.2f} / "
+          f"{mech['random_fixed_index_basket_rule']['p95']:.2f}.", "",
+          "### Nulls (Task 5): per-seed upper-tail empirical p of the Sharpe", "",
+          f"B = {nl['B_NULL']} (random top-5, fixed basket), {nl['B_PERM']} (label permutation, matched baskets).", "",
+          "| seed | Sharpe | random top-5 (F1) | beta-matched (F2) | industry-matched (F3) | label perm (F4) | fixed basket (not in family) | Sharpe of excess over hold-all | block-10 bootstrap 95% CI |",
+          "|---|---|---|---|---|---|---|---|---|", *rows2, "",
+          f"Formal family (intersection-union = max per-seed p, then Holm over F1-F4): family p {fam['iut_family_p_max_over_seeds']}, "
+          f"Holm {fam['holm_adjusted']}.", "",
+          "### Factor proxy (Task 2B)", "",
+          "| seed | model Sharpe | top-3 daily Spearman(score, feature) | mean per-day R2 of all-feature fit | fitted portfolio Sharpe | residual portfolio Sharpe | proxies with Sharpe >= 0.8 x model | resid inside central 90% of random null |",
+          "|---|---|---|---|---|---|---|---|", *rows3, "",
+          "### Predeclared outcomes", "",
+          f"1. Tie/index decisive: **{all(o1)}** (per seed {o1}).",
+          f"2. Exposure (B) sufficient: **{all(o2)}** (per seed {o2}).",
+          f"3. Factor tilt sufficient (literal rule, any proxy incl. fixed-basket 'index' and 'degree'): **{all(o3)}** (per seed {o3}); "
+          f"restricted to economic proxies and fitted: **{all(o3_econ)}** (per seed {o3_econ}).",
+          "4. Not decisive: " + str(not (all(o1) or all(o2) or all(o3))) + ".", ""]
+    (DOCS / "REPORT_2017.md").write_text("\n".join(md))
+    print(json.dumps(out))
+
+
 #@@STAGES@@
-STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy}
+STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "report": stage_report}
 
 
 def main():
@@ -351,7 +520,7 @@ def main():
     ap.add_argument("--quick", action="store_true", help="debug only: tiny B/R")
     a = ap.parse_args()
     os.chdir(ROOT)
-    for name in (STAGES if a.stage == "all" else [a.stage]):
+    for name in (["inventory", "mechanism", "proxy", "nulls", "report"] if a.stage == "all" else [a.stage]):
         STAGES[name](a)
 
 

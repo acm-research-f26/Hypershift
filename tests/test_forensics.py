@@ -135,3 +135,34 @@ def test_daily_spearman_and_projection():
 
 def test_graph_degree():
     assert F.graph_degree(((0, 1, 2), (2, 3)), 5).tolist() == [1, 1, 2, 1, 0]
+
+
+def test_empirical_p_formula():
+    null = np.arange(99, dtype=float)
+    assert F.empirical_p(null, 98.0) == pytest.approx(2 / 100)
+    assert F.empirical_p(null, 1000.0) == pytest.approx(1 / 100)
+    assert F.empirical_p(null, -1.0, tail="lower") == pytest.approx(1 / 100)
+
+
+def test_nulls_preserve_mask_and_cross_section_and_are_reproducible():
+    rng = np.random.default_rng(0)
+    gt = rng.normal(size=(30, 12)); mask = np.ones((30, 12), bool); mask[:5, 3] = False; mask[29, :] = False
+    a = F.null_random_topk(gt, mask, 3, 400, np.random.default_rng(1))
+    b = F.null_random_topk(gt, mask, 3, 400, np.random.default_rng(1))
+    np.testing.assert_array_equal(a, b)
+    valid_mean = np.array([gt[mask[:, d], d].mean() for d in range(12)])
+    np.testing.assert_allclose(a.mean(0), valid_mean, atol=0.25)            # unbiased for the valid cross-section mean
+    f = F.null_fixed(gt, mask, 3, 200, np.random.default_rng(2))
+    assert f.shape == (200, 12)                                               # stock 29 never valid -> never drawn (no NaN)
+    assert np.isfinite(f).all()
+    pred = rng.normal(size=(30, 12))
+    lp = F.null_label_perm(pred, gt, mask, 3, 50, np.random.default_rng(3))
+    assert lp.shape == (50, 12) and np.isfinite(lp).all()
+
+
+def test_matched_null_keeps_strata_counts():
+    gt = np.random.default_rng(0).normal(size=(10, 3)); mask = np.ones((10, 3), bool)
+    strata = np.array([0] * 5 + [1] * 5)
+    baskets = [np.array([0, 1, 5])] * 3
+    R = F.null_matched(baskets, gt, mask, strata, 100, np.random.default_rng(4))
+    assert R.shape == (100, 3)

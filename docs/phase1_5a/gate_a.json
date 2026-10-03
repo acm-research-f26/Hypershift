@@ -1,0 +1,36 @@
+{
+ "outcome_1_tie_index_decisive": false,
+ "outcome_2_exposure_sufficient": true,
+ "outcome_3_factor_tilt_sufficient_literal": false,
+ "outcome_3_economic_proxies_only": false,
+ "per_seed": {
+  "o1": [
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "o2": [
+   true,
+   true,
+   true,
+   true,
+   true
+  ],
+  "o3": [
+   true,
+   true,
+   true,
+   false,
+   true
+  ],
+  "o3_econ": [
+   false,
+   true,
+   false,
+   false,
+   false
+  ]
+ }
+}
