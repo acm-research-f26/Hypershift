@@ -166,3 +166,14 @@ def test_matched_null_keeps_strata_counts():
     baskets = [np.array([0, 1, 5])] * 3
     R = F.null_matched(baskets, gt, mask, strata, 100, np.random.default_rng(4))
     assert R.shape == (100, 3)
+
+
+def test_stale_runs_flags_unchanged_close():
+    c = np.array([[1, 1, 1, 1, 2], [1, 2, 3, 4, 5]], float)
+    s = F.stale_runs(c, min_len=3)
+    assert s[0].tolist() == [False, False, True, True, False] and not s[1].any()
+
+
+def test_duplicate_rows_detects_identical_series():
+    x = np.random.default_rng(0).normal(size=(4, 10, 5)); x[3] = x[1]
+    assert F.duplicate_rows(x) == [(1, 3)]

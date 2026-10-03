@@ -508,9 +508,80 @@ def stage_report(a):
     (DOCS / "REPORT_2017.md").write_text("\n".join(md))
     print(json.dumps(out))
 
+def stage_integrity(a):
+    """Backtest integrity for the uncovered risks only (Task 3). Existing Phase 1.5 A/C tests are re-run, not redone."""
+    from hypershift.data.rsr import read_ticker_file
+    res = {"primary": "%s/%s" % PRIMARY}
+    # 1. re-run existing integrity tests
+    pr = subprocess.run([sys.executable, "-m", "pytest", "-m", "data", "tests/test_phase15_eval.py", "tests/test_phase15_data.py", "-q"],
+                        capture_output=True, text=True, cwd=ROOT, env={**os.environ, "CUDA_VISIBLE_DEVICES": "-1"})
+    res["existing_tests"] = {"cmd": "pytest -m data tests/test_phase15_eval.py tests/test_phase15_data.py -q",
+                             "returncode": pr.returncode, "tail": pr.stdout.strip().splitlines()[-3:]}
+    data = _market()
+    tdays = data.test_index + np.arange(237)
+    close = data.features[:, :, 4]
+    dates = [ln.strip()[:10] for ln in open(ROOT / DATA_ROOT / "NYSE_aver_line_dates.csv") if ln.strip()]
+    test_dates = [dates[29 + 1008 + j] for j in range(237)]
+    tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
+    stale = F.stale_runs(close, 3)
+    # 3. duplicate series
+    dup = F.duplicate_rows(data.features)
+    res["duplicate_series"] = {"pairs": [[tickers[i], tickers[j]] for i, j in dup], "n_pairs": len(dup)}
+    res["stale_definition"] = "close unchanged for >= 3 consecutive days ending at the last input day (t-1)"
+    ext, per_seed = {}, {}
+    for s in SEEDS:
+        ar = F.load_run(*PRIMARY, s, ROOT / "results")
+        r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
+        tot = float(r.sum())
+        n_sel = n_stale = n_zero = n_fillwin = 0
+        stale_pl = zero_pl = 0.0
+        for d, b in enumerate(base):
+            t = tdays[d]
+            for i in b:
+                n_sel += 1
+                c = ar.gt[i, d] / len(b)
+                if stale[i, t - 1]:
+                    n_stale += 1; stale_pl += c
+                if ar.gt[i, d] == 0.0:
+                    n_zero += 1; zero_pl += c
+                if data.mask[i, t - 16:t + 1].min() < 1:
+                    n_fillwin += 1
+                if abs(ar.gt[i, d]) > 0.2:
+                    k = (tickers[i], test_dates[d])
+                    e = ext.setdefault(k, {"ticker": tickers[i], "date": test_dates[d], "ret": float(ar.gt[i, d]), "seeds": 0, "pl_share_by_seed": {}})
+                    e["seeds"] += 1
+                    e["pl_share_by_seed"][str(s)] = float(c / tot) if tot else None
+        ext_days = sorted({d for d, b in enumerate(base) if any(abs(ar.gt[i, d]) > 0.2 for i in b)})
+        keep = np.setdiff1d(np.arange(len(r)), ext_days)
+        assert n_fillwin == 0, f"seed {s}: {n_fillwin} selected stock-days with a fill value in their window"
+        per_seed[f"seed_{s}"] = {"selected_stock_days": n_sel, "stale_in_basket": n_stale, "stale_pl_share": stale_pl / tot if tot else None,
+                                 "exact_zero_return_selected": n_zero, "zero_return_pl_share": zero_pl / tot if tot else None,
+                                 "selected_with_fill_in_window": n_fillwin, "total_return_sum": tot,
+                                 "retrospective_sharpe_without_days_with_abs_gt_0.2": F.perf(r[keep])["sr"],
+                                 "retrospective_hold_all_sharpe_same_days": F.perf(F.hold_all(ar.gt, ar.mask)[keep])["sr"],
+                                 "n_days_removed": len(ext_days)}
+    # neighbouring-day reversal check for extremes (candidate split/adjustment errors; listed, never deleted)
+    for k, e in ext.items():
+        i = tickers.index(e["ticker"]); d = test_dates.index(e["date"]); t = tdays[d]
+        nxt = data.gt[i, t + 1:t + 4] if t + 1 < data.gt.shape[1] else np.array([])
+        prv = data.gt[i, max(t - 3, 0):t]
+        e["next3_returns"] = [float(x) for x in nxt]
+        e["reversal_gt_50pct_within_3d"] = bool(len(nxt) and (np.cumprod(1 + nxt) - 1).min() * np.sign(e["ret"]) * -1 > 0.5 * abs(e["ret"]) if e["ret"] > 0
+                                                else len(nxt) and (np.cumprod(1 + nxt) - 1).max() > 0.5 * abs(e["ret"]))
+        e["prev3_returns"] = [float(x) for x in prv]
+    res["per_seed"] = per_seed
+    res["extreme_selected_stock_days_abs_gt_0.2"] = sorted(ext.values(), key=lambda e: (-e["seeds"], e["date"]))
+    res["n_extreme_unique"] = len(ext)
+    res["n_extreme_reversal_candidates"] = sum(e["reversal_gt_50pct_within_3d"] for e in ext.values())
+    res["metrics_sharpe_convention"] = "metrics.py:50-52 sharpe = mean / np.std(ddof=0) * sqrt(252), no risk-free rate; pinned by tests/test_phase15_eval.py::test_sharpe_matches_authors_up_to_annualisation_constant"
+    (DOCS / "integrity.json").write_text(json.dumps(res, indent=1))
+    print("integrity:", res["existing_tests"]["tail"][-1] if res["existing_tests"]["tail"] else "", "| dup pairs", len(dup),
+          "| extreme", len(ext), "reversal cands", res["n_extreme_reversal_candidates"],
+          "| stale in basket", [v["stale_in_basket"] for v in per_seed.values()])
+
 
 #@@STAGES@@
-STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "report": stage_report}
+STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity, "report": stage_report}
 
 
 def main():

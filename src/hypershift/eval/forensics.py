@@ -328,3 +328,25 @@ def empirical_p(null, obs, tail="upper"):
     null = np.asarray(null)
     hits = (null >= obs).sum() if tail == "upper" else (null <= obs).sum()
     return float((1 + hits) / (len(null) + 1))
+
+
+def stale_runs(close, min_len=3):
+    """True where close has been unchanged for >= min_len consecutive days, ending at t."""
+    same = np.zeros_like(close, dtype=bool)
+    same[:, 1:] = close[:, 1:] == close[:, :-1]
+    run = np.zeros(close.shape, dtype=int)
+    for t in range(1, close.shape[1]):
+        run[:, t] = np.where(same[:, t], run[:, t - 1] + 1, 0)
+    return run + 1 >= min_len
+
+
+def duplicate_rows(x):
+    flat = x.reshape(x.shape[0], -1)
+    seen, out = {}, []
+    for i, row in enumerate(flat):
+        h = row.tobytes()
+        if h in seen:
+            out.append((seen[h], i))
+        else:
+            seen[h] = i
+    return out

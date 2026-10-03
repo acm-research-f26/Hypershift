@@ -1,0 +1,128 @@
+{
+ "primary": "R5_f2_alpha0_train/HH",
+ "existing_tests": {
+  "cmd": "pytest -m data tests/test_phase15_eval.py tests/test_phase15_data.py -q",
+  "returncode": 0,
+  "tail": [
+   "...............                                                          [100%]",
+   "15 passed, 9 deselected in 18.51s"
+  ]
+ },
+ "duplicate_series": {
+  "pairs": [],
+  "n_pairs": 0
+ },
+ "stale_definition": "close unchanged for >= 3 consecutive days ending at the last input day (t-1)",
+ "per_seed": {
+  "seed_0": {
+   "selected_stock_days": 1185,
+   "stale_in_basket": 2,
+   "stale_pl_share": -0.0030624880081500565,
+   "exact_zero_return_selected": 35,
+   "zero_return_pl_share": 0.0,
+   "selected_with_fill_in_window": 0,
+   "total_return_sum": 0.36870920766232307,
+   "retrospective_sharpe_without_days_with_abs_gt_0.2": 1.6351560269990773,
+   "retrospective_hold_all_sharpe_same_days": 1.536401817960108,
+   "n_days_removed": 1
+  },
+  "seed_1": {
+   "selected_stock_days": 1185,
+   "stale_in_basket": 2,
+   "stale_pl_share": -0.0031221406736653343,
+   "exact_zero_return_selected": 29,
+   "zero_return_pl_share": 0.0,
+   "selected_with_fill_in_window": 0,
+   "total_return_sum": 0.3616645260364748,
+   "retrospective_sharpe_without_days_with_abs_gt_0.2": 1.6971311691497597,
+   "retrospective_hold_all_sharpe_same_days": 1.536401817960108,
+   "n_days_removed": 1
+  },
+  "seed_2": {
+   "selected_stock_days": 1185,
+   "stale_in_basket": 4,
+   "stale_pl_share": -0.003447593046977123,
+   "exact_zero_return_selected": 36,
+   "zero_return_pl_share": 0.0,
+   "selected_with_fill_in_window": 0,
+   "total_return_sum": 0.2995518280658871,
+   "retrospective_sharpe_without_days_with_abs_gt_0.2": 1.6070875590835965,
+   "retrospective_hold_all_sharpe_same_days": 1.536401817960108,
+   "n_days_removed": 1
+  },
+  "seed_3": {
+   "selected_stock_days": 1185,
+   "stale_in_basket": 2,
+   "stale_pl_share": -0.003338137539976603,
+   "exact_zero_return_selected": 32,
+   "zero_return_pl_share": 0.0,
+   "selected_with_fill_in_window": 0,
+   "total_return_sum": 0.33826273286758807,
+   "retrospective_sharpe_without_days_with_abs_gt_0.2": 2.165900163344048,
+   "retrospective_hold_all_sharpe_same_days": 1.6176064744055032,
+   "n_days_removed": 2
+  },
+  "seed_4": {
+   "selected_stock_days": 1185,
+   "stale_in_basket": 2,
+   "stale_pl_share": -0.002928669635558629,
+   "exact_zero_return_selected": 34,
+   "zero_return_pl_share": 0.0,
+   "selected_with_fill_in_window": 0,
+   "total_return_sum": 0.385556470163283,
+   "retrospective_sharpe_without_days_with_abs_gt_0.2": 2.2824085032747385,
+   "retrospective_hold_all_sharpe_same_days": 1.6176064744055032,
+   "n_days_removed": 2
+  }
+ },
+ "extreme_selected_stock_days_abs_gt_0.2": [
+  {
+   "ticker": "SYX",
+   "date": "2017-03-27",
+   "ret": 0.36805737018585205,
+   "seeds": 5,
+   "pl_share_by_seed": {
+    "0": 0.1996464219157402,
+    "1": 0.20353523427881481,
+    "2": 0.24573869073828322,
+    "3": 0.21761626949896784,
+    "4": 0.19092267860527926
+   },
+   "next3_returns": [
+    0.04060819000005722,
+    0.10731621086597443,
+    -0.03436202555894852
+   ],
+   "reversal_gt_50pct_within_3d": false,
+   "prev3_returns": [
+    -0.0432487428188324,
+    0.00821767933666706,
+    -0.021739505231380463
+   ]
+  },
+  {
+   "ticker": "WAIR",
+   "date": "2017-08-09",
+   "ret": -0.24154500663280487,
+   "seeds": 2,
+   "pl_share_by_seed": {
+    "3": -0.14281502699699228,
+    "4": -0.1252968243694682
+   },
+   "next3_returns": [
+    -0.10191276669502258,
+    0.0709230825304985,
+    0.033113062381744385
+   ],
+   "reversal_gt_50pct_within_3d": false,
+   "prev3_returns": [
+    0.009662854485213757,
+    -0.03827715665102005,
+    0.029849328100681305
+   ]
+  }
+ ],
+ "n_extreme_unique": 2,
+ "n_extreme_reversal_candidates": 0,
+ "metrics_sharpe_convention": "metrics.py:50-52 sharpe = mean / np.std(ddof=0) * sqrt(252), no risk-free rate; pinned by tests/test_phase15_eval.py::test_sharpe_matches_authors_up_to_annualisation_constant"
+}
