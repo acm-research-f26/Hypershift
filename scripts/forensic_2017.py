@@ -90,7 +90,164 @@ def stage_inventory(a):
     print(f"inventory: {inv['n_verified']} run-seeds verified")
 
 
-STAGES = {"inventory": stage_inventory}
+
+# ---------------------------------------------------------------- shared helpers
+def _jacc(b1, b2):
+    return float(np.mean([len(set(x.tolist()) & set(y.tolist())) / max(len(set(x.tolist()) | set(y.tolist())), 1)
+                          for x, y in zip(b1, b2)]))
+
+
+def _dist(x):
+    x = np.asarray(x, float)
+    return {"mean": float(x.mean()), "sd": float(x.std()), "p5": float(np.percentile(x, 5)),
+            "p50": float(np.percentile(x, 50)), "p95": float(np.percentile(x, 95))}
+
+
+def _market():
+    from hypershift.data.rsr import load_rsr
+    return load_rsr(DATA_ROOT, "NYSE", norm="train")
+
+
+def _edges(cfg_json):
+    import dataclasses
+    from hypershift.config import RunConfig
+    from hypershift.train.loop import base_hypergraph
+    names = {f.name for f in dataclasses.fields(RunConfig)}
+    kw = {k: v for k, v in cfg_json.items() if k in names}
+    kw["sources"] = tuple(kw.get("sources", ()))
+    cfg = RunConfig(**kw)
+    data = _market()
+    return base_hypergraph(cfg, data).edges
+
+
+def _first_k_perm_rule(gt, mask, k, perms, rng):
+    """Constant scores on a randomly relabelled universe: pick the first k valid stocks in permuted order."""
+    out = np.zeros((perms, gt.shape[1]))
+    for b in range(perms):
+        perm = rng.permutation(gt.shape[0])
+        m = mask[perm]
+        g = gt[perm]
+        order = np.argsort(~m, axis=0, kind="stable")[:k]            # first k valid rows per day (valid first, by index)
+        valid_cnt = np.minimum(m.sum(0), k)
+        vals = np.take_along_axis(g, order, axis=0)
+        sel = np.arange(k)[:, None] < valid_cnt[None, :]
+        out[b] = (vals * sel).sum(0) / np.maximum(valid_cnt, 1)
+    return out
+
+
+def stage_mechanism(a):
+    R_T, R_P, R_FIX = (20, 20, 50) if a.quick else (F.R_TIE, 200, 1000)
+    data = _market()
+    tdays = data.test_index + np.arange(237)
+    close = data.features[:, :, 4]
+    runs = [PRIMARY, ("R5_f_train", "HH"), ("R5_f_train", "EH")]
+    res = {"quick": bool(a.quick), "runs": {}}
+    # relabelled-universe rule is independent of the model (depends only on gt/mask): compute once
+    ar0 = F.load_run(*PRIMARY, 0, ROOT / "results")
+    fixperm = F.sr_rows(_first_k_perm_rule(ar0.gt, ar0.mask, 5, R_FIX, F.rng_for("index_perm", 77)))
+    res["random_fixed_index_basket_rule"] = _dist(fixperm)
+    edges_cache = {}
+    for exp, label in runs:
+        key = f"{exp}/{label}"
+        res["runs"][key] = {}
+        for s in SEEDS:
+            ar = F.load_run(exp, label, s, ROOT / "results")
+            ha = F.hold_all(ar.gt, ar.mask)
+            r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
+            ent = {"hold_all_sr": F.perf(ha)["sr"], "stable": F.perf(r), "turnover_mean": float(F.turnover(base).mean())}
+            # random exact-tie order
+            dr = F.eps_draws(ar.pred, ar.gt, ar.mask, 5, R_T, F.rng_for("tie", s), eps_abs=0.0)
+            srs = F.sr_rows(dr["returns"])
+            ent["random_tie"] = {**_dist(srs), "mean_jaccard_vs_stable": float(dr["jaccard"].mean()),
+                                 "amb_frac": dr["amb_frac"], "p_sr_ge_stable": float((srs >= ent["stable"]["sr"]).mean()),
+                                 "group_size_max": int(dr["group_size"].max())}
+            # reverse
+            rr, brev = F.portfolio(ar.pred, ar.gt, ar.mask, order="reverse")
+            ent["reverse"] = {**F.perf(rr), "jaccard_vs_stable": _jacc(base, brev)}
+            # evaluator index permutations (stable tie rule on relabelled universe)
+            rng = F.rng_for("index_perm", s)
+            ip_sr, ip_j = [], []
+            for _ in range(R_P):
+                perm = rng.permutation(ar.pred.shape[0])
+                p2, g2, m2 = F.evaluator_permutation(ar.pred, ar.gt, ar.mask, perm)
+                r2, b2 = F.portfolio(p2, g2, m2)
+                ip_sr.append(F.perf(r2)["sr"])
+                ip_j.append(_jacc(base, [perm[x] for x in b2]))
+            ent["index_perm"] = {**_dist(ip_sr), "mean_jaccard_vs_stable": float(np.mean(ip_j)),
+                                 "note": "consistency check vs random_tie, not independent evidence"}
+            # constant / first / last 5
+            rc, bc = F.portfolio(ar.pred * 0, ar.gt, ar.mask)
+            rl, _ = F.portfolio(ar.pred * 0, ar.gt, ar.mask, order="reverse")
+            ent["constant_first5"] = {**F.perf(rc), "jaccard_vs_stable": _jacc(base, bc)}
+            ent["constant_last5"] = F.perf(rl)
+            # tie vs non-tie days
+            b = F.boundary_stats(ar.pred, ar.mask)
+            tie = b["exact_tie"]
+            def _split(m):
+                x = r[m]
+                if len(x) == 0:
+                    return {"n_days": 0}
+                return {"n_days": int(m.sum()), "mean": float(x.mean()), "vol_d": float(x.std()), "sum_ret": float(x.sum()),
+                        "hit_rate": float((x > 0).mean()), "sr": F.perf(x)["sr"],
+                        "hold_all_mean": float(ha[m].mean()), "excess_mean": float((x - ha[m]).mean())}
+            ent["tie_days"], ent["nontie_days"] = _split(tie), _split(~tie)
+            ent["zero_spread_days"] = int((b["sd"] == 0).sum())
+            # tie group composition
+            if key not in edges_cache:
+                edges_cache[key] = None
+            if edges_cache[key] is None:
+                edges_cache[key] = _edges(ar.config)
+            deg = F.graph_degree(edges_cache[key], ar.pred.shape[0]) 
+            grp_sizes, iso, stale, part, vals = [], [], [], [], []
+            for d in np.nonzero(tie)[0]:
+                idx = np.nonzero(ar.mask[:, d])[0]
+                grp = idx[ar.pred[idx, d] == b["s_k"][d]]
+                grp_sizes.append(len(grp))
+                vals.append(float(b["s_k"][d]))
+                t = tdays[d]
+                if deg is not None:
+                    iso.append(float((deg[grp] == 0).mean()))
+                win = close[grp, t - 16:t]
+                stale.append(float((np.ptp(win, axis=1) == 0).mean()))
+                part.append(float((data.mask[grp, t - 16:t + 1].min(axis=1) < 1).mean()))
+            ent["tie_group"] = {
+                "n_tie_days": int(tie.sum()), "size_mean": float(np.mean(grp_sizes)) if grp_sizes else 0,
+                "size_median": float(np.median(grp_sizes)) if grp_sizes else 0, "size_max": int(max(grp_sizes)) if grp_sizes else 0,
+                "frac_isolated": float(np.mean(iso)) if iso else None, "frac_stale_window": float(np.mean(stale)) if stale else None,
+                "frac_partly_masked": float(np.mean(part)) if part else None,
+                "n_distinct_tied_values": len(set(vals)),
+                "top_tied_values": [[v, int(c)] for v, c in __import__("collections").Counter(vals).most_common(5)]}
+            res["runs"][key][f"seed_{s}"] = ent
+            print(key, s, "stable", round(ent["stable"]["sr"], 3), "rand-tie med", round(ent["random_tie"]["p50"], 3),
+                  "rev", round(ent["reverse"]["sr"], 3), "hold", round(ent["hold_all_sr"], 3),
+                  "tie days", ent["tie_days"]["n_days"], flush=True)
+            res["runs"][key][f"seed_{s}"]["_srs"] = [float(x) for x in srs]
+            res["runs"][key][f"seed_{s}"]["_ip"] = [float(x) for x in ip_sr]
+    fp = DOCS / "mechanism.json"
+    keep = json.loads(json.dumps(res))
+    for k in keep["runs"].values():
+        for v in k.values():
+            v.pop("_srs", None); v.pop("_ip", None)
+    fp.write_text(json.dumps(keep, indent=1))
+    # figure
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    fig, axs = plt.subplots(1, len(runs), figsize=(5 * len(runs), 4), sharey=True)
+    for ax, (exp, label) in zip(axs, runs):
+        key = f"{exp}/{label}"
+        data_v = [res["runs"][key][f"seed_{s}"]["_srs"] for s in SEEDS]
+        ax.violinplot(data_v, positions=range(5), showmedians=True)
+        ax.scatter(range(5), [res["runs"][key][f"seed_{s}"]["stable"]["sr"] for s in SEEDS], c="r", zorder=3, label="stable (saved)")
+        ax.scatter(range(5), [res["runs"][key][f"seed_{s}"]["hold_all_sr"] for s in SEEDS], c="k", marker="_", s=200, zorder=3, label="hold-all")
+        ax.set_title(key, fontsize=9); ax.set_xlabel("seed")
+    axs[0].set_ylabel("2017 test Sharpe (random exact-tie order)"); axs[0].legend(fontsize=7)
+    fig.tight_layout(); FIGS.mkdir(exist_ok=True); fig.savefig(FIGS / "phase1_5a_mechanism.png", dpi=110)
+    print("mechanism written")
+
+
+#@@STAGES@@
+STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism}
 
 
 def main():

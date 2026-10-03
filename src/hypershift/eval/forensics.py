@@ -119,3 +119,90 @@ def perf(r):
     return {"mean": float(r.mean()), "vol_d": float(sd), "sr": 0.0 if sd == 0 else float(r.mean() / sd * math.sqrt(252)),
             "cumret": float(w[-1] - 1) if len(w) else 0.0, "mdd": float((w / peak - 1).min()) if len(w) else 0.0,
             "n": int(len(r))}
+
+
+def tie_groups(sorted_desc, eps):
+    gaps = -np.diff(sorted_desc)
+    return np.concatenate([[0], np.cumsum(gaps > eps)]).astype(int)
+
+
+def select_eps(scores_d, idx, k, eps, rng):
+    s = scores_d[idx]
+    o = np.argsort(-s, kind="stable")
+    if len(o) <= k:
+        return idx[o]
+    g = tie_groups(s[o], eps)
+    gb = g[k - 1]
+    above = o[g < gb]
+    group = o[g == gb]
+    fill = rng.choice(group, size=k - len(above), replace=False)
+    return idx[np.concatenate([above, fill])]
+
+
+def portfolio_eps(pred, gt, mask, k=K_PRIMARY, eps_abs=None, eps_frac=None, rng=None):
+    r, baskets = np.zeros(pred.shape[1]), []
+    for d in range(pred.shape[1]):
+        idx = np.nonzero(mask[:, d])[0]
+        eps = eps_abs if eps_abs is not None else eps_frac * (pred[idx, d].std() if len(idx) else 0.0)
+        top = select_eps(pred[:, d], idx, k, eps, rng) if len(idx) else idx
+        if eps_frac is not None and len(idx) and pred[idx, d].std() == 0:
+            top = idx[rng.choice(len(idx), size=min(k, len(idx)), replace=False)]   # zero-spread: whole set tied
+        baskets.append(top)
+        r[d] = gt[top, d].mean() if len(top) else 0.0
+    return r, baskets
+
+
+def eps_draws(pred, gt, mask, k, R, rng, eps_abs=None, eps_frac=None):
+    D = pred.shape[1]
+    stable = portfolio(pred, gt, mask, k)[1]
+    rets, jac = np.zeros((R, D)), np.zeros((R, D))
+    gsize = np.zeros(D, int)
+    for d in range(D):
+        idx = np.nonzero(mask[:, d])[0]
+        if not len(idx):
+            continue
+        s = pred[idx, d]
+        sd = s.std()
+        o = np.argsort(-s, kind="stable")
+        if eps_frac is not None and sd == 0:                       # zero-spread day: whole valid set is one group
+            above, group = o[:0], o
+        else:
+            eps = eps_abs if eps_abs is not None else eps_frac * sd
+            g = tie_groups(s[o], eps)
+            gb = g[min(k, len(o)) - 1]
+            above, group = o[g < gb], o[g == gb]
+        gsize[d] = len(group)
+        need = min(k, len(o)) - len(above)
+        fill = np.argsort(rng.random((R, len(group))), axis=1)[:, :need]       # R independent refills
+        picks = np.concatenate([np.broadcast_to(above, (R, len(above))), group[fill]], axis=1)
+        rets[:, d] = gt[idx[picks], d].mean(1)
+        st = set(stable[d].tolist())
+        jac[:, d] = [len(st & set(idx[p].tolist())) / len(st | set(idx[p].tolist())) for p in picks]
+    return {"returns": rets, "jaccard": jac.mean(1), "amb_frac": float((gsize > 1).mean()), "group_size": gsize}
+
+
+def jitter(pred, mask, frac, rng):
+    out = pred.copy()
+    for d in range(pred.shape[1]):
+        i = mask[:, d]
+        sd = pred[i, d].std() if i.any() else 0.0
+        if sd > 0:
+            out[i, d] = pred[i, d] + rng.normal(0.0, frac * sd, size=int(i.sum()))
+    return out
+
+
+def evaluator_permutation(pred, gt, mask, perm):
+    """Row p of the output holds old stock perm[p]; the scores travel with their stock."""
+    return pred[perm], gt[perm], mask[perm]
+
+
+def sr_rows(R):
+    sd = R.std(axis=1)
+    return np.where(sd > 0, R.mean(1) / np.where(sd > 0, sd, 1) * math.sqrt(252), 0.0)
+
+
+def graph_degree(edges, n):
+    deg = np.zeros(n, int)
+    for e in edges:
+        deg[list(e)] += 1
+    return deg

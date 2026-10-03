@@ -58,3 +58,56 @@ def test_fewer_than_k_valid_stocks():
     mask = np.array([[True], [False], [False]])
     r, b = F.portfolio(pred, gt, mask, k=5)
     assert list(b[0]) == [0] and r[0] == pytest.approx(.01)
+
+
+def test_tie_groups_gap_chaining_is_transitive():
+    s = np.array([1.0, 0.95, 0.90, 0.5, 0.49, 0.0])
+    assert F.tie_groups(s, 0.06).tolist() == [0, 0, 0, 1, 1, 2]     # 1.0~0.95~0.90 chain into one group
+    assert F.tie_groups(s, 0.0).tolist() == [0, 1, 2, 3, 4, 5]
+
+
+def test_select_eps_keeps_clear_winners_and_randomises_boundary_group():
+    scores = np.array([.9, .5, .5005, .4995, .1]); idx = np.arange(5)
+    rng = np.random.default_rng(0)
+    picks = {tuple(sorted(F.select_eps(scores, idx, 2, 0.001, rng))) for _ in range(300)}
+    assert all(0 in p for p in picks) and {p[1] for p in picks} == {1, 2, 3}
+
+
+def test_zero_spread_day_jitter_is_zero_and_eps_frac_randomises_all():
+    pred = np.full((6, 1), .3); mask = np.ones((6, 1), bool)
+    np.testing.assert_array_equal(F.jitter(pred, mask, 0.5, np.random.default_rng(0)), pred)
+    rng = np.random.default_rng(1)
+    seen = {tuple(sorted(F.portfolio_eps(pred, np.zeros((6, 1)), mask, 2, eps_frac=0.1, rng=rng)[1][0])) for _ in range(300)}
+    assert len(seen) == 15                                              # C(6,2): all pairs reachable
+
+
+def test_eps_draws_matches_reference_and_random_ties():
+    pred, gt, mask = panel()
+    out = F.eps_draws(pred, gt, mask, 2, 400, np.random.default_rng(0), eps_abs=0.0)
+    assert out["returns"].shape == (400, 3)
+    np.testing.assert_allclose(out["returns"][:, :2], np.broadcast_to(F.portfolio(pred, gt, mask, 2)[0][:2], (400, 2)))
+    day2 = {round(x, 10) for x in out["returns"][:, 2]}                 # 3-way tie at .5 -> 3 possible pairs
+    assert day2 == {round(gt[list(p), 2].mean(), 10) for p in ((0, 1), (0, 2), (1, 2))}
+    assert out["group_size"].tolist() == [1, 1, 3] and out["amb_frac"] == pytest.approx(1 / 3)
+
+
+def test_jitter_is_seed_deterministic():
+    pred = np.random.default_rng(3).normal(size=(50, 4)); mask = np.ones_like(pred, bool)
+    a = F.jitter(pred, mask, 0.25, np.random.default_rng(7)); b = F.jitter(pred, mask, 0.25, np.random.default_rng(7))
+    np.testing.assert_array_equal(a, b)
+
+
+def test_affine_rescaling_leaves_selection_unchanged():
+    pred, gt, mask = panel()
+    _, b0 = F.portfolio(pred, gt, mask, k=2)
+    _, b1 = F.portfolio(1000.0 * pred + 7.0, gt, mask, k=2)
+    assert all((x == y).all() for x, y in zip(b0, b1))
+
+
+def test_evaluator_permutation_preserves_identity_without_ties_and_can_change_with_ties():
+    pred, gt, mask = panel()
+    perm = np.array([6, 5, 4, 3, 2, 1, 0])
+    p2, g2, m2 = F.evaluator_permutation(pred, gt, mask, perm)
+    r0, b0 = F.portfolio(pred, gt, mask, k=2); r1, b1 = F.portfolio(p2, g2, m2, k=2)
+    assert set(perm[b1[0]]) == set(b0[0]) and r1[0] == r0[0]           # day 0: no tie at boundary
+    assert set(perm[b1[2]]) != set(b0[2])                              # day 2: 3-way tie -> lowest *new* index wins
