@@ -224,3 +224,10 @@ __marimo__/
 # Kaggle bundle output and private CLI venv
 kaggle/build/
 kaggle/.venv-kaggle/
+
+# overnight driver runtime files
+scripts/overnight/state.json
+scripts/overnight/state.json.tmp
+scripts/overnight/.lock/
+scripts/overnight/.newdocs
+scripts/overnight/run_driver.cmd
