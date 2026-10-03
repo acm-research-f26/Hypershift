@@ -1,10 +1,10 @@
 # Phase 1.5 summary: fidelity audit of the Phase 1 reproduction
 
-*Written 2026-10-02 from the audit notes `A_evaluator.md`, `B_model.md`, `C_data_graph.md`, `D_known_signal.md`, `D_resolved_configs.md`, `E_rsr_original.md`, `F_learnability.md` (same folder) and `docs/PHASE1_TRACKER.md`. Paper = `docs/paper/icdm22-think.pdf` (pp. 849-854). This file consolidates; it adds no new training results except the tie-break table in section 3. It states no final verdict.*
+*Written 2026-10-02 from the audit notes `A_evaluator.md`, `B_model.md`, `C_data_graph.md`, `D_known_signal.md`, `D_resolved_configs.md`, `E_rsr_original.md`, `F_learnability.md` (same folder) and `docs/PHASE1_TRACKER.md`; updated with `F_p1f_smoke_results.md`. Paper = `docs/paper/icdm22-think.pdf` (pp. 849-854). This file consolidates; it adds no new training results except the tie-break table in section 3 and the p1f smoke readout in section 5.*
 
 ## 0. Status in one paragraph
 
-Phase 1 ended with "not reproduced under validation selection" (`docs/PHASE1_TRACKER.md`). Phase 1.5 asked whether that null could be our fault. The evaluator, window alignment, data loading and graph build were audited and found correct (A, C). The model matches the printed equations except for a short list of departures (B). Two things undermine the Phase 1 nulls: `norm: paper` leaks future price scale into inputs (A), and the repo's default optimizer setting, coupled weight decay 5e-4, makes the model unable to learn even a planted signal (D, F). The authors' own RSR-I code shows the same no-skill picture on our evaluator (E), so part of the null is shared across implementations. **The corrected full-NYSE rerun (r5f, r8f) is not yet analysed, so the Phase 1 verdict is pending.**
+Phase 1 ended with "not reproduced under validation selection" (`docs/PHASE1_TRACKER.md`). Phase 1.5 asked whether that null could be our fault. The evaluator, window alignment, data loading and graph build were audited and found correct (A, C). The model matches the printed equations except for a short list of departures (B). Two things undermine the Phase 1 nulls: `norm: paper` leaks future price scale into inputs (A), and the repo's default optimizer setting, coupled weight decay 5e-4, makes the model unable to learn even a planted signal (D, F). The authors' own RSR-I code shows the same no-skill picture on our evaluator (E), so part of the null is shared across implementations. **The corrected p1f smoke has only seed 0 and is INSUFFICIENT SEEDS; the corrected full-NYSE rerun (r5f, r8f) is not yet analysed, so the Phase 1 verdict remains pending.**
 
 Fidelity labels used below: **PAPER** = stated in `docs/paper/icdm22-think.pdf` and implemented as printed; **INFERRED** = the paper is silent, we chose (usually from the STHAN-SR / RSR code); **DEPARTURE** = differs from what the paper prints, or from the authors' code, for a stated reason; **UNKNOWN** = cannot be determined from the PDF.
 
@@ -93,7 +93,7 @@ Planted-signal runs (D and F; synthetic returns on the 309-stock universe; Sharp
 ## 4. Still open
 
 - **r5f (Kaggle `hypershift-run-r5f`, preset 10) and r8f (`hypershift-run-r8f`, preset 11) are not yet fetched or analysed.** They rerun full NYSE with `input_mode=relative weight_decay=0` for THINK/EH/EE (and RSR-I/STHGCN), under both `norm=paper` and `norm=train`.
-- Small-scale Phase 1 arms (g2, POC `rel_*`, clique, R8 small-scale baselines, A10/G1/G2/G5/G12 ablations) have **not** been rerun with `weight_decay=0`; the same wd 5e-4 applied to RSR-I and STHGCN.
+- Small-scale Phase 1 smoke `p1f` reran seed 0 only with `input_mode=relative weight_decay=0`; the rest of small-scale Phase 1 arms (level-input g2, tuned `rel_tuned_g2`, A10/C1/G2/G12 ablations and R1-R3) were not rerun in preset `p1f` (`F_p1f_smoke_results.md` sec. 3).
 - `alpha=0` and `spatial_residual` are not tested on full NYSE (r5f has wd 0 only).
 - Untested model departures (B ranks 1-2: eq. 14 operator, softmax).
 - The paper's Sharpe formula, k, R_f, buy price, split, Fig. 3b degree axis, Wikidata snapshot and Z grouping remain UNKNOWN.
@@ -102,4 +102,21 @@ Planted-signal runs (D and F; synthetic returns on the 309-stock universe; Sharp
 
 ## 5. Final verdict
 
-**PENDING r5f / r8f outcome. Placeholder: to be written after `results/R5_f_paper`, `results/R5_f_train`, `results/R8_f_*` are fetched and analysed (validation-selected epoch and `test_oracle_sr`, THINK vs EH vs EE, paper vs train norm).** Until then, "not reproduced" describes only the wd 5e-4 setup.
+**Current Phase 1.5 verdict: INSUFFICIENT SEEDS for the corrected p1f smoke; PENDING for the full Phase 1 reproduction verdict.** `F_p1f_smoke_results.md` reports only one finished paired seed, so no allowed verdict stronger than INSUFFICIENT SEEDS is supported. Finished seeds: seed 0 for `HH_hyper`, `HH_clique`, `EH_hyper`, `EE_none`, `rsr_i`, `HH` and `EH`.
+
+Paper anchor: Table II p. 852 reports NYSE stock ranking THINK 1.18 vs TCONV+DHHAN 1.14 Sharpe and NASDAQ Clf F1 THINK 0.49 vs TCONV+DHHAN 0.44; Sec. IV-B p. 852 defines Sharpe as `E[R_a - R_f] / std[R_a - R_f]`. The p1f smoke uses our evaluator, so levels are not like-for-like with the paper.
+
+| scope | norm | validation-selected epoch | `test_oracle_sr` / best-test | finished seeds | verdict |
+|---|---|---|---|---|---|
+| p1f 309-stock THINK vs TConv+DHHAN, hyperedges (`HH_hyper - EH_hyper`) | UNKNOWN in result document | `diff leak-free` +1.039; `HH_hyper` 1.245 ± 0.000, `EH_hyper` 0.206 ± 0.000 | result document labels this `best-test diff` +1.039; `HH_hyper` 1.245 ± 0.000, `EH_hyper` 0.206 ± 0.000 | seed 0 only | INSUFFICIENT SEEDS |
+| p1f 309-stock hyperedges vs pairwise (`HH_hyper - HH_clique`) | UNKNOWN in result document | `diff leak-free` -0.129; `HH_hyper` 1.245 ± 0.000, `HH_clique` 1.374 ± 0.000 | result document labels this `best-test diff` -0.129; `HH_hyper` 1.245 ± 0.000, `HH_clique` 1.374 ± 0.000 | seed 0 only | INSUFFICIENT SEEDS |
+| p1f R8 small baseline, `rsr_i minus HH_hyper` | UNKNOWN in result document | +0.392; `rsr_i` 1.637 ± 0.000, `HH_hyper` 1.245 ± 0.000 | UNKNOWN in result document | seed 0 only | INSUFFICIENT SEEDS |
+| p1f R8 small baseline, `rsr_i minus EH_hyper` | UNKNOWN in result document | +1.430; `rsr_i` 1.637 ± 0.000, `EH_hyper` 0.206 ± 0.000 | UNKNOWN in result document | seed 0 only | INSUFFICIENT SEEDS |
+| p1f NASDAQ Clf `HH - EH` macro-F1 | UNKNOWN in result document | `mean diff` -0.0073; `HH` 0.3441 ± 0.0000, `EH` 0.3513 ± 0.0000 | UNKNOWN in result document | seed 0 only | INSUFFICIENT SEEDS |
+| p1f NASDAQ Clf `HH - EH` micro-F1 | UNKNOWN in result document | `mean diff` +0.0203; `HH` 0.3817 ± 0.0000, `EH` 0.3615 ± 0.0000 | UNKNOWN in result document | seed 0 only | INSUFFICIENT SEEDS |
+| corrected full NYSE R5_f | norm=paper | PENDING | PENDING | PENDING | PENDING |
+| corrected full NYSE R5_f | norm=train | PENDING | PENDING | PENDING | PENDING |
+| corrected full NYSE R8_f | norm=paper | PENDING | PENDING | PENDING | PENDING |
+| corrected full NYSE R8_f | norm=train | PENDING | PENDING | PENDING | PENDING |
+
+Until `results/R5_f_paper`, `results/R5_f_train` and `results/R8_f_*` are fetched and analysed, "not reproduced" describes only the wd 5e-4 setup and the corrected full-NYSE verdict is PENDING.

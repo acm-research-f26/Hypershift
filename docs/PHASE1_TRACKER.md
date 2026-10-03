@@ -10,7 +10,7 @@
 
 ## Phase 1 verdict (2026-10-01)
 
-> **Superseded in part by Phase 1.5 (below): these results used the collapsed `weight_decay=5e-4` setup; the verdict is pending the `R5_f` rerun.**
+> **Superseded in part by Phase 1.5 (below): these results used the collapsed `weight_decay=5e-4` setup. The corrected p1f smoke is INSUFFICIENT SEEDS, and the full verdict is pending `R5_f` / `R8_f`.**
 
 Wording is deliberately careful: these are statements about what our reimplementation shows under our reading of the paper (open items are PA/U entries below), not claims about the authors' work.
 
@@ -25,7 +25,8 @@ Wording is deliberately careful: these are statements about what our reimplement
 ## Phase 1.5: fidelity audit (2026-10-01 to 2026-10-02; summary `docs/phase1_5/PHASE1_5_SUMMARY.md`)
 
 - **The Phase 1 nulls came from a setup that could not learn.** Every Phase 1 run (R5_g2, R8, small-scale arms, clique, POC) used coupled L2 `weight_decay=5e-4` in Adam, and the headline runs also used level inputs with `norm: paper`. Phase 1.5 D/F show that this collapses the hyperbolic layers: on a planted-signal benchmark THINK recovers 26% of the oracle IC with wd 5e-4 and 63-84% with `weight_decay=0` + `input_mode=relative` (`docs/phase1_5/F_learnability.md`; no level-mode config reaches 50%).
-- **So the verdict above ("not reproduced under validation selection") is PENDING, not final.** It stands only as a statement about the collapsed setup. The full-NYSE rerun with the fix (Kaggle `hypershift-run-r5f`, R8 baselines `hypershift-run-r8f`) has not been analysed; the verdict is to be rewritten after it. Small-scale arms (g2, POC `rel_*`, clique, R8 baselines) have not been rerun with `weight_decay=0`.
+- **Corrected p1f smoke (seed 0 only) is INSUFFICIENT SEEDS.** `docs/phase1_5/F_p1f_smoke_results.md` finished seed 0 for `HH_hyper`, `HH_clique`, `EH_hyper`, `EE_none`, `rsr_i`, `HH` and `EH`. 309-stock validation-selected Sharpe: `HH_hyper` 1.245 ± 0.000, `HH_clique` 1.374 ± 0.000, `EH_hyper` 0.206 ± 0.000, `EE_none` -0.275 ± 0.000; best-test is identical for those seed-0 arms. THINK vs TConv+DHHAN (`HH_hyper - EH_hyper`) is +1.039 validation-selected and +1.039 best-test, but only 1 paired seed. Hyperedges vs pairwise (`HH_hyper - HH_clique`) is -0.129 validation-selected and -0.129 best-test, but only 1 paired seed. R8 small `rsr_i` is 1.637 ± 0.000 validation-selected / best-test; `rsr_i minus HH_hyper` is +0.392 and `rsr_i minus EH_hyper` is +1.430 validation-selected. R7 NASDAQ p1f smoke: macro-F1 `HH` 0.3441 ± 0.0000 vs `EH` 0.3513 ± 0.0000 (diff -0.0073), micro-F1 `HH` 0.3817 ± 0.0000 vs `EH` 0.3615 ± 0.0000 (diff +0.0203). `norm=paper`, `norm=train` and `test_oracle_sr` names are UNKNOWN in the result document; it labels the oracle-style Sharpe column `best-test`.
+- **So the verdict above ("not reproduced under validation selection") is PENDING, not final.** It stands only as a statement about the collapsed setup. The full-NYSE rerun with the fix (Kaggle `hypershift-run-r5f`, R8 baselines `hypershift-run-r8f`) has not been analysed; `norm=paper`, `norm=train`, validation-selected epoch and `test_oracle_sr` for the full corrected reruns are PENDING. Small-scale level-input g2, tuned `rel_tuned_g2`, A10/C1/G2/G12 ablations and R1-R3 were not rerun in preset `p1f`.
 - Other Phase 1.5 results that do not depend on the rerun: the evaluator, alignment and graph rebuild have no bug (A, C); `norm: paper` leaks future scale into the inputs (A); the authors' own RSR-I code shows the same no-skill picture under our evaluator (E); model departures are listed and ranked (B). Tie-break sensitivity of the headline Sharpe is small (summary, A).
 
 ## Phases
