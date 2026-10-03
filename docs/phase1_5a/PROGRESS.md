@@ -1,0 +1,7 @@
+# Phase 1.5a progress
+
+Plan: `docs/superpowers/plans/2026-10-03-phase1-5a-sharpe2-forensics.md`. Execution order: batch 1 = T1, T2, T2B, T5 (ends with Gate A); batch 2 = T3, T4, T6, T7, T8 (trimmed per the Gate A outcome).
+
+Whoever finishes a task (Claude worker or Codex fallback) appends one line: `T<id> done <YYYY-MM-DD HH:MM> by <claude|codex>: <one-line result>`. If blocked: `T<id> BLOCKED: <reason>`. After T8 completes, create the empty file `docs/phase1_5a/DONE`.
+
+## Log
