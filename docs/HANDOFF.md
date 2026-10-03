@@ -3,7 +3,7 @@
 > **Correction banner (2026-09-29).** A paper audit (`docs/phase1/paper_audit.md`) and commit `de20f8e` change how to read this document.
 > 1. **Every stock result below (sections 1, 5, 6) used the pre-fix hypergraph**, which made a star hyperedge for every Wikidata relation channel. The paper says second-order relations are pairwise ([A854] Sec. B), and `de20f8e` now builds first-order channels as stars and second-order channels as 2-node pairs. The corrected NYSE graph has **4350 hyperedges and max node degree 114** (old: 312 and 37); the 309-stock small-scale graph has 558 edges (old: 73). Reruns on the corrected graph are queued on the second GPU queue ("g2"); until they finish, treat the numbers below as **old-graph** results.
 > 2. **The paper's "Euclidean" variant is Euclidean temporal convolution + hyperbolic hypergraph attention (our EH), not our fully-Euclidean EE.** Our small-scale "hyperbolic vs Euclidean" contrasts are HH vs EE, which the paper never ran.
-> 3. **Sharpe:** the paper writes `SR = E[R_a - R_f] / std[R_a - R_f]` with top-k (k unspecified), no annualization (p852 Sec. IV-B). Ours is the RSR [1] code definition (top-5, x sqrt(252), no risk-free rate).
+> 3. **Sharpe:** the paper writes `SR = E[R_a - R_f] / std[R_a - R_f]` with top-k (k unspecified), no annualization (p852 Sec. IV-B). Ours is the STHAN-SR evaluator definition (the RSR [1] evaluator has no Sharpe; top-5, x sqrt(252), no risk-free rate).
 >
 > Citations: `p849`-`p853` are pages of `05-Hypershift-OA.pdf`; `[A854]` is page 854 (appendices, Algorithm 1, references 17-38) of `data/raw/icdm22-think.pdf`.
 
@@ -43,7 +43,7 @@ THINK ranks stocks each day. It buys the top-k at the close and sells them at th
 - **Loss.** MSE on return plus a pairwise ranking loss. The paper doesn't state it; this is the STHAN-SR loss from the same authors.
 - **Metric.**
   - The paper (p852 Sec. IV-B): `SR = E[R_a - R_f] / std[R_a - R_f]`, R_f a risk-free return (value not given), buy the top-k stocks (k not given), no annualization; "Following [1]" (RSR) for the daily buy-hold strategy. NDCG is also reported.
-  - Ours: mean/std of the daily top-5 return × √252, no risk-free rate, no costs. This is the RSR [1] / STHAN-SR code definition; that it is the paper's protocol is `INFERRED (not in paper)`. The two definitions differ by the √252 annualization (a factor of about 15.9 if the paper's is not annualized; the paper does not say) and by R_f, so our 2.40 vs the paper's 1.18 is not a like-for-like comparison.
+  - Ours: mean/std of the daily top-5 return × √252, no risk-free rate, no costs. This is the STHAN-SR evaluator definition (`* 15.87`; the RSR [1] evaluator computes no Sharpe, Phase 1.5 A); that it is the paper's protocol is `INFERRED (not in paper)`. The two definitions differ by the √252 annualization (a factor of about 15.9 if the paper's is not annualized; the paper does not say) and by R_f, so our 2.40 vs the paper's 1.18 is not a like-for-like comparison.
 - **Data.** RSR dataset (Feng et al. 2019), NYSE 1737 stocks.
   - Train 2013–2015 (756 days).
   - Validate 2016 (252 days).
@@ -80,7 +80,7 @@ These parts follow the paper and verified reference code exactly:
 | Tuning | Unknown | None so far; equal-budget tuning running now | — |
 | NDCG | Their code computes it incorrectly: on stock index numbers, last day only | Correct NDCG@5 averaged over days | Theirs isn't reproducible |
 | TSE, NASDAQ-Clf, other datasets | Reported (p852 Table II) | Not run (TSE data is not public); NASDAQ-Clf is implemented but not run | — |
-| Sharpe definition | `E[R_a - R_f]/std[R_a - R_f]`, top-k, no √252 (p852 Sec. IV-B) | Top-5, × √252, R_f = 0 (RSR [1] code) | Paper leaves k and R_f unspecified |
+| Sharpe definition | `E[R_a - R_f]/std[R_a - R_f]`, top-k, no √252 (p852 Sec. IV-B) | Top-5, × √252, R_f = 0 (STHAN-SR evaluator `* 15.87`; the RSR [1] evaluator computes no Sharpe) | Paper leaves k and R_f unspecified |
 | Wiki hyperedges | First-order: star; second-order: pairs ([A854] Sec. B) | Same since `de20f8e`. Before it: a star for every channel | Bug found by the audit |
 
 ## 5. Experiments and results

@@ -5,7 +5,7 @@
 > **Read this first (2026-09-29).**
 > 1. **Every result in this document used the pre-fix hypergraph** (a star hyperedge for every Wikidata relation channel; 73 hyperedges on the 309 stocks). The paper builds second-order relations as pairs ([A854] Sec. B), and commit `de20f8e` fixed the builder (309-stock graph: now 558 edges). **Reruns on the corrected graph are queued on the second GPU queue ("g2")**; until they finish, all numbers below are old-graph numbers. See "Correction 2" in §4e.
 > 2. **Our small-scale "hyperbolic vs Euclidean" contrasts compare HH with EE. That is not the paper's comparison.** The paper's Euclidean model is Euclidean temporal convolution + hyperbolic hypergraph attention (our EH; "TCONV + DHHAN", p852 Table II and Sec. V.A). The paper has no fully-Euclidean model.
-> 3. **Our Sharpe is not the paper's formula.** The paper writes `E[R_a - R_f] / std[R_a - R_f]` with top-k and no annualization (p852 Sec. IV-B); ours is top-5, × √252, no R_f (RSR [1] code).
+> 3. **Our Sharpe is not the paper's formula.** The paper writes `E[R_a - R_f] / std[R_a - R_f]` with top-k and no annualization (p852 Sec. IV-B); ours is top-5, × √252, no R_f (STHAN-SR evaluator `* 15.87`; the RSR [1] evaluator computes no Sharpe).
 >
 > Citations: `pNNN` = page of `05-Hypershift-OA.pdf` (pp849-853); `[A854]` = page 854 (appendices, Algorithm 1, refs 17-38) of `data/raw/icdm22-think.pdf`.
 
@@ -35,7 +35,7 @@
    - DHHAN (distance-aware hyperbolic hypergraph attention) mixes information between stocks that share a hyperedge.
 4. **Trading rule and metric:**
    - **Paper (p852 Sec. IV-B):** "Following [1], we adopt a daily-buy-hold trading strategy": rank all stocks by predicted return ratio, buy the top-k, sell at the next close. `SR = E[R_a - R_f] / std[R_a - R_f]`, where R_f is "a risk-free return". **k and R_f are not given, and there is no √252.**
-   - **Ours (RSR [1] / STHAN-SR code definition; that the paper uses it is `INFERRED (not in paper)`):** buy the top 5 predicted stocks each test day, Sharpe = mean / std of the daily top-5 return × √252, R_f = 0, no costs. Our Sharpe values are therefore not directly comparable to the paper's 1.18.
+   - **Ours (STHAN-SR evaluator definition, `* 15.87`; the RSR [1] evaluator has no Sharpe; that the paper uses it is `INFERRED (not in paper)`):** buy the top 5 predicted stocks each test day, Sharpe = mean / std of the daily top-5 return × √252, R_f = 0, no costs. Our Sharpe values are therefore not directly comparable to the paper's 1.18.
 5. **Paper's NYSE numbers:** THINK Sharpe **1.18**, TCONV+DHHAN 1.14, STHGCN 1.10.
 
 ## 3. What we did in the small-scale test
@@ -55,7 +55,7 @@
 | Batch / epochs | 1 day per step; ~100 epochs (earlier code) | **8 days** per step; **max 30 epochs**, early-stopped (~17 in practice) | **Different** (compute budget) |
 | Hyperparameter tuning | unknown | **none** | **Different** |
 | Epoch selection | **not stated in the paper**. Their earlier STHAN-SR code prints both the 2016 and 2017 scores every epoch, with no selection rule | **both** reported: best test epoch, and epoch chosen on validation | Both shown |
-| Trading rule and Sharpe | top-k daily (k unspecified); `E[R_a - R_f]/std[R_a - R_f]`, no √252 (p852 Sec. IV-B) | top-5 daily, mean/std × √252, R_f = 0 (RSR [1] code) | **Different definition** (k, R_f, annualization) |
+| Trading rule and Sharpe | top-k daily (k unspecified); `E[R_a - R_f]/std[R_a - R_f]`, no √252 (p852 Sec. IV-B) | top-5 daily, mean/std × √252, R_f = 0 (STHAN-SR evaluator `* 15.87`; the RSR [1] evaluator computes no Sharpe) | **Different definition** (k, R_f, annualization) |
 | NDCG | computed incorrectly in their code (see §7) | standard NDCG@5 | **Different** (fixed) |
 | Seeds | 25 runs ("mean of 25 runs") | 10 per arm | Fewer |
 

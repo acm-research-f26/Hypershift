@@ -4204,7 +4204,7 @@ python scripts/plots.py
 ## Setup
 - Data: RSR NYSE (1737 stocks) / NASDAQ (1026), daily 2013-01-02..2017-12-08; train 756 / val 252 / test ⟨237 NYSE⟩ days.
 - Hypergraph: industry hyperedges + wiki hyperedges (first-order channels stars, second-order channels pairs, [A854] Sec. B), deduplicated: ⟨#edges, max size, max node degree from test_real_nyse_hypergraph_stats⟩.
-- Metric: SR = mean/std(daily top-5 return) * sqrt(252), no rf, no costs (RSR [1] code definition; the paper's formula has R_f, top-k and no annualization, p852). Selection by validation SR.
+- Metric: SR = mean/std(daily top-5 return) * sqrt(252), no rf, no costs (STHAN-SR evaluator definition; the RSR [1] evaluator has no Sharpe; the paper's formula has R_f, top-k and no annualization, p852). Selection by validation SR.
 - Seeds: 25 for answer tables; 15 for E4/E9/E10; 5 for curves (descriptive).
 - Tuning: lr × alpha per geometry (HH, HE, EH, EE), 3 seeds each, selected on validation SR. Structure and grouping variants reuse their geometry's setting, which slightly favours the default "hyper" structure.
 - Bootstrap CIs are on the Sharpe of the seed-ensemble portfolio (daily returns averaged over the common seeds), not the mean per-seed SR.

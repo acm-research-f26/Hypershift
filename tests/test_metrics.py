@@ -59,3 +59,23 @@ def test_evaluate_all_keys():
     out = evaluate_all(p, g, np.ones_like(g))
     assert set(out) == {"sr", "irr", "cumret", "mdd", "ann_vol", "ndcg5", "ndcg_sthan", "mse", "n_days"}
     assert out["n_days"] == 30
+
+
+def test_random_tiebreak_matches_default_without_ties_and_differs_with_ties():
+    from hypershift.eval.metrics import evaluate_all, evaluate_random_ties
+    rng = np.random.default_rng(0)
+    p, g = rng.normal(size=(30, 40)), rng.normal(0, 0.01, size=(30, 40))
+    m = np.ones_like(g)
+    base, rt = evaluate_all(p, g, m), evaluate_random_ties(p, g, m, draws=3)
+    assert rt["sr_rt"] == pytest.approx(base["sr"]) and rt["sr_rt_sd"] == pytest.approx(0, abs=1e-12)
+    assert rt["ndcg5_rt"] == pytest.approx(base["ndcg5"])          # sklearn NDCG equals manual NDCG when there are no ties
+    # constant prediction: default picks the lowest indices; random tie-break averages over all stocks
+    c = np.zeros_like(g)
+    d = evaluate_all(c, g, m)["sr"]
+    r = evaluate_random_ties(c, g, m, draws=50)
+    assert r["sr_rt"] != pytest.approx(d) and r["sr_rt_sd"] > 0
+    # ndcg: random tie-break expectation ~ sklearn's tie-averaged value
+    assert r["ndcg5_rt"] == pytest.approx(evaluate_all(c, g, m)["ndcg5"], abs=0.03)
+    # deterministic given the seed; default untouched
+    assert evaluate_random_ties(c, g, m, draws=5, seed=1) == evaluate_random_ties(c, g, m, draws=5, seed=1)
+    assert evaluate_all(c, g, m)["sr"] == d

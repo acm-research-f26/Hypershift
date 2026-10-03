@@ -30,6 +30,13 @@ Read Part 0 before changing any model math. Decisions and results made while exe
 - `docs/PHASE1_TRACKER.md`: running record, verdict, all R/A/G/C/PA/U entries.
 - `docs/phase1/`: `HANDOFF_2026-10-01.md` (what is running, next steps), `paper_audit.md`, `R5_full_nyse_g2.md`, `R8_baselines_results.md` (+ `R8_baselines.md`), `g2_small_results.md`, `A10_G5_full_nyse.md`, `fig3_degree_reconcile.md`, `R1`–`R3`, `R7`.
 - `docs/phase1_5/`: fidelity-audit notes.
+- `docs/phase1_5/PHASE1_5_SUMMARY.md`: consolidated Phase 1.5 status (start here). Parts:
+  - `A_evaluator.md`: evaluator, target alignment, normalization leak; ties and the Sharpe constant.
+  - `B_model.md`: tensor-level model audit against eq. 6-17, departures ranked, new attention switches.
+  - `C_data_graph.md`: data and Appendix B graph audit, independent rebuild.
+  - `D_known_signal.md` and `D_resolved_configs.md`: planted-signal learning test, and the fully resolved Phase 1 configs and repo-vs-authors defaults.
+  - `E_rsr_original.md`: the authors' original RSR-I code scored with our evaluator.
+  - `F_learnability.md`: why THINK did not learn the planted signal (weight decay) and the config that does.
 - `docs/HANDOFF.md`, `docs/POC_PRESENTATION.md`: earlier handoff and POC write-up.
 
 ## Environment (Windows, Git Bash)
@@ -123,4 +130,6 @@ A run is skipped if `metrics.json` exists, so everything is resumable. `aggregat
 - Clique arms are ~50× slower than hypergraph arms (145k pairs on NYSE). They use `micro_batch_days: 1`, which gives identical gradients with less memory.
 - `run_grid.py --seeds` replaces every selected label's seed list. Use `--labels` to scope it.
 - Never tune only one arm. Every compared variant gets the same tuning budget and the same seeds.
-- NASDAQ has T = 1245: the raw files have 1246 rows, and the last row, which is all missing, is dropped.
+- NASDAQ has T = 1245: the raw files have 1246 rows, and the loader drops the last one (`parse_eod(drop_last=True)`, 2017-12-11). It is **not** all missing: 474 of the 1026 listed stocks are missing there, 552 have real values (Phase 1.5 C; rechecked on the raw files).
+- **Never train with coupled `weight_decay=5e-4` (the old default).** With Adam at `lr 1e-3` the decay gradient is 10-40x the loss gradient and shrinks the stacked hyperbolic layers to a constant output; planted-signal recovery is 26% of oracle. Use `weight_decay=0` + `input_mode=relative` (63-84% THINK, Phase 1.5 F, `docs/phase1_5/F_learnability.md`). All Phase 1 nulls used the collapsed setup; verdict pending the `R5_f_*` rerun.
+- **Prediction ties:** the evaluator breaks top-5 ties by lowest index. Collapsed models tie a lot (THINK: 73 of 237 test days). `scripts/tiebreak_report.py` gives a random tie-break column; the default is unchanged.

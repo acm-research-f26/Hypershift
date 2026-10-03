@@ -108,3 +108,36 @@ def evaluate_all(pred, gt, mask, k=5, periods_per_year=252) -> dict:
         "mse": masked_mse(pred, gt, mask),
         "n_days": int(pred.shape[1]),
     }
+
+
+def _random_order(pred_d, rng, k):
+    """Indices of the top-k of one day's scores, exact ties broken uniformly at random (lexsort: last key is primary)."""
+    return np.lexsort((rng.random(len(pred_d)), -pred_d))[:k]
+
+
+def evaluate_random_ties(pred, gt, mask, k=5, draws=20, seed=0, periods_per_year=252) -> dict:
+    """Robustness column: Sharpe, excess Sharpe (top-k minus equal-weight hold) and NDCG@k with exact prediction ties
+    broken at random, averaged over `draws` independent tie-break draws. The default evaluator (`evaluate_all`) is
+    unchanged and breaks ties by lowest index (stable sort). Without ties, every draw equals the default."""
+    rng = np.random.default_rng(seed)
+    days = [np.nonzero(mask[:, d] > 0.5)[0] for d in range(pred.shape[1])]
+    hold = np.array([gt[i, d].mean() if len(i) else 0.0 for d, i in enumerate(days)])
+    disc = 1.0 / np.log2(np.arange(2, k + 2))
+    srs, xsrs, nds = [], [], []
+    for _ in range(draws):
+        r, nd = np.zeros(pred.shape[1]), []
+        for d, i in enumerate(days):
+            if len(i) == 0:
+                continue
+            o = _random_order(pred[i, d], rng, k)
+            r[d] = gt[i[o], d].mean()
+            if len(i) >= 2:
+                rel = gt[i, d] - gt[i, d].min()
+                if rel.max() > 0:
+                    ideal = np.sort(rel)[::-1][:k]
+                    nd.append(float((rel[o] * disc[: len(o)]).sum() / (ideal * disc[: len(ideal)]).sum()))
+        srs.append(sharpe(r, periods_per_year))
+        xsrs.append(sharpe(r - hold, periods_per_year))
+        nds.append(float(np.mean(nd)) if nd else 0.0)
+    return {"sr_rt": float(np.mean(srs)), "sr_rt_sd": float(np.std(srs)), "xsr_rt": float(np.mean(xsrs)),
+            "ndcg5_rt": float(np.mean(nds)), "draws": draws}
