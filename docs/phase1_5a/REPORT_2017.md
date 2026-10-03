@@ -8,7 +8,7 @@ Reproduce: `CUDA_VISIBLE_DEVICES=-1 .venv/Scripts/python.exe scripts/forensic_20
 2. **The model is not distinguishable from random selection.** The five Sharpes (1.88 to 2.14) sit at the 88-93 percentile (in percent of random baskets beaten) of random daily top-5 baskets (F1 per-seed p 0.067 to 0.120, family p 0.120, Holm 0.36). None of F1-F4 rejects (Holm 0.32 to 0.64). Gate A outcome 2 (exposure sufficient) is implied by the non-rejection of F1: a Sharpe typical of random 5-stock baskets in this year needs no skill to explain it.
 3. **Power is low.** Seed-0 block-bootstrap Sharpe 95% CI is 0.28 to 3.48; over seeds the CI bounds range 0.03 to 3.91. "Not distinguishable from random" is not "no signal": hypothesis D (a genuine top-tail signal) is not excluded, only unsupported.
 4. **Weak positive signs, no calibrated ranking.** Global IC 0.0050 to 0.0081, NDCG@5 0.5673 to 0.5710 vs random 0.5639; the top-5 are in the realised top decile 0.155 to 0.203 of the time (random 0.10) but also in the realised bottom decile 0.138 to 0.182, so most of that is a volatility effect; top minus bottom predicted-decile return -3.9 to 2.3 bp/day with a top-decile 95% half-width of about 9 to 12 bp. Margin buckets show no monotone pattern.
-5. **Mechanisms ruled down:** ties/index order (A) are not the main mechanism (random exact-tie median Sharpe stays above hold-all in every seed); backtest integrity (C) is clean except one stock-day (SYX 2017-03-27, +36.8%, selected by all five seeds) that is about 19 to 25% of each seed's total P&L; without that day (retrospective) seeds 0-2 fall to 1.61 to 1.70.
+5. **Mechanisms ruled down:** ties/index order (A) are not the main mechanism (random exact-tie median Sharpe stays above hold-all in every seed); backtest integrity (C) is clean except one stock-day (SYX 2017-03-27, +36.8%, selected by all five seeds) that is about 19 to 25% of each seed's total P&L. Retrospective Sharpe without the day(s) with an abs(return) > 0.2 stock in the basket, seeds 0-4: 1.64, 1.70, 1.61, 2.17, 2.28 (seeds 3-4 also lose the WAIR 2017-08-09 loss day, so they rise).
 6. **Costs and training:** at 10 bp per side the net Sharpe is 0.98 to 1.57 and at 25 bp -0.39 to 0.70 (hold-all has no cost modelled, 1.53). Test Sharpe after the first training pass is already 1.82 to 2.54 and its mean over all 100 epochs is 1.61 to 2.00: the level is not something training clearly added.
 7. **Verdict:** Sharpe near 2 in this run is **not** evidence of learned stock ranking (NO EVIDENCE; exploratory, 2017 only, seeds not independent). See the decision table and the verdict section.
 
@@ -206,7 +206,7 @@ Weight-decay control (`docs/phase1_5/F_learnability.md` lines 7 and 11-12): same
 
 - T4 items 3-4: per-stock contribution, exclude-and-reselect, best-day removal, momentum benchmark, daily excess-series CIs.
 - T6 items 2-3: epsilon tie-group curves and score-jitter curves.
-Each is written `skipped by the predeclared sequential stopping rule (Gate A outcome 2)` in `decompose.json` / `gaps.json`; the full script run writes `{"skipped": "gate A outcome 2"}` for the T6 curves.
+Each is written `skipped by the predeclared sequential stopping rule (Gate A outcome 2)` in `decompose.json` / `gaps.json`; the full script run writes `{"skipped": "gate A outcome 2"}` for the T6 curves and for the T4 `contribution` and `costs_benchmarks` keys.
 
 ## Limitations
 
@@ -223,7 +223,7 @@ Large per-stock-day exports are in `results/forensics_1_5a/` (git-ignored). Comm
 
 | file | sha256 |
 |---|---|
-| `docs/phase1_5a/decompose.json` | 1ddb080a72a1 |
+| `docs/phase1_5a/decompose.json` | 0bd3e6b03111 |
 | `docs/phase1_5a/gaps.json` | 151380a0c375 |
 | `docs/phase1_5a/gate_a.json` | 859a8888519a |
 | `docs/phase1_5a/integrity.json` | 6b7d34410903 |

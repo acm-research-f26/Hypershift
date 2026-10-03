@@ -625,7 +625,8 @@ def stage_decompose(a):
         ind = np.array(F.industry_of(tickers, ROOT / DATA_ROOT / "relation" / "sector_industry" / "NYSE_industry_ticker.json"))
         beta = F.train_beta(data.gt, data.mask, data.valid_index)
     skip = "skipped by the predeclared sequential stopping rule (Gate A outcome 2)"
-    res = {"fixture": FIXTURE, "skipped": {"contribution_exclusion_dropdays (T4 item 3)": skip,
+    res = {"fixture": FIXTURE, "contribution": {"skipped": "gate A outcome 2"}, "costs_benchmarks": {"skipped": "gate A outcome 2"},
+           "skipped": {"contribution_exclusion_dropdays (T4 item 3)": skip,
                        "costs_benchmarks beyond model and hold-all (T4 item 4)": skip},
            "runs": {}}
     for exp, label in [PRIMARY] + list(REF_RUNS):
@@ -1036,7 +1037,8 @@ def stage_report(a):
           f"4. **Weak positive signs, no calibrated ranking.** Global IC {_rng(ic, '{:.4f}')}, NDCG@5 {_rng(nd, '{:.4f}')} vs random {gaps['random_ndcg5']:.4f}; the top-5 are in the realised top decile {_rng(hit10, '{:.3f}')} of the time (random 0.10) "
           f"but also in the realised bottom decile {_rng(miss10, '{:.3f}')}, so most of that is a volatility effect; top minus bottom predicted-decile return {_rng(tbd, '{:.1f}')} bp/day with a top-decile 95% half-width of about {_rng(cal_hw, '{:.0f}')} bp. Margin buckets show no monotone pattern.",
           f"5. **Mechanisms ruled down:** ties/index order (A) are not the main mechanism (random exact-tie median Sharpe stays above hold-all in every seed); backtest integrity (C) is clean except one stock-day (SYX 2017-03-27, +{syx['ret'] * 100:.1f}%, selected by all five seeds) that is about "
-          f"{_rng([x * 100 for x in syx_sh], '{:.0f}')}% of each seed's total P&L; without that day (retrospective) seeds 0-2 fall to {_rng([ig[k]['retrospective_sharpe_without_days_with_abs_gt_0.2'] for k in S[:3]])}.",
+          f"{_rng([x * 100 for x in syx_sh], '{:.0f}')}% of each seed's total P&L. Retrospective Sharpe without the day(s) with an abs(return) > 0.2 stock in the basket, seeds 0-4: "
+          + ", ".join(f"{ig[k]['retrospective_sharpe_without_days_with_abs_gt_0.2']:.2f}" for k in S) + " (seeds 3-4 also lose the WAIR 2017-08-09 loss day, so they rise).",
           f"6. **Costs and training:** at 10 bp per side the net Sharpe is {_rng(net10)} and at 25 bp {_rng(net25)} (hold-all has no cost modelled, {ha:.2f}). Test Sharpe after the first training pass is already {_rng(e0)} and its mean over all 100 epochs is {_rng(mo)}: the level is not something training clearly added.",
           "7. **Verdict:** Sharpe near 2 in this run is **not** evidence of learned stock ranking (NO EVIDENCE; exploratory, 2017 only, seeds not independent). See the decision table and the verdict section.", "",
           "## Reproduction table by seed (primary run)", "",
@@ -1147,7 +1149,7 @@ def stage_report(a):
            "## Skipped by the predeclared sequential stopping rule (Gate A outcome 2)", "",
            "- T4 items 3-4: per-stock contribution, exclude-and-reselect, best-day removal, momentum benchmark, daily excess-series CIs.",
            "- T6 items 2-3: epsilon tie-group curves and score-jitter curves.",
-           "Each is written `skipped by the predeclared sequential stopping rule (Gate A outcome 2)` in `decompose.json` / `gaps.json`; the full script run writes `{\"skipped\": \"gate A outcome 2\"}` for the T6 curves.", "",
+           "Each is written `skipped by the predeclared sequential stopping rule (Gate A outcome 2)` in `decompose.json` / `gaps.json`; the full script run writes `{\"skipped\": \"gate A outcome 2\"}` for the T6 curves and for the T4 `contribution` and `costs_benchmarks` keys.", "",
            "## Limitations", "",
            "- Not recoverable (`inventory.json`): " + "; ".join(inv["not_recoverable"]) + ".",
            "- 2017 is an exploratory year; the five seeds share the days, the ordering and the evaluator, so they are repeated runs, not independent samples. Formal family: F1-F4 only (intersection-union over seeds, Holm); everything else is exploratory.",

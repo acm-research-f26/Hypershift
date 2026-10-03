@@ -1,5 +1,11 @@
 {
  "fixture": false,
+ "contribution": {
+  "skipped": "gate A outcome 2"
+ },
+ "costs_benchmarks": {
+  "skipped": "gate A outcome 2"
+ },
  "skipped": {
   "contribution_exclusion_dropdays (T4 item 3)": "skipped by the predeclared sequential stopping rule (Gate A outcome 2)",
   "costs_benchmarks beyond model and hold-all (T4 item 4)": "skipped by the predeclared sequential stopping rule (Gate A outcome 2)"

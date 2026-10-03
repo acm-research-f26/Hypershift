@@ -254,4 +254,6 @@ def test_forensic_script_end_to_end_on_fixture(tmp_path):
     gaps = json.loads((out / "docs" / "gaps.json").read_text())
     assert gaps["epsilon"] == {"skipped": "gate A outcome 2"} and gaps["jitter"] == {"skipped": "gate A outcome 2"}
     assert json.loads((out / "docs" / "proxy.json").read_text()) == {"skipped": "fixture"}
+    dec = json.loads((out / "docs" / "decompose.json").read_text())
+    assert dec["contribution"] == {"skipped": "gate A outcome 2"} and dec["costs_benchmarks"] == {"skipped": "gate A outcome 2"}
     assert h() == before
