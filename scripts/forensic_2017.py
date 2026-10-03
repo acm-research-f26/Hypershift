@@ -811,8 +811,113 @@ def stage_gaps(a):
     print("gaps written")
 
 
+
+NOT_ANSWERABLE = [
+    "basket identities, margins and tie rates at non-selected epochs",
+    "overlap of epoch-0 vs selected baskets",
+    "through-model index permutation",
+    "frozen-model 2018+ evaluation"]
+
+
+def stage_trajectory(a):
+    """Task 7: history-only epoch trajectory, cross-seed early-vs-late selected epochs, wd-control statement."""
+    runs = [PRIMARY] + list(REF_RUNS)
+    res = {"epoch0_note": "epoch 0 = after the first training pass (loop.py:211-243), not an untrained model",
+           "not_answerable_from_artifacts": NOT_ANSWERABLE, "runs": {}}
+    series = {}
+    for exp, label in runs:
+        key = f"{exp}/{label}"
+        res["runs"][key] = {}
+        for s in SEEDS:
+            ar = F.load_run(exp, label, s, RESULTS)
+            h = ar.history
+            tsr = np.array([x["test"]["sr"] for x in h]); vsr = np.array([x["val"]["sr"] for x in h])
+            ic = np.array([x["test_ic"] for x in h]); sd = np.array([x["test_pred_sd"] for x in h])
+            nd = np.array([x["test"]["ndcg5"] for x in h]); tl = np.array([x["train_loss"] for x in h])
+            be = int(ar.metrics["best_epoch"]); oe = ar.metrics.get("test_oracle_epoch")
+            series[(key, s)] = dict(tsr=tsr, vsr=vsr, ic=ic, sd=sd, nd=nd, tl=tl, be=be, oe=oe)
+
+            def _c(x, y):
+                return float(np.corrcoef(x, y)[0, 1]) if np.std(x) > 0 and np.std(y) > 0 else None
+            res["runs"][key][f"seed_{s}"] = {
+                "epochs": len(h), "selected_epoch": be, "test_oracle_epoch_diagnostic": oe,
+                "test_sr_epoch0": float(tsr[0]), "test_sr_selected": float(tsr[be]), "test_sr_last": float(tsr[-1]),
+                "test_sr_oracle_diagnostic": float(tsr.max()), "val_sr_selected": float(vsr[be]),
+                "corr_over_epochs_test_sr_vs_pred_sd": _c(tsr, sd), "corr_over_epochs_test_sr_vs_test_ic": _c(tsr, ic),
+                "test_sr_mean_over_epochs": float(tsr.mean()), "test_sr_sd_over_epochs": float(tsr.std())}
+    # early vs late selected epochs, cross-seed only, primary run
+    pk = "%s/%s" % PRIMARY
+    sel = {s: res["runs"][pk][f"seed_{s}"]["selected_epoch"] for s in SEEDS}
+    early = [s for s in SEEDS if sel[s] <= 2]; late = [s for s in SEEDS if sel[s] >= 8]
+    prox = json.loads((DOCS / "proxy.json").read_text()) if (DOCS / "proxy.json").exists() else None
+    dec = json.loads((DOCS / "decompose.json").read_text()) if (DOCS / "decompose.json").exists() else None
+    per, baskets = {}, {}
+    for s in SEEDS:
+        ar = F.load_run(*PRIMARY, s, RESULTS)
+        r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
+        b = F.boundary_stats(ar.pred, ar.mask)
+        baskets[s] = base
+        per[s] = {"selected_epoch": sel[s], "sharpe": F.perf(r)["sr"], "tie_rate": float(b["exact_tie"].mean()),
+                  "score_sd_median": float(np.median(b["sd"])), "margin5_median": float(np.median(b["margin"])),
+                  "top5_stock_share": F.top_share(F.selection_freq(base, ar.pred.shape[0]), 5)}
+        if prox and isinstance(prox.get("runs"), dict) and pk in prox["runs"]:
+            d = {k: v["mean_spearman"] for k, v in prox["runs"][pk][f"seed_{s}"]["spearman_ranked"]}
+            per[s]["spearman_ret20"], per[s]["spearman_ma30_rel"] = d.get("ret20"), d.get("ma30_rel")
+    def _grp(g):
+        return {k: float(np.mean([per[s][k] for s in g])) for k in ("sharpe", "tie_rate", "score_sd_median", "margin5_median", "top5_stock_share")} if g else None
+    within = lambda g: float(np.mean([_jacc(baskets[i], baskets[j]) for ii, i in enumerate(g) for j in g[ii + 1:]])) if len(g) > 1 else None
+    between = float(np.mean([_jacc(baskets[i], baskets[j]) for i in early for j in late])) if early and late else None
+    res["early_vs_late_primary"] = {"early_seeds(selected epoch<=2)": early, "late_seeds(selected epoch>=8)": late, "per_seed": {str(s): v for s, v in per.items()},
+                                    "early_mean": _grp(early), "late_mean": _grp(late), "mean_daily_jaccard_within_early": within(early),
+                                    "mean_daily_jaccard_within_late": within(late), "mean_daily_jaccard_between": between,
+                                    "caveat": "between-seed comparison: confounded with seed; not a within-run trajectory"}
+    res["seed_concentration_from_decompose"] = dec["runs"][pk]["seed_concentration"] if dec else None
+    res["seed_note"] = "agreement across seeds under the same data, ordering and backtester is not independent evidence"
+    res["wd_control"] = {
+        "source": "docs/phase1_5/F_learnability.md lines 7 and 11-12",
+        "quote": ("Root cause (confirmed): coupled L2 weight decay 5e-4 in Adam, with lr 1e-3, destroys the model because the loss gradient is far smaller "
+                  "than the decay gradient. Setting weight_decay=0 alone raises THINK (HH_hyper) from 26% to 63-84% of the oracle IC and EH from 32% to 72-77%. "
+                  "[...] weight decay is 10-40x larger [than the loss gradient]; PoincareLinear output is proportional to |z|, so three stacked layers shrink multiplicatively."),
+        "design": "one-factor control: same planted signal, data, code path and seeds; only weight decay changed",
+        "narrow_conclusion": ("wd 5e-4 impaired planted-signal learnability; this does not attribute the real-data Sharpe change to wd "
+                              "(input mode, log_ic and seed count also changed)"),
+        "recommendation": "no new run"}
+    (DOCS / "trajectory.json").write_text(json.dumps(res, indent=1))
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    metrics = [("tsr", "test Sharpe"), ("vsr", "val Sharpe"), ("ic", "test IC"), ("nd", "test NDCG@5"), ("sd", "test pred SD"), ("tl", "train loss")]
+    fig, axs = plt.subplots(len(runs), len(metrics), figsize=(3.2 * len(metrics), 2.6 * len(runs)), squeeze=False)
+    for i, (exp, label) in enumerate(runs):
+        key = f"{exp}/{label}"
+        for j, (m, title) in enumerate(metrics):
+            ax = axs[i][j]
+            for s in SEEDS:
+                sr = series[(key, s)]
+                l, = ax.plot(sr[m], lw=0.7)
+                ax.axvline(sr["be"], color=l.get_color(), ls=":", lw=0.8)
+                if sr["oe"] is not None and m == "tsr":
+                    ax.plot([sr["oe"]], [sr["tsr"][sr["oe"]]], marker="x", color=l.get_color(), ms=4)
+            if i == 0:
+                ax.set_title(title, fontsize=8)
+            if j == 0:
+                ax.set_ylabel(key, fontsize=6)
+            ax.tick_params(labelsize=6)
+    fig.suptitle("epoch 0 = after the first training pass (loop.py:211-243), not an untrained model; dotted = validation-selected epoch, x = best-test epoch (diagnostic)", fontsize=7)
+    fig.tight_layout(); fig.savefig(FIGS / "phase1_5a_trajectory.png", dpi=110)
+    e = res["early_vs_late_primary"]
+    print("trajectory: selected", sel, "early", early, "late", late, "| tie rate early/late",
+          e["early_mean"] and round(e["early_mean"]["tie_rate"], 3), e["late_mean"] and round(e["late_mean"]["tie_rate"], 3),
+          "| jaccard within E/L, between", e["mean_daily_jaccard_within_early"], e["mean_daily_jaccard_within_late"], e["mean_daily_jaccard_between"])
+    for s in SEEDS:
+        x = res["runs"][pk][f"seed_{s}"]
+        print(" seed", s, "ep0/sel/last/oracle SR", round(x["test_sr_epoch0"], 2), round(x["test_sr_selected"], 2), round(x["test_sr_last"], 2),
+              round(x["test_sr_oracle_diagnostic"], 2), "corr(SR,sd)", x["corr_over_epochs_test_sr_vs_pred_sd"] and round(x["corr_over_epochs_test_sr_vs_pred_sd"], 2),
+              "corr(SR,IC)", x["corr_over_epochs_test_sr_vs_test_ic"] and round(x["corr_over_epochs_test_sr_vs_test_ic"], 2))
+
+
 #@@STAGES@@
-STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity, "gaps": stage_gaps, "decompose": stage_decompose, "report": stage_report}
+STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity, "trajectory": stage_trajectory, "gaps": stage_gaps, "decompose": stage_decompose, "report": stage_report}
 
 
 def main():
