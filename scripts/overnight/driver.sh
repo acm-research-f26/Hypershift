@@ -127,6 +127,35 @@ elif [ "$(sget analysis.fetched false)" != true ]; then
   fi
 fi
 
+# ============ 2b. final analysis once the r8f top-up is in (adds hypershift-run-r8f-top to the sources) ============
+A2=r5f-an2; STEM2=F_r5f_final
+sT=$(sget kernels.r8f-top.state "")
+if [ -n "$sT" ] && [ "$(sget analysis.fetched false)" = true ]; then
+  if [ "$(sget analysis2.launched false)" != true ]; then
+    if terminal "$sT"; then
+      if [ $DRY = 1 ]; then log "would: launch final analysis $A2 (r5f + r8f + r8f-top)"
+      else
+        log "r8f-top=$sT: launching final analysis kernel $A2"
+        if SOURCES="hypershift-run-r5f hypershift-run-r8f hypershift-run-r8f-top" TAG=$A2 OUT_STEM=$STEM2 timeout 1300 bash kaggle/launch_analysis.sh >> "$LOG" 2>&1 \
+           || live "$(kstatus "hypershift-run-$A2")"; then sset analysis2.launched true; log "final analysis kernel launched"
+        else log "final analysis launch failed; will retry next tick"; fi
+      fi
+    else log "final analysis waiting: r8f-top=$sT"; fi
+  elif [ "$(sget analysis2.fetched false)" != true ]; then
+    ast=$(kstatus "hypershift-run-$A2"); log "final analysis kernel $A2: $ast"
+    if terminal "$ast" && [ $DRY = 0 ]; then
+      if bash kaggle/fetch_analysis.sh "$A2" "$STEM2" --install >> "$LOG" 2>&1; then
+        sset analysis2.fetched true
+        [ -f docs/phase1_5/${STEM2}_results.md ] && add_pending docs/phase1_5/${STEM2}_results.md
+        log "final analysis fetched ($ast)"
+      else
+        n=$(( $(sget analysis2.attempts 0) + 1 )); sset analysis2.attempts $n; log "final fetch_analysis failed (attempt $n)"
+        [ $n -ge 3 ] && sset analysis2.fetched true
+      fi
+    fi
+  fi
+fi
+
 # ============ 3. queue (at most one preset per tick) ============
 pend=$(sget pending_launch "")
 if [ -n "$pend" ]; then   # a previous tick died mid-launch (task time limit): did the kernel get pushed?
@@ -171,7 +200,7 @@ fi
 pending=$(sget docs_pending "" | xargs)
 if [ -n "$pending" ]; then
   # new result docs/figures are committed first (so the push carries them even if Codex fails)
-  commit_paths "docs(phase1.5): overnight results ($pending)" $pending docs/figures/${STEM}_fig.png
+  commit_paths "docs(phase1.5): overnight results ($pending)" $pending docs/figures/${STEM}_fig.png docs/figures/${STEM2}_fig.png
   if [ $DRY = 1 ]; then log "would: codex exec -m $CODEX_MODEL -s workspace-write on: $pending"
   elif [ "$(sget docs_attempts 0)" -ge 3 ]; then
     log "codex: 3 attempts used for '$pending'; giving up (tracker/summary left for manual update)"; sset docs_pending ""; sset docs_attempts 0
@@ -203,6 +232,7 @@ else log "push: nothing new (HEAD ${head:0:7})"; fi
 alldone=1
 for t in $(skeys kernels); do [ "$(sget kernels.$t.fetched false)" = true ] || alldone=0; done
 [ "$(sget analysis.launched false)" = true ] && [ "$(sget analysis.fetched false)" = true ] || alldone=0
+if [ -n "$(sget kernels.r8f-top.state "")" ]; then [ "$(sget analysis2.fetched false)" = true ] || alldone=0; fi
 [ -z "$(sget docs_pending "" | xargs)" ] || alldone=0
 [ -z "$(sget pending_launch "")" ] || alldone=0
 if [ "$QEMPTY" = 1 ] && [ $alldone = 1 ]; then
