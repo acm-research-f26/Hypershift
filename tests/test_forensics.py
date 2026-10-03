@@ -177,3 +177,11 @@ def test_stale_runs_flags_unchanged_close():
 def test_duplicate_rows_detects_identical_series():
     x = np.random.default_rng(0).normal(size=(4, 10, 5)); x[3] = x[1]
     assert F.duplicate_rows(x) == [(1, 3)]
+
+
+def test_persistence_helpers():
+    b = [np.array([0, 1]), np.array([0, 1]), np.array([0, 2]), np.array([3, 4])]
+    np.testing.assert_allclose(F.jaccard_series(b), [1.0, 1 / 3, 0.0])
+    assert sorted(F.durations(b).tolist()) == [1, 1, 1, 2, 3]
+    f = F.selection_freq(b, 5)
+    assert f.tolist() == [3, 2, 1, 1, 1] and F.top_share(f, 1) == pytest.approx(3 / 8)

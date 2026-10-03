@@ -350,3 +350,35 @@ def duplicate_rows(x):
         else:
             seen[h] = i
     return out
+
+
+def selection_freq(baskets, n):
+    f = np.zeros(n, int)
+    for b in baskets:
+        f[b] += 1
+    return f
+
+
+def top_share(freq, top):
+    return float(np.sort(freq)[::-1][:top].sum() / max(freq.sum(), 1))
+
+
+def jaccard_series(baskets):
+    out = []
+    for a, b in zip(baskets[:-1], baskets[1:]):
+        a, b = set(a.tolist()), set(b.tolist())
+        out.append(len(a & b) / max(len(a | b), 1))
+    return np.array(out)
+
+
+def durations(baskets):
+    """Lengths of consecutive-day holding spells."""
+    spells, open_ = [], {}
+    for d, b in enumerate(list(baskets) + [np.array([], int)]):
+        cur = set(b.tolist())
+        for s in list(open_):
+            if s not in cur:
+                spells.append(d - open_.pop(s))
+        for s in cur:
+            open_.setdefault(s, d)
+    return np.array(spells)

@@ -1,0 +1,3280 @@
+{
+ "skipped": {
+  "contribution_exclusion_dropdays (T4 item 3)": "skipped by the predeclared sequential stopping rule (Gate A outcome 2)",
+  "costs_benchmarks beyond model and hold-all (T4 item 4)": "skipped by the predeclared sequential stopping rule (Gate A outcome 2)"
+ },
+ "runs": {
+  "R5_f2_alpha0_train/HH": {
+   "seed_0": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       83
+      ],
+      [
+       "PSO",
+       38
+      ],
+      [
+       "TPC",
+       31
+      ],
+      [
+       "SM",
+       29
+      ],
+      [
+       "VAR",
+       27
+      ],
+      [
+       "FL",
+       27
+      ],
+      [
+       "SPN",
+       24
+      ],
+      [
+       "ETM",
+       23
+      ],
+      [
+       "CSS",
+       23
+      ],
+      [
+       "PANW",
+       22
+      ],
+      [
+       "TTC",
+       21
+      ],
+      [
+       "SSP",
+       21
+      ],
+      [
+       "SYX",
+       19
+      ],
+      [
+       "ABX",
+       19
+      ],
+      [
+       "AGM",
+       18
+      ],
+      [
+       "SVU",
+       18
+      ],
+      [
+       "SNX",
+       18
+      ],
+      [
+       "AU",
+       17
+      ],
+      [
+       "SYY",
+       17
+      ],
+      [
+       "CBD",
+       16
+      ],
+      [
+       "BKD",
+       16
+      ],
+      [
+       "BRS",
+       15
+      ],
+      [
+       "R",
+       15
+      ],
+      [
+       "CRL",
+       15
+      ],
+      [
+       "COO",
+       15
+      ],
+      [
+       "CSU",
+       14
+      ],
+      [
+       "ANF",
+       14
+      ],
+      [
+       "LZB",
+       13
+      ],
+      [
+       "GNC",
+       13
+      ],
+      [
+       "THS",
+       13
+      ]
+     ],
+     "top_share": {
+      "1": 0.070042194092827,
+      "5": 0.17552742616033756,
+      "10": 0.2759493670886076,
+      "20": 0.4312236286919831
+     },
+     "jaccard_mean": 0.6860203120796342,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 4.505703422053232,
+     "duration_median": 3.0,
+     "duration_max": 28,
+     "distinct_stocks_selected": 133
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.070042194092827,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Clothing/Shoe/Accessory Stores",
+       "slot_share": 0.06751054852320676,
+       "universe_share": 0.008635578583765112
+      },
+      {
+       "industry": "Broadcasting",
+       "slot_share": 0.0540084388185654,
+       "universe_share": 0.002302820955670697
+      },
+      {
+       "industry": "Hospital/Nursing Management",
+       "slot_share": 0.04810126582278481,
+       "universe_share": 0.0057570523891767415
+      },
+      {
+       "industry": "Food Chains",
+       "slot_share": 0.043037974683544304,
+       "universe_share": 0.002302820955670697
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Major Banks",
+       "slot_share": 0.0,
+       "universe_share": 0.02475532527345999
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 59,
+     "basket_mean_beta": 1.3124610543638513,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    },
+    "gross_net": {
+     "turnover_mean": 0.2219409282700422,
+     "hold_all_turnover_convention": "0 (equal-weight hold-all, no rebalancing cost modelled)",
+     "model": {
+      "0": {
+       "mean": 0.0015557350534275234,
+       "vol_d": 0.013126213357902292,
+       "sr": 1.8814663201236304,
+       "cumret": 0.41647765517312374,
+       "mdd": -0.09180445106123247,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.0013337941251574813,
+       "vol_d": 0.013155444732802049,
+       "sr": 1.609472409485324,
+       "cumret": 0.343865480002818,
+       "mdd": -0.09634877932547237,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.0011118531968874387,
+       "vol_d": 0.013188209783313353,
+       "sr": 1.3383258691099953,
+       "cumret": 0.27494630612204407,
+       "mdd": -0.10087199858810059,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.00044603041207731214,
+       "vol_d": 0.013307431901862886,
+       "sr": 0.5320721035723038,
+       "cumret": 0.0885295688661436,
+       "mdd": -0.11431590766166821,
+       "n": 237
+      }
+     },
+     "hold_all": {
+      "0": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      }
+     }
+    }
+   },
+   "seed_1": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       93
+      ],
+      [
+       "TPC",
+       50
+      ],
+      [
+       "PSO",
+       42
+      ],
+      [
+       "CSS",
+       40
+      ],
+      [
+       "VAR",
+       34
+      ],
+      [
+       "AU",
+       29
+      ],
+      [
+       "RPM",
+       28
+      ],
+      [
+       "R",
+       28
+      ],
+      [
+       "ABX",
+       28
+      ],
+      [
+       "SYX",
+       27
+      ],
+      [
+       "AGM",
+       25
+      ],
+      [
+       "SNX",
+       22
+      ],
+      [
+       "SVU",
+       22
+      ],
+      [
+       "PANW",
+       21
+      ],
+      [
+       "TTC",
+       20
+      ],
+      [
+       "SPN",
+       19
+      ],
+      [
+       "ETM",
+       19
+      ],
+      [
+       "SYY",
+       19
+      ],
+      [
+       "FL",
+       19
+      ],
+      [
+       "SSP",
+       17
+      ],
+      [
+       "ANF",
+       16
+      ],
+      [
+       "CRL",
+       15
+      ],
+      [
+       "UPS",
+       15
+      ],
+      [
+       "CATO",
+       14
+      ],
+      [
+       "AAP",
+       13
+      ],
+      [
+       "LZB",
+       13
+      ],
+      [
+       "CBD",
+       13
+      ],
+      [
+       "KR",
+       12
+      ],
+      [
+       "XPO",
+       12
+      ],
+      [
+       "XRX",
+       12
+      ]
+     ],
+     "top_share": {
+      "1": 0.07848101265822785,
+      "5": 0.21856540084388185,
+      "10": 0.3367088607594937,
+      "20": 0.5080168776371308
+     },
+     "jaccard_mean": 0.7057102502017758,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 4.8765432098765435,
+     "duration_median": 3.0,
+     "duration_max": 35,
+     "distinct_stocks_selected": 126
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.07848101265822785,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Clothing/Shoe/Accessory Stores",
+       "slot_share": 0.06919831223628692,
+       "universe_share": 0.008635578583765112
+      },
+      {
+       "industry": "Precious Metals",
+       "slot_share": 0.05147679324894515,
+       "universe_share": 0.0063327576280944155
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.04219409282700422,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Broadcasting",
+       "slot_share": 0.0379746835443038,
+       "universe_share": 0.002302820955670697
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.002531645569620253,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0016877637130801688,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 65,
+     "basket_mean_beta": 1.3121878981253825,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    },
+    "gross_net": {
+     "turnover_mean": 0.20506329113924052,
+     "hold_all_turnover_convention": "0 (equal-weight hold-all, no rebalancing cost modelled)",
+     "model": {
+      "0": {
+       "mean": 0.0015260106583817503,
+       "vol_d": 0.012542541480271473,
+       "sr": 1.9314002858811363,
+       "cumret": 0.408946218161224,
+       "mdd": -0.11446837920028374,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.0013209473672425099,
+       "vol_d": 0.012569800626010205,
+       "sr": 1.6682356384383688,
+       "cumret": 0.34208327800437166,
+       "mdd": -0.11728666556929879,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.0011158840761032694,
+       "vol_d": 0.012600321050564429,
+       "sr": 1.4058459679711452,
+       "cumret": 0.2783678855232712,
+       "mdd": -0.12047119341449464,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.0005006942026855477,
+       "vol_d": 0.01271120253218614,
+       "sr": 0.6252967836096134,
+       "cumret": 0.1046709801272141,
+       "mdd": -0.13739918885649993,
+       "n": 237
+      }
+     },
+     "hold_all": {
+      "0": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      }
+     }
+    }
+   },
+   "seed_2": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       128
+      ],
+      [
+       "TPC",
+       97
+      ],
+      [
+       "PSO",
+       95
+      ],
+      [
+       "RPM",
+       73
+      ],
+      [
+       "CSS",
+       71
+      ],
+      [
+       "SNX",
+       70
+      ],
+      [
+       "MPV",
+       69
+      ],
+      [
+       "R",
+       66
+      ],
+      [
+       "UPS",
+       54
+      ],
+      [
+       "VAR",
+       49
+      ],
+      [
+       "AGM",
+       46
+      ],
+      [
+       "COO",
+       45
+      ],
+      [
+       "TTC",
+       43
+      ],
+      [
+       "DLB",
+       43
+      ],
+      [
+       "SYX",
+       37
+      ],
+      [
+       "DCI",
+       36
+      ],
+      [
+       "CRL",
+       18
+      ],
+      [
+       "SVU",
+       12
+      ],
+      [
+       "ANF",
+       11
+      ],
+      [
+       "SPN",
+       9
+      ],
+      [
+       "SYY",
+       7
+      ],
+      [
+       "BRS",
+       7
+      ],
+      [
+       "GATX",
+       6
+      ],
+      [
+       "THS",
+       5
+      ],
+      [
+       "OII",
+       5
+      ],
+      [
+       "JWN",
+       5
+      ],
+      [
+       "M",
+       4
+      ],
+      [
+       "DDS",
+       4
+      ],
+      [
+       "CPA",
+       4
+      ],
+      [
+       "PANW",
+       3
+      ]
+     ],
+     "top_share": {
+      "1": 0.1080168776371308,
+      "5": 0.39156118143459917,
+      "10": 0.6514767932489451,
+      "20": 0.9046413502109705
+     },
+     "jaccard_mean": 0.562617702448211,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 3.273480662983425,
+     "duration_median": 2.0,
+     "duration_max": 26,
+     "distinct_stocks_selected": 66
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.1080168776371308,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.08185654008438818,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.08016877637130802,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Paints/Coatings",
+       "slot_share": 0.06160337552742616,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Consumer: Greeting Cards",
+       "slot_share": 0.059915611814345994,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.002531645569620253,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 41,
+     "basket_mean_beta": 1.2343800049373839,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    },
+    "gross_net": {
+     "turnover_mean": 0.30548523206751055,
+     "hold_all_turnover_convention": "0 (equal-weight hold-all, no rebalancing cost modelled)",
+     "model": {
+      "0": {
+       "mean": 0.0012639317639910848,
+       "vol_d": 0.010588073037582775,
+       "sr": 1.8949902082120675,
+       "cumret": 0.33137291912651556,
+       "mdd": -0.07058626165342463,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.0009584465319235741,
+       "vol_d": 0.010591131232764107,
+       "sr": 1.4365667534611235,
+       "cumret": 0.23847034837234538,
+       "mdd": -0.07431372268114156,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.0006529612998560638,
+       "vol_d": 0.01059720022511011,
+       "sr": 0.9781299844133141,
+       "cumret": 0.1520163204929934,
+       "mdd": -0.0780275748913225,
+       "n": 237
+      },
+      "25": {
+       "mean": -0.0002634943963464682,
+       "vol_d": 0.010633407645782772,
+       "sr": -0.393368147529825,
+       "cumret": -0.07295608200714099,
+       "mdd": -0.0951805476013422,
+       "n": 237
+      }
+     },
+     "hold_all": {
+      "0": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      }
+     }
+    }
+   },
+   "seed_3": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       115
+      ],
+      [
+       "TPC",
+       105
+      ],
+      [
+       "PSO",
+       95
+      ],
+      [
+       "R",
+       74
+      ],
+      [
+       "CSS",
+       73
+      ],
+      [
+       "RPM",
+       66
+      ],
+      [
+       "MPV",
+       63
+      ],
+      [
+       "UPS",
+       61
+      ],
+      [
+       "VAR",
+       59
+      ],
+      [
+       "SNX",
+       57
+      ],
+      [
+       "AGM",
+       48
+      ],
+      [
+       "DCI",
+       38
+      ],
+      [
+       "COO",
+       37
+      ],
+      [
+       "DLB",
+       34
+      ],
+      [
+       "SYX",
+       34
+      ],
+      [
+       "TTC",
+       33
+      ],
+      [
+       "CRL",
+       32
+      ],
+      [
+       "BRS",
+       13
+      ],
+      [
+       "GATX",
+       13
+      ],
+      [
+       "ETM",
+       11
+      ],
+      [
+       "SVU",
+       11
+      ],
+      [
+       "XPO",
+       11
+      ],
+      [
+       "ANF",
+       10
+      ],
+      [
+       "SSP",
+       8
+      ],
+      [
+       "SYY",
+       8
+      ],
+      [
+       "PANW",
+       7
+      ],
+      [
+       "KR",
+       6
+      ],
+      [
+       "SPN",
+       6
+      ],
+      [
+       "AAP",
+       5
+      ],
+      [
+       "DGX",
+       5
+      ]
+     ],
+     "top_share": {
+      "1": 0.0970464135021097,
+      "5": 0.389873417721519,
+      "10": 0.6481012658227848,
+      "20": 0.8953586497890296
+     },
+     "jaccard_mean": 0.6886097659402745,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 4.778225806451613,
+     "duration_median": 2.0,
+     "duration_max": 40,
+     "distinct_stocks_selected": 56
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.0970464135021097,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.08860759493670886,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.08016877637130802,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Rental/Leasing Companies",
+       "slot_share": 0.06244725738396625,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Consumer: Greeting Cards",
+       "slot_share": 0.06160337552742616,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 36,
+     "basket_mean_beta": 1.254155026769478,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    },
+    "gross_net": {
+     "turnover_mean": 0.20928270042194094,
+     "hold_all_turnover_convention": "0 (equal-weight hold-all, no rebalancing cost modelled)",
+     "model": {
+      "0": {
+       "mean": 0.0014272689150531142,
+       "vol_d": 0.011133169853744131,
+       "sr": 2.0351069746628694,
+       "cumret": 0.38188411610798045,
+       "mdd": -0.09157274910034441,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.0012179862146311732,
+       "vol_d": 0.011148860029063415,
+       "sr": 1.7342519051195247,
+       "cumret": 0.3150401199944248,
+       "mdd": -0.09467837996175021,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.0010087035142092326,
+       "vol_d": 0.011167165633941422,
+       "sr": 1.4339065431695932,
+       "cumret": 0.2514077691451222,
+       "mdd": -0.09777423671429708,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.00038085541294340976,
+       "vol_d": 0.01123763808360132,
+       "sr": 0.5380038228450325,
+       "cumret": 0.07828388016620536,
+       "mdd": -0.11274428150279003,
+       "n": 237
+      }
+     },
+     "hold_all": {
+      "0": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      }
+     }
+    }
+   },
+   "seed_4": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       112
+      ],
+      [
+       "TPC",
+       97
+      ],
+      [
+       "CSS",
+       74
+      ],
+      [
+       "PSO",
+       72
+      ],
+      [
+       "R",
+       63
+      ],
+      [
+       "VAR",
+       60
+      ],
+      [
+       "RPM",
+       59
+      ],
+      [
+       "SNX",
+       46
+      ],
+      [
+       "AGM",
+       41
+      ],
+      [
+       "CRL",
+       38
+      ],
+      [
+       "DCI",
+       37
+      ],
+      [
+       "SYX",
+       36
+      ],
+      [
+       "UPS",
+       36
+      ],
+      [
+       "MPV",
+       32
+      ],
+      [
+       "TTC",
+       31
+      ],
+      [
+       "COO",
+       28
+      ],
+      [
+       "ETM",
+       23
+      ],
+      [
+       "DLB",
+       20
+      ],
+      [
+       "SSP",
+       17
+      ],
+      [
+       "ANF",
+       14
+      ],
+      [
+       "BRS",
+       13
+      ],
+      [
+       "PANW",
+       13
+      ],
+      [
+       "GATX",
+       12
+      ],
+      [
+       "XPO",
+       12
+      ],
+      [
+       "SPN",
+       11
+      ],
+      [
+       "KR",
+       11
+      ],
+      [
+       "THS",
+       11
+      ],
+      [
+       "SM",
+       10
+      ],
+      [
+       "SVU",
+       10
+      ],
+      [
+       "M",
+       9
+      ]
+     ],
+     "top_share": {
+      "1": 0.09451476793248945,
+      "5": 0.3527426160337553,
+      "10": 0.5586497890295359,
+      "20": 0.789873417721519
+     },
+     "jaccard_mean": 0.6780838041431262,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 4.593023255813954,
+     "duration_median": 2.0,
+     "duration_max": 26,
+     "distinct_stocks_selected": 83
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.09451476793248945,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.08185654008438818,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Consumer: Greeting Cards",
+       "slot_share": 0.06244725738396625,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.060759493670886074,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Rental/Leasing Companies",
+       "slot_share": 0.053164556962025315,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 48,
+     "basket_mean_beta": 1.3157530053545403,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    },
+    "gross_net": {
+     "turnover_mean": 0.21772151898734177,
+     "hold_all_turnover_convention": "0 (equal-weight hold-all, no rebalancing cost modelled)",
+     "model": {
+      "0": {
+       "mean": 0.0016268205492121644,
+       "vol_d": 0.012048579974965576,
+       "sr": 2.143404090716773,
+       "cumret": 0.4450784378671184,
+       "mdd": -0.08773965598265976,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.0014090990302248227,
+       "vol_d": 0.012059251726027728,
+       "sr": 1.8549039482726837,
+       "cumret": 0.3724607475677608,
+       "mdd": -0.0895710505170566,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.001191377511237481,
+       "vol_d": 0.012072502608351873,
+       "sr": 1.5665792162175831,
+       "cumret": 0.3034679270384504,
+       "mdd": -0.09158645361397777,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.0005382129542754551,
+       "vol_d": 0.012127637275658248,
+       "sr": 0.7044954909383748,
+       "cumret": 0.11648517412435377,
+       "mdd": -0.10627594466431445,
+       "n": 237
+      }
+     },
+     "hold_all": {
+      "0": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "5": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "10": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      },
+      "25": {
+       "mean": 0.00042185405620851624,
+       "vol_d": 0.004374051418810912,
+       "sr": 1.531012073829277,
+       "cumret": 0.10262311592118745,
+       "mdd": -0.03571482687233296,
+       "n": 237
+      }
+     }
+    }
+   },
+   "seed_concentration": {
+    "pairwise_daily_basket_jaccard_mean": 0.4086732301922176,
+    "pairwise_jaccard_min_max": [
+     0.22674301788225837,
+     0.6685084723059407
+    ],
+    "pairwise_daily_return_corr_mean": 0.7538674071089633,
+    "pairwise_corr_min_max": [
+     0.6671287498820453,
+     0.8935098712669349
+    ],
+    "stocks_in_top10_freq_of_ge3_seeds": [
+     "CSS",
+     "PSO",
+     "R",
+     "RPM",
+     "SNX",
+     "TPC",
+     "VAR",
+     "WAIR"
+    ],
+    "note": "agreement across seeds under the same data/ordering/backtester is not independent evidence"
+   }
+  },
+  "R5_f_train/HH": {
+   "seed_0": {
+    "persistence": {
+     "top30": [
+      [
+       "A",
+       112
+      ],
+      [
+       "WAIR",
+       105
+      ],
+      [
+       "TPC",
+       104
+      ],
+      [
+       "AAN",
+       86
+      ],
+      [
+       "PSO",
+       81
+      ],
+      [
+       "CSS",
+       65
+      ],
+      [
+       "R",
+       63
+      ],
+      [
+       "RPM",
+       59
+      ],
+      [
+       "AAP",
+       46
+      ],
+      [
+       "VAR",
+       45
+      ],
+      [
+       "SNX",
+       42
+      ],
+      [
+       "SYX",
+       39
+      ],
+      [
+       "UPS",
+       38
+      ],
+      [
+       "AGM",
+       36
+      ],
+      [
+       "DCI",
+       33
+      ],
+      [
+       "MPV",
+       28
+      ],
+      [
+       "DLB",
+       27
+      ],
+      [
+       "COO",
+       25
+      ],
+      [
+       "CRL",
+       24
+      ],
+      [
+       "TTC",
+       24
+      ],
+      [
+       "AAT",
+       23
+      ],
+      [
+       "GATX",
+       16
+      ],
+      [
+       "XPO",
+       16
+      ],
+      [
+       "BRS",
+       16
+      ],
+      [
+       "AB",
+       3
+      ],
+      [
+       "CPA",
+       3
+      ],
+      [
+       "FDX",
+       3
+      ],
+      [
+       "THS",
+       3
+      ],
+      [
+       "SKX",
+       3
+      ],
+      [
+       "ANF",
+       2
+      ]
+     ],
+     "top_share": {
+      "1": 0.09451476793248945,
+      "5": 0.4118143459915612,
+      "10": 0.6464135021097046,
+      "20": 0.9130801687763713
+     },
+     "jaccard_mean": 0.6400322841000806,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 3.95,
+     "duration_median": 2.0,
+     "duration_max": 35,
+     "distinct_stocks_selected": 43
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Biotechnology: Laboratory Analytical Instruments",
+       "slot_share": 0.09451476793248945,
+       "universe_share": 0.0028785261945883708
+      },
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.08860759493670886,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.08776371308016878,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.06835443037974684,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Diversified Commercial Services",
+       "slot_share": 0.07257383966244725,
+       "universe_share": 0.0051813471502590676
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.019409282700421943,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 35,
+     "basket_mean_beta": 1.28730810752058,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_1": {
+    "persistence": {
+     "top30": [
+      [
+       "TPC",
+       100
+      ],
+      [
+       "WAIR",
+       91
+      ],
+      [
+       "PSO",
+       82
+      ],
+      [
+       "SYX",
+       81
+      ],
+      [
+       "AGM",
+       79
+      ],
+      [
+       "VAR",
+       73
+      ],
+      [
+       "CSS",
+       70
+      ],
+      [
+       "CRL",
+       70
+      ],
+      [
+       "COO",
+       66
+      ],
+      [
+       "R",
+       63
+      ],
+      [
+       "SNX",
+       61
+      ],
+      [
+       "MPV",
+       59
+      ],
+      [
+       "DLB",
+       55
+      ],
+      [
+       "RPM",
+       52
+      ],
+      [
+       "UPS",
+       43
+      ],
+      [
+       "DCI",
+       41
+      ],
+      [
+       "TTC",
+       32
+      ],
+      [
+       "GATX",
+       14
+      ],
+      [
+       "BRS",
+       14
+      ],
+      [
+       "XPO",
+       13
+      ],
+      [
+       "A",
+       7
+      ],
+      [
+       "CPA",
+       5
+      ],
+      [
+       "FL",
+       4
+      ],
+      [
+       "AAN",
+       3
+      ],
+      [
+       "LUV",
+       2
+      ],
+      [
+       "FDX",
+       2
+      ],
+      [
+       "PANW",
+       1
+      ],
+      [
+       "AAP",
+       1
+      ],
+      [
+       "LZB",
+       1
+      ],
+      [
+       "YPF",
+       0
+      ]
+     ],
+     "top_share": {
+      "1": 0.08438818565400844,
+      "5": 0.36540084388185656,
+      "10": 0.6540084388185654,
+      "20": 0.9780590717299578
+     },
+     "jaccard_mean": 0.6424367769706752,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 4.072164948453608,
+     "duration_median": 2.0,
+     "duration_max": 28,
+     "distinct_stocks_selected": 29
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.08438818565400844,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.07679324894514768,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.06919831223628692,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Catalog/Specialty Distribution",
+       "slot_share": 0.06835443037974684,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Finance Companies",
+       "slot_share": 0.06666666666666667,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 25,
+     "basket_mean_beta": 1.2456739496173932,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_2": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       124
+      ],
+      [
+       "TPC",
+       103
+      ],
+      [
+       "PSO",
+       82
+      ],
+      [
+       "CSS",
+       79
+      ],
+      [
+       "R",
+       69
+      ],
+      [
+       "RPM",
+       61
+      ],
+      [
+       "UPS",
+       61
+      ],
+      [
+       "MPV",
+       58
+      ],
+      [
+       "SNX",
+       55
+      ],
+      [
+       "A",
+       53
+      ],
+      [
+       "VAR",
+       49
+      ],
+      [
+       "AGM",
+       48
+      ],
+      [
+       "SYX",
+       45
+      ],
+      [
+       "TTC",
+       41
+      ],
+      [
+       "DLB",
+       38
+      ],
+      [
+       "DCI",
+       38
+      ],
+      [
+       "COO",
+       29
+      ],
+      [
+       "AAN",
+       28
+      ],
+      [
+       "CRL",
+       25
+      ],
+      [
+       "BRS",
+       17
+      ],
+      [
+       "GATX",
+       16
+      ],
+      [
+       "XPO",
+       14
+      ],
+      [
+       "AAP",
+       14
+      ],
+      [
+       "THS",
+       8
+      ],
+      [
+       "AAT",
+       5
+      ],
+      [
+       "CPA",
+       3
+      ],
+      [
+       "AGX",
+       3
+      ],
+      [
+       "FDX",
+       2
+      ],
+      [
+       "CBI",
+       2
+      ],
+      [
+       "ETM",
+       2
+      ]
+     ],
+     "top_share": {
+      "1": 0.10464135021097046,
+      "5": 0.3856540084388186,
+      "10": 0.6286919831223629,
+      "20": 0.9308016877637131
+     },
+     "jaccard_mean": 0.5269034167339253,
+     "jaccard_median": 0.42857142857142855,
+     "duration_mean": 2.91871921182266,
+     "duration_median": 2.0,
+     "duration_max": 28,
+     "distinct_stocks_selected": 42
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.10464135021097046,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.08691983122362869,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.06919831223628692,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Consumer: Greeting Cards",
+       "slot_share": 0.06666666666666667,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Rental/Leasing Companies",
+       "slot_share": 0.05822784810126582,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.004219409282700422,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 30,
+     "basket_mean_beta": 1.2567363128495637,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_3": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       112
+      ],
+      [
+       "TPC",
+       105
+      ],
+      [
+       "PSO",
+       96
+      ],
+      [
+       "A",
+       80
+      ],
+      [
+       "CSS",
+       77
+      ],
+      [
+       "R",
+       69
+      ],
+      [
+       "RPM",
+       66
+      ],
+      [
+       "UPS",
+       59
+      ],
+      [
+       "AAN",
+       53
+      ],
+      [
+       "VAR",
+       51
+      ],
+      [
+       "MPV",
+       50
+      ],
+      [
+       "SNX",
+       49
+      ],
+      [
+       "AGM",
+       46
+      ],
+      [
+       "DLB",
+       44
+      ],
+      [
+       "SYX",
+       40
+      ],
+      [
+       "DCI",
+       34
+      ],
+      [
+       "COO",
+       32
+      ],
+      [
+       "CRL",
+       31
+      ],
+      [
+       "AAP",
+       30
+      ],
+      [
+       "TTC",
+       29
+      ],
+      [
+       "AAT",
+       12
+      ],
+      [
+       "GATX",
+       7
+      ],
+      [
+       "BRS",
+       7
+      ],
+      [
+       "XPO",
+       4
+      ],
+      [
+       "CPA",
+       1
+      ],
+      [
+       "FDX",
+       1
+      ],
+      [
+       "YUM",
+       0
+      ],
+      [
+       "YPF",
+       0
+      ],
+      [
+       "YELP",
+       0
+      ],
+      [
+       "Y",
+       0
+      ]
+     ],
+     "top_share": {
+      "1": 0.09451476793248945,
+      "5": 0.39662447257383965,
+      "10": 0.6481012658227848,
+      "20": 0.9729957805907173
+     },
+     "jaccard_mean": 0.6432775087436107,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 4.044368600682594,
+     "duration_median": 1.0,
+     "duration_max": 40,
+     "distinct_stocks_selected": 26
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.09451476793248945,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.08860759493670886,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.0810126582278481,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Biotechnology: Laboratory Analytical Instruments",
+       "slot_share": 0.06751054852320675,
+       "universe_share": 0.0028785261945883708
+      },
+      {
+       "industry": "Consumer: Greeting Cards",
+       "slot_share": 0.06497890295358649,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.010126582278481013,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 23,
+     "basket_mean_beta": 1.2473428477822808,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_4": {
+    "persistence": {
+     "top30": [
+      [
+       "SYX",
+       90
+      ],
+      [
+       "WAIR",
+       85
+      ],
+      [
+       "PSO",
+       84
+      ],
+      [
+       "AGM",
+       84
+      ],
+      [
+       "R",
+       80
+      ],
+      [
+       "TPC",
+       79
+      ],
+      [
+       "CSS",
+       70
+      ],
+      [
+       "MPV",
+       65
+      ],
+      [
+       "COO",
+       65
+      ],
+      [
+       "DLB",
+       58
+      ],
+      [
+       "VAR",
+       57
+      ],
+      [
+       "SNX",
+       55
+      ],
+      [
+       "CRL",
+       53
+      ],
+      [
+       "RPM",
+       52
+      ],
+      [
+       "DCI",
+       48
+      ],
+      [
+       "TTC",
+       44
+      ],
+      [
+       "UPS",
+       42
+      ],
+      [
+       "A",
+       30
+      ],
+      [
+       "AAN",
+       15
+      ],
+      [
+       "AAP",
+       4
+      ],
+      [
+       "XPO",
+       4
+      ],
+      [
+       "BRS",
+       4
+      ],
+      [
+       "GATX",
+       4
+      ],
+      [
+       "FDX",
+       3
+      ],
+      [
+       "CPA",
+       3
+      ],
+      [
+       "LUV",
+       2
+      ],
+      [
+       "DAL",
+       2
+      ],
+      [
+       "THS",
+       1
+      ],
+      [
+       "CEA",
+       1
+      ],
+      [
+       "ALK",
+       1
+      ]
+     ],
+     "top_share": {
+      "1": 0.0759493670886076,
+      "5": 0.3569620253164557,
+      "10": 0.6413502109704642,
+      "20": 0.9789029535864979
+     },
+     "jaccard_mean": 0.2010862254506322,
+     "jaccard_median": 0.25,
+     "duration_mean": 1.4468864468864469,
+     "duration_median": 1.0,
+     "duration_max": 8,
+     "distinct_stocks_selected": 30
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Catalog/Specialty Distribution",
+       "slot_share": 0.0759493670886076,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.07172995780590717,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.07088607594936709,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Finance Companies",
+       "slot_share": 0.07088607594936709,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Rental/Leasing Companies",
+       "slot_share": 0.06751054852320675,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 23,
+     "basket_mean_beta": 1.2269774901423183,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_concentration": {
+    "pairwise_daily_basket_jaccard_mean": 0.32990255173799476,
+    "pairwise_jaccard_min_max": [
+     0.17086933226173734,
+     0.6075279619583417
+    ],
+    "pairwise_daily_return_corr_mean": 0.7215306933007991,
+    "pairwise_corr_min_max": [
+     0.6386986979191486,
+     0.8192554395258926
+    ],
+    "stocks_in_top10_freq_of_ge3_seeds": [
+     "A",
+     "CSS",
+     "PSO",
+     "R",
+     "RPM",
+     "TPC",
+     "VAR",
+     "WAIR"
+    ],
+    "note": "agreement across seeds under the same data/ordering/backtester is not independent evidence"
+   }
+  },
+  "R5_f_train/EH": {
+   "seed_0": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       105
+      ],
+      [
+       "TPC",
+       94
+      ],
+      [
+       "PSO",
+       75
+      ],
+      [
+       "CSS",
+       65
+      ],
+      [
+       "SYX",
+       51
+      ],
+      [
+       "RPM",
+       51
+      ],
+      [
+       "R",
+       48
+      ],
+      [
+       "VAR",
+       46
+      ],
+      [
+       "AGM",
+       41
+      ],
+      [
+       "SNX",
+       38
+      ],
+      [
+       "UPS",
+       33
+      ],
+      [
+       "MPV",
+       29
+      ],
+      [
+       "DCI",
+       23
+      ],
+      [
+       "TTC",
+       20
+      ],
+      [
+       "DLB",
+       19
+      ],
+      [
+       "GATX",
+       19
+      ],
+      [
+       "BRS",
+       19
+      ],
+      [
+       "COO",
+       19
+      ],
+      [
+       "CRL",
+       18
+      ],
+      [
+       "XPO",
+       17
+      ],
+      [
+       "SPN",
+       14
+      ],
+      [
+       "AU",
+       13
+      ],
+      [
+       "ABX",
+       12
+      ],
+      [
+       "FL",
+       11
+      ],
+      [
+       "KT",
+       10
+      ],
+      [
+       "PANW",
+       10
+      ],
+      [
+       "ANF",
+       9
+      ],
+      [
+       "MOV",
+       9
+      ],
+      [
+       "SIG",
+       8
+      ],
+      [
+       "KR",
+       8
+      ]
+     ],
+     "top_share": {
+      "1": 0.08860759493670886,
+      "5": 0.3291139240506329,
+      "10": 0.5181434599156118,
+      "20": 0.70042194092827
+     },
+     "jaccard_mean": 0.551570486951843,
+     "jaccard_median": 0.6666666666666666,
+     "duration_mean": 3.015267175572519,
+     "duration_median": 1.0,
+     "duration_max": 33,
+     "distinct_stocks_selected": 122
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.08860759493670886,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.07932489451476793,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.06329113924050633,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Consumer: Greeting Cards",
+       "slot_share": 0.05485232067510549,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Transportation Services",
+       "slot_share": 0.046413502109704644,
+       "universe_share": 0.0017271157167530224
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 58,
+     "basket_mean_beta": 1.3085931864330556,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_1": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       78
+      ],
+      [
+       "SYX",
+       75
+      ],
+      [
+       "TPC",
+       74
+      ],
+      [
+       "PSO",
+       72
+      ],
+      [
+       "AGM",
+       64
+      ],
+      [
+       "CRL",
+       47
+      ],
+      [
+       "VAR",
+       46
+      ],
+      [
+       "COO",
+       45
+      ],
+      [
+       "SNX",
+       44
+      ],
+      [
+       "CSS",
+       37
+      ],
+      [
+       "R",
+       36
+      ],
+      [
+       "DLB",
+       31
+      ],
+      [
+       "DCI",
+       29
+      ],
+      [
+       "RPM",
+       28
+      ],
+      [
+       "TTC",
+       21
+      ],
+      [
+       "MPV",
+       19
+      ],
+      [
+       "PANW",
+       17
+      ],
+      [
+       "FL",
+       16
+      ],
+      [
+       "BRS",
+       16
+      ],
+      [
+       "GATX",
+       15
+      ],
+      [
+       "ABX",
+       14
+      ],
+      [
+       "AU",
+       14
+      ],
+      [
+       "UPS",
+       14
+      ],
+      [
+       "SPN",
+       14
+      ],
+      [
+       "SVU",
+       13
+      ],
+      [
+       "XPO",
+       12
+      ],
+      [
+       "DDS",
+       12
+      ],
+      [
+       "AGX",
+       10
+      ],
+      [
+       "BKD",
+       9
+      ],
+      [
+       "CBD",
+       9
+      ]
+     ],
+     "top_share": {
+      "1": 0.06582278481012659,
+      "5": 0.30632911392405066,
+      "10": 0.4911392405063291,
+      "20": 0.6835443037974683
+     },
+     "jaccard_mean": 0.3326775625504439,
+     "jaccard_median": 0.25,
+     "duration_mean": 1.860282574568289,
+     "duration_median": 1.0,
+     "duration_max": 11,
+     "distinct_stocks_selected": 120
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.06582278481012659,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Catalog/Specialty Distribution",
+       "slot_share": 0.06329113924050633,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.06244725738396625,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.060759493670886074,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Finance Companies",
+       "slot_share": 0.0540084388185654,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0016877637130801688,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 57,
+     "basket_mean_beta": 1.2972638934126592,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_2": {
+    "persistence": {
+     "top30": [
+      [
+       "TPC",
+       120
+      ],
+      [
+       "WAIR",
+       115
+      ],
+      [
+       "PSO",
+       93
+      ],
+      [
+       "SYX",
+       89
+      ],
+      [
+       "AGM",
+       83
+      ],
+      [
+       "R",
+       72
+      ],
+      [
+       "CSS",
+       70
+      ],
+      [
+       "SNX",
+       69
+      ],
+      [
+       "VAR",
+       69
+      ],
+      [
+       "RPM",
+       59
+      ],
+      [
+       "COO",
+       58
+      ],
+      [
+       "DLB",
+       55
+      ],
+      [
+       "CRL",
+       55
+      ],
+      [
+       "MPV",
+       48
+      ],
+      [
+       "DCI",
+       45
+      ],
+      [
+       "TTC",
+       42
+      ],
+      [
+       "UPS",
+       41
+      ],
+      [
+       "GATX",
+       1
+      ],
+      [
+       "BRS",
+       1
+      ],
+      [
+       "XYL",
+       0
+      ],
+      [
+       "XRX",
+       0
+      ],
+      [
+       "XPO",
+       0
+      ],
+      [
+       "XOXO",
+       0
+      ],
+      [
+       "XOM",
+       0
+      ],
+      [
+       "XEL",
+       0
+      ],
+      [
+       "XEC",
+       0
+      ],
+      [
+       "X",
+       0
+      ],
+      [
+       "WYN",
+       0
+      ],
+      [
+       "WY",
+       0
+      ],
+      [
+       "WWW",
+       0
+      ]
+     ],
+     "top_share": {
+      "1": 0.10126582278481013,
+      "5": 0.4219409282700422,
+      "10": 0.7080168776371308,
+      "20": 1.0
+     },
+     "jaccard_mean": 0.37296542910949687,
+     "jaccard_median": 0.42857142857142855,
+     "duration_mean": 2.0789473684210527,
+     "duration_median": 1.0,
+     "duration_max": 20,
+     "distinct_stocks_selected": 19
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.10126582278481013,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.0970464135021097,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.07848101265822785,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Catalog/Specialty Distribution",
+       "slot_share": 0.0751054852320675,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Finance Companies",
+       "slot_share": 0.070042194092827,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 18,
+     "basket_mean_beta": 1.26493606320154,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_3": {
+    "persistence": {
+     "top30": [
+      [
+       "TPC",
+       102
+      ],
+      [
+       "WAIR",
+       99
+      ],
+      [
+       "PSO",
+       85
+      ],
+      [
+       "SYX",
+       78
+      ],
+      [
+       "R",
+       76
+      ],
+      [
+       "AGM",
+       75
+      ],
+      [
+       "CSS",
+       74
+      ],
+      [
+       "MPV",
+       74
+      ],
+      [
+       "SNX",
+       70
+      ],
+      [
+       "RPM",
+       67
+      ],
+      [
+       "COO",
+       65
+      ],
+      [
+       "VAR",
+       61
+      ],
+      [
+       "DLB",
+       59
+      ],
+      [
+       "UPS",
+       57
+      ],
+      [
+       "CRL",
+       53
+      ],
+      [
+       "TTC",
+       45
+      ],
+      [
+       "DCI",
+       35
+      ],
+      [
+       "BRS",
+       4
+      ],
+      [
+       "GATX",
+       3
+      ],
+      [
+       "XPO",
+       3
+      ],
+      [
+       "XYL",
+       0
+      ],
+      [
+       "XRX",
+       0
+      ],
+      [
+       "XOXO",
+       0
+      ],
+      [
+       "XOM",
+       0
+      ],
+      [
+       "XEL",
+       0
+      ],
+      [
+       "XEC",
+       0
+      ],
+      [
+       "X",
+       0
+      ],
+      [
+       "WYN",
+       0
+      ],
+      [
+       "WY",
+       0
+      ],
+      [
+       "WWW",
+       0
+      ]
+     ],
+     "top_share": {
+      "1": 0.08607594936708861,
+      "5": 0.37130801687763715,
+      "10": 0.6751054852320675,
+      "20": 1.0
+     },
+     "jaccard_mean": 0.3752354048964219,
+     "jaccard_median": 0.42857142857142855,
+     "duration_mean": 2.0716783216783217,
+     "duration_median": 1.0,
+     "duration_max": 21,
+     "distinct_stocks_selected": 20
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.08607594936708861,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.08354430379746836,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.07172995780590717,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Catalog/Specialty Distribution",
+       "slot_share": 0.06582278481012659,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Rental/Leasing Companies",
+       "slot_share": 0.06413502109704641,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 18,
+     "basket_mean_beta": 1.2258763669338355,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_4": {
+    "persistence": {
+     "top30": [
+      [
+       "WAIR",
+       111
+      ],
+      [
+       "SYX",
+       105
+      ],
+      [
+       "TPC",
+       94
+      ],
+      [
+       "PSO",
+       80
+      ],
+      [
+       "R",
+       74
+      ],
+      [
+       "AGM",
+       73
+      ],
+      [
+       "CSS",
+       68
+      ],
+      [
+       "SNX",
+       66
+      ],
+      [
+       "VAR",
+       64
+      ],
+      [
+       "RPM",
+       59
+      ],
+      [
+       "MPV",
+       58
+      ],
+      [
+       "UPS",
+       56
+      ],
+      [
+       "DLB",
+       54
+      ],
+      [
+       "COO",
+       51
+      ],
+      [
+       "DCI",
+       46
+      ],
+      [
+       "CRL",
+       41
+      ],
+      [
+       "TTC",
+       35
+      ],
+      [
+       "BRS",
+       12
+      ],
+      [
+       "GATX",
+       11
+      ],
+      [
+       "XPO",
+       10
+      ],
+      [
+       "LUV",
+       6
+      ],
+      [
+       "ALK",
+       4
+      ],
+      [
+       "UAL",
+       2
+      ],
+      [
+       "CPA",
+       2
+      ],
+      [
+       "FDX",
+       1
+      ],
+      [
+       "THS",
+       1
+      ],
+      [
+       "CEA",
+       1
+      ],
+      [
+       "XYL",
+       0
+      ],
+      [
+       "XRX",
+       0
+      ],
+      [
+       "XOXO",
+       0
+      ]
+     ],
+     "top_share": {
+      "1": 0.09367088607594937,
+      "5": 0.39156118143459917,
+      "10": 0.6700421940928271,
+      "20": 0.9856540084388186
+     },
+     "jaccard_mean": 0.39719531880548836,
+     "jaccard_median": 0.42857142857142855,
+     "duration_mean": 2.1743119266055047,
+     "duration_median": 2.0,
+     "duration_max": 15,
+     "distinct_stocks_selected": 27
+    },
+    "exposure": {
+     "industry_top_over_weights": [
+      {
+       "industry": "Wholesale Distributors",
+       "slot_share": 0.09367088607594937,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Catalog/Specialty Distribution",
+       "slot_share": 0.08860759493670886,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "General Bldg Contractors - Nonresidential Bldgs",
+       "slot_share": 0.07932489451476793,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Books",
+       "slot_share": 0.06751054852320675,
+       "universe_share": 0.0005757052389176742
+      },
+      {
+       "industry": "Rental/Leasing Companies",
+       "slot_share": 0.06244725738396625,
+       "universe_share": 0.0005757052389176742
+      }
+     ],
+     "industry_top_under_weights": [
+      {
+       "industry": "Industrial Machinery/Components",
+       "slot_share": 0.0,
+       "universe_share": 0.028785261945883708
+      },
+      {
+       "industry": "Real Estate Investment Trusts",
+       "slot_share": 0.0,
+       "universe_share": 0.0644789867587795
+      },
+      {
+       "industry": "n/a",
+       "slot_share": 0.0,
+       "universe_share": 0.28785261945883706
+      }
+     ],
+     "n_industries_selected": 20,
+     "basket_mean_beta": 1.2514752642530147,
+     "universe_mean_beta": 0.9997677533958245,
+     "slot_share_na_industry": 0.0,
+     "universe_share_na_industry": 0.28785261945883706
+    }
+   },
+   "seed_concentration": {
+    "pairwise_daily_basket_jaccard_mean": 0.25265889759560645,
+    "pairwise_jaccard_min_max": [
+     0.1728618310896792,
+     0.3390596745027125
+    ],
+    "pairwise_daily_return_corr_mean": 0.5975566643855944,
+    "pairwise_corr_min_max": [
+     0.5041578039716117,
+     0.6782190027964861
+    ],
+    "stocks_in_top10_freq_of_ge3_seeds": [
+     "AGM",
+     "CSS",
+     "PSO",
+     "R",
+     "RPM",
+     "SNX",
+     "SYX",
+     "TPC",
+     "VAR",
+     "WAIR"
+    ],
+    "note": "agreement across seeds under the same data/ordering/backtester is not independent evidence"
+   }
+  }
+ }
+}

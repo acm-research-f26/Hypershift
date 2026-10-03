@@ -580,8 +580,103 @@ def stage_integrity(a):
           "| stale in basket", [v["stale_in_basket"] for v in per_seed.values()])
 
 
+
+def stage_decompose(a):
+    """Task 4, trimmed by the sequential stopping rule (Gate A outcome 2): items 1 persistence, 2 exposure, 5 seed
+    concentration, plus gross vs net for the model and hold-all. Items 3 (contribution/exclusion/drop-days) and 4
+    (costs/benchmarks beyond model and hold-all) are skipped."""
+    from hypershift.data.rsr import read_ticker_file
+    data = _market()
+    tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
+    n = len(tickers)
+    ind = np.array(F.industry_of(tickers, ROOT / DATA_ROOT / "relation" / "sector_industry" / "NYSE_industry_ticker.json"))
+    beta = F.train_beta(data.gt, data.mask, data.valid_index)
+    skip = "skipped by the predeclared sequential stopping rule (Gate A outcome 2)"
+    res = {"skipped": {"contribution_exclusion_dropdays (T4 item 3)": skip,
+                       "costs_benchmarks beyond model and hold-all (T4 item 4)": skip},
+           "runs": {}}
+    for exp, label in (PRIMARY, ("R5_f_train", "HH"), ("R5_f_train", "EH")):
+        key = f"{exp}/{label}"
+        res["runs"][key] = {}
+        allb = {}
+        for s in SEEDS:
+            ar = F.load_run(exp, label, s, ROOT / "results")
+            r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
+            allb[s] = (ar, r, base)
+            fr = F.selection_freq(base, n)
+            order = np.argsort(-fr)[:30]
+            jac, dur = F.jaccard_series(base), F.durations(base)
+            ent = {"persistence": {"top30": [[tickers[i], int(fr[i])] for i in order],
+                                   "top_share": {str(t): F.top_share(fr, t) for t in F.TOP_FREQ},
+                                   "jaccard_mean": float(jac.mean()), "jaccard_median": float(np.median(jac)),
+                                   "duration_mean": float(dur.mean()), "duration_median": float(np.median(dur)), "duration_max": int(dur.max()),
+                                   "distinct_stocks_selected": int((fr > 0).sum())}}
+            ever = ar.mask.any(axis=1)
+            slots = fr / fr.sum()
+            rows = []
+            for g in np.unique(ind):
+                gi = ind == g
+                u = gi[ever].sum() / ever.sum()
+                rows.append((g, float(slots[gi].sum()), float(u)))
+            rows.sort(key=lambda x: -(x[1] - x[2]))
+            okb = ~np.isnan(beta)
+            bsel = float((fr[okb] * beta[okb]).sum() / max(fr[okb].sum(), 1))
+            ent["exposure"] = {"industry_top_over_weights": [{"industry": g, "slot_share": a_, "universe_share": u} for g, a_, u in rows[:5]],
+                               "industry_top_under_weights": [{"industry": g, "slot_share": a_, "universe_share": u} for g, a_, u in rows[-3:]],
+                               "n_industries_selected": int(sum(1 for g in np.unique(ind) if slots[ind == g].sum() > 0)),
+                               "basket_mean_beta": bsel, "universe_mean_beta": float(np.nanmean(beta[ever])),
+                               "slot_share_na_industry": float(slots[ind == "n/a"].sum()),
+                               "universe_share_na_industry": float((ind == "n/a")[ever].sum() / ever.sum())}
+            if (exp, label) == PRIMARY:
+                ha = F.hold_all(ar.gt, ar.mask)
+                to = F.turnover(base)
+                ent["gross_net"] = {"turnover_mean": float(to.mean()),
+                                    "hold_all_turnover_convention": "0 (equal-weight hold-all, no rebalancing cost modelled)",
+                                    "model": {str(b): F.perf(F.net(r, to, b)) for b in F.COST_BPS},
+                                    "hold_all": {str(b): F.perf(F.net(ha, np.zeros_like(ha), b)) for b in F.COST_BPS}}
+            res["runs"][key][f"seed_{s}"] = ent
+            print(key, s, "jaccard", round(ent["persistence"]["jaccard_mean"], 3), "dur med", ent["persistence"]["duration_median"],
+                  "top5 share", round(ent["persistence"]["top_share"]["5"], 3), "distinct", ent["persistence"]["distinct_stocks_selected"],
+                  "beta", round(ent["exposure"]["basket_mean_beta"], 2), "vs", round(ent["exposure"]["universe_mean_beta"], 2), flush=True)
+        pair, corr = [], []
+        top10 = [set(np.argsort(-F.selection_freq(allb[s][2], n))[:10].tolist()) for s in SEEDS]
+        for i in range(5):
+            for j in range(i + 1, 5):
+                pair.append(_jacc(allb[SEEDS[i]][2], allb[SEEDS[j]][2]))
+                corr.append(float(np.corrcoef(allb[SEEDS[i]][1], allb[SEEDS[j]][1])[0, 1]))
+        cnt = {}
+        for t in top10:
+            for x in t:
+                cnt[x] = cnt.get(x, 0) + 1
+        res["runs"][key]["seed_concentration"] = {
+            "pairwise_daily_basket_jaccard_mean": float(np.mean(pair)), "pairwise_jaccard_min_max": [float(min(pair)), float(max(pair))],
+            "pairwise_daily_return_corr_mean": float(np.mean(corr)), "pairwise_corr_min_max": [float(min(corr)), float(max(corr))],
+            "stocks_in_top10_freq_of_ge3_seeds": sorted([tickers[i] for i, c in cnt.items() if c >= 3]),
+            "note": "agreement across seeds under the same data/ordering/backtester is not independent evidence"}
+        sc = res["runs"][key]["seed_concentration"]
+        print(key, "seed jaccard", round(sc["pairwise_daily_basket_jaccard_mean"], 3), "ret corr", round(sc["pairwise_daily_return_corr_mean"], 3),
+              "shared top10:", sc["stocks_in_top10_freq_of_ge3_seeds"], flush=True)
+    (DOCS / "decompose.json").write_text(json.dumps(res, indent=1))
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    pk = "%s/%s" % PRIMARY
+    fig, axs = plt.subplots(1, 3, figsize=(15, 4))
+    for s in SEEDS:
+        axs[0].plot(np.arange(1, 31), [c for _, c in res["runs"][pk][f"seed_{s}"]["persistence"]["top30"]], label=f"seed {s}")
+    axs[0].set_xlabel("stock rank by selection count"); axs[0].set_ylabel("days selected (of 237)"); axs[0].legend(fontsize=7)
+    for s in SEEDS:
+        axs[1].plot(F.COST_BPS, [res["runs"][pk][f"seed_{s}"]["gross_net"]["model"][str(b)]["sr"] for b in F.COST_BPS], marker="o", label=f"seed {s}")
+    axs[1].plot(F.COST_BPS, [res["runs"][pk]["seed_0"]["gross_net"]["hold_all"][str(b)]["sr"] for b in F.COST_BPS], "k--", label="hold-all")
+    axs[1].set_xlabel("cost, bp per side"); axs[1].set_ylabel("Sharpe"); axs[1].legend(fontsize=7)
+    axs[2].bar(range(5), [res["runs"][pk][f"seed_{s}"]["persistence"]["jaccard_mean"] for s in SEEDS])
+    axs[2].set_xlabel("seed"); axs[2].set_ylabel("mean day-to-day Jaccard")
+    fig.tight_layout(); fig.savefig(FIGS / "phase1_5a_persistence.png", dpi=110)
+    print("decompose written")
+
+
 #@@STAGES@@
-STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity, "report": stage_report}
+STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity, "decompose": stage_decompose, "report": stage_report}
 
 
 def main():
