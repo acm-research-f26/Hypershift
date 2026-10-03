@@ -90,6 +90,16 @@ bash kaggle/merge_results.sh kaggle/build/out_r5f/results_r5f.zip --dry-run   # 
 CUDA_VISIBLE_DEVICES=-1 .venv/Scripts/python.exe scripts/f_analysis.py --seeds 5 --prefix f_f2_   # reprints stage 1-2 tables
 ```
 
+**Kaggle analysis (CPU kernel, no GPU quota; the laptop downloads only a few KB).** When BOTH `hypershift-run-r5f` and `hypershift-run-r8f` are COMPLETE (check with `kg kernels status`), run the one command below, then the fetch. It mounts the two kernels' outputs (`kernel_sources`) plus a small separate code dataset `hypershift-code-an`, runs `scripts/r5f_analysis.py` (HH vs EH/EE and RSR-I/STHGCN vs THINK/EH for norm paper and train; Sharpe annualized and not, NDCG@5, IRR, IC, Wilcoxon + Holm + block bootstrap + verdict words, random tie-break, old Phase 1 and paper Table II comparison, seeds finished, partial seeds paired), and writes `F_r5f_results.md`, `F_r5f_summary.json`, `F_r5f_fig.png`. It does not touch `kaggle/build` or the training kernels. Tested end to end on the smoke kernels as `tomphamdustry/hypershift-run-r5f-an-smoke` (COMPLETE, `bash kaggle/launch_analysis.sh smoke`). It can also be run on partial output only after the source kernels finish; a RUNNING kernel exposes no output.
+
+```bash
+export KAGGLE_USER=tomphamdustry
+bash kaggle/launch_analysis.sh                              # pushes kernel tomphamdustry/hypershift-run-r5f-an
+bash kaggle/fetch_analysis.sh r5f-an F_r5f --install        # status; when COMPLETE downloads to kaggle/build/out_r5f-an/ and copies the md to docs/phase1_5/F_r5f_results.md and the png to docs/figures/
+```
+
+Locally (only if the zips are already merged into `results/`): `CUDA_VISIBLE_DEVICES=-1 .venv/Scripts/python.exe scripts/r5f_analysis.py --root .`.
+
 Still to conclude:
 1. Fetch, merge and analyse r5f: does THINK beat EH/EE under the corrected optimizer (validation-selected epoch and `test_oracle_sr`), and `norm=paper` vs `norm=train`?
 2. Decide whether the small-scale Phase 1 arms (g2, POC `rel_*`, clique, R8 baselines) need a wd-0 rerun. The same wd 5e-4 applies to RSR-I and STHGCN in this repo (a deviation for the baselines, `D_resolved_configs.md` sec. 5).
