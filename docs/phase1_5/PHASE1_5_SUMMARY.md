@@ -4,7 +4,7 @@
 
 ## 0. Status in one paragraph
 
-Phase 1 ended with "not reproduced under validation selection" (`docs/PHASE1_TRACKER.md`). Phase 1.5 asked whether that null could be our fault. The evaluator, window alignment, data loading and graph build were audited and found correct (A, C). The model matches the printed equations except for a short list of departures (B). Two things undermine the Phase 1 nulls: `norm: paper` leaks future price scale into inputs (A), and the repo's default optimizer setting, coupled weight decay 5e-4, makes the model unable to learn even a planted signal (D, F). The authors' own RSR-I code shows the same no-skill picture on our evaluator (E), so part of the null is shared across implementations. **The corrected p1f smoke has only seed 0 and is INSUFFICIENT SEEDS; the corrected full-NYSE rerun (r5f, r8f) is not yet analysed, so the Phase 1 verdict remains pending.**
+Phase 1 ended with "not reproduced under validation selection" (`docs/PHASE1_TRACKER.md`). Phase 1.5 asked whether that null could be our fault. The evaluator, window alignment, data loading and graph build were audited and found correct (A, C). The model matches the printed equations except for a short list of departures (B). Two things undermine the Phase 1 nulls: `norm: paper` leaks future price scale into inputs (A), and the repo's default optimizer setting, coupled weight decay 5e-4, makes the model unable to learn even a planted signal (D, F). The authors' own RSR-I code shows the same no-skill picture on our evaluator (E), so part of the null is shared across implementations. **The corrected p1f smoke has only seed 0 and is INSUFFICIENT SEEDS. The corrected full-NYSE R5_f rerun gives NO EVIDENCE for THINK vs TConv+DHHAN under both `norm=paper` and `norm=train`; R8_f baseline comparisons have INSUFFICIENT SEEDS.**
 
 Fidelity labels used below: **PAPER** = stated in `docs/paper/icdm22-think.pdf` and implemented as printed; **INFERRED** = the paper is silent, we chose (usually from the STHAN-SR / RSR code); **DEPARTURE** = differs from what the paper prints, or from the authors' code, for a stated reason; **UNKNOWN** = cannot be determined from the PDF.
 
@@ -92,9 +92,9 @@ Planted-signal runs (D and F; synthetic returns on the 309-stock universe; Sharp
 
 ## 4. Still open
 
-- **r5f (Kaggle `hypershift-run-r5f`, preset 10) and r8f (`hypershift-run-r8f`, preset 11) are not yet fetched or analysed.** They rerun full NYSE with `input_mode=relative weight_decay=0` for THINK/EH/EE (and RSR-I/STHGCN), under both `norm=paper` and `norm=train`.
+- **r5f (Kaggle `hypershift-run-r5f`, preset 10) and r8f (`hypershift-run-r8f`, preset 11) are fetched and analysed in `F_r5f_results.md`.** They rerun full NYSE with `input_mode=relative weight_decay=0` for THINK/EH/EE (and RSR-I/STHGCN), under both `norm=paper` and `norm=train`.
 - Small-scale Phase 1 smoke `p1f` reran seed 0 only with `input_mode=relative weight_decay=0`; the rest of small-scale Phase 1 arms (level-input g2, tuned `rel_tuned_g2`, A10/C1/G2/G12 ablations and R1-R3) were not rerun in preset `p1f` (`F_p1f_smoke_results.md` sec. 3).
-- `alpha=0` and `spatial_residual` are not tested on full NYSE (r5f has wd 0 only).
+- `alpha=0` and `spatial_residual` full-NYSE smoke documents have no finished runs in `F_r5f2_smoke_results.md`, so their result status is PENDING.
 - Untested model departures (B ranks 1-2: eq. 14 operator, softmax).
 - The paper's Sharpe formula, k, R_f, buy price, split, Fig. 3b degree axis, Wikidata snapshot and Z grouping remain UNKNOWN.
 - Differences from the authors' repos that are unquantified: price-ratio target, 1 day per step, validation days entering training (STHAN-SR, by code reading only), clipping, dropout.
@@ -102,9 +102,9 @@ Planted-signal runs (D and F; synthetic returns on the 309-stock universe; Sharp
 
 ## 5. Final verdict
 
-**Current Phase 1.5 verdict: INSUFFICIENT SEEDS for the corrected p1f smoke; PENDING for the full Phase 1 reproduction verdict.** `F_p1f_smoke_results.md` reports only one finished paired seed, so no allowed verdict stronger than INSUFFICIENT SEEDS is supported. Finished seeds: seed 0 for `HH_hyper`, `HH_clique`, `EH_hyper`, `EE_none`, `rsr_i`, `HH` and `EH`.
+**Current Phase 1.5 verdict: NO EVIDENCE for corrected full-NYSE THINK vs TConv+DHHAN under both norms; INSUFFICIENT SEEDS for corrected R8_f baseline comparisons and the corrected p1f smoke.** `F_r5f_results.md` reports finished full-NYSE seeds [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] for HH (THINK) and EH (TConv+DHHAN), and [0, 1, 2, 3, 4] for EE, RSR-I and STHGCN. `F_p1f_smoke_results.md` reports only one finished paired seed, so no allowed verdict stronger than INSUFFICIENT SEEDS is supported. Finished p1f seeds: seed 0 for `HH_hyper`, `HH_clique`, `EH_hyper`, `EE_none`, `rsr_i`, `HH` and `EH`. `F_r5f2_smoke_results.md` reports no finished `alpha=0` or `spatial_residual` smoke runs.
 
-Paper anchor: Table II p. 852 reports NYSE stock ranking THINK 1.18 vs TCONV+DHHAN 1.14 Sharpe and NASDAQ Clf F1 THINK 0.49 vs TCONV+DHHAN 0.44; Sec. IV-B p. 852 defines Sharpe as `E[R_a - R_f] / std[R_a - R_f]`. The p1f smoke uses our evaluator, so levels are not like-for-like with the paper.
+Paper anchor: Table II p. 852, Sec. V.A reports NYSE stock ranking THINK 1.18 vs TCONV+DHHAN 1.14 Sharpe and NASDAQ Clf F1 THINK 0.49 vs TCONV+DHHAN 0.44; Sec. IV-B p. 852 defines Sharpe as `E[R_a - R_f] / std[R_a - R_f]`. The corrected runs use our evaluator, so levels are not like-for-like with the paper.
 
 | scope | norm | validation-selected epoch | `test_oracle_sr` / best-test | finished seeds | verdict |
 |---|---|---|---|---|---|
@@ -114,9 +114,13 @@ Paper anchor: Table II p. 852 reports NYSE stock ranking THINK 1.18 vs TCONV+DHH
 | p1f R8 small baseline, `rsr_i minus EH_hyper` | UNKNOWN in result document | +1.430; `rsr_i` 1.637 ± 0.000, `EH_hyper` 0.206 ± 0.000 | UNKNOWN in result document | seed 0 only | INSUFFICIENT SEEDS |
 | p1f NASDAQ Clf `HH - EH` macro-F1 | UNKNOWN in result document | `mean diff` -0.0073; `HH` 0.3441 ± 0.0000, `EH` 0.3513 ± 0.0000 | UNKNOWN in result document | seed 0 only | INSUFFICIENT SEEDS |
 | p1f NASDAQ Clf `HH - EH` micro-F1 | UNKNOWN in result document | `mean diff` +0.0203; `HH` 0.3817 ± 0.0000, `EH` 0.3615 ± 0.0000 | UNKNOWN in result document | seed 0 only | INSUFFICIENT SEEDS |
-| corrected full NYSE R5_f | norm=paper | PENDING | PENDING | PENDING | PENDING |
-| corrected full NYSE R5_f | norm=train | PENDING | PENDING | PENDING | PENDING |
-| corrected full NYSE R8_f | norm=paper | PENDING | PENDING | PENDING | PENDING |
-| corrected full NYSE R8_f | norm=train | PENDING | PENDING | PENDING | PENDING |
+| corrected full NYSE R5_f, THINK vs TConv+DHHAN | norm=paper | `diff (a-b) leak-free` +0.783; HH 1.929 ± 0.565, EH 1.146 ± 0.661 | `best-test diff` +0.134; HH 2.891 ± 0.263, EH 2.757 ± 0.357 | HH/EH seeds [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] | NO EVIDENCE |
+| corrected full NYSE R5_f, THINK vs TConv+DHHAN | norm=train | `diff (a-b) leak-free` +0.252; HH 1.687 ± 0.316, EH 1.436 ± 0.562 | `best-test diff` +0.186; HH 2.925 ± 0.128, EH 2.739 ± 0.271 | HH/EH seeds [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] | NO EVIDENCE |
+| corrected full NYSE R5_f, THINK vs EE | norm=paper | `diff (a-b) leak-free` +0.913; HH 1.929 ± 0.565, EE 1.045 ± 0.222 | `best-test diff` +0.442; HH 2.891 ± 0.263, EE 2.558 ± 0.181 | HH seeds [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; EE seeds [0, 1, 2, 3, 4] | INSUFFICIENT SEEDS |
+| corrected full NYSE R5_f, THINK vs EE | norm=train | `diff (a-b) leak-free` +0.997; HH 1.687 ± 0.316, EE 0.788 ± 0.581 | `best-test diff` +0.248; HH 2.925 ± 0.128, EE 2.660 ± 0.240 | HH seeds [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; EE seeds [0, 1, 2, 3, 4] | INSUFFICIENT SEEDS |
+| corrected full NYSE R8_f baselines vs THINK/EH | norm=paper | HH 1.929 ± 0.565; EH 1.146 ± 0.661; RSR-I 1.020 ± 0.287; STHGCN 1.240 ± 0.827 | HH 2.891 ± 0.263; EH 2.757 ± 0.357; RSR-I 2.543 ± 0.178; STHGCN 3.243 ± 0.332 | HH/EH seeds [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; RSR-I/STHGCN seeds [0, 1, 2, 3, 4] | INSUFFICIENT SEEDS |
+| corrected full NYSE R8_f baselines vs THINK/EH | norm=train | HH 1.687 ± 0.316; EH 1.436 ± 0.562; RSR-I 0.981 ± 0.397; STHGCN 1.264 ± 1.039 | HH 2.925 ± 0.128; EH 2.739 ± 0.271; RSR-I 2.686 ± 0.209; STHGCN 2.958 ± 0.232 | HH/EH seeds [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; RSR-I/STHGCN seeds [0, 1, 2, 3, 4] | INSUFFICIENT SEEDS |
+| corrected full NYSE `alpha=0` smoke | norm=train | PENDING | PENDING | no finished runs | PENDING |
+| corrected full NYSE `spatial_residual` smoke | norm=train | PENDING | PENDING | no finished runs | PENDING |
 
-Until `results/R5_f_paper`, `results/R5_f_train` and `results/R8_f_*` are fetched and analysed, "not reproduced" describes only the wd 5e-4 setup and the corrected full-NYSE verdict is PENDING.
+Reading: corrected full-NYSE THINK is higher than TConv+DHHAN in both norms, but the allowed verdict in `F_r5f_results.md` is NO EVIDENCE. Corrected R8_f has only five paired baseline seeds, so its allowed verdicts are INSUFFICIENT SEEDS. The `alpha=0` and `spatial_residual` smoke result document has no finished runs, so those rows stay PENDING.
