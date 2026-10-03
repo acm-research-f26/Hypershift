@@ -1,0 +1,11 @@
+# Launch queue read by scripts/overnight/driver.sh (Task Scheduler tick). One preset per line, in launch order: "<preset> [tag]" (tag defaults to the preset name).
+# The driver runs `bash kaggle/launch.sh <preset> <tag>` for the first line, removes the line after a successful launch, and keeps it if launch.sh exits nonzero
+# (refused by Kaggle: "Maximum batch GPU session count of 2 reached"; or exit 3 = precondition not met) and retries on a later tick.
+# launch.sh itself enforces: r8f-top needs hypershift-run-r8f COMPLETE/ERROR; every full preset needs its smoke (<preset>-s) COMPLETE (exit 3 until then).
+# Smokes were NOT launched yet (2026-10-03: GPU session limit 2 reached while r5f and r8f run), so they are listed before their full presets.
+r8f-top-s
+r8f-top
+p1f-s
+p1f
+r5f2-s
+r5f2

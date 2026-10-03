@@ -100,6 +100,12 @@ bash kaggle/fetch_analysis.sh r5f-an F_r5f --install        # status; when COMPL
 
 Locally (only if the zips are already merged into `results/`): `CUDA_VISIBLE_DEVICES=-1 .venv/Scripts/python.exe scripts/r5f_analysis.py --root .`.
 
+**Update 2026-10-03 (next presets, built by an agent; none launched yet).** Three more Kaggle presets are ready and queued in `kaggle/queue.txt` for the overnight driver (order: r8f-top-s, r8f-top, p1f-s, p1f, r5f2-s, r5f2; smokes could not be launched because Kaggle allows 2 concurrent GPU sessions and r5f and r8f occupy them; `launch.sh` refuses a full preset with exit 3 until its smoke is COMPLETE). Details in `kaggle/README.md`.
+- `r8f-top`: finishes the missing R8_f seeds from the r8f output (kernel source). Needs r8f COMPLETE/ERROR.
+- `p1f` (about 4-5 GPU-h, guard 6 h): Phase 1 `rel_g2` (8 arms x 10 seeds), R8 small, and R7 NASDAQ F1 (25 seeds) with `weight_decay=0` (single change for rel_g2; R8 small and R7 also switch level to relative inputs). New exps `POC_sectors_rel_g2_f`, `POC_sectors_R8_*_g2_f`, `E11_clf_g2_f`. Dropped: level-input g2, tuned `rel_tuned_g2`, A10/C1/G2/G12, R1-R3 (`run_pygt.py` already uses wd 0). Result doc `F_p1f_results.md` comes inside the zip.
+- `r5f2` (about 3-5 GPU-h, guard 8 h): full NYSE HH and EH, 5 seeds, `norm=train`, F fix plus `alpha=0` (loss = MSE only; the loss form and alpha are INFERRED, not in the paper) in `R5_f2_alpha0_train`, or plus `spatial_residual=true` in `R5_f2_resid_train` (DEPARTURE from eq. 15, p. 851). Compare with `R5_f_train` seeds 0-4 after merging. Result doc `F_r5f2_results.md`.
+- Other labels: `weight_decay=0` and `input_mode=relative` are DEPARTURES from the repo defaults (themselves INFERRED; the paper states neither, audit P44).
+
 Still to conclude:
 1. Fetch, merge and analyse r5f: does THINK beat EH/EE under the corrected optimizer (validation-selected epoch and `test_oracle_sr`), and `norm=paper` vs `norm=train`?
 2. Decide whether the small-scale Phase 1 arms (g2, POC `rel_*`, clique, R8 baselines) need a wd-0 rerun. The same wd 5e-4 applies to RSR-I and STHGCN in this repo (a deviation for the baselines, `D_resolved_configs.md` sec. 5).

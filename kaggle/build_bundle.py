@@ -4,7 +4,7 @@
   kaggle/build/hypershift-rsr-data/   RSR ticker lists, price CSVs, wiki csv, v2 hypergraph cache,
                                       relation tensors (gzip, stored as .npy.gzb so Kaggle does not auto-extract them into a directory; only RSR-I needs them, the cache covers everything else)
 
-Usage (repo root):  .venv/Scripts/python.exe kaggle/build_bundle.py --username <kaggle-user> [--no-relation] [--markets NYSE NASDAQ]
+Usage (repo root):  .venv/Scripts/python.exe kaggle/build_bundle.py --username <kaggle-user> [--no-relation] [--markets NYSE NASDAQ] [--code-only]
 Run with CUDA_VISIBLE_DEVICES=-1 if you run it next to the GPU queue (it does not import torch anyway).
 """
 import argparse
@@ -63,7 +63,7 @@ def sh(*a):
 def build_code(user: str):
     d = BUILD / "hypershift-code"
     shutil.copytree(REPO / "src", d / "src", ignore=IGNORE)
-    shutil.copytree(REPO / "scripts", d / "scripts", ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "queues"))
+    shutil.copytree(REPO / "scripts", d / "scripts", ignore=shutil.ignore_patterns("__pycache__", "*.pyc", "queues", "overnight"))
     shutil.copytree(REPO / "configs", d / "configs")
     shutil.copy2(REPO / "pyproject.toml", d / "pyproject.toml")
     (d / "requirements-kaggle.txt").write_text(REQS)
@@ -124,13 +124,18 @@ def main():
     ap.add_argument("--username", default="YOUR_KAGGLE_USERNAME")
     ap.add_argument("--markets", nargs="+", default=["NYSE", "NASDAQ"])
     ap.add_argument("--no-relation", action="store_true", help="skip the (gzipped) relation tensors; RSR-I then cannot run")
+    ap.add_argument("--code-only", action="store_true", help="rebuild only hypershift-code (seconds); the data dataset is already uploaded, so skip re-gzipping several GB")
     a = ap.parse_args()
-    if BUILD.exists():
-        shutil.rmtree(BUILD)
-    BUILD.mkdir(parents=True)
+    BUILD.mkdir(parents=True, exist_ok=True)
+    # Never wipe kaggle/build wholesale: out_<tag>/ holds downloaded result zips that may not be merged yet (a fetch followed by the next launch used to delete them).
+    for sub in ("hypershift-code", "kernel") + (() if a.code_only else ("hypershift-rsr-data",)):
+        if (BUILD / sub).exists():
+            shutil.rmtree(BUILD / sub)
     c = build_code(a.username)
-    r = build_data(a.username, a.markets, not a.no_relation)
     print(f"{c}: {human(du(c))}  ({sum(1 for _ in c.rglob('*') if _.is_file())} files)")
+    if a.code_only:
+        return
+    r = build_data(a.username, a.markets, not a.no_relation)
     print(f"{r}: {human(du(r))}  ({sum(1 for _ in r.rglob('*') if _.is_file())} files)")
     for f in sorted(r.rglob("*.gz*")):
         print(f"   {f.relative_to(r)}: {human(f.stat().st_size)}")
