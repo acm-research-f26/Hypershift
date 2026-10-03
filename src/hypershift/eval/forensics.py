@@ -206,3 +206,73 @@ def graph_degree(edges, n):
     for e in edges:
         deg[list(e)] += 1
     return deg
+
+
+from scipy.stats import rankdata
+
+
+def momentum_scores(close, target_days, lb=20):
+    t = np.asarray(target_days) - 1
+    return close[:, t] / close[:, t - lb] - 1
+
+
+def rolling_vol(close, target_days, lb=20):
+    r = np.zeros_like(close)
+    r[:, 1:] = close[:, 1:] / close[:, :-1] - 1
+    return np.stack([r[:, t - lb + 1:t + 1].std(axis=1) for t in np.asarray(target_days) - 1], axis=1)
+
+
+def train_beta(gt_full, mask_full, valid_index):
+    g, m = gt_full[:, 1:valid_index], mask_full[:, 1:valid_index] > 0.5
+    mkt = np.array([g[m[:, d], d].mean() if m[:, d].any() else 0.0 for d in range(g.shape[1])])
+    beta = np.full(g.shape[0], np.nan)
+    for i in range(g.shape[0]):
+        ok = m[i]
+        if ok.sum() >= 250:
+            x, y = mkt[ok], g[i, ok]
+            beta[i] = np.cov(x, y, ddof=0)[0, 1] / x.var()
+    return beta
+
+
+def industry_of(tickers, json_path):
+    lab = {t: ind for ind, ts in json.loads(Path(json_path).read_text()).items() for t in ts}
+    return [lab.get(t, "n/a") for t in tickers]
+
+
+def proxy_features(features, gt_full, mask_full, valid_index, target_days, edges):
+    t = np.asarray(target_days) - 1
+    close = features[:, :, 4]
+    n, D = features.shape[0], len(t)
+    out = {f"ma{w}_rel": features[:, t, c] / close[:, t] for c, w in ((0, 5), (1, 10), (2, 20), (3, 30))}
+    out.update(ret1=momentum_scores(close, target_days, 1), ret5=momentum_scores(close, target_days, 5),
+               ret20=momentum_scores(close, target_days, 20), vol20=rolling_vol(close, target_days, 20),
+               close_level=close[:, t])
+    out["beta"] = np.repeat(train_beta(gt_full, mask_full, valid_index)[:, None], D, axis=1)
+    out["degree"] = np.repeat(graph_degree(edges, n)[:, None].astype(float), D, axis=1)
+    out["index"] = np.repeat(np.arange(n, dtype=float)[:, None], D, axis=1)
+    return out
+
+
+def daily_spearman(a, b, mask):
+    out = np.full(a.shape[1], np.nan)
+    for d in range(a.shape[1]):
+        i = mask[:, d] & np.isfinite(a[:, d]) & np.isfinite(b[:, d])
+        if i.sum() >= 5 and np.ptp(a[i, d]) > 0 and np.ptp(b[i, d]) > 0:
+            out[d] = np.corrcoef(rankdata(a[i, d]), rankdata(b[i, d]))[0, 1]
+    return out
+
+
+def project_scores(pred, feats, mask):
+    fitted, resid = np.full_like(pred, np.nan), np.full_like(pred, np.nan)
+    names = sorted(feats)
+    for d in range(pred.shape[1]):
+        X = np.stack([feats[k][:, d] for k in names], axis=1)
+        i = mask[:, d] & np.isfinite(X).all(1)
+        if i.sum() <= X.shape[1] + 1:
+            continue
+        Z = (X[i] - X[i].mean(0)) / np.where(X[i].std(0) > 0, X[i].std(0), 1)
+        A = np.column_stack([np.ones(i.sum()), Z])
+        coef, *_ = np.linalg.lstsq(A, pred[i, d], rcond=None)
+        fitted[i, d] = A @ coef
+        resid[i, d] = pred[i, d] - fitted[i, d]
+    return fitted, resid

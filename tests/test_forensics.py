@@ -111,3 +111,27 @@ def test_evaluator_permutation_preserves_identity_without_ties_and_can_change_wi
     r0, b0 = F.portfolio(pred, gt, mask, k=2); r1, b1 = F.portfolio(p2, g2, m2, k=2)
     assert set(perm[b1[0]]) == set(b0[0]) and r1[0] == r0[0]           # day 0: no tie at boundary
     assert set(perm[b1[2]]) != set(b0[2])                              # day 2: 3-way tie -> lowest *new* index wins
+
+
+def test_momentum_and_vol_are_causal():
+    close = np.cumprod(np.full((2, 40), 1.01), axis=1); close[1] = 1.0
+    m = F.momentum_scores(close, np.array([30]), lb=20)
+    assert m[0, 0] == pytest.approx(close[0, 29] / close[0, 9] - 1) and m[1, 0] == 0.0
+    close2 = close.copy(); close2[:, 30:] *= 5                          # future change must not move the features
+    np.testing.assert_array_equal(F.momentum_scores(close2, np.array([30]), lb=20), m)
+    np.testing.assert_array_equal(F.rolling_vol(close2, np.array([30])), F.rolling_vol(close, np.array([30])))
+    assert F.rolling_vol(close, np.array([30]))[1, 0] == 0.0
+
+
+def test_daily_spearman_and_projection():
+    rng = np.random.default_rng(0)
+    f = rng.normal(size=(50, 4)); mask = np.ones_like(f, bool)
+    pred = 3 * f + 1
+    np.testing.assert_allclose(F.daily_spearman(pred, f, mask), 1.0)
+    fitted, resid = F.project_scores(pred, {"f": f}, mask)
+    np.testing.assert_allclose(resid, 0.0, atol=1e-9)
+    assert np.isnan(F.daily_spearman(np.zeros_like(f), f, mask)).all()
+
+
+def test_graph_degree():
+    assert F.graph_degree(((0, 1, 2), (2, 3)), 5).tolist() == [1, 1, 2, 1, 0]

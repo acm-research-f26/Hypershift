@@ -246,8 +246,102 @@ def stage_mechanism(a):
     print("mechanism written")
 
 
+
+def _proxy_inputs():
+    data = _market()
+    tdays = data.test_index + np.arange(237)
+    ar0 = F.load_run(*PRIMARY, 0, ROOT / "results")
+    edges = _edges(ar0.config)
+    feats = F.proxy_features(data.features, data.gt, data.mask, data.valid_index, tdays, edges)
+    # features that look back beyond the 16-day input window must not use fill values: NaN them where any day is masked
+    t = tdays - 1
+    for name, lb in (("ret20", 20), ("vol20", 20), ("ret5", 5), ("ret1", 1)):
+        bad = np.stack([(data.mask[:, tt - lb:tt + 1].min(axis=1) < 1) for tt in t], axis=1)
+        feats[name] = np.where(bad, np.nan, feats[name])
+    return data, tdays, feats
+
+
+def _r2_per_day(pred, resid, mask):
+    out = np.full(pred.shape[1], np.nan)
+    for d in range(pred.shape[1]):
+        i = mask[:, d] & np.isfinite(resid[:, d])
+        if i.sum() > 5 and pred[i, d].var() > 0:
+            out[d] = 1 - resid[i, d].var() / pred[i, d].var()
+    return out
+
+
+def stage_proxy(a):
+    n_boot = 200 if a.quick else F.N_BOOT
+    from hypershift.eval.stats import stationary_bootstrap_indices
+    data, tdays, feats = _proxy_inputs()
+    runs = [PRIMARY, ("R5_f_train", "HH"), ("R5_f_train", "EH")]
+    res = {"quick": bool(a.quick), "features": sorted(feats), "runs": {}}
+    for exp, label in runs:
+        key = f"{exp}/{label}"
+        res["runs"][key] = {}
+        for s in SEEDS:
+            ar = F.load_run(exp, label, s, ROOT / "results")
+            r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
+            ha = F.perf(F.hold_all(ar.gt, ar.mask))["sr"]
+            rows = {}
+            for name, f in feats.items():
+                sp = F.daily_spearman(ar.pred, f, ar.mask)
+                ok = np.isfinite(sp)
+                m = float(np.nanmean(sp)) if ok.any() else float("nan")
+                rng = F.rng_for("boot", s)
+                bm = []
+                spv = sp[ok]
+                if len(spv) > 10:
+                    for _ in range(n_boot):
+                        bm.append(spv[stationary_bootstrap_indices(len(spv), F.BLOCK, rng)].mean())
+                rows[name] = {"mean_spearman": m, "n_days": int(ok.sum()),
+                              "ci95": [float(np.percentile(bm, 2.5)), float(np.percentile(bm, 97.5))] if bm else None}
+            ports = {}
+            for name, f in feats.items():
+                sg = np.sign(rows[name]["mean_spearman"]) if np.isfinite(rows[name]["mean_spearman"]) else 0
+                if sg == 0:
+                    continue
+                sc = np.where(np.isfinite(f), sg * f, 0.0)
+                mk = ar.mask & np.isfinite(f)
+                rp, bp = F.portfolio(sc, ar.gt, mk)
+                ports[name] = {**F.perf(rp), "sign": float(sg), "jaccard_vs_model": _jacc(base, bp)}
+            fitted, resid = F.project_scores(ar.pred, feats, ar.mask)
+            r2 = _r2_per_day(ar.pred, resid, ar.mask)
+            for nm, sc in (("fitted", fitted), ("resid", resid)):
+                mk = ar.mask & np.isfinite(sc)
+                rp, bp = F.portfolio(np.where(np.isfinite(sc), sc, 0.0), ar.gt, mk)
+                ports[nm] = {**F.perf(rp), "jaccard_vs_model": _jacc(base, bp)}
+            ranked = sorted(rows.items(), key=lambda kv: -abs(kv[1]["mean_spearman"]) if np.isfinite(kv[1]["mean_spearman"]) else 0)
+            res["runs"][key][f"seed_{s}"] = {
+                "model_sr": F.perf(r)["sr"], "hold_all_sr": ha, "spearman_ranked": [[k, v] for k, v in ranked],
+                "r2_mean": float(np.nanmean(r2)), "r2_median": float(np.nanmedian(r2)), "portfolios": ports}
+            top3 = ", ".join(f"{k}={v['mean_spearman']:.2f}" for k, v in ranked[:3])
+            print(key, s, "model", round(F.perf(r)["sr"], 2), "R2", round(float(np.nanmean(r2)), 2), "top:", top3,
+                  "| fitted", round(ports["fitted"]["sr"], 2), "resid", round(ports["resid"]["sr"], 2), flush=True)
+    (DOCS / "proxy.json").write_text(json.dumps(res, indent=1))
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    prim = res["runs"]["%s/%s" % PRIMARY]
+    names = res["features"]
+    fig, axs = plt.subplots(1, 2, figsize=(13, 4.5))
+    w = 0.16
+    for j, s in enumerate(SEEDS):
+        d = {k: v["mean_spearman"] for k, v in prim[f"seed_{s}"]["spearman_ranked"]}
+        axs[0].bar(np.arange(len(names)) + (j - 2) * w, [d[n] for n in names], w, label=f"seed {s}")
+    axs[0].set_xticks(range(len(names))); axs[0].set_xticklabels(names, rotation=60, ha="right", fontsize=8)
+    axs[0].set_ylabel("mean daily Spearman(score, feature)"); axs[0].legend(fontsize=7)
+    cats = ["model", "hold_all", "fitted", "resid"]
+    for j, s in enumerate(SEEDS):
+        e = prim[f"seed_{s}"]
+        axs[1].bar(np.arange(4) + (j - 2) * w, [e["model_sr"], e["hold_all_sr"], e["portfolios"]["fitted"]["sr"], e["portfolios"]["resid"]["sr"]], w)
+    axs[1].set_xticks(range(4)); axs[1].set_xticklabels(cats); axs[1].set_ylabel("2017 top-5 Sharpe")
+    fig.tight_layout(); fig.savefig(FIGS / "phase1_5a_proxy.png", dpi=110)
+    print("proxy written")
+
+
 #@@STAGES@@
-STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism}
+STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy}
 
 
 def main():
