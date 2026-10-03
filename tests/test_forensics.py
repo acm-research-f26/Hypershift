@@ -211,3 +211,47 @@ def test_margin_buckets_exact_tie_bucket_separate():
     margin = np.array([0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.]); r = np.arange(12) / 100
     rows = F.margin_buckets(margin, r, 5)
     assert rows[0]["bucket"] == "exact_tie" and rows[0]["n"] == 2 and sum(x["n"] for x in rows) == 12
+
+
+# ---------------------------------------------------------------- integration (fixture run folder, no real data)
+import hashlib
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+_REPO = Path(__file__).resolve().parents[1]
+
+
+def _fixture(root):
+    rng = np.random.default_rng(0)
+    gt = rng.normal(0, .01, size=(40, 30)).astype(np.float32)          # all seeds share the days, returns and mask (as in the real runs)
+    mask = np.ones((40, 30), np.float32)
+    for s in (0, 1):
+        p = root / "FIX" / "HH" / f"seed_{s}"; p.mkdir(parents=True)
+        pred = rng.normal(size=(40, 30)).astype(np.float32)
+        from hypershift.eval.metrics import evaluate_all
+        ev = evaluate_all(pred.astype(np.float64), gt.astype(np.float64), mask)
+        np.save(p / "test_pred.npy", pred); np.save(p / "test_gt.npy", gt); np.save(p / "test_mask.npy", mask)
+        np.save(p / "test_daily.npy", topk_daily_returns(pred.astype(np.float64), gt.astype(np.float64), mask, 5))
+        (p / "metrics.json").write_text(json.dumps({"best_epoch": 0, "test": ev, "test_oracle_epoch": 0, "epochs_run": 1}))
+        (p / "config.json").write_text(json.dumps({"weight_decay": 0.0, "input_mode": "relative", "alpha": 0.0, "norm": "train", "topk": 5, "seed": s}))
+        (p / "history.jsonl").write_text(json.dumps({"epoch": 0, "train_loss": 0.0, "val": {"sr": 0.0}, "test": ev, "test_ic": 0.0, "test_pred_sd": 1.0}) + "\n")
+
+
+def test_forensic_script_end_to_end_on_fixture(tmp_path):
+    _fixture(tmp_path)
+    h = lambda: {str(f): hashlib.sha256(f.read_bytes()).hexdigest() for f in (tmp_path / "FIX").rglob("*") if f.is_file()}
+    before = h()
+    out = tmp_path / "out"
+    r = subprocess.run([sys.executable, "scripts/forensic_2017.py", "--stage", "all", "--root", str(tmp_path), "--runs", "FIX/HH",
+                        "--seeds", "0-1", "--quick", "--fixture", "--out", str(out), "--docs", str(out / "docs")],
+                       capture_output=True, text=True, cwd=_REPO, env={**os.environ, "CUDA_VISIBLE_DEVICES": "-1"})
+    assert r.returncode == 0, (r.stdout[-1500:] + r.stderr[-2500:])
+    for stage in ("inventory", "mechanism", "proxy", "decompose", "nulls", "gaps", "trajectory", "integrity"):
+        assert (out / "docs" / f"{stage}.json").exists(), stage
+    gaps = json.loads((out / "docs" / "gaps.json").read_text())
+    assert gaps["epsilon"] == {"skipped": "gate A outcome 2"} and gaps["jitter"] == {"skipped": "gate A outcome 2"}
+    assert json.loads((out / "docs" / "proxy.json").read_text()) == {"skipped": "fixture"}
+    assert h() == before

@@ -22,6 +22,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from hypershift.eval import forensics as F  # noqa: E402
 
 PRIMARY = ("R5_f2_alpha0_train", "HH")
+FIXTURE = False
 REFERENCES = (("R5_f_train", "HH"), ("R5_f_train", "EH"), ("R5_f2_alpha0_train", "EH"), ("R5_f_paper", "HH"))
 SEEDS = (0, 1, 2, 3, 4)
 DOCS = ROOT / "docs" / "phase1_5a"
@@ -36,19 +37,24 @@ def stage_inventory(a):
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
     DOCS.mkdir(parents=True, exist_ok=True)
-    dates = [ln.strip()[:10] for ln in open(ROOT / DATA_ROOT / "NYSE_aver_line_dates.csv") if ln.strip()]
-    test_dates = [dates[29 + 1008 + j] for j in range(237)]
-    assert test_dates[0] == "2017-01-03" and test_dates[-1] == "2017-12-08", (test_dates[0], test_dates[-1])
-    from hypershift.data.rsr import read_ticker_file
-    tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
-    assert len(tickers) == 1737
+    if FIXTURE:
+        ar_ = F.load_run(*PRIMARY, SEEDS[0], RESULTS)
+        test_dates = [f"fixture_day_{j}" for j in range(ar_.pred.shape[1])]
+        tickers = [f"S{i}" for i in range(ar_.pred.shape[0])]
+    else:
+        dates = [ln.strip()[:10] for ln in open(ROOT / DATA_ROOT / "NYSE_aver_line_dates.csv") if ln.strip()]
+        test_dates = [dates[29 + 1008 + j] for j in range(237)]
+        assert test_dates[0] == "2017-01-03" and test_dates[-1] == "2017-12-08", (test_dates[0], test_dates[-1])
+        from hypershift.data.rsr import read_ticker_file
+        tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
+        assert len(tickers) == 1737
     head = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
-    inv = {"git_head": head, "test_dates": [test_dates[0], test_dates[-1]], "runs": {}, "n_verified": 0}
+    inv = {"git_head": head, "test_dates": [test_dates[0], test_dates[-1]], "runs": {}, "n_verified": 0, "fixture": FIXTURE}
     for exp, label in (PRIMARY,) + REFERENCES:
         rows = []
         for s in SEEDS:
             run = f"{exp}/{label}"
-            ar = F.load_run(exp, label, s, ROOT / "results")
+            ar = F.load_run(exp, label, s, RESULTS)
             r, baskets = F.portfolio(ar.pred, ar.gt, ar.mask)
             diff = float(np.abs(r - ar.daily).max())
             sr = F.perf(r)["sr"]
@@ -67,7 +73,7 @@ def stage_inventory(a):
             ha = F.hold_all(ar.gt, ar.mask)
             to = F.turnover(baskets)
             recs = []
-            for d in range(237):
+            for d in range(len(test_dates)):
                 idx = np.nonzero(ar.mask[:, d])[0]
                 o = idx[np.argsort(-ar.pred[idx, d], kind="stable")]
                 rank = np.empty(len(o), int)
@@ -79,7 +85,7 @@ def stage_inventory(a):
                     "in_top5": [int(i in top5) for i in o], "s5": b["s_k"][d], "s6": b["s_k1"][d],
                     "margin5": b["margin"][d], "exact_tie5": bool(b["exact_tie"][d]), "seed": s}))
             pd.concat(recs).to_csv(out / f"stockday_{exp}_{label}_s{s}.csv.gz", index=False)
-            rows.append(pd.DataFrame({"date": test_dates, "day": np.arange(237), "seed": s, "ret_gross": r,
+            rows.append(pd.DataFrame({"date": test_dates, "day": np.arange(len(test_dates)), "seed": s, "ret_gross": r,
                                       "ret_hold_all": ha, "turnover": to, "exact_tie5": b["exact_tie"],
                                       "margin5": b["margin"], "score_sd": b["sd"], "n_valid": b["n_valid"]}))
         pd.concat(rows).to_csv(out / f"portday_{exp}_{label}.csv", index=False)
@@ -139,13 +145,14 @@ def _first_k_perm_rule(gt, mask, k, perms, rng):
 
 def stage_mechanism(a):
     R_T, R_P, R_FIX = (20, 20, 50) if a.quick else (F.R_TIE, 200, 1000)
-    data = _market()
-    tdays = data.test_index + np.arange(237)
-    close = data.features[:, :, 4]
-    runs = [PRIMARY, ("R5_f_train", "HH"), ("R5_f_train", "EH")]
-    res = {"quick": bool(a.quick), "runs": {}}
+    if not FIXTURE:
+        data = _market()
+        tdays = data.test_index + np.arange(237)
+        close = data.features[:, :, 4]
+    runs = [PRIMARY] + list(REF_RUNS)
+    res = {"fixture": FIXTURE, "quick": bool(a.quick), "runs": {}}
     # relabelled-universe rule is independent of the model (depends only on gt/mask): compute once
-    ar0 = F.load_run(*PRIMARY, 0, ROOT / "results")
+    ar0 = F.load_run(*PRIMARY, 0, RESULTS)
     fixperm = F.sr_rows(_first_k_perm_rule(ar0.gt, ar0.mask, 5, R_FIX, F.rng_for("index_perm", 77)))
     res["random_fixed_index_basket_rule"] = _dist(fixperm)
     edges_cache = {}
@@ -153,7 +160,7 @@ def stage_mechanism(a):
         key = f"{exp}/{label}"
         res["runs"][key] = {}
         for s in SEEDS:
-            ar = F.load_run(exp, label, s, ROOT / "results")
+            ar = F.load_run(exp, label, s, RESULTS)
             ha = F.hold_all(ar.gt, ar.mask)
             r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
             ent = {"hold_all_sr": F.perf(ha)["sr"], "stable": F.perf(r), "turnover_mean": float(F.turnover(base).mean())}
@@ -195,6 +202,12 @@ def stage_mechanism(a):
             ent["tie_days"], ent["nontie_days"] = _split(tie), _split(~tie)
             ent["zero_spread_days"] = int((b["sd"] == 0).sum())
             # tie group composition
+            if FIXTURE:
+                ent["tie_group"] = {"fixture": True, "n_tie_days": int(tie.sum())}
+                res["runs"][key][f"seed_{s}"] = ent
+                ent["_srs"] = [float(x) for x in srs]
+                ent["_ip"] = [float(x) for x in ip_sr]
+                continue
             if key not in edges_cache:
                 edges_cache[key] = None
             if edges_cache[key] is None:
@@ -235,13 +248,14 @@ def stage_mechanism(a):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    fig, axs = plt.subplots(1, len(runs), figsize=(5 * len(runs), 4), sharey=True)
+    fig, axs = plt.subplots(1, len(runs), figsize=(5 * len(runs), 4), sharey=True, squeeze=False)
+    axs = axs[0]
     for ax, (exp, label) in zip(axs, runs):
         key = f"{exp}/{label}"
         data_v = [res["runs"][key][f"seed_{s}"]["_srs"] for s in SEEDS]
-        ax.violinplot(data_v, positions=range(5), showmedians=True)
-        ax.scatter(range(5), [res["runs"][key][f"seed_{s}"]["stable"]["sr"] for s in SEEDS], c="r", zorder=3, label="stable (saved)")
-        ax.scatter(range(5), [res["runs"][key][f"seed_{s}"]["hold_all_sr"] for s in SEEDS], c="k", marker="_", s=200, zorder=3, label="hold-all")
+        ax.violinplot(data_v, positions=range(len(SEEDS)), showmedians=True)
+        ax.scatter(range(len(SEEDS)), [res["runs"][key][f"seed_{s}"]["stable"]["sr"] for s in SEEDS], c="r", zorder=3, label="stable (saved)")
+        ax.scatter(range(len(SEEDS)), [res["runs"][key][f"seed_{s}"]["hold_all_sr"] for s in SEEDS], c="k", marker="_", s=200, zorder=3, label="hold-all")
         ax.set_title(key, fontsize=9); ax.set_xlabel("seed")
     axs[0].set_ylabel("2017 test Sharpe (random exact-tie order)"); axs[0].legend(fontsize=7)
     fig.tight_layout(); FIGS.mkdir(exist_ok=True); fig.savefig(FIGS / "phase1_5a_mechanism.png", dpi=110)
@@ -252,7 +266,7 @@ def stage_mechanism(a):
 def _proxy_inputs():
     data = _market()
     tdays = data.test_index + np.arange(237)
-    ar0 = F.load_run(*PRIMARY, 0, ROOT / "results")
+    ar0 = F.load_run(*PRIMARY, 0, RESULTS)
     edges = _edges(ar0.config)
     feats = F.proxy_features(data.features, data.gt, data.mask, data.valid_index, tdays, edges)
     # features that look back beyond the 16-day input window must not use fill values: NaN them where any day is masked
@@ -273,16 +287,20 @@ def _r2_per_day(pred, resid, mask):
 
 
 def stage_proxy(a):
+    if FIXTURE:
+        (DOCS / "proxy.json").write_text(json.dumps({"skipped": "fixture"}))
+        print("proxy skipped (fixture)")
+        return
     n_boot = 200 if a.quick else F.N_BOOT
     from hypershift.eval.stats import stationary_bootstrap_indices
     data, tdays, feats = _proxy_inputs()
-    runs = [PRIMARY, ("R5_f_train", "HH"), ("R5_f_train", "EH")]
+    runs = [PRIMARY] + list(REF_RUNS)
     res = {"quick": bool(a.quick), "features": sorted(feats), "runs": {}}
     for exp, label in runs:
         key = f"{exp}/{label}"
         res["runs"][key] = {}
         for s in SEEDS:
-            ar = F.load_run(exp, label, s, ROOT / "results")
+            ar = F.load_run(exp, label, s, RESULTS)
             r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
             ha = F.perf(F.hold_all(ar.gt, ar.mask))["sr"]
             rows = {}
@@ -356,13 +374,14 @@ def _null_summary(R, ha_mean, obs_r, obs_ha):
 def stage_nulls(a):
     B_N, B_P, N_BT = (500, 100, 200) if a.quick else (F.B_NULL, F.B_PERM, F.N_BOOT)
     from hypershift.eval.stats import holm, stationary_bootstrap_indices
-    from hypershift.data.rsr import read_ticker_file
-    data = _market()
-    tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
-    ar0 = F.load_run(*PRIMARY, 0, ROOT / "results")
+    ar0 = F.load_run(*PRIMARY, SEEDS[0], RESULTS)
     gt, mask = ar0.gt, ar0.mask
+    if not FIXTURE:
+        from hypershift.data.rsr import read_ticker_file
+        data = _market()
+        tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
     ha = F.hold_all(gt, mask)
-    res = {"quick": bool(a.quick), "B_NULL": B_N, "B_PERM": B_P, "N_BOOT": N_BT,
+    res = {"fixture": FIXTURE, "quick": bool(a.quick), "B_NULL": B_N, "B_PERM": B_P, "N_BOOT": N_BT,
            "note": "seeds are repeated runs on the same 237 days; they are not independent samples. "
                    "random_topk is identical to the within-day score permutation null for every seed/arm.",
            "hold_all": F.perf(ha), "seeds": {}}
@@ -371,22 +390,27 @@ def stage_nulls(a):
     sr_rand, sr_fix = F.sr_rows(R_rand), F.sr_rows(R_fix)
     res["null_random_topk"] = {"sr_p5_50_95": [float(x) for x in np.percentile(sr_rand, [5, 50, 95])]}
     res["null_fixed"] = {"sr_p5_50_95": [float(x) for x in np.percentile(sr_fix, [5, 50, 95])]}
-    ind = F.industry_of(tickers, ROOT / DATA_ROOT / "relation" / "sector_industry" / "NYSE_industry_ticker.json")
-    codes = {n: i for i, n in enumerate(sorted(set(ind)))}
-    s_ind = np.array([codes[x] for x in ind])
-    beta = F.train_beta(data.gt, data.mask, data.valid_index)
-    qs = np.nanquantile(beta, [0.2, 0.4, 0.6, 0.8])
-    s_beta = np.where(np.isnan(beta), 5, np.digitize(np.nan_to_num(beta), qs))
-    res["strata"] = {"n_industries": len(codes), "beta_edges": [float(x) for x in qs], "n_beta_nan": int(np.isnan(beta).sum())}
+    if FIXTURE:
+        s_ind = np.arange(gt.shape[0]) % 3
+        s_beta = (np.arange(gt.shape[0]) + 1) % 3
+        res["strata"] = {"fixture": "index-based strata (index % 3), not industry/beta"}
+    else:
+        ind = F.industry_of(tickers, ROOT / DATA_ROOT / "relation" / "sector_industry" / "NYSE_industry_ticker.json")
+        codes = {n: i for i, n in enumerate(sorted(set(ind)))}
+        s_ind = np.array([codes[x] for x in ind])
+        beta = F.train_beta(data.gt, data.mask, data.valid_index)
+        qs = np.nanquantile(beta, [0.2, 0.4, 0.6, 0.8])
+        s_beta = np.where(np.isnan(beta), 5, np.digitize(np.nan_to_num(beta), qs))
+        res["strata"] = {"n_industries": len(codes), "beta_edges": [float(x) for x in qs], "n_beta_nan": int(np.isnan(beta).sum())}
     # bootstrap indices shared across seeds/stats (paired days)
     boot = {}
     for blk in (F.BLOCK,) + tuple(F.BLOCK_SENS):
         rng = F.rng_for("boot", blk)
-        boot[blk] = np.stack([stationary_bootstrap_indices(237, blk, rng) for _ in range(N_BT)])
+        boot[blk] = np.stack([stationary_bootstrap_indices(gt.shape[1], blk, rng) for _ in range(N_BT)])
     pooled = {"label_perm": [], "industry": [], "beta": []}
     per_seed_p = {f: {} for f in ("F1", "F2", "F3", "F4")}
     for s in SEEDS:
-        ar = F.load_run(*PRIMARY, s, ROOT / "results")
+        ar = F.load_run(*PRIMARY, s, RESULTS)
         r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
         to = F.turnover(base)
         ent = {"observed": F.perf(r), "turnover_mean": float(to.mean()),
@@ -439,7 +463,7 @@ def stage_nulls(a):
 
 
 
-def stage_report(a):
+def _gate_a_section():
     """Gate A tables + predeclared outcome checks, built only from the committed json files."""
     mech = json.loads((DOCS / "mechanism.json").read_text())
     prox = json.loads((DOCS / "proxy.json").read_text())
@@ -480,10 +504,7 @@ def stage_report(a):
            "outcome_3_factor_tilt_sufficient_literal": all(o3), "outcome_3_economic_proxies_only": all(o3_econ),
            "per_seed": {"o1": o1, "o2": o2, "o3": o3, "o3_econ": o3_econ}}
     (DOCS / "gate_a.json").write_text(json.dumps(out, indent=1))
-    md = ["# Phase 1.5a report: 2017 Sharpe near 2 (R5_f2 alpha=0 THINK, HH)", "",
-          "Primary: `R5_f2_alpha0_train/HH` seeds 0-4, validation-selected epoch, top-5 equal weight, 237 test days "
-          "(2017-01-03 to 2017-12-08). Seeds are repeated runs on the same days, not independent samples. 2017 is exploratory.",
-          "", "## Gate A", "",
+    md = ["## Gate A (Tasks 1, 2, 2B, 5)", "",
           f"Hold-all (equal-weight market of valid stocks) Sharpe on the same days: {nl['hold_all']['sr']:.2f} "
           f"(cap-weighted market: UNKNOWN, not in data).", "",
           "### Ties and index order (Task 2)", "",
@@ -507,11 +528,15 @@ def stage_report(a):
           f"3. Factor tilt sufficient (literal rule, any proxy incl. fixed-basket 'index' and 'degree'): **{all(o3)}** (per seed {o3}); "
           f"restricted to economic proxies and fitted: **{all(o3_econ)}** (per seed {o3_econ}).",
           "4. Not decisive: " + str(not (all(o1) or all(o2) or all(o3))) + ".", ""]
-    (DOCS / "REPORT_2017.md").write_text("\n".join(md))
-    print(json.dumps(out))
+    return md, out, o2
+
 
 def stage_integrity(a):
     """Backtest integrity for the uncovered risks only (Task 3). Existing Phase 1.5 A/C tests are re-run, not redone."""
+    if FIXTURE:
+        (DOCS / "integrity.json").write_text(json.dumps({"skipped": "fixture"}))
+        print("integrity skipped (fixture)")
+        return
     from hypershift.data.rsr import read_ticker_file
     res = {"primary": "%s/%s" % PRIMARY}
     # 1. re-run existing integrity tests
@@ -532,7 +557,7 @@ def stage_integrity(a):
     res["stale_definition"] = "close unchanged for >= 3 consecutive days ending at the last input day (t-1)"
     ext, per_seed = {}, {}
     for s in SEEDS:
-        ar = F.load_run(*PRIMARY, s, ROOT / "results")
+        ar = F.load_run(*PRIMARY, s, RESULTS)
         r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
         tot = float(r.sum())
         n_sel = n_stale = n_zero = n_fillwin = 0
@@ -587,22 +612,28 @@ def stage_decompose(a):
     """Task 4, trimmed by the sequential stopping rule (Gate A outcome 2): items 1 persistence, 2 exposure, 5 seed
     concentration, plus gross vs net for the model and hold-all. Items 3 (contribution/exclusion/drop-days) and 4
     (costs/benchmarks beyond model and hold-all) are skipped."""
-    from hypershift.data.rsr import read_ticker_file
-    data = _market()
-    tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
-    n = len(tickers)
-    ind = np.array(F.industry_of(tickers, ROOT / DATA_ROOT / "relation" / "sector_industry" / "NYSE_industry_ticker.json"))
-    beta = F.train_beta(data.gt, data.mask, data.valid_index)
+    if FIXTURE:
+        n = F.load_run(*PRIMARY, SEEDS[0], RESULTS).pred.shape[0]
+        tickers = [f"S{i}" for i in range(n)]
+        ind = np.array([f"ind{i % 3}" for i in range(n)])
+        beta = np.ones(n)                                    # fixture placeholder
+    else:
+        from hypershift.data.rsr import read_ticker_file
+        data = _market()
+        tickers = read_ticker_file(ROOT / DATA_ROOT / "NYSE_tickers_qualify_dr-0.98_min-5_smooth.csv")
+        n = len(tickers)
+        ind = np.array(F.industry_of(tickers, ROOT / DATA_ROOT / "relation" / "sector_industry" / "NYSE_industry_ticker.json"))
+        beta = F.train_beta(data.gt, data.mask, data.valid_index)
     skip = "skipped by the predeclared sequential stopping rule (Gate A outcome 2)"
-    res = {"skipped": {"contribution_exclusion_dropdays (T4 item 3)": skip,
+    res = {"fixture": FIXTURE, "skipped": {"contribution_exclusion_dropdays (T4 item 3)": skip,
                        "costs_benchmarks beyond model and hold-all (T4 item 4)": skip},
            "runs": {}}
-    for exp, label in (PRIMARY, ("R5_f_train", "HH"), ("R5_f_train", "EH")):
+    for exp, label in [PRIMARY] + list(REF_RUNS):
         key = f"{exp}/{label}"
         res["runs"][key] = {}
         allb = {}
         for s in SEEDS:
-            ar = F.load_run(exp, label, s, ROOT / "results")
+            ar = F.load_run(exp, label, s, RESULTS)
             r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
             allb[s] = (ar, r, base)
             fr = F.selection_freq(base, n)
@@ -642,8 +673,8 @@ def stage_decompose(a):
                   "beta", round(ent["exposure"]["basket_mean_beta"], 2), "vs", round(ent["exposure"]["universe_mean_beta"], 2), flush=True)
         pair, corr = [], []
         top10 = [set(np.argsort(-F.selection_freq(allb[s][2], n))[:10].tolist()) for s in SEEDS]
-        for i in range(5):
-            for j in range(i + 1, 5):
+        for i in range(len(SEEDS)):
+            for j in range(i + 1, len(SEEDS)):
                 pair.append(_jacc(allb[SEEDS[i]][2], allb[SEEDS[j]][2]))
                 corr.append(float(np.corrcoef(allb[SEEDS[i]][1], allb[SEEDS[j]][1])[0, 1]))
         cnt = {}
@@ -665,13 +696,13 @@ def stage_decompose(a):
     pk = "%s/%s" % PRIMARY
     fig, axs = plt.subplots(1, 3, figsize=(15, 4))
     for s in SEEDS:
-        axs[0].plot(np.arange(1, 31), [c for _, c in res["runs"][pk][f"seed_{s}"]["persistence"]["top30"]], label=f"seed {s}")
+        axs[0].plot(np.arange(1, len(res["runs"][pk][f"seed_{s}"]["persistence"]["top30"]) + 1), [c for _, c in res["runs"][pk][f"seed_{s}"]["persistence"]["top30"]], label=f"seed {s}")
     axs[0].set_xlabel("stock rank by selection count"); axs[0].set_ylabel("days selected (of 237)"); axs[0].legend(fontsize=7)
     for s in SEEDS:
         axs[1].plot(F.COST_BPS, [res["runs"][pk][f"seed_{s}"]["gross_net"]["model"][str(b)]["sr"] for b in F.COST_BPS], marker="o", label=f"seed {s}")
     axs[1].plot(F.COST_BPS, [res["runs"][pk]["seed_0"]["gross_net"]["hold_all"][str(b)]["sr"] for b in F.COST_BPS], "k--", label="hold-all")
     axs[1].set_xlabel("cost, bp per side"); axs[1].set_ylabel("Sharpe"); axs[1].legend(fontsize=7)
-    axs[2].bar(range(5), [res["runs"][pk][f"seed_{s}"]["persistence"]["jaccard_mean"] for s in SEEDS])
+    axs[2].bar(range(len(SEEDS)), [res["runs"][pk][f"seed_{s}"]["persistence"]["jaccard_mean"] for s in SEEDS])
     axs[2].set_xlabel("seed"); axs[2].set_ylabel("mean day-to-day Jaccard")
     fig.tight_layout(); fig.savefig(FIGS / "phase1_5a_persistence.png", dpi=110)
     print("decompose written")
@@ -916,18 +947,258 @@ def stage_trajectory(a):
               "corr(SR,IC)", x["corr_over_epochs_test_sr_vs_test_ic"] and round(x["corr_over_epochs_test_sr_vs_test_ic"], 2))
 
 
-#@@STAGES@@
-STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity, "trajectory": stage_trajectory, "gaps": stage_gaps, "decompose": stage_decompose, "report": stage_report}
+
+
+
+def _rng(vals, f="{:.2f}"):
+    vals = [v for v in vals if v is not None]
+    lo, hi = min(vals), max(vals)
+    return f.format(lo) if f.format(lo) == f.format(hi) else f"{f.format(lo)} to {f.format(hi)}"
+
+
+GATE_A_INTERPRETATION = """### Interpretation (Gate A, exploratory; written after batch 1)
+
+1. Outcome 2 (exposure B sufficient) holds: in every primary seed the Sharpe sits inside the central 90% of the beta-matched or industry-matched null (industry p 0.145 to 0.641; beta p 0.035 to 0.081, so seed 4 is below 0.05 on beta alone). Outcomes 1 and 3 do not hold, so Gate A is not "not decisive" but it is a single-mechanism result, not a full explanation. Outcome 2 is also implied by the non-rejection of F1 (random daily top-5): if the Sharpe is already typical of random 5-stock baskets in this year, market exposure plus chance suffices to account for it.
+2. The 2017 equal-weight market (hold-all) already has Sharpe 1.53. The 5 seeds' 1.88 to 2.14 are 0.35 to 0.61 above it; the Sharpe of the daily excess over hold-all is 1.5 to 1.9 but its block-bootstrap CI is wide (lowest lower bound 0.03, highest upper bound 3.9).
+3. Against a uniform random daily top-5 (F1, same days, mask, k) the per-seed one-sided p is 0.067 to 0.120. Family p (max over seeds) F1 0.120, F2 0.081, F3 0.641, F4 0.142; Holm-adjusted 0.32 to 0.64. No test rejects. This is "no evidence against the null" on 237 days, not proof of no skill; power is low (see the CI width).
+4. Tie/index path (A) is not decisive: with random exact-tie order the median Sharpe stays above hold-all in every seed (1.78, 1.79, 2.07, 2.14, 2.17 vs 1.53); the reverse-index Sharpe is 1.60 to 2.42. For seeds 0 and 1 the saved stable value (1.88, 1.93) sits inside the random-tie 5-95% band (1.40 to 2.15), so the stable tie-break neither inflates nor deflates materially. 112 and 109 of 237 days have an exact tie at the 5th/6th boundary in seeds 0 and 1 (24, 16, 43 in seeds 2 to 4). Constant-score first-5 gives 0.37 and a random fixed-index basket rule has median 0.95 (p95 2.52), so an index-order basket alone does not reproduce 2 as a typical outcome. Not an artifact claim from tie rate alone.
+5. Tie composition in the primary run: boundary tie groups are small (mean size 3.4 to 6.5 in seeds 0, 2, 3, 4; seed 1 has a few large groups, max 1296), every day has a different tied value (no repeated saturated value except 4 days in seed 1), 0% graph-isolated, 0% stale window, 0% partly masked. So the ties are not explained by identical inputs under these three tests (mechanism cause UNKNOWN). In the R5_f_train/HH reference, ties are mass ties of about 1700 valid stocks sharing one constant output (collapsed days), a different phenomenon.
+6. Model-level equivariance (random-init THINK, 4 temporal/spatial combos, node permutation of inputs and graph) holds to rtol 1e-5, so the model has no index-dependent step; the index only enters through the evaluator's stable tie-break. The trained-model version is not recoverable (no weights saved).
+7. Factor proxy (descriptive, not causal): the score is positively associated with ma30_rel and ma20_rel and negatively with ret20 (daily Spearman 0.2 to 0.4 in magnitude): a short-horizon mean-reversion / oversold tilt, shared across seeds. An all-feature linear fit explains a mean per-day R2 of 0.09 to 0.21. The fitted portfolio gets 0.33 to 1.76 (below the model in every seed), while the residual (score minus fit) portfolio keeps 1.83 to 2.29. So the simple proxies do not carry the return; most of it stays in the unexplained part. Literal outcome 3 is not met (seed 3 residual 2.29 lies above the random null p95; also 'index' and 'degree' qualify as "proxies" only as arbitrary fixed baskets, which the economic-proxy reading excludes).
+"""
+
+
+def stage_report(a):
+    """Full report built only from the stage jsons (and test_results.txt if present)."""
+    if FIXTURE:
+        (DOCS / "REPORT_2017.md").write_text("fixture run: report not generated\n")
+        (DOCS / "gate_a.json").write_text(json.dumps({"skipped": "fixture"}))
+        print("report skipped (fixture)")
+        return
+    J = lambda n: json.loads((DOCS / f"{n}.json").read_text())
+    mech, prox, nl, integ, dec, gaps, traj, inv = (J(n) for n in ("mechanism", "proxy", "nulls", "integrity", "decompose", "gaps", "trajectory", "inventory"))
+    gate_md, gate_out, o2 = _gate_a_section()
+    (DOCS / "gate_a.json").write_text(json.dumps(gate_out, indent=1))
+    pk = "%s/%s" % PRIMARY
+    S = [f"seed_{s}" for s in SEEDS]
+    ha = nl["hold_all"]["sr"]
+    # per-seed reproduction
+    rep_rows = []
+    for s in SEEDS:
+        ar = F.load_run(*PRIMARY, s, RESULTS)
+        r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
+        b = F.boundary_stats(ar.pred, ar.mask)
+        real_sd = float(np.median([ar.gt[ar.mask[:, d], d].std() for d in range(ar.gt.shape[1])]))
+        p = F.perf(r)
+        g = gaps["runs"][pk][f"seed_{s}"]
+        rep_rows.append(f"| {s} | {ar.metrics['best_epoch']} | {p['sr']:.2f} | {p['mean'] * 1e4:.1f} | {p['vol_d'] * 1e2:.2f} | {p['mdd']:.3f} | {g['global_ic']:.4f} | "
+                        f"{g['ndcg5']:.4f} | {np.median(b['sd']):.2e} | {np.median(b['sd']) / real_sd:.3f} | {b['exact_tie'].mean():.2f} | "
+                        f"{F.turnover(base).mean():.2f} | {ha:.2f} |")
+    pct = [nl["seeds"][k]["random_topk"]["sharpe"]["pct"] for k in S]
+    p1 = [nl["seeds"][k]["random_topk"]["sharpe"]["p"] for k in S]
+    ci = [nl["seeds"][k]["bootstrap"]["block_10"]["sharpe_ci95"] for k in S]
+    fam = nl["family"]
+    nrp = nl["null_random_topk"]["sr_p5_50_95"]
+    sharpes = [nl["seeds"][k]["observed"]["sr"] for k in S]
+    de = dec["runs"][pk]
+    tk = {k: gaps["runs"][pk][f"seed_{s}"]["topk"] for k, s in zip(S, SEEDS)}
+    gp = gaps["runs"][pk]
+    hit10 = [gp[k]["topk"]["5"]["hit_top10"] for k in S]; miss10 = [gp[k]["topk"]["5"]["miss_bottom10"] for k in S]
+    ic = [gp[k]["global_ic"] for k in S]; nd = [gp[k]["ndcg5"] for k in S]
+    tbd = [gp[k]["calibration"]["top_decile_minus_bottom_decile"] * 1e4 for k in S]
+    cal_hw = [gp[k]["calibration"]["ci95_halfwidth"][-1] * 1e4 for k in S]
+    exc5 = [gp[k]["topk"]["5"]["excess_mean_over_random_k_null"] * 1e4 for k in S]
+    rho = [gp[k]["margin_vs_return_spearman_nontie_days"] for k in S]
+    ig = integ["per_seed"]
+    ext = integ["extreme_selected_stock_days_abs_gt_0.2"]
+    syx = [e for e in ext if e["ticker"] == "SYX"][0]
+    syx_sh = [syx["pl_share_by_seed"][str(s)] for s in SEEDS]
+    net10 = [de[k]["gross_net"]["model"]["10"]["sr"] for k in S]; net5 = [de[k]["gross_net"]["model"]["5"]["sr"] for k in S]
+    net25 = [de[k]["gross_net"]["model"]["25"]["sr"] for k in S]
+    T = traj["runs"][pk]
+    e0 = [T[k]["test_sr_epoch0"] for k in S]; mo = [T[k]["test_sr_mean_over_epochs"] for k in S]
+    evl = traj["early_vs_late_primary"]
+
+    md = ["# Phase 1.5a report: 2017 Sharpe near 2 (R5_f2 alpha=0 THINK, HH)", "",
+          "Reproduce: `CUDA_VISIBLE_DEVICES=-1 .venv/Scripts/python.exe scripts/forensic_2017.py --stage all` (CPU, a few minutes plus the nulls). "
+          "Primary: `R5_f2_alpha0_train/HH` seeds 0-4, validation-selected epoch, top-5 equal weight, daily rebalance, 237 test days (2017-01-03 to 2017-12-08). "
+          "References: `R5_f_train/{HH,EH}` seeds 0-4. Seeds are repeated runs on the same days, not independent samples. 2017 is an exploratory year. "
+          "Market = equal-weight hold-all of valid stocks (cap-weighted market: UNKNOWN, not in the data). "
+          "Batch 2 was trimmed by the predeclared sequential stopping rule (Gate A outcome 2); skipped parts are listed in the section \"Skipped by the predeclared sequential stopping rule\".", "",
+          "## Executive summary", "",
+          f"1. **Why Sharpe near 2:** a concentrated daily top-5 portfolio in a strong market year. Equal-weight hold-all already has Sharpe {ha:.2f} on these 237 days, the basket carries a high-beta tilt "
+          f"(mean basket beta {_rng([de[k]['exposure']['basket_mean_beta'] for k in S])} vs universe {de[S[0]]['exposure']['universe_mean_beta']:.2f}), and a random daily 5-stock basket has a wide Sharpe distribution "
+          f"(5th-95th percentile {nrp[0]:.2f} to {nrp[2]:.2f}).",
+          f"2. **The model is not distinguishable from random selection.** The five Sharpes ({_rng(sharpes)}) sit at the {_rng(pct, '{:.0f}').replace(' to ', '-')} percentile (in percent of random baskets beaten) of random daily top-5 baskets (F1 per-seed p {_rng(p1, '{:.3f}')}, family p {fam['iut_family_p_max_over_seeds']['F1']:.3f}, Holm {fam['holm_adjusted']['F1']:.2f}). "
+          f"None of F1-F4 rejects (Holm {min(fam['holm_adjusted'].values()):.2f} to {max(fam['holm_adjusted'].values()):.2f}). Gate A outcome 2 (exposure sufficient) is implied by the non-rejection of F1: a Sharpe typical of random 5-stock baskets in this year needs no skill to explain it.",
+          f"3. **Power is low.** Seed-0 block-bootstrap Sharpe 95% CI is {ci[0][0]:.2f} to {ci[0][1]:.2f}; over seeds the CI bounds range {min(c[0] for c in ci):.2f} to {max(c[1] for c in ci):.2f}. "
+          "\"Not distinguishable from random\" is not \"no signal\": hypothesis D (a genuine top-tail signal) is not excluded, only unsupported.",
+          f"4. **Weak positive signs, no calibrated ranking.** Global IC {_rng(ic, '{:.4f}')}, NDCG@5 {_rng(nd, '{:.4f}')} vs random {gaps['random_ndcg5']:.4f}; the top-5 are in the realised top decile {_rng(hit10, '{:.3f}')} of the time (random 0.10) "
+          f"but also in the realised bottom decile {_rng(miss10, '{:.3f}')}, so most of that is a volatility effect; top minus bottom predicted-decile return {_rng(tbd, '{:.1f}')} bp/day with a top-decile 95% half-width of about {_rng(cal_hw, '{:.0f}')} bp. Margin buckets show no monotone pattern.",
+          f"5. **Mechanisms ruled down:** ties/index order (A) are not the main mechanism (random exact-tie median Sharpe stays above hold-all in every seed); backtest integrity (C) is clean except one stock-day (SYX 2017-03-27, +{syx['ret'] * 100:.1f}%, selected by all five seeds) that is about "
+          f"{_rng([x * 100 for x in syx_sh], '{:.0f}')}% of each seed's total P&L; without that day (retrospective) seeds 0-2 fall to {_rng([ig[k]['retrospective_sharpe_without_days_with_abs_gt_0.2'] for k in S[:3]])}.",
+          f"6. **Costs and training:** at 10 bp per side the net Sharpe is {_rng(net10)} and at 25 bp {_rng(net25)} (hold-all has no cost modelled, {ha:.2f}). Test Sharpe after the first training pass is already {_rng(e0)} and its mean over all 100 epochs is {_rng(mo)}: the level is not something training clearly added.",
+          "7. **Verdict:** Sharpe near 2 in this run is **not** evidence of learned stock ranking (NO EVIDENCE; exploratory, 2017 only, seeds not independent). See the decision table and the verdict section.", "",
+          "## Reproduction table by seed (primary run)", "",
+          "Spread = median daily cross-sectional SD of the scores; spread/realised = that divided by the median daily cross-sectional SD of realised next-day returns. Tie rate = share of days with an exact tie at the 5th/6th score. Turnover = mean daily share of names replaced.", "",
+          "| seed | selected epoch | Sharpe | mean (bp/day) | vol (%/day) | max drawdown | IC | NDCG@5 | spread | spread / realised | tie rate | turnover | hold-all Sharpe |",
+          "|---|---|---|---|---|---|---|---|---|---|---|---|---|", *rep_rows, "",
+          "All 25 run-seeds (primary + four references) recompute from the saved arrays: daily returns to atol 1e-7 and Sharpe to 1e-5 against `metrics.json` and `history.jsonl` (`inventory.json`).", ""]
+    md += gate_md
+    md += GATE_A_INTERPRETATION.split("\n")
+    md += ["**What Gate A shows:** F1-F4 do not reject; the tie path is not decisive; the score has a mean-reversion tilt that does not carry the return. **What it does not show:** that the model has no skill (power is low), or anything about years other than 2017.", ""]
+    # integrity
+    md += ["## Integrity (Task 3, uncovered risks only)", "",
+           f"Existing Phase 1.5 A/C checks re-run: `{integ['existing_tests']['cmd']}` -> {integ['existing_tests']['tail'][-1]} (verbatim last line). Target timing, split dates, mask-to-raw-close trace and Sharpe convention (`metrics.py:50-52`: mean / np.std ddof 0 x sqrt(252), no risk-free rate; pinned by `test_sharpe_matches_authors_up_to_annualisation_constant`) are therefore not redone.", "",
+           f"- Duplicate stock series: {integ['duplicate_series']['n_pairs']} pairs.",
+           f"- Selected stock-days whose 17-day window touches a fill value: {_rng([ig[k]['selected_with_fill_in_window'] for k in S], '{:.0f}')} (asserted 0; mask = min over the window).",
+           f"- Stale close (unchanged for 3+ days ending at t-1) inside selected baskets: {_rng([ig[k]['stale_in_basket'] for k in S], '{:.0f}')} of {ig[S[0]]['selected_stock_days']} stock-days per seed, P&L share {_rng([ig[k]['stale_pl_share'] * 100 for k in S], '{:.2f}')}%. Exactly-zero realised return on {_rng([ig[k]['exact_zero_return_selected'] for k in S], '{:.0f}')} selected stock-days (P&L share 0 by construction).",
+           f"- Selected stock-days with |return| > 0.2: {integ['n_extreme_unique']} unique ({', '.join(e['ticker'] + ' ' + e['date'] + ' ' + format(e['ret'] * 100, '+.1f') + '% x' + str(e['seeds']) + ' seeds' for e in ext)}). "
+           f"Neither is followed by a reversal above 50% of its size within 3 days ({integ['n_extreme_reversal_candidates']} candidates), so there is no sign of a split/adjustment error; whether SYX really rose that day is not verified against an external source (UNKNOWN). None is deleted.",
+           f"- SYX 2017-03-27 is selected by every seed and is {_rng([x * 100 for x in syx_sh], '{:.0f}')}% of each seed's total P&L (one stock-day, weight 1/5). **Retrospective** Sharpe without the day(s) with abs(ret) > 0.2 in the basket: "
+           + ", ".join(f"seed {s} {ig[k]['retrospective_sharpe_without_days_with_abs_gt_0.2']:.2f} (hold-all same days {ig[k]['retrospective_hold_all_sharpe_same_days']:.2f}, {ig[k]['n_days_removed']} day(s) removed)" for s, k in zip(SEEDS, S)) + ".", "",
+           "**What this shows:** no data or backtest defect changes the returns. **What it does not show:** that the result is robust to a single large winner; one stock-day carries a fifth of the P&L, which is itself an example of the concentration in explanation B.", ""]
+    # decomposition
+    pe = de[S[0]]["persistence"]
+    md += ["## Decomposition (Task 4, trimmed: persistence, exposure, seed concentration, gross/net)", "",
+           f"- Persistence: mean day-to-day basket Jaccard {_rng([de[k]['persistence']['jaccard_mean'] for k in S], '{:.2f}')}, median holding spell {_rng([de[k]['persistence']['duration_median'] for k in S], '{:.0f}')} days, "
+           f"{_rng([de[k]['persistence']['distinct_stocks_selected'] for k in S], '{:.0f}')} distinct stocks ever selected (of 1737). Top-5 most-selected stocks take {_rng([de[k]['persistence']['top_share']['5'] * 100 for k in S], '{:.0f}')}% of the 1185 selection slots, top-20 take {_rng([de[k]['persistence']['top_share']['20'] * 100 for k in S], '{:.0f}')}%.",
+           f"- Exposure: mean training-period beta of the selected stocks {_rng([de[k]['exposure']['basket_mean_beta'] for k in S])} vs {de[S[0]]['exposure']['universe_mean_beta']:.2f} for the universe (beta from training days only, against the equal-weight hold-all). "
+           f"The model never selects a stock with no industry label ({_rng([de[k]['exposure']['slot_share_na_industry'] * 100 for k in S], '{:.0f}')}% of slots vs {de[S[0]]['exposure']['universe_share_na_industry'] * 100:.0f}% of the universe). "
+           "Over-weighted industries are tiny ones (e.g. Wholesale Distributors: 7-11% of slots, 0.06% of the universe, one stock), which also means the industry-matched null F3 replaces those stocks with themselves and is a weak test (conservative toward not rejecting).",
+           f"- Gross vs net (cost = 2 x bps x share of names replaced, day 1 full; mean turnover {_rng([de[k]['gross_net']['turnover_mean'] for k in S], '{:.2f}')}); hold-all is charged no cost (equal-weight hold, turnover convention 0):", "",
+           "| seed | gross | 5 bp | 10 bp | 25 bp | hold-all (any cost) |", "|---|---|---|---|---|---|"]
+    for s, k in zip(SEEDS, S):
+        gn = de[k]["gross_net"]
+        md.append(f"| {s} | {gn['model']['0']['sr']:.2f} | {gn['model']['5']['sr']:.2f} | {gn['model']['10']['sr']:.2f} | {gn['model']['25']['sr']:.2f} | {gn['hold_all']['0']['sr']:.2f} |")
+    sc = de["seed_concentration"]
+    md += ["", f"- Seed concentration: pairwise daily basket Jaccard between seeds {sc['pairwise_daily_basket_jaccard_mean']:.2f} (range {sc['pairwise_jaccard_min_max'][0]:.2f} to {sc['pairwise_jaccard_min_max'][1]:.2f}), pairwise correlation of daily returns "
+           f"{sc['pairwise_daily_return_corr_mean']:.2f} (range {sc['pairwise_corr_min_max'][0]:.2f} to {sc['pairwise_corr_min_max'][1]:.2f}); stocks in the top-10 selection frequency of at least 3 seeds: {', '.join(sc['stocks_in_top10_freq_of_ge3_seeds'])}. "
+           "Agreement across seeds under the same data, ordering and backtester is not independent evidence.", "",
+           "Skipped by the predeclared sequential stopping rule (Gate A outcome 2): per-stock contribution, retrospective exclude-and-reselect and best-day removal (T4 item 3); costs/benchmarks beyond model and hold-all, momentum and daily excess-series CIs (T4 item 4).", "",
+           "Figure: `docs/figures/phase1_5a_persistence.png`.", "",
+           "**What this shows:** a rotating, moderately persistent basket tilted to high-beta names, with a net Sharpe below hold-all once cost is charged. **What it does not show:** which stocks drive the P&L beyond the single SYX day (contribution analysis skipped).", ""]
+    # gaps
+    bk = gp[S[0]]["margin_buckets"]
+    md += ["## Tiny score gaps (Task 6, trimmed: margin buckets, top-k, local/global IC, calibration)", "",
+           f"Spread: median 5th-minus-6th margin {_rng([gp[k]['spread']['margin5']['p50'] for k in S], '{:.1e}')}, median daily score SD {_rng([gp[k]['spread']['sd']['p50'] for k in S], '{:.1e}')}, zero-spread days {_rng([gp[k]['spread']['zero_spread_days'] for k in S], '{:.0f}')}, exact-tie days {_rng([gp[k]['spread']['exact_tie_days'] for k in S], '{:.0f}')}.", "",
+           "Margin buckets (mean next-day top-5 return in bp, block-bootstrap 95% CI; exact tie first, then margin quintiles q1 smallest to q5 largest):", "",
+           "| seed | " + " | ".join(b["bucket"] for b in bk) + " | Spearman(margin, return), non-tie days (95% CI) |", "|---|" + "---|" * (len(bk) + 1)]
+    for s, k in zip(SEEDS, S):
+        cells = []
+        for b in gp[k]["margin_buckets"]:
+            c = b.get("mean_ci95")
+            cells.append(f"{b['mean'] * 1e4:.0f} ({c[0] * 1e4:.0f},{c[1] * 1e4:.0f}) n={b['n']}" if c else f"n={b['n']}")
+        r_ = gp[k]["margin_vs_return_spearman_nontie_days"]
+        md.append(f"| {s} | " + " | ".join(cells) + f" | {r_['rho']:.2f} ({r_['ci95'][0]:.2f},{r_['ci95'][1]:.2f}) |")
+    md += ["", "Top-k (primary k = 5; the others are diagnostic). Sharpe / excess mean daily return over the random-k null mean (bp/day) / hit rate of the realised top decile / realised bottom decile:", "",
+           "| seed | " + " | ".join(f"k={k_}" for k_ in F.K_GRID) + " |", "|---|" + "---|" * len(F.K_GRID)]
+    for s, k in zip(SEEDS, S):
+        md.append(f"| {s} | " + " | ".join(f"{tk[k][str(k_)]['sr']:.2f} / {tk[k][str(k_)]['excess_mean_over_random_k_null'] * 1e4:.1f} / {tk[k][str(k_)]['hit_top10']:.2f} / {tk[k][str(k_)]['miss_bottom10']:.2f}" for k_ in F.K_GRID) + " |")
+    rk = gaps["random_k_null"]
+    md += ["", "Random-k null Sharpe 5th / 50th / 95th percentile: " + "; ".join(f"k={k_}: {rk[str(k_)]['sr_p5_50_95'][0]:.2f} / {rk[str(k_)]['sr_p5_50_95'][1]:.2f} / {rk[str(k_)]['sr_p5_50_95'][2]:.2f}" for k_ in F.K_GRID) + ".", "",
+           f"Ranking diagnostics: global IC {_rng(ic, '{:.4f}')}; local IC within the predicted top 5% / 10% / 20%: "
+           + "; ".join(f"q={q}: {_rng([gp[k]['local_ic'][str(q)] for k in S], '{:.3f}')}" for q in F.LOCAL_IC_Q)
+           + f". Calibration (mean realised next-day return per predicted decile, bp/day; overall mean {gp[S[0]]['calibration']['overall_mean_ret'] * 1e4:.1f}):", "",
+           "| seed | " + " | ".join(f"d{i + 1}" for i in range(F.CALIB_BINS)) + " | top - bottom |", "|---|" + "---|" * (F.CALIB_BINS + 1)]
+    for s, k in zip(SEEDS, S):
+        c = gp[k]["calibration"]
+        md.append(f"| {s} | " + " | ".join(f"{x * 1e4:.1f}" for x in c["bin_mean_ret"]) + f" | {c['top_decile_minus_bottom_decile'] * 1e4:.1f} |")
+    md += ["", f"Day-clustered 95% half-width of a single decile mean is about {_rng(cal_hw, '{:.0f}')} bp/day, so the decile profiles are not distinguishable from flat. Figures: `docs/figures/phase1_5a_margin.png`, `docs/figures/phase1_5a_calib.png`.", "",
+           "**Reconciliation (T6 item 7).** NDCG@5 is "
+           f"{_rng(nd, '{:.4f}')} against {gaps['random_ndcg5']:.4f} for random scores (100 draws, same function, days and mask), a gap of {_rng([x - gaps['random_ndcg5'] for x in nd], '{:+.4f}')}: the shifted-relevance NDCG has a high floor, so a gap of half a percent is tiny. "
+           f"The hit rate of the realised top decile ({_rng(hit10, '{:.3f}')}) is above the random 0.10, but the realised bottom decile is hit {_rng(miss10, '{:.3f}')}: picking volatile stocks puts more mass in both tails. "
+           f"The directional part is hit minus miss = {_rng([h - m for h, m in zip(hit10, miss10)], '{:+.3f}')} (about 1.5 to 3 percentage points, no confidence interval computed), consistent with the small positive IC and NDCG gap but not with a "
+           f"calibrated top-tail effect: the top predicted decile is not reliably above the bottom ({_rng(tbd, '{:.1f}')} bp/day, CI about +/-{_rng(cal_hw, '{:.0f}')} bp). "
+           "So top-tail skill (hit_top10) and NDCG@5 near random are compatible: both reflect a small directional lean on top of a large volatility/beta tilt. This is a weak positive sign for D, not support.", "",
+           "Skipped by the predeclared sequential stopping rule (Gate A outcome 2): epsilon tie-group curves and score-jitter curves (T6 items 2-3); the json carries `{\"skipped\": \"gate A outcome 2\"}`.", "",
+           "**What this shows:** tiny score gaps carry no consistent information about the next-day return (no monotone margin pattern; Spearman 0.03 to 0.10 with intervals including 0); the exact-tie bucket is positive in some seeds and negative in others. **What it does not show:** that no signal exists; each bucket holds 16 to 112 days.", ""]
+    # trajectory
+    md += ["## Epochs, seeds, controls (Task 7, history only)", "",
+           "Epoch 0 means after the first training pass (about 93 Adam steps, `loop.py:211-243`), not an untrained model.", "",
+           "| seed | selected epoch | test Sharpe epoch 0 | selected | last (epoch 99) | best-test (diagnostic) | mean over 100 epochs | corr over epochs of test Sharpe with pred SD | with test IC |", "|---|---|---|---|---|---|---|---|---|"]
+    for s, k in zip(SEEDS, S):
+        x = T[k]
+        md.append(f"| {s} | {x['selected_epoch']} | {x['test_sr_epoch0']:.2f} | {x['test_sr_selected']:.2f} | {x['test_sr_last']:.2f} | {x['test_sr_oracle_diagnostic']:.2f} | {x['test_sr_mean_over_epochs']:.2f} | "
+                  f"{x['corr_over_epochs_test_sr_vs_pred_sd']:.2f} | {x['corr_over_epochs_test_sr_vs_test_ic']:.2f} |")
+    em, lm = evl["early_mean"], evl["late_mean"]
+    md += ["", f"Between-seed comparison (confounded with seed, not a within-run trajectory): seeds selected at epoch <= 2 ({evl['early_seeds(selected epoch<=2)']}) vs >= 8 ({evl['late_seeds(selected epoch>=8)']}): "
+           f"tie rate {em['tie_rate']:.2f} vs {lm['tie_rate']:.2f}, median score SD {em['score_sd_median']:.1e} vs {lm['score_sd_median']:.1e}, median margin {em['margin5_median']:.1e} vs {lm['margin5_median']:.1e}, "
+           f"top-5 stock share {em['top5_stock_share']:.2f} vs {lm['top5_stock_share']:.2f}, Sharpe {em['sharpe']:.2f} vs {lm['sharpe']:.2f}; mean daily basket Jaccard within early {evl['mean_daily_jaccard_within_early']:.2f}, within late {evl['mean_daily_jaccard_within_late']:.2f}, between {evl['mean_daily_jaccard_between']:.2f}. "
+           "Seeds selected late have many more exact ties; with three versus two seeds this is a pattern, not a test.", "",
+           "Not answerable from the artifacts (no weights saved; predictions kept only for the last validation-improving epoch):"]
+    md += [f"- {x}" for x in traj["not_answerable_from_artifacts"]]
+    md += ["", f"Seeds: {traj['seed_note']}.", "",
+           "Weight-decay control (`docs/phase1_5/F_learnability.md` lines 7 and 11-12): same planted signal, data, code path and seeds, only weight decay changed; THINK (HH_hyper) IC/oracle 26% -> 63-84% with wd 0, decay gradient 10-40x the loss gradient, `|z|` shrinks multiplicatively over three stacked layers. "
+           f"Narrow conclusion: {traj['wd_control']['narrow_conclusion']}. No new run is recommended. Figure: `docs/figures/phase1_5a_trajectory.png`.", "",
+           "**What this shows:** a test Sharpe of 1.8 to 2.5 is already present after the first training pass in every seed and averages 1.6 to 2.0 across all 100 epochs, so it is not the product of a specific selected epoch. **What it does not show:** anything within-run about baskets or ties.", ""]
+    # decision table
+    nb = [nl["seeds"][k]["beta_matched"]["sharpe"]["p"] for k in S]
+    md += ["## Decision table", "",
+           "| Hypothesis | Evidence for | Evidence against | Unresolved |", "|---|---|---|---|",
+           f"| **A. Tie / index-order artifact** | Exact 5th/6th ties on {_rng([mech['runs'][pk][k]['tie_days']['n_days'] for k in S], '{:.0f}')} of 237 days (112 and 109 in seeds 0, 1); stable tie-break gives the lowest-index name. | Random exact-tie order keeps the median Sharpe above hold-all in every seed ({_rng([mech['runs'][pk][k]['random_tie']['p50'] for k in S])} vs {ha:.2f}); the saved stable value lies inside the random-tie 5-95% band for seeds 0-1; model-level equivariance holds; tie groups are small, not stale, isolated or masked; a constant-score first-5 basket gets {_rng([mech['runs'][pk][k]['constant_first5']['sr'] for k in S])}. | Why ties occur at all (cause UNKNOWN); epoch-wise tie behaviour and the trained-model permutation test (not recoverable). |",
+           f"| **B. Luck / concentration / market exposure** | Hold-all Sharpe {ha:.2f}; basket beta {_rng([de[k]['exposure']['basket_mean_beta'] for k in S])} vs 1.00; Sharpe at about the {_rng(pct, '{:.0f}').replace(' to ', '-')} percentile of random daily top-5, F1 p {_rng(p1, '{:.3f}')}, Holm {fam['holm_adjusted']['F1']:.2f}; F2-F4 also not rejected; 56-133 distinct stocks and one stock-day (SYX) about {_rng([x * 100 for x in syx_sh], '{:.0f}')}% of P&L; test Sharpe {_rng(e0)} already after the first training pass; net of 10 bp the Sharpe is {_rng(net10)}, below hold-all. | Beta-matched p is {_rng(nb, '{:.3f}')} (seed 4 {min(nb):.3f} < 0.05 before correction, Holm family {fam['holm_adjusted']['F2']:.2f}); the industry-matched null is weak because several over-weighted industries hold one stock. | Power (CI {min(c[0] for c in ci):.2f} to {max(c[1] for c in ci):.2f}); other years; cap-weighted market UNKNOWN; whether a better exposure control would reject. |",
+           f"| **C. Data / backtest defect** | One stock-day (SYX 2017-03-27, +{syx['ret'] * 100:.1f}%) is selected by all seeds and is about {_rng([x * 100 for x in syx_sh], '{:.0f}')}% of P&L (not verified externally); {_rng([ig[k]['stale_in_basket'] for k in S], '{:.0f}')} stale-close stock-days per seed in baskets. | Existing 15 data tests pass; 25/25 run-seeds recompute; 0 duplicate series; 0 selected stock-days with a fill value; no reversal after either abs(ret) > 0.2 day; stale share of P&L about -0.3%; no look-ahead in `norm=train`. | SYX event authenticity (UNKNOWN); the reference `R5_f_paper` arm uses the full-series max (look-ahead) and is secondary only. |",
+           f"| **D. Genuine top-tail skill** | IC {_rng(ic, '{:.4f}')} > 0 in all five seeds; NDCG@5 {_rng(nd, '{:.4f}')} vs random {gaps['random_ndcg5']:.4f}; realised-top-decile hit {_rng(hit10, '{:.3f}')} vs bottom-decile {_rng(miss10, '{:.3f}')} (directional gap about 1.5 to 3 points); top-5 beats the random-5 mean by {_rng(exc5, '{:.1f}')} bp/day. | Top-minus-bottom predicted decile {_rng(tbd, '{:.1f}')} bp/day with CI about +/-{_rng(cal_hw, '{:.0f}')} bp; no monotone margin bucket pattern, Spearman {_rng([r_['rho'] for r_ in rho], '{:.2f}')} with CIs including 0; local IC about 0; F1-F4 not rejected; excess over random-5 is of the size of its own sampling noise. | Not excluded, only unsupported; a small real signal cannot be detected with 237 days. Needs more years or independent seeds (see `PROPOSAL_followups.md`). |", "",
+           "## Verdict", "",
+           f"**Sharpe near 2 in the R5_f2 alpha=0 THINK 2017 run is not evidence of learned stock ranking (NO EVIDENCE).** The five per-seed Sharpes ({_rng(sharpes)}) are at about the {_rng(pct, '{:.0f}').replace(' to ', '-')} percentile of random daily top-5 baskets in a year where equal-weight hold-all already gets {ha:.2f}; "
+           f"F1-F4 are not rejected (family p F1 {fam['iut_family_p_max_over_seeds']['F1']:.3f}, F2 {fam['iut_family_p_max_over_seeds']['F2']:.3f}, F3 {fam['iut_family_p_max_over_seeds']['F3']:.3f}, F4 {fam['iut_family_p_max_over_seeds']['F4']:.3f}; Holm {_rng(list(fam['holm_adjusted'].values()))}); "
+           f"the block-bootstrap Sharpe 95% intervals are wide ({ci[0][0]:.2f} to {ci[0][1]:.2f} in seed 0). A weak genuine signal (hypothesis D) is neither supported nor excluded. This is a statement about this exploratory 2017 sample and these seeds (not independent), not about the authors' model.", "",
+           "## Skipped by the predeclared sequential stopping rule (Gate A outcome 2)", "",
+           "- T4 items 3-4: per-stock contribution, exclude-and-reselect, best-day removal, momentum benchmark, daily excess-series CIs.",
+           "- T6 items 2-3: epsilon tie-group curves and score-jitter curves.",
+           "Each is written `skipped by the predeclared sequential stopping rule (Gate A outcome 2)` in `decompose.json` / `gaps.json`; the full script run writes `{\"skipped\": \"gate A outcome 2\"}` for the T6 curves.", "",
+           "## Limitations", "",
+           "- Not recoverable (`inventory.json`): " + "; ".join(inv["not_recoverable"]) + ".",
+           "- 2017 is an exploratory year; the five seeds share the days, the ordering and the evaluator, so they are repeated runs, not independent samples. Formal family: F1-F4 only (intersection-union over seeds, Holm); everything else is exploratory.",
+           "- Market = equal-weight hold-all of valid stocks; cap-weighted market UNKNOWN (not in the data).",
+           "- Matched nulls resample within a stratum with replacement across draws; beta uses training-period data only; industry strata include singleton industries and a large `n/a` bucket.",
+           "- Hit-rate and decile gaps have no formal interval except where stated; the margin-bucket intervals use a stationary block bootstrap over the bucket's days in time order, which only approximates dependence.",
+           "- Epoch 0 means after the first training pass (about 93 Adam steps), never untrained.", ""]
+    # evidence index
+    md += ["## Evidence file index", "", "Large per-stock-day exports are in `results/forensics_1_5a/` (git-ignored). Committed files (sha256, first 12 hex):", "", "| file | sha256 |", "|---|---|"]
+    for pth in sorted(DOCS.glob("*.json")) + sorted(FIGS.glob("phase1_5a_*.png")):
+        md.append(f"| `{pth.relative_to(ROOT).as_posix()}` | {hashlib.sha256(pth.read_bytes()).hexdigest()[:12]} |")
+    md += ["", "Figures: persistence, margin, calib, trajectory, mechanism, proxy, nulls (`docs/figures/phase1_5a_*.png`).", "", "## Test results", ""]
+    tr = DOCS / "test_results.txt"
+    md += [tr.read_text().rstrip(), ""] if tr.exists() else ["(pending: run the three commands in the plan, Task 8 Step 3)", ""]
+    (DOCS / "REPORT_2017.md").write_text("\n".join(md), encoding="utf-8")
+    print("report written:", len(md), "lines; gate A:", json.dumps({k: v for k, v in gate_out.items() if k != "per_seed"}))
+
+
+STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity,
+          "decompose": stage_decompose, "gaps": stage_gaps, "trajectory": stage_trajectory, "report": stage_report}
 
 
 def main():
+    global PRIMARY, REFERENCES, REF_RUNS, SEEDS, RESULTS, DOCS, FIGS, FIXTURE
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", default="all")
     ap.add_argument("--out", default="results/forensics_1_5a")
     ap.add_argument("--quick", action="store_true", help="debug only: tiny B/R")
+    ap.add_argument("--root", default=None, help="results root (default: results/)")
+    ap.add_argument("--runs", default=None, help="exp/label of the primary run, e.g. FIX/HH (replaces primary and references)")
+    ap.add_argument("--seeds", default="0-4")
+    ap.add_argument("--fixture", action="store_true", help="synthetic fixture: skip steps that need real NYSE data")
+    ap.add_argument("--docs", default=None, help="redirect doc outputs (json, md, figures)")
     a = ap.parse_args()
     os.chdir(ROOT)
-    for name in (["inventory", "mechanism", "proxy", "nulls", "report"] if a.stage == "all" else [a.stage]):
+    lo, _, hi = a.seeds.partition("-")
+    SEEDS = tuple(range(int(lo), int(hi) + 1)) if hi else (int(lo),)
+    if a.root:
+        RESULTS = Path(a.root)
+    if a.runs:
+        exp, label = a.runs.split("/")
+        PRIMARY, REFERENCES, REF_RUNS = (exp, label), (), ()
+    FIXTURE = bool(a.fixture)
+    if a.docs:
+        DOCS = Path(a.docs)
+        FIGS = DOCS / "figures"
+    DOCS.mkdir(parents=True, exist_ok=True)
+    FIGS.mkdir(parents=True, exist_ok=True)
+    Path(a.out).mkdir(parents=True, exist_ok=True)
+    order = ["inventory", "mechanism", "proxy", "nulls", "integrity", "decompose", "gaps", "trajectory", "report"]
+    for name in (order if a.stage == "all" else [a.stage]):
         STAGES[name](a)
 
 

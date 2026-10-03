@@ -1,5 +1,5 @@
 {
- "git_head": "963f160aaa34c6737b2dd3586cddead385b2880c",
+ "git_head": "f16ab1b1d06ffa88a20f9b672825877ebf4877ad",
  "test_dates": [
   "2017-01-03",
   "2017-12-08"
@@ -682,6 +682,7 @@
   }
  },
  "n_verified": 25,
+ "fixture": false,
  "not_recoverable": [
   "model weights / checkpoints (none saved; loop.py has no torch.save)",
   "per-stock predictions for non-selected epochs (overwritten; only the last val-improving epoch is on disk)",

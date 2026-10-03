@@ -1,0 +1,13 @@
+```
+$ .venv/Scripts/python.exe -m pytest tests/test_forensics.py tests/test_think_equivariance.py tests/test_metrics.py tests/test_phase15_eval.py tests/test_loop.py -q
+.............................................................            [100%]
+61 passed in 23.69s
+
+$ .venv/Scripts/python.exe -m pytest -m data tests/test_forensics_artifacts.py tests/test_phase15_eval.py tests/test_phase15_data.py -q
+....................                                                     [100%]
+20 passed, 9 deselected in 18.98s
+
+$ .venv/Scripts/python.exe -m pytest -q
+
+324 passed, 1 warning in 100.24s (0:01:40)
+```

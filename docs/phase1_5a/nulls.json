@@ -1,4 +1,5 @@
 {
+ "fixture": false,
  "quick": false,
  "B_NULL": 10000,
  "B_PERM": 2000,
