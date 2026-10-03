@@ -5,3 +5,4 @@ Plan: `docs/superpowers/plans/2026-10-03-phase1-5a-sharpe2-forensics.md`. Execut
 Whoever finishes a task (Claude worker or Codex fallback) appends one line: `T<id> done <YYYY-MM-DD HH:MM> by <claude|codex>: <one-line result>`. If blocked: `T<id> BLOCKED: <reason>`. After T8 completes, create the empty file `docs/phase1_5a/DONE`.
 
 ## Log
+T1 done 2026-10-03 17:44 by claude: forensics module + inventory; 25 run-seeds verified (daily atol 1e-7, SR 1e-5), 6 unit + 5 artifact tests pass
