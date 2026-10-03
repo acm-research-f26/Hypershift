@@ -21,7 +21,7 @@ Read Part 0 before changing any model math. Decisions and results made while exe
 ## Study status
 
 - **Phase 1 (reproduce): done.** `docs/PHASE1_TRACKER.md` is 26/26. Verdict: **not reproduced under validation selection**. This is an inferred-settings reimplementation that has not shown the paper's advantage. It is not a claim about the authors' work. Many details are INFERRED (see the PA/U entries in the tracker and `docs/phase1/paper_audit.md`).
-- **Phase 1.5: fidelity audit** after an external review. Ongoing; notes in `docs/phase1_5/`.
+- **Phase 1.5: fidelity audit** after an external review. Ongoing; notes in `docs/phase1_5/`. Part F found the weight-decay collapse (see Conventions). The Phase 1 verdict is **pending** the corrected full-NYSE reruns `R5_f_*` (kernel r5f) and `R8_f_*` (kernel r8f). Next queued Kaggle work (presets in `run_kaggle.py`): `r8f-top` (top-up of R8_f), `p1f` (small-scale Phase 1 arms rerun with the F fix), `r5f2` (full NYSE `alpha=0` and `spatial_residual`). Resume notes: the RESUME HERE section of `docs/phase1_5/F_learnability.md`.
 - **Phase 2: diagnosis** of why (selection protocol, grouping, trading rule).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
@@ -49,11 +49,24 @@ Read Part 0 before changing any model math. Decisions and results made while exe
 
 ## Compute
 
-- **Kaggle is the default for heavy runs** (full-NYSE, clique, baselines). See `kaggle/README.md`. `kaggle/launch.sh <preset>` uploads and starts, `kaggle/fetch.sh` downloads and `kaggle/merge_results.sh` merges without overwriting. Set `KAGGLE_USER=tomphamdustry`; the CLI runs from a private venv: `kaggle/.venv-kaggle/Scripts/python.exe -m kaggle.cli`. Presets 1–4 are listed in the README.
+- **Kaggle is the default for heavy runs** (full-NYSE, clique, baselines). See `kaggle/README.md`. `kaggle/launch.sh <preset>` uploads and starts, `kaggle/fetch.sh` downloads and `kaggle/merge_results.sh` merges without overwriting. Set `KAGGLE_USER=tomphamdustry`; the CLI runs from a private venv: `kaggle/.venv-kaggle/Scripts/python.exe -m kaggle.cli`. Presets are `SESSION` keys in `kaggle/run_kaggle.py` (`COMMANDS`; numeric 1–11 plus the named `r8f-top`, `p1f`, `r5f2` and their `-s` smoke twins); the list and what each runs is in `kaggle/README.md` and the `launch.sh` header. A full named preset refuses to start until its smoke kernel `hypershift-run-<preset>-s` is COMPLETE.
+- **Analysis on Kaggle (CPU, no GPU quota).** `kaggle/launch_analysis.sh [smoke]` pushes kernel `hypershift-run-r5f-an` (code dataset `hypershift-code-an`, mounts the r5f/r8f kernel outputs as `kernel_sources`, runs `scripts/r5f_analysis.py`); `kaggle/fetch_analysis.sh r5f-an F_r5f --install` downloads the md/json/png and copies them to `docs/phase1_5/` and `docs/figures/`. Source kernels must be COMPLETE. Presets `p1f` and `r5f2` run their analysis in-kernel (Cell 7b, `scripts/p1f_analysis.py` / `r5f_analysis.py`) and put the md in the results zip.
+- **`kaggle/queue.txt`** is the launch queue read by the overnight driver: one `<preset> [tag]` per line, `#` comments, a launched line is removed. It did not exist at the time of writing; the driver waits for it.
 - **The laptop (RTX 3050, 4 GB) is for small jobs.** Queues live in `scripts/queues/*.sh`; launch with `bash scripts/queues/launch.sh <name>` (Task Scheduler, runs on battery).
 - Queues die on sign-out, restart, sleep or a console Ctrl+C. Relaunch them; finished runs are skipped.
 - Close games, Edge and Copilot before training: VRAM spill to shared RAM makes epochs about 10× slower.
 - **Launch checklist:** 1-epoch smoke test of each job type first. About 5 min after launch, confirm the process survived and epochs advance at the expected s/epoch (THINK full NYSE ≈ 21 s/epoch) and that no other app holds GPU memory (`nvidia-smi`).
+
+### Overnight automation
+
+- Task Scheduler task `Hypershift_overnight` runs `bash scripts/overnight/driver.sh` every 30 min (CPU only, no Claude tokens). Each tick, idempotently:
+  1. polls Kaggle and fetches and merges finished kernels (`merge_results.sh`, fallback `scripts/overnight/merge_zip.py`);
+  2. launches the analysis kernel once r5f and r8f are both finished;
+  3. launches the next preset from `kaggle/queue.txt` (at most one per tick; `r8f-top` waits for r8f);
+  4. runs `codex exec -m gpt-5.5 -s workspace-write` to update `docs/PHASE1_TRACKER.md` and `docs/phase1_5/PHASE1_5_SUMMARY.md`; Codex's sandbox blocks `.git`, so the driver commits for it;
+  5. pushes `tom-shlom`.
+- Log `results/logs/overnight.log`; state `scripts/overnight/state.json` (helper `state.py`). `bash scripts/overnight/driver.sh --dry-run` shows what a tick would do; `--reset` clears the `done` flag. `bash scripts/overnight/install.sh` / `uninstall.sh` register and remove the task.
+- **Rule:** while the driver is active, do not launch Kaggle work outside `kaggle/queue.txt`; edit the queue instead. When resuming, read the tail of `results/logs/overnight.log` first. The driver needs the user logged on and the laptop awake.
 
 ## Commands
 
@@ -69,6 +82,11 @@ $PY scripts/run_grid.py E1_main E2_geometry --dry-run     # list configs of name
 $PY scripts/run_grid.py E5_structure --labels HH_clique --seeds 0-14 --set batch_days=8
 $PY scripts/aggregate.py [--select-tuning] [--select-attn] [--costs]   # -> results/tables/
 $PY scripts/plots.py                                      # -> results/figures/
+$PY scripts/r5f_analysis.py [--root DIR] [--r5-prefix R5_f] [--r8-prefix R8_f] [--norms paper train] [--draws 10] [--boot 5000] [--fig PNG] [--note TEXT]   # Phase 1.5 F, full NYSE
+$PY scripts/p1f_analysis.py [--root DIR] [--suffix _f] [--summarize]   # Phase 1.5 F, small scale (preset p1f)
+$PY scripts/tiebreak_report.py EXP [EXP ...] [--draws 20]              # random tie-break Sharpe column
+bash kaggle/launch_analysis.sh [smoke] | bash kaggle/fetch_analysis.sh r5f-an F_r5f --install   # Kaggle CPU analysis kernel
+bash scripts/overnight/driver.sh [--dry-run|--reset]                   # one overnight tick
 $PY scripts/baselines.py | hyperbolicity.py | time_budget.py
 $PY scripts/fetch_fresh.py --source yf --kind daily --start 2015-01-01 --end 2026-09-01 --name sp500_daily
 $PY scripts/poc_sectors.py run|tune|tune-select|summarize [--variant V] [--arms ...] [--input-mode relative] [--use-tuned] [--seeds 0-9] [--set K=V ...] [--dry-run]
