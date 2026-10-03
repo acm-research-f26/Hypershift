@@ -382,3 +382,62 @@ def durations(baskets):
         for s in cur:
             open_.setdefault(s, d)
     return np.array(spells)
+
+
+def topk_diag(pred, gt, mask, k):
+    from hypershift.eval.metrics import ndcg_at_k
+    prec, h10, h20, b10, b20 = [], [], [], [], []
+    for d in range(pred.shape[1]):
+        idx = np.nonzero(mask[:, d])[0]
+        if len(idx) <= k:
+            continue
+        top = select(pred[:, d], idx, k)
+        rk = rankdata(-gt[idx, d], method="average")                  # 1 = best realised
+        pos = {s: rk[j] for j, s in enumerate(idx)}
+        prec.append(np.mean([pos[s] <= k for s in top]))
+        h10.append(np.mean([pos[s] <= 0.10 * len(idx) for s in top]))
+        h20.append(np.mean([pos[s] <= 0.20 * len(idx) for s in top]))
+        b10.append(np.mean([pos[s] > 0.90 * len(idx) for s in top]))      # worst realised decile (volatility control)
+        b20.append(np.mean([pos[s] > 0.80 * len(idx) for s in top]))
+    return {"prec_at_k": float(np.mean(prec)), "hit_top10": float(np.mean(h10)), "hit_top20": float(np.mean(h20)),
+            "miss_bottom10": float(np.mean(b10)), "miss_bottom20": float(np.mean(b20)),
+            "ndcg_k": ndcg_at_k(pred, gt, mask.astype(float), k)}
+
+
+def local_ic(pred, gt, mask, q):
+    from scipy.stats import spearmanr
+    ics = []
+    for d in range(pred.shape[1]):
+        idx = np.nonzero(mask[:, d])[0]
+        top = select(pred[:, d], idx, max(int(round(q * len(idx))), 1))
+        p, g = pred[top, d], gt[top, d]
+        if len(top) < 5 or np.ptp(p) == 0:
+            ics.append(0.0)
+            continue
+        c = spearmanr(p, g).correlation
+        ics.append(float(c) if np.isfinite(c) else 0.0)
+    return float(np.mean(ics))
+
+
+def calibration(pred, gt, mask, bins=CALIB_BINS):
+    acc, cnt = np.zeros(bins), np.zeros(bins)
+    for d in range(pred.shape[1]):
+        idx = np.nonzero(mask[:, d])[0]
+        if len(idx) < bins:
+            continue
+        u = (rankdata(pred[idx, d], method="average") - 0.5) / len(idx)
+        b = np.minimum((u * bins).astype(int), bins - 1)
+        np.add.at(acc, b, gt[idx, d]); np.add.at(cnt, b, 1)
+    return acc / np.maximum(cnt, 1)
+
+
+def margin_buckets(margin, r, n=MARGIN_BUCKETS):
+    rows = [{"bucket": "exact_tie", "n": int((margin == 0).sum()), "mean": float(r[margin == 0].mean()) if (margin == 0).any() else float("nan")}]
+    nz = np.nonzero(margin > 0)[0]
+    edges = np.quantile(margin[nz], np.linspace(0, 1, n + 1))
+    lab = np.clip(np.searchsorted(edges, margin[nz], side="right") - 1, 0, n - 1)
+    for b in range(n):
+        sel = nz[lab == b]
+        rows.append({"bucket": f"q{b + 1}", "n": int(len(sel)), "lo": float(edges[b]), "hi": float(edges[b + 1]),
+                     "mean": float(r[sel].mean()) if len(sel) else float("nan")})
+    return rows

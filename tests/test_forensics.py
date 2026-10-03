@@ -185,3 +185,29 @@ def test_persistence_helpers():
     assert sorted(F.durations(b).tolist()) == [1, 1, 1, 2, 3]
     f = F.selection_freq(b, 5)
     assert f.tolist() == [3, 2, 1, 1, 1] and F.top_share(f, 1) == pytest.approx(3 / 8)
+
+
+def test_topk_diag_on_hand_panel():
+    gt = np.array([[.05], [.04], [.03], [.02], [.01], [0.], [-.01], [-.02], [-.03], [-.04]])
+    mask = np.ones_like(gt, bool)
+    perfect = F.topk_diag(gt.copy(), gt, mask, 2)
+    assert perfect["prec_at_k"] == 1.0 and perfect["hit_top10"] == 0.5 and perfect["hit_top20"] == 1.0
+    assert perfect["ndcg_k"] == pytest.approx(1.0)
+    worst = F.topk_diag(-gt, gt, mask, 2)
+    assert worst["prec_at_k"] == 0.0 and worst["hit_top20"] == 0.0
+
+
+def test_local_ic_and_calibration():
+    rng = np.random.default_rng(0)
+    gt = rng.normal(size=(200, 5)); mask = np.ones_like(gt, bool)
+    assert F.local_ic(gt.copy(), gt, mask, 0.2) == pytest.approx(1.0)
+    cal = F.calibration(gt.copy(), gt, mask, 10)
+    assert np.all(np.diff(cal) > 0)
+    const = np.zeros_like(gt)
+    assert F.local_ic(const, gt, mask, 0.2) == 0.0
+
+
+def test_margin_buckets_exact_tie_bucket_separate():
+    margin = np.array([0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.]); r = np.arange(12) / 100
+    rows = F.margin_buckets(margin, r, 5)
+    assert rows[0]["bucket"] == "exact_tie" and rows[0]["n"] == 2 and sum(x["n"] for x in rows) == 12

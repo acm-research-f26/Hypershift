@@ -27,6 +27,8 @@ SEEDS = (0, 1, 2, 3, 4)
 DOCS = ROOT / "docs" / "phase1_5a"
 FIGS = ROOT / "docs" / "figures"
 DATA_ROOT = "data/raw/rsr/data"
+RESULTS = ROOT / "results"
+REF_RUNS = (("R5_f_train", "HH"), ("R5_f_train", "EH"))
 EVIDENCE_KEYS = ("weight_decay", "input_mode", "alpha", "norm", "spatial_residual", "topk", "seq", "seed")
 
 
@@ -675,8 +677,142 @@ def stage_decompose(a):
     print("decompose written")
 
 
+
+def _boot_mean_ci(x, rng, n_boot, block=None):
+    from hypershift.eval.stats import stationary_bootstrap_indices
+    x = np.asarray(x, float)
+    if len(x) < 3:
+        return [float("nan"), float("nan")]
+    block = block or F.BLOCK
+    bm = [x[stationary_bootstrap_indices(len(x), block, rng)].mean() for _ in range(n_boot)]
+    return [float(np.percentile(bm, 2.5)), float(np.percentile(bm, 97.5))]
+
+
+def stage_gaps(a):
+    """Task 6, trimmed by the sequential stopping rule (Gate A outcome 2): items 1 (margin/spread), 4 (margin buckets),
+    5 (top-k), 6 (global/local IC, calibration), 7 (reconciliation). Items 2-3 (epsilon and jitter curves) are skipped."""
+    from hypershift.eval.metrics import daily_ic, ndcg_at_k
+    from scipy.stats import spearmanr
+    n_boot = 200 if a.quick else F.N_BOOT
+    B_K = 20 if a.quick else F.B_NULL // 10
+    skip = "skipped by the predeclared sequential stopping rule (Gate A outcome 2)"
+    res = {"quick": bool(a.quick), "skipped": {"epsilon_curves (T6 item 2)": skip, "jitter_curves (T6 item 3)": skip},
+           "epsilon": {"skipped": "gate A outcome 2"}, "jitter": {"skipped": "gate A outcome 2"}, "runs": {}}
+    runs = [PRIMARY] + list(REF_RUNS)
+    ar0 = F.load_run(*PRIMARY, SEEDS[0], RESULTS)
+    gt, mask = ar0.gt, ar0.mask
+    # k-null (same for every seed and arm: depends only on gt, mask)
+    knull = {}
+    for k in F.K_GRID:
+        R = F.null_random_topk(gt, mask, k, B_K, F.rng_for("null_random", 50 + k))
+        knull[k] = {"mean_of_means": float(R.mean()), "sr_mean": float(F.sr_rows(R).mean()),
+                    "sr_p5_50_95": [float(x) for x in np.percentile(F.sr_rows(R), [5, 50, 95])]}
+    res["random_k_null"] = {str(k): v for k, v in knull.items()}
+    rng_rand_ndcg = np.random.default_rng(0)
+    nd_rand = float(np.mean([ndcg_at_k(rng_rand_ndcg.standard_normal(gt.shape), gt, mask.astype(float), 5) for _ in range(20 if a.quick else 100)]))
+    res["random_ndcg5"] = nd_rand
+    pooled = {}
+    for exp, label in runs:
+        key = f"{exp}/{label}"
+        res["runs"][key] = {}
+        for s in SEEDS:
+            ar = F.load_run(exp, label, s, RESULTS)
+            assert (ar.mask == mask).all() and np.allclose(ar.gt, gt), "reference run is not on the same days/universe"
+            r, base = F.portfolio(ar.pred, ar.gt, ar.mask)
+            b = F.boundary_stats(ar.pred, ar.mask)
+            ent = {}
+            # 1. margin / spread distributions
+            nz = b["margin"] > 0
+            ent["spread"] = {"margin5": _dist(b["margin"]), "sd": _dist(b["sd"]), "ptp": _dist(b["ptp"]),
+                             "margin5_over_sd_nonzero": _dist((b["margin"] / np.where(b["sd"] > 0, b["sd"], 1))[nz]) if nz.any() else None,
+                             "zero_spread_days": int((b["sd"] == 0).sum()), "exact_tie_days": int(b["exact_tie"].sum())}
+            # 4. margin buckets
+            mb = F.margin_buckets(b["margin"], r)
+            nzi = np.nonzero(nz)[0]
+            rng = F.rng_for("boot", 400 + s)
+            lab_edges = [x for x in mb if x["bucket"] != "exact_tie"]
+            edges = np.array([lab_edges[0]["lo"]] + [x["hi"] for x in lab_edges])
+            labs = np.full(len(r), -1)
+            labs[nzi] = np.clip(np.searchsorted(edges, b["margin"][nzi], side="right") - 1, 0, len(lab_edges) - 1)
+            for row in mb:
+                days = np.nonzero(b["exact_tie"] if row["bucket"] == "exact_tie" else labs == int(row["bucket"][1:]) - 1)[0]
+                row["days"] = len(days)
+                if len(days) >= 3:
+                    row["mean_ci95"] = _boot_mean_ci(r[days], rng, n_boot)
+                    sd_ = r[days].std()
+                    row["sr_annualised_on_bucket_days"] = float(r[days].mean() / sd_ * np.sqrt(252)) if sd_ > 0 else 0.0
+                    td = F.topk_diag(ar.pred[:, days], ar.gt[:, days], ar.mask[:, days], 5)
+                    row["hit_top10"], row["hit_top20"] = td["hit_top10"], td["hit_top20"]
+                    row["miss_bottom10"] = td["miss_bottom10"]
+                else:
+                    row["mean_ci95"] = None
+            ent["margin_buckets"] = mb
+            if len(nzi) > 10:
+                rho = spearmanr(b["margin"][nzi], r[nzi]).correlation
+                brho = []
+                from hypershift.eval.stats import stationary_bootstrap_indices
+                for _ in range(n_boot):
+                    ii = stationary_bootstrap_indices(len(nzi), F.BLOCK, rng)
+                    brho.append(spearmanr(b["margin"][nzi][ii], r[nzi][ii]).correlation)
+                ent["margin_vs_return_spearman_nontie_days"] = {"rho": float(rho), "ci95": [float(np.percentile(brho, 2.5)), float(np.percentile(brho, 97.5))],
+                                                                  "n": int(len(nzi))}
+            pooled.setdefault(key, []).append((b["margin"], r, b["exact_tie"]))
+            # 5. top-k
+            tk = {}
+            for k in F.K_GRID:
+                rk, bk = F.portfolio(ar.pred, ar.gt, ar.mask, k)
+                td = F.topk_diag(ar.pred, ar.gt, ar.mask, k)
+                tk[str(k)] = {**F.perf(rk), "turnover_mean": float(F.turnover(bk).mean()), "jaccard_mean": float(F.jaccard_series(bk).mean()),
+                              **td, "excess_mean_over_random_k_null": float(rk.mean() - knull[k]["mean_of_means"]),
+                              "sr_minus_random_k_null_mean_sr": float(F.perf(rk)["sr"] - knull[k]["sr_mean"]),
+                              "random_k_null_sr_p95": knull[k]["sr_p5_50_95"][2], "primary": k == F.K_PRIMARY}
+            ent["topk"] = tk
+            # 6. global / local IC and calibration
+            ent["global_ic"] = daily_ic(ar.pred, ar.gt, ar.mask.astype(float))
+            ent["local_ic"] = {str(q): F.local_ic(ar.pred, ar.gt, ar.mask, q) for q in F.LOCAL_IC_Q}
+            cal_days = np.stack([F.calibration(ar.pred[:, [d]], ar.gt[:, [d]], ar.mask[:, [d]]) for d in range(len(r))])
+            valid_days = np.array([ar.mask[:, d].sum() >= F.CALIB_BINS for d in range(len(r))])
+            cm = cal_days[valid_days].mean(0)
+            cse = cal_days[valid_days].std(0, ddof=1) / np.sqrt(valid_days.sum())
+            ent["calibration"] = {"bin_mean_ret": [float(x) for x in cm], "se_day_clustered": [float(x) for x in cse],
+                                  "ci95_halfwidth": [float(1.96 * x) for x in cse],
+                                  "overall_mean_ret": float(np.mean([ar.gt[ar.mask[:, d], d].mean() for d in range(len(r))])),
+                                  "top_decile_minus_bottom_decile": float(cm[-1] - cm[0]), "top_decile_minus_overall": float(cm[-1] - np.mean(cm))}
+            ent["ndcg5"] = ndcg_at_k(ar.pred, ar.gt, ar.mask.astype(float), 5)
+            res["runs"][key][f"seed_{s}"] = ent
+            t5, t10 = tk["5"], tk["50"]
+            print(key, s, "IC", round(ent["global_ic"], 4), "localIC.05/.1/.2", [round(v, 3) for v in ent["local_ic"].values()],
+                  "hit10", round(t5["hit_top10"], 3), "miss10", round(t5["miss_bottom10"], 3), "prec5", round(t5["prec_at_k"], 4), "ndcg5", round(ent["ndcg5"], 4),
+                  "exc k5", round(t5["excess_mean_over_random_k_null"] * 1e4, 1), "bp/d | topdec-botdec", round(ent["calibration"]["top_decile_minus_bottom_decile"] * 1e4, 1), "bp", flush=True)
+    # pooled-over-seeds margin buckets for the primary run
+    pk = "%s/%s" % PRIMARY
+    m = np.concatenate([x[0] for x in pooled[pk]]); rr = np.concatenate([x[1] for x in pooled[pk]])
+    res["primary_pooled_margin_buckets"] = {"rows": F.margin_buckets(m, rr),
+                                            "note": "days pooled across seeds (same 237 days, correlated); descriptive only"}
+    (DOCS / "gaps.json").write_text(json.dumps(res, indent=1))
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots(figsize=(6, 4))
+    names = [x["bucket"] for x in res["runs"][pk][f"seed_{SEEDS[0]}"]["margin_buckets"]]
+    for s in SEEDS:
+        ax.plot(range(len(names)), [x["mean"] * 1e4 for x in res["runs"][pk][f"seed_{s}"]["margin_buckets"]], marker="o", label=f"seed {s}")
+    ax.set_xticks(range(len(names))); ax.set_xticklabels(names); ax.set_ylabel("mean next-day top-5 return (bp)")
+    ax.set_xlabel("5th-6th score margin bucket (exact tie, then quintiles)"); ax.legend(fontsize=7)
+    fig.tight_layout(); fig.savefig(FIGS / "phase1_5a_margin.png", dpi=110)
+    fig, ax = plt.subplots(figsize=(6, 4))
+    for s in SEEDS:
+        c = res["runs"][pk][f"seed_{s}"]["calibration"]
+        ax.errorbar(np.arange(1, len(c["bin_mean_ret"]) + 1) + (s - 2) * 0.07, np.array(c["bin_mean_ret"]) * 1e4, yerr=np.array(c["ci95_halfwidth"]) * 1e4,
+                    fmt="o-", ms=3, lw=0.8, label=f"seed {s}")
+    ax.axhline(res["runs"][pk][f"seed_{SEEDS[0]}"]["calibration"]["overall_mean_ret"] * 1e4, color="k", ls="--", lw=0.8)
+    ax.set_xlabel("predicted score decile (1 = lowest)"); ax.set_ylabel("mean realised next-day return (bp), +/-1.96 SE"); ax.legend(fontsize=7)
+    fig.tight_layout(); fig.savefig(FIGS / "phase1_5a_calib.png", dpi=110)
+    print("gaps written")
+
+
 #@@STAGES@@
-STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity, "decompose": stage_decompose, "report": stage_report}
+STAGES = {"inventory": stage_inventory, "mechanism": stage_mechanism, "proxy": stage_proxy, "nulls": stage_nulls, "integrity": stage_integrity, "gaps": stage_gaps, "decompose": stage_decompose, "report": stage_report}
 
 
 def main():
