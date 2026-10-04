@@ -144,3 +144,51 @@ Purpose: test whether Alpaca market data (SIP feed, free account) can replace th
 8. **Reported statistics:** identity pass count and failure reasons; per-year coverage and attrition 2018-2023 (names alive at start/end of each year, from bar availability only); convention shares on the overlap; how many of the 136 Yahoo identity-failures pass on Alpaca; R8 reverse survivor check on the saved 2017 predictions (`R5_f2_alpha0_train/HH`, seeds 0-4, read-only) on the Alpaca-eligible set vs the full universe.
 9. **Hard rule unchanged:** no model, strategy or portfolio return for any 2018+ date; availability counts only.
 10. **Credentials** are read at runtime from the Windows user environment (`APCA_API_KEY_ID`, `APCA_API_SECRET_KEY`) and are never logged or stored.
+
+## 10. Alpaca results and verdict (A2; audit run 2026-10-04, `scripts/alpaca_data_audit.py`, `src/hypershift/data/alpaca.py`; numbers in `alpaca_audit_results.json`, per-ticker `alpaca_audit_tickers.csv`)
+
+Source: Alpaca SIP daily bars, `asof=2017-12-08`, 2016-01-04..2023-12-31, adjustments raw/split/all; 1,836 undashed candidate symbols requested, 99 dash symbols skipped (the API rejects `-`; `ROOT-X` was tried as `ROOT.X` and `ROOT.PRX`), all 1,737 tickers returned data. Raw bars: `data/raw/alpaca_post2017/` (git-ignored). Calendar: the 2016-01-04..2017-12-08 Alpaca trading-day set equals the RSR date vector exactly (0 days in only one). 503 Alpaca trading days precede 2018-01-02.
+
+**R5 overlap (2016-01-04..2017-12-08, pooled over the first symbol with data per ticker, 843,645 matched-eligible stock-days):**
+
+| adjustment | pooled share | tickers passing identity |
+|---|---|---|
+| raw | 0.9930 | 1,713 |
+| split (A2 choice, convention d) | 0.9771 | **1,647** |
+| all (split+dividend+spin-off) | 0.6547 | 301 |
+
+- Dividend adjustment is clearly not in RSR (`all`: 0.65), confirming the Yahoo finding.
+- `split` is below `raw` only because Alpaca's adjusted prices are rounded to 2 decimals (verified: AFL 2016-03 raw/split ratio is 1.99967 instead of 2.0; the adjusted prices lie on a 0.01 grid). For tickers with a later split (AFL, BRO, CM, CNC, BAM, BCH...) the adjusted price is small, so one cent is a return error above the 1e-4 tolerance. This is a measurement artefact of the rounded series, not a different security: 66 tickers pass under `raw` and fail under `split`; none was repaired (A2 item 2).
+- Alpaca `split` does NOT cleanly equal convention (d). Of 13 Yahoo spin-off pseudo-split events on identity-pass tickers in the overlap, RSR matches Alpaca `raw` on 13 and Alpaca `split` on 9, so `split` also adjusts about 4 of 13 spin-off-type events. On the 16 days where raw and split differ by more than 5 percent (identity-pass tickers), RSR matches raw on 7, split on 8, neither on 1 (a tie again). Convention (d) is therefore only approximately realised.
+- `raw` is R4-inadmissible (unadjusted genuine splits inside windows) and is not recommended despite its higher share.
+
+**Identity (under `split`).** 1,647 of 1,737 pass (94.8 percent); 0 have no data; 6 have < 250 matched days; 84 have >= 250 days and share < 0.95 (share quantiles at 0 / 10 / 50 / 90 / 100 percent: 0.20 / 0.34 / 0.62 / 0.92 / 0.94, so most are clear mismatches and a minority are rounding victims). Of the 136 Yahoo identity-failures, 120 pass on Alpaca; of the 614 Yahoo no-data tickers, 601 pass; of the 20 Yahoo short-history tickers, 17 pass.
+
+**Coverage and attrition of the frozen nodes, 2018-2023 (identity-pass nodes; bar availability only, no returns; eligibility = bar plus 30 prior closes; continuity rule applied).**
+
+| year | days | alive at year start | alive at year end | left during year | eligible all year | mean daily eligible |
+|---|---|---|---|---|---|---|
+| 2018 | 251 | 1636 | 1546 | 90 | 1546 | 1595 |
+| 2019 | 252 | 1545 | 1469 | 76 | 1469 | 1512 |
+| 2020 | 253 | 1468 | 1410 | 58 | 1410 | 1440 |
+| 2021 | 252 | 1410 | 1330 | 80 | 1330 | 1368 |
+| 2022 | 251 | 1330 | 1274 | 56 | 1274 | 1302 |
+| 2023 | 250 | 1274 | 1229 | 45 | 1229 | 1251 |
+
+(Year-start of year y+1 differs by 1 from year-end of y because the first trading day of the next year is counted.) 418 identity-pass names end before 2023-12-29 (delisted, acquired, or renamed without a mapping); 1,229 are alive at the end. This is the difference from Yahoo, which had zero attrition.
+
+**R8 reverse survivor check (2017 test, saved `R5_f2_alpha0_train/HH` predictions, seeds 0-4, read-only; top-5 chosen inside the subset).**
+
+| set | nodes | top-5 Sharpe (mean of 5 seeds) | hold-all Sharpe |
+|---|---|---|---|
+| full RSR universe | 1737 | 1.977 | 1.531 |
+| Alpaca identity-pass (not survivor-only) | 1647 | 1.964 | 1.452 |
+| Alpaca pass and alive at 2023-12 (survivors only) | 1229 | 2.520 | 1.629 |
+
+The Alpaca-eligible set reproduces the full-universe level (1.96 vs 1.98), whereas a survivor-only restriction inflates it by +0.54 (it was +0.27 on the Yahoo set).
+
+### Gate verdict (Alpaca)
+
+**PASS** as the source for the 2018-2023 test: pooled R5 share 0.977 >= 0.95, identity verified on 1,647 of 1,737 nodes, calendar identical on the overlap, real attrition retained. **Recommended source: Alpaca (`adjustment=split`), replacing the Yahoo pilot** (1,647 vs 967 nodes, and not survivor-only).
+
+Remaining limitations: (1) no delisting returns: the terminal return of 418 names is UNKNOWN and each is masked after its last bar; (2) history starts 2016-01-04, so only 2 years overlap RSR and the identity test is weaker than Yahoo's 3 years; (3) identity is symbol-keyed (`asof=2017-12-08` follows renames; the overlap test is the only guard against a reused symbol); (4) `split` is 2-decimal rounded (return noise on low-priced adjusted names) and adjusts some spin-offs, so convention (d) is approximate, and 66 further names would pass on `raw`; (5) 90 nodes fail identity and are masked (not repaired); (6) SIP prices are as of the download date; (7) the MA fill rule (Section 4) remains INFERRED.

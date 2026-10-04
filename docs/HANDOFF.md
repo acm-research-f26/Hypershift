@@ -46,6 +46,11 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
   - 967 of 1,737 nodes pass identity: 614 have no data, 20 are short, 136 fail overlap (cause UNKNOWN). Those 967 are eligible every day 2018-2023, with zero attrition (survivors).
   - The calendar matches RSR exactly.
   - Survivor bias (R8, 2017): top-5 Sharpe 1.977 → 2.249 on the subset; hold-all 1.531 → 1.762.
+- **Alpaca (A2, DATA_COMPATIBILITY.md section 10): PASS, recommended 2018-2023 source (adjustment=split).**
+  - 1,647 of 1,737 nodes pass identity (Yahoo 967); pooled overlap share 0.977 (2016-2017 only).
+  - Real attrition: 1,636 eligible on 2018-01-02, 1,229 alive at end of 2023 (418 ended).
+  - Reverse survivor check: Alpaca-eligible 2017 top-5 Sharpe 1.964 vs full 1.977; survivors-only 2.520.
+  - Limits: no delisting returns, history from 2016-01-04, `split` is 2-decimal rounded and adjusts some spin-offs.
 - **Price convention: Amendment A1 = (d), adjust genuine splits only.** It was decided on 2015-2017 overlap evidence only, before any 2018+ scoring. RSR is not dividend-adjusted.
 - **MA with a missing close inside the window:** RSR's rule is UNKNOWN; the pilot forward-fills (INFERRED).
 - No 2018+ return or inference has been computed.
