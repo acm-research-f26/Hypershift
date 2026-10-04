@@ -10,6 +10,47 @@
 
 **Spec:** docs/phase1_5a/REPORT_2017.md and docs/phase1_5a/PROPOSAL_followups.md, narrowed to the user's post-2017 question. The proposal's 40-epoch estimate changes the historical 100-epoch training horizon; this plan uses 100.
 
+## Revision 2026-10-04 (Claude review; overrides the tasks below where they conflict)
+
+R1. **Training runs in parallel with the data gate.** Training and checkpoint selection use only pre-2017 RSR data. The weights and the freeze manifest are hashed and committed **before any 2018+ return is scored**, so a parallel run cannot leak. The cost is about 7 GPU-h, and the run is useful even if the data gate fails: it gives the 2017 replication, the per-epoch trajectory Phase 1.5a could not recover, and HH-vs-EH with saved weights. The "No GPU training until the data gate passes" constraint is replaced by: **no 2018+ inference or scoring until the data gate passes and the freeze manifest is committed.** The data audit may count coverage and availability for 2018+, but must not compute any strategy, portfolio or model return for 2018+.
+
+R2. **Task 2 is reduced to an opt-in save; cross-kernel resume is dropped.**
+- 5 seeds × 100 epochs at about 24 s/epoch is about 3.3 h per arm. That fits one 12 h Kaggle session, and the existing `metrics.json` skip limits a crash to losing one seed.
+- A bit-exact interrupted-vs-uninterrupted test is not achievable on GPU (scatter/index_add atomics are nondeterministic).
+- New `RunConfig` flag `save_weights: bool = False`. When true, `train_one_run` writes `best_state.pt` (the state_dict at each validation improvement) and `epoch_preds/val_eNNN.npy` / `test_eNNN.npy` (float32 [N,D]) every epoch.
+- Defaults are unchanged and existing run folders are untouched.
+- Tests:
+  - flag off leaves the folder file set unchanged
+  - flag on: `best_state.pt` loaded into a fresh model reproduces the saved `test_pred.npy` on CPU (atol 1e-6)
+  - the per-epoch file count equals `epochs_run`
+
+R3. **Add the EH arm** (the paper's Euclidean arm, TConv+DHHAN, Table II p. 852), same seeds and settings. HH-vs-EH over 2018-2023 is a predeclared formal comparison: paired by seed, Wilcoxon plus a stationary block bootstrap on the date-joined daily Sharpe contrast, verdict word per CLAUDE.md. Experiment names: `R5_f3_alpha0_train` (labels HH and EH).
+
+R4. **Relative inputs are scale-invariant** (`loop.py:58-62` divides each window by its last close). The pre-2017 price scale is therefore not a compatibility requirement. Required instead:
+- prices consistent within every 16-day window and MA30 lookback (no unadjusted split inside a window)
+- the RSR return definition (close-to-close price return)
+- RSR's missing-value fill semantics (fill 1.1, mask keyed on close)
+
+R5. **The price convention is decided by a predeclared overlap test** on 2015-01-02..2017-12-08:
+- Candidates: (a) raw close, (b) split-adjusted close, (c) split+dividend-adjusted close.
+- The winner is the candidate with the highest share of matched stock-days where |r_new − r_RSR| < 1e-4. The pass threshold is ≥ 0.95 for that candidate.
+- Every 2018+ input, including the warm-up of at least 46 trading days before 2018-01-02, comes from the new source only. Never splice RSR and new-source prices.
+
+R6. **Primary question = ranking skill; Sharpe persistence is secondary.** Phase 1.5a found 2017's Sharpe is explained by high-beta exposure and luck, so the 2018-2023 raw Sharpe will mostly track beta (2018 Q4, 2020, 2022). Primary formal family, Holm-corrected:
+- the four 2017-style nulls (random daily top-5, beta-matched, industry-matched, label permutation) on HH
+- HH vs EH
+
+Sharpe level, annual and leave-one-year-out results are descriptive.
+
+R7. **The 2017 replication check uses a predeclared tolerance, not equality.** Pass if the new mean HH test Sharpe over the 5 seeds lies inside [min, max] of the historical seeds widened by the historical seed SD. Inference proceeds whether it passes or fails; the report states the result.
+
+R8. **Data source ladder:**
+- Confirmatory: CRSP via WRDS, if the user obtains access.
+- Until then: a Yahoo pilot over all 1,737 RSR tickers (not only current S&P members). Report per-year coverage, label it **exploratory, survivor-biased**, and quantify the bias. For example, compare 2017-test Sharpe on the covered subset against the full universe: same days, saved predictions, no new data needed.
+- Ticker identity checks: name and price continuity over the 2015-2017 overlap (R5). Reject a ticker whose overlap fails.
+
+R9. **Report eligible-name counts per year.** The frozen 1,737-node universe only shrinks: delisted names are masked, and new listings are excluded by design.
+
 ## Global Constraints
 
 - The original 2017 weights do not exist. The test concerns a new replication, not the historical run or the authors' implementation.
