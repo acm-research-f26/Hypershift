@@ -324,6 +324,19 @@ R5F2 = [r5f2(a, v, s) for s in range(5) for v in F2_VARIANTS for a in ("HH", "EH
 R5F2_S = [r5f2("HH", "alpha0", 0, "R5_f2s", epochs=1), r5f2("EH", "resid", 0, "R5_f2s", epochs=1),
           r5f2("EH", "alpha0", 0, "R5_f2s", epochs=1), r5f2("HH", "resid", 0, "R5_f2s", epochs=1)]
 
+# Presets "r5f3h" / "r5f3e" (Phase 1.5b, post-2017 plan R2/R3): replicate R5_f2_alpha0_train/HH (resp. /EH) -- identical resolved config (F10 + alpha=0, norm=train, batch_days 8 from
+# the shipped configs/global.yaml) -- under the NEW exp R5_f3_alpha0_train with save_weights=true (best_state.pt + epoch_preds/). Seeds 0-4. HH and EH run as two parallel kernels.
+# Smoke twins (-s): exp R5_f3s_alpha0_train, 1 epoch, seed 0, same flags. Uses only pre-2017 data (train/val selection); nothing here scores 2018+.
+def r5f3(arm, s, exp="R5_f3_alpha0_train", epochs=None):
+    grid, base = ("E1_main", "THINK_paperProtocol") if arm == "HH" else ("E2_geometry", arm)
+    extra = F10 if epochs is None else F10.replace("epochs=100", f"epochs={epochs}")
+    return dict(kind=f"R5f3_{arm}", est_min=40, done=f"results/{exp}/{arm}/seed_{s}",
+                cmd=f"{{py}} scripts/run_grid.py {grid} --labels {base} --seeds {s} --set exp={exp} norm=train {extra} alpha=0 save_weights=true label={arm}")
+R5F3H = [r5f3("HH", s) for s in range(5)]
+R5F3E = [r5f3("EH", s) for s in range(5)]
+R5F3H_S = [r5f3("HH", 0, "R5_f3s_alpha0_train", epochs=1)]
+R5F3E_S = [r5f3("EH", 0, "R5_f3s_alpha0_train", epochs=1)]
+
 # In-kernel analysis (Cell 7b; runs after training, BEFORE zipping; the md goes into the zip root, which scripts/overnight/merge_zip.py copies to docs/phase1_5/,
 # and stays next to the zip in /kaggle/working). A failure never blocks the zip. steps = [(title, command, output md)].
 def _q(p):                                  # POSIX-style quoted path (Kaggle is Linux; forward slashes also keep the local Windows simulation working under shlex)
@@ -344,7 +357,8 @@ ANALYSIS = {
 # Preset "5s": smoke test of each job type (1 epoch), separate exp name.
 S5S = [ks("group", a, "relative", 0, epochs=1, exp="ks_smoke", est_min=2) for a in ("HH_hyper", "EH_hyper", "EE_hyper", "HH_none", "EE_none")]
 COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "9": S9, "10": S10, "10s": S10S, "11": S11, "11s": S11S, "8s": S8S, "all": S1 + S2, "custom": [],
-            "r8f-top": S_R8F_TOP, "r8f-top-s": S_R8F_TOP_S, "p1f": P1F, "p1f-s": P1F_S, "r5f2": R5F2, "r5f2-s": R5F2_S}[SESSION]
+            "r8f-top": S_R8F_TOP, "r8f-top-s": S_R8F_TOP_S, "p1f": P1F, "p1f-s": P1F_S, "r5f2": R5F2, "r5f2-s": R5F2_S,
+            "r5f3h": R5F3H, "r5f3h-s": R5F3H_S, "r5f3e": R5F3E, "r5f3e-s": R5F3E_S}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard

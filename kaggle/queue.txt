@@ -3,9 +3,9 @@
 # (refused by Kaggle: "Maximum batch GPU session count of 2 reached"; or exit 3 = precondition not met) and retries on a later tick.
 # launch.sh itself enforces: r8f-top needs hypershift-run-r8f COMPLETE/ERROR; every full preset needs its smoke (<preset>-s) COMPLETE (exit 3 until then).
 # Smokes were NOT launched yet (2026-10-03: GPU session limit 2 reached while r5f and r8f run), so they are listed before their full presets.
-r8f-top-s
-r8f-top
-p1f-s
-p1f
-r5f2-s
-r5f2
+# r8f-top dropped 2026-10-03: hypershift-run-r8f COMPLETE with all 20 R8_f runs (no top-up needed).
+# Phase 1.5b (2026-10-04): R5_f3_alpha0_train HH/EH with save_weights, two parallel kernels; smokes first (full presets exit 3 until their smoke is COMPLETE).
+r5f3h-s
+r5f3e-s
+r5f3h
+r5f3e

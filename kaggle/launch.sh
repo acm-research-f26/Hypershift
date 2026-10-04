@@ -5,6 +5,8 @@
 #       r8f-top   top-up of R8_f (mounts the hypershift-run-r8f output; needs r8f COMPLETE or ERROR)      -r8f-top-s = its smoke
 #       p1f       Phase 1 small-scale arms rerun with the F fix (+ R7 clf, R8 small), in-kernel analysis   -p1f-s     = its smoke
 #       r5f2      full NYSE alpha=0 and spatial_residual on top of the F fix (HH, EH), in-kernel analysis -r5f2-s    = its smoke
+#       r5f3h     Phase 1.5b: R5_f3_alpha0_train HH seeds 0-4 with save_weights (best_state.pt + epoch_preds/)   -r5f3h-s   = its smoke
+#       r5f3e     same for EH (run in parallel with r5f3h; 2 GPU sessions)                                     -r5f3e-s   = its smoke
 #     A full named preset refuses to start (exit 3) until its smoke kernel hypershift-run-<preset>-s is COMPLETE (SKIP_SMOKE_GATE=1 overrides).
 # env: ACCEL=NvidiaTeslaT4 (GPU T4 x2, default; see README for P100), PRIOR_DATASET=<user>/<slug> (dataset holding results_*.zip),
 #      PRIOR_KERNELS="slug1 slug2" (extra kernel outputs to mount, under $KUSER), FORCE_DATA=1 (re-version the big data dataset even if it exists),
@@ -29,6 +31,9 @@ case "$SESSION" in
   p1f-s)     LIMIT_H=1;   TIMEOUT_H=1.4;;
   r5f2)      LIMIT_H=8;   TIMEOUT_H=8.5;  GATE_SMOKE="hypershift-run-r5f2-s";;
   r5f2-s)    LIMIT_H=1;   TIMEOUT_H=1.4;;
+  r5f3h)     LIMIT_H=6;   TIMEOUT_H=6.5;  GATE_SMOKE="hypershift-run-r5f3h-s";;
+  r5f3e)     LIMIT_H=6;   TIMEOUT_H=6.5;  GATE_SMOKE="hypershift-run-r5f3e-s";;
+  r5f3h-s|r5f3e-s) LIMIT_H=1; TIMEOUT_H=1.4;;
 esac
 [ -n "${PRIOR_KERNELS:-}" ] && KSOURCES="$KSOURCES $PRIOR_KERNELS"
 TIMEOUT_S="${TIMEOUT_S:-$(awk "BEGIN{printf \"%d\", $TIMEOUT_H*3600}")}"

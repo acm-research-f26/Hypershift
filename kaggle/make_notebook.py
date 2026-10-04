@@ -1,6 +1,6 @@
 """Convert kaggle/run_kaggle.py (cells separated by '# %%' lines) into an .ipynb.
 
-  python kaggle/make_notebook.py OUT.ipynb [--session 1|2|all|r8f-top|p1f|r5f2|<preset>-s] [--tag TAG] [--limit-h H] [--timeout-h H]
+  python kaggle/make_notebook.py OUT.ipynb [--session 1|2|all|r8f-top|p1f|r5f2|r5f3h|r5f3e|<preset>-s] [--tag TAG] [--limit-h H] [--timeout-h H]
 
 The SESSION and TAG assignments are rewritten when the flags are given.
 """

@@ -39,6 +39,7 @@ class RunConfig:
     head_scale: float = 0.0                 # F: >0 adds a learnable output scale exp(t), t0 = log(head_scale), excluded from weight decay (DEPARTURE)
     spatial_residual: bool = False          # F: DHHAN self path, h' = h + relu(agg) in tangent space (DEPARTURE from eq. 15)
     decoupled_wd: bool = False              # F: AdamW (decoupled weight decay) instead of Adam with coupled L2
+    save_weights: bool = False              # R2: write best_state.pt + epoch_preds/{val,test}_eNNN.npy (opt-in; default run folders unchanged)
     log_ic: bool = False                    # F: add val/test IC and test pred sd to history.jsonl each epoch (diagnostic only)
     seq: int = 16
     kernel: int = 4

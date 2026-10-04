@@ -246,6 +246,10 @@ def train_one_run(cfg: RunConfig, data: MarketData | None = None, hg: Hypergraph
                            test_pred_sd=float(tp[tm > 0.5].std()))
             hist.write(json.dumps(rec) + "\n")
             hist.flush()
+            if cfg.save_weights:                           # R2: per-epoch predictions, float32 [N, D]
+                (out / "epoch_preds").mkdir(exist_ok=True)
+                np.save(out / "epoch_preds" / f"val_e{epoch:03d}.npy", vp.astype(np.float32))
+                np.save(out / "epoch_preds" / f"test_e{epoch:03d}.npy", tp.astype(np.float32))
             if best is None or vmet["sr"] > best["val"]["sr"]:
                 best = {"best_epoch": epoch, "val": vmet, "test": tmet}
                 bad = 0
@@ -253,6 +257,8 @@ def train_one_run(cfg: RunConfig, data: MarketData | None = None, hg: Hypergraph
                 np.save(out / "test_gt.npy", tg)
                 np.save(out / "test_mask.npy", tm)
                 np.save(out / "test_daily.npy", topk_daily_returns(tp, tg, tm, cfg.topk))
+                if cfg.save_weights:
+                    torch.save({k: v.detach().cpu() for k, v in model.state_dict().items()}, out / "best_state.pt")
             else:
                 bad += 1
                 if bad >= cfg.patience:
