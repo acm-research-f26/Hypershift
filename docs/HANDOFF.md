@@ -1,6 +1,6 @@
 # HANDOFF: live state for Claude Code and Codex
 
-**Last updated: 2026-10-04 by Claude Code.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
+**Last updated: 2026-10-04 ~01:40 by Claude Code.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
 
 ## Read in this order
 
@@ -31,23 +31,28 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 
 ## Running now
 
-- **Claude Sonnet worker (Phase 1.5b), started 2026-10-04:**
-  - **Track A:** a `save_weights` opt-in in `loop.py`, then Kaggle presets for `R5_f3_alpha0_train` (HH and EH, seeds 0-4, 100 epochs, best weights plus per-epoch predictions saved). Presets will be `r5f3h(-s)` and `r5f3e(-s)`. They launch through `kaggle/queue.txt` and the re-armed overnight driver.
-  - **Track B:** CPU data gate. Yahoo coverage of all 1,737 RSR NYSE tickers for 2018-2023, the price-convention overlap test on 2015-2017, survivor-bias size, and `docs/phase1_5b/DATA_COMPATIBILITY.md`.
-  - **Hard rule:** no 2018+ return or inference before the gate passes **and** the freeze manifest is committed.
-- **Kaggle status (2026-10-04 01:00):**
-  - Smoke kernels `r5f3h-s` and `r5f3e-s` reported COMPLETE but **trained nothing**: `est_min` 40 exceeded the 35-minute smoke guard window, so the time guard skipped the run. Fixed in `a16e21b` for future smokes.
-  - Full `r5f3h` launched 00:49 (5 × 100 epochs, ~3.5 h; its guard is fine). `r5f3e` launches on the next driver tick.
-  - `save_weights` is unit-tested on CPU only, so check the first merged run folder for `best_state.pt` and `epoch_preds/`.
-  - Latent gap: the launch gate only requires the smoke to be COMPLETE, not that it produced a `metrics.json`.
-- **Overnight driver** (Task Scheduler `Hypershift_overnight`, every 30 min, log `results/logs/overnight.log`): re-armed by the worker for the r5f3 kernels. It fetches, merges and pushes.
-- **Codex fallback** (`Hypershift_codex_fallback`): idle. It was written for Phase 1.5a, which is done; it does not cover 1.5b.
+- **No agent is active** (2026-10-04 ~01:40). The Phase 1.5b worker finished Track A and Track B; see `docs/phase1_5b/PROGRESS.md`.
+- **Kaggle** (driver fetches, merges, pushes):
+  - `hypershift-run-r5f3h` (launched 00:49) and `hypershift-run-r5f3e` (launched 01:05), each HH/EH × 5 seeds × 100 epochs, exp `R5_f3_alpha0_train`, `save_weights=true`. ETA about 04:30-05:00 (unmeasured).
+  - A real smoke (`r5f3e-s2`) verified on Kaggle that `best_state.pt` reloads to the saved test predictions (5.6e-8).
+  - About 340 MB per run, about 1.7 GB per arm zip.
+- **Overnight driver** (`Hypershift_overnight`, every 30 min, log `results/logs/overnight.log`): armed for the r5f3 kernels.
+- **Codex fallback** (`Hypershift_codex_fallback`): idle. It covers only Phase 1.5a, which is done.
+- **Known gap:** the launch gate checks that the smoke is COMPLETE, not that it produced a `metrics.json`. The original r5f3 smokes ran nothing; that was fixed in `a16e21b`.
 
-Check Kaggle: `KAGGLE_USER=tomphamdustry kaggle/.venv-kaggle/Scripts/python.exe -m kaggle.cli kernels status tomphamdustry/hypershift-run-<preset>`
+## Data gate result (Track B, `docs/phase1_5b/DATA_COMPATIBILITY.md`)
+
+- **Yahoo: PASS as an exploratory, survivor-biased pilot only.**
+  - 967 of 1,737 nodes pass identity: 614 have no data, 20 are short, 136 fail overlap (cause UNKNOWN). Those 967 are eligible every day 2018-2023, with zero attrition (survivors).
+  - The calendar matches RSR exactly.
+  - Survivor bias (R8, 2017): top-5 Sharpe 1.977 → 2.249 on the subset; hold-all 1.531 → 1.762.
+- **Price convention: Amendment A1 = (d), adjust genuine splits only.** It was decided on 2015-2017 overlap evidence only, before any 2018+ scoring. RSR is not dividend-adjusted.
+- **MA with a missing close inside the window:** RSR's rule is UNKNOWN; the pilot forward-fills (INFERRED).
+- No 2018+ return or inference has been computed.
 
 ## Next steps (Phase 1.5b)
 
-1. When r5f3h and r5f3e are COMPLETE and merged:
+1. When r5f3h and r5f3e are COMPLETE and merged (driver):
    - verify 10 runs, each with `best_state.pt` and `epoch_preds/`
    - write the freeze manifest (`docs/phase1_5b/FREEZE_MANIFEST.md`: selected epochs, config/data/graph/weight sha256)
    - run the predeclared 2017 replication check (R7)
