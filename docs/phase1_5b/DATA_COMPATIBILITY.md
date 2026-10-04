@@ -129,3 +129,18 @@ Why this is not outcome-dependent:
 - It is recorded here before the freeze manifest.
 
 Status: still **exploratory, survivor-biased** (967 of 1,737 nodes pass identity; R8 bias: 2017 top-5 Sharpe +0.27 and hold-all +0.23 on the survivor subset). Every 2018+ comparison therefore uses hold-all, random and matched nulls on the **same 967-name eligible subset**.
+
+## Amendment A2 (Alpaca second source; rules fixed 2026-10-04 BEFORE any Alpaca statistic was computed)
+
+Purpose: test whether Alpaca market data (SIP feed, free account) can replace the survivor-only Yahoo pilot for the 2018-2023 test. The rules below are fixed first; results go in Section 10.
+
+1. **Source.** Alpaca Market Data v2 `GET /v2/stocks/bars`, `timeframe=1Day`, `feed=sip`, `start=2016-01-04`, `end=2023-12-31`, `asof=2017-12-08`, batches of up to 100 symbols, pagination by `next_page_token`. Daily close `c`. History starts 2016-01-04 (probed), so the overlap window with RSR is **2016-01-04..2017-12-08** and warm-up before 2018-01-02 comes from Alpaca only (no RSR splice).
+2. **Convention.** Convention (d) of A1 (genuine splits adjusted, spin-offs and dividends not) is realised as `adjustment=split`. Whether Alpaca `split` excludes spin-offs (as A1 requires) is verified on the overlap by comparing `raw`, `split` and `all` returns with RSR; the table is reported. If `split` does not behave like (d), that is reported and no ad-hoc repair is made. The convention table is descriptive; `split` is used for identity unless the audit shows it fails where another candidate passes, in which case that is reported, not silently switched.
+3. **Symbol candidates** for RSR ticker `T`, in order: (1) `T`; (2) `T` with `-` replaced by `.` (class shares / preferred style); (3) for `ROOT-X`, `ROOT.PRX`. Symbols rejected by the API as invalid are dropped and counted as "no Alpaca data" (unavailable). First candidate with data AND passing identity is used; a candidate with data that fails is REJECTED (masked), never repaired.
+4. **Identity rule** (same predeclared test as Yahoo, Section 1): on the Alpaca/RSR overlap 2016-01-04..2017-12-08, matched stock-days >= 250 and share of matched stock-days with |r_new - r_RSR| < 1e-4 >= 0.95. Gate on pooled share >= 0.95 as in Section 2.
+5. **Renames.** All queries use `asof=2017-12-08` so a 2017 symbol maps to its underlying entity after later renames (e.g. ABC -> COR). Identity on the overlap is still required.
+6. **Attrition / delisting.** A series whose last bar is before 2023-12-29 is treated as delisted/acquired: masked after its last bar. Alpaca provides no delisting return; the terminal return is UNKNOWN (documented limitation), never zero-filled. Continuity rule of Section 1 (>= 60-day gap then reappearance) applies as availability-only truncation.
+7. **No splicing** of Alpaca with RSR prices; MA/fill/mask semantics and eligibility (Section 4, `availability_mask`) are unchanged. Calendar: RSR calendar through 2017-12-08; after that the union of Alpaca dates with >= 50 percent of the median ticker count.
+8. **Reported statistics:** identity pass count and failure reasons; per-year coverage and attrition 2018-2023 (names alive at start/end of each year, from bar availability only); convention shares on the overlap; how many of the 136 Yahoo identity-failures pass on Alpaca; R8 reverse survivor check on the saved 2017 predictions (`R5_f2_alpha0_train/HH`, seeds 0-4, read-only) on the Alpaca-eligible set vs the full universe.
+9. **Hard rule unchanged:** no model, strategy or portfolio return for any 2018+ date; availability counts only.
+10. **Credentials** are read at runtime from the Windows user environment (`APCA_API_KEY_ID`, `APCA_API_SECRET_KEY`) and are never logged or stored.
