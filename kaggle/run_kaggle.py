@@ -330,7 +330,7 @@ R5F2_S = [r5f2("HH", "alpha0", 0, "R5_f2s", epochs=1), r5f2("EH", "resid", 0, "R
 def r5f3(arm, s, exp="R5_f3_alpha0_train", epochs=None):
     grid, base = ("E1_main", "THINK_paperProtocol") if arm == "HH" else ("E2_geometry", arm)
     extra = F10 if epochs is None else F10.replace("epochs=100", f"epochs={epochs}")
-    return dict(kind=f"R5f3_{arm}", est_min=40, done=f"results/{exp}/{arm}/seed_{s}",
+    return dict(kind=f"R5f3_{arm}", est_min=40 if epochs is None else 3, done=f"results/{exp}/{arm}/seed_{s}",
                 cmd=f"{{py}} scripts/run_grid.py {grid} --labels {base} --seeds {s} --set exp={exp} norm=train {extra} alpha=0 save_weights=true label={arm}")
 R5F3H = [r5f3("HH", s) for s in range(5)]
 R5F3E = [r5f3("EH", s) for s in range(5)]
