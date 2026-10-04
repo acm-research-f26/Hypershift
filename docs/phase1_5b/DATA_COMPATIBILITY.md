@@ -55,6 +55,61 @@ Hypergraph = cached graph v2 (`data/raw/rsr/data/hypergraph_cache/NYSE_industry-
 
 Name continuity against historical company names; delisting returns; intraday bars; fundamentals; Yahoo-vs-CRSP agreement (no CRSP data). A pass here supports only an exploratory pilot.
 
-## 9. Results and verdict
+## 9. Results and verdict (audit run 2026-10-04; `scripts/post2017_data_audit.py`; numbers in `post2017_audit_results.json`, per-ticker table `post2017_audit_tickers.csv`)
 
-(To be filled after the audit: coverage table 2018-2023, R5 shares per convention, rejected tickers, R8 survivor-bias numbers, gate verdict.)
+Source: yfinance 1.7.0, downloaded 2026-10-04T05:54Z, 2014-11-01..2023-12-31, `auto_adjust=False, actions=True`. 1,856 candidate symbols for the 1,737 tickers, 1,123 returned data, 733 returned nothing (a retry recovered 0, so these are genuinely absent, not transient failures). Graph v2 cache sha256 `859d44173f0dd61c896d63a22af84455fecae4a3d66461a118cf80ce802e197c`. Raw bars: `data/raw/yahoo_post2017/` (git-ignored).
+
+**Calendar check.** On 2014-11-19..2017-12-08 the Yahoo trading-day set equals the RSR date vector exactly (0 days only in one, 0 only in the other). 796 Yahoo trading days precede 2018-01-02 (>= 46 required).
+
+**R5 overlap test (predeclared; 741 overlap days; pooled over the first symbol with data of each of the 1,123 tickers = 817,171 matched-eligible stock-days).**
+
+| convention | matched | share | tickers passing identity (>= 250 days, share >= 0.95) |
+|---|---|---|---|
+| (a) raw close (undo Yahoo splits) | 793,072 | **0.9705** | 967 |
+| (b) split-adjusted `Close` | 793,070 | 0.9705 | 967 |
+| (c) split+dividend `Adj Close` | 779,168 | 0.9535 | 865 |
+| (d) POST HOC: genuine splits only, spin-off pseudo-splits undone | 793,097 | 0.9705 | 967 |
+
+On the 967 identity-passing tickers the pooled shares are (a) 0.9943, (b) 0.9942, (c) 0.9782, (d) 0.9943; the median per-ticker share is 0.9973 for (a), (b), (d) and 0.9811 for (c).
+
+Predeclared winner: (a) raw, share 0.9705 >= 0.95. The margin over (b) is 2 stock-days of 817,171 (a statistical tie), so the predeclared rule does not discriminate (a) from (b). Findings that do discriminate (post hoc, labelled as such):
+
+- RSR is NOT dividend-adjusted ((c) is worse: 0.9535 vs 0.9705; 102 fewer tickers pass).
+- RSR IS adjusted for genuine splits (2:1, 5:1, 1:5, 3:2 and similar: the RSR return on those days equals the split-adjusted return) but NOT for Yahoo's non-integer "splits" that are really spin-offs or special distributions (ratios such as 1.081, 1.193, 1.319, 1.398, 1.841; the RSR return keeps the drop). Of 46 split events in the overlap on identity-passing tickers, raw matches RSR on 31 (the pseudo-splits), split-adjusted on 10 (the genuine splits), neither on 5. (a) and (b) are tied because each is wrong on one of the two event types; (d) is right on both and has the highest share (793,097), although its margin (+25 stock-days) is also tiny.
+- R4 consequence: (a) raw has an unadjusted genuine split inside windows (e.g. AFL 2018-03-19 2:1: adjusted Close 45.24 -> 44.70, raw 90.49 -> 44.70), which R4 forbids and RSR itself does not contain. The pilot construction should therefore be (d) or (b); this is a post-hoc amendment that needs the user's or reviewer's sign-off before use. The predeclared (a) must not be used for model inputs.
+- Yahoo `Close` with `auto_adjust=False` is split-adjusted (AFL above; AOS 2016-10-06 2:1: (b)/(d) return 0.0107 = RSR 0.0108, raw -0.4946).
+
+**Identity.** Of 1,737 tickers: 614 have no Yahoo data (delisted, renamed or preferreds; this includes all 2018-2026 attrition), 20 have data but < 250 matched days, 136 have >= 250 days and share < 0.95 (median share 0.90; 104 of them between 0.80 and 0.95, mostly closed-end funds and ADRs; the cause is UNKNOWN: dividend adjustment does not explain it, none of them passes under (c)), and 967 pass. 11 failures have share < 0.02 (reused or different security, e.g. TEN, B, ACH, WES, COR). The rejection list is `post2017_audit_tickers.csv` (`identity_ok=False`). The continuity (>= 60-day gap) rule truncated 0 tickers. Name continuity was not checked (Section 8).
+
+**Coverage of the frozen 1,737 nodes, 2018-2023 (bar availability only; no returns computed).**
+
+| year | trading days | nodes with any Yahoo bar | identity-pass nodes with a bar | eligible all year | mean / min / max daily eligible |
+|---|---|---|---|---|---|
+| 2018 | 251 | 1104 | 967 | 967 | 967 / 967 / 967 |
+| 2019 | 252 | 1104 | 967 | 967 | 967 / 967 / 967 |
+| 2020 | 253 | 1110 | 967 | 967 | 967 / 967 / 967 |
+| 2021 | 252 | 1115 | 967 | 967 | 967 / 967 / 967 |
+| 2022 | 251 | 1118 | 967 | 967 | 967 / 967 / 967 |
+| 2023 | 250 | 1123 | 967 | 967 | 967 / 967 / 967 |
+
+The eligible set is 967 of 1,737 nodes (55.7 percent), constant over the six years: every name that left the market before the download date is absent from Yahoo, so the panel holds survivors only, with zero attrition. The 19 extra "any bar" nodes that appear over 2018-2023 (1104 to 1123) are all identity failures (probably symbols reused by later listings; not verified). Eligible nodes on 2018-01-02: 967 (all with >= 30 prior closes).
+
+**R8 survivor bias (2017 test, saved `R5_f2_alpha0_train/HH` predictions, seeds 0-4, read-only; top-5 chosen among the subset only, same days, same predictions).**
+
+| universe | nodes | mean daily eligible (2017) | top-5 Sharpe, mean of 5 seeds (per seed) | hold-all Sharpe |
+|---|---|---|---|---|
+| full RSR universe | 1737 | 1731 | 1.977 (1.88, 1.93, 1.89, 2.04, 2.14) | 1.531 |
+| covered subset (identity pass = survivors) | 967 | 966 | 2.249 (2.04, 1.53, 2.66, 3.18, 1.84) | 1.762 |
+
+Restricting to the survivors raises the 2017 top-5 Sharpe by +0.27 and hold-all by +0.23 (top-5 minus hold-all: 0.446 full, 0.487 covered), and widens the seed spread. A survivor-only 2018-2023 test would therefore be biased upward in level; this check does not identify the direction of the bias on ranking skill.
+
+### Gate verdict
+
+**PASS as an EXPLORATORY, SURVIVOR-BIASED Yahoo pilot, with conditions; not a confirmatory source.** Basis: the predeclared pooled R5 share of the winning convention is 0.9705 (>= 0.95), identity is verified on 967 tickers, the calendar is identical on the overlap, and the causal-feature tests are green (`tests/test_post2017_data.py`, 15 tests). Conditions:
+
+1. Price construction must be (d) genuine-split-adjusted close (or (b)), with no dividend adjustment. The predeclared winner (a) is inadmissible under R4. The switch from (a) is a post-hoc amendment awaiting sign-off; the audit cannot separate (a), (b) and (d) by more than 25 stock-days.
+2. Universe = 967 of 1,737 nodes (55.7 percent). The other 770 are masked for all dates 2018+ (614 no data, 20 short history, 136 failed identity). Graph v2 and node order are kept; masked nodes keep their slots.
+3. Survivors only; no delisting returns; the level of any Sharpe is upward-biased (R8 above: +0.23 to +0.27 on the 2017 test).
+4. The 136 identity failures with share 0.80-0.95 are unexplained (UNKNOWN). If their cause is price-vintage noise, identity may be too strict, which only shrinks coverage and does not admit bad names.
+
+If the user later obtains CRSP/WRDS access, that source should replace this pilot; the same R5 and identity tests apply unchanged.
