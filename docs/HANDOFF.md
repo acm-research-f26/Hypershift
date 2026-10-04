@@ -35,6 +35,11 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
   - **Track A:** a `save_weights` opt-in in `loop.py`, then Kaggle presets for `R5_f3_alpha0_train` (HH and EH, seeds 0-4, 100 epochs, best weights plus per-epoch predictions saved). Presets will be `r5f3h(-s)` and `r5f3e(-s)`. They launch through `kaggle/queue.txt` and the re-armed overnight driver.
   - **Track B:** CPU data gate. Yahoo coverage of all 1,737 RSR NYSE tickers for 2018-2023, the price-convention overlap test on 2015-2017, survivor-bias size, and `docs/phase1_5b/DATA_COMPATIBILITY.md`.
   - **Hard rule:** no 2018+ return or inference before the gate passes **and** the freeze manifest is committed.
+- **Kaggle status (2026-10-04 01:00):**
+  - Smoke kernels `r5f3h-s` and `r5f3e-s` reported COMPLETE but **trained nothing**: `est_min` 40 exceeded the 35-minute smoke guard window, so the time guard skipped the run. Fixed in `a16e21b` for future smokes.
+  - Full `r5f3h` launched 00:49 (5 × 100 epochs, ~3.5 h; its guard is fine). `r5f3e` launches on the next driver tick.
+  - `save_weights` is unit-tested on CPU only, so check the first merged run folder for `best_state.pt` and `epoch_preds/`.
+  - Latent gap: the launch gate only requires the smoke to be COMPLETE, not that it produced a `metrics.json`.
 - **Overnight driver** (Task Scheduler `Hypershift_overnight`, every 30 min, log `results/logs/overnight.log`): re-armed by the worker for the r5f3 kernels. It fetches, merges and pushes.
 - **Codex fallback** (`Hypershift_codex_fallback`): idle. It was written for Phase 1.5a, which is done; it does not cover 1.5b.
 
