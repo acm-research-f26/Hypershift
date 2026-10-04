@@ -1,8 +1,10 @@
 # Phase 1.5a follow-up proposal (costed, gated; nothing here has been run)
 
+Decision for the post-2017 question (2026-10-03): carry out the CPU data-compatibility gate first; do not allocate GPU while the only local later-year panel is a current-S&P survivor subset with incompatible adjusted-price semantics. The planned strict replication uses five seeds x 100 epochs, about 3.3 serial-equivalent GPU-hours plus overhead, because 40 epochs changes the historical selection horizon. See docs/superpowers/plans/2026-10-03-post2017-frozen-sharpe.md.
+
 Context: `docs/phase1_5a/REPORT_2017.md` finds that the 2017 Sharpe near 2 of `R5_f2_alpha0_train/HH` is not distinguishable from random 5-stock selection (F1-F4 not rejected, Holm 0.32 to 0.64), with low power (seed-0 Sharpe CI 0.28 to 3.48). A genuine weak signal (hypothesis D) is neither supported nor excluded. Every item below needs training or data that Phase 1.5a did not use, so it is a separate decision. Costs are estimates (Kaggle P100 about 24 s/epoch for THINK full NYSE; laptop RTX 3050 is for small jobs only). Every long run must checkpoint, save per-epoch predictions and logs, and run without any Claude session or watcher.
 
-Gate: item 1 first, because items 2-3 need its saved weights. Do nothing here unless the user rules that the 2017 question is worth more compute.
+Updated gate for the post-2017 question: verify compatible data access and the CPU specification first. Item 1 training then supplies saved weights for later-year inference; the original five x 40-epoch option below is retained as the historical estimate, while the strict post-2017 plan specifies five x 100 epochs.
 
 ## 1. Instrumented replication of R5_f2 alpha=0 HH
 

@@ -8,7 +8,11 @@
 >
 > Citations in this file: `pNNN` = page of `05-Hypershift-OA.pdf` (pp849-853); `[A854]` = page 854 (appendices, Algorithm 1, refs 17-38) of `data/raw/icdm22-think.pdf`, a source the user approved on 2026-09-29 (now stored at `docs/paper/icdm22-think.pdf`).
 
-## Phase 1 verdict (2026-10-01)
+## Final Phase 1 ruling (2026-10-03)
+
+**The paper's ranking advantage is not reproduced under validation selection in this inferred-settings reimplementation.** After correcting weight decay and using relative inputs, full-NYSE THINK exceeds TConv+DHHAN numerically under both normalizations, but neither comparison meets the declared evidence rule (NO EVIDENCE, 10 paired seeds). The five-seed R8_f baseline comparisons are INSUFFICIENT SEEDS. The separate alpha=0 THINK run reaches 2017 Sharpe 1.88-2.14, yet its four chance/exposure comparisons do not reject after correction; that Sharpe is NO EVIDENCE of learned ranking. The older near-zero Phase 1 Sharpe and 0/25 hold-all count describe the collapsed setup and are not the corrected headline. This ruling does not exclude weak skill or make a claim about the authors' implementation. See docs/phase1_5/F_r5f_results.md and docs/phase1_5a/REPORT_2017.md.
+
+## Phase 1 original verdict (2026-10-01; historical setup)
 
 > **Superseded in part by Phase 1.5 (below): these results used the collapsed `weight_decay=5e-4` setup. Corrected p1f gives NO EVIDENCE for 309-stock THINK vs TConv+DHHAN and NASDAQ Clf HH vs EH. Corrected full-NYSE `R5_f` gives NO EVIDENCE for THINK vs TConv+DHHAN under both `norm=paper` and `norm=train`; corrected `R8_f` baseline comparisons are INSUFFICIENT SEEDS. Corrected full-NYSE `R5_f2` `alpha=0` and `spatial_residual` (full 100-epoch runs, 5 seeds, not smokes) give INSUFFICIENT SEEDS for THINK vs TConv+DHHAN under `norm=train`; `norm=paper` was not run (preset r5f2 is `norm=train` only).**
 
