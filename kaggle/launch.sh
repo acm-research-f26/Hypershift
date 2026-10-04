@@ -7,6 +7,8 @@
 #       r5f2      full NYSE alpha=0 and spatial_residual on top of the F fix (HH, EH), in-kernel analysis -r5f2-s    = its smoke
 #       r5f3h     Phase 1.5b: R5_f3_alpha0_train HH seeds 0-4 with save_weights (best_state.pt + epoch_preds/)   -r5f3h-s   = its smoke
 #       r5f3e     same for EH (run in parallel with r5f3h; 2 GPU sessions)                                     -r5f3e-s   = its smoke
+#       wfh1|wfh2|wfh3  Phase 1.5c walk-forward HH (exp WF_<2019..2023>_alpha0; seeds 0-1 | 2-3 | 4; Alpaca panel dataset)   wfh-s = shared smoke (2023 + 2019, 1 epoch)
+#       wfe1|wfe2|wfe3  same for EH (defined; queue when GPU quota allows)                                                  wfe-s = its smoke
 #     A full named preset refuses to start (exit 3) until its smoke kernel hypershift-run-<preset>-s is COMPLETE (SKIP_SMOKE_GATE=1 overrides).
 # env: ACCEL=NvidiaTeslaT4 (GPU T4 x2, default; see README for P100), PRIOR_DATASET=<user>/<slug> (dataset holding results_*.zip),
 #      PRIOR_KERNELS="slug1 slug2" (extra kernel outputs to mount, under $KUSER), FORCE_DATA=1 (re-version the big data dataset even if it exists),
@@ -34,7 +36,11 @@ case "$SESSION" in
   r5f3h)     LIMIT_H=6;   TIMEOUT_H=6.5;  GATE_SMOKE="hypershift-run-r5f3h-s";;
   r5f3e)     LIMIT_H=6;   TIMEOUT_H=6.5;  GATE_SMOKE="hypershift-run-r5f3e-s";;
   r5f3h-s|r5f3e-s) LIMIT_H=1; TIMEOUT_H=1.4;;
+  wfh1|wfh2|wfh3) LIMIT_H=12; TIMEOUT_H=12; GATE_SMOKE="hypershift-run-wfh-s";;
+  wfe1|wfe2|wfe3) LIMIT_H=12; TIMEOUT_H=12; GATE_SMOKE="hypershift-run-wfe-s";;
+  wfh-s|wfe-s) LIMIT_H=1; TIMEOUT_H=1.4;;
 esac
+case "$SESSION" in wf*) NEED_ALPACA=1;; *) NEED_ALPACA=0;; esac
 [ -n "${PRIOR_KERNELS:-}" ] && KSOURCES="$KSOURCES $PRIOR_KERNELS"
 TIMEOUT_S="${TIMEOUT_S:-$(awk "BEGIN{printf \"%d\", $TIMEOUT_H*3600}")}"
 
@@ -58,6 +64,11 @@ fi
 if [ -n "$GATE_SMOKE" ] && [ "${SKIP_SMOKE_GATE:-0}" != 1 ]; then
   st=$(kstat "$GATE_SMOKE"); echo "smoke kernel $GATE_SMOKE: $st"
   [ "$st" = COMPLETE ] || { echo "NOT READY: smoke kernel $GATE_SMOKE is $st (must be COMPLETE before the full preset $SESSION; SKIP_SMOKE_GATE=1 overrides). Exit 3 = try later." >&2; exit 3; }
+  # COMPLETE is not enough (the first r5f3 smokes ran nothing): the smoke output zip must contain >= 1 metrics.json
+  SD=$(mktemp -d); kg kernels output "$KUSER/$GATE_SMOKE" -p "$SD" -o >/dev/null 2>&1
+  NM=$(.venv/Scripts/python.exe -c "import sys,glob,zipfile;print(sum(n.endswith('metrics.json') for z in glob.glob(sys.argv[1]+'/*.zip') for n in zipfile.ZipFile(z).namelist()))" "$SD" 2>/dev/null); rm -rf "$SD"
+  echo "smoke zip metrics.json count: ${NM:-?}"
+  [ "${NM:-0}" -ge 1 ] 2>/dev/null || { echo "NOT READY: smoke kernel $GATE_SMOKE is COMPLETE but its zip has no metrics.json (nothing ran, or the output could not be read). Exit 3." >&2; exit 3; }
 fi
 for s in $KSOURCES; do   # a smoke preset mounts a finished smoke kernel
   st=$(kstat "$s"); echo "mounted kernel $s: $st"
@@ -87,11 +98,20 @@ push_dataset() {  # $1 = slug, $2 = force (1 = version even if it exists)
 }
 push_dataset hypershift-code 1 || exit 1
 push_dataset hypershift-rsr-data 0 || exit 1
+if [ "$NEED_ALPACA" = 1 ]; then   # small compact Alpaca panel (no keys, no raw bars); build with: python scripts/build_alpaca_npz.py
+  [ -f "$B/hypershift-alpaca-data/alpaca_panel_2016_2023.npz" ] || { echo "run scripts/build_alpaca_npz.py first" >&2; exit 1; }
+  st=$(kg datasets status "$KUSER/hypershift-alpaca-data" 2>&1 | tr -d '\r' | tail -1)
+  if ! echo "$st" | grep -qi "ready"; then
+    (cd "$B" && kg datasets create -p hypershift-alpaca-data --dir-mode zip) || exit 1
+    for i in $(seq 1 30); do st=$(kg datasets status "$KUSER/hypershift-alpaca-data" 2>&1 | tr -d '\r' | tail -1); echo "alpaca: $st"; echo "$st" | grep -qi ready && break; sleep 20; done
+  fi
+fi
 
 SLUG="hypershift-run-${TAG//_/-}"
 K=$B/kernel; rm -rf "$K"; mkdir -p "$K"
 .venv/Scripts/python.exe kaggle/make_notebook.py "$K/run_kaggle.ipynb" --session "$SESSION" --tag "$TAG" --limit-h "$LIMIT_H" --timeout-h "$TIMEOUT_H" || exit 1
 SRC="\"$KUSER/hypershift-code\", \"$KUSER/hypershift-rsr-data\""
+[ "$NEED_ALPACA" = 1 ] && SRC="$SRC, \"$KUSER/hypershift-alpaca-data\""
 [ -n "${PRIOR_DATASET:-}" ] && SRC="$SRC, \"$PRIOR_DATASET\""
 KS=""; for s in $KSOURCES; do KS="$KS${KS:+, }\"$KUSER/$s\""; done
 cat > "$K/kernel-metadata.json" <<META

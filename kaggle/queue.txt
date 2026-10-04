@@ -5,3 +5,8 @@
 # Smokes were NOT launched yet (2026-10-03: GPU session limit 2 reached while r5f and r8f run), so they are listed before their full presets.
 # r8f-top dropped 2026-10-03: hypershift-run-r8f COMPLETE with all 20 R8_f runs (no top-up needed).
 # Phase 1.5b (2026-10-04): R5_f3_alpha0_train HH/EH with save_weights, two parallel kernels; smokes first (full presets exit 3 until their smoke is COMPLETE).
+# Phase 1.5c walk-forward (2026-10-04): HH smoke first (zip must contain metrics.json), then HH kernels (seeds 0-1, 2-3, 4; 2 GPU sessions max, driver retries). EH presets wfe-s, wfe1..3 are defined but NOT queued (GPU quota).
+wfh-s
+wfh1
+wfh2
+wfh3

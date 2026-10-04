@@ -14,6 +14,7 @@ class RunConfig:
     market: str = "NYSE"                    # NYSE | NASDAQ | FRESH
     data_root: str = "data/raw/rsr/data"
     fresh_name: str = ""                    # folder under data/fresh when market == FRESH
+    wf_test_year: int = 0                   # 1.5c walk-forward: >0 swaps the NYSE price panel for the Alpaca panel (data_root/alpaca_panel_2016_2023.npz) with splits for this test year; graph stays the frozen RSR v2 (market stays NYSE)
     norm: str = "train"                     # train | paper
     sources: tuple = ("industry", "wiki")   # industry, wiki, corr, sector, subindustry, random
     corr_clusters: int = 100

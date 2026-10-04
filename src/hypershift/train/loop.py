@@ -88,8 +88,11 @@ def input_transform(cfg: RunConfig, data: MarketData):
 
 
 @functools.lru_cache(maxsize=4)
-def _load_market_cached(market: str, data_root: str, norm: str, fresh_name: str) -> MarketData:
+def _load_market_cached(market: str, data_root: str, norm: str, fresh_name: str, wf_test_year: int = 0) -> MarketData:
     """One parse per process: run_grid trains hundreds of runs on the same market. Never mutate the result."""
+    if wf_test_year:
+        from hypershift.data.alpaca_wf import PANEL_NAME, load_wf_panel
+        return load_wf_panel(Path(data_root) / PANEL_NAME, wf_test_year)
     if market in ("NYSE", "NASDAQ"):
         return load_rsr(data_root, market, norm)
     if market == "FRESH":
@@ -99,7 +102,7 @@ def _load_market_cached(market: str, data_root: str, norm: str, fresh_name: str)
 
 
 def load_market(cfg: RunConfig) -> MarketData:
-    return _load_market_cached(cfg.market, cfg.data_root, cfg.norm, cfg.fresh_name)
+    return _load_market_cached(cfg.market, cfg.data_root, cfg.norm, cfg.fresh_name, cfg.wf_test_year)
 
 
 def base_hypergraph(cfg: RunConfig, data: MarketData) -> Hypergraph:

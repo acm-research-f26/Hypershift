@@ -123,6 +123,11 @@ for need in ("2013-01-01", "hypergraph_cache"):
 target = REPO / "data/raw/rsr"
 target.mkdir(parents=True, exist_ok=True)
 link_or_copy(DATA, target / "data")
+if SESSION.startswith("wf"):      # Phase 1.5c: the compact Alpaca panel lives in its own small dataset (hypershift-alpaca-data)
+    pn = sorted(INPUT.rglob("alpaca_panel_2016_2023.npz"))
+    assert pn or DRYRUN, "alpaca_panel_2016_2023.npz not found under /kaggle/input: attach the hypershift-alpaca-data dataset"
+    if pn and not DRYRUN:
+        shutil.copy2(pn[0], DATA / "alpaca_panel_2016_2023.npz")
 print("data ready:", sorted(p.name for p in (target / "data").iterdir()))
 
 # %% Cell 4: optional prior results (a dataset OR a mounted kernel output holding results_*.zip; never overwrites existing files)
@@ -337,6 +342,24 @@ R5F3E = [r5f3("EH", s) for s in range(5)]
 R5F3H_S = [r5f3("HH", 0, "R5_f3s_alpha0_train", epochs=1)]
 R5F3E_S = [r5f3("EH", 0, "R5_f3s_alpha0_train", epochs=1)]
 
+# Presets "wfh1/2/3" and "wfe1/2/3" (Phase 1.5c walk-forward, docs/phase1_5c/SPEC.md): exp WF_<test year>_alpha0, arm HH (resp. EH), settings identical to R5_f3_alpha0_train
+# (F10 + alpha=0, norm=train, batch_days 8 from configs/global.yaml) plus wf_test_year=<year> (Alpaca panel, expanding train window, val = year-1) and save_weights=true.
+# est_min scales with the train windows (about 500/754/1006/1258/1510 for 2019..2023) + eval on val and test: 40 min = the 756-window R5 run. Heavy years first (LPT).
+# Seeds: wfh1 = 0,1; wfh2 = 2,3; wfh3 = 4 (about 257 est-min per seed, so a 12 h kernel is never at risk). Smoke "wfh-s"/"wfe-s": test years 2023 and 2019, 1 epoch, exp WFs_<year>_alpha0.
+WF_EST = {2019: 29, 2020: 40, 2021: 53, 2022: 62, 2023: 73}
+def wf(arm, year, s, exp=None, epochs=None):
+    grid, base = ("E1_main", "THINK_paperProtocol") if arm == "HH" else ("E2_geometry", arm)
+    exp = exp or f"WF_{year}_alpha0"
+    extra = F10 if epochs is None else F10.replace("epochs=100", f"epochs={epochs}")
+    return dict(kind=f"WF_{arm}_{year}", est_min=WF_EST[year] if epochs is None else 6, done=f"results/{exp}/{arm}/seed_{s}",
+                cmd=f"{{py}} scripts/run_grid.py {grid} --labels {base} --seeds {s} --set exp={exp} norm=train {extra} alpha=0 save_weights=true label={arm} wf_test_year={year}")
+def wf_set(arm, seeds):
+    return [wf(arm, y, s) for y in sorted(WF_EST, reverse=True) for s in seeds]
+WFH = {"wfh1": wf_set("HH", (0, 1)), "wfh2": wf_set("HH", (2, 3)), "wfh3": wf_set("HH", (4,))}
+WFE = {"wfe1": wf_set("EH", (0, 1)), "wfe2": wf_set("EH", (2, 3)), "wfe3": wf_set("EH", (4,))}
+WFS = {"wfh-s": [wf("HH", y, 0, f"WFs_{y}_alpha0", epochs=1) for y in (2023, 2019)],
+       "wfe-s": [wf("EH", y, 0, f"WFs_{y}_alpha0", epochs=1) for y in (2023, 2019)]}
+
 # In-kernel analysis (Cell 7b; runs after training, BEFORE zipping; the md goes into the zip root, which scripts/overnight/merge_zip.py copies to docs/phase1_5/,
 # and stays next to the zip in /kaggle/working). A failure never blocks the zip. steps = [(title, command, output md)].
 def _q(p):                                  # POSIX-style quoted path (Kaggle is Linux; forward slashes also keep the local Windows simulation working under shlex)
@@ -358,7 +381,7 @@ ANALYSIS = {
 S5S = [ks("group", a, "relative", 0, epochs=1, exp="ks_smoke", est_min=2) for a in ("HH_hyper", "EH_hyper", "EE_hyper", "HH_none", "EE_none")]
 COMMANDS = {"1": S1, "2": S2, "3": S3, "4": S4, "5": S5, "6": S6, "7": S7, "5s": S5S, "8": S8, "9": S9, "10": S10, "10s": S10S, "11": S11, "11s": S11S, "8s": S8S, "all": S1 + S2, "custom": [],
             "r8f-top": S_R8F_TOP, "r8f-top-s": S_R8F_TOP_S, "p1f": P1F, "p1f-s": P1F_S, "r5f2": R5F2, "r5f2-s": R5F2_S,
-            "r5f3h": R5F3H, "r5f3h-s": R5F3H_S, "r5f3e": R5F3E, "r5f3e-s": R5F3E_S}[SESSION]
+            "r5f3h": R5F3H, "r5f3h-s": R5F3H_S, "r5f3e": R5F3E, "r5f3e-s": R5F3E_S, **WFH, **WFE, **WFS}[SESSION]
 print(len(COMMANDS), "commands;", sum(1 for c in COMMANDS if (REPO / c["done"] / "metrics.json").exists()), "already complete")
 
 # %% Cell 7: run with N_WORKERS, time guard
