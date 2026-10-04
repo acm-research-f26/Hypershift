@@ -57,6 +57,12 @@ Check Kaggle: `KAGGLE_USER=tomphamdustry kaggle/.venv-kaggle/Scripts/python.exe 
 ## Open decisions (user)
 
 - **CRSP/WRDS access?** It is needed for a confirmatory, survivor-free 2018-2023 test. Until then the Yahoo pilot is exploratory only.
+- **Alpaca market data** (suggested by the user 2026-10-04), a candidate second source after the Yahoo audit.
+  - Its bars API has `adjustment=raw|split|dividend|spin-off|all`, which maps directly onto the R5 convention candidates.
+  - Its `asof` parameter resolves symbol renames to the underlying entity.
+  - The docs do not state how far back history goes, whether delisted symbols are covered, or plan limits for SIP history. All three must be probed empirically.
+  - It needs a free account. Keys go in user env vars `APCA_API_KEY_ID` / `APCA_API_SECRET_KEY`; never commit or paste them.
+  - Next step: rerun the Track B audit (coverage incl. delisted names, R5 overlap test on the 2016-2017 overlap) with Alpaca as the source, then pick the source by those numbers.
 
 ## How Claude and Codex work together
 
