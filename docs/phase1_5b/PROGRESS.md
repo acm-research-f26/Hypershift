@@ -6,3 +6,4 @@
 - B1 done: docs/phase1_5b/DATA_COMPATIBILITY.md spec fixed (sections 1-8) before any overlap statistic. Smoke kernels r5f3h-s, r5f3e-s launched via driver (RUNNING at 00:44).
 - B2 done: src/hypershift/data/post2017.py + tests/test_post2017_data.py (15 tests) + scripts/post2017_data_audit.py; Yahoo download (1123/1856 symbols) and audit run; outputs docs/phase1_5b/post2017_audit_{results.json,tickers.csv}.
 - B3 done: gate verdict in DATA_COMPATIBILITY.md section 9 = PASS exploratory/survivor-biased (pooled R5 share 0.9705; 967/1737 nodes; condition: use genuine-split-adjusted close, not raw).
+- A3 done: smokes r5f3h-s/r5f3e-s were no-ops (est_min guard, fixed a16e21b); r5f3e-s2 smoke verified on Kaggle (best_state.pt + epoch_preds; CPU reload matches test_pred to 6e-8). Full kernels hypershift-run-r5f3h (launched 00:49) and hypershift-run-r5f3e (01:05) RUNNING; driver merges them. Expect ~3.5 h each.
