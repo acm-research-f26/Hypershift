@@ -55,6 +55,8 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 - **MA with a missing close inside the window:** RSR's rule is UNKNOWN; the pilot forward-fills (INFERRED).
 - No 2018+ return or inference has been computed.
 
+- **Decision (orchestrator, 2026-10-04): the 2018-2023 test uses Alpaca, `adjustment=split`, 1,647 identity-pass nodes, masked after the last bar.** Yahoo is kept only as a survivor-bias reference.
+
 ## Next steps (Phase 1.5b)
 
 1. When r5f3h and r5f3e are COMPLETE and merged (driver):
