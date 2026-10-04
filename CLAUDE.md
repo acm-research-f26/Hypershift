@@ -20,6 +20,9 @@ Read Part 0 before changing any model math. Decisions and results made while exe
 
 ## Study status
 
+Live state and next steps: `docs/HANDOFF.md` (keep it current).
+
+
 - **Phase 1 (reproduce): done.** `docs/PHASE1_TRACKER.md` is 26/26. Verdict: **not reproduced under validation selection**. This is an inferred-settings reimplementation that has not shown the paper's advantage. It is not a claim about the authors' work. Many details are INFERRED (see the PA/U entries in the tracker and `docs/phase1/paper_audit.md`).
 - **Phase 1.5: fidelity audit** after an external review. Ongoing; notes in `docs/phase1_5/`. Part F found the weight-decay collapse (see Conventions). The corrected full-NYSE reruns `R5_f_*` (r5f) and `R8_f_*` (r8f) are analysed in `docs/phase1_5/F_r5f_results.md`: THINK vs TConv+DHHAN is NO EVIDENCE under both norms (10 seeds), R8_f baselines INSUFFICIENT SEEDS (5 seeds). Final ruling: the paper ranking advantage is not reproduced under validation selection in this inferred-settings reimplementation; corrected THINK vs EH is NO EVIDENCE, and the 2017 Sharpe near 2 is NO EVIDENCE of learned ranking. See docs/PHASE1_TRACKER.md and docs/phase1_5a/REPORT_2017.md. Also done (analysed in `F_p1f_results.md`, `F_r5f2_results.md`): `p1f` (small-scale Phase 1 arms rerun with the F fix; the R8-small and R7 reruns also switch level to relative inputs) and `r5f2` (full NYSE `alpha=0` and `spatial_residual`, `norm=train`, 5 seeds, INSUFFICIENT SEEDS). `r8f-top` was dropped (r8f finished all 20 runs). Review: `docs/phase1_5/REVIEW_overnight.md` (pass 1 and pass 2). Resume notes: the RESUME HERE section of `docs/phase1_5/F_learnability.md`.
 - **Phase 1.5a (2017 Sharpe≈2 forensics): done.** Sharpe≈2 is not distinguishable from random daily top-5 baskets in a strong year (hold-all 1.53; high-beta baskets); NO EVIDENCE of learned ranking. See `docs/phase1_5a/REPORT_2017.md`, follow-ups in `docs/phase1_5a/PROPOSAL_followups.md`.
@@ -38,7 +41,7 @@ Read Part 0 before changing any model math. Decisions and results made while exe
   - `D_known_signal.md` and `D_resolved_configs.md`: planted-signal learning test, and the fully resolved Phase 1 configs and repo-vs-authors defaults.
   - `E_rsr_original.md`: the authors' original RSR-I code scored with our evaluator.
   - `F_learnability.md`: why THINK did not learn the planted signal (weight decay) and the config that does.
-- `docs/HANDOFF.md`, `docs/POC_PRESENTATION.md`: earlier handoff and POC write-up.
+- **`docs/HANDOFF.md`: live state (what is running, next steps, open decisions, Claude/Codex protocol). Read it first; update it at every milestone.** `AGENTS.md` points Codex to it. Old long-form handoff: `docs/phase1/HANDOFF_2026-09-28.md`; POC write-up: `docs/POC_PRESENTATION.md`.
 
 ## Environment (Windows, Git Bash)
 
