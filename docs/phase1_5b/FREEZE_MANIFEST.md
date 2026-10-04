@@ -41,3 +41,57 @@ Rule: pass if the new mean HH test Sharpe over seeds 0-4 lies in [min - SD, max 
 - Also descriptive: HH-EH 2017 mean difference, new +0.737, historical -0.072.
 
 Note: this is a replication of the recipe, not of the historical weights (those do not exist); GPU nondeterminism makes the runs differ.
+
+
+## Addendum A (2018-2023 locked inference, 2026-10-04)
+
+One locked pass by `scripts/eval_post2017.py run` (git HEAD of the freeze commit `00cf6e4`, script added after). Panel: Alpaca adjustment=split, 1,647 identity-pass nodes, masked after last bar, 2018-01-02..2023-12-29 (1,509 target days), frozen graph v2 (4,350 edges). Outputs in `results/post2017_frozen/` (git-ignored). Pipeline check on 2017 (seed 0 HH, Alpaca panel vs stored RSR-panel predictions): SR 1.809 vs 2.199, mean daily cross-sectional Pearson 0.949.
+
+Gross top-5 Sharpe per run: HH/0 0.8546, HH/1 0.0962, HH/2 0.7981, HH/3 0.2265, HH/4 0.1935, EH/0 0.2669, EH/1 0.1436, EH/2 0.2037, EH/3 0.1128, EH/4 0.0754.
+
+sha256 of outputs (full list in `results/post2017_frozen/OUTPUT_HASHES.json`, sha256 of that file below):
+
+| file | sha256 |
+|---|---|
+| `EH/seed_0/test_daily.npy` | `946320ef93e03804478a2a20e63f29538fd5f6d81d5b8cc6c21f1bdbd78df06f` |
+| `EH/seed_0/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `EH/seed_0/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `EH/seed_0/test_pred.npy` | `fddca319b0bef91103744d3c7f7cb14c5f0314ee8ede00470180531090dc5bad` |
+| `EH/seed_1/test_daily.npy` | `aaee147fc996299d99714e504081cf650048dbef8b3c036afd36efea6b08e66b` |
+| `EH/seed_1/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `EH/seed_1/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `EH/seed_1/test_pred.npy` | `15d99ac55be6716bb3081a96ab7930f4550f776e8806b74f4f078beee01fca61` |
+| `EH/seed_2/test_daily.npy` | `2648e4f66bf5a172e8752596407bdc5fe525a6ec789804a03a348d07522f5fc8` |
+| `EH/seed_2/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `EH/seed_2/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `EH/seed_2/test_pred.npy` | `d2634c3498b03247bc7c14309dd90657f16921460b802d8a23972087148fefb8` |
+| `EH/seed_3/test_daily.npy` | `71297f61dd1e5128c88c0f0e6b9f241c1210d5158a47ff8cd0aef05605b28b17` |
+| `EH/seed_3/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `EH/seed_3/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `EH/seed_3/test_pred.npy` | `d262b56fb30530dd8d1a8806d3a4772442e6dae03f37236f9e0860aa8b25c00d` |
+| `EH/seed_4/test_daily.npy` | `1f3721231b9e7a6567c03f5abb44ac8a5936e0586152527b48521f2b48011582` |
+| `EH/seed_4/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `EH/seed_4/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `EH/seed_4/test_pred.npy` | `36d146737ca9688c9566369ae73cd97efeef362c5cae5f54cbe68295ade61946` |
+| `HH/seed_0/test_daily.npy` | `a663d299e380db8e6b0c81c459714257797d547991314d607c114ad16b6c758b` |
+| `HH/seed_0/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `HH/seed_0/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `HH/seed_0/test_pred.npy` | `a8854cd7e48096a957e276ce6ea482ead122087d070f626c76228ac1166604c5` |
+| `HH/seed_1/test_daily.npy` | `6dc0837dc9d38cdb6bb6906d7d4d95c4dac669f745e2a28ba6d9510fdc6d848d` |
+| `HH/seed_1/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `HH/seed_1/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `HH/seed_1/test_pred.npy` | `adcb50833c5e0d06ad14d9b4b30907bed63bba7126558cde8d57edd91f6cd1b2` |
+| `HH/seed_2/test_daily.npy` | `80bf2d7ab6b23a526289c37a578be6f024ae53bfe541a482d6c7e0012ba29e66` |
+| `HH/seed_2/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `HH/seed_2/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `HH/seed_2/test_pred.npy` | `cc99414c974b1c14319e0d03e6ebda062c8ee3eab2e6ac849c6421aad431ae69` |
+| `HH/seed_3/test_daily.npy` | `5600238b47eece5ff6febf59b82a508e9551cada59393708c605ba432679eae0` |
+| `HH/seed_3/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `HH/seed_3/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `HH/seed_3/test_pred.npy` | `e41eed56f5895eea81cca35e4be4d019f5e81ab347484d90e89c4d6a36846769` |
+| `HH/seed_4/test_daily.npy` | `c41bff99e89b0c1ae89ccbee17d950b79794c66a26614719a681239b9192c95b` |
+| `HH/seed_4/test_gt.npy` | `afbc392426a6f7cf705c4a0d46fceadfcef6fa2b160d31366da2fa0a73a13288` |
+| `HH/seed_4/test_mask.npy` | `46a1beecaa6e5b54774f2b0d4985d6ddbd2afa764d598cbb899b3bfd9c8df3d4` |
+| `HH/seed_4/test_pred.npy` | `778e18aa48cecf804c3c4f3f0c48aa4844da90be54db635f4540b560f956a90b` |
+| `dates.npy` | `e4a463aeb7acc3eeb3d4d09aa4b38f60c461ce6d94e1befce03fcd13a174178a` |
+| `OUTPUT_HASHES.json` | `565f9927c13dd0dd5338d41d8735aef0fa82df392637c085b25285d54fa8139e` |

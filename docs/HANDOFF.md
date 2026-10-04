@@ -31,6 +31,7 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 
 ## Running now
 
+- **Task 4 done (locked 2018-2023 pass):** outputs `results/post2017_frozen/` (hashes in FREEZE_MANIFEST addendum A). Gross top-5 Sharpe HH seeds 0-4: 0.85/0.10/0.80/0.23/0.19 (mean 0.43); EH mean 0.16. Task 5 (analysis, REPORT_POST2017.md) next.
 - **Task 3 done:** r5f3 merged (10 runs verified). `docs/phase1_5b/FREEZE_MANIFEST.md` committed. R7 PASS (new HH mean 2017 SR 2.200 in [1.771, 2.254]); EH new 1.463 vs historical 2.049 (descriptive). Task 4 (locked 2018-2023 inference) and Task 5 follow.
 
 - **No agent is active** (2026-10-04 ~01:40). The Phase 1.5b worker finished Track A and Track B; see `docs/phase1_5b/PROGRESS.md`.
