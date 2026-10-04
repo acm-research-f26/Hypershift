@@ -8,3 +8,4 @@
 - 2026-10-04 T5: full suite 368 passed.
 - 2026-10-04 T6 done: HH analysis `scripts/wf_analysis.py` (+ `tests/test_wf_analysis.py`) -> `wf_results.json`, `wf_tables.md`. 25 HH runs verified. Pooled 2019-2023 Sharpe 0.574/0.657/0.535/0.564/1.181 (mean 0.702, seed-avg 0.800); hold-all 0.693; IUT p F1-F4 0.285/0.323/0.599/0.297 (Holm 1.0, NO EVIDENCE; F5 HH vs EH pending); WF vs frozen seed-avg +0.127 (CI -0.30 to 0.60). REPORT_WF.md not written (Write tool refused report files in the worker session); orchestrator to write it from the tables.
 - 2026-10-04 T7: `wfe-s`, `wfe1`, `wfe2`, `wfe3` appended to `kaggle/queue.txt`; driver `--reset` + one tick launched `wfe-s` (kernel `hypershift-run-wfe-s`); wfe1-3 wait on its smoke.
+- REPORT_WF.md written by orchestrator from the analysis worker's findings (subagent Write was blocked).
