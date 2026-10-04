@@ -113,3 +113,19 @@ Restricting to the survivors raises the 2017 top-5 Sharpe by +0.27 and hold-all 
 4. The 136 identity failures with share 0.80-0.95 are unexplained (UNKNOWN). If their cause is price-vintage noise, identity may be too strict, which only shrinks coverage and does not admit bad names.
 
 If the user later obtains CRSP/WRDS access, that source should replace this pilot; the same R5 and identity tests apply unchanged.
+
+## Amendment A1 (2026-10-04, Claude Code orchestrator, under the user's "do what you think is best")
+
+**The pilot uses convention (d): adjust genuine stock splits only; leave Yahoo's non-integer spin-off "splits" unadjusted; no dividend adjustment.** This replaces the predeclared winner (a).
+
+Why:
+- The predeclared R5 rule could not tell the candidates apart: (a) 0.9705 vs (b) 0.9705, a 2-stock-day margin.
+- (a) is inadmissible under R4, because it leaves genuine splits unadjusted inside input windows.
+- On the 46 split events in the overlap, RSR behaves like (d): raw matches the 31 spin-off-type events and split-adjusted matches the 10 genuine splits. That makes (d) the closest reading of RSR's semantics.
+
+Why this is not outcome-dependent:
+- The decision uses only 2015-01-02 to 2017-12-08 overlap evidence, made before any 2018+ return, strategy result or inference was computed.
+- It changes input construction, not model selection or the test statistic.
+- It is recorded here before the freeze manifest.
+
+Status: still **exploratory, survivor-biased** (967 of 1,737 nodes pass identity; R8 bias: 2017 top-5 Sharpe +0.27 and hold-all +0.23 on the survivor subset). Every 2018+ comparison therefore uses hold-all, random and matched nulls on the **same 967-name eligible subset**.
