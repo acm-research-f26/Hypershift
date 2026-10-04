@@ -1,6 +1,6 @@
 # HANDOFF: live state for Claude Code and Codex
 
-**Last updated: 2026-10-04 ~01:40 by Claude Code.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
+**Last updated: 2026-10-04 (Phase 1.5b Task 3 done) by Claude Code worker.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
 
 ## Read in this order
 
@@ -30,6 +30,8 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 - **Phase 2 (diagnosis): not started.**
 
 ## Running now
+
+- **Task 3 done:** r5f3 merged (10 runs verified). `docs/phase1_5b/FREEZE_MANIFEST.md` committed. R7 PASS (new HH mean 2017 SR 2.200 in [1.771, 2.254]); EH new 1.463 vs historical 2.049 (descriptive). Task 4 (locked 2018-2023 inference) and Task 5 follow.
 
 - **No agent is active** (2026-10-04 ~01:40). The Phase 1.5b worker finished Track A and Track B; see `docs/phase1_5b/PROGRESS.md`.
 - **Kaggle** (driver fetches, merges, pushes):
