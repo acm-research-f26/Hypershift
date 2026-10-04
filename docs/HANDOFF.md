@@ -1,6 +1,6 @@
 # HANDOFF: live state for Claude Code and Codex
 
-**Last updated: 2026-10-04 (Phase 1.5c launch setup done) by Claude Code worker.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
+**Last updated: 2026-10-04 (Phase 1.5c HH analysed, EH queued) by Claude Code worker.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
 
 ## Read in this order
 
@@ -31,7 +31,8 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 
 ## Running now
 
-- **Phase 1.5c walk-forward (spec `docs/phase1_5c/SPEC.md`, log `docs/phase1_5c/PROGRESS.md`):** smoke kernel `hypershift-run-wfh-s` launched 2026-10-04 10:17 (years 2023 + 2019, 1 epoch). Queue (`kaggle/queue.txt`): `wfh1` (HH seeds 0-1), `wfh2` (seeds 2-3), `wfh3` (seed 4); each exits 3 until the smoke is COMPLETE and its zip holds a metrics.json (new gate), then the driver launches them (2 GPU sessions max, so wfh3 waits for a slot). Est. 514/514/257 est-min on 3 workers each, so about 4-5 h per kernel; ETA of all HH about +7-9 h after the smoke passes (unmeasured). Exps `WF_<2019..2023>_alpha0/HH/seed_k`, about 350 MB per run. Alpaca panel dataset `tomphamdustry/hypershift-alpaca-data` (npz, no keys).
+- **Phase 1.5c walk-forward EH (spec `docs/phase1_5c/SPEC.md`, log `docs/phase1_5c/PROGRESS.md`):** HH is done and analysed (see Results). EH smoke kernel `hypershift-run-wfe-s` launched 2026-10-04 17:01 by a driver tick (after `--reset`; the `done` flag may re-set itself). `kaggle/queue.txt` now holds `wfe1` (seeds 0-1), `wfe2` (2-3), `wfe3` (4); each exits 3 until the smoke is COMPLETE with a metrics.json, then the driver launches them (2 GPU sessions max, quota may delay to the next week). Exps `WF_<2019..2023>_alpha0/EH/seed_k`.
+- **Phase 1.5c HH results (`docs/phase1_5c/wf_tables.md`, `wf_results.json`, script `scripts/wf_analysis.py`; REPORT_WF.md text was not written by the worker, see PROGRESS):** pooled 2019-2023 HH Sharpe per seed 0.574/0.657/0.535/0.564/1.181 (mean 0.702, seed-avg 0.800, CI -0.04 to 1.67); hold-all 0.693. Ranking skill NO EVIDENCE (IUT p F1 0.285, F2 0.323, F3 0.599, F4 0.297; Holm 1.0; only seed 4 beats the nulls). IC mean 0.0018. WF vs frozen 1.5b on the same days: seed-avg +0.127 Sharpe (CI -0.30 to 0.60, p_boot 0.61), not distinguishable. HH vs EH (F5) pending EH.
 
 - **Task 5 done:** `docs/phase1_5b/REPORT_POST2017.md` (tables `post2017_tables.md`, `post2017_results.json`). Conclusions: Sharpe did not persist (HH pooled 2018-2023 mean 0.43, seed-avg 0.45, hold-all 0.51, EH 0.16); ranking skill NO EVIDENCE (Holm-adj p >= 0.625; F1-F4 IUT p 0.73-0.87); HH vs EH INSUFFICIENT SEEDS (seed-avg contrast +0.27, CI -0.13 to 0.69). Phase 1.5b complete; next is the user decision on CRSP / walk-forward retraining.
 - **Task 4 done (locked 2018-2023 pass):** outputs `results/post2017_frozen/` (hashes in FREEZE_MANIFEST addendum A). Gross top-5 Sharpe HH seeds 0-4: 0.85/0.10/0.80/0.23/0.19 (mean 0.43); EH mean 0.16. Task 5 (analysis, REPORT_POST2017.md) next.
@@ -65,7 +66,7 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 
 ## Next steps
 
-0. **Phase 1.5c:** when wfh1-3 are all merged (driver) and verified (25 runs `results/WF_*_alpha0/HH`), run the analysis per `docs/phase1_5c/SPEC.md` (pooled 2019-2023 Sharpe per seed, Holm family vs the four nulls, vs hold-all, vs the frozen 1.5b model on the same days). EH presets `wfe-s`, `wfe1-3` are defined but NOT queued: add `wfe-s` then `wfe1..3` to `kaggle/queue.txt` when GPU quota allows (next quota week if needed).
+0. **Phase 1.5c:** when wfe-s is COMPLETE and wfe1-3 are merged and verified (25 runs `results/WF_*_alpha0/EH`), extend `scripts/wf_analysis.py` with the EH arm (F5: HH vs EH Wilcoxon on per-seed pooled Sharpe plus date-joined bootstrap contrast; final Holm over 5), rerun, and write `docs/phase1_5c/REPORT_WF.md` (user/orchestrator: write it from the HH results above; the worker was blocked from creating it). Then the user decision on CRSP.
 
 ## (done) Phase 1.5b Tasks 3-5
 
