@@ -31,6 +31,7 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 
 ## Running now
 
+- **Task 5 done:** `docs/phase1_5b/REPORT_POST2017.md` (tables `post2017_tables.md`, `post2017_results.json`). Conclusions: Sharpe did not persist (HH pooled 2018-2023 mean 0.43, seed-avg 0.45, hold-all 0.51, EH 0.16); ranking skill NO EVIDENCE (Holm-adj p >= 0.625; F1-F4 IUT p 0.73-0.87); HH vs EH INSUFFICIENT SEEDS (seed-avg contrast +0.27, CI -0.13 to 0.69). Phase 1.5b complete; next is the user decision on CRSP / walk-forward retraining.
 - **Task 4 done (locked 2018-2023 pass):** outputs `results/post2017_frozen/` (hashes in FREEZE_MANIFEST addendum A). Gross top-5 Sharpe HH seeds 0-4: 0.85/0.10/0.80/0.23/0.19 (mean 0.43); EH mean 0.16. Task 5 (analysis, REPORT_POST2017.md) next.
 - **Task 3 done:** r5f3 merged (10 runs verified). `docs/phase1_5b/FREEZE_MANIFEST.md` committed. R7 PASS (new HH mean 2017 SR 2.200 in [1.771, 2.254]); EH new 1.463 vs historical 2.049 (descriptive). Task 4 (locked 2018-2023 inference) and Task 5 follow.
 
@@ -60,7 +61,7 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 
 - **Decision (orchestrator, 2026-10-04): the 2018-2023 test uses Alpaca, `adjustment=split`, 1,647 identity-pass nodes, masked after the last bar.** Yahoo is kept only as a survivor-bias reference.
 
-## Next steps (Phase 1.5b)
+## Next steps (Phase 1.5b: Tasks 3-5 DONE, see Running now)
 
 1. When r5f3h and r5f3e are COMPLETE and merged (driver):
    - verify 10 runs, each with `best_state.pt` and `epoch_preds/`
