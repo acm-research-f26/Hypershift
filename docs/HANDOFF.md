@@ -1,6 +1,6 @@
 # HANDOFF: live state for Claude Code and Codex
 
-**Last updated: 2026-10-04 (Phase 1.5b Task 3 done) by Claude Code worker.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
+**Last updated: 2026-10-04 (Phase 1.5c launch setup done) by Claude Code worker.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
 
 ## Read in this order
 
@@ -30,6 +30,8 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 - **Phase 2 (diagnosis): not started.**
 
 ## Running now
+
+- **Phase 1.5c walk-forward (spec `docs/phase1_5c/SPEC.md`, log `docs/phase1_5c/PROGRESS.md`):** smoke kernel `hypershift-run-wfh-s` launched 2026-10-04 10:17 (years 2023 + 2019, 1 epoch). Queue (`kaggle/queue.txt`): `wfh1` (HH seeds 0-1), `wfh2` (seeds 2-3), `wfh3` (seed 4); each exits 3 until the smoke is COMPLETE and its zip holds a metrics.json (new gate), then the driver launches them (2 GPU sessions max, so wfh3 waits for a slot). Est. 514/514/257 est-min on 3 workers each, so about 4-5 h per kernel; ETA of all HH about +7-9 h after the smoke passes (unmeasured). Exps `WF_<2019..2023>_alpha0/HH/seed_k`, about 350 MB per run. Alpaca panel dataset `tomphamdustry/hypershift-alpaca-data` (npz, no keys).
 
 - **Task 5 done:** `docs/phase1_5b/REPORT_POST2017.md` (tables `post2017_tables.md`, `post2017_results.json`). Conclusions: Sharpe did not persist (HH pooled 2018-2023 mean 0.43, seed-avg 0.45, hold-all 0.51, EH 0.16); ranking skill NO EVIDENCE (Holm-adj p >= 0.625; F1-F4 IUT p 0.73-0.87); HH vs EH INSUFFICIENT SEEDS (seed-avg contrast +0.27, CI -0.13 to 0.69). Phase 1.5b complete; next is the user decision on CRSP / walk-forward retraining.
 - **Task 4 done (locked 2018-2023 pass):** outputs `results/post2017_frozen/` (hashes in FREEZE_MANIFEST addendum A). Gross top-5 Sharpe HH seeds 0-4: 0.85/0.10/0.80/0.23/0.19 (mean 0.43); EH mean 0.16. Task 5 (analysis, REPORT_POST2017.md) next.
@@ -61,7 +63,11 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 
 - **Decision (orchestrator, 2026-10-04): the 2018-2023 test uses Alpaca, `adjustment=split`, 1,647 identity-pass nodes, masked after the last bar.** Yahoo is kept only as a survivor-bias reference.
 
-## Next steps (Phase 1.5b: Tasks 3-5 DONE, see Running now)
+## Next steps
+
+0. **Phase 1.5c:** when wfh1-3 are all merged (driver) and verified (25 runs `results/WF_*_alpha0/HH`), run the analysis per `docs/phase1_5c/SPEC.md` (pooled 2019-2023 Sharpe per seed, Holm family vs the four nulls, vs hold-all, vs the frozen 1.5b model on the same days). EH presets `wfe-s`, `wfe1-3` are defined but NOT queued: add `wfe-s` then `wfe1..3` to `kaggle/queue.txt` when GPU quota allows (next quota week if needed).
+
+## (done) Phase 1.5b Tasks 3-5
 
 1. When r5f3h and r5f3e are COMPLETE and merged (driver):
    - verify 10 runs, each with `best_state.pt` and `epoch_preds/`
