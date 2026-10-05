@@ -1,4 +1,4 @@
-### T1. Pooled 2019-2023 gross Sharpe, walk-forward HH (concatenated daily top-5 returns, stable ties)
+### T1HH. Pooled 2019-2023 gross Sharpe, walk-forward HH (concatenated daily top-5 returns, stable ties)
 
 Days: 1258 (2019-01-02 to 2023-12-29). Hold-all (same mask): Sharpe 0.693 (95% CI -0.209 to 1.601), mean daily 6.83 bp.
 
@@ -12,7 +12,21 @@ Days: 1258 (2019-01-02 to 2023-12-29). Hold-all (same mask): Sharpe 0.693 (95% C
 | mean of 5 seeds | 0.702 | | | | | | | | | |
 | seed-avg series | 0.800 | [-0.036, 1.674] | | 0.352 | | | | | | |
 
-### T2. Annual Sharpe (days); walk-forward HH, hold-all, frozen 1.5b seed-avg
+### T1EH. Pooled 2019-2023 gross Sharpe, walk-forward EH (concatenated daily top-5 returns, stable ties)
+
+Days: 1258 (2019-01-02 to 2023-12-29). Hold-all (same mask): Sharpe 0.693 (95% CI -0.209 to 1.601), mean daily 6.83 bp.
+
+| seed | Sharpe | 95% CI (block 10) | excess-over-hold-all mean bp/day [95% CI] | excess SR | net 5bp | net 10bp | net 25bp | turnover | IC | NDCG@5 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0 | 0.457 | [-0.381, 1.290] | -0.22 [-8.67, 8.30] | -0.020 | 0.122 | -0.213 | -1.213 | 0.48 | -0.0004 | 0.533 |
+| 1 | 0.794 | [-0.041, 1.636] | 3.75 [-4.17, 11.95] | 0.358 | 0.464 | 0.134 | -0.853 | 0.44 | -0.0021 | 0.533 |
+| 2 | 0.453 | [-0.318, 1.235] | -0.99 [-9.82, 8.14] | -0.095 | 0.110 | -0.232 | -1.255 | 0.44 | -0.0023 | 0.532 |
+| 3 | 0.273 | [-0.493, 1.067] | -2.69 [-11.83, 6.63] | -0.224 | -0.079 | -0.430 | -1.482 | 0.53 | -0.0038 | 0.530 |
+| 4 | 0.588 | [-0.263, 1.463] | 3.19 [-6.37, 13.63] | 0.248 | 0.329 | 0.070 | -0.705 | 0.44 | -0.0049 | 0.533 |
+| mean of 5 seeds | 0.513 | | | | | | | | | |
+| seed-avg series | 0.587 | [-0.228, 1.423] | | 0.069 | | | | | | |
+
+### T2. Annual Sharpe (days); walk-forward HH and EH, hold-all, frozen 1.5b seed-avg
 
 | series | 2019 | 2020 | 2021 | 2022 | 2023 |
 |---|---|---|---|---|---|
@@ -24,8 +38,15 @@ Days: 1258 (2019-01-02 to 2023-12-29). Hold-all (same mask): Sharpe 0.693 (95% C
 | WF HH seed 4 | 0.26 (252) | 2.13 (253) | 2.54 (252) | 0.43 (251) | 0.36 (250) |
 | WF HH seed-avg | -0.40 (252) | 1.59 (253) | 1.85 (252) | 0.34 (251) | 0.51 (250) |
 | frozen 1.5b HH seed-avg | -0.74 (252) | 1.26 (253) | 0.86 (252) | 1.01 (251) | 0.70 (250) |
+| WF EH seed 0 | 0.07 (252) | 0.33 (253) | 1.36 (252) | 0.45 (251) | 0.70 (250) |
+| WF EH seed 1 | 0.61 (252) | 0.93 (253) | 1.38 (252) | 0.65 (251) | 0.76 (250) |
+| WF EH seed 2 | -0.27 (252) | 1.00 (253) | 0.79 (252) | 0.21 (251) | 0.45 (250) |
+| WF EH seed 3 | -1.01 (252) | 0.50 (253) | 0.49 (252) | 0.40 (251) | 1.06 (250) |
+| WF EH seed 4 | 0.03 (252) | 1.07 (253) | 1.72 (252) | 0.08 (251) | -0.23 (250) |
+| WF EH seed-avg | -0.22 (252) | 0.85 (253) | 1.35 (252) | 0.41 (251) | 0.64 (250) |
+| frozen 1.5b EH seed-avg | -0.27 (252) | 1.03 (253) | 0.90 (252) | -0.14 (251) | 0.04 (250) |
 
-### T3. Selected epoch / validation Sharpe / that window's test Sharpe, per seed and test year
+### T3HH. HH: selected epoch / validation Sharpe / that window's test Sharpe, per seed and test year
 
 | seed | 2019 | 2020 | 2021 | 2022 | 2023 |
 |---|---|---|---|---|---|
@@ -34,6 +55,16 @@ Days: 1258 (2019-01-02 to 2023-12-29). Hold-all (same mask): Sharpe 0.693 (95% C
 | 2 | ep 42 / -0.99 / 0.23 | ep 10 / 2.11 / 1.04 | ep 43 / 1.75 / 1.01 | ep 59 / 1.90 / 0.18 | ep 87 / 1.74 / 0.25 |
 | 3 | ep 2 / -0.23 / -0.85 | ep 47 / 1.81 / 1.00 | ep 34 / 1.59 / 1.75 | ep 61 / 2.36 / 0.39 | ep 14 / 1.53 / 0.45 |
 | 4 | ep 4 / -0.26 / 0.26 | ep 87 / 1.68 / 2.13 | ep 68 / 1.77 / 2.54 | ep 22 / 2.20 / 0.43 | ep 67 / 1.63 / 0.36 |
+
+### T3EH. EH: selected epoch / validation Sharpe / that window's test Sharpe, per seed and test year
+
+| seed | 2019 | 2020 | 2021 | 2022 | 2023 |
+|---|---|---|---|---|---|
+| 0 | ep 95 / -0.14 / 0.07 | ep 19 / 0.70 / 0.33 | ep 29 / 1.74 / 1.36 | ep 12 / 2.24 / 0.45 | ep 39 / 1.34 / 0.70 |
+| 1 | ep 16 / 0.05 / 0.61 | ep 4 / 1.57 / 0.93 | ep 17 / 2.25 / 1.38 | ep 50 / 2.05 / 0.65 | ep 14 / 0.97 / 0.76 |
+| 2 | ep 20 / -0.53 / -0.27 | ep 18 / 1.59 / 1.00 | ep 26 / 1.86 / 0.79 | ep 67 / 1.75 / 0.21 | ep 10 / 1.61 / 0.45 |
+| 3 | ep 45 / 0.04 / -1.01 | ep 32 / 1.44 / 0.50 | ep 84 / 1.43 / 0.49 | ep 59 / 2.40 / 0.40 | ep 22 / 0.84 / 1.06 |
+| 4 | ep 3 / 0.19 / 0.03 | ep 19 / 1.55 / 1.07 | ep 69 / 1.63 / 1.72 | ep 48 / 2.02 / 0.08 | ep 15 / 1.77 / -0.23 |
 
 ### T4. Eligible names per year
 
@@ -45,29 +76,50 @@ Days: 1258 (2019-01-02 to 2023-12-29). Hold-all (same mask): Sharpe 0.693 (95% C
 | 2022 | 1302 | 1274 |
 | 2023 | 1251 | 1229 |
 
-### T5. Ranking-skill nulls (one-sided empirical p on pooled Sharpe; B_NULL=2000, B_PERM=500)
+### T5. Ranking-skill nulls (one-sided empirical p on pooled Sharpe; B_NULL=2000, B_PERM=500); EH rows descriptive only (not in the family)
 
 Random daily top-5 null Sharpe 5/50/95 pct: -0.015 / 0.403 / 0.819.
 
-| seed | F1 random top-5 | F2 beta-quintile matched (per-window beta) | F3 industry matched | F4 label permutation |
-|---|---|---|---|---|
-| 0 | 0.235 | 0.257 | 0.383 | 0.232 |
-| 1 | 0.151 | 0.106 | 0.369 | 0.134 |
-| 2 | 0.285 | 0.323 | 0.353 | 0.297 |
-| 3 | 0.247 | 0.194 | 0.599 | 0.236 |
-| 4 | 0.001 | 0.002 | 0.020 | 0.002 |
+| arm | seed | F1 random top-5 | F2 beta-quintile matched (per-window beta) | F3 industry matched | F4 label permutation |
+|---|---|---|---|---|---|
+| HH | 0 | 0.235 | 0.257 | 0.383 | 0.232 |
+| HH | 1 | 0.151 | 0.106 | 0.369 | 0.134 |
+| HH | 2 | 0.285 | 0.323 | 0.353 | 0.297 |
+| HH | 3 | 0.247 | 0.194 | 0.599 | 0.236 |
+| HH | 4 | 0.001 | 0.002 | 0.020 | 0.002 |
+| EH | 0 | 0.407 | 0.431 | 0.226 | 0.413 |
+| EH | 1 | 0.064 | 0.064 | 0.200 | 0.044 |
+| EH | 2 | 0.416 | 0.579 | 0.713 | 0.405 |
+| EH | 3 | 0.688 | 0.629 | 0.872 | 0.661 |
+| EH | 4 | 0.219 | 0.321 | 0.297 | 0.236 |
 
-### T6. Primary formal family (IUT over seeds for F1-F4)
+### T6. Primary formal family (F1-F4 IUT over seeds; F5 Wilcoxon), Holm over 5
 
-| test | p (IUT) | Holm over 4 (provisional) | Holm over 5 (F5 pending set to p=1) |
-|---|---|---|---|
-| F1 HH vs random daily top-5 | 0.2849 | 1.0000 | 1.0000 |
-| F2 HH vs beta-matched | 0.3234 | 1.0000 | 1.0000 |
-| F3 HH vs industry-matched | 0.5988 | 1.0000 | 1.0000 |
-| F4 HH vs label permutation | 0.2974 | 1.0000 | 1.0000 |
-| F5 HH vs EH | PENDING (EH walk-forward not yet run) | | |
+| test | p | Holm over 5 |
+|---|---|---|
+| F1 HH vs random daily top-5 | 0.2849 | 1.0000 |
+| F2 HH vs beta-matched | 0.3234 | 1.0000 |
+| F3 HH vs industry-matched | 0.5988 | 1.0000 |
+| F4 HH vs label permutation | 0.2974 | 1.0000 |
+| F5 HH vs EH (Wilcoxon, per-seed pooled Sharpe) | 0.3125 | 1.0000 |
 
-### T7. Walk-forward vs frozen 1.5b HH, same 2019-2023 days (date-joined; mask and gt identical)
+### T9. F5 HH vs EH
+
+Per-seed pooled Sharpe HH [0.574, 0.657, 0.535, 0.564, 1.181]; EH [0.457, 0.794, 0.453, 0.273, 0.588]; diff HH-EH [0.117, -0.137, 0.082, 0.291, 0.593].
+
+Wilcoxon two-sided p = 0.3125 (smallest attainable with 5 seeds: 0.0625). Seed-averaged daily contrast HH-EH: 0.213 [-0.188, 0.603], p_boot 0.281 (block 10, N_BOOT 5000). Holm-adjusted p 1.0000.
+
+**Verdict word: INSUFFICIENT SEEDS.** repo rule (aggregate.py/_holm): INSUFFICIENT SEEDS when m*2^(1-n)=0.312 >= 0.01 with n=5 seeds, m=5.
+
+| seed | HH-EH Sharpe diff [95% block-bootstrap CI] |
+|---|---|
+| 0 | 0.117 [-0.579, 0.773] |
+| 1 | -0.137 [-0.830, 0.469] |
+| 2 | 0.082 [-0.567, 0.770] |
+| 3 | 0.291 [-0.232, 0.849] |
+| 4 | 0.593 [-0.084, 1.241] |
+
+### T7HH. Walk-forward vs frozen 1.5b HH, same 2019-2023 days (date-joined; mask and gt identical)
 
 | seed | WF Sharpe | frozen Sharpe | diff (WF-frozen) [95% block-bootstrap CI] | WF IC | frozen IC |
 |---|---|---|---|---|---|
@@ -78,7 +130,18 @@ Random daily top-5 null Sharpe 5/50/95 pct: -0.015 / 0.403 / 0.819.
 | 4 | 1.181 | 0.426 | 0.755 [0.053, 1.414] | 0.0046 | 0.0019 |
 | seed-avg series | 0.800 | 0.672 | 0.127 [-0.301, 0.595], p_boot 0.606 | 0.0018 (mean) | 0.0025 (mean) |
 
-### T8. Diagnostics (top-5 baskets)
+### T7EH. Walk-forward vs frozen 1.5b EH, same 2019-2023 days (date-joined; mask and gt identical)
+
+| seed | WF Sharpe | frozen Sharpe | diff (WF-frozen) [95% block-bootstrap CI] | WF IC | frozen IC |
+|---|---|---|---|---|---|
+| 0 | 0.457 | 0.420 | 0.037 [-0.750, 0.826] | -0.0004 | 0.0016 |
+| 1 | 0.794 | 0.347 | 0.447 [-0.397, 1.392] | -0.0021 | -0.0012 |
+| 2 | 0.453 | 0.426 | 0.027 [-0.770, 0.766] | -0.0023 | 0.0001 |
+| 3 | 0.273 | 0.235 | 0.038 [-0.657, 0.722] | -0.0038 | 0.0022 |
+| 4 | 0.588 | 0.150 | 0.438 [-0.141, 1.073] | -0.0049 | 0.0035 |
+| seed-avg series | 0.587 | 0.363 | 0.224 [-0.229, 0.699], p_boot 0.334 | -0.0027 (mean) | 0.0012 (mean) |
+
+### T8HH. Diagnostics (top-5 baskets), HH
 
 | seed | hit top-10% | hit top-20% | miss bottom-10% | precision@5 | basket beta | universe beta |
 |---|---|---|---|---|---|---|
@@ -87,3 +150,13 @@ Random daily top-5 null Sharpe 5/50/95 pct: -0.015 / 0.403 / 0.819.
 | 2 | 0.144 | 0.251 | 0.144 | 0.0108 | 1.29 | 1.02 |
 | 3 | 0.157 | 0.263 | 0.156 | 0.0111 | 1.26 | 1.02 |
 | 4 | 0.164 | 0.269 | 0.153 | 0.0116 | 1.24 | 1.02 |
+
+### T8EH. Diagnostics (top-5 baskets), EH
+
+| seed | hit top-10% | hit top-20% | miss bottom-10% | precision@5 | basket beta | universe beta |
+|---|---|---|---|---|---|---|
+| 0 | 0.158 | 0.260 | 0.157 | 0.0108 | 1.30 | 1.02 |
+| 1 | 0.138 | 0.246 | 0.124 | 0.0076 | 1.21 | 1.02 |
+| 2 | 0.139 | 0.247 | 0.136 | 0.0087 | 1.25 | 1.02 |
+| 3 | 0.165 | 0.268 | 0.171 | 0.0122 | 1.38 | 1.02 |
+| 4 | 0.169 | 0.267 | 0.174 | 0.0172 | 1.38 | 1.02 |

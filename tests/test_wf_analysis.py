@@ -32,5 +32,13 @@ def test_year_slices_exact_years():
     assert s[2020][0] == s[2019][1]
 
 
+def test_verdict_word():
+    # 5 seeds, 5 tests: min attainable Holm p 0.3125 -> cannot reach 0.01
+    assert W.verdict_word(1.0, -1, 1, 5, 5) == "INSUFFICIENT SEEDS"
+    assert W.verdict_word(0.001, 0.1, 0.5, 15, 5) == "STRONG"
+    assert W.verdict_word(0.001, -0.1, 0.5, 15, 5) == "SEED-ROBUST ONLY"
+    assert W.verdict_word(0.2, 0.1, 0.5, 15, 5) == "NO EVIDENCE"
+
+
 def test_concat_nulls_shape():
     assert W.concat_nulls([np.zeros((7, 3)), np.ones((7, 4))]).shape == (7, 7)
