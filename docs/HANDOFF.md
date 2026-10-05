@@ -1,6 +1,6 @@
 # HANDOFF: live state for Claude Code and Codex
 
-**Last updated: 2026-10-04 (Phase 1.5c done: HH + EH analysed) by Claude Code worker.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
+**Last updated: 2026-10-05 (Phase 2 W1, W3 done) by Claude Code worker.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
 
 ## Read in this order
 
@@ -27,7 +27,7 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 - **Phase 1.5b (post-2017 test): in progress.** It tests a new replication on 2018-2023.
   - Plan: `docs/superpowers/plans/2026-10-03-post2017-frozen-sharpe.md`; its **Revision R1-R9 section overrides the tasks**.
   - Progress log: `docs/phase1_5b/PROGRESS.md`. Research notes: `docs/phase1_5b/RESEARCH.md`.
-- **Phase 2 (diagnosis): not started.**
+- **Phase 2 (exhaustiveness closure): in progress** (`docs/phase2/SPEC.md`, log `docs/phase2/PROGRESS.md`). W2 STHGCN blocked (data gone). W1 done: the authors' RSR-I code reproduces the RSR paper's NYSE MSE/MRR/IRR under the predeclared rule (`scripts/rsr_paper_compare.py`). W3 done: `scripts/protocol_matrix.py` -> `docs/phase2/protocol_matrix.md` (88 cells; leaky cells marked). W4 closure report (orchestrator) pending.
 
 ## Running now
 
