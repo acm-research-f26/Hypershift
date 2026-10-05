@@ -31,6 +31,7 @@ The old long-form handoff (2026-09-28, pre-weight-decay fix, historical only) is
 
 ## Running now
 
+- **Phase 2 W2 (STHGCN official code): BLOCKED, nothing running.** Data Drive ids are 404 and `hypergraph.npy` is not published; see `docs/phase2/W2_STHGCN.md`. Needs a copy of the data from the user to proceed.
 - **Nothing running on Kaggle.** Phase 1.5c is done (HH and EH, 25 runs each). Laptop GPU queue is separate (see its own log).
 - **Phase 1.5c HH results (`docs/phase1_5c/wf_tables.md`, `wf_results.json`, script `scripts/wf_analysis.py`; REPORT_WF.md text was not written by the worker, see PROGRESS):** pooled 2019-2023 HH Sharpe per seed 0.574/0.657/0.535/0.564/1.181 (mean 0.702, seed-avg 0.800, CI -0.04 to 1.67); hold-all 0.693. Ranking skill NO EVIDENCE (IUT p F1 0.285, F2 0.323, F3 0.599, F4 0.297; Holm 1.0; only seed 4 beats the nulls). IC mean 0.0018. WF vs frozen 1.5b on the same days: seed-avg +0.127 Sharpe (CI -0.30 to 0.60, p_boot 0.61), not distinguishable. EH (paper's Euclidean arm): pooled Sharpe 0.457/0.794/0.453/0.273/0.588 (mean 0.513, seed-avg 0.587), IC about -0.003. F5 HH vs EH: Wilcoxon p 0.3125, seed-avg contrast +0.213 (CI -0.19 to +0.60), Holm 1.0, verdict INSUFFICIENT SEEDS (descriptively NO EVIDENCE). Report: `docs/phase1_5c/REPORT_WF.md`.
 

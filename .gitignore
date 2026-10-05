@@ -232,3 +232,4 @@ scripts/overnight/.lock/
 scripts/overnight/.newdocs
 scripts/overnight/run_driver.cmd
 results/forensics_1_5a/
+external/
