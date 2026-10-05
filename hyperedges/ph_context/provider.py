@@ -10,7 +10,7 @@ from ..common.backends import _require_backend
 from ..common.validation import _validate_positive_integer
 from ..common.types import ContextFeatures, _utc_timestamp
 
-_SUMMARIES = {"finite_count", "total_persistence", "max_persistence", "mean_persistence"}
+_SUMMARIES = {"finite_count", "total_persistence", "max_persistence", "mean_persistence", "entropy"}
 
 
 def build_joint_state_cloud(history, node_ids, scaling_state, cloud_spec):
@@ -107,6 +107,8 @@ def summarize_persistence(diagrams, summary_spec):
         statistics = {"finite_count": len(lifetimes), "total_persistence": lifetimes.sum(),
                       "max_persistence": lifetimes.max() if len(lifetimes) else 0,
                       "mean_persistence": lifetimes.mean() if len(lifetimes) else 0}
+        probabilities = lifetimes / lifetimes.sum() if lifetimes.sum() > 0 else np.empty(0)
+        statistics["entropy"] = float(-(probabilities * np.log(probabilities)).sum()) if len(probabilities) else 0
         for summary in summaries:
             names.append(f"H{dimension}:{summary}")
             values.append(statistics[summary])

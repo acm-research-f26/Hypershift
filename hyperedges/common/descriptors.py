@@ -30,7 +30,9 @@ def build_stock_descriptors(history, descriptor_spec):
                    "q10": np.quantile(values, 0.1), "q50": np.quantile(values, 0.5), "q90": np.quantile(values, 0.9),
                    "downside_frequency": np.mean(values < 0), "upside_frequency": np.mean(values > 0)}
         if "lag1" in features:
-            adjacent = (valid[1:] & valid[:-1] & np.asarray(history.session_ids[1:] == history.session_ids[:-1]))
+            same_session = (np.ones(len(valid) - 1, bool) if history.provenance.get("interval") == "1d"
+                            else np.asarray(history.session_ids[1:] == history.session_ids[:-1]))
+            adjacent = valid[1:] & valid[:-1] & same_session
             if history.predecessor_times is not None:
                 adjacent &= np.asarray(history.predecessor_times[1:] == history.returns.index[:-1])
             raw = history.returns[node].to_numpy()

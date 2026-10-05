@@ -67,17 +67,64 @@ def four_point_delta(distances: np.ndarray) -> float:
 # Analytical, however impractical for any reasonably sized stock universe.
 # For 250 stocks this is nC4 
 # i.e. 158,882,750 quadruples that need to be checked. 
+def exact_delta_details(distances: np.ndarray, *, block_size: int = 16) -> dict:
+    """Enumerate distinct quadruples in bounded NumPy blocks; retain a witness.
+
+    Fixing the second index lets every block reuse the same upper-triangle
+    indices. No O(n**4) array is allocated. This is exact enumeration, not a
+    claim to implement a subquartic max-min matrix multiplication algorithm.
+    """
+    d = np.asarray(distances, dtype=np.float64)
+    if d.ndim != 2 or not len(d) or d.shape[0] != d.shape[1] or not np.isfinite(d).all():
+        raise ValueError("Exact delta requires a finite nonempty square distance matrix")
+    if isinstance(block_size, bool) or not isinstance(block_size, int) or block_size < 1:
+        raise ValueError("block_size must be a positive integer")
+    n, best, witness = len(d), 0.0, None
+    for j in range(1, n - 2):
+        k, l = np.triu_indices(n - j - 1, 1)
+        k, l = k + j + 1, l + j + 1
+        for start in range(0, j, block_size):
+            i = np.arange(start, min(j, start + block_size))[:, None]
+            a = d[i, j] + d[k, l][None, :]
+            b = d[i, k[None, :]] + d[j, l][None, :]
+            c = d[i, l[None, :]] + d[j, k][None, :]
+            maximum = np.maximum(np.maximum(a, b), c)
+            middle = np.maximum(np.minimum(a, b), np.minimum(np.maximum(a, b), c))
+            values = (maximum - middle) * 0.5
+            flat = int(values.argmax())
+            value = float(values.flat[flat])
+            if value > best:
+                row, col = np.unravel_index(flat, values.shape)
+                best, witness = value, (int(i[row, 0]), j, int(k[col]), int(l[col]))
+    return {"delta": best, "lower_bound": best, "upper_bound": best,
+            "method": "exact_chunked", "witness": witness,
+            "quadruples": int(n * (n - 1) * (n - 2) * (n - 3) // 24) if n >= 4 else 0}
+
+
 def exact_delta(distances: np.ndarray) -> float:
-    n = distances.shape[0]
-    largest_delta = 0.0
+    return exact_delta_details(distances)["delta"]
 
-    for indices in combinations(range(n), 4): # Find the gromov hyperbolicity for all 4-tuples in the dataset
-        quadruple_distances = distances[np.ix_(indices, indices)]
-        quadruple_delta = four_point_delta(quadruple_distances)
-        largest_delta = max(largest_delta, quadruple_delta)
 
-    # return the gromov hyperbolicity over the dataset.
-    return float(largest_delta)
+def basepoint_bounds(distances: np.ndarray, *, n_basepoints: int = 4, seed: int = 0) -> dict:
+    """Certified bounds max(delta_r) <= delta <= min(2*delta_r, diameter/2)."""
+    d = np.asarray(distances, dtype=np.float64)
+    validate_distances(d)
+    if n_basepoints < 1:
+        raise ValueError("At least one basepoint is required")
+    rng = np.random.default_rng(seed)
+    roots = rng.choice(len(d), min(n_basepoints, len(d)), replace=False)
+    lower, upper, values = 0.0, float(d.max()) / 2, []
+    for root in roots:
+        product = (d[root, :, None] + d[root, None, :] - d) / 2
+        composed = np.zeros_like(product)
+        for k in range(len(d)):
+            np.maximum(composed, np.minimum(product[:, k, None], product[k, None, :]), out=composed)
+        value = max(0.0, float(np.max(composed - product)))
+        lower, upper = max(lower, value), min(upper, 2 * value)
+        values.append(value)
+    return {"delta": None, "lower_bound": lower, "upper_bound": max(lower, upper),
+            "method": "certified_basepoints", "basepoints": roots.tolist(),
+            "basepoint_deltas": values, "seed": seed}
 
 # Points is a matrix of feature vectors
 def euclidean_distances(points: np.ndarray) -> np.ndarray:

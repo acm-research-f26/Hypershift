@@ -90,8 +90,23 @@ def build_event_dowker_family(context, params):
     thresholds = fit_event_thresholds(context.history, params["quantiles"])
     direction = params.get("direction", "down")
     relation = build_stock_event_relation(context.history, thresholds, direction)
-    groups = mine_recurring_groups(relation, params["min_support"], params["size_bounds"],
-                                  candidate_budget=params.get("candidate_budget", 100_000))
+    support = params["min_support"]
+    if isinstance(support, float) and 0 < support < 1:
+        support = max(1, int(np.ceil(support * context.history.structural_mask.sum())))
+    candidate_mode = params.get("candidate_mode", "exhaustive")
+    if candidate_mode == "sampled":
+        from ..joint_information.constructor import generate_candidate_groups
+        minimum, maximum = params["size_bounds"]
+        budget = params.get("candidate_budget", 100_000)
+        candidates = [group for size in range(minimum, maximum + 1)
+                      for group in generate_candidate_groups(context.node_ids, size,
+                          max(1, budget // (maximum - minimum + 1)), context.seed + size)]
+        groups = tuple(group for group in candidates if int(relation.loc[:, list(group)].all(axis=1).sum()) >= support)
+    elif candidate_mode == "exhaustive":
+        groups = mine_recurring_groups(relation, support, params["size_bounds"],
+                                      candidate_budget=params.get("candidate_budget", 100_000))
+    else:
+        raise ValueError("Event candidate_mode must be exhaustive or sampled")
     valid = context.history.mask & context.history.structural_mask[:, None]
     selected = select_event_groups(measure_group_event_support(groups, relation, valid), params["edge_budget"])
     memberships, attributes = {}, {}
@@ -100,5 +115,6 @@ def build_event_dowker_family(context, params):
         memberships[edge] = item["members"]
         attributes[edge] = {**item, "direction": direction}
     return make_hyperedge_family(memberships, context, attributes,
-                                diagnostics={"candidate_groups": len(groups), "selected_groups": len(selected)},
+                                diagnostics={"candidate_groups": len(groups), "selected_groups": len(selected),
+                                             "candidate_mode": candidate_mode, "minimum_support_count": support},
                                 state={"thresholds": thresholds})

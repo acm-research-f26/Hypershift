@@ -80,7 +80,7 @@ register_constructor("gics", _historical("gics.constructor", "build_gics_family"
                      allowed_params={"source", "level", "min_size", "metadata_protocol"})
 register_constructor("event_dowker", _historical("event_dowker.constructor", "build_event_dowker_family"),
                      required_params={"quantiles", "min_support", "size_bounds", "edge_budget"},
-                     allowed_params={"quantiles", "min_support", "size_bounds", "edge_budget", "direction", "candidate_budget"})
+                     allowed_params={"quantiles", "min_support", "size_bounds", "edge_budget", "direction", "candidate_budget", "candidate_mode"})
 register_constructor("joint_information", _historical("joint_information.constructor", "build_joint_information_family"),
                      required_params={"bin_spec", "smoothing", "min_observations", "tolerance", "max_iterations", "candidate_budget", "selection_spec"},
                      allowed_params={"bin_spec", "smoothing", "min_observations", "tolerance", "max_iterations", "candidate_budget", "selection_spec", "order", "estimation_fraction", "mode"})
@@ -89,7 +89,8 @@ register_constructor("mapper_cover", _historical("mapper_cover.constructor", "bu
                      allowed_params={"descriptor_spec", "lens_spec", "cover_spec", "clustering_spec", "min_size", "edge_budget"})
 register_constructor("cover_learning", _historical("cover_learning.constructor", "build_cover_learning_family"),
                      required_params={"descriptor_spec", "graph_spec", "backend_spec", "objective_spec", "membership_rule"},
-                     allowed_params={"descriptor_spec", "graph_spec", "backend_spec", "objective_spec", "membership_rule"})
+                     allowed_params={"descriptor_spec", "graph_spec", "backend_spec", "objective_spec", "membership_rule", "graph_representation"})
+register_constructor("ph_localized", _historical("ph_localized.constructor", "build_ph_localized_family"))
 register_constructor("learned_membership", _class_factory("learned_membership.constructor", "LearnedMembershipConstructor"),
                      allowed_params={"slots", "initial_size", "selected_probability", "unselected_probability", "temperature", "min_size", "max_size", "size_weight", "duplicate_weight", "confidence_weight", "duplicate_threshold"})
 register_context_provider("ph_context", _class_factory("ph_context.provider", "PHContextProvider"),
