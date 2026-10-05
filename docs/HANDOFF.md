@@ -1,6 +1,6 @@
 # HANDOFF: live state for Claude Code and Codex
 
-**Last updated: 2026-10-05 (Phase 2 W1, W3 done) by Claude Code worker.** Whoever finishes a step (Claude or Codex) rewrites **Running now**, **Next steps** and **Open decisions**, and changes the date line. Keep this file under about 120 lines; history belongs in the git log, phase docs and PROGRESS files. If this file looks stale, trust `git log --oneline -20` and the newest `docs/phase*/PROGRESS.md`.
+**Last updated: 2026-10-05 by Claude Code.** Phase 2 closure done: see `docs/phase2/REPORT_CLOSURE.md`. Nothing running.
 
 ## Read in this order
 
