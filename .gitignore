@@ -233,3 +233,8 @@ scripts/overnight/.newdocs
 scripts/overnight/run_driver.cmd
 results/forensics_1_5a/
 external/
+
+# local Kaggle tooling (venv, generated build dirs)
+kaggle/.venv-tf/
+kaggle/build_an/
+kaggle/build_ks/

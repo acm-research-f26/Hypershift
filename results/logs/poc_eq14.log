@@ -2,3 +2,96 @@ universe: 309 stocks, 73 hyperedges, 309 stocks in >=1 hyperedge
 seed 0 HH_hyper: val_sr 1.623 test_sr -0.382
 seed 0 HH_clique: val_sr 1.564 test_sr 0.620
 seed 1 HH_hyper: val_sr 1.680 test_sr -0.289
+Traceback (most recent call last):
+  File "C:\Users\Hi\Projects - Coding\Hypershift\scripts\poc_sectors.py", line 20, in <module>
+    from hypershift.eval.baselines import evaluate_baselines
+  File "C:\Users\Hi\Projects - Coding\Hypershift\src\hypershift\eval\baselines.py", line 4, in <module>
+    from hypershift.eval.metrics import cumulative_return, evaluate_all, irr, max_drawdown, sharpe
+  File "C:\Users\Hi\Projects - Coding\Hypershift\src\hypershift\eval\metrics.py", line 7, in <module>
+    from sklearn.metrics import ndcg_score
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\__init__.py", line 70, in <module>
+    from sklearn.base import clone  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\base.py", line 20, in <module>
+    from sklearn.utils._metadata_requests import _MetadataRequester, _routing_enabled
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\__init__.py", line 9, in <module>
+    from sklearn.utils._chunking import gen_batches, gen_even_slices
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\_chunking.py", line 11, in <module>
+    from sklearn.utils._param_validation import Interval, validate_params
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\_param_validation.py", line 17, in <module>
+    from sklearn.utils.validation import _is_arraylike_not_scalar
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\validation.py", line 24, in <module>
+    from sklearn.utils._array_api import (
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\_array_api.py", line 23, in <module>
+    from sklearn.utils.fixes import parse_version
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\fixes.py", line 16, in <module>
+    import scipy.stats
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\stats\__init__.py", line 604, in <module>
+    from ._multicomp import *
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\stats\_multicomp.py", line 11, in <module>
+    from scipy.stats._qmc import check_random_state
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\stats\_qmc.py", line 26, in <module>
+    from scipy.sparse.csgraph import minimum_spanning_tree
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\sparse\csgraph\__init__.py", line 192, in <module>
+    from ._traversal import (
+ImportError: DLL load failed while importing _traversal: An Application Control policy has blocked this file.
+Traceback (most recent call last):
+  File "C:\Users\Hi\Projects - Coding\Hypershift\scripts\poc_sectors.py", line 20, in <module>
+    from hypershift.eval.baselines import evaluate_baselines
+  File "C:\Users\Hi\Projects - Coding\Hypershift\src\hypershift\eval\baselines.py", line 4, in <module>
+    from hypershift.eval.metrics import cumulative_return, evaluate_all, irr, max_drawdown, sharpe
+  File "C:\Users\Hi\Projects - Coding\Hypershift\src\hypershift\eval\metrics.py", line 7, in <module>
+    from sklearn.metrics import ndcg_score
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\__init__.py", line 70, in <module>
+    from sklearn.base import clone  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\base.py", line 20, in <module>
+    from sklearn.utils._metadata_requests import _MetadataRequester, _routing_enabled
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\__init__.py", line 9, in <module>
+    from sklearn.utils._chunking import gen_batches, gen_even_slices
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\_chunking.py", line 11, in <module>
+    from sklearn.utils._param_validation import Interval, validate_params
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\_param_validation.py", line 17, in <module>
+    from sklearn.utils.validation import _is_arraylike_not_scalar
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\validation.py", line 24, in <module>
+    from sklearn.utils._array_api import (
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\_array_api.py", line 23, in <module>
+    from sklearn.utils.fixes import parse_version
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\sklearn\utils\fixes.py", line 16, in <module>
+    import scipy.stats
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\stats\__init__.py", line 629, in <module>
+    from ._mgc import multiscale_graphcorr
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\stats\_mgc.py", line 8, in <module>
+    from scipy.ndimage import _measurements
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\ndimage\__init__.py", line 157, in <module>
+    from ._support_alternative_backends import *
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\ndimage\_support_alternative_backends.py", line 7, in <module>
+    from ._ndimage_api import *   # noqa: F403
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\ndimage\_ndimage_api.py", line 9, in <module>
+    from ._filters import *    # noqa: F403
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hi\Projects - Coding\Hypershift\.venv\Lib\site-packages\scipy\ndimage\_filters.py", line 41, in <module>
+    from . import _nd_image
+ImportError: DLL load failed while importing _nd_image: An Application Control policy has blocked this file.
+universe: 309 stocks, 73 hyperedges, 309 stocks in >=1 hyperedge
+seed 0 HH_hyper: val_sr 1.623 test_sr -0.382
+seed 0 HH_clique: val_sr 1.564 test_sr 0.620
+seed 1 HH_hyper: val_sr 1.680 test_sr -0.289
+seed 1 HH_clique: val_sr 1.579 test_sr -0.426
+seed 2 HH_hyper: val_sr 1.537 test_sr -0.244
+seed 2 HH_clique: val_sr 1.429 test_sr -0.541
+seed 3 HH_hyper: val_sr 2.175 test_sr 1.016
+seed 3 HH_clique: val_sr 1.725 test_sr -0.607
+seed 4 HH_hyper: val_sr 1.574 test_sr -1.070
+seed 4 HH_clique: val_sr 2.395 test_sr 0.262
+seed 5 HH_hyper: val_sr 1.738 test_sr -1.297
+seed 5 HH_clique: val_sr 1.915 test_sr -0.185
+seed 6 HH_hyper: val_sr 2.131 test_sr -1.523
+seed 6 HH_clique: val_sr 1.559 test_sr 0.881
+seed 7 HH_hyper: val_sr 1.764 test_sr -1.165
+seed 7 HH_clique: val_sr 1.735 test_sr -0.399
+seed 8 HH_hyper: val_sr 1.451 test_sr -1.429
+seed 8 HH_clique: val_sr 1.832 test_sr -0.269
+seed 9 HH_hyper: val_sr 1.732 test_sr 3.383
+seed 9 HH_clique: val_sr 1.931 test_sr -0.584

@@ -1,3 +1,65 @@
 [Mon, Sep 28, 2026 11:40:35 AM] waiting for E_tune
 [Mon, Sep 28, 2026  6:58:02 PM] poc rel done
 [Mon, Sep 28, 2026  7:50:15 PM] recreate done
+[Tue, Sep 29, 2026  3:32:59 AM] phase1 queue start
+[Tue, Sep 29, 2026  3:33:30 AM] retry 1: .venv/Scripts/python.exe scripts/poc_sectors.py run --variant eq14 --arms HH_hyper HH_clique --seeds 0-9
+[Tue, Sep 29, 2026  3:33:53 AM] retry 1: .venv/Scripts/python.exe scripts/poc_sectors.py run --variant rel_eq14 --input-mode relative --arms HH_hyper HH_clique --seeds 0-9
+[Tue, Sep 29, 2026  3:34:12 AM] retry 2: .venv/Scripts/python.exe scripts/poc_sectors.py run --variant eq14 --arms HH_hyper HH_clique --seeds 0-9
+[Tue, Sep 29, 2026  3:35:39 AM] phase1 queue start
+[Tue, Sep 29, 2026  4:58:38 AM] eq14 reruns done
+[Tue, Sep 29, 2026  6:09:29 AM] poc tune (eq14) done: {"HH":{"lr":0.001,"alpha":10.0},"EE":{"lr":0.003,"alpha":10.0}}
+[Tue, Sep 29, 2026  7:36:16 AM] poc rel_tuned_eq14 done
+[Tue, Sep 29, 2026  7:36:16 AM] phase1 queue done
+[Tue, Sep 29, 2026  7:37:49 AM] phase1 queue 2 start
+[Tue, Sep 29, 2026  7:53:58 AM] C1_shuffled done
+[Tue, Sep 29, 2026  8:34:28 AM] A10 done
+[Tue Sep 29 10:54:17 CDT 2026] phase1 queue 2 start
+[Tue Sep 29 10:54:33 CDT 2026] C1_shuffled done
+[Tue Sep 29 10:54:55 CDT 2026] A10 done
+[Tue Sep 29 11:18:38 CDT 2026] g2 small start
+[Tue Sep 29 15:25:05 CDT 2026] g2 small a done (g2, rel_g2 arms)
+[Tue Sep 29 17:40:04 CDT 2026] g2 small start
+[Tue Sep 29 17:53:45 CDT 2026] g2 small a done (g2, rel_g2 arms)
+[Tue Sep 29 20:22:20 CDT 2026] g2 tune done: {"EE":{"lr":0.0005,"alpha":1.0},"EH":{"lr":0.001,"alpha":30.0},"HH":{"lr":0.0005,"alpha":100.0}}
+[Wed Sep 30 01:00:39 CDT 2026] g2 small start
+[Wed Sep 30 01:01:17 CDT 2026] g2 small a done (g2, rel_g2 arms)
+[Wed Sep 30 01:01:31 CDT 2026] g2 tune done: {"EE":{"lr":0.0005,"alpha":1.0},"EH":{"lr":0.001,"alpha":30.0},"HH":{"lr":0.0005,"alpha":100.0}}
+[Wed Sep 30 01:15:54 CDT 2026] g2 small b done (rel_tuned_g2)
+[Wed Sep 30 01:41:45 CDT 2026] A10_g2 done
+[Wed Sep 30 01:59:00 CDT 2026] C1_g2 done
+[Wed Sep 30 02:44:53 CDT 2026] G12_g2 done
+[Wed Sep 30 03:45:50 CDT 2026] G2_g2 done
+[Wed Sep 30 03:45:51 CDT 2026] g2 small c done
+[Wed Sep 30 03:45:51 CDT 2026] g2 small done
+[Wed Sep 30 03:46:45 CDT 2026] g2 clf start
+[Wed Sep 30 06:45:57 CDT 2026] g2 clf done
+[Wed Sep 30 06:46:51 CDT 2026] g2 full start
+[Wed Sep 30 06:52:51 CDT 2026] g2 r8 start
+[Wed Sep 30 11:48:13 CDT 2026] retry 1: .venv/Scripts/python.exe scripts/run_grid.py E1_main --labels THINK_paperProtocol --seeds 1,3,5,7,9,11,13,15,17,19,21,23 --set exp=R5_g2
+[Wed Sep 30 22:30:55 CDT 2026] g2 full start
+[Wed Sep 30 22:35:55 CDT 2026] g2 r8 start
+[Thu Oct  1 00:06:39 CDT 2026] retry 1: .venv/Scripts/python.exe scripts/run_grid.py E1_main --labels THINK_paperProtocol --seeds 0,2,4,6,8,10,12,14,16,18,20,22,24 --set exp=R5_g2
+[Thu Oct  1 00:06:39 CDT 2026] retry 1: .venv/Scripts/python.exe scripts/run_grid.py E1_main --labels THINK_paperProtocol --seeds 1,3,5,7,9,11,13,15,17,19,21,23 --set exp=R5_g2
+[Thu Oct  1 00:08:52 CDT 2026] g2 full start
+[Thu Oct  1 00:13:52 CDT 2026] g2 r8 start
+[Thu Oct  1 00:26:42 CDT 2026] retry 1: .venv/Scripts/python.exe scripts/run_grid.py E1_main --labels THINK_paperProtocol --seeds 0,2,4,6,8,10,12,14,16,18,20,22,24 --set exp=R5_g2
+[Thu Oct  1 00:26:42 CDT 2026] retry 1: .venv/Scripts/python.exe scripts/run_grid.py E1_main --labels THINK_paperProtocol --seeds 1,3,5,7,9,11,13,15,17,19,21,23 --set exp=R5_g2
+[Thu Oct  1 00:37:09 CDT 2026] retry 2: .venv/Scripts/python.exe scripts/run_grid.py E1_main --labels THINK_paperProtocol --seeds 0,2,4,6,8,10,12,14,16,18,20,22,24 --set exp=R5_g2
+[Thu Oct  1 00:37:09 CDT 2026] retry 2: .venv/Scripts/python.exe scripts/run_grid.py E1_main --labels THINK_paperProtocol --seeds 1,3,5,7,9,11,13,15,17,19,21,23 --set exp=R5_g2
+[Thu Oct  1 09:16:46 CDT 2026] R5_g2 THINK worker odd done
+[Thu Oct  1 13:05:02 CDT 2026] think tail start (seed 24)
+[Thu Oct  1 13:35:31 CDT 2026] think tail done
+[Thu Oct  1 13:35:58 CDT 2026] r8 rsri local start
+[Thu Oct  1 15:00:34 CDT 2026] R8 RSR_I local seed 1 done
+[Thu Oct  1 15:01:55 CDT 2026] R8 RSR_I local seed 0 done
+[Thu Oct  1 16:19:26 CDT 2026] R8 RSR_I local seed 3 done
+[Thu Oct  1 16:19:26 CDT 2026] R8 RSR_I local seed 5 done
+[Thu Oct  1 16:19:26 CDT 2026] R8 RSR_I local seed 7 done
+[Thu Oct  1 16:19:26 CDT 2026] R8 RSR_I local seed 9 done
+[Thu Oct  1 16:19:26 CDT 2026] r8 rsri local worker B done
+[Thu Oct  1 16:20:27 CDT 2026] R8 RSR_I local seed 2 done
+[Thu Oct  1 16:20:27 CDT 2026] R8 RSR_I local seed 4 done
+[Thu Oct  1 16:20:27 CDT 2026] R8 RSR_I local seed 6 done
+[Thu Oct  1 16:20:27 CDT 2026] R8 RSR_I local seed 8 done
+[Thu Oct  1 16:20:27 CDT 2026] r8 rsri local worker A done
+[Thu Oct  1 16:20:27 CDT 2026] r8 rsri local done
