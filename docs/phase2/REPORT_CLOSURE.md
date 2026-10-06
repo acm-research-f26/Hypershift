@@ -60,6 +60,22 @@ The question: does our data or graph differ from the paper's (Table I: NYSE δ_h
   Their graph may therefore differ from their App. B text, or they used an undocumented sampling scheme. This cannot be settled without them.
 - **Implication for the closure: none.** δ is a descriptive statistic and never enters the model. The star-graph variant was already run in Phase 1, with the same no-skill outcome under leak-free evaluation.
 
+## The authors' other code (W6, `docs/phase2/W6_AUTHOR_CODE.md`)
+
+The claims below were checked by the orchestrator in `external/sthan-sr-aaai/training/`. The STHAN-SR (AAAI'21) and HyperStock-GAT (WWW'21) repositories show the protocol these authors used before THINK:
+- **No epoch selection.** Validation and test are printed every epoch and nothing is saved (`train_nyse.py:213-270`).
+- **Hard-coded seed 123456789** (`train_nyse.py:26,66`), one run per call, and no aggregation code.
+- **Training settings:** weight decay 5e-4 (`:133`), lr 1e-3, 100 epochs.
+- **Annualised Sharpe:** `mean/std * 15.87`, top-5, no risk-free rate (`evaluator.py:62`). The shipped evaluator crashes on an undefined `sharpe_li` (`:61`).
+- **NDCG** uses the index-set, last-day bug.
+- **Price scaling** divides by the full-series max (`preprocess/eod.py:132`).
+- **No hypergraph builder.** `hypergraph_nyse.npy` is loaded from an unpublished file.
+- **Their δ sampler** (HyperStock-GAT `hyperbolicity.py`, 50k random 4-tuples) gives NASDAQ 1.0, which matches, and NYSE 1.0, where the paper reports 0.5.
+
+Every one of these readings is already covered by Phase 1 or W3. The most likely THINK protocol (full-series max, weight decay 5e-4, annualised Sharpe, buggy NDCG, epoch picked from the test-printing logs) is the one that reproduces Table II in our Phase 1 route 1.
+
+**The reported ±1e-3 standard deviations are not explained by any training protocol.** Our R5_f2 and R5_f3 runs are same-seed repeats (seeds 0-4 both times, identical configs), yet per-seed Sharpe differs by up to 1.6 (EH seed 1: 2.11 vs 0.52). Repeating a seed on GPU gives a spread of about ±0.6, not ±0.001. The paper's ± must therefore describe something other than run-to-run spread; what exactly is UNKNOWN.
+
 ## The lineage pattern (RSR → STHGCN → THINK)
 
 - The RSR authors' code reproduces its paper on the paper's own metric: top-1 cumulative return, which is very noisy (seeds 1.16 to 2.75).
