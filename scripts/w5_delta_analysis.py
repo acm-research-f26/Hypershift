@@ -128,6 +128,39 @@ def main():
         rng = [v[0] for (mm, s), v in rel.items() if mm == m and s[0] not in ()]
         L.append(f"- {m}: delta_rel over all cells ranges {min(rng):.4f} to {max(rng):.4f}; target {TARGET[m]['rel']}")
     L.append("")
+
+    # ---- joint verdict block
+    lcc = {(r["market"], r["graph"], r["s"]): r["lcc"] for r in load("hg")}
+    L += ["## LCC sizes of the s-adjacency graph (nodes in the largest component)", "",
+          "| graph | s | NYSE LCC | NASDAQ LCC |", "|---|---|---|---|"]
+    for g in ("v2", "industry", "wiki", "v2_no_na", "v1_old"):
+        for sv in (1, 2, 3, 4, 5):
+            L.append(f"| {g} | {sv} | {lcc.get(('NYSE', g, sv), '-')} | {lcc.get(('NASDAQ', g, sv), '-')} |")
+    L.append("")
+
+    def nondeg(setting):
+        g, sv, scheme, k = setting[:4]
+        l = min(lcc[("NYSE", g, sv)], lcc[("NASDAQ", g, sv)])
+        return l >= 200 and (scheme == "full" or k < l)
+    per, allset, joint = matches(hg, "hg")
+    nd_all = {m: {x for x in allset[m] if nondeg(x)} for m in MK}
+    nd_per = {m: per[m] & nd_all[m] for m in MK}
+    nd_joint = nd_per["NYSE"] & nd_per["NASDAQ"]
+    nd_tot = len(nd_all["NYSE"] & nd_all["NASDAQ"])
+    perr, allr, jointr = matches(rel, "rel")
+    exp_hg = len(per["NYSE"]) * len(per["NASDAQ"]) / max(len(allset["NYSE"] & allset["NASDAQ"]), 1)
+    exp_nd = len(nd_per["NYSE"]) * len(nd_per["NASDAQ"]) / max(nd_tot, 1)
+    exp_rel = len(perr["NYSE"]) * len(perr["NASDAQ"]) / max(len(allr["NYSE"] & allr["NASDAQ"]), 1)
+    res["joint"] = {"hg_joint": len(joint), "hg_expected_independent": exp_hg, "hg_nondegenerate_total": nd_tot,
+                    "hg_nondegenerate_match": {m: len(nd_per[m]) for m in MK}, "hg_nondegenerate_joint": len(nd_joint),
+                    "hg_nondegenerate_expected": exp_nd, "rel_joint": len(jointr), "rel_expected_independent": exp_rel,
+                    "rel_joint_settings": sorted(map(list, jointr)), "hg_nondegenerate_joint_settings": sorted(map(list, nd_joint), key=str)}
+    L += ["## Joint-match verdict (rule in the spec)", "",
+          f"- delta_hg settings (graph, s, scheme, k, base rule) matching BOTH markets: {len(joint)} of {len(allset['NYSE'] & allset['NASDAQ'])}; expected if the two markets matched independently: {exp_hg:.1f}.",
+          f"- Excluding degenerate cells (LCC < 200 nodes in either market, or k >= LCC): NYSE {len(nd_per['NYSE'])}, NASDAQ {len(nd_per['NASDAQ'])}, both {len(nd_joint)} of {nd_tot}; expected by independence {exp_nd:.1f}.",
+          f"- delta_rel settings (feature, norm, m, replacement) matching BOTH markets: {len(jointr)} of {len(allr['NYSE'] & allr['NASDAQ'])}; expected by independence {exp_rel:.2f}.",
+          "- Non-degenerate delta_hg joint settings: " + ("; ".join(map(str, sorted(nd_joint, key=str))) or "none"),
+          "- delta_rel joint settings: " + ("; ".join(map(str, sorted(jointr))) or "none"), ""]
     Path("docs/phase2/W5_DELTA_RESULTS.json").write_text(json.dumps(res, indent=1))
     Path("docs/phase2/W5_DELTA_RESULTS_tables.md").write_text("\n".join(L))
     print("\n".join(L[:40]))

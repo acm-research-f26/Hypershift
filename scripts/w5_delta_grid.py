@@ -28,6 +28,14 @@ GRAPHS = ("v2", "industry", "wiki", "v2_no_na", "v1_old")
 
 
 def graph(market, name):
+    cf = OUT / "graphs" / f"{market}_{name}.json"
+    if cf.exists():
+        d = json.loads(cf.read_text())
+        return Hypergraph(d["n"], tuple(tuple(e) for e in d["edges"]))
+    return _build_graph(market, name)
+
+
+def _build_graph(market, name):
     full = build_rsr_hypergraph(R, market)
     n = full.num_nodes
     if name == "v2":
@@ -86,6 +94,7 @@ def hg_task(args):
                 if k <= 100:
                     allv.append(allb(Ds))
             res["cells"].append({"scheme": scheme, "k": k, "draws": len(single), "single": single, "all": allv})
+            print(market, gname, s, scheme, k, round(time.time() - t0), flush=True)
     bases = rng.choice(lcc, size=min(24, lcc), replace=False)
     res["full_single_bases"] = [gromov_delta(D, base=int(b)) for b in bases]
     res["secs"] = time.time() - t0
@@ -100,9 +109,9 @@ def exact_task(args):
 
 _DATA = {}
 FEATS = (["ret_train", "ret_full", "closeseries_train", "closeseries_full", "feat5series_train", "feat5series_full"]
-         + [f"{b}_{t}" for t in ("tr", "fu") for b in ("close", "feat5", "ma5", "ma10", "ma20", "ma30",
-                                                       "win16_level", "win16_rel")])
-NORM_FREE = {"ret_train", "ret_full", "win16_rel_tr", "win16_rel_fu"}
+         + [f"{b}_{t}" for t in ("tr", "fu") for b in ("feat5", "win16_level", "win16_rel")])
+# 1-D features (close, ma5..ma30 at one day) lie on a line: delta_rel = 0 analytically (measured 2e-7 float noise) -> not scanned
+NORM_FREE = {"ret_train", "ret_full", "win16_rel_tr", "win16_rel_fu"}  # (feat5, level windows, series depend on norm)
 SIZES = (500, 1000, 1500, 2000, "all")
 TRIES = 20
 
@@ -155,7 +164,10 @@ def rel_task(args):
             if (mm, repl) in seen:
                 continue
             seen.add((mm, repl))
-            out["cells"].append({"m": int(mm), "replace": repl, **khrulkov_delta_rel(X, mm, TRIES, seed=7, replace=repl)})
+            if not repl and mm > 1000:
+                continue  # compute budget: without-replacement variant only for m <= 1000, 10 tries
+            out["cells"].append({"m": int(mm), "replace": repl,
+                                 **khrulkov_delta_rel(X, mm, TRIES if repl else 10, seed=7, replace=repl)})
     out["secs"] = time.time() - t0
     return out
 
@@ -174,8 +186,19 @@ def run_tasks(tasks, fn, name, keyf, procs):
             print(r["_key"], round(r["secs"]), flush=True)
 
 
+def precompute_graphs():
+    (OUT / "graphs").mkdir(parents=True, exist_ok=True)
+    for m in MARKETS:
+        for g in GRAPHS:
+            hg = _build_graph(m, g)
+            (OUT / "graphs" / f"{m}_{g}.json").write_text(json.dumps({"n": hg.num_nodes, "edges": [list(e) for e in hg.edges]}))
+
+
 if __name__ == "__main__":
     mode = sys.argv[1]
+    if mode == "graphs":
+        precompute_graphs()
+        sys.exit(0)
     procs = int(sys.argv[sys.argv.index("--procs") + 1]) if "--procs" in sys.argv else 14
     if mode == "hg":
         run_tasks([(m, g, s) for m in MARKETS for g in GRAPHS for s in SVALS], hg_task, "hg",
