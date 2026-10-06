@@ -47,6 +47,19 @@ This is a statement about an inferred-settings reimplementation, run on the auth
 - **Ordering.** THINK > TCONV+DHHAN > STHGCN holds on means in 22 of 88 cells, and in 0 of 88 with both gaps above 2 SE. The best cell is R5_f3, k=5, validation, where THINK vs EH has z 2.05 but EH vs STHGCN has z 0.33. R5_f3's identical-config twin R5_f2 reverses THINK vs EH, so that cell is noise.
 - **Value matches.** Six cells "match" all three paper Sharpe values only because our seed SD (0.3-1.5) is the tolerance. The paper reports SDs of about 0.005, which is implausibly small next to the seed-to-seed spread we measure.
 
+## Hyperbolicity check (W5, `docs/phase2/W5_DELTA_RESULTS.md`)
+
+The question: does our data or graph differ from the paper's (Table I: NYSE δ_hg 0.5 / δ_rel 0.087; NASDAQ 1.0 / 0.107)? We searched 1,150 predeclared settings.
+
+- **δ_rel is reproducible.** Using the 16-day level input windows with the paper's full-period scaling and 500-point Khrulkov subsets gives NYSE 0.093 and NASDAQ 0.103. Only 0.17 joint matches were expected by chance, so this probably is the authors' measurement, and it is consistent with the price data being the same.
+- **δ_hg is not reproducible by one method.**
+  - Computed exactly on our App. B graph, both markets give 1.5.
+  - NYSE 0.5 appears only in samples of 30 nodes or fewer; NASDAQ 1.0 only in samples of 100 or more.
+  - Joint matches (14 of 429) occur at the chance rate (11.5 expected), and 13 of the 14 use the old star-for-every-relation graph or tiny connected components.
+
+  Their graph may therefore differ from their App. B text, or they used an undocumented sampling scheme. This cannot be settled without them.
+- **Implication for the closure: none.** δ is a descriptive statistic and never enters the model. The star-graph variant was already run in Phase 1, with the same no-skill outcome under leak-free evaluation.
+
 ## The lineage pattern (RSR → STHGCN → THINK)
 
 - The RSR authors' code reproduces its paper on the paper's own metric: top-1 cumulative return, which is very noisy (seeds 1.16 to 2.75).
