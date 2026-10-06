@@ -1,0 +1,10 @@
+{
+  "AVX": {
+    "reason": "Ticker reuse: 2017 cohort refers to AVX Corporation acquired by Kyocera in 2020; current Yahoo series begins in 2021 and belongs to AgriFORCE/AVAX One. It must not substitute for the original issuer.",
+    "sources": ["https://global.kyocera.com/company/history/2020yrs.html", "https://www.sec.gov/Archives/edgar/data/1826397/000149315225023464/form10-q.htm"]
+  },
+  "CAMP": {
+    "reason": "Ticker reuse: 2017 cohort refers to CalAmp, bankrupt in 2024; returned Yahoo history belongs to CAMP4 Therapeutics, which IPOed October 2024. Original CalAmp history is unavailable in this snapshot; this exclusion leaves unresolved survivorship bias.",
+    "sources": ["https://www.sec.gov/Archives/edgar/data/730255/000119312524180486/0001193125-24-180486-index.htm", "https://investors.camp4tx.com/resources/investor-faqs"]
+  }
+}

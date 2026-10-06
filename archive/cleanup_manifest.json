@@ -1,0 +1,206 @@
+[
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\audit_cited_evaluator.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\audit_cited_evaluator.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\check_historical_sources.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\check_historical_sources.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\compare_horizons.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\compare_horizons.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\direction_metrics.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\direction_metrics.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\DIRECTION_TUTORIAL.md",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\DIRECTION_TUTORIAL.md"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\download_hourly.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\download_hourly.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\download_prices.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\download_prices.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\fetch_hgtan_data.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\fetch_hgtan_data.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\fetch_hgtan_sources.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\fetch_hgtan_sources.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\fetch_reproduction_sources.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\fetch_reproduction_sources.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\fetch_stock_audit.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\fetch_stock_audit.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\fetch_think_sources.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\fetch_think_sources.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\HOURLY_FORECASTING.md",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\HOURLY_FORECASTING.md"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\hyperbolicity_audit.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\hyperbolicity_audit.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\hypergraph.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\hypergraph.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\MONTHLY_MODEL.md",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\MONTHLY_MODEL.md"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\PERFORMANCE_TABLE_AUDIT.md",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\PERFORMANCE_TABLE_AUDIT.md"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\predict_direction.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\predict_direction.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\predict.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\predict.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\report_direction.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\report_direction.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\report_results.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\report_results.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\report_think_audit.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\report_think_audit.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\run_think_audit.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\run_think_audit.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\run_think_reconstruction.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\run_think_reconstruction.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\stock_gnn.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\stock_gnn.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\test_audit.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\test_audit.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\test_direction.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\test_direction.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\test_stock_gnn.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\test_stock_gnn.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\test_think_model.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\test_think_model.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\THINK_AUDIT.md",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\THINK_AUDIT.md"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\THINK_REPRODUCTION.md",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\THINK_REPRODUCTION.md"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\train_direction.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\train_direction.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\TUTORIAL.md",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\TUTORIAL.md"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\verify_performance_table.py",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\verify_performance_table.py"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\data\\hgtan_source",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\data\\hgtan_source"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\data\\hourly",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\data\\hourly"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\data\\think_audit",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\data\\think_audit"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\data\\think_reproduction_sources",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\data\\think_reproduction_sources"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\data\\prices.csv",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\data\\prices.csv"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\data\\prices.metadata.json",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\data\\prices.metadata.json"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\direction",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\direction"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\historical",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\historical"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\horizon_comparison",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\horizon_comparison"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\monthly",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\monthly"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\monthly_horizon_comparison",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\monthly_horizon_comparison"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\my_historical_run",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\my_historical_run"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\performance_verification",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\performance_verification"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\smoke",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\smoke"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\think_audit",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\think_audit"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\think_nyse_pilot",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\think_nyse_pilot"
+  },
+  {
+    "source": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\weekly",
+    "destination": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\archive\\legacy\\runs\\weekly"
+  }
+]

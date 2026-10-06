@@ -1,0 +1,37 @@
+{
+  "provider": "Yahoo Finance via yfinance",
+  "version": "1.7.0",
+  "downloaded_utc": "2026-10-05T02:59:28.283841+00:00",
+  "start": "2018-01-01",
+  "end_exclusive": "2026-10-01",
+  "tickers": [
+    "AAPL",
+    "MSFT",
+    "GOOGL",
+    "NVDA",
+    "JPM",
+    "BAC",
+    "GS",
+    "MS",
+    "XOM",
+    "CVX",
+    "COP",
+    "SLB"
+  ],
+  "benchmark": "SPY total-return ETF proxy for S&P 500",
+  "hashes": {
+    "open.csv": "0c4c158e2b6cb8ba401ce255b9cc3387b2a88753e2c8efa76a1a31311fd4d2e7",
+    "high.csv": "423a9fd2a1be933b0596da213bdf3a32d310f6c6a7d91c97db956c239815649c",
+    "low.csv": "23272b2ff07105fca354ca99ce5d9ed4aa8039c1cf3a73804b99151fbea5a605",
+    "close.csv": "8f8da5052279719b0225ade2839d435a6a4e8b7814755ff7917df5ab6b9d4142",
+    "adj_close.csv": "f9a7b8647f342ebad37eb3f1180ef16d7ec42518053d36d4835cd87cc60f7543",
+    "volume.csv": "228d3ecce413e35632c05dee49a77d44ad98caabec0475b7015261d1e10b4454",
+    "dividends.csv": "82b26975cdd940c1b76d316428b4e2cb2c29e18bb36f45c724143195bc1bbe9e",
+    "stock_splits.csv": "05fd3277eccdecd20083e60e1b1a05e158d559a31139fb04980a07ecbd6e6e8a"
+  },
+  "limitations": [
+    "Fixed 12-stock survivor universe selected in prior work.",
+    "Revised historical data, not a vintage point-in-time database.",
+    "No delisting, historical membership or securities-lending feed."
+  ]
+}
