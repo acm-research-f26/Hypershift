@@ -290,7 +290,7 @@ Caveat: this is about our reimplementation on their public data. THINK's code is
 
 | Not run | Why I'd expect the same result | Cost to close |
 |---|---|---|
-| NASDAQ ranking (half of Table II) | Same data family; NASDAQ classification already failed | About 5 GPU-hours |
+| Market-neutral (long-short) scoring | Removes beta; checks whether any signal hides under market exposure | CPU only |
 | 1 day per training step (we used 8) | — | — |
 | Hyperparameter search after the fix | Tuning can't create signal the authors' own code lacks | — |
 | 25-seed THINK vs Euclidean comparison | It could settle the ordering, but neither model shows skill, so a winner wouldn't mean much | — |
@@ -306,7 +306,7 @@ Four decisions today:
    - longer prediction horizons (weekly or monthly)
    - richer inputs (volume, fundamentals)
    - a benchmark that actually has a signal
-4. **Optional: close the NASDAQ gap.** About 5 GPU-hours, run in the background.
+4. **Optional: market-neutral check.** Rescore existing predictions long-short to strip out market beta. CPU only.
 
 Nothing is wasted. These all carry over:
 - the leak-free evaluator
@@ -326,6 +326,6 @@ Nothing is wasted. These all carry over:
 | "One year is noise." | Agreed, which is why we tested 2018-2023 twice, frozen and retrained, on survivor-free data. |
 | "Isn't a Sharpe near 2 great?" | Not in 2017. Holding everything gave 1.53, and random 5-stock picks reach the same range. |
 | "Did they cheat?" | We don't claim that. The paper doesn't state its epoch rule. Their earlier code checks the test set every epoch, and that protocol reproduces their numbers. We're asking them directly. |
-| "Why not NASDAQ?" | It's the main untested route. It costs about 5 GPU-hours, and we can run it in the background. |
+| "Why not NASDAQ ranking?" | The paper doesn't claim it: Table II ranks only NYSE and TSE, and NASDAQ appears only as classification (which we tested; it failed). TSE data isn't public. |
 
 Evidence for every number: `docs/phase2/REPORT_CLOSURE.md`, which links each phase report.
