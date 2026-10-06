@@ -125,9 +125,11 @@ Full NYSE, 10 seeds per model, epoch always chosen on validation:
 | Price scaling | THINK | Euclidean | Hold all stocks | Corrected p |
 |---|---|---|---|---|
 | Leak-free | 1.69 | 1.44 | 1.53 | 0.43 |
-| Paper's (peeks at future price levels) | 1.93 | 1.15 | — | 0.074 |
+| Paper's (a separate set of 10 runs) | 1.93 | 1.15 | — | 0.074 |
 
-THINK is ahead on average, but not reliably across seeds.
+THINK is ahead on average, but not consistently across seeds; our rule needs p below 0.05.
+
+Subtlety: our inputs divide each 16-day window by its own last price, so the two scalings feed the model almost identical numbers. The gap between 1.69 and 1.93 is therefore mostly run-to-run noise (see slide 17).
 
 **Land:** verdict NO EVIDENCE of an advantage, under the decision rule we set in advance.
 
