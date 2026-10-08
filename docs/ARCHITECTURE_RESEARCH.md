@@ -1,8 +1,8 @@
 # Previous 2024–2025 architecture evaluation
 
 The expanded **completed 2022–2025 comparison** is described in
-[ROBUST_RESEARCH.md](ROBUST_RESEARCH.md), with [results](runs/robust_comparison/REPORT.md)
-and [all-model graphs](runs/robust_comparison/CHARTS.md). It includes daily forecasts,
+[ROBUST_RESEARCH.md](ROBUST_RESEARCH.md), with [results](REPORT.md)
+and [all-model graphs](CHARTS.md). It includes daily forecasts,
 Huber ablations and both SPY and QQQ. The protocol below documents the earlier batch.
 
 The earlier run is `runs/recent_2024_2025`. It tests all nine existing neural
@@ -81,9 +81,9 @@ per cohort/year/K. Exploratory paired Sharpe intervals use 1,000 circular
 
 ## Reproduce and read
 
-Commands are in [README.md](README.md). Start with
-[the modern report](runs/recent_2024_2025/REPORT.md) and
-[graphs](runs/recent_2024_2025/CHARTS.md). `all_metrics.csv` retains every scenario;
+Commands are in [README.md](../README.md). Start with
+[the modern report](../runs/recent_2024_2025/REPORT.md) and
+[graphs](../runs/recent_2024_2025/CHARTS.md). `all_metrics.csv` retains every scenario;
 `yearly_comparison.csv` contains validation-selected portfolios for every model;
 `validation_selected_by_year.csv` contains the architecture choices.
 

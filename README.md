@@ -1,67 +1,77 @@
 # Hypershift: chronological stock-ranking research
 
-The active comparison evaluates THINK and eight neural variants on **2024 and
-2025**, using modern prices for fixed historical NYSE/NASDAQ research cohorts.
-Every model is compared with **SPY, an S&P 500 ETF, on exactly matching dates**.
+**Current documentation:** [docs/README.md](docs/README.md) collects the updated
+slides, pooled 2022–2025 study, training-date audit and confidence-interval tables.
 
-Start with [the modern report](runs/recent_2024_2025/REPORT.md),
-[the graph collection](runs/recent_2024_2025/CHARTS.md), and
-[all model/year results](runs/recent_2024_2025/yearly_comparison.csv).
-The [research guide](ARCHITECTURE_RESEARCH.md) explains the protocol and limitations.
+The completed comparison evaluates THINK, mixer variants, robust losses and simple
+strategies on **2022–2025**, using daily and five-session forecasts for fixed
+historical NYSE/NASDAQ cohorts. **SPY and QQQ use matching evaluation dates.**
+
+Start with [the completed report](runs/robust_comparison/REPORT.md),
+[all graphs](runs/robust_comparison/CHARTS.md),
+[findings](runs/robust_comparison/FINDINGS.md), and
+[both ETF controls](runs/robust_comparison/ETF_CONTROLS.md).
+The [combined 2022–2025 curves and tables](runs/robust_comparison/COMBINED_2022_2025.md)
+show all models and both ETFs with pooled net Sharpe in each legend.
+The [research guide](ROBUST_RESEARCH.md) explains the frozen protocol.
+The [dataset slides](docs/slides/Hypershift_Pooled_Datasets_2022_2025.pptx)
+contain editable tables, source links and presenter notes for the midpoint presentation.
+
+**Result:** no model consistently beat SPY in all eight cohort/year windows.
+Daily forecasts improved fixed-top-10 net Sharpe in only 11 of 88 matched
+comparisons. Huber helped five-session THINK+mixer in 5 of 8 windows, but was not
+a general improvement. The promising NASDAQ THINK+mixer+Huber pooled Sharpe
+of 0.675 versus SPY 0.621 and QQQ 0.626 is an exploratory finding with confidence
+intervals spanning zero advantage. The validation-selected procedures trailed
+both ETFs over the pooled period. No robust trading edge is established.
 
 Public data recovered original-issuer histories for **68 NYSE-cohort and
-67 NASDAQ-cohort securities** from the fixed 100-name samples. Two reused ticker
-symbols were rejected. Unavailable histories leave **material survivorship bias**;
-these samples are not full exchanges or verified point-in-time index universes.
+67 NASDAQ-cohort securities** from fixed 100-name samples. Two reused ticker
+symbols were rejected. Missing histories create material survivorship bias.
+These are neither full exchanges nor certified historical index universes.
 
-## Active workflow
+## Completed scope
 
-```powershell
-# Acquire once; a completed source snapshot is never overwritten.
-.\.venv\Scripts\python.exe fetch_recent_cohorts.py
+- 576 model/seed/fold configurations: 384 five-session and 192 daily.
+- Three seeds, two cohorts, four annual tests, K=5/10/20 and five long-only policies.
+- Equal-weight buy-and-hold, rebalanced-universe, momentum, reversal, ridge and ETF controls.
+- 288 primary daily paths audited, 304 annual model/control curves, and 76 combined model/control series.
+- Gross/net returns, Sharpe, volatility, drawdown, IC/RankIC/IR, NDCG, turnover,
+  profitable periods, seed/regime stability and exploratory block-bootstrap intervals.
 
-# Verify causal features, labels, rankings, masking and portfolio accounting.
-.\.venv\Scripts\python.exe -m unittest -v test_research
+Annual accounts reset to cash. Four-year results compound evaluated annual
+returns and omit boundary gaps, so they are not one uninterrupted live account.
+The 2024–2025 periods were previously examined. This is exploratory research.
 
-# Reproduce into a fresh directory. Never tune against already observed tests.
-.\.venv\Scripts\python.exe run_architecture_research.py --datasets NYSE_recent NASDAQ_recent --test-years 2024 2025 --out runs\recent_2024_2025_new
-.\.venv\Scripts\python.exe audit_architecture_research.py --run runs\recent_2024_2025_new
-.\.venv\Scripts\python.exe analyze_recent_research.py --run runs\recent_2024_2025_new
-.\.venv\Scripts\python.exe report_recent_research.py --run runs\recent_2024_2025_new
-.\.venv\Scripts\python.exe plot_research_metrics.py --run runs\recent_2024_2025_new
-```
+## Reproduction and files
 
-The fixed search covers nine neural architectures, three seeds, two cohorts and
-two years: 108 neural fits. Ridge, momentum, reversal, equal-weight benchmarks
-and SPY are evaluated as well. Random top-K portfolios provide additional
-controls. Architecture and portfolio selections use only prior validation data.
-
-## Files and folders
+See [reproduction commands](ROBUST_RESEARCH.md#reproduction) to run in fresh folders.
+Do not overwrite source snapshots or tune against observed test results.
 
 | Location | Purpose |
 |---|---|
-| `research_models.py`, `think_model.py` | Controlled variants and THINK backbone |
-| `research_engine.py` | Causal features, purged folds, ranking and daily accounting |
-| `run_architecture_research.py` | Training, year-specific validation selection, locked evaluation |
-| `fetch_recent_cohorts.py` | Modern public prices and download coverage audit |
-| `config/recent_identity_exclusions.json` | Documented ticker-reuse exclusions |
-| `test_research.py` | Leakage, masking, selection, ranking and accounting checks |
-| `audit_architecture_research.py` | Saved-path recomputation and regime diagnostics |
-| `analyze_recent_research.py` | SPY-relative metrics, uncertainty and random controls |
-| `report_recent_research.py` | Modern report and matched-date equity curves |
-| `plot_research_metrics.py` | Metric and benchmark comparison graphs |
-| `data/recent_cohorts/` | Frozen 2018-2025 prices, hashes and coverage |
-| `runs/recent_2024_2025/` | Active results, predictions, checkpoints and audit records |
-| `runs/architecture_research/` | Previous Modern12/2015-2017 experiment, retained for provenance |
-| `fetch_research_panel.py`, `fetch_research_cohorts.py`, `repair_research_corporate_actions.py` | Previous snapshot reproduction tools |
-| `report_architecture_research.py` | Historical generator; also dispatches modern reports |
-| `archive/` | Superseded tutorials, audits, models, data and runs |
+| `robust_models.py`, `research_models.py`, `think_model.py` | Neural architectures and controlled ablations |
+| `robust_engine.py`, `research_engine.py` | Causal features, purged splits, ranking and portfolio accounting |
+| `run_robust_research.py` | Frozen training and validation-only selection |
+| `config/robust_experiment_plan.json` | Predeclared architectures, losses and portfolios |
+| `fetch_recent_cohorts.py`, `data/recent_cohorts/` | Frozen public prices, coverage and hashes |
+| `report_robust_research.py`, `plot_robust_diagnostics.py`, `summarize_robust_findings.py` | Metrics, comparisons and charts |
+| `add_etf_controls.py`, `audit_robust_regimes.py` | SPY/QQQ controls, regime and execution diagnostics |
+| `plot_combined_research.py` | Combined 2022–2025 curves and complete pooled metric tables |
+| `verify_robust_outputs.py` | Input hashes, curve inventory and accounting-audit completeness |
+| `test_research.py`, `test_robust_research.py` | Leakage, masking, loss, execution and accounting checks |
+| `runs/robust_2022_2025_final/`, `runs/daily_2022_2025_final/` | Authoritative fitted models, predictions and annual portfolios |
+| `runs/robust_comparison/` | Completed comparison tables and graphs |
+| `presentations/output/` | Previous dataset presentation, retained for provenance |
+| `docs/` | Current slides, reports, figures, metric tables and chronology/uncertainty audits |
+| `audit_pooled_chronology.py`, `report_pooled_uncertainty.py`, `publish_research_docs.py` | Audit chronological splits, reproduce uncertainty and refresh the docs bundle |
+| `STOCKMIXER_PAPER_REVIEW.md` | Paper findings and differences from our implementations |
+| `runs/recent_2024_2025/` | Previous batch and 2017/2024/2025 side-by-side charts |
+| `runs/architecture_research/` | Earlier Modern12/2015–2017 diagnostic, retained for provenance |
+| `runs/robust_2022_2025/`, `runs/daily_2022_2025/` | Verified fit caches used to recover the interrupted run |
+| `archive/` | Superseded work |
 
 The existing `.venv` supports CPU training. Fresh environments need
 `requirements.txt` and `requirements-data.txt`; `requirements-tested.txt` records
-the existing environment. Generated data and runs are Git-ignored: preserve
-their snapshots alongside code when sharing results.
-
-The earlier [report](runs/architecture_research/REPORT.md) and
-[graphs](runs/architecture_research/CHARTS.md) remain historical records.
-Their old NYSE/NASDAQ numbers must not be interpreted as 2024-2025 results.
+the tested environment. Generated runs/data are Git-ignored: preserve snapshots
+alongside code when sharing results.

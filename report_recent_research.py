@@ -10,6 +10,71 @@ import pandas as pd
 from report_architecture_research import LABELS, table, fmt
 
 
+def all_model_equity(root, primary, locks):
+    """Every tested architecture/strategy/benchmark, with consistent line styles."""
+    models = list(LABELS)
+    assert set(primary.model.unique()) == set(models)
+    palette = list(plt.get_cmap('tab20').colors)
+    colors = {kind: palette[i] for i, kind in enumerate(models)}
+    colors.update(market_proxy='#111111', buy_hold='#777777', equal_universe='#217a45')
+    styles = {kind: ('--' if kind in ['buy_hold','equal_universe'] else '-') for kind in models}
+    years = sorted(primary.year.unique())
+    out = root/'figures'
+    out.mkdir(exist_ok=True)
+    inventory = []
+
+    def draw(ax, name, year, kinds):
+        for kind in kinds:
+            daily = pd.read_csv(root/f'{name}_{year}'/f'{kind}_daily.csv')
+            ax.plot(pd.to_datetime(daily.date), np.cumprod(1+daily.net),
+                    label='SPY (S&P 500 ETF)' if kind=='market_proxy' else LABELS[kind],
+                    color=colors[kind], linestyle=styles[kind],
+                    linewidth=2.3 if kind=='market_proxy' else 1.25, alpha=1 if kind=='market_proxy' else .9)
+            inventory.append(dict(dataset=name, year=int(year), model=kind, source=str(root/f'{name}_{year}'/f'{kind}_daily.csv')))
+        ax.set_title(f'{name.replace("_recent", " cohort")} · {year}', fontsize=13)
+        ax.set_ylabel('Net wealth per $1')
+        ax.grid(alpha=.2)
+        ax.tick_params(axis='x', rotation=25)
+
+    fig, axes = plt.subplots(len(years), len(locks), figsize=(17, 11), squeeze=False)
+    for x, name in enumerate(locks):
+        for y, year in enumerate(years):
+            draw(axes[y,x], name, year, models)
+    handles, labels = axes[0,0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc='lower center', ncol=3, fontsize=9, bbox_to_anchor=(.5,.04), frameon=False)
+    fig.suptitle('Every tested model and benchmark · net equity in 2024 and 2025', fontsize=17)
+    fig.text(.02,.015,'Separate annual portfolios; validation-selected K/weights; matched dates and costs. Public-data survivorship bias remains.',fontsize=10)
+    fig.tight_layout(rect=(0,.23,1,.96))
+    fig.savefig(out/'all_models_equity.png',dpi=170)
+    plt.close(fig)
+    # Full-size individual panels make all 15 overlapping lines easier to inspect.
+    for name in locks:
+        for year in years:
+            fig, ax = plt.subplots(figsize=(14,6.5))
+            draw(ax,name,year,models)
+            ax.legend(loc='center left',bbox_to_anchor=(1.01,.5),fontsize=9,frameon=False)
+            fig.text(.02,.015,'All 15 tested models/benchmarks; costs included. Fixed public-data cohort, not a survivorship-free exchange universe.',fontsize=9)
+            fig.tight_layout(rect=(0,.06,1,1))
+            fig.savefig(out/f'all_models_{name}_{year}.png',dpi=170)
+            plt.close(fig)
+    # Additional focused comparisons retain the full overview above.
+    families = {'think_ablations': ['think','think_rank','think_gate','think_mix','think_risk','market_proxy'],
+                'alternative_models': ['mlp','lstm','stockmixer','market_transformer','ridge','momentum126','reversal5','market_proxy']}
+    for family, kinds in families.items():
+        fig, axes = plt.subplots(len(years),len(locks),figsize=(16,10),squeeze=False)
+        for x,name in enumerate(locks):
+            for y,year in enumerate(years):
+                draw(axes[y,x],name,year,kinds)
+        handles, labels = axes[0,0].get_legend_handles_labels()
+        fig.legend(handles,labels,loc='lower center',ncol=3,fontsize=9,bbox_to_anchor=(.5,.04),frameon=False)
+        fig.suptitle('THINK component ablations' if family=='think_ablations' else 'Alternative models and simple strategies',fontsize=17)
+        fig.text(.02,.015,'Net equity; validation-selected K/weights per model; separate annual windows. Public-data survivorship bias remains.',fontsize=10)
+        fig.tight_layout(rect=(0,.19,1,.96))
+        fig.savefig(out/f'{family}_equity.png',dpi=170)
+        plt.close(fig)
+    (root/'line_chart_inventory.json').write_text(json.dumps(inventory,indent=2))
+
+
 def generate(root):
     f = pd.read_csv(root/'all_metrics.csv')
     primary = f[(f.seed=='ensemble') & f.selected_policy & (f.cost_multiplier==1)].copy()
@@ -117,7 +182,9 @@ def generate(root):
                                ('net_sharpe','Net SR'),('spy_net_sharpe','SPY SR'),('delta_sharpe_spy','Δ SR'),
                                ('net_cumulative_return','Net return'),('net_maximum_drawdown','Max DD'),
                                ('IC','IC'),('RankIC','RankIC')], ['net_cumulative_return','net_maximum_drawdown']), '',
-              '![Equity paths for both test years](test_equity.png)', '',
+              '![Every tested model and benchmark](figures/all_models_equity.png)', '',
+              'All 15 model/benchmark kinds appear in the line-chart overview. The graph collection also contains '
+              'full-size panels and focused architecture-family comparisons. No test winner is substituted for the validation choice.', '',
               '## Every architecture and benchmark, by test year', '']
     investment = [('label','Model'),('method','Weights'),('k','K'),('gross_sharpe','Gross SR'),('net_sharpe','Net SR'),
                   ('net_annualized_return','Ann. return'),('net_cumulative_return','Cumulative'),
@@ -210,6 +277,9 @@ def generate(root):
               'new vendor downloads may differ. `DATA_INPUT_LOCK.json`, `PROTOCOL.json`, input copies, source snapshots, '
               'per-fold checkpoints/predictions/scalers/policies and all daily paths preserve provenance. '
               'Data and runs are Git-ignored; retain them with the code when sharing the experiment.', '']
+    interpretation = root/'INTERPRETATION.md'
+    if interpretation.exists():
+        lines[6:6] = interpretation.read_text(encoding='utf-8').splitlines()+['']
     (root/'REPORT.md').write_text('\n'.join(lines), encoding='utf-8')
     deployed.to_csv(root/'final_selected_comparison.csv', index=False)
     years = sorted(primary.year.unique())
@@ -235,6 +305,7 @@ def generate(root):
         fig.savefig(root/filename, dpi=170)
         plt.close(fig)
     print(root/'REPORT.md', flush=True)
+    all_model_equity(root, primary, locks)
 
 
 if __name__ == '__main__':

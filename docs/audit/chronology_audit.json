@@ -1,0 +1,8 @@
+{
+  "status": "passed within the saved-data pipeline",
+  "audited_folds": 16,
+  "code_hash_checks": 12,
+  "first_training_signal": "2019-01-15",
+  "limitation": "Does not certify point-in-time vendor data, missing delisting histories, survivor cohort selection, or independence of previously inspected tests.",
+  "source_sha256": "f23a6b236cf89a7067e91226c5e9960484f10af21c490d7209bdc752fc9ca5ef"
+}

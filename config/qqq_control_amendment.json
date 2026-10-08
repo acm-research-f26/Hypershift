@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-06",
+  "reason": "User explicitly requested SPY and QQQ controls after training began",
+  "selection_impact": "None; QQQ is never selectable and does not affect models, loss, architecture or portfolios",
+  "source": "Frozen data/recent_cohorts/adj_close.csv and older data/research_cohorts/benchmark.csv",
+  "script_sha256": "942d529313fc43c465e06a82aba5f4556845da8e8732ac5146248b489125bf09"
+}

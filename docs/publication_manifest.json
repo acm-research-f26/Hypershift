@@ -1,0 +1,505 @@
+{
+  "updated_on": "2026-10-08",
+  "files": [
+    {
+      "source": "runs/robust_comparison/CHARTS.md",
+      "published": "docs/CHARTS.md",
+      "source_sha256": "0c6996495a9103ab7e816f47fb1cfcf54665079e61920c8891aff9da4a1e91ea",
+      "published_sha256": "80f4e40fafc4ea3e3d6eefe6971ce0ec090f09e3d6166235bc5b4006d4dc79eb"
+    },
+    {
+      "source": "runs/robust_comparison/COMBINED_2022_2025.md",
+      "published": "docs/COMBINED_2022_2025.md",
+      "source_sha256": "eae4dd5303acb57265aad4b18b8b12398d2e92e6d66c1c3d03205b083a5c15c4",
+      "published_sha256": "eae4dd5303acb57265aad4b18b8b12398d2e92e6d66c1c3d03205b083a5c15c4"
+    },
+    {
+      "source": "runs/robust_comparison/CONFIDENCE_INTERVALS.md",
+      "published": "docs/CONFIDENCE_INTERVALS.md",
+      "source_sha256": "28e43e1f4274d7214beaa30d92cafe6f1d36a41236c17e92ca1630d619fbdc88",
+      "published_sha256": "28e43e1f4274d7214beaa30d92cafe6f1d36a41236c17e92ca1630d619fbdc88"
+    },
+    {
+      "source": "runs/robust_comparison/DATA_AND_SPLITS.md",
+      "published": "docs/DATA_AND_SPLITS.md",
+      "source_sha256": "5ceeb64f653a9ab58a0a0bbb0573a64efe0aeff9aee10297531efa5d96a4cd2b",
+      "published_sha256": "3b873faad18e7495d4f99276bef013fd4a1d29b0b368499753bf0a887eb66b96"
+    },
+    {
+      "source": "runs/robust_comparison/ETF_CONTROLS.md",
+      "published": "docs/ETF_CONTROLS.md",
+      "source_sha256": "5c0180cc127497046b075d759f45d196f4621ecf1436dfe979e265a9cee125e1",
+      "published_sha256": "5c0180cc127497046b075d759f45d196f4621ecf1436dfe979e265a9cee125e1"
+    },
+    {
+      "source": "runs/robust_comparison/FINDINGS.md",
+      "published": "docs/FINDINGS.md",
+      "source_sha256": "4e723004af25720b4a8db9c6a72426a802426251cc9c2fd0128b2d9dbc8c23cb",
+      "published_sha256": "03852820be8a3ad6b36a43d50b94ed474a1d68d07a4ad2c26181dd130f8f788a"
+    },
+    {
+      "source": "runs/robust_comparison/REPORT.md",
+      "published": "docs/REPORT.md",
+      "source_sha256": "f4677b6c4546f4e8f5e284bce5a71e91dd3550cc224889112648707ba4d93d2e",
+      "published_sha256": "a3b7395e09ff8142c605afdff11a8c211f122da6e0352319967bdd7f442818f3"
+    },
+    {
+      "source": "runs/robust_comparison/accounting_audit.csv",
+      "published": "docs/accounting_audit.csv",
+      "source_sha256": "b32d7becccbbc1ec07ebe21a181f2475a93d388cf338ddcddcd1399185067e42",
+      "published_sha256": "b32d7becccbbc1ec07ebe21a181f2475a93d388cf338ddcddcd1399185067e42"
+    },
+    {
+      "source": "runs/robust_comparison/all_metrics.csv",
+      "published": "docs/all_metrics.csv",
+      "source_sha256": "f32917c383499ccf81f0031cbd7aadf53acc57249a290c5ca8140f3c17b2f642",
+      "published_sha256": "f32917c383499ccf81f0031cbd7aadf53acc57249a290c5ca8140f3c17b2f642"
+    },
+    {
+      "source": "runs/robust_comparison/annual_comparison.csv",
+      "published": "docs/annual_comparison.csv",
+      "source_sha256": "8831c7644335b350824dbd224964c74e193d5e5fc37f4e657fa483d2cd40a118",
+      "published_sha256": "8831c7644335b350824dbd224964c74e193d5e5fc37f4e657fa483d2cd40a118"
+    },
+    {
+      "source": "runs/robust_comparison/chronology_audit.csv",
+      "published": "docs/chronology_audit.csv",
+      "source_sha256": "79c314633655f7bf9af29c5c4d8d5931b40ee49472939cac6100198d97f3279f",
+      "published_sha256": "79c314633655f7bf9af29c5c4d8d5931b40ee49472939cac6100198d97f3279f"
+    },
+    {
+      "source": "runs/robust_comparison/combined_2022_2025_curves.csv",
+      "published": "docs/combined_2022_2025_curves.csv",
+      "source_sha256": "a880a3bf94e2a3af3bbc5597432b8582cfc3777054a1fcd23d96094b0debe8d4",
+      "published_sha256": "a880a3bf94e2a3af3bbc5597432b8582cfc3777054a1fcd23d96094b0debe8d4"
+    },
+    {
+      "source": "runs/robust_comparison/combined_2022_2025_metrics.csv",
+      "published": "docs/combined_2022_2025_metrics.csv",
+      "source_sha256": "bbdab7eea3aaefc6c4fd3c53d472bcd57cc6aaa3de51aa560bca81543baa6e01",
+      "published_sha256": "bbdab7eea3aaefc6c4fd3c53d472bcd57cc6aaa3de51aa560bca81543baa6e01"
+    },
+    {
+      "source": "runs/robust_comparison/combined_validation_selected.csv",
+      "published": "docs/combined_validation_selected.csv",
+      "source_sha256": "c2ee462f24c0efb9dd014d4aeb6a9a74ab04a44d6dfad1acfab8fa5eed923b16",
+      "published_sha256": "c2ee462f24c0efb9dd014d4aeb6a9a74ab04a44d6dfad1acfab8fa5eed923b16"
+    },
+    {
+      "source": "runs/robust_comparison/etf_controls_by_year.csv",
+      "published": "docs/etf_controls_by_year.csv",
+      "source_sha256": "0ca1f660e974e72cd124d3fefdd1152a015487d7b583d33a6ac5d2154d12c766",
+      "published_sha256": "0ca1f660e974e72cd124d3fefdd1152a015487d7b583d33a6ac5d2154d12c766"
+    },
+    {
+      "source": "runs/robust_comparison/execution_quality_by_year.csv",
+      "published": "docs/execution_quality_by_year.csv",
+      "source_sha256": "4dacd46c8727ce9723e8ea8f0c729d28aeee9c012b613324fe69fd0869e0c421",
+      "published_sha256": "4dacd46c8727ce9723e8ea8f0c729d28aeee9c012b613324fe69fd0869e0c421"
+    },
+    {
+      "source": "runs/robust_comparison/exploratory_stability_order.csv",
+      "published": "docs/exploratory_stability_order.csv",
+      "source_sha256": "5b569188c4c26cff9de9647f424b53c2e812fc233df256d883cd231a559bb5f2",
+      "published_sha256": "5b569188c4c26cff9de9647f424b53c2e812fc233df256d883cd231a559bb5f2"
+    },
+    {
+      "source": "runs/robust_comparison/fixed_k10_ablations.csv",
+      "published": "docs/fixed_k10_ablations.csv",
+      "source_sha256": "8ef5b56c71bea25d6c74800a3eb7a7ada945ded857d815e45928feda4ee15789",
+      "published_sha256": "8ef5b56c71bea25d6c74800a3eb7a7ada945ded857d815e45928feda4ee15789"
+    },
+    {
+      "source": "runs/robust_comparison/fixed_k10_portfolio_effects.csv",
+      "published": "docs/fixed_k10_portfolio_effects.csv",
+      "source_sha256": "19809f196d5e53eef9b248f770881b9232cda36ae365db0a7e5a1fbdbc1cbb22",
+      "published_sha256": "19809f196d5e53eef9b248f770881b9232cda36ae365db0a7e5a1fbdbc1cbb22"
+    },
+    {
+      "source": "runs/robust_comparison/horizon_common_calendar.csv",
+      "published": "docs/horizon_common_calendar.csv",
+      "source_sha256": "19eb27021774e23e72b5089757b4b4f551136bfbcd29dd0cbb67f3dffec23664",
+      "published_sha256": "19eb27021774e23e72b5089757b4b4f551136bfbcd29dd0cbb67f3dffec23664"
+    },
+    {
+      "source": "runs/robust_comparison/horizon_comparison.csv",
+      "published": "docs/horizon_comparison.csv",
+      "source_sha256": "c9d0359a3974824c5f3846c945c7e01e97c1b46acf7f9500919f85f7588dfeb7",
+      "published_sha256": "c9d0359a3974824c5f3846c945c7e01e97c1b46acf7f9500919f85f7588dfeb7"
+    },
+    {
+      "source": "runs/robust_comparison/huber_mse_pooled_intervals.csv",
+      "published": "docs/huber_mse_pooled_intervals.csv",
+      "source_sha256": "927e3358cd16bb63e5d093d30866969d3d3b98385968efbc24e5f2f3bdc336f6",
+      "published_sha256": "927e3358cd16bb63e5d093d30866969d3d3b98385968efbc24e5f2f3bdc336f6"
+    },
+    {
+      "source": "runs/robust_comparison/model_vs_spy_qqq_by_year.csv",
+      "published": "docs/model_vs_spy_qqq_by_year.csv",
+      "source_sha256": "b31978ef8b522e4cbf72bc89c3bc05bc556fa9e9d240331c7f10e8d15b57a2bf",
+      "published_sha256": "b31978ef8b522e4cbf72bc89c3bc05bc556fa9e9d240331c7f10e8d15b57a2bf"
+    },
+    {
+      "source": "runs/robust_comparison/pooled_comparison.csv",
+      "published": "docs/pooled_comparison.csv",
+      "source_sha256": "e6e61fa2d766c986f964b2a9a47383fd8d02484abd7253819c30dbaa7cc0277a",
+      "published_sha256": "e6e61fa2d766c986f964b2a9a47383fd8d02484abd7253819c30dbaa7cc0277a"
+    },
+    {
+      "source": "runs/robust_comparison/pooled_confidence_intervals.csv",
+      "published": "docs/pooled_confidence_intervals.csv",
+      "source_sha256": "f23de9f3e41824fda9492ad4eb23c4ec89b224f16ae273e8c78980e6a93ef268",
+      "published_sha256": "f23de9f3e41824fda9492ad4eb23c4ec89b224f16ae273e8c78980e6a93ef268"
+    },
+    {
+      "source": "runs/robust_comparison/pooled_model_vs_spy_qqq.csv",
+      "published": "docs/pooled_model_vs_spy_qqq.csv",
+      "source_sha256": "ab1d256742800f240e214506e4d2c6366aed9054c61c73d7ccc228a77d03360b",
+      "published_sha256": "ab1d256742800f240e214506e4d2c6366aed9054c61c73d7ccc228a77d03360b"
+    },
+    {
+      "source": "runs/robust_comparison/pooled_selection_procedures.csv",
+      "published": "docs/pooled_selection_procedures.csv",
+      "source_sha256": "2853b3b7474842815220cf8b7c0a94b1e941f7da5eb467a2e7a2dda519157bc0",
+      "published_sha256": "2853b3b7474842815220cf8b7c0a94b1e941f7da5eb467a2e7a2dda519157bc0"
+    },
+    {
+      "source": "runs/robust_comparison/procedure_confidence_intervals.csv",
+      "published": "docs/procedure_confidence_intervals.csv",
+      "source_sha256": "a624fc9f00e64f0382a2c9259e21e86fdd6763043c14c5ae7df511d00ecec379",
+      "published_sha256": "a624fc9f00e64f0382a2c9259e21e86fdd6763043c14c5ae7df511d00ecec379"
+    },
+    {
+      "source": "runs/robust_comparison/random_top10_controls.csv",
+      "published": "docs/random_top10_controls.csv",
+      "source_sha256": "b15cf15c14c7e3c28d964e08c4e747c4a837ad200cca171d61dbcd8e0cd46cdc",
+      "published_sha256": "b15cf15c14c7e3c28d964e08c4e747c4a837ad200cca171d61dbcd8e0cd46cdc"
+    },
+    {
+      "source": "runs/robust_comparison/regime_diagnostics.csv",
+      "published": "docs/regime_diagnostics.csv",
+      "source_sha256": "21c68b1f5dd9c0062bd4825bb52d1674984ca43a90eb8458a760cfaafe6ce125",
+      "published_sha256": "21c68b1f5dd9c0062bd4825bb52d1674984ca43a90eb8458a760cfaafe6ce125"
+    },
+    {
+      "source": "runs/robust_comparison/seed_stability.csv",
+      "published": "docs/seed_stability.csv",
+      "source_sha256": "7c5d65e8f6002086e6f8f6265e8defc6f33df27c82f7a1e809fc07d53c9a4b77",
+      "published_sha256": "7c5d65e8f6002086e6f8f6265e8defc6f33df27c82f7a1e809fc07d53c9a4b77"
+    },
+    {
+      "source": "runs/robust_comparison/selection_procedures_vs_spy_qqq.csv",
+      "published": "docs/selection_procedures_vs_spy_qqq.csv",
+      "source_sha256": "b270d8faf102cb3a869a40e704cdd3de26ca2842d75d889a20f8e580e5ce9caa",
+      "published_sha256": "b270d8faf102cb3a869a40e704cdd3de26ca2842d75d889a20f8e580e5ce9caa"
+    },
+    {
+      "source": "runs/robust_comparison/validation_selected_by_year.csv",
+      "published": "docs/validation_selected_by_year.csv",
+      "source_sha256": "c1e66886046ff320ae7528064bbac510ac6a89ee0d8590e748a61269bb120de3",
+      "published_sha256": "c1e66886046ff320ae7528064bbac510ac6a89ee0d8590e748a61269bb120de3"
+    },
+    {
+      "source": "ROBUST_RESEARCH.md",
+      "published": "docs/ROBUST_RESEARCH.md",
+      "source_sha256": "f0a26c18ac41bf5782bf28adfe6f668eb226d03547f102a7f9b76eb30584c884",
+      "published_sha256": "b894715f0724ccb76596af45c042de482908a82a4f266faa6104884854db331d"
+    },
+    {
+      "source": "STOCKMIXER_PAPER_REVIEW.md",
+      "published": "docs/STOCKMIXER_PAPER_REVIEW.md",
+      "source_sha256": "f0c16d0a6ac0d595471359ef1be97393f4aed1ac4054049de141d3777b207044",
+      "published_sha256": "49c4ade08a36d75c72aea11cfee5f33cfb8f434f12f03d59e2e6584950e035d4"
+    },
+    {
+      "source": "ARCHITECTURE_RESEARCH.md",
+      "published": "docs/ARCHITECTURE_RESEARCH.md",
+      "source_sha256": "7fe12fc52a4d97f376fcc2834770463866e106174d1758014bebf1ba9a129869",
+      "published_sha256": "5f8fa92c3a03909329974e32d261f703985f3344e36e9caaaf16951bbb63ecb1"
+    },
+    {
+      "source": "runs/robust_comparison/figures/all_models_h1_NASDAQ_recent.png",
+      "published": "docs/figures/all_models_h1_NASDAQ_recent.png",
+      "source_sha256": "4cdb76478662d22fb989e52787bfb875c6ecf0ffc8eb49f27ea3efcab87c6734",
+      "published_sha256": "4cdb76478662d22fb989e52787bfb875c6ecf0ffc8eb49f27ea3efcab87c6734"
+    },
+    {
+      "source": "runs/robust_comparison/figures/all_models_h1_NYSE_recent.png",
+      "published": "docs/figures/all_models_h1_NYSE_recent.png",
+      "source_sha256": "ed7ad4dbad7491afa2e048720809e31b720e20c4be0d8e45ead198fcd2601b39",
+      "published_sha256": "ed7ad4dbad7491afa2e048720809e31b720e20c4be0d8e45ead198fcd2601b39"
+    },
+    {
+      "source": "runs/robust_comparison/figures/all_models_h5_NASDAQ_recent.png",
+      "published": "docs/figures/all_models_h5_NASDAQ_recent.png",
+      "source_sha256": "6ff2a978419653140651d03957b811f765adf93c058e72bddbdb671edc3d8783",
+      "published_sha256": "6ff2a978419653140651d03957b811f765adf93c058e72bddbdb671edc3d8783"
+    },
+    {
+      "source": "runs/robust_comparison/figures/all_models_h5_NYSE_recent.png",
+      "published": "docs/figures/all_models_h5_NYSE_recent.png",
+      "source_sha256": "f92043ab6c0497248dd0ba1282af96e9f1def4f7e44056e1c93c2fb4b7575494",
+      "published_sha256": "f92043ab6c0497248dd0ba1282af96e9f1def4f7e44056e1c93c2fb4b7575494"
+    },
+    {
+      "source": "runs/robust_comparison/figures/combined_h1_NASDAQ_recent.png",
+      "published": "docs/figures/combined_h1_NASDAQ_recent.png",
+      "source_sha256": "b21fdd2271611cc853c1f8d1f06cce85a22d088867187b6e1f729712b7321665",
+      "published_sha256": "b21fdd2271611cc853c1f8d1f06cce85a22d088867187b6e1f729712b7321665"
+    },
+    {
+      "source": "runs/robust_comparison/figures/combined_h1_NYSE_recent.png",
+      "published": "docs/figures/combined_h1_NYSE_recent.png",
+      "source_sha256": "a65a3fc0f2c3e6d1529556e67e89508d7db66ce2bcf6298b3aa7c3c4de800f3c",
+      "published_sha256": "a65a3fc0f2c3e6d1529556e67e89508d7db66ce2bcf6298b3aa7c3c4de800f3c"
+    },
+    {
+      "source": "runs/robust_comparison/figures/combined_h5_NASDAQ_recent.png",
+      "published": "docs/figures/combined_h5_NASDAQ_recent.png",
+      "source_sha256": "2d654ec749e4401d7d9c2b6604654682140cc14efe25add382afb007d8f05a45",
+      "published_sha256": "2d654ec749e4401d7d9c2b6604654682140cc14efe25add382afb007d8f05a45"
+    },
+    {
+      "source": "runs/robust_comparison/figures/combined_h5_NASDAQ_recent_focus.png",
+      "published": "docs/figures/combined_h5_NASDAQ_recent_focus.png",
+      "source_sha256": "fab10df8ea421662829fa0ca18167edbf8123b6e660f750e491a777bfb8e5ccf",
+      "published_sha256": "fab10df8ea421662829fa0ca18167edbf8123b6e660f750e491a777bfb8e5ccf"
+    },
+    {
+      "source": "runs/robust_comparison/figures/combined_h5_NYSE_recent.png",
+      "published": "docs/figures/combined_h5_NYSE_recent.png",
+      "source_sha256": "44fb3d7e3c2de73e931e70d98f9f17ac94bfed9a6d428ce595af79b2b81a45a6",
+      "published_sha256": "44fb3d7e3c2de73e931e70d98f9f17ac94bfed9a6d428ce595af79b2b81a45a6"
+    },
+    {
+      "source": "runs/robust_comparison/figures/costs_h1.png",
+      "published": "docs/figures/costs_h1.png",
+      "source_sha256": "af2dcd51d409cd86da2d1f27d45d7b0b25892d9cdc33fb867a54412fa66fbfeb",
+      "published_sha256": "af2dcd51d409cd86da2d1f27d45d7b0b25892d9cdc33fb867a54412fa66fbfeb"
+    },
+    {
+      "source": "runs/robust_comparison/figures/costs_h5.png",
+      "published": "docs/figures/costs_h5.png",
+      "source_sha256": "2cf6d6cb454a144f071da4963023567c932c3e068ee4e1016ef76c0d41f53538",
+      "published_sha256": "2cf6d6cb454a144f071da4963023567c932c3e068ee4e1016ef76c0d41f53538"
+    },
+    {
+      "source": "runs/robust_comparison/figures/cost_stress.png",
+      "published": "docs/figures/cost_stress.png",
+      "source_sha256": "6ffb66c6b8e690609f72a3b1e70a28e3d4c5a1a9d83f4684c43c865f303795ea",
+      "published_sha256": "6ffb66c6b8e690609f72a3b1e70a28e3d4c5a1a9d83f4684c43c865f303795ea"
+    },
+    {
+      "source": "runs/robust_comparison/figures/frequency_effect_NASDAQ_recent.png",
+      "published": "docs/figures/frequency_effect_NASDAQ_recent.png",
+      "source_sha256": "563151c122db049f2ed4835d69c6515015ad804cec7dacd517f6eb800722e073",
+      "published_sha256": "563151c122db049f2ed4835d69c6515015ad804cec7dacd517f6eb800722e073"
+    },
+    {
+      "source": "runs/robust_comparison/figures/frequency_effect_NYSE_recent.png",
+      "published": "docs/figures/frequency_effect_NYSE_recent.png",
+      "source_sha256": "f6c96a25e1a054419f60e7c4eec52657d9cb3c5919bbe1a27d03493ae273c78a",
+      "published_sha256": "f6c96a25e1a054419f60e7c4eec52657d9cb3c5919bbe1a27d03493ae273c78a"
+    },
+    {
+      "source": "runs/robust_comparison/figures/huber_fixed_k10_h1.png",
+      "published": "docs/figures/huber_fixed_k10_h1.png",
+      "source_sha256": "950784fabd79167c2f68f3d9769f60e4cbd3241a10fd3060cb18c459974d4b70",
+      "published_sha256": "950784fabd79167c2f68f3d9769f60e4cbd3241a10fd3060cb18c459974d4b70"
+    },
+    {
+      "source": "runs/robust_comparison/figures/huber_fixed_k10_h5.png",
+      "published": "docs/figures/huber_fixed_k10_h5.png",
+      "source_sha256": "77e6549912f869188fd5657f97a5d604dd91a7c116eaf7b0fb80d34aed2abe96",
+      "published_sha256": "77e6549912f869188fd5657f97a5d604dd91a7c116eaf7b0fb80d34aed2abe96"
+    },
+    {
+      "source": "runs/robust_comparison/figures/k_sensitivity_h1_NASDAQ_recent.png",
+      "published": "docs/figures/k_sensitivity_h1_NASDAQ_recent.png",
+      "source_sha256": "550b529e052958e51ee02707ec28516b90ca198eb3beeec89117cc1f6c3c2db2",
+      "published_sha256": "550b529e052958e51ee02707ec28516b90ca198eb3beeec89117cc1f6c3c2db2"
+    },
+    {
+      "source": "runs/robust_comparison/figures/k_sensitivity_h1_NYSE_recent.png",
+      "published": "docs/figures/k_sensitivity_h1_NYSE_recent.png",
+      "source_sha256": "af8fafecf5f725fb870d0d4abc6f1d04c3a609c583d672a509d82aae586b0400",
+      "published_sha256": "af8fafecf5f725fb870d0d4abc6f1d04c3a609c583d672a509d82aae586b0400"
+    },
+    {
+      "source": "runs/robust_comparison/figures/k_sensitivity_h5_NASDAQ_recent.png",
+      "published": "docs/figures/k_sensitivity_h5_NASDAQ_recent.png",
+      "source_sha256": "81f76679d63cca19031fc0c36bcbaed87d63d4518556f463ef09aa58182f1099",
+      "published_sha256": "81f76679d63cca19031fc0c36bcbaed87d63d4518556f463ef09aa58182f1099"
+    },
+    {
+      "source": "runs/robust_comparison/figures/k_sensitivity_h5_NYSE_recent.png",
+      "published": "docs/figures/k_sensitivity_h5_NYSE_recent.png",
+      "source_sha256": "5d0bcae685068b79268d0013f3514bae63927d67c02c8370aa7ac7ce8242339f",
+      "published_sha256": "5d0bcae685068b79268d0013f3514bae63927d67c02c8370aa7ac7ce8242339f"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h1_NASDAQ_recent_2022.png",
+      "published": "docs/figures/panel_h1_NASDAQ_recent_2022.png",
+      "source_sha256": "eb6bd5681d247997d757f4f37f1533b65175575fe83c167a8156c064cf8d7e51",
+      "published_sha256": "eb6bd5681d247997d757f4f37f1533b65175575fe83c167a8156c064cf8d7e51"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h1_NASDAQ_recent_2023.png",
+      "published": "docs/figures/panel_h1_NASDAQ_recent_2023.png",
+      "source_sha256": "9727702d7f2c7c80c0bad7591c08a92a17b477748d3fa44f0458a98550e98afe",
+      "published_sha256": "9727702d7f2c7c80c0bad7591c08a92a17b477748d3fa44f0458a98550e98afe"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h1_NASDAQ_recent_2024.png",
+      "published": "docs/figures/panel_h1_NASDAQ_recent_2024.png",
+      "source_sha256": "b73137b9956f1e668b2a5ddd846541ada6dd3bd42063f3be7be1028991edc377",
+      "published_sha256": "b73137b9956f1e668b2a5ddd846541ada6dd3bd42063f3be7be1028991edc377"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h1_NASDAQ_recent_2025.png",
+      "published": "docs/figures/panel_h1_NASDAQ_recent_2025.png",
+      "source_sha256": "c50f31f8287f01a0a56db0b7fcbffcfecb0774c7b744d79c3ce2e3f1fd0974d9",
+      "published_sha256": "c50f31f8287f01a0a56db0b7fcbffcfecb0774c7b744d79c3ce2e3f1fd0974d9"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h1_NYSE_recent_2022.png",
+      "published": "docs/figures/panel_h1_NYSE_recent_2022.png",
+      "source_sha256": "6b5f1ea36bc952a6ffaef25f1fbd48b0b5c6b518662b1d5a0b68ecc4f1841ef7",
+      "published_sha256": "6b5f1ea36bc952a6ffaef25f1fbd48b0b5c6b518662b1d5a0b68ecc4f1841ef7"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h1_NYSE_recent_2023.png",
+      "published": "docs/figures/panel_h1_NYSE_recent_2023.png",
+      "source_sha256": "2d52ae296d8459cff3fcfe3571745b51fa249f23afc84bf52286e4c1bc7d0804",
+      "published_sha256": "2d52ae296d8459cff3fcfe3571745b51fa249f23afc84bf52286e4c1bc7d0804"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h1_NYSE_recent_2024.png",
+      "published": "docs/figures/panel_h1_NYSE_recent_2024.png",
+      "source_sha256": "248c681f80f9a778042e24d178276f0ca2f1f23860b87d2674664d2e73b69ce8",
+      "published_sha256": "248c681f80f9a778042e24d178276f0ca2f1f23860b87d2674664d2e73b69ce8"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h1_NYSE_recent_2025.png",
+      "published": "docs/figures/panel_h1_NYSE_recent_2025.png",
+      "source_sha256": "e655af4469dc11ff2975b69f821c1283a455515397c6ef2bb2f7b18372cc4f1f",
+      "published_sha256": "e655af4469dc11ff2975b69f821c1283a455515397c6ef2bb2f7b18372cc4f1f"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h5_NASDAQ_recent_2022.png",
+      "published": "docs/figures/panel_h5_NASDAQ_recent_2022.png",
+      "source_sha256": "a9066140a60921489e81659e7246894ca97fc584be203dfc4446b1ac0394631a",
+      "published_sha256": "a9066140a60921489e81659e7246894ca97fc584be203dfc4446b1ac0394631a"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h5_NASDAQ_recent_2023.png",
+      "published": "docs/figures/panel_h5_NASDAQ_recent_2023.png",
+      "source_sha256": "29b873ff493932b4f8c8e5d8928a7bb81fb6bbf3dd4226d4eb24677b1f41f299",
+      "published_sha256": "29b873ff493932b4f8c8e5d8928a7bb81fb6bbf3dd4226d4eb24677b1f41f299"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h5_NASDAQ_recent_2024.png",
+      "published": "docs/figures/panel_h5_NASDAQ_recent_2024.png",
+      "source_sha256": "cbf9e74a424b8514d890cdec1ee7cb56b8d7e10a614f9f5d093cfab02670a517",
+      "published_sha256": "cbf9e74a424b8514d890cdec1ee7cb56b8d7e10a614f9f5d093cfab02670a517"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h5_NASDAQ_recent_2025.png",
+      "published": "docs/figures/panel_h5_NASDAQ_recent_2025.png",
+      "source_sha256": "87d01066feafb53eabb71ab351ba018b54f972b295dcb8889c502642de30f648",
+      "published_sha256": "87d01066feafb53eabb71ab351ba018b54f972b295dcb8889c502642de30f648"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h5_NYSE_recent_2022.png",
+      "published": "docs/figures/panel_h5_NYSE_recent_2022.png",
+      "source_sha256": "d3f3ed54cff3c40b6c425d6883960207a50e1abf4f7ae9695e0f68f2d4719830",
+      "published_sha256": "d3f3ed54cff3c40b6c425d6883960207a50e1abf4f7ae9695e0f68f2d4719830"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h5_NYSE_recent_2023.png",
+      "published": "docs/figures/panel_h5_NYSE_recent_2023.png",
+      "source_sha256": "32ac748e52d84d5cb2286ab310a2ae2b5d73737539681620587105ce2f9e4b23",
+      "published_sha256": "32ac748e52d84d5cb2286ab310a2ae2b5d73737539681620587105ce2f9e4b23"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h5_NYSE_recent_2024.png",
+      "published": "docs/figures/panel_h5_NYSE_recent_2024.png",
+      "source_sha256": "991c76b5a04d3655e9a48f48f35af3331a30d61beba02c13c370f2d21227cc3f",
+      "published_sha256": "991c76b5a04d3655e9a48f48f35af3331a30d61beba02c13c370f2d21227cc3f"
+    },
+    {
+      "source": "runs/robust_comparison/figures/panel_h5_NYSE_recent_2025.png",
+      "published": "docs/figures/panel_h5_NYSE_recent_2025.png",
+      "source_sha256": "536873f12e411756220c64a45c8878ffbe696c16bf9199a99999f1f7f04efefa",
+      "published_sha256": "536873f12e411756220c64a45c8878ffbe696c16bf9199a99999f1f7f04efefa"
+    },
+    {
+      "source": "runs/robust_comparison/figures/ranking_h1.png",
+      "published": "docs/figures/ranking_h1.png",
+      "source_sha256": "6659b1f708109f6ee88e6936a729912c0caeb91c657608e1610340abd2155080",
+      "published_sha256": "6659b1f708109f6ee88e6936a729912c0caeb91c657608e1610340abd2155080"
+    },
+    {
+      "source": "runs/robust_comparison/figures/ranking_h5.png",
+      "published": "docs/figures/ranking_h5.png",
+      "source_sha256": "0fec68b09d3915291de1183a832e2282796323faec5f19574babcd76542ab515",
+      "published_sha256": "0fec68b09d3915291de1183a832e2282796323faec5f19574babcd76542ab515"
+    },
+    {
+      "source": "runs/robust_comparison/figures/risk_h1.png",
+      "published": "docs/figures/risk_h1.png",
+      "source_sha256": "d5a724fb3240651a52884cc181e4ef99f0e63e7630ace19150ea207d7c374369",
+      "published_sha256": "d5a724fb3240651a52884cc181e4ef99f0e63e7630ace19150ea207d7c374369"
+    },
+    {
+      "source": "runs/robust_comparison/figures/risk_h5.png",
+      "published": "docs/figures/risk_h5.png",
+      "source_sha256": "b8d164adf2b3f7648afa2f4fa4b178efa7bf84a6d7ed6affdf8f2cfc7367ebcb",
+      "published_sha256": "b8d164adf2b3f7648afa2f4fa4b178efa7bf84a6d7ed6affdf8f2cfc7367ebcb"
+    },
+    {
+      "source": "runs/robust_comparison/figures/selected_procedures.png",
+      "published": "docs/figures/selected_procedures.png",
+      "source_sha256": "ff8ccb1781c987ffbd24c4f5d5fcd1f1b03920cc8318f3ca69b6a617a9b4d652",
+      "published_sha256": "ff8ccb1781c987ffbd24c4f5d5fcd1f1b03920cc8318f3ca69b6a617a9b4d652"
+    },
+    {
+      "source": "runs/robust_comparison/figures/sharpe_h1.png",
+      "published": "docs/figures/sharpe_h1.png",
+      "source_sha256": "6b5b23d675404c78296c8e16d9af0c7a3f2553ca781cfb6c9387a5ed023f3a7b",
+      "published_sha256": "6b5b23d675404c78296c8e16d9af0c7a3f2553ca781cfb6c9387a5ed023f3a7b"
+    },
+    {
+      "source": "runs/robust_comparison/figures/sharpe_h5.png",
+      "published": "docs/figures/sharpe_h5.png",
+      "source_sha256": "7bc1910d77b7bbb4e3c470aad943a61cd4becc798184e23ca2c95e30e9250ad6",
+      "published_sha256": "7bc1910d77b7bbb4e3c470aad943a61cd4becc798184e23ca2c95e30e9250ad6"
+    },
+    {
+      "source": "runs/robust_comparison/chronology_audit.json",
+      "published": "docs/audit/chronology_audit.json",
+      "source_sha256": "bfd59d573a03f14b72453227b9f8b473ac970443992b15c667a3244dd1556f5c",
+      "published_sha256": "bfd59d573a03f14b72453227b9f8b473ac970443992b15c667a3244dd1556f5c"
+    },
+    {
+      "source": "runs/robust_comparison/confidence_interval_audit.json",
+      "published": "docs/audit/confidence_interval_audit.json",
+      "source_sha256": "5566798ad7fca86c08d28d8a62e9c888e95ad87f54fdc98bdacc98766e6fe93d",
+      "published_sha256": "5566798ad7fca86c08d28d8a62e9c888e95ad87f54fdc98bdacc98766e6fe93d"
+    },
+    {
+      "source": "runs/robust_comparison/combined_curve_audit.json",
+      "published": "docs/audit/combined_curve_audit.json",
+      "source_sha256": "779c17e2b9cee5660683c86a4f214c9e5babe57bae86098b7444bfa35763b8d7",
+      "published_sha256": "779c17e2b9cee5660683c86a4f214c9e5babe57bae86098b7444bfa35763b8d7"
+    },
+    {
+      "source": "runs/robust_comparison/FINAL_VERIFICATION.json",
+      "published": "docs/audit/FINAL_VERIFICATION.json",
+      "source_sha256": "8848f97fc0534e941974fa7daa66cb47a10f0d8605ee583f610db6fe08a52131",
+      "published_sha256": "8848f97fc0534e941974fa7daa66cb47a10f0d8605ee583f610db6fe08a52131"
+    }
+  ],
+  "slideshow_sha256": "45eab449c28721d252524b92849f58b1b60f95a0960a4dfb7342f7bfa8e42437",
+  "markdown_local_links_verified": true
+}

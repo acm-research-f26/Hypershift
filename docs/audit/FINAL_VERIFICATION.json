@@ -1,0 +1,13 @@
+{
+  "status": "verified",
+  "locked_input_files": 5966,
+  "neural_configurations": {
+    "robust_2022_2025_final": 384,
+    "daily_2022_2025_final": 192
+  },
+  "primary_paths_audited": 288,
+  "primary_and_etf_curves": 304,
+  "embedded_images": 42,
+  "missing_images": 0,
+  "training_and_predeclared_analysis_sources_unchanged": true
+}
