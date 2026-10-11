@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from run_ndx_topk_pseudohuber import RUN
 from pseudohuber_think_mixer import KIND
+from chart_performance_labels import performance_label, LEGEND_TITLE
 
 OUT=Path('docs/nasdaq_monthly_pit/topk_pseudohuber')
 
@@ -72,14 +73,14 @@ def build_section(original_names,original_colors):
         fig,ax=plt.subplots(figsize=(16,8))
         for model in order:
             sub=path(model,k);dates=pd.DatetimeIndex([pd.Timestamp('2022-01-01'),*pd.to_datetime(sub.date)])
-            line(ax,dates,wealth[model,k],model,f'{names[model]}  SR {metric(model,k).sharpe:.2f}')
+            line(ax,dates,wealth[model,k],model,performance_label(names[model],metric(model,k)))
         for year in [2023,2024,2025]:
             ax.axvline(pd.Timestamp(year,1,1),color='#666666',lw=.7,ls=':',alpha=.4)
         ax.set(title=f'Historical monthly NASDAQ-100 | equal top {k} | 5-session forecasts',
             ylabel='Net wealth per initial $1',ylim=(lo-pad,hi+pad),xlim=(pd.Timestamp('2022-01-01'),pd.Timestamp('2025-12-31')))
         ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1,7]));ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         ax.grid(alpha=.2);ax.legend(loc='center left',bbox_to_anchor=(1.01,.5),frameon=False,fontsize=9.5,
-                                  title='Daily net Sharpe (3% annual hurdle)',title_fontsize=10)
+                                  title=LEGEND_TITLE,title_fontsize=10)
         fig.subplots_adjust(left=.07,right=.68,bottom=.16,top=.90)
         fig.text(.07,.08,f'Equal top {k}: {100/k:g}% target per selected security; five-seed rank ensembles; rebalance every five sessions.',fontsize=10)
         fig.text(.07,.045,'Continuous 2022–2025 accounts and modeled costs. SPY, QQQ and the monthly basket keep their control policies.',fontsize=10)
@@ -96,10 +97,11 @@ def build_section(original_names,original_colors):
             ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1,4,7,10]));ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
             ax.axhline(1,color='#666666',lw=.7,ls=':',alpha=.6);ax.grid(alpha=.2)
         axes[0,0].set_ylabel('Net wealth per $1 at year start');axes[1,0].set_ylabel('Net wealth per $1 at year start')
-        fig.legend(handles,[names[x] for x in order],loc='center left',bbox_to_anchor=(.71,.5),frameon=False,fontsize=10)
+        fig.legend(handles,[performance_label(names[x],metric(x,k)) for x in order],loc='center left',bbox_to_anchor=(.71,.5),frameon=False,fontsize=9,
+                   title='2022–2025 net CAGR | annualized SR')
         fig.suptitle(f'Equal top {k} | all models by calendar year | same vertical scale across every K and year',fontsize=14)
         fig.subplots_adjust(left=.07,right=.70,bottom=.10,top=.90,hspace=.24,wspace=.17)
-        fig.text(.07,.035,'Rebased to $1 for display; holdings/cash carry across years. All curves include modeled costs.',fontsize=10)
+        fig.text(.07,.035,'Year panels are rebased to $1; legend CAGR/SR describe the full 2022–2025 account. Modeled costs included.',fontsize=10)
         save(fig,f'years_top{k}.png')
         rows=[[names[model]]+[pct(year_metric(model,k,y).cumulative_return) for y in [2022,2023,2024,2025]] for model in order]
         charts.append(f'### Equal top {k}\n\n![All models: equal top {k}](topk_pseudohuber/figures/wealth_top{k}.png)\n\n'
@@ -117,7 +119,7 @@ def build_section(original_names,original_colors):
             seedrows.append([names[model],k,pct(sub.annualized_return.min()),pct(sub.annualized_return.median()),
                 pct(sub.annualized_return.max()),f'{int((sub.annualized_return>metric("QQQ",k).annualized_return).sum())}/5'])
         for model in ['SPY','QQQ']:
-            ax.axvline(metric(model,k).annualized_return*100,color=colors[model],ls='--',label=model)
+            ax.axvline(metric(model,k).annualized_return*100,color=colors[model],ls='--',label=performance_label(model,metric(model,k)))
         ax.set(title=f'Equal top {k}',xlabel='Net CAGR (%)');ax.grid(axis='x',alpha=.2);ax.legend(fontsize=9)
     axes[0].set_yticks(range(len(neural)),[names[x] for x in neural]);axes[0].invert_yaxis()
     fig.suptitle('Every training seed | hollow diamond = all-five-seed rank ensemble');fig.tight_layout()

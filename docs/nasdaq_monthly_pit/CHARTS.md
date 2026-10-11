@@ -1,7 +1,7 @@
 # Historical monthly NASDAQ-100 charts, 2022–2025
 
 **Original batch — Completed: 120 neural fits, 120 continuous portfolio paths; independent audit passed.**
-QQQ returned 11.9% CAGR; SPY returned 10.9%. No neural ensemble beat QQQ in every calendar year. No neural variant had all five individual seeds exceed QQQ’s full-period CAGR.
+QQQ returned 11.9% CAGR (Sharpe 0.469); SPY returned 10.9% CAGR (Sharpe 0.498). No neural ensemble beat QQQ in every calendar year. No neural variant had all five individual seeds exceed QQQ’s full-period CAGR.
 
 Original top-10 comparison: THINK + mixer has the highest primary net CAGR (19.6%) and Sharpe (0.629), but is **not a definitive best model**. Its maximum drawdown is -39.4%. Its Sharpe lead over THINK has an exploratory 95% interval [-0.331, 0.758], which includes zero; only three of five individual seeds beat QQQ, and the ensemble trails QQQ in 2024. Higher return in this inspected sample does not establish reliable future superiority.
 
@@ -9,6 +9,429 @@ This uses the user-authorized **official NASDAQ-100 fallback**, selected at each
 historical month start, rather than the unavailable custom 100-largest-NASDAQ-company
 ranking. Financial companies are excluded. Every included share class is retained
 (101–104 securities); the 2026-selected NASDAQ models are retired and deleted.
+
+## Long highest / short lowest predicted returns
+
+**Completed: no retraining; 600 disclosed portfolio paths, including 570 new signed accounts independently replayed and 30 unchanged long-only ensemble paths.**
+All allocations were fixed before this extension's returns were calculated.
+Forecasts, membership, annual model folds, all five seeds and K = 5/10/20 are
+unchanged. This tests the portfolio rule, not a new predictor.
+
+Across the 60 base-cost ensemble short portfolios, 37/60 have positive
+net CAGR, 3/60 beat QQQ's 11.9% CAGR, and 58/60 have a
+smaller maximum drawdown than the corresponding 100% long portfolio.
+Only 5/60 exceed their **same-long-allocation plus cash** control's
+CAGR. These counts span related models and overlapping stock portfolios;
+they are not 60 independent market trials.
+
+A favorable example is StockMixer at K = 5: 75% long / 25% short has
+19.5% CAGR and -22.5% maximum drawdown,
+versus 18.4% and -28.0% for
+75% long / 25% cash. However, its five individual seeds have median CAGR
+8.3% (range 0.7% to 10.0%).
+All five are positive but none beat QQQ. Its Sharpe difference versus the cash
+control has an exploratory 95% interval [-0.129, 0.302],
+which includes zero. This example was identified after viewing all fixed
+results; it is not a validated allocation recommendation.
+
+The 50% long / 50% short ensembles have measured daily QQQ betas ranging from
+-0.12 to 0.30. Equal long/short dollars
+do not enforce zero beta or equal sector exposure, and positions drift between
+five-session rebalances. A lowest-ranked stock can still rise; a short then loses.
+
+### What the allocations mean
+
+| Policy | Long target | Short target | Gross stock exposure | Net stock exposure |
+| --- | --- | --- | --- | --- |
+| 100% long | 100% | 0% | 100% | 100% |
+| 75% long / 25% cash | 75% | 0% | 75% | 75% |
+| 50% long / 50% cash | 50% | 0% | 50% | 50% |
+| 75% long / 25% short | 75% | 25% | 100% | 50% |
+| 50% long / 50% short | 50% | 50% | 100% | 0% |
+
+At K = 10, the 75/25 short policy targets 7.5% of NAV in each top-ranked stock
+and shorts 2.5% in each bottom-ranked stock. The 50/50 policy targets 5% each
+on both sides. Orders use only signal-close information and fill the next close.
+The same K applies to each side. Fractional boundary ties cancel overlapping
+long/short weights; under 2K eligible stocks the short portfolio stays in cash.
+Short proceeds remain in the cash/collateral account; they do not increase the
+declared investment budgets. Actual cash balances differ from net exposure.
+
+### Previously discussed model comparisons
+
+All full-period wealth legends show net CAGR alongside Sharpe (SR), including
+QQQ and SPY. Shared legends on four-panel yearly figures describe the complete
+2022–2025 account; each panel is rebased for that calendar year. Sharpe is
+annualized from daily returns and uses a 3% annual hurdle.
+
+| Model | K | Allocation | Net CAGR | Max drawdown | Sharpe |
+| --- | --- | --- | --- | --- | --- |
+| THINK + mixer | 10 | 100% long | 19.6% | -39.4% | 0.629 |
+| THINK + mixer | 10 | 75% long / 25% cash | 15.4% | -30.4% | 0.595 |
+| THINK + mixer | 10 | 50% long / 50% cash | 10.6% | -20.9% | 0.529 |
+| THINK + mixer | 10 | 75% long / 25% short | 10.2% | -27.1% | 0.442 |
+| THINK + mixer | 10 | 50% long / 50% short | -0.2% | -18.7% | -0.250 |
+| THINK + mixer pseudo-Huber | 5 | 100% long | 22.4% | -43.6% | 0.689 |
+| THINK + mixer pseudo-Huber | 5 | 75% long / 25% cash | 17.6% | -33.9% | 0.659 |
+| THINK + mixer pseudo-Huber | 5 | 50% long / 50% cash | 12.1% | -23.5% | 0.595 |
+| THINK + mixer pseudo-Huber | 5 | 75% long / 25% short | 12.2% | -32.4% | 0.505 |
+| THINK + mixer pseudo-Huber | 5 | 50% long / 50% short | 1.0% | -26.4% | -0.078 |
+| StockMixer | 5 | 100% long | 22.5% | -36.1% | 0.659 |
+| StockMixer | 5 | 75% long / 25% cash | 18.4% | -28.0% | 0.645 |
+| StockMixer | 5 | 50% long / 50% cash | 12.6% | -19.3% | 0.583 |
+| StockMixer | 5 | 75% long / 25% short | 19.5% | -22.5% | 0.738 |
+| StockMixer | 5 | 50% long / 50% short | 13.5% | -18.9% | 0.704 |
+
+### Allocation comparison, K = 5
+
+![Fixed allocation comparisons K=5](long_short/figures/allocations_k5.png)
+
+### Allocation comparison, K = 10
+
+![Fixed allocation comparisons K=10](long_short/figures/allocations_k10.png)
+
+### Allocation comparison, K = 20
+
+![Fixed allocation comparisons K=20](long_short/figures/allocations_k20.png)
+
+### Every model and portfolio size
+
+Each cell reports **annualized net return / worst peak-to-trough loss**.
+All results include trading fees; short portfolios additionally use assumed
+3% annual borrowing fees. Long-only controls have no borrow charge.
+
+### K = 5: CAGR / maximum drawdown
+
+| Model | 100% long | 75% long / 25% cash | 50% long / 50% cash | 75% long / 25% short | 50% long / 50% short |
+| --- | --- | --- | --- | --- | --- |
+| THINK | 13.6% / -34.1% | 11.4% / -26.2% | 8.2% / -18.0% | 10.4% / -25.4% | 5.6% / -26.8% |
+| THINK + mixer | 11.9% / -46.2% | 9.9% / -36.4% | 7.1% / -25.4% | 5.5% / -32.2% | -2.2% / -26.1% |
+| THINK Huber | 13.1% / -38.5% | 10.9% / -29.7% | 7.8% / -20.4% | 9.4% / -24.9% | 4.0% / -24.3% |
+| THINK + mixer Huber | 15.8% / -44.3% | 12.5% / -34.9% | 8.8% / -24.3% | 7.2% / -34.2% | -2.3% / -27.4% |
+| MLP | -6.8% / -40.3% | -3.7% / -31.0% | -1.6% / -20.8% | -8.9% / -32.2% | -12.5% / -41.6% |
+| StockMixer | 22.5% / -36.1% | 18.4% / -28.0% | 12.6% / -19.3% | 19.5% / -22.5% | 13.5% / -18.9% |
+| Ridge | -13.7% / -56.5% | -9.4% / -44.2% | -5.6% / -30.0% | -13.9% / -50.0% | -15.7% / -50.2% |
+| Momentum 126 | 8.6% / -40.9% | 7.4% / -31.5% | 5.6% / -21.4% | 8.0% / -29.5% | 4.7% / -24.5% |
+| Reversal 5 | 5.9% / -43.4% | 5.6% / -33.5% | 4.5% / -22.7% | 2.2% / -41.4% | -3.4% / -48.9% |
+| THINK + mixer pseudo-Huber | 22.4% / -43.6% | 17.6% / -33.9% | 12.1% / -23.5% | 12.2% / -32.4% | 1.0% / -26.4% |
+
+### K = 10: CAGR / maximum drawdown
+
+| Model | 100% long | 75% long / 25% cash | 50% long / 50% cash | 75% long / 25% short | 50% long / 50% short |
+| --- | --- | --- | --- | --- | --- |
+| THINK | 12.3% / -29.0% | 10.1% / -21.7% | 7.2% / -14.5% | 11.5% / -20.5% | 9.1% / -20.5% |
+| THINK + mixer | 19.6% / -39.4% | 15.4% / -30.4% | 10.6% / -20.9% | 10.2% / -27.1% | -0.2% / -18.7% |
+| THINK Huber | 13.7% / -36.7% | 11.1% / -28.3% | 7.8% / -19.3% | 10.6% / -22.9% | 5.8% / -24.2% |
+| THINK + mixer Huber | 6.0% / -41.7% | 5.3% / -32.5% | 4.0% / -22.5% | -0.1% / -29.0% | -7.3% / -27.0% |
+| MLP | -10.1% / -44.5% | -6.6% / -32.9% | -3.8% / -21.5% | -10.2% / -37.3% | -11.7% / -39.4% |
+| StockMixer | 8.6% / -34.0% | 7.4% / -26.0% | 5.4% / -17.7% | 6.6% / -23.9% | 2.9% / -15.0% |
+| Ridge | -5.0% / -39.1% | -2.9% / -30.3% | -1.2% / -20.7% | -5.8% / -32.6% | -8.1% / -31.4% |
+| Momentum 126 | 2.9% / -38.4% | 2.9% / -29.7% | 2.5% / -20.2% | 2.7% / -27.5% | 0.5% / -24.9% |
+| Reversal 5 | 5.8% / -35.8% | 5.4% / -27.5% | 4.2% / -18.5% | 2.1% / -24.0% | -3.2% / -34.8% |
+| THINK + mixer pseudo-Huber | 11.4% / -40.7% | 9.3% / -31.6% | 6.6% / -21.9% | 4.7% / -27.8% | -3.2% / -16.6% |
+
+### K = 20: CAGR / maximum drawdown
+
+| Model | 100% long | 75% long / 25% cash | 50% long / 50% cash | 75% long / 25% short | 50% long / 50% short |
+| --- | --- | --- | --- | --- | --- |
+| THINK | 9.5% / -33.9% | 7.8% / -25.9% | 5.7% / -17.6% | 7.2% / -21.3% | 3.4% / -19.2% |
+| THINK + mixer | 14.1% / -32.5% | 11.1% / -24.8% | 7.7% / -16.8% | 9.2% / -20.8% | 3.1% / -11.5% |
+| THINK Huber | 12.3% / -34.0% | 9.9% / -26.0% | 7.0% / -17.7% | 8.6% / -22.1% | 3.6% / -20.6% |
+| THINK + mixer Huber | 9.0% / -33.5% | 7.4% / -25.5% | 5.2% / -17.4% | 4.2% / -21.1% | -1.7% / -14.3% |
+| MLP | -1.8% / -37.8% | -0.5% / -29.1% | 0.2% / -19.9% | -3.9% / -26.0% | -7.1% / -27.4% |
+| StockMixer | 9.2% / -27.7% | 7.5% / -21.1% | 5.4% / -14.1% | 5.5% / -19.8% | 0.7% / -15.1% |
+| Ridge | 5.1% / -34.4% | 4.5% / -26.5% | 3.5% / -18.0% | 0.6% / -22.9% | -4.8% / -23.3% |
+| Momentum 126 | 4.7% / -31.1% | 4.1% / -24.0% | 3.1% / -16.5% | 1.4% / -23.2% | -3.3% / -28.1% |
+| Reversal 5 | 5.9% / -35.7% | 5.2% / -27.5% | 3.9% / -18.7% | 3.0% / -21.0% | -1.3% / -23.9% |
+| THINK + mixer pseudo-Huber | 9.3% / -36.5% | 7.6% / -28.0% | 5.4% / -19.2% | 5.2% / -23.6% | -0.1% / -10.2% |
+
+### K = 5: 75% long / 25% short
+
+![All models, 75% long / 25% short, K=5](long_short/figures/wealth_long75_short25_k5.png)
+
+### K = 5: 50% long / 50% short
+
+![All models, 50% long / 50% short, K=5](long_short/figures/wealth_long50_short50_k5.png)
+
+### K = 10: 75% long / 25% short
+
+![All models, 75% long / 25% short, K=10](long_short/figures/wealth_long75_short25_k10.png)
+
+### K = 10: 50% long / 50% short
+
+![All models, 50% long / 50% short, K=10](long_short/figures/wealth_long50_short50_k10.png)
+
+### K = 20: 75% long / 25% short
+
+![All models, 75% long / 25% short, K=20](long_short/figures/wealth_long75_short25_k20.png)
+
+### K = 20: 50% long / 50% short
+
+![All models, 50% long / 50% short, K=20](long_short/figures/wealth_long50_short50_k20.png)
+
+### Top/bottom 10 risk and market exposure
+
+Sharpe uses the same 3% annual hurdle as the earlier charts. Sharpe at 0%
+is shown too, because these research cash accounts earn zero interest.
+Beta and correlation are measured against matched daily QQQ returns after costs;
+they describe this sample, not a beta constraint imposed on trading.
+
+| Model | Allocation | Sharpe 3% | Sharpe 0% | Volatility | QQQ beta | QQQ corr. | Mean net exposure | Worst year |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| THINK | 75% long / 25% short | 0.521 | 0.680 | 18.6% | 0.63 | 0.80 | 50.1% | -11.4% |
+| THINK | 50% long / 50% short | 0.616 | 0.908 | 10.1% | 0.13 | 0.29 | 0.2% | -11.7% |
+| THINK + mixer | 75% long / 25% short | 0.442 | 0.594 | 19.5% | 0.69 | 0.83 | 50.0% | -18.5% |
+| THINK + mixer | 50% long / 50% short | -0.250 | 0.029 | 10.6% | 0.16 | 0.37 | 0.0% | -10.3% |
+| THINK Huber | 75% long / 25% short | 0.483 | 0.647 | 18.1% | 0.62 | 0.80 | 50.1% | -10.0% |
+| THINK Huber | 50% long / 50% short | 0.325 | 0.629 | 9.7% | 0.10 | 0.23 | 0.2% | -15.2% |
+| THINK + mixer Huber | 75% long / 25% short | -0.082 | 0.085 | 17.7% | 0.62 | 0.83 | 50.0% | -21.4% |
+| THINK + mixer Huber | 50% long / 50% short | -1.015 | -0.715 | 9.9% | 0.12 | 0.29 | -0.0% | -12.6% |
+| MLP | 75% long / 25% short | -0.439 | -0.319 | 24.5% | 0.74 | 0.72 | 50.0% | -18.8% |
+| MLP | 50% long / 50% short | -0.904 | -0.715 | 15.6% | 0.28 | 0.42 | -0.1% | -14.9% |
+| StockMixer | 75% long / 25% short | 0.269 | 0.413 | 20.6% | 0.65 | 0.75 | 50.0% | -7.4% |
+| StockMixer | 50% long / 50% short | 0.054 | 0.297 | 12.2% | 0.16 | 0.32 | -0.0% | -5.7% |
+| Ridge | 75% long / 25% short | -0.280 | -0.150 | 22.8% | 0.73 | 0.76 | 50.0% | -20.3% |
+| Ridge | 50% long / 50% short | -0.778 | -0.558 | 13.5% | 0.22 | 0.39 | 0.0% | -11.9% |
+| Momentum 126 | 75% long / 25% short | 0.080 | 0.233 | 19.2% | 0.43 | 0.53 | 49.9% | -14.4% |
+| Momentum 126 | 50% long / 50% short | -0.053 | 0.115 | 17.6% | -0.12 | -0.15 | -0.0% | -3.5% |
+| Reversal 5 | 75% long / 25% short | 0.073 | 0.206 | 22.2% | 0.62 | 0.66 | 50.0% | -15.2% |
+| Reversal 5 | 50% long / 50% short | -0.338 | -0.140 | 14.9% | 0.11 | 0.17 | 0.0% | -18.1% |
+| THINK + mixer pseudo-Huber | 75% long / 25% short | 0.178 | 0.343 | 18.0% | 0.63 | 0.83 | 50.0% | -19.5% |
+| THINK + mixer pseudo-Huber | 50% long / 50% short | -0.586 | -0.286 | 9.8% | 0.13 | 0.30 | -0.0% | -10.9% |
+
+### Calendar-year returns, K = 10
+
+| Model | Allocation | 2022 | 2023 | 2024 | 2025 |
+| --- | --- | --- | --- | --- | --- |
+| THINK | 75% long / 25% short | 7.6% | 38.6% | -11.4% | 16.9% |
+| THINK | 50% long / 50% short | 23.7% | 21.7% | -11.7% | 6.3% |
+| THINK + mixer | 75% long / 25% short | -18.5% | 25.3% | 5.1% | 37.0% |
+| THINK + mixer | 50% long / 50% short | -10.3% | -2.1% | -1.4% | 14.3% |
+| THINK Huber | 75% long / 25% short | -2.9% | 43.6% | -10.0% | 18.9% |
+| THINK Huber | 50% long / 50% short | 13.8% | 24.9% | -15.2% | 3.9% |
+| THINK + mixer Huber | 75% long / 25% short | -21.4% | 20.2% | 2.4% | 3.2% |
+| THINK + mixer Huber | 50% long / 50% short | -12.6% | -4.7% | 1.1% | -12.1% |
+| MLP | 75% long / 25% short | -18.8% | -0.9% | -11.1% | -9.1% |
+| MLP | 50% long / 50% short | -14.9% | -8.4% | -12.9% | -10.1% |
+| StockMixer | 75% long / 25% short | -7.4% | 11.5% | 12.4% | 11.1% |
+| StockMixer | 50% long / 50% short | 0.5% | -5.7% | 11.2% | 6.4% |
+| Ridge | 75% long / 25% short | -20.3% | 13.2% | -5.6% | -7.5% |
+| Ridge | 50% long / 50% short | -11.6% | -0.3% | -7.9% | -11.9% |
+| Momentum 126 | 75% long / 25% short | -14.4% | 9.2% | 0.9% | 17.8% |
+| Momentum 126 | 50% long / 50% short | -3.5% | -2.0% | 0.4% | 7.3% |
+| Reversal 5 | 75% long / 25% short | -14.6% | 14.5% | -15.2% | 31.3% |
+| Reversal 5 | 50% long / 50% short | -1.3% | -8.6% | -18.1% | 19.1% |
+| THINK + mixer pseudo-Huber | 75% long / 25% short | -19.5% | 21.7% | 10.1% | 11.2% |
+| THINK + mixer pseudo-Huber | 50% long / 50% short | -10.9% | -3.6% | 10.5% | -7.6% |
+
+### K = 5: 75% long / 25% short by year
+
+![Yearly breakdown, 75% long / 25% short, K=5](long_short/figures/years_long75_short25_k5.png)
+
+### K = 5: 50% long / 50% short by year
+
+![Yearly breakdown, 50% long / 50% short, K=5](long_short/figures/years_long50_short50_k5.png)
+
+### K = 10: 75% long / 25% short by year
+
+![Yearly breakdown, 75% long / 25% short, K=10](long_short/figures/years_long75_short25_k10.png)
+
+### K = 10: 50% long / 50% short by year
+
+![Yearly breakdown, 50% long / 50% short, K=10](long_short/figures/years_long50_short50_k10.png)
+
+### K = 20: 75% long / 25% short by year
+
+![Yearly breakdown, 75% long / 25% short, K=20](long_short/figures/years_long75_short25_k20.png)
+
+### K = 20: 50% long / 50% short by year
+
+![Yearly breakdown, 50% long / 50% short, K=20](long_short/figures/years_long50_short50_k20.png)
+
+### Training-seed consistency
+
+Ensembles average ranks across all five seeds; their returns are not the mean
+individual-seed returns. Seed ranges measure training sensitivity on the same
+historical market path, not independent economic evidence. The non-neural
+baselines have no training-seed variation.
+
+### K = 5: individual training seeds
+
+| Model | Allocation | Median CAGR | Seed range | Positive CAGR | Beat QQQ |
+| --- | --- | --- | --- | --- | --- |
+| THINK | 75% long / 25% short | 0.7% | 0.2% to 7.3% | 5/5 | 0/5 |
+| THINK | 50% long / 50% short | -2.1% | -3.9% to 1.9% | 2/5 | 0/5 |
+| THINK + mixer | 75% long / 25% short | 9.3% | 1.9% to 15.2% | 5/5 | 2/5 |
+| THINK + mixer | 50% long / 50% short | 2.5% | -3.4% to 12.0% | 4/5 | 1/5 |
+| THINK Huber | 75% long / 25% short | 3.4% | -3.1% to 6.4% | 3/5 | 0/5 |
+| THINK Huber | 50% long / 50% short | -3.6% | -8.0% to 2.0% | 1/5 | 0/5 |
+| THINK + mixer Huber | 75% long / 25% short | 6.5% | -3.0% to 8.4% | 4/5 | 0/5 |
+| THINK + mixer Huber | 50% long / 50% short | 1.8% | -9.1% to 4.6% | 3/5 | 0/5 |
+| MLP | 75% long / 25% short | -8.8% | -10.3% to -4.3% | 0/5 | 0/5 |
+| MLP | 50% long / 50% short | -11.4% | -15.1% to -8.2% | 0/5 | 0/5 |
+| StockMixer | 75% long / 25% short | 8.3% | 0.7% to 10.0% | 5/5 | 0/5 |
+| StockMixer | 50% long / 50% short | 6.7% | -2.3% to 12.4% | 4/5 | 1/5 |
+| THINK + mixer pseudo-Huber | 75% long / 25% short | 6.5% | -1.8% to 16.0% | 4/5 | 1/5 |
+| THINK + mixer pseudo-Huber | 50% long / 50% short | 1.6% | -8.0% to 7.4% | 3/5 | 0/5 |
+
+### K = 10: individual training seeds
+
+| Model | Allocation | Median CAGR | Seed range | Positive CAGR | Beat QQQ |
+| --- | --- | --- | --- | --- | --- |
+| THINK | 75% long / 25% short | 6.2% | 2.1% to 8.8% | 5/5 | 0/5 |
+| THINK | 50% long / 50% short | 2.1% | -5.0% to 3.5% | 4/5 | 0/5 |
+| THINK + mixer | 75% long / 25% short | 7.5% | 4.9% to 14.9% | 5/5 | 1/5 |
+| THINK + mixer | 50% long / 50% short | 2.6% | -0.0% to 7.2% | 4/5 | 0/5 |
+| THINK Huber | 75% long / 25% short | 3.9% | 1.2% to 8.6% | 5/5 | 0/5 |
+| THINK Huber | 50% long / 50% short | -0.6% | -4.9% to 3.5% | 2/5 | 0/5 |
+| THINK + mixer Huber | 75% long / 25% short | 3.8% | -1.2% to 14.1% | 4/5 | 1/5 |
+| THINK + mixer Huber | 50% long / 50% short | -1.3% | -6.6% to 6.4% | 2/5 | 0/5 |
+| MLP | 75% long / 25% short | -7.0% | -9.4% to -6.6% | 0/5 | 0/5 |
+| MLP | 50% long / 50% short | -10.4% | -12.4% to -9.5% | 0/5 | 0/5 |
+| StockMixer | 75% long / 25% short | 5.6% | -0.9% to 7.5% | 4/5 | 0/5 |
+| StockMixer | 50% long / 50% short | 2.2% | -4.3% to 6.4% | 4/5 | 0/5 |
+| THINK + mixer pseudo-Huber | 75% long / 25% short | 5.6% | 0.6% to 14.0% | 5/5 | 1/5 |
+| THINK + mixer pseudo-Huber | 50% long / 50% short | 0.2% | -3.5% to 5.4% | 3/5 | 0/5 |
+
+### K = 20: individual training seeds
+
+| Model | Allocation | Median CAGR | Seed range | Positive CAGR | Beat QQQ |
+| --- | --- | --- | --- | --- | --- |
+| THINK | 75% long / 25% short | 5.5% | 2.2% to 6.7% | 5/5 | 0/5 |
+| THINK | 50% long / 50% short | 1.6% | -5.0% to 1.7% | 3/5 | 0/5 |
+| THINK + mixer | 75% long / 25% short | 4.4% | 1.6% to 9.4% | 5/5 | 0/5 |
+| THINK + mixer | 50% long / 50% short | -1.0% | -1.5% to 3.6% | 1/5 | 0/5 |
+| THINK Huber | 75% long / 25% short | 7.4% | 3.6% to 8.6% | 5/5 | 0/5 |
+| THINK Huber | 50% long / 50% short | 2.0% | -2.7% to 3.2% | 4/5 | 0/5 |
+| THINK + mixer Huber | 75% long / 25% short | 2.6% | 0.1% to 9.4% | 5/5 | 0/5 |
+| THINK + mixer Huber | 50% long / 50% short | -2.8% | -4.6% to 3.4% | 1/5 | 0/5 |
+| MLP | 75% long / 25% short | -4.5% | -5.9% to -2.6% | 0/5 | 0/5 |
+| MLP | 50% long / 50% short | -8.4% | -9.0% to -6.5% | 0/5 | 0/5 |
+| StockMixer | 75% long / 25% short | 4.9% | 3.2% to 6.7% | 5/5 | 0/5 |
+| StockMixer | 50% long / 50% short | 0.1% | -2.6% to 1.4% | 3/5 | 0/5 |
+| THINK + mixer pseudo-Huber | 75% long / 25% short | 3.5% | 0.6% to 10.9% | 5/5 | 0/5 |
+| THINK + mixer pseudo-Huber | 50% long / 50% short | -2.5% | -3.3% to 4.6% | 1/5 | 0/5 |
+
+### Borrowing and execution sensitivity
+
+The fee rates below are **assumptions**, not observed historical lending quotes.
+Trading-cost stresses and borrow-fee stresses are separate scenarios.
+Fees accrue on prior-close short notional using calendar days / 365, including
+weekends; no cash interest or short-proceeds rebate is credited.
+
+### K = 5: cost and borrow sensitivity (net CAGR)
+
+| Model | Allocation | Base 3% borrow | 5% borrow | 10% borrow | 2× trading costs | 4× trading costs |
+| --- | --- | --- | --- | --- | --- | --- |
+| THINK | 75% long / 25% short | 10.4% | 9.9% | 8.5% | 4.8% | -5.6% |
+| THINK | 50% long / 50% short | 5.6% | 4.6% | 2.0% | 0.0% | -10.3% |
+| THINK + mixer | 75% long / 25% short | 5.5% | 5.0% | 3.7% | 3.4% | -0.7% |
+| THINK + mixer | 50% long / 50% short | -2.2% | -3.2% | -5.6% | -4.0% | -7.4% |
+| THINK Huber | 75% long / 25% short | 9.4% | 8.8% | 7.5% | 3.9% | -6.1% |
+| THINK Huber | 50% long / 50% short | 4.0% | 3.0% | 0.4% | -1.3% | -11.0% |
+| THINK + mixer Huber | 75% long / 25% short | 7.2% | 6.6% | 5.3% | 5.0% | 0.7% |
+| THINK + mixer Huber | 50% long / 50% short | -2.3% | -3.2% | -5.6% | -4.1% | -7.6% |
+| MLP | 75% long / 25% short | -8.9% | -9.4% | -10.5% | -13.2% | -21.0% |
+| MLP | 50% long / 50% short | -12.5% | -13.4% | -15.6% | -16.8% | -24.6% |
+| StockMixer | 75% long / 25% short | 19.5% | 18.9% | 17.5% | 14.6% | 5.4% |
+| StockMixer | 50% long / 50% short | 13.5% | 12.4% | 9.6% | 8.8% | -0.0% |
+| Ridge | 75% long / 25% short | -13.9% | -14.4% | -15.4% | -19.1% | -28.4% |
+| Ridge | 50% long / 50% short | -15.7% | -16.6% | -18.7% | -20.9% | -30.3% |
+| Momentum 126 | 75% long / 25% short | 8.0% | 7.5% | 6.2% | 6.0% | 2.1% |
+| Momentum 126 | 50% long / 50% short | 4.7% | 3.6% | 1.1% | 2.8% | -0.8% |
+| Reversal 5 | 75% long / 25% short | 2.2% | 1.7% | 0.5% | -4.6% | -17.0% |
+| Reversal 5 | 50% long / 50% short | -3.4% | -4.4% | -6.7% | -9.9% | -21.5% |
+| THINK + mixer pseudo-Huber | 75% long / 25% short | 12.2% | 11.6% | 10.2% | 9.9% | 5.4% |
+| THINK + mixer pseudo-Huber | 50% long / 50% short | 1.0% | -0.0% | -2.5% | -0.9% | -4.6% |
+
+### K = 10: cost and borrow sensitivity (net CAGR)
+
+| Model | Allocation | Base 3% borrow | 5% borrow | 10% borrow | 2× trading costs | 4× trading costs |
+| --- | --- | --- | --- | --- | --- | --- |
+| THINK | 75% long / 25% short | 11.5% | 11.0% | 9.6% | 6.5% | -2.8% |
+| THINK | 50% long / 50% short | 9.1% | 8.0% | 5.3% | 4.0% | -5.4% |
+| THINK + mixer | 75% long / 25% short | 10.2% | 9.6% | 8.3% | 8.4% | 5.0% |
+| THINK + mixer | 50% long / 50% short | -0.2% | -1.2% | -3.7% | -1.6% | -4.4% |
+| THINK Huber | 75% long / 25% short | 10.6% | 10.0% | 8.7% | 5.7% | -3.3% |
+| THINK Huber | 50% long / 50% short | 5.8% | 4.8% | 2.2% | 1.2% | -7.3% |
+| THINK + mixer Huber | 75% long / 25% short | -0.1% | -0.6% | -1.8% | -1.8% | -5.2% |
+| THINK + mixer Huber | 50% long / 50% short | -7.3% | -8.2% | -10.5% | -8.7% | -11.6% |
+| MLP | 75% long / 25% short | -10.2% | -10.7% | -11.8% | -13.9% | -20.9% |
+| MLP | 50% long / 50% short | -11.7% | -12.5% | -14.7% | -15.5% | -22.5% |
+| StockMixer | 75% long / 25% short | 6.6% | 6.1% | 4.7% | 2.8% | -4.3% |
+| StockMixer | 50% long / 50% short | 2.9% | 1.9% | -0.6% | -0.7% | -7.6% |
+| Ridge | 75% long / 25% short | -5.8% | -6.3% | -7.5% | -11.0% | -20.5% |
+| Ridge | 50% long / 50% short | -8.1% | -9.0% | -11.3% | -13.3% | -22.8% |
+| Momentum 126 | 75% long / 25% short | 2.7% | 2.2% | 0.9% | 1.0% | -2.2% |
+| Momentum 126 | 50% long / 50% short | 0.5% | -0.5% | -3.0% | -1.1% | -4.1% |
+| Reversal 5 | 75% long / 25% short | 2.1% | 1.6% | 0.4% | -4.3% | -15.9% |
+| Reversal 5 | 50% long / 50% short | -3.2% | -4.1% | -6.5% | -9.2% | -20.2% |
+| THINK + mixer pseudo-Huber | 75% long / 25% short | 4.7% | 4.1% | 2.8% | 2.8% | -0.7% |
+| THINK + mixer pseudo-Huber | 50% long / 50% short | -3.2% | -4.2% | -6.6% | -4.8% | -7.8% |
+
+### K = 20: cost and borrow sensitivity (net CAGR)
+
+| Model | Allocation | Base 3% borrow | 5% borrow | 10% borrow | 2× trading costs | 4× trading costs |
+| --- | --- | --- | --- | --- | --- | --- |
+| THINK | 75% long / 25% short | 7.2% | 6.6% | 5.3% | 3.2% | -4.4% |
+| THINK | 50% long / 50% short | 3.4% | 2.4% | -0.1% | -0.4% | -7.7% |
+| THINK + mixer | 75% long / 25% short | 9.2% | 8.7% | 7.3% | 8.0% | 5.6% |
+| THINK + mixer | 50% long / 50% short | 3.1% | 2.0% | -0.5% | 1.9% | -0.3% |
+| THINK Huber | 75% long / 25% short | 8.6% | 8.1% | 6.8% | 4.7% | -2.8% |
+| THINK Huber | 50% long / 50% short | 3.6% | 2.6% | 0.1% | -0.1% | -7.2% |
+| THINK + mixer Huber | 75% long / 25% short | 4.2% | 3.7% | 2.4% | 2.7% | -0.1% |
+| THINK + mixer Huber | 50% long / 50% short | -1.7% | -2.7% | -5.1% | -3.0% | -5.6% |
+| MLP | 75% long / 25% short | -3.9% | -4.4% | -5.6% | -7.2% | -13.4% |
+| MLP | 50% long / 50% short | -7.1% | -8.0% | -10.3% | -10.4% | -16.6% |
+| StockMixer | 75% long / 25% short | 5.5% | 5.0% | 3.7% | 2.5% | -3.3% |
+| StockMixer | 50% long / 50% short | 0.7% | -0.3% | -2.8% | -2.2% | -7.7% |
+| Ridge | 75% long / 25% short | 0.6% | 0.1% | -1.1% | -4.2% | -13.3% |
+| Ridge | 50% long / 50% short | -4.8% | -5.7% | -8.1% | -9.5% | -18.3% |
+| Momentum 126 | 75% long / 25% short | 1.4% | 0.9% | -0.4% | 0.1% | -2.5% |
+| Momentum 126 | 50% long / 50% short | -3.3% | -4.3% | -6.7% | -4.6% | -7.1% |
+| Reversal 5 | 75% long / 25% short | 3.0% | 2.5% | 1.2% | -2.9% | -13.6% |
+| Reversal 5 | 50% long / 50% short | -1.3% | -2.3% | -4.7% | -6.9% | -17.1% |
+| THINK + mixer pseudo-Huber | 75% long / 25% short | 5.2% | 4.7% | 3.4% | 3.8% | 1.0% |
+| THINK + mixer pseudo-Huber | 50% long / 50% short | -0.1% | -1.1% | -3.5% | -1.3% | -3.8% |
+
+### What was verified and what remains approximate
+
+An independent implementation reproduced all 570 new daily signed cash accounts,
+fees and borrow debits; largest ledger difference was
+$0.00000000. The signed engine also reproduced all
+30 original long-only ensemble paths. A future-price/liquidity/score perturbation
+left 500 earlier daily account marks unchanged.
+Return metrics and calendar-year compounding were checked independently.
+
+The models and IC/RankIC/NDCG are unchanged: shorting changes which positions
+are held, not the existing forecasts or their ranking accuracy. Forecast audits
+from the parent and pseudo-Huber experiments still apply. Paired Sharpe
+intervals compare every short portfolio with its matched cash control, full-long
+portfolio and QQQ using 1,000 resamples of 20-session blocks. They remain
+exploratory, overlapping and unadjusted for multiple comparisons.
+
+These signed holdings use the same **adjusted economic-price total-return proxy**
+as the parent study. Dividend effects enter with the position's sign; adding a
+second dividend debit would double-count them. Acquisition consideration is
+settled at the reviewed completion close with an absolute positive cost for
+stock consideration, including when settling a short obligation. This retains
+the parent's settlement-timing approximation and is not a raw-share broker replay.
+
+Historical stock locates, recalls, stock-specific changing borrowing fees,
+broker margin liquidations, settlement financing and short-sale execution
+restrictions were not established. No borrowing of cash is simulated; short
+sale proceeds and idle cash earn zero. Actual shorting costs depend on stock
+borrowing fees and proceeds interest ([IBKR explanation](https://www.interactivebrokers.com/en/pricing/short-sale-cost.php?menu=A));
+short sellers owe dividend-equivalent payments ([SEC explanation](https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/stock-purchases-and-sales-long-and)).
+Therefore the charts estimate the signed strategy under explicit assumptions;
+they do not establish that every historical short was executable. 2022–2025
+has already been inspected extensively; unseen dates remain necessary.
+
+[All 600 path metrics](long_short/metrics.csv) · [150 primary ensemble curves](long_short/primary_curves.csv) ·
+[All calendar years](long_short/annual.csv) · [Monthly returns](long_short/monthly.csv) ·
+[Seed summaries](long_short/seed_summary.csv) · [All paired intervals](long_short/paired_bootstrap.csv) ·
+[Frozen protocol](long_short/PROTOCOL.json) · [Independent audit](long_short/AUDIT.json).
+
 
 
 ## Top-5/top-10/top-20 and pseudo-Huber follow-up
@@ -232,7 +655,8 @@ correction. [Validation export correction](topk_pseudohuber/VALIDATION_EXPORT_CO
 All six neural variants, three simple signals, the monthly basket, SPY and QQQ
 share one linear wealth axis. Net wealth per initial $1 is the cumulative product
 of one plus each daily net return, including entry and exit fees. The legend
-shows daily net Sharpe for each curve.
+shows net CAGR and annualized net Sharpe (SR) together for each curve, including
+QQQ and SPY. Sharpe is calculated from daily returns and uses a 3% annual hurdle.
 
 The primary portfolio is fixed equal top 10, long only, rebalanced every five
 sessions. Signals freeze at the prior close; share orders fill at the next close.
@@ -331,7 +755,7 @@ year, with the same colors, line styles and vertical scale. Curves are rebased
 to $1 at the start of each year so that within-year gains and losses can be
 compared; this is display normalization of the existing continuous account.
 Holdings and cash still carry across years. Each legend reports that year's
-daily net Sharpe, and each curve's final value minus one equals the net annual
+annualized CAGR and annualized net Sharpe, and each curve's final value minus one equals the net annual
 return in the table below. The four annual growth factors compound to the
 full-period return shown above.
 

@@ -169,6 +169,10 @@ def main():
         for k in [5,10,20]:
             assert (extension_out/'figures'/f'wealth_top{k}.png').exists()
             assert (extension_out/'figures'/f'years_top{k}.png').exists()
+    short_audit_path=Path('runs/nasdaq_long_short_20261011/AUDIT.json')
+    if short_audit_path.exists():
+        from verify_ndx_long_short_publication import verify as verify_short_publication
+        verified.extend(verify_short_publication(current_text))
     verified += [current,Path('docs/nasdaq_monthly_pit/DATA_REQUIREMENTS.md'),
                  Path('config/nasdaq_monthly_pit.json'),Path('docs/audit/nasdaq_2026_retirement.json')]
     result=dict(status='passed_historical_monthly_fallback_existing_evidence_and_retirement',as_of='2026-10-11',neural_fits_new=408,
@@ -187,6 +191,11 @@ def main():
         result.update(neural_fits_new=428,topk_pseudohuber_new_fits=20,
             topk_pseudohuber_independent_paths=204,topk_pseudohuber_parent_paths_unchanged=120,
             active_study_extension='NASDAQ100_top5_top10_top20_pseudoHuber')
+    if short_audit_path.exists():
+        result.update(long_short_new_model_fits=0,long_short_total_paths=600,
+            long_short_independent_signed_paths=570,long_short_parent_ensemble_paths_unchanged=30,
+            long_short_historical_borrow_availability='assumed, not verified',
+            active_portfolio_extension='fixed_long_short_and_matched_cash_allocations')
     Path('docs/audit/FINAL_AUDIT_20261011.json').write_text(json.dumps(result,indent=2))
     # Current delivery inventory supplements the older publication manifest.
     Path('docs/publication_manifest.json').write_text(json.dumps(result,indent=2))

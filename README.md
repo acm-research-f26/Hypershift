@@ -23,6 +23,13 @@ The user-requested top-5/top-10/top-20 follow-up adds 20 THINK+mixer pseudo-Hube
 fits. Its audit reproduced the new checkpoints and all 204 compared portfolio
 paths, including 120 unchanged parent paths. The same charts page includes
 all-model wealth charts, yearly breakdowns, seed ranges and ranking diagnostics.
+The long/short follow-up reuses those forecasts to compare fixed 100% long,
+75% long / 25% short and 50% long / 50% short allocations, with matched
+cash controls, calendar-day borrow fees, cost stresses and seed sensitivity.
+All 570 new signed accounts passed independent replay; the 30 parent
+long-only ensemble paths are unchanged, giving 600 disclosed paths in total.
+Its signed economic-price accounts assume short availability; they do not
+establish that every historical borrow or broker execution was possible.
 
 All 324 neural checkpoints and eight ridge models from the 2026-selected
 NASDAQ study, plus their eight annual output folders, were deleted at the

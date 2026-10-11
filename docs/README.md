@@ -14,6 +14,8 @@ fallback, sampled monthly and retaining every official share class. The custom
 contains the completed 120-fit batch, independent audit and all results.
 It also includes the audited 20-fit pseudo-Huber follow-up and all-model
 top-5/top-10/top-20 wealth charts, yearly breakdowns and seed comparisons.
+The same page compares fixed long/short allocations with matched cash controls,
+borrowing-fee stresses, every training seed and yearly signed-account charts.
 Tiingo recovered native old-stock histories; Yahoo supplies continuing prices.
 The source findings explain the declared shorter training window and remaining
 research-grade data limitations.

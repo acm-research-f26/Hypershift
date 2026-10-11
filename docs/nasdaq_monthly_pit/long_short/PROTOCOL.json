@@ -1,0 +1,27 @@
+{
+  "purpose": "User-requested exploratory short-leg extension; reuse audited forecasts without retraining or selecting a winning allocation",
+  "test_years": [2022, 2023, 2024, 2025],
+  "portfolio_sizes": [5, 10, 20],
+  "policies": {
+    "long100": [1.0, 0.0],
+    "long75_cash25": [0.75, 0.0],
+    "long50_cash50": [0.5, 0.0],
+    "long75_short25": [0.75, 0.25],
+    "long50_short50": [0.5, 0.5]
+  },
+  "training_seeds": [7, 19, 42, 61, 97],
+  "base_borrow_rate": 0.03,
+  "borrow_stress_rates": [0.05, 0.10],
+  "cost_stress_multipliers": [2.0, 4.0],
+  "aum": 1000000.0,
+  "rebalance_sessions": 5,
+  "execution": "Freeze units and 1% ADV share caps at signal close; execute at next close, cancel missing fills without reranking; one continuous signed-position cash account",
+  "ranking": "Long highest predicted returns; short lowest predicted returns, not realized future losers. Same K per side. Fractional boundary ties net overlapping exposures; require at least 2K eligible names for short portfolios.",
+  "borrow": "Assumed annual rate on prior-close short notional, calendar days / 365, including weekends; no historical locate/recall or per-security fee evidence",
+  "financing": "Zero cash interest and zero short-proceeds rebate, matching existing zero-interest controls; no additional borrowing of cash, no modeled forced margin liquidations",
+  "prices": "Signed positions in the existing adjusted economic-price series, a total-return proxy. Dividend effects are implicit in signed price changes; do not add another dividend debit. These are synthetic adjusted-price units, not a broker execution replay.",
+  "settlements": "Signed cash/share consideration at reviewed completion close; stock consideration immediately liquidated with symmetric costs; existing acquisition timing approximation retained",
+  "comparability": "Keep long100 parent curves unchanged. Include 75% and 50% long-only plus zero-interest cash controls to distinguish short-leg value from merely reducing long exposure.",
+  "uncertainty": "All configurations disclosed; five-seed individual short portfolios plus ensembles. Paired 20-session circular bootstrap, 1000 replicates, exploratory and not adjusted for multiple comparisons.",
+  "limitations": "Dollar-neutral targets are not beta/sector neutral and drift between five-session rebalances. Assumed short availability, missing recalls, margin rules, execution restrictions and variable financing prevent claims of executable historical profitability. 2022-2025 is previously inspected research data."
+}

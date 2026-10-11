@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from audit_historical_ndx_ranking import main as audit_rankings
 from publish_ndx_topk_extension import build_section as build_extension_section
+from publish_ndx_long_short import build_section as build_short_section
+from chart_performance_labels import performance_label, LEGEND_TITLE
 
 RUN=Path('runs/nasdaq100_historical_monthly_20261011')
 OUT=Path('docs/nasdaq_monthly_pit')
@@ -61,7 +63,7 @@ def main():
         sub=c[c.model==model];dates=pd.to_datetime(sub.date)
         wealth=np.cumprod(1+sub.net.to_numpy())
         np.testing.assert_allclose(wealth[-1],1+p.loc[model,'cumulative_return'],atol=1e-12)
-        ax.plot(dates,wealth,label=f'{NAMES[model]}  SR {p.loc[model,"sharpe"]:.2f}',
+        ax.plot(dates,wealth,label=performance_label(NAMES[model],p.loc[model]),
                 color=COLORS[model],lw=2.3 if model in ['QQQ','SPY','think_mix'] else 1.6,
                 linestyle='--' if 'mix' in model or model=='QQQ' else '-')
     for year in [2023,2024,2025]:
@@ -72,7 +74,7 @@ def main():
     ax.xaxis.set_major_locator(mdates.MonthLocator(bymonth=[1,7]));ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
     ax.grid(alpha=.2)
     ax.legend(loc='center left',bbox_to_anchor=(1.01,.5),frameon=False,fontsize=10,
-              title='Daily net Sharpe (3% annual hurdle)',title_fontsize=10)
+              title=LEGEND_TITLE,title_fontsize=10)
     fig.subplots_adjust(left=.07,right=.70,bottom=.16,top=.90)
     fig.text(.07,.08,'Fixed equal top 10; neural models use all five seeds in a rank ensemble. All curves include modeled costs.',fontsize=10)
     fig.text(.07,.045,'Continuous 2022–2025 accounts; no annual reset. Historical monthly membership; public-data limitations remain.',fontsize=10)
@@ -100,7 +102,7 @@ def main():
         for model in ORDER:
             sub,wealth,row=year_paths[year,model]
             dates=pd.DatetimeIndex([pd.Timestamp(year,1,1),*pd.to_datetime(sub.date)])
-            ax.plot(dates,wealth,label=f'{NAMES[model]}  SR {row.sharpe:.2f}',
+            ax.plot(dates,wealth,label=performance_label(NAMES[model],row),
                     color=COLORS[model],lw=2.3 if model in ['QQQ','SPY','think_mix'] else 1.6,
                     linestyle='--' if 'mix' in model or model=='QQQ' else '-')
         ax.set(title=f'Historical monthly NASDAQ-100 | {year} | 5-session forecasts | all declared models',
@@ -110,7 +112,7 @@ def main():
         ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         ax.axhline(1,color='#666666',lw=.8,ls=':',alpha=.6);ax.grid(alpha=.2)
         ax.legend(loc='center left',bbox_to_anchor=(1.01,.5),frameon=False,fontsize=10,
-                  title=f'{year} daily net Sharpe (3% annual hurdle)',title_fontsize=10)
+                  title=f'{year} annualized CAGR | annualized SR\n(3% annual hurdle)',title_fontsize=10)
         fig.subplots_adjust(left=.07,right=.70,bottom=.16,top=.90)
         fig.text(.07,.08,'Fixed equal top 10; all five seeds in a rank ensemble. Same vertical scale across all four years.',fontsize=10)
         fig.text(.07,.045,'Rebased to $1 for display; the continuous account carries holdings and cash across years. Modeled costs included.',fontsize=10)
@@ -127,7 +129,7 @@ def main():
             ax.scatter(values,np.linspace(i-.11,i+.11,len(values)),color=COLORS[model],s=32)
             ax.scatter(p.loc[model,field]*factor,i,marker='D',facecolors='white',edgecolors=COLORS[model],s=70,zorder=5)
         for model in ['SPY','QQQ']:
-            ax.axvline(p.loc[model,field]*factor,color=COLORS[model],ls='--',label=NAMES[model])
+            ax.axvline(p.loc[model,field]*factor,color=COLORS[model],ls='--',label=performance_label(NAMES[model],p.loc[model]))
         ax.set_yticks(range(6),[NAMES[x] for x in NEURAL]);ax.invert_yaxis();ax.grid(axis='x',alpha=.2)
         ax.set_xlabel(label);ax.legend(fontsize=9)
     fig.suptitle('Training-seed stability | five individual seeds; hollow diamond = rank ensemble')
@@ -223,13 +225,14 @@ def main():
                         f'RankIC ({ranking.loc["think","RankIC"]:.4f}); THINK + mixer has the highest mean '
                         'NDCG@10 among these nine signals. Its ranking advantage is small in absolute terms and '
                         'has not been established as statistically significant. These metrics do not identify a universal winner.')
-    headline=(f'QQQ returned {pct(p.loc["QQQ","annualized_return"])} CAGR; SPY returned '
-              f'{pct(p.loc["SPY","annualized_return"])}. '
+    headline=(f'QQQ returned {pct(p.loc["QQQ","annualized_return"])} CAGR (Sharpe {p.loc["QQQ","sharpe"]:.3f}); SPY returned '
+              f'{pct(p.loc["SPY","annualized_return"])} CAGR (Sharpe {p.loc["SPY","sharpe"]:.3f}). '
               +(f'Neural ensembles ahead of QQQ in every calendar year: {", ".join(ahead)}. ' if ahead else
                 'No neural ensemble beat QQQ in every calendar year. ')
               +(f'Variants whose five individual seeds all exceeded QQQ’s full-period CAGR: {", ".join(allseeds)}.' if allseeds else
                 'No neural variant had all five individual seeds exceed QQQ’s full-period CAGR.'))
     extension_section=build_extension_section(NAMES,COLORS)
+    short_section=build_short_section(NAMES,COLORS)
     text=f'''# Historical monthly NASDAQ-100 charts, 2022–2025
 
 **Original batch — Completed: 120 neural fits, 120 continuous portfolio paths; independent audit passed.**
@@ -242,6 +245,8 @@ historical month start, rather than the unavailable custom 100-largest-NASDAQ-co
 ranking. Financial companies are excluded. Every included share class is retained
 (101–104 securities); the 2026-selected NASDAQ models are retired and deleted.
 
+{short_section}
+
 {extension_section}
 
 ## NASDAQ-100 historical monthly universe, 5-session forecasts
@@ -251,7 +256,8 @@ ranking. Financial companies are excluded. Every included share class is retaine
 All six neural variants, three simple signals, the monthly basket, SPY and QQQ
 share one linear wealth axis. Net wealth per initial $1 is the cumulative product
 of one plus each daily net return, including entry and exit fees. The legend
-shows daily net Sharpe for each curve.
+shows net CAGR and annualized net Sharpe (SR) together for each curve, including
+QQQ and SPY. Sharpe is calculated from daily returns and uses a 3% annual hurdle.
 
 The primary portfolio is fixed equal top 10, long only, rebalanced every five
 sessions. Signals freeze at the prior close; share orders fill at the next close.
@@ -327,7 +333,7 @@ year, with the same colors, line styles and vertical scale. Curves are rebased
 to $1 at the start of each year so that within-year gains and losses can be
 compared; this is display normalization of the existing continuous account.
 Holdings and cash still carry across years. Each legend reports that year's
-daily net Sharpe, and each curve's final value minus one equals the net annual
+annualized CAGR and annualized net Sharpe, and each curve's final value minus one equals the net annual
 return in the table below. The four annual growth factors compound to the
 full-period return shown above.
 
