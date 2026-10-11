@@ -1,0 +1,10 @@
+model,comparison,k,observed,low,high,probability_positive,block_sessions,bootstrap_replicates,warning
+think_mix_pseudohuber,think_mix,5,0.2745469077682733,-0.1220652669747072,0.6945072612275756,0.904,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,think_mix_huber,5,0.16233143193355226,-0.016773507623131654,0.34113101962507053,0.959,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,QQQ,5,0.21994154480882344,-0.2811163557656351,0.7042993558646222,0.802,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,think_mix,10,-0.21699039140163368,-0.5820493038657858,0.12201666291919834,0.095,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,think_mix_huber,10,0.1671712208208723,0.05706568897474238,0.269911365802127,1.0,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,QQQ,10,-0.057401535896822065,-0.5238949915589123,0.3227358987619899,0.372,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,think_mix,20,-0.1451555745809236,-0.3784082985832964,0.09092637438899992,0.099,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,think_mix_huber,20,0.008608694120078475,-0.07670034712141449,0.1075478110487805,0.572,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,QQQ,20,-0.11120539671563417,-0.41931682946333976,0.1888514416735101,0.213,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."

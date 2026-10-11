@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "neural_fits": 288,
+  "independent_share_ledger_paths": 336,
+  "selection_locked_before_test_metrics": true,
+  "draw_count_per_exchange": 3,
+  "known_limitations": [
+    "Historical source lists themselves have survivorship bias",
+    "Public data missing delisted issuers",
+    "Ticker identity only partially verified",
+    "Overlapping draws on the same dates are dependent",
+    "Three draws estimate sensitivity, not statistical confirmation",
+    "No NYSX ETF history exists in 2022-2025"
+  ]
+}

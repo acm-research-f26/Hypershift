@@ -40,8 +40,10 @@ def plot_panel(ax,paths,title,colors):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--run',type=Path,default=Path('runs/robust_comparison'))
+    parser.add_argument('--prices',type=Path,default=Path('data/recent_cohorts/adj_close.csv'))
+    parser.add_argument('--skip-historical',action='store_true',help='Leave earlier experiment charts untouched.')
     args=parser.parse_args();root=args.run
-    prices=pd.read_csv('data/recent_cohorts/adj_close.csv',index_col=0,parse_dates=True)
+    prices=pd.read_csv(args.prices,index_col=0,parse_dates=True)
     annual=pd.read_csv(root/'annual_comparison.csv')
     pooled=pd.read_csv(root/'pooled_comparison.csv')
     selected=pd.read_csv(root/'validation_selected_by_year.csv')
@@ -166,9 +168,10 @@ def main():
         charts=charts.replace('\n\n','\n\n'+note+'[Benchmark tables](ETF_CONTROLS.md). The focused loss-ablation charts retain SPY as their original reference.\n\n',1)
     (root/'CHARTS.md').write_text(charts,encoding='utf-8')
     write_json(root/'etf_control_inventory.json',series_inventory)
-    write_json(root/'etf_control_provenance.json',dict(source='data/recent_cohorts/adj_close.csv',sha256=hashlib.sha256(Path('data/recent_cohorts/adj_close.csv').read_bytes()).hexdigest(),
-               script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),reason='User requested both ETFs after training began; no selection changes.'))
-    update_historical_charts(colors,prices)
+    write_json(root/'etf_control_provenance.json',dict(source=str(args.prices),sha256=hashlib.sha256(args.prices.read_bytes()).hexdigest(),
+               script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),reason='Matched-date SPY and QQQ evaluation controls; never model-selection candidates.'))
+    if not args.skip_historical:
+        update_historical_charts(colors,prices)
     print(procedures.round(3).to_string(index=False))
 
 

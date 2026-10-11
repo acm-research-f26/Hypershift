@@ -1,0 +1,12 @@
+# Preserve generated artifact bytes across Windows checkouts.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.docx binary
+*.pptx binary
+*.xlsx binary
+*.zip binary
+*.npz binary
+*.npy binary
+*.pt binary

@@ -5,7 +5,6 @@ Every output directory is immutable: use a fresh directory for a new experiment.
 """
 import argparse
 from concurrent.futures import ProcessPoolExecutor
-import copy
 import hashlib
 import json
 import platform
@@ -14,6 +13,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
+from training_device import configure_device, device_metadata, model_device, tensor_on
 from robust_models import make_model, EXPERIMENTS, robust_objective as objective
 from robust_engine import backtest, METHODS
 VARIANTS = list(EXPERIMENTS)
@@ -52,14 +52,17 @@ def scale_inputs(data, train):
 
 def predict(model, x, mask, ids, batch):
     model.eval()
+    device = model_device(model)
     with torch.no_grad():
-        return np.concatenate([model(torch.from_numpy(x[sub]), torch.from_numpy(mask[sub].astype('float32')))[0].numpy()
+        return np.concatenate([model(tensor_on(x[sub],device), tensor_on(mask[sub].astype('float32'),device))[0].cpu().numpy()
                                for sub in np.array_split(ids, max(1, int(np.ceil(len(ids)/batch))))])
 
 
 def fit_model(data, x, train, val, kind, seed, groups, args, folder):
     torch.manual_seed(seed)
-    model = make_model(kind, len(data['panel'].tickers), groups)
+    device = configure_device(getattr(args,'device','cpu'))
+    model = make_model(kind, len(data['panel'].tickers), groups,
+                       causal_membership=getattr(args,'causal_membership',False)).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=.001)
     y = data['y']*100
     risk = data['risk']*100
@@ -71,10 +74,10 @@ def fit_model(data, x, train, val, kind, seed, groups, args, folder):
         for start in range(0, len(train), args.batch):
             sub = train[start:start+args.batch]
             optimizer.zero_grad(set_to_none=True)
-            score, aux = model(torch.from_numpy(x[sub]), torch.from_numpy(data['mask'][sub].astype('float32')))
-            loss = objective(score, torch.from_numpy(y[sub]),
-                             torch.from_numpy(data['labelmask'][sub].astype('float32')), kind,
-                             aux, torch.from_numpy(risk[sub]))
+            score, aux = model(tensor_on(x[sub],device), tensor_on(data['mask'][sub].astype('float32'),device))
+            loss = objective(score, tensor_on(y[sub],device),
+                             tensor_on(data['labelmask'][sub].astype('float32'),device), kind,
+                             aux, tensor_on(risk[sub],device))
             if not torch.isfinite(loss):
                 raise RuntimeError(f'Nonfinite loss in {kind}/{seed}')
             loss.backward()
@@ -87,14 +90,15 @@ def fit_model(data, x, train, val, kind, seed, groups, args, folder):
         vmse = float(((vp-y[val])**2)[m].mean())
         history.append(dict(epoch=epoch, train_loss=total/count, validation_mse_pp2=vmse))
         if vmse < best-1e-7:
-            best, state, stale, chosen = vmse, copy.deepcopy(model.state_dict()), 0, epoch
+            best, state, stale, chosen = vmse, {k:v.detach().cpu().clone() for k,v in model.state_dict().items()}, 0, epoch
         else:
             stale += 1
         if stale >= args.patience:
             break
     model.load_state_dict(state)
     torch.save(dict(state_dict=state, kind=kind, seed=seed, hidden=16, lookback=16,
-                    groups=[sorted(g) for g in groups], features=5, epoch=chosen), folder/f'{kind}_{seed}.pt')
+                    groups=[sorted(g) for g in groups], features=5, epoch=chosen,
+                    training_device=device_metadata(device)), folder/f'{kind}_{seed}.pt')
     write_json(folder/f'{kind}_{seed}_history.json', history)
     return model, chosen, len(history)
 
@@ -136,6 +140,16 @@ def choose_policy(data, val, seed_preds, ks):
     return selected, rows
 
 
+def model_data(data, kind):
+    """Causal score availability for baselines with a longer own history."""
+    key = {'momentum126':'momentum', 'reversal5':'reversal'}.get(kind)
+    if key is None:
+        return data
+    available = np.isfinite(data[key])
+    return dict(data, mask=data['mask'] & available,
+                labelmask=data['labelmask'] & available)
+
+
 def bootstrap_difference(a, b, repeats=1000, block=20):
     """Paired circular moving-block bootstrap of DAILY Sharpe differences."""
     if len(a) != len(b):
@@ -161,6 +175,9 @@ def main():
     parser.add_argument('--datasets', nargs='+', default=['NYSE_recent', 'NASDAQ_recent'])
     parser.add_argument('--test-years', type=int, nargs='+', default=[2022, 2023, 2024, 2025])
     parser.add_argument('--workers', type=int, default=1)
+    parser.add_argument('--allow-parallel-cuda', action='store_true',
+                        help='Explicit opt-in to 2-3 independent CUDA seed workers after a local memory/throughput check.')
+    parser.add_argument('--device', choices=['auto','cpu','cuda'], default='auto')
     parser.add_argument('--horizon', type=int, choices=[1, 5], default=5)
     parser.add_argument('--reuse-fits-from', type=Path, default=None,
                         help='Reuse completed fits from an interrupted run only after input/checkpoint/prediction checks.')
@@ -170,7 +187,19 @@ def main():
     parser.add_argument('--patience', type=int, default=6)
     parser.add_argument('--batch', type=int, default=8)
     parser.add_argument('--lr', type=float, default=.001)
+    parser.add_argument('--experiment-plan', type=Path, default=Path('config/robust_experiment_plan.json'))
     args = parser.parse_args()
+    if 'NASDAQ100_20261010' in args.datasets:
+        parser.error('NASDAQ100_20261010 is retired by user request: 2026-selected membership is biased. Use the historical monthly NASDAQ study after its data gate passes.')
+    if any(name in args.datasets for name in ['NASDAQ_monthly_top100','NASDAQ100_historical_monthly']):
+        parser.error('Historical monthly NASDAQ data and dynamic-engine gates have not passed. See docs/nasdaq_monthly_pit/DATA_REQUIREMENTS.md; no training started.')
+    device = configure_device(args.device)
+    args.device = device.type
+    if device.type == 'cuda' and args.workers != 1:
+        if not args.allow_parallel_cuda or not 1 <= args.workers <= 3:
+            parser.error('Use --workers 1 for CUDA, or opt in to at most 3 checked independent workers with --allow-parallel-cuda.')
+        if torch.cuda.mem_get_info()[0] < 3*1024**3:
+            parser.error('Parallel CUDA requires at least 3 GiB free before launching the small seed models.')
     if args.out.exists():
         parser.error('Choose a fresh output directory; no results are overwritten.')
     args.out.mkdir(parents=True)
@@ -179,8 +208,10 @@ def main():
     protocol = dict(arguments={k:str(v) if isinstance(v, Path) else v for k, v in vars(args).items()},
                     experiments=EXPERIMENTS, portfolio_methods=METHODS,
                     huber='2*Huber(delta=1 percentage point); validation MSE retained across losses to isolate training objective',
+                    ranking='Optional date-balanced pairwise logistic loss: unique same-date observed pairs; sign(return difference); minimum gap 0.1pp; score temperature 1pp; lambda in experiment specification.',
                     stop_rule='One predeclared batch; do not add variants after viewing test outcomes. 2024-25 already observed; all results exploratory.',
                     universe='Fixed source cohorts; see per-dataset metadata for dates and availability limitations.',
+                    baseline_availability='Momentum/reversal can rank a stock only when their own historical score is finite. New listings are retained for neural models under the existing feature eligibility.',
                     input_features=['daily return', 'close/MA5-1', 'close/MA20-1', '20-day return std', 'log dollar volume/ADV20'],
                     lookback=16, horizon=args.horizon, rebalance_sessions=args.horizon,
                     execution=f'Signal after close t; shares sized with t NAV/prices; fill at close t+1 plus costs; exit/rebalance t+{args.horizon+1}.',
@@ -196,10 +227,11 @@ def main():
                     sources=['https://github.com/SJTU-DMTai/StockMixer', 'https://github.com/SJTU-DMTai/MASTER',
                              'https://arxiv.org/abs/2609.25617', 'https://tylersnetwork.github.io/papers/icdm22-think.pdf'],
                     python=platform.python_version(), torch=str(torch.__version__), numpy=np.__version__, pandas=pd.__version__,
+                    training_backend=device_metadata(device),
                     code_hashes={f:hashlib.sha256(Path(f).read_bytes()).hexdigest() for f in
-                                 ['run_robust_research.py', 'robust_models.py', 'robust_engine.py', 'research_engine.py', 'research_models.py', 'think_model.py']})
-    protocol['experiment_plan_sha256'] = hashlib.sha256(Path('config/robust_experiment_plan.json').read_bytes()).hexdigest()
-    (args.out/'EXPERIMENT_PLAN.json').write_bytes(Path('config/robust_experiment_plan.json').read_bytes())
+                                 ['run_robust_research.py', 'robust_models.py', 'robust_engine.py', 'research_engine.py', 'research_models.py', 'think_model.py', 'training_device.py']})
+    protocol['experiment_plan_sha256'] = hashlib.sha256(args.experiment_plan.read_bytes()).hexdigest()
+    (args.out/'EXPERIMENT_PLAN.json').write_bytes(args.experiment_plan.read_bytes())
     write_json(args.out/'PROTOCOL.json', protocol)
     if any(name.endswith('_recent') for name in args.datasets):
         extra_sources = ['config/recent_identity_exclusions.json', 'data/recent_cohorts/manifest.json',
@@ -208,7 +240,23 @@ def main():
                    {source:hashlib.sha256(Path(source).read_bytes()).hexdigest() for source in extra_sources})
         for source in extra_sources:
             (args.out/('input_'+Path(source).name)).write_bytes(Path(source).read_bytes())
+    if any(name in ('NYSE_top100_20261010', 'NASDAQ100_20261010') for name in args.datasets):
+        if any(name.endswith('_recent') for name in args.datasets):
+            raise ValueError('Use separate runs for old and new data snapshots.')
+        input_root = Path('data/largecap_20261010')
+        extra_sources = [str(input_root/f) for f in
+                         ['manifest.json', 'selection.json', 'membership_provenance.json',
+                          'members.csv', 'coverage.csv', 'adj_close.csv', 'close.csv', 'volume.csv']]
+        extra_sources.append('fetch_largecap_universes.py')
+        write_json(args.out/'DATA_INPUT_LOCK.json',
+                   {source:hashlib.sha256(Path(source).read_bytes()).hexdigest() for source in extra_sources})
+        for source in extra_sources[:3]:
+            (args.out/('input_'+Path(source).name)).write_bytes(Path(source).read_bytes())
     snapshot = args.out/'source_snapshot'
+    if any('_draw' in name for name in args.datasets):
+        input_root = Path('data/random_trials_20261010')
+        sources = [str(input_root/f) for f in ['manifest.json', 'selection.json', 'coverage.csv', 'adj_close.csv', 'close.csv', 'volume.csv']]
+        write_json(args.out/'DATA_INPUT_LOCK.json', {s:hashlib.sha256(Path(s).read_bytes()).hexdigest() for s in sources})
     snapshot.mkdir()
     for source in protocol['code_hashes']:
         (snapshot/Path(source).name).write_bytes(Path(source).read_bytes())
@@ -217,6 +265,9 @@ def main():
     reused = []
     if args.reuse_fits_from:
         previous_protocol = json.loads((args.reuse_fits_from/'PROTOCOL.json').read_text())
+        previous_backend = previous_protocol.get('training_backend',{}).get('device','cpu')
+        if previous_backend != args.device or previous_protocol['torch'] != str(torch.__version__):
+            raise ValueError('Fit reuse requires matching training backend and PyTorch build. Use a fresh run for CUDA; old CPU results remain valid.')
         for source in ['research_models.py', 'think_model.py', 'research_engine.py']:
             assert previous_protocol['code_hashes'][source] == protocol['code_hashes'][source]
         for source, expected in json.loads((args.reuse_fits_from/'DATA_INPUT_LOCK.json').read_text()).items():
@@ -266,9 +317,9 @@ def main():
                             oldscale = np.load(oldfolder/'preprocessing.npz')
                             for key, value in [('mean',mean),('std',std),('train',train),('validation',val),('test',test)]:
                                 np.testing.assert_array_equal(oldscale[key], value)
-                            checkpoint = torch.load(oldfolder/f'{kind}_{seed}.pt', weights_only=False)
+                            checkpoint = torch.load(oldfolder/f'{kind}_{seed}.pt', weights_only=False, map_location='cpu')
                             assert checkpoint['groups'] == [sorted(g) for g in groups]
-                            model = make_model(kind, len(data['panel'].tickers), groups)
+                            model = make_model(kind, len(data['panel'].tickers), groups).to(device)
                             model.load_state_dict(checkpoint['state_dict'])
                             vp, tp = predict(model, x, data['mask'], val, args.batch), predict(model, x, data['mask'], test, args.batch)
                             previous = np.load(oldfolder/f'{kind}_predictions.npz')
@@ -302,14 +353,15 @@ def main():
                         vp, tp = data[key][val], data[key][test]
                     vals.append(vp)
                     tests.append(tp)
-                selected, candidates = choose_policy(data, val, vals, ks)
+                kind_data = model_data(data, kind)
+                selected, candidates = choose_policy(kind_data, val, vals, ks)
                 record = dict(dataset=name, year=year, model=kind, selected=selected, candidates=candidates)
                 policies.append(record)
                 write_json(folder/f'{kind}_policy.json', record)
                 # Predictions retained but no test metrics are computed or inspected in this phase.
                 np.savez_compressed(folder/f'{kind}_predictions.npz', validation=np.array(vals), test=np.array(tests),
                                     test_ids=test, validation_ids=val, truth=data['y'][test],
-                                    eligible=data['mask'][test], labelmask=data['labelmask'][test])
+                                    eligible=kind_data['mask'][test], labelmask=kind_data['labelmask'][test])
                 stored[(name, year, kind)] = (test, tests, selected, ks)
                 print(f'FIT {name} {year} {kind}: {len(seeds)} seed(s), elapsed {(time.time()-started)/60:.1f}m', flush=True)
     # Lock all choices BEFORE any test statistics are calculated.
@@ -331,7 +383,7 @@ def main():
     print('Selection locked. Beginning one-pass held-out evaluation.', flush=True)
     paths = {}
     for (name, year, kind), (test, seeds_pred, selected, ks) in stored.items():
-        data, folder = panels[name], args.out/f'{name}_{year}'
+        data, folder = model_data(panels[name], kind), args.out/f'{name}_{year}'
         ensemble = ensemble_predictions(seeds_pred, data['mask'][test]) if len(seeds_pred)>1 else seeds_pred[0]
         rank, ranking = ranking_metrics(ensemble, data['y'][test], data['mask'][test], data['labelmask'][test], ks)
         ranking.insert(0, 'signal_date', data['panel'].dates[data['origin'][test]].astype(str))
@@ -390,7 +442,7 @@ def main():
         year = max(key[1] for key in paths if key[0]==name)
         winner = selection['winner']
         intervals[name] = {base:bootstrap_difference(paths[(name, year, winner)].net.to_numpy(), paths[(name, year, base)].net.to_numpy())
-                           for base in ['think', 'buy_hold', 'market_proxy']}
+                           for base in (['think'] if 'think' in args.variants else [])+['buy_hold', 'market_proxy']}
     write_json(args.out/'paired_bootstrap_final.json', intervals)
     write_json(args.out/'completion.json', dict(elapsed_seconds=time.time()-started, neural_fits=len(training_records),
                                                metric_rows=len(frame), status='complete; conditional research evidence, not production validation'))

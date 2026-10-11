@@ -18,6 +18,23 @@ class Panel:
 
 
 def load_panel(name):
+    if name.startswith(('NYSE_draw', 'NASDAQ_draw')):
+        root = Path('data/random_trials_20261010')
+        manifest = json.loads((root/'manifest.json').read_text())
+        names = manifest['selection'][name]
+        read = lambda field: pd.read_csv(root/f'{field}.csv', index_col=0, parse_dates=True)
+        adj, close, vol = read('adj_close'), read('close'), read('volume')
+        return Panel(name, adj.index, names, adj[names].to_numpy(),
+                     (close[names]*vol[names]).to_numpy(), adj['SPY'].to_numpy(), manifest['limitations'])
+    if name in ('NYSE_top100_20261010', 'NASDAQ100_20261010'):
+        root = Path('data/largecap_20261010')
+        manifest = json.loads((root/'manifest.json').read_text())
+        names = manifest['selection'][name]
+        read = lambda field: pd.read_csv(root/f'{field}.csv', index_col=0, parse_dates=True)
+        adj, close, vol = read('adj_close'), read('close'), read('volume')
+        return Panel(name, adj.index, names, adj[names].to_numpy(),
+                     (close[names]*vol[names]).to_numpy(), adj['SPY'].to_numpy(),
+                     manifest['limitations'] + ['SPY and QQQ matched-date controls; fixed current-company retrospective cohort.'])
     if name in ('NYSE_recent', 'NASDAQ_recent'):
         root = Path('data/recent_cohorts')
         manifest = json.loads((root/'manifest.json').read_text())

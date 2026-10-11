@@ -5,7 +5,6 @@ Every output directory is immutable: use a fresh directory for a new experiment.
 """
 import argparse
 from concurrent.futures import ProcessPoolExecutor
-import copy
 import hashlib
 import json
 import platform
@@ -14,6 +13,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
+from training_device import configure_device, device_metadata, model_device, tensor_on
 from research_models import RankModel, VARIANTS, objective
 from research_engine import (load_panel, prepare_panel, fold_indices, training_groups,
                              backtest, ranking_metrics, performance, ranks)
@@ -50,14 +50,16 @@ def scale_inputs(data, train):
 
 def predict(model, x, mask, ids, batch):
     model.eval()
+    device = model_device(model)
     with torch.no_grad():
-        return np.concatenate([model(torch.from_numpy(x[sub]), torch.from_numpy(mask[sub].astype('float32')))[0].numpy()
+        return np.concatenate([model(tensor_on(x[sub],device), tensor_on(mask[sub].astype('float32'),device))[0].cpu().numpy()
                                for sub in np.array_split(ids, max(1, int(np.ceil(len(ids)/batch))))])
 
 
 def fit_model(data, x, train, val, kind, seed, groups, args, folder):
     torch.manual_seed(seed)
-    model = RankModel(kind, len(data['panel'].tickers), groups)
+    device = configure_device(getattr(args,'device','cpu'))
+    model = RankModel(kind, len(data['panel'].tickers), groups).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=.001)
     y = data['y']*100
     risk = data['risk']*100
@@ -69,10 +71,10 @@ def fit_model(data, x, train, val, kind, seed, groups, args, folder):
         for start in range(0, len(train), args.batch):
             sub = train[start:start+args.batch]
             optimizer.zero_grad(set_to_none=True)
-            score, aux = model(torch.from_numpy(x[sub]), torch.from_numpy(data['mask'][sub].astype('float32')))
-            loss = objective(score, torch.from_numpy(y[sub]),
-                             torch.from_numpy(data['labelmask'][sub].astype('float32')), kind,
-                             aux, torch.from_numpy(risk[sub]))
+            score, aux = model(tensor_on(x[sub],device), tensor_on(data['mask'][sub].astype('float32'),device))
+            loss = objective(score, tensor_on(y[sub],device),
+                             tensor_on(data['labelmask'][sub].astype('float32'),device), kind,
+                             aux, tensor_on(risk[sub],device))
             if not torch.isfinite(loss):
                 raise RuntimeError(f'Nonfinite loss in {kind}/{seed}')
             loss.backward()
@@ -85,14 +87,15 @@ def fit_model(data, x, train, val, kind, seed, groups, args, folder):
         vmse = float(((vp-y[val])**2)[m].mean())
         history.append(dict(epoch=epoch, train_loss=total/count, validation_mse_pp2=vmse))
         if vmse < best-1e-7:
-            best, state, stale, chosen = vmse, copy.deepcopy(model.state_dict()), 0, epoch
+            best, state, stale, chosen = vmse, {k:v.detach().cpu().clone() for k,v in model.state_dict().items()}, 0, epoch
         else:
             stale += 1
         if stale >= args.patience:
             break
     model.load_state_dict(state)
     torch.save(dict(state_dict=state, kind=kind, seed=seed, hidden=16, lookback=16,
-                    groups=[sorted(g) for g in groups], features=5, epoch=chosen), folder/f'{kind}_{seed}.pt')
+                    groups=[sorted(g) for g in groups], features=5, epoch=chosen,
+                    training_device=device_metadata(device)), folder/f'{kind}_{seed}.pt')
     write_json(folder/f'{kind}_{seed}_history.json', history)
     return model, chosen, len(history)
 
@@ -159,6 +162,7 @@ def main():
     parser.add_argument('--datasets', nargs='+', default=['modern12', 'NYSE', 'NASDAQ'])
     parser.add_argument('--test-years', type=int, nargs='+', default=None)
     parser.add_argument('--workers', type=int, default=1)
+    parser.add_argument('--device', choices=['auto','cpu','cuda'], default='auto')
     parser.add_argument('--reuse-fits-from', type=Path, default=None,
                         help='Reuse completed fits from an interrupted run only after input/checkpoint/prediction checks.')
     parser.add_argument('--variants', nargs='+', default=VARIANTS)
@@ -168,6 +172,10 @@ def main():
     parser.add_argument('--batch', type=int, default=8)
     parser.add_argument('--lr', type=float, default=.001)
     args = parser.parse_args()
+    device = configure_device(args.device)
+    args.device = device.type
+    if device.type == 'cuda' and args.workers != 1:
+        parser.error('Use --workers 1 for the single laptop GPU, or --device cpu for parallel CPU workers.')
     if args.out.exists():
         parser.error('Choose a fresh output directory; no results are overwritten.')
     args.out.mkdir(parents=True)
@@ -190,8 +198,9 @@ def main():
                     sources=['https://github.com/SJTU-DMTai/StockMixer', 'https://github.com/SJTU-DMTai/MASTER',
                              'https://arxiv.org/abs/2609.25617', 'https://tylersnetwork.github.io/papers/icdm22-think.pdf'],
                     python=platform.python_version(), torch=str(torch.__version__), numpy=np.__version__, pandas=pd.__version__,
+                    training_backend=device_metadata(device),
                     code_hashes={f:hashlib.sha256(Path(f).read_bytes()).hexdigest() for f in
-                                 ['run_architecture_research.py', 'research_engine.py', 'research_models.py', 'think_model.py']})
+                                 ['run_architecture_research.py', 'research_engine.py', 'research_models.py', 'think_model.py', 'training_device.py']})
     write_json(args.out/'PROTOCOL.json', protocol)
     if any(name.endswith('_recent') for name in args.datasets):
         extra_sources = ['config/recent_identity_exclusions.json', 'data/recent_cohorts/manifest.json',
@@ -209,6 +218,9 @@ def main():
     reused = []
     if args.reuse_fits_from:
         previous_protocol = json.loads((args.reuse_fits_from/'PROTOCOL.json').read_text())
+        previous_backend = previous_protocol.get('training_backend',{}).get('device','cpu')
+        if previous_backend != args.device or previous_protocol['torch'] != str(torch.__version__):
+            raise ValueError('Fit reuse requires matching training backend and PyTorch build. Use a fresh run for CUDA; old CPU results remain valid.')
         for source in ['research_models.py', 'think_model.py']:
             assert previous_protocol['code_hashes'][source] == protocol['code_hashes'][source]
         for key in ['epochs', 'patience', 'batch', 'lr', 'seeds']:
@@ -256,9 +268,9 @@ def main():
                             oldscale = np.load(oldfolder/'preprocessing.npz')
                             for key, value in [('mean',mean),('std',std),('train',train),('validation',val),('test',test)]:
                                 np.testing.assert_array_equal(oldscale[key], value)
-                            checkpoint = torch.load(oldfolder/f'{kind}_{seed}.pt', weights_only=False)
+                            checkpoint = torch.load(oldfolder/f'{kind}_{seed}.pt', weights_only=False, map_location='cpu')
                             assert checkpoint['groups'] == [sorted(g) for g in groups]
-                            model = RankModel(kind, len(data['panel'].tickers), groups)
+                            model = RankModel(kind, len(data['panel'].tickers), groups).to(device)
                             model.load_state_dict(checkpoint['state_dict'])
                             vp, tp = predict(model, x, data['mask'], val, args.batch), predict(model, x, data['mask'], test, args.batch)
                             previous = np.load(oldfolder/f'{kind}_predictions.npz')

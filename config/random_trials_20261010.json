@@ -1,0 +1,21 @@
+{
+  "created": "2026-10-10",
+  "purpose": "Finite exploratory replication requested by user after existing outcomes were seen",
+  "sampling_seeds": [101, 202, 303],
+  "sample_size": 100,
+  "source": "Unmodified published 2017 source-cohort lists, sampled before downloads, no missing-name replacements",
+  "test_years": [2022, 2023, 2024, 2025],
+  "models": ["think", "think_mix", "think_huber", "think_mix_huber"],
+  "training_seeds": [7, 19, 42],
+  "horizon": 5,
+  "epochs": 30,
+  "patience": 6,
+  "batch": 8,
+  "lr": 0.001,
+  "primary_policy": "Equal top 10, fixed before new results",
+  "secondary_policy": "Existing prior-validation-only choice among K5/K10/K20 and five policies",
+  "controls": ["ridge", "momentum126", "reversal5", "buy_hold", "equal_universe", "SPY", "QQQ for NASDAQ"],
+  "identity_rule": "Reject known reused symbols and old-cohort symbols whose downloaded histories begin after 2018; retain as missing, no replacement",
+  "stop_rule": "Report all three draws, all seeds and all specified models without adaptive additions",
+  "limitations": ["Historical source lists themselves have survivorship bias", "Public data missing delisted issuers", "Ticker identity only partially verified", "Overlapping draws on the same dates are dependent", "Three draws estimate sensitivity, not statistical confirmation", "No NYSX ETF history exists in 2022-2025"]
+}

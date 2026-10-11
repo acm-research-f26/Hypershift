@@ -1,0 +1,1 @@
+Rendered from the corrected published deck. NYSE uses a simulated cohort basket; NASDAQ uses QQQ; SPY supplies market context. NYSX launched March 25, 2026 and has no 2022-2025 ETF history. Its index spans exchanges. Fresh trial results are in docs/random_trials_20261010/CHARTS.md.

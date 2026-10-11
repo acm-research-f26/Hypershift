@@ -1,0 +1,229 @@
+{
+  "status": "corrected_without_retraining",
+  "issue": "Original frozen prediction files contain last-epoch validation arrays, but best-epoch test forecasts",
+  "correction": "Selected-checkpoint validation arrays exported separately; original fit files and hashes preserved",
+  "selection": "Checkpoint epochs verified against prior-validation MSE histories; no test return used",
+  "training_and_test_predictions_changed": false,
+  "exports": [
+    {
+      "year": 2022,
+      "seed": 7,
+      "selected_epoch": 8,
+      "original_export_epoch": 14,
+      "original_mse": 22.020980834960938,
+      "selected_mse": 21.88629722595215,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2022\\think_mix_pseudohuber_7.npz",
+      "sha256": "d41b40ec6ad488800c233a2e1a2c6250372174626a262ab5fb8bfd947f3fb179",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2022,
+      "seed": 19,
+      "selected_epoch": 7,
+      "original_export_epoch": 13,
+      "original_mse": 21.996261596679688,
+      "selected_mse": 21.879077911376953,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2022\\think_mix_pseudohuber_19.npz",
+      "sha256": "a72658dfbdf31076ccf0ccd079f6800dc6568d604628f9ccc0f7e5009b05ec66",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2022,
+      "seed": 42,
+      "selected_epoch": 10,
+      "original_export_epoch": 16,
+      "original_mse": 22.580148696899414,
+      "selected_mse": 21.868125915527344,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2022\\think_mix_pseudohuber_42.npz",
+      "sha256": "feb1a60f3faf05e28dc7ca7b2194e69136767381f6d7e70a4eb183544e35249c",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2022,
+      "seed": 61,
+      "selected_epoch": 7,
+      "original_export_epoch": 13,
+      "original_mse": 22.229204177856445,
+      "selected_mse": 21.900339126586914,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2022\\think_mix_pseudohuber_61.npz",
+      "sha256": "694cd3506505373dd294271e0c5dd026a96754c5af3e07911dea4462ed5a8aaa",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2022,
+      "seed": 97,
+      "selected_epoch": 9,
+      "original_export_epoch": 15,
+      "original_mse": 21.99753761291504,
+      "selected_mse": 21.889385223388672,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2022\\think_mix_pseudohuber_97.npz",
+      "sha256": "104957ac03e2536836da031d27cf3ccec184bdbe6dc81894f12d1bdd9c3ba479",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2023,
+      "seed": 7,
+      "selected_epoch": 1,
+      "original_export_epoch": 7,
+      "original_mse": 39.96596908569336,
+      "selected_mse": 38.782440185546875,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2023\\think_mix_pseudohuber_7.npz",
+      "sha256": "e48c605874a065a9db8ba81cae65c36b40f5a6f27f7635e3cc766d97dc3f3761",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2023,
+      "seed": 19,
+      "selected_epoch": 1,
+      "original_export_epoch": 7,
+      "original_mse": 39.69689178466797,
+      "selected_mse": 38.73957824707031,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2023\\think_mix_pseudohuber_19.npz",
+      "sha256": "f00c4502163c4a74a21d891595b891cc628653601bfbbd8fd33eed0073fe380e",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2023,
+      "seed": 42,
+      "selected_epoch": 1,
+      "original_export_epoch": 7,
+      "original_mse": 39.68419647216797,
+      "selected_mse": 38.7799072265625,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2023\\think_mix_pseudohuber_42.npz",
+      "sha256": "c123346c8b712d450569913783028eafac8f016939efc93d07d48b927303d58b",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2023,
+      "seed": 61,
+      "selected_epoch": 1,
+      "original_export_epoch": 7,
+      "original_mse": 40.22565841674805,
+      "selected_mse": 38.79444885253906,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2023\\think_mix_pseudohuber_61.npz",
+      "sha256": "0e7479cf4f58da455ab4cfa34991a83a785730e8ce625e6b387c36f2e901146f",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2023,
+      "seed": 97,
+      "selected_epoch": 1,
+      "original_export_epoch": 7,
+      "original_mse": 39.65476989746094,
+      "selected_mse": 38.823028564453125,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2023\\think_mix_pseudohuber_97.npz",
+      "sha256": "4d2cf036a250632214a9f7f4b9ffcfd9352bf69a4abbdf73c70e70740b4bedca",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2024,
+      "seed": 7,
+      "selected_epoch": 10,
+      "original_export_epoch": 16,
+      "original_mse": 22.34998321533203,
+      "selected_mse": 22.217281341552734,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2024\\think_mix_pseudohuber_7.npz",
+      "sha256": "d3b1783d500c5d81790a03c08e32b2d687b6d9fa4868d71bd9218f7e45b410ed",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2024,
+      "seed": 19,
+      "selected_epoch": 8,
+      "original_export_epoch": 14,
+      "original_mse": 22.498046875,
+      "selected_mse": 22.293977737426758,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2024\\think_mix_pseudohuber_19.npz",
+      "sha256": "e18d7abec7b2fba8294a11285d2ef7b91fb67a8c9381b54ab2b0feec71c715df",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2024,
+      "seed": 42,
+      "selected_epoch": 9,
+      "original_export_epoch": 15,
+      "original_mse": 22.769914627075195,
+      "selected_mse": 22.30071449279785,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2024\\think_mix_pseudohuber_42.npz",
+      "sha256": "39ded22c416acaa2156271451456da88aa305efe093a9f4c5a28b6574e2001c5",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2024,
+      "seed": 61,
+      "selected_epoch": 7,
+      "original_export_epoch": 13,
+      "original_mse": 22.6023006439209,
+      "selected_mse": 22.36924934387207,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2024\\think_mix_pseudohuber_61.npz",
+      "sha256": "f0f09066325828752ea3f5793f0e282ab0e22af057bcbe6a393da315fcfb2810",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2024,
+      "seed": 97,
+      "selected_epoch": 18,
+      "original_export_epoch": 24,
+      "original_mse": 22.590839385986328,
+      "selected_mse": 22.150070190429688,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2024\\think_mix_pseudohuber_97.npz",
+      "sha256": "761c3349b65b8b8c7151301898a155738a0a6f43aabd67f392da910e9fcc0a08",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2025,
+      "seed": 7,
+      "selected_epoch": 19,
+      "original_export_epoch": 25,
+      "original_mse": 24.486848831176758,
+      "selected_mse": 24.443004608154297,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2025\\think_mix_pseudohuber_7.npz",
+      "sha256": "acbe9d5cf6186b9f1321786300fdd24890e21abff81c8c656cee0b844b8fbddf",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2025,
+      "seed": 19,
+      "selected_epoch": 16,
+      "original_export_epoch": 22,
+      "original_mse": 24.547136306762695,
+      "selected_mse": 24.484407424926758,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2025\\think_mix_pseudohuber_19.npz",
+      "sha256": "11e8d90f6f3e99eb48685b9ba86fcdbb9d71b6c9d9670a8e4c6d2d052b661e3c",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2025,
+      "seed": 42,
+      "selected_epoch": 11,
+      "original_export_epoch": 17,
+      "original_mse": 24.618616104125977,
+      "selected_mse": 24.5528564453125,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2025\\think_mix_pseudohuber_42.npz",
+      "sha256": "ca43b6e1a53600b6553d150a7bfb9aebbddb767498cc5501b108be38ffb89800",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2025,
+      "seed": 61,
+      "selected_epoch": 8,
+      "original_export_epoch": 14,
+      "original_mse": 24.753814697265625,
+      "selected_mse": 24.618284225463867,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2025\\think_mix_pseudohuber_61.npz",
+      "sha256": "907cd5cbc91a5163c56bc669432f22b0ff50b0f8ee75b3f7e5de478e9db175da",
+      "test_forecasts_unchanged": true
+    },
+    {
+      "year": 2025,
+      "seed": 97,
+      "selected_epoch": 21,
+      "original_export_epoch": 27,
+      "original_mse": 24.538057327270508,
+      "selected_mse": 24.410295486450195,
+      "corrected_file": "runs\\nasdaq_topk_pseudohuber_20261011\\selected_validation\\2025\\think_mix_pseudohuber_97.npz",
+      "sha256": "18cdb7f63467f040d8a71b124272e6105ce72c59d48605add2eef92208fdbb95",
+      "test_forecasts_unchanged": true
+    }
+  ]
+}

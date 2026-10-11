@@ -56,7 +56,7 @@ def main():
                   buy_hold='#888888', equal_universe='#247A45')
     metrics, curve_rows, figures, inventory = [], [], [], []
     paths = {}
-    groups = [(h, d) for h in [5, 1] for d in ['NASDAQ_recent', 'NYSE_recent']]
+    groups = [(int(h), d) for h, d in old[['horizon','dataset']].drop_duplicates().itertuples(index=False,name=None)]
     for h, dataset in groups:
         subset = old[(old.horizon == h) & (old.dataset == dataset)]
         kinds = subset.model.tolist() + ['qqq']
@@ -159,6 +159,11 @@ def main():
         return name
 
     image_sections = []
+    focus_dataset = next(d for h,d in groups if h == 5 and d.startswith('NASDAQ'))
+    focus_group = output[(output.horizon == 5) & (output.dataset == focus_dataset)].set_index('model')
+    focus_sr = focus_group.loc['think_mix_huber','net_sharpe']
+    spy_sr = focus_group.loc['market_proxy','net_sharpe']
+    qqq_sr = focus_group.loc['qqq','net_sharpe']
     sections = ['# Combined 2022–2025 model and ETF comparison', '',
                 'These charts combine the saved annual backtest returns without changing predictions, portfolios or costs. '
                 'All original pooled gross/net performance metrics were recomputed and verified against the previous report. '
@@ -169,8 +174,8 @@ def main():
                 'Sharpes reflect those calendars. Sharpe uses 252 sessions and a fixed 3% annual hurdle.', '',
                 'Every model keeps its separately validation-selected portfolio for each year. The highlighted hybrid is '
                 'an exploratory candidate identified after seeing results, not the validation-selected architecture procedure. '
-                'Its NASDAQ five-session Sharpe remains **0.675**, versus **SPY 0.621** and **QQQ 0.626**. '
-                'The existing confidence intervals include zero advantage.', '',
+                f'Its NASDAQ five-session Sharpe is **{focus_sr:.3f}**, versus **SPY {spy_sr:.3f}** and **QQQ {qqq_sr:.3f}**. '
+                'Refer to the paired uncertainty ranges before interpreting an apparent advantage.', '',
                 '[All metrics CSV](combined_2022_2025_metrics.csv) | [Underlying dated returns and curves](combined_2022_2025_curves.csv)', '']
     for h, dataset in groups:
         name = draw(h, dataset)
@@ -199,7 +204,7 @@ def main():
                                 f'{r.delta_spy:.3f} | [{r.delta_spy_ci_low:.3f}, {r.delta_spy_ci_high:.3f}] | '
                                 f'{r.delta_qqq:.3f} | [{r.delta_qqq_ci_low:.3f}, {r.delta_qqq_ci_high:.3f}] |')
             sections.append('')
-    focus = draw(5, 'NASDAQ_recent', True)
+    focus = draw(5, focus_dataset, True)
     sections += ['## Focus: THINK, the mixer hybrid and ETF controls', '', f'![Hybrid comparison](figures/{focus})', '',
                  'Ranking metrics pool prediction periods across the eligible stock universe, not only portfolio holdings. '
                  'ICIR/RankICIR are unannualized mean-to-standard-deviation ratios. Turnover and profitable-rebalance-period '
@@ -208,7 +213,7 @@ def main():
                  'holding periods, without extra ETF rebalancing. Profitable trading days are reported for all curves. '
                  'All gross metrics, zero-hurdle Sharpes and existing exploratory uncertainty intervals remain in the CSV.', '']
     (root / 'COMBINED_2022_2025.md').write_text('\n'.join(sections), encoding='utf-8')
-    intro = ('The **0.675** NASDAQ THINK+mixer+Huber result is the blue dashed curve in the five-session NASDAQ chart below. '
+    intro = (f'The **{focus_sr:.3f}** NASDAQ THINK+mixer+Huber result is the blue dashed curve in the five-session NASDAQ chart below. '
              'Each legend shows pooled net Sharpe. [Complete pooled metric tables](COMBINED_2022_2025.md).\n\n'
              'Annual cash resets and boundary gaps remain; these are synthetic fold-compounded curves. '
              'Models and portfolio choices are unchanged.\n\n')
@@ -216,9 +221,9 @@ def main():
     insert_section(root / 'REPORT.md', '## Combined curves and complete pooled ETF tables',
                    '[Open the combined 2022–2025 curves and tables](COMBINED_2022_2025.md). '
                    'All tested models appear alongside SPY and QQQ, with pooled Sharpe in each legend. '
-                   'The NASDAQ five-session hybrid remains 0.675. Existing experiment results and selections are unchanged.')
-    assert len(output) == 76 and len(inventory) == 76
-    assert round(output.query("horizon == 5 and dataset == 'NASDAQ_recent' and model == 'think_mix_huber'").net_sharpe.iloc[0], 3) == .675
+                   f'The NASDAQ five-session hybrid is {focus_sr:.3f}. Existing experiment results and selections are unchanged.')
+    expected_series = len(old) + len(groups)
+    assert len(output) == expected_series and len(inventory) == expected_series
     (root / 'combined_curve_audit.json').write_text(json.dumps(dict(
         model_control_series=len(inventory), figures=figures, curves=inventory, inputs=input_hashes,
         source_sha256=digest(__file__), existing_pooled_metrics_verified=True,

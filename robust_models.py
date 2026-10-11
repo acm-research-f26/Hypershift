@@ -13,7 +13,32 @@ EXPERIMENTS.update({
     'think_mix_shrink_huber': dict(base='think_mix', loss='huber', shrink=.1),
     'multiscale_mse': dict(base='multiscale', loss='mse'),
     'multiscale_huber': dict(base='multiscale', loss='huber'),
+    'think_mix_huber_rank_01': dict(base='think_mix', loss='huber', ranking_weight=.1),
+    'think_mix_huber_rank_03': dict(base='think_mix', loss='huber', ranking_weight=.3),
+    'think_mix_huber_rank_10': dict(base='think_mix', loss='huber', ranking_weight=1.),
 })
+
+
+def pairwise_logistic_loss(score, y, mask, temperature=1., min_gap=.1):
+    """Date-balanced ranking loss; scores/targets are percentage points.
+
+    Only uniquely counted, observable same-date pairs with >=0.1pp target
+    separation enter. Sign labels bound each pair's gradient independently of
+    realized return magnitude. No across-date pairs or sampled future labels.
+    """
+    dp = score[:, :, None] - score[:, None, :]
+    dy = y[:, :, None] - y[:, None, :]
+    valid = (mask[:, :, None].bool() & mask[:, None, :].bool()
+             & (dy.abs() >= min_gap))
+    valid &= torch.ones_like(valid, dtype=torch.bool).triu(diagonal=1)
+    # Sanitize unobservable labels/scores before arithmetic so NaNs outside the
+    # mask cannot enter either the objective or its gradients.
+    safe_dp = torch.where(valid, dp, torch.zeros_like(dp))
+    safe_sign = torch.where(valid, dy.sign(), torch.zeros_like(dy))
+    terms = F.softplus(-safe_sign*safe_dp/temperature)
+    count = valid.sum((1, 2))
+    daily = (terms*valid).sum((1, 2))/count.clamp_min(1)
+    return daily.sum()/(count > 0).sum().clamp_min(1)
 
 
 class CausalMix(nn.Module):
@@ -56,11 +81,11 @@ class MultiscaleMixer(nn.Module):
         return self.head(torch.cat([local, local+market], -1)).squeeze(-1), None
 
 
-def make_model(kind, nodes, groups):
+def make_model(kind, nodes, groups, causal_membership=False):
     spec = EXPERIMENTS[kind]
     if spec['base'] == 'multiscale':
         return MultiscaleMixer(nodes)
-    model = RankModel(spec['base'], nodes, groups)
+    model = RankModel(spec['base'], nodes, groups, causal_membership=causal_membership)
     if 'shrink' in spec:
         # Same initialization/parameters as the unconstrained mixer; only its
         # residual contribution changes. Saved in the experiment specification.
@@ -87,6 +112,8 @@ def robust_objective(score, y, mask, kind, auxiliary=None, risk=None):
     point = (2*F.huber_loss(score, y, reduction='none', delta=1.)
              if spec['loss'] == 'huber' else (score-y).square())
     loss = (point*mask).sum()/mask.sum().clamp_min(1)
+    if 'ranking_weight' in spec:
+        loss = loss + spec['ranking_weight']*pairwise_logistic_loss(score, y, mask)
     if base in ['stockmixer', 'multiscale']:
         dp = score[:, :, None]-score[:, None, :]
         dy = y[:, :, None]-y[:, None, :]

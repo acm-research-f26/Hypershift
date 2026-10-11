@@ -33,7 +33,7 @@ setuptools==78.1.0
 six==1.17.0
 soupsieve==2.9.2
 sympy==1.14.0
-torch==2.14.0+cpu
+torch==2.14.0+cu130
 typing-extensions==4.16.0
 tzdata==2026.4
 urllib3==2.8.0

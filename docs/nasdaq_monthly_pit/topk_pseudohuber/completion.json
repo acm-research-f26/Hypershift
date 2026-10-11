@@ -1,0 +1,15 @@
+{
+  "status": "completed_exploratory_extension",
+  "new_neural_fits": 20,
+  "combined_portfolio_paths": 204,
+  "parent_paths_reused": 120,
+  "new_portfolio_paths": 84,
+  "portfolio_sizes": [
+    5,
+    10,
+    20
+  ],
+  "first_date": "2022-01-03",
+  "last_date": "2025-12-31",
+  "annual_resets": 0
+}

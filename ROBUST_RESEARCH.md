@@ -1,5 +1,16 @@
 # Robust losses, portfolio construction and daily forecasting
 
+<!-- benchmark-audit-20261010:start -->
+NYSX is the passive Global X NYSE 100 ETF. It launched March 25, 2026 and has no tradable 2022–2025 history. Its index covers technology and growth companies across exchanges, not the 100 largest NYSE-listed companies. NYSX performance is unavailable here. NYSE historical charts use the simulated equal-weight cohort basket (scheduled rebalances and modeled costs), not an ETF. NASDAQ charts retain QQQ; SPY supplies broad-market context. [Issuer and inception](https://www.globalxetfs.com/funds/nysx/) and [prospectus](https://assets.globalxetfs.com/funds/documents/nysx/prospectus-regulatory/Summary-Prospectus_NYSX.pdf).
+
+The refreshed CHARTS.md pages are the current visual record. Earlier ETF-overlay descriptions are superseded by this correction. Audited return paths and training selections remain preserved.
+<!-- benchmark-audit-20261010:end -->
+
+The separate October 8 [Huber plus ranking follow-up](docs/HUBER_RANKING.md)
+is complete under [its own frozen plan](config/huber_ranking_experiment_plan.json).
+Its three new five-session variants and uncertainty tables are in
+`runs/huber_ranking_2022_2025` and `docs/`; the original protocol below is retained.
+
 This extension follows [the frozen experiment plan](config/robust_experiment_plan.json). It uses the existing public-data snapshot for 2022-2025 and preserves every earlier result directory. The paper's actual claims and differences from our pipeline are explained in [the StockMixer review](STOCKMIXER_PAPER_REVIEW.md).
 
 **Status: complete.** Read the [report](runs/robust_comparison/REPORT.md),
@@ -70,8 +81,8 @@ The stop rule is to finish this predeclared batch and report every outcome. Ther
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest -v test_research test_robust_research
-.\.venv\Scripts\python.exe run_robust_research.py --workers 3 --out runs/robust_new
-.\.venv\Scripts\python.exe run_robust_research.py --workers 3 --horizon 1 --batch 40 --variants think think_huber think_mix think_mix_huber stockmixer stockmixer_huber multiscale_mse multiscale_huber --out runs/daily_new
+.\.venv\Scripts\python.exe run_robust_research.py --device cpu --workers 3 --out runs/robust_new
+.\.venv\Scripts\python.exe run_robust_research.py --device cpu --workers 3 --horizon 1 --batch 40 --variants think think_huber think_mix think_mix_huber stockmixer stockmixer_huber multiscale_mse multiscale_huber --out runs/daily_new
 .\.venv\Scripts\python.exe report_robust_research.py --runs runs/robust_new runs/daily_new --out runs/comparison_new
 .\.venv\Scripts\python.exe plot_robust_diagnostics.py --run runs/comparison_new
 .\.venv\Scripts\python.exe summarize_robust_findings.py --run runs/comparison_new

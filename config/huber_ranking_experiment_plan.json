@@ -1,0 +1,22 @@
+{
+  "name": "THINK+mixer Huber plus pairwise ranking, finite follow-up",
+  "created": "2026-10-08",
+  "horizon": 5,
+  "datasets": ["NYSE_recent", "NASDAQ_recent"],
+  "test_years": [2022, 2023, 2024, 2025],
+  "seeds": [7, 19, 42],
+  "new_variants": ["think_mix_huber_rank_01", "think_mix_huber_rank_03", "think_mix_huber_rank_10"],
+  "reuse_baselines": ["think_mix_huber", "think_mix", "think"],
+  "ranking_weights": [0.1, 0.3, 1.0],
+  "architecture": "Identical THINK+mixer, including initialization and parameter count; only training objective changes.",
+  "objective": "2*Huber(delta=1pp) plus lambda*pairwise logistic; unique valid same-date pairs; ignore target gaps below 0.1pp; sign labels; temperature=1pp; average within date then over dates with pairs.",
+  "training": "Same data, chronological splits, label purges, feature scalers, groups, 30 maximum epochs, patience=6, validation-MSE checkpoint selection, batch=8, AdamW lr=.001 decay=.001, clip gradient=1.",
+  "primary_comparison": "Fixed equal-weight K10; alpha including zero selected per test year using current-and-prior validation candidate scores, median minus .25 std. Three seed rank ensemble; no seed picking.",
+  "secondary_comparison": "Each model's validation-selected portfolio, plus causal alpha selection including zero from current-and-prior validation-policy scores. All fixed lambda results and equal K5/10/20 sensitivities shown.",
+  "controls": ["THINK", "THINK+mixer MSE", "THINK+mixer Huber", "SPY", "QQQ", "all previous five-session models and simple benchmarks in comparison charts"],
+  "costs": "Unchanged per-side 2bp commission +5bp slippage +3bp sqrt(participation/1%); initial NAV $1m; 1% lagged ADV trade cap; signal-time ADV >=$1m; next-close execution; annual account reset.",
+  "uncertainty": "1000 paired circular 20-session blocks, separately by annual fold; 95% percentile Sharpe and delta intervals. Include paired gains vs Huber and ETFs; no multiple-comparison correction or retraining inside bootstrap.",
+  "robustness": "Report all years/seeds, K5/10/20, full-universe IC/RankIC/ICIR/RankICIR/NDCG, turnover, win rate, gross/net performance and cost stress.",
+  "stop_rule": "Complete this finite grid once. Do not add variants or change alpha, early stopping, K or portfolio rules after viewing test metrics.",
+  "limitations": "2022-2025 already examined and motivated this follow-up; exploratory reused-test evidence. Historical survivor cohorts, missing delisted prices, revised vendor data and annual-fold gaps remain. Fresh confirmation data needed before claiming improvement."
+}

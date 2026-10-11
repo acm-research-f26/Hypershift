@@ -1,5 +1,6 @@
 """Audit saved chronological folds and causal preprocessing without retraining."""
 import copy
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -14,6 +15,14 @@ RUNS = {5: Path('runs/robust_2022_2025_final'), 1: Path('runs/daily_2022_2025_fi
 
 
 def main():
+    global ROOT, RUNS
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--runs', type=Path, nargs='+', default=list(RUNS.values()))
+    parser.add_argument('--out', type=Path, default=ROOT)
+    args = parser.parse_args()
+    ROOT = args.out
+    ROOT.mkdir(parents=True, exist_ok=True)
+    RUNS = {int(json.loads((path/'PROTOCOL.json').read_text())['horizon']):path for path in args.runs}
     rows = []
     source_checks = 0
     for horizon, root in RUNS.items():
@@ -25,7 +34,7 @@ def main():
         lock = json.loads((root / 'SELECTION_LOCK.json').read_text())
         for policy in policies:
             assert policy['selected'] == max(policy['candidates'], key=lambda r: r['score'])
-        for dataset in ['NYSE_recent', 'NASDAQ_recent']:
+        for dataset in protocol['arguments']['datasets']:
             panel = load_panel(dataset)
             data = prepare_panel(panel, horizon=horizon)
             for year in [2022, 2023, 2024, 2025]:
@@ -110,12 +119,12 @@ def main():
              '## Exact saved signal dates', '',
              'Dates below apply to both cohorts. Labels mature after signal dates, as shown in the next table.', '',
              '| Horizon | Test year | Training signals | Validation signals | Test signals |', '|---|---|---|---|---|']
-    for _, r in frame[frame.dataset == 'NYSE_recent'].iterrows():
+    for _, r in frame[frame.dataset == frame.dataset.iloc[0]].iterrows():
         lines.append(f'| {r.horizon} | {r.test_year} | {r.train_start} to {r.train_end} | '
                      f'{r.validation_start} to {r.validation_end} | {r.test_start} to {r.test_end} |')
     lines += ['', '| Horizon | Test year | Last training outcome | First validation signal | Last validation outcome | First test signal |',
               '|---|---|---|---|---|---|']
-    for _, r in frame[frame.dataset == 'NYSE_recent'].iterrows():
+    for _, r in frame[frame.dataset == frame.dataset.iloc[0]].iterrows():
         lines.append(f'| {r.horizon} | {r.test_year} | {r.train_labels_end} | {r.validation_start} | '
                      f'{r.validation_labels_end} | {r.test_start} |')
     lines += ['', '## Checks performed', '',

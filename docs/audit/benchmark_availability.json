@@ -1,0 +1,15 @@
+{
+  "as_of": "2026-10-10",
+  "requested_etf": "NYSX",
+  "inception": "2026-03-25",
+  "historical_2022_2025": "unavailable",
+  "NYSE_historical_reference": "equal_universe simulated cohort basket",
+  "NASDAQ_reference": "QQQ",
+  "source": "https://www.globalxetfs.com/funds/nysx/",
+  "updated_charts": [
+    "runs\\robust_comparison\\CHARTS.md",
+    "docs\\CHARTS.md",
+    "runs\\largecap_20261010\\comparison\\CHARTS.md",
+    "docs\\largecap_retraining_20261010\\CHARTS.md"
+  ]
+}

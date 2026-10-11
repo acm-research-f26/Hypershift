@@ -1,5 +1,6 @@
 """Recompute matched pooled Sharpe intervals; never tune or select models."""
 import hashlib
+import argparse
 import json
 from pathlib import Path
 import numpy as np
@@ -52,7 +53,14 @@ def fmt_ci(low, high):
 
 
 def main():
+    global ROOT
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--run', type=Path, default=ROOT)
+    ROOT = parser.parse_args().run
     curves = pd.read_csv(ROOT / 'combined_2022_2025_curves.csv')
+    selection_lock = json.loads((ROOT/'COMBINED_SELECTION_LOCK.json').read_text())
+    run_roots = {int(item['horizon']):Path(item['run'])
+                 for group in selection_lock['candidates'].values() for item in group}
     original = pd.read_csv(ROOT / 'pooled_model_vs_spy_qqq.csv')
     records, boot, actual = [], {}, {}
     for (h, d), group in curves.groupby(['horizon', 'dataset']):
@@ -121,7 +129,7 @@ def main():
                 a, b = boot[(h,d,'think_mix_huber')], boot[(h,d,'think_mix')]
                 sr_a, sr_b = actual[(h,d,'think_mix_huber')], actual[(h,d,'think_mix')]
             else:
-                root = Path('runs/robust_2022_2025_final' if h == 5 else 'runs/daily_2022_2025_final')
+                root = run_roots[h]
                 paths = {}
                 for kind in ['think_mix', 'think_mix_huber']:
                     pieces = [pd.read_csv(root / f'{d}_{y}' / f'{kind}_equal_k10_daily.csv') for y in range(2022,2026)]
@@ -187,7 +195,7 @@ def main():
 
 
 def boot_keys(frame):
-    return [(h,d) for h in [5,1] for d in ['NASDAQ_recent','NYSE_recent']]
+    return [(int(h),d) for h,d in frame[['horizon','dataset']].drop_duplicates().itertuples(index=False,name=None)]
 
 
 def ci_row(r, prefix):

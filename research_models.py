@@ -8,9 +8,11 @@ VARIANTS = ['think', 'think_rank', 'think_gate', 'think_mix', 'think_risk',
 
 
 class RankModel(nn.Module):
-    def __init__(self, kind, nodes, groups, features=5, lookback=16, hidden=16):
+    def __init__(self, kind, nodes, groups, features=5, lookback=16, hidden=16, causal_membership=False):
         super().__init__()
         self.kind = kind
+        # Opt in only for the historical membership study. Keep archived fits reproducible.
+        self.causal_membership = causal_membership
         self.gate = nn.Sequential(nn.Linear(features, features), nn.Sigmoid())
         if kind.startswith('think'):
             self.base = ThinkReconstruction(features, nodes, groups, hidden,
@@ -44,13 +46,13 @@ class RankModel(nn.Module):
     def forward(self, x, eligible):
         # All market information is contemporaneous and masked by signal-time eligibility.
         mask = eligible[:, None, :, None]
-        x = x * mask
+        x = torch.where(mask.bool(),x,torch.zeros_like(x)) if self.causal_membership else x * mask
         market = x.sum(2, keepdim=True) / mask.sum(2, keepdim=True).clamp_min(1)
         if self.kind == 'think_gate' or self.kind == 'market_transformer':
             x = x * (2*self.gate(market))
         auxiliary = None
         if self.kind.startswith('think'):
-            score = self.base(x)
+            score = self.base(x,eligible) if self.causal_membership else self.base(x)
             if self.kind == 'think_mix':
                 score = score + self.market(score*eligible)
             if self.kind == 'think_risk':
@@ -69,6 +71,9 @@ class RankModel(nn.Module):
             h = h + self.temporal(h)
             h = h.permute(0, 1, 3, 2)
             h = h + self.channel(h)
+            if self.causal_membership:
+                # Local biases at missing nodes must not enter cross-stock mixing.
+                h = torch.where(eligible[:, :, None, None].bool(),h,torch.zeros_like(h))
             h = h + self.market(h.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
             score = self.head(h.flatten(-2)).squeeze(-1)
         else:
@@ -78,6 +83,8 @@ class RankModel(nn.Module):
             # At least two eligible names are enforced upstream.
             cross, _ = self.cross(h, h, h, key_padding_mask=~eligible.bool(), need_weights=False)
             score = self.head(self.norm(h+cross)).squeeze(-1)
+        if self.causal_membership:
+            score = torch.where(eligible.bool(),score,torch.zeros_like(score))
         return score, auxiliary
 
 

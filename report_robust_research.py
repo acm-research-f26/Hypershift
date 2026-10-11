@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
@@ -12,13 +13,17 @@ import pandas as pd
 from research_engine import load_panel, prepare_panel, fold_indices, performance
 from robust_engine import backtest
 from run_architecture_research import robust_score, write_json
+from run_robust_research import model_data
 from report_architecture_research import LABELS as ORIGINAL_LABELS, table
 
 LABELS = dict(ORIGINAL_LABELS, market_proxy='SPY',
               think_huber='THINK / Huber', think_mix_huber='THINK+mixer / Huber',
               stockmixer_huber='StockMixer / Huber', think_mix_shrink='THINK+mixer x0.1 / MSE',
               think_mix_shrink_huber='THINK+mixer x0.1 / Huber',
-              multiscale_mse='Multi-scale mixer / MSE', multiscale_huber='Multi-scale mixer / Huber')
+              multiscale_mse='Multi-scale mixer / MSE', multiscale_huber='Multi-scale mixer / Huber',
+              think_mix_huber_rank_01='THINK+mixer / Huber + rank 0.1',
+              think_mix_huber_rank_03='THINK+mixer / Huber + rank 0.3',
+              think_mix_huber_rank_10='THINK+mixer / Huber + rank 1.0')
 PAIRS = [('think', 'think_huber'), ('think_mix', 'think_mix_huber'),
          ('stockmixer', 'stockmixer_huber'), ('think_mix_shrink', 'think_mix_shrink_huber'),
          ('multiscale_mse', 'multiscale_huber'), ('think_mix', 'think_mix_shrink'),
@@ -63,6 +68,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--runs', type=Path, nargs='+', default=[Path('runs/robust_2022_2025'), Path('runs/daily_2022_2025')])
     parser.add_argument('--out', type=Path, default=Path('runs/robust_comparison'))
+    parser.add_argument('--data-root', type=Path, default=Path('data/recent_cohorts'))
     args = parser.parse_args()
     out = args.out
     out.mkdir(exist_ok=True)
@@ -75,7 +81,9 @@ def main():
         for source, expected in protocol['code_hashes'].items():
             assert digest(source) == expected, source
             assert digest(root/'source_snapshot'/Path(source).name) == expected
-        assert digest('config/robust_experiment_plan.json') == protocol['experiment_plan_sha256']
+        plan_path = protocol['arguments'].get('experiment_plan', 'config/robust_experiment_plan.json')
+        assert digest(plan_path) == protocol['experiment_plan_sha256']
+        assert digest(root/'EXPERIMENT_PLAN.json') == protocol['experiment_plan_sha256']
         for source, expected in json.loads((root/'DATA_INPUT_LOCK.json').read_text()).items():
             assert digest(source) == expected
         policies = json.loads((root/'validation_search.json').read_text())
@@ -96,9 +104,9 @@ def main():
     meta = {key:max(candidates, key=lambda r:r['score']) for key,candidates in combined.items()}
     write_json(out/'COMBINED_SELECTION_LOCK.json', dict(selected=meta, candidates=combined,
                rule='Maximum prior/current-year validation aggregate, no test scores used. Historical retrospective rule, not pristine forward evidence.'))
-    manifest = json.loads(Path('data/recent_cohorts/manifest.json').read_text())
+    manifest = json.loads((args.data_root/'manifest.json').read_text())
     for source, expected in manifest['hashes'].items():
-        assert digest(Path('data/recent_cohorts')/source) == expected, source
+        assert digest(args.data_root/source) == expected, source
     frames, annual, audit, bootstrap, pooled, ablations, policy_effects = [], [], [], [], [], [], []
     paths, primaries, random_rows, seed_rows, rank_frames = {}, {}, [], [], {}
     for root, protocol, lock in run_info:
@@ -122,6 +130,7 @@ def main():
                 spy = pd.read_csv(folder/'market_proxy_daily.csv')
                 subset = primary[(primary.dataset==dataset)&(primary.year==year)]
                 for _, row in subset.iterrows():
+                    available_data = model_data(data, row.model)
                     path = pd.read_csv(folder/f'{row.model}_daily.csv')
                     assert path.date.equals(spy.date)
                     assert len(path) == len(test)*horizon
@@ -142,8 +151,8 @@ def main():
                                        beta_to_spy=beta, alpha_annualized=intercept*252,
                                        information_ratio=active.mean()*252/tracking if tracking>1e-12 else None,
                                        selected_architecture=lock[dataset]['by_year'][str(year)]['winner']==row.model,
-                                       eligible_min=int(data['mask'][test].sum(1).min()),
-                                       eligible_max=int(data['mask'][test].sum(1).max()),
+                                       eligible_min=int(available_data['mask'][test].sum(1).min()),
+                                       eligible_max=int(available_data['mask'][test].sum(1).max()),
                                        start=path.date.iloc[0], end=path.date.iloc[-1]))
                     audit.append(dict(horizon=horizon,dataset=dataset,year=year,model=row.model,status='verified'))
                     ranking_path = folder/f'{row.model}_ranking.csv'
@@ -248,6 +257,8 @@ def main():
     render(out,run_info,annual,pooled,full,selected,ablations,policy_effects,horizon_pairs,paths,random,pd.DataFrame(meta_rows))
     snapshots = out/'source_snapshot'; snapshots.mkdir(exist_ok=True)
     source_names = ['report_robust_research.py','test_robust_research.py','config/robust_experiment_plan.json','STOCKMIXER_PAPER_REVIEW.md']
+    source_names.extend(p['arguments']['experiment_plan'] for _,p,_ in run_info
+                        if p['arguments']['experiment_plan'] not in source_names)
     for name in source_names: (snapshots/Path(name).name).write_bytes(Path(name).read_bytes())
     write_json(out/'report_sources.json',{name:digest(name) for name in source_names})
     # Hash all inputs used for the comparison, including frozen predictions/policies.
@@ -354,11 +365,14 @@ def render(out,run_info,annual,pooled,full,selected,ablations,policy_effects,hor
     (out/'CHARTS.md').write_text('\n'.join(charts),encoding='utf-8')
     write_json(out/'line_chart_inventory.json',inventory)
     assert len(inventory)==len(annual)
+    plan_link=os.path.relpath(run_info[0][1]['arguments']['experiment_plan'],out).replace('\\','/')
+    paper_link=os.path.relpath('STOCKMIXER_PAPER_REVIEW.md',out).replace('\\','/')
+    model_counts={p['horizon']:len(p['arguments']['variants']) for _,p,_ in run_info}
     report=['# Robust-loss and daily-session experiments, 2022-2025','',
-            '[All graphs](CHARTS.md) | [Paper review](../../STOCKMIXER_PAPER_REVIEW.md) | [Frozen plan](../../config/robust_experiment_plan.json)','',
+            f'[All graphs](CHARTS.md) | [Paper review]({paper_link}) | [Frozen plan]({plan_link})','',
             '## What was tested','',
-            'Two fixed public-data cohorts, four test years and three initialization seeds. Five-session forecasts: 16 neural variants; '
-            'daily forecasts: eight variants covering THINK, THINK+mixer, StockMixer-inspired and multi-scale mixer, each paired across MSE/Huber. '
+            f'Two fixed public-data cohorts, four test years and three initialization seeds. Five-session forecasts: {model_counts[5]} neural variants; '
+            f'daily forecasts: {model_counts[1]} variants covering THINK, THINK+mixer, StockMixer-inspired and multi-scale mixer, each paired across MSE/Huber. '
             'Ridge, momentum, reversal, equal-weight buy-and-hold, rebalanced universe and SPY are retained. '
             'Daily training includes all daily origins; its batch size is 40 versus 8 for five-session training. '
             'The frequency comparison therefore changes prediction horizon, rebalance interval and batch size.','',

@@ -1,5 +1,11 @@
 # What the StockMixer paper establishes
 
+<!-- benchmark-audit-20261010:start -->
+NYSX is the passive Global X NYSE 100 ETF. It launched March 25, 2026 and has no tradable 2022–2025 history. Its index covers technology and growth companies across exchanges, not the 100 largest NYSE-listed companies. NYSX performance is unavailable here. NYSE historical charts use the simulated equal-weight cohort basket (scheduled rebalances and modeled costs), not an ETF. NASDAQ charts retain QQQ; SPY supplies broad-market context. [Issuer and inception](https://www.globalxetfs.com/funds/nysx/) and [prospectus](https://assets.globalxetfs.com/funds/documents/nysx/prospectus-regulatory/Summary-Prospectus_NYSX.pdf).
+
+The refreshed CHARTS.md pages are the current visual record. Earlier ETF-overlay descriptions are superseded by this correction. Audited return paths and training selections remain preserved.
+<!-- benchmark-audit-20261010:end -->
+
 Source: Jinyong Fan and Yanyan Shen, **StockMixer: A Simple Yet Strong MLP-Based Architecture for Stock Price Forecasting**, AAAI 2024. Reviewed the user-supplied `09728-AAAI24.FanJ.pdf`, especially the experimental setup on printed page 8393 and Tables 2-3 on page 8394. [Publisher PDF](https://ojs.aaai.org/index.php/AAAI/article/download/28681/29322); [official code](https://github.com/SJTU-DMTai/StockMixer).
 
 ## Did it beat SPY?

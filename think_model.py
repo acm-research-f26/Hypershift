@@ -94,14 +94,22 @@ class HypergraphAttention(nn.Module):
         self.fc=PoincareFC(hidden,hidden) if hyperbolic else nn.Linear(hidden,hidden)
         self.a=nn.Parameter(torch.randn(hidden,1)/math.sqrt(hidden))
 
-    def forward(self,x):
+    def forward(self,x,eligible=None):
         shape=x.shape
         u=x.reshape(-1,self.nodes,shape[-1]); b,_,c=u.shape
+        member = None
+        if eligible is not None:
+            member = eligible[:,None,:,None].expand(shape[0],shape[1],self.nodes,1).reshape(b,self.nodes,1).bool()
+            u = torch.where(member,u,torch.zeros_like(u))
         if self.hyperbolic:
             u=project(u)
             lam=2/(1-u.square().sum(-1,keepdim=True)).clamp_min(1e-7)
-            num=u.new_zeros(b,self.edges,c).index_add_(1,self.edge_ids,(lam*u)[:,self.node_ids])
-            den=u.new_zeros(b,self.edges,1).index_add_(1,self.edge_ids,(lam-1)[:,self.node_ids])
+            numerator, denominator = lam*u, lam-1
+            if member is not None:
+                numerator = torch.where(member,numerator,torch.zeros_like(numerator))
+                denominator = torch.where(member,denominator,torch.zeros_like(denominator))
+            num=u.new_zeros(b,self.edges,c).index_add_(1,self.edge_ids,numerator[:,self.node_ids])
+            den=u.new_zeros(b,self.edges,1).index_add_(1,self.edge_ids,denominator[:,self.node_ids])
             # Eq.13: 1/2 Mobius-multiply the normalized Lorentz sum.
             z=exp0(.5*log0(project(num/den.clamp_min(1e-12))))
             pair=mobius_add(u[:,self.node_ids],z[:,self.edge_ids])
@@ -110,14 +118,21 @@ class HypergraphAttention(nn.Module):
                 dist=distance(u[:,self.node_ids],z[:,self.edge_ids]).unsqueeze(-1)
                 alpha=exp0(dist*log0(alpha))
             values=log0(self.fc(z))[:,self.edge_ids]*alpha
+            if member is not None:
+                values=torch.where(member[:,self.node_ids],values,torch.zeros_like(values))
             out=u.new_zeros(b,self.nodes,c).index_add_(1,self.node_ids,values)
             out=exp0(torch.relu(out))
         else:
-            z=u.new_zeros(b,self.edges,c).index_add_(1,self.edge_ids,u[:,self.node_ids])/self.edge_degree[None,:,None]
+            degree=self.edge_degree[None,:,None]
+            if member is not None:
+                degree=u.new_zeros(b,self.edges,1).index_add_(1,self.edge_ids,member[:,self.node_ids].to(u.dtype)).clamp_min(1)
+            z=u.new_zeros(b,self.edges,c).index_add_(1,self.edge_ids,u[:,self.node_ids])/degree
             alpha=(u[:,self.node_ids]+z[:,self.edge_ids]) @ self.a
             if self.use_distance:
                 alpha=alpha*(u[:,self.node_ids]-z[:,self.edge_ids]).norm(dim=-1,keepdim=True)
             values=self.fc(z)[:,self.edge_ids]*alpha
+            if member is not None:
+                values=torch.where(member[:,self.node_ids],values,torch.zeros_like(values))
             out=torch.relu(u.new_zeros(b,self.nodes,c).index_add_(1,self.node_ids,values))
         return out.reshape(*shape)
 
@@ -138,14 +153,15 @@ by the paper remain reconstruction choices, not a one-to-one reproduction.
         self.spatial=HypergraphAttention(hidden,nodes,groups,self.hyper_spatial,variant!='no_distance')
         self.last=Temporal(hidden,1,kernels[1],self.hyper_temporal)
 
-    def forward(self,x):
+    def forward(self,x,eligible=None):
         u=self.first(exp0(x) if self.hyper_temporal else x)
         if self.hyper_spatial and not self.hyper_temporal:
             u=exp0(u)
-        u=self.spatial(u)
+        u=self.spatial(u,eligible)
         if self.hyper_spatial and not self.hyper_temporal:
             u=log0(u)
         y=self.last(u)
         if y.shape[1]!=1:
             raise ValueError('Input lookback must equal the product of kernels.')
-        return (log0(y) if self.hyper_temporal else y)[:,0,:,0]
+        score=(log0(y) if self.hyper_temporal else y)[:,0,:,0]
+        return score if eligible is None else torch.where(eligible.bool(),score,torch.zeros_like(score))
