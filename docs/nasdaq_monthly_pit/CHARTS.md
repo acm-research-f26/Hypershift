@@ -10,6 +10,288 @@ historical month start, rather than the unavailable custom 100-largest-NASDAQ-co
 ranking. Financial companies are excluded. Every included share class is retained
 (101–104 securities); the 2026-selected NASDAQ models are retired and deleted.
 
+## Why top five and top ten differ
+
+**Diagnostic analysis only: existing models and forecasts; no new training.**
+The relevant robust variant is **THINK + mixer pseudo-Huber**, whose top-ten
+CAGR is 11.4%.
+Ordinary THINK + mixer Huber is a separate model and returned 6.0% at top ten.
+
+| Model / benchmark | Top-5 net CAGR | Top-10 net CAGR |
+| --- | --- | --- |
+| StockMixer | 22.5% | 8.6% |
+| THINK + mixer | 11.9% | 19.6% |
+| THINK + mixer pseudo-Huber | 22.4% | 11.4% |
+| QQQ | 11.9% | 11.9% |
+| SPY | 10.9% | 10.9% |
+
+### Adding five stocks also halves the weight in the first five
+
+Top five targets roughly 20% per selected stock; top ten targets roughly 10%.
+For the same frozen ranking, the top-ten **signal weights** equal half the
+top-five weights plus half the ranks-six-to-ten weights, including fractional
+boundary ties. We replayed ranks six through ten as a fully invested diagnostic
+basket using the same next-close orders, liquidity limits, costs and settlements.
+Its returns expose what the additional selections contributed. Different account
+values, compounding and execution mean its CAGR cannot simply be averaged with
+top-five CAGR to reconstruct top ten.
+
+| Model | Top-5 CAGR | Ranks 6–10 CAGR | Top-10 CAGR | Mean 5-session return: ranks 1–5 | Mean: ranks 6–10 |
+| --- | --- | --- | --- | --- | --- |
+| StockMixer | 22.5% | -8.2% | 8.6% | 0.590% | 0.025% |
+| THINK + mixer | 11.9% | 23.7% | 19.6% | 0.369% | 0.577% |
+| THINK + mixer pseudo-Huber | 22.4% | -1.9% | 11.4% | 0.541% | 0.112% |
+
+The last two columns are arithmetic averages of observed five-session labels,
+before execution costs; the final partial holding period has no full label and
+is excluded. They are diagnostics, not annualized or executable portfolio returns.
+
+![Rank-depth portfolios with benchmark CAGR and Sharpe](rank_depth/figures/rank_depth_wealth.png)
+
+**StockMixer:** ranks six through ten are weak overall and especially poor in
+2022 and 2024. Expanding to ten both adds those positions and reduces exposure
+to the profitable first five. Its top-five/top-ten gap is predominantly a
+2024 concentration effect, not a uniformly repeated advantage in every year.
+
+**THINK + mixer:** ranks six through ten are strong in this sample, especially
+in 2023. Expanding to ten improves the portfolio; its first five alone are not
+the strongest part of its ranking.
+
+**THINK + mixer pseudo-Huber:** it has the same qualitative dilution problem
+as StockMixer. Its ranks-six-to-ten basket loses money over the full period;
+top ten remains near the ETFs because its profitable first five offset those
+weaker additions. It falls from 22.4% to 11.4% CAGR, a substantial drop even
+though the final level is close to SPY/QQQ.
+
+### The calendar-year evidence
+
+| Model | Diagnostic portfolio | 2022 net return | 2023 | 2024 | 2025 |
+| --- | --- | --- | --- | --- | --- |
+| StockMixer | Ranks 1–5 | -6.0% | 34.3% | 67.0% | 6.4% |
+| StockMixer | Ranks 1–10 | -17.0% | 30.0% | 12.5% | 14.7% |
+| StockMixer | Ranks 6–10 diagnostic | -30.5% | 20.5% | -28.1% | 18.4% |
+| THINK + mixer | Ranks 1–5 | -35.1% | 40.0% | 0.8% | 70.7% |
+| THINK + mixer | Ranks 1–10 | -28.0% | 58.6% | 10.6% | 61.3% |
+| THINK + mixer | Ranks 6–10 diagnostic | -23.2% | 78.0% | 17.1% | 45.8% |
+| THINK + mixer pseudo-Huber | Ranks 1–5 | -30.9% | 41.5% | 42.6% | 60.3% |
+| THINK + mixer pseudo-Huber | Ranks 1–10 | -29.1% | 51.8% | 8.6% | 31.5% |
+| THINK + mixer pseudo-Huber | Ranks 6–10 diagnostic | -29.9% | 60.8% | -20.3% | 3.1% |
+
+StockMixer top five returned 67.0% in 2024 versus 12.5%
+for top ten. SMCI, NVIDIA and Tesla together contributed
+56.8 percentage points, about 85% of the top-five account's
+net 2024 gain. The contributions below sum to each account's calendar-year
+return; they are **portfolio P&L contributions**, not each stock's own return
+and not additive contributions to annualized CAGR.
+
+| Stock / remainder | Top-5 contribution | Top-10 contribution | Contribution to the gap |
+| --- | --- | --- | --- |
+| SMCI | +19.9 pp | +4.9 pp | +15.0 pp |
+| NVDA | +19.1 pp | +7.1 pp | +12.0 pp |
+| TSLA | +17.8 pp | +9.4 pp | +8.5 pp |
+| All other stocks and their fees | +10.1 pp | -8.8 pp | +19.0 pp |
+
+![StockMixer 2024 stock-level return attribution](rank_depth/figures/stockmixer_2024_attribution.png)
+
+SMCI's largest selected holding windows included 2024-11-13 to 2024-11-20
+(+26.9% adjusted-price return) and 2024-11-20 to 2024-11-27 (+35.9%). StockMixer
+targeted 20% at top five. These were rebounds after its historical index entry,
+not a claim that the strategy captured its early-2024 rally. The reviewed monthly
+membership first permits SMCI in August 2024, following its July 22 index addition
+([Nasdaq announcement](https://ir.nasdaq.com/node/107766/pdf)). Its October 1
+10-for-1 split was already reflected in the adjusted series
+([Nasdaq corporate-action notice](https://classic.nasdaqtrader.com/TraderNews.aspx?id=ECA2024-451)).
+
+### This does not establish a stable top-five specialization
+
+| Model | Individual-seed median CAGR: top 5 | Top 10 | Seeds where top 5 wins | Median paired seed gap | Ensemble gap |
+| --- | --- | --- | --- | --- | --- |
+| StockMixer | 7.1% | 6.5% | 3/5 | +0.45 pp | +13.88 pp |
+| THINK + mixer | 14.7% | 12.4% | 4/5 | +1.93 pp | -7.70 pp |
+| THINK + mixer pseudo-Huber | 6.1% | 10.4% | 2/5 | -0.28 pp | +11.01 pp |
+
+StockMixer's individual seeds have a much smaller median paired advantage than
+the ensemble, and two of five favor top ten. Pseudo-Huber favors top five in
+only two of five individual seeds. Regular THINK + mixer's ensemble favors ten,
+while four of five individual seeds favor five. Averaging ranks creates a new
+selected portfolio; it does not average individual-seed returns. These findings
+make the exact optimal K sensitive to the particular ensemble and market path.
+
+![Individual-seed and ensemble top-five/top-ten differences](rank_depth/figures/seed_depth_sensitivity.png)
+
+### Neither transaction costs nor a ranking metric alone explains the result
+
+| Model | Top 5: base costs | Top 10: base costs | Top 5: zero costs | Top 10: zero costs |
+| --- | --- | --- | --- | --- |
+| StockMixer | 22.5% | 8.6% | 27.8% | 12.6% |
+| THINK + mixer | 11.9% | 19.6% | 14.5% | 21.8% |
+| THINK + mixer pseudo-Huber | 22.4% | 11.4% | 25.2% | 13.5% |
+
+The zero-cost counterfactual retains the same signals and liquidity caps. The
+ordering survives with trading costs removed. StockMixer actually turns over
+more at top five (55.6 times NAV annually) than top ten (48.4); costs narrow
+its top-five advantage rather than create it.
+
+| Model | IC | RankIC | NDCG@5 | NDCG@10 |
+| --- | --- | --- | --- | --- |
+| StockMixer | 0.0228 | 0.0186 | 0.5206 | 0.5208 |
+| THINK + mixer | 0.0125 | 0.0074 | 0.5316 | 0.5392 |
+| THINK + mixer pseudo-Huber | 0.0077 | 0.0045 | 0.5403 | 0.5377 |
+
+StockMixer has higher overall IC/RankIC than these THINK+mixer variants, while
+its NDCG@10 (0.5208) is only slightly above the
+matched random-ranking expectation (0.5176). Neither fact establishes
+reliable ordering specifically around the fifth/tenth cutoff. This study's NDCG
+uses **return percentiles**, so an extreme 35.9% winner need not contribute more
+than a modest winner with the same realized percentile. Portfolio profits depend
+on return magnitudes, weights, timing and costs. Architecture and loss alone
+cannot causally explain this particular sample's portfolio differences.
+
+Paired top-five minus top-ten Sharpe intervals, using 1,000 circular resamples
+of 20-session blocks, include zero for all three models:
+
+| Model | Observed Sharpe difference | Exploratory 95% interval |
+| --- | --- | --- |
+| StockMixer | +0.334 | [-0.042, +0.700] |
+| THINK + mixer | -0.214 | [-0.547, +0.113] |
+| THINK + mixer pseudo-Huber | +0.277 | [-0.023, +0.595] |
+
+These are Sharpe intervals, not CAGR intervals, and are not adjusted for the
+many inspected models and sizes. The descriptive accounting explanation is
+well established here; a permanent top-five advantage remains unproven.
+Repeated selection among historical configurations can inflate observed performance
+([Bailey and López de Prado](https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf)).
+
+### Verification and reproducibility
+
+All 18 diagnostic account paths match the frozen production accounting engine.
+An additional independent replay checks the 12 top-five/top-ten base- and
+zero-cost paths. All six previously published base-cost paths remain unchanged.
+Every stock-level dollar contribution reconciles to cumulative account return;
+yearly contributions reconcile to calendar-year returns. No model was retrained
+and no source forecast, membership, price or selected checkpoint was changed.
+
+[Stock-level attribution](rank_depth/stock_attribution.csv) · [Attribution by year](rank_depth/year_stock_attribution.csv) ·
+[Diagnostic curves](rank_depth/curves.csv) · [Diagnostic metrics](rank_depth/metrics.csv) ·
+[Forecast buckets](rank_depth/forecast_buckets.csv) · [Paired seed results](rank_depth/seed_pairs.csv) ·
+[Sharpe intervals](rank_depth/paired_bootstrap.csv) · [Reconciliation audit](rank_depth/AUDIT.json).
+
+### Why MSE and pseudo-Huber can produce very different portfolios
+
+**Matched inspection: 20 same-year/same-seed checkpoint pairs; no new training.**
+Both use exactly the same THINK+mixer architecture, inputs, target units,
+training/validation/test splits, training-derived normalization and correlation
+groups, seed rule, optimizer settings and deterministic GPU runtime. Recreating
+their initialization gives identical starting parameters for all 20 pairs;
+this checks the code/seed rule, since no initial-state checkpoint was saved.
+All 20 final parameter sets differ, and 13/20 select different
+checkpoint epochs under the same prior-validation MSE rule. For 2025 seed 7,
+MSE selected epoch 8 and pseudo-Huber epoch 19.
+Their validation MSEs were close (24.558 and
+24.443), which does not guarantee identical ordering at
+a trading cutoff. The corrected selected-checkpoint validation exports were
+used; the previously disclosed stale final-epoch validation arrays were not.
+
+**Same architecture does not imply the same learned function.** The intended
+loss change changes the optimization path and the resulting weights. Delta was
+fixed at **1 percentage point**, not an extremely large value that would make
+pseudo-Huber approximately MSE for most errors. At the selected checkpoints,
+an average 78.6% of MSE validation errors exceed that scale.
+This describes validation residuals, not the residuals at every training step.
+
+| Absolute prediction error | MSE loss derivative | Pseudo-Huber derivative | Relative influence |
+| --- | --- | --- | --- |
+| 0.1 pp | 0.20 | 0.20 | 99.5% |
+| 1 pp | 2.00 | 1.41 | 70.7% |
+| 5 pp | 10.00 | 1.96 | 19.6% |
+| 10 pp | 20.00 | 1.99 | 10.0% |
+| 20 pp | 40.00 | 2.00 | 5.0% |
+
+These are derivatives of our implemented per-observation losses, before
+averaging, AdamW and global norm clipping. Pseudo-Huber's derivative saturates
+while MSE's grows with the error ([SciPy pseudo-Huber definition](https://docs.scipy.org/doc/scipy/reference/generated/scipy.special.pseudo_huber.html)).
+Thus the formula change substantially changes the relative treatment of large
+errors, even though both losses have matching curvature near zero.
+
+### Similar broad rankings can still mean different five-stock baskets
+
+The two ensembles have mean same-date rank correlation 0.827
+across eligible stocks. However, their selected portfolios overlap much less:
+
+| Portfolio | Average common target weight | Equivalent common position count |
+| --- | --- | --- |
+| Top 5 | 64.2% | 3.21 of 5 equal-weight positions |
+| Top 10 | 61.5% | 6.15 of 10 equal-weight positions |
+| Ranks 6–10 | 42.4% | 2.12 of 5 equal-weight positions |
+
+Common weight sums the minimum allocation to each security in both portfolios,
+then averages over the 201 signal dates. It handles fractional ties; the position
+count is an equal-weight equivalent, not a claim that exactly two names always
+overlap. Both models rank the same stock universe, but much of the small selected
+basket differs. At roughly 20% per position, moving a few names across rank five
+or rank ten can materially change portfolio returns.
+
+| Test year | Cross-model rank correlation | Ranks-6–10 common target weight |
+| --- | --- | --- |
+| 2022 | 0.802 | 23.7% |
+| 2023 | 0.995 | 81.8% |
+| 2024 | 0.773 | 35.2% |
+| 2025 | 0.737 | 29.2% |
+
+### Does the return difference mostly boil down to random chance?
+
+**The results show sensitivity, but do not identify what fraction is chance.**
+The large ensemble CAGR gap is not representative of matched individual seeds:
+
+| Matched fit | MSE ranks-6–10 CAGR | Pseudo-Huber CAGR | MSE minus pseudo-Huber |
+| --- | --- | --- | --- |
+| Seed 7 | 7.2% | 11.2% | -4.02 pp |
+| Seed 19 | 17.0% | 16.6% | +0.37 pp |
+| Seed 42 | 11.5% | 0.0% | +11.44 pp |
+| Seed 61 | 3.3% | 3.6% | -0.29 pp |
+| Seed 97 | 5.9% | 5.9% | -0.01 pp |
+| Five-seed rank ensemble | 23.7% | -1.9% | +25.64 pp |
+
+MSE wins only 2/5 matched seed portfolios. Their median
+paired difference is -0.01 percentage points, essentially
+zero, compared with 25.64 points for the ensemble.
+Every pseudo-Huber individual-seed ranks-six-to-ten account has a positive CAGR,
+although its rank ensemble is negative. The ensemble sorts average ranks and
+creates a different portfolio, so constituent CAGRs cannot be averaged to
+reconstruct it. Training-seed and cutoff sensitivity are evident; a consistent
+MSE advantage has not been demonstrated.
+
+![Loss influence and matched-seed portfolio differences](loss_similarity/figures/loss_and_seed_sensitivity.png)
+
+For completeness, the **fixed ensemble** return difference survives an
+exploratory paired 20-session block bootstrap: CAGR-gap interval
+[+5.3, +50.0] percentage points and Sharpe-gap
+interval [+0.129, +1.341]. Both exclude zero. It would be
+incorrect to claim these particular intervals prove the gap is merely sampling
+noise. However, they condition on already selected ensembles, omit training-seed
+uncertainty, and are not adjusted for the many inspected models, losses, sizes
+and rank buckets. They do not establish that MSE will beat pseudo-Huber on
+unseen dates or across alternative training seeds.
+
+The supported interpretation is: **a material loss change produced different
+fitted weights and stock selections; a highly selective, seed-sensitive portfolio
+rule amplified that difference into a large historical CAGR gap.** Market luck,
+selection effects and concentration may influence its magnitude, but their
+separate causal shares cannot be estimated from these experiments. The evidence
+does not justify treating either loss as reliably superior or calling the two
+trained models functionally identical.
+
+Twelve individual/ensemble marginal-bucket accounts matched the frozen
+production engine. Source checkpoint and forecast hashes were checked, and no
+optimization steps or retraining occurred. This diagnostic does not independently
+eliminate every data limitation documented in the parent study.
+
+[Matched fits](loss_similarity/matched_fits.csv) · [Selection overlap](loss_similarity/agreement_summary.csv) ·
+[Every signal date](loss_similarity/agreement_by_period.csv) · [Validation residual summaries](loss_similarity/validation_residuals.csv) ·
+[Individual/ensemble marginal portfolios](loss_similarity/marginal_seed_metrics.csv) ·
+[Conditional ensemble intervals](loss_similarity/conditional_bootstrap.json) · [Inspection audit](loss_similarity/AUDIT.json).
+
+
 ## Long highest / short lowest predicted returns
 
 **Completed: no retraining; 600 disclosed portfolio paths, including 570 new signed accounts independently replayed and 30 unchanged long-only ensemble paths.**

@@ -173,6 +173,14 @@ def main():
     if short_audit_path.exists():
         from verify_ndx_long_short_publication import verify as verify_short_publication
         verified.extend(verify_short_publication(current_text))
+    depth_audit_path=Path('runs/nasdaq_rank_depth_20261011/AUDIT.json')
+    if depth_audit_path.exists():
+        from publish_ndx_rank_depth import verify as verify_rank_depth
+        verified.extend(verify_rank_depth(current_text))
+    loss_audit_path=Path('runs/nasdaq_loss_similarity_20261011/AUDIT.json')
+    if loss_audit_path.exists():
+        from publish_ndx_loss_similarity import verify as verify_loss_similarity
+        verified.extend(verify_loss_similarity(current_text))
     verified += [current,Path('docs/nasdaq_monthly_pit/DATA_REQUIREMENTS.md'),
                  Path('config/nasdaq_monthly_pit.json'),Path('docs/audit/nasdaq_2026_retirement.json')]
     result=dict(status='passed_historical_monthly_fallback_existing_evidence_and_retirement',as_of='2026-10-11',neural_fits_new=408,
@@ -196,6 +204,13 @@ def main():
             long_short_independent_signed_paths=570,long_short_parent_ensemble_paths_unchanged=30,
             long_short_historical_borrow_availability='assumed, not verified',
             active_portfolio_extension='fixed_long_short_and_matched_cash_allocations')
+    if depth_audit_path.exists():
+        result.update(rank_depth_new_model_fits=0,rank_depth_diagnostic_paths=18,
+            rank_depth_original_ensemble_paths_unchanged=6,
+            rank_depth_stock_and_year_return_contributions_reconciled=True)
+    if loss_audit_path.exists():
+        result.update(loss_similarity_new_model_fits=0,loss_similarity_matched_checkpoint_pairs=20,
+            loss_similarity_marginal_accounts=12,loss_similarity_chance_fraction='not identifiable')
     Path('docs/audit/FINAL_AUDIT_20261011.json').write_text(json.dumps(result,indent=2))
     # Current delivery inventory supplements the older publication manifest.
     Path('docs/publication_manifest.json').write_text(json.dumps(result,indent=2))

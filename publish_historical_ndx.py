@@ -12,6 +12,7 @@ from audit_historical_ndx_ranking import main as audit_rankings
 from publish_ndx_topk_extension import build_section as build_extension_section
 from publish_ndx_long_short import build_section as build_short_section
 from chart_performance_labels import performance_label, LEGEND_TITLE
+from publish_ndx_rank_depth import build_section as build_rank_depth_section
 
 RUN=Path('runs/nasdaq100_historical_monthly_20261011')
 OUT=Path('docs/nasdaq_monthly_pit')
@@ -233,6 +234,7 @@ def main():
                 'No neural variant had all five individual seeds exceed QQQ’s full-period CAGR.'))
     extension_section=build_extension_section(NAMES,COLORS)
     short_section=build_short_section(NAMES,COLORS)
+    rank_depth_section=build_rank_depth_section()
     text=f'''# Historical monthly NASDAQ-100 charts, 2022–2025
 
 **Original batch — Completed: 120 neural fits, 120 continuous portfolio paths; independent audit passed.**
@@ -244,6 +246,8 @@ This uses the user-authorized **official NASDAQ-100 fallback**, selected at each
 historical month start, rather than the unavailable custom 100-largest-NASDAQ-company
 ranking. Financial companies are excluded. Every included share class is retained
 (101–104 securities); the 2026-selected NASDAQ models are retired and deleted.
+
+{rank_depth_section}
 
 {short_section}
 

@@ -28,6 +28,8 @@ The long/short follow-up reuses those forecasts to compare fixed 100% long,
 cash controls, calendar-day borrow fees, cost stresses and seed sensitivity.
 All 570 new signed accounts passed independent replay; the 30 parent
 long-only ensemble paths are unchanged, giving 600 disclosed paths in total.
+The charts also explain top-five versus top-ten sensitivity with ranks-six-to-ten
+diagnostics, reconciled stock-level P&L, yearly concentration and paired seeds.
 Its signed economic-price accounts assume short availability; they do not
 establish that every historical borrow or broker execution was possible.
 

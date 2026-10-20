@@ -1,0 +1,92 @@
+{
+  "status": "passed",
+  "new_model_fits": 0,
+  "diagnostic_paths": 18,
+  "original_paths_unchanged": 6,
+  "independent_top5_top10_paths": 12,
+  "diagnostic_paths_matched_frozen_production_engine": 18,
+  "signal_weight_identity": "top10 = 0.5 * top5 + 0.5 * ranks6_10, exact including fractional boundary ties",
+  "stock_dollar_contributions_reconcile": true,
+  "year_stock_contributions_reconcile": true,
+  "checks": [
+    {
+      "model": "stockmixer",
+      "policy": "top5",
+      "cost_multiplier": 1.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "stockmixer",
+      "policy": "top5",
+      "cost_multiplier": 0.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "stockmixer",
+      "policy": "top10",
+      "cost_multiplier": 1.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "stockmixer",
+      "policy": "top10",
+      "cost_multiplier": 0.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "think_mix",
+      "policy": "top5",
+      "cost_multiplier": 1.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "think_mix",
+      "policy": "top5",
+      "cost_multiplier": 0.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "think_mix",
+      "policy": "top10",
+      "cost_multiplier": 1.0,
+      "independent_nav_max_difference": 1.1641532182693481e-10
+    },
+    {
+      "model": "think_mix",
+      "policy": "top10",
+      "cost_multiplier": 0.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "think_mix_pseudohuber",
+      "policy": "top5",
+      "cost_multiplier": 1.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "think_mix_pseudohuber",
+      "policy": "top5",
+      "cost_multiplier": 0.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "think_mix_pseudohuber",
+      "policy": "top10",
+      "cost_multiplier": 1.0,
+      "independent_nav_max_difference": 0.0
+    },
+    {
+      "model": "think_mix_pseudohuber",
+      "policy": "top10",
+      "cost_multiplier": 0.0,
+      "independent_nav_max_difference": 0.0
+    }
+  ],
+  "limitations": [
+    "All analysis is post hoc on already inspected 2022\u20132025",
+    "Ranks6\u201310 is a diagnostic allocation, not a new recommendation",
+    "CAGRs do not add; dollar P&L contributions divided by initial NAV reconcile cumulative return",
+    "Different K changes weights, compounding, turnover, cash scaling and liquidity limits",
+    "Observed forecast returns exclude missing outcomes without reranking; account attribution uses verified settlements"
+  ]
+}
