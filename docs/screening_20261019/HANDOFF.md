@@ -1,5 +1,25 @@
 # HyperShift broad screening — continuation handoff
 
+## UPDATE 2026-10-19 ~19:40 (Claude) — read this first; it supersedes the "next work" list below
+
+- **v2 RSR verdict: underpowered.** Training sets are 37 dates (fold 2015) and 88 (fold 2016). The selected epoch is 0–3 for almost all graph arms, and prediction std is 1–7% of target. v2 runs to completion as a *diagnostic only*. Source snapshot is commit `91f62b2`; to resume v2 after a crash, check out that source in a worktree, because the current source hash differs.
+- **Primary screen is now v3** (commit `315d4ff`; protocol at the top of `RESEARCH_SCREENING_PLAN.md`):
+  - data: S&P 500 yfinance panel `data/fresh/sp500_daily/screen_sp500_2015_2026.npz`;
+  - folds: evaluate 2022 and 2023, validate on the prior year, 2024+ reserved;
+  - training: stride 1, daily validation, checkpoint selection on validation RankIC;
+  - arms added: `sector_target`, `sector_graph`, `master`.
+- **Running:** Task Scheduler tasks `Hypershift_screen_v3_w1` and `_w2`, each running `scripts/queues/screen_v3_wN.sh` → `scripts/screen_queue.py` on CPU with 2 threads.
+  - Workers claim (fold, arm) units in `results/SCREEN_SP500_20261019_v3/.claims/`. Per-unit logs are in `.../logs/`; worker logs are `results/logs/task_screen_v3_wN.log`.
+  - More workers: `bash scripts/queues/launch.sh screen_v3_w3` (w3/w4 scripts exist). RAM is the limit at about 0.8 GB per worker.
+  - After a crash: delete the claim directories of unfinished units (no `done` file inside) and relaunch. Fits resume from `last.pt`.
+- **Timing:** about 20–45 s per epoch per worker, ≤40 epochs, patience 8. That is roughly 150 fits, an estimated 6–10 h with 4 workers.
+- **Experiment J:** the S&P 500 bars have OHLCV, so the input blocker is gone. However, Kronos pretraining "extends up to June 2024" and includes NASDAQ (arXiv 2508.02739, App. D), so 2022/23 evaluation is contaminated. A clean test needs evaluation ≥ 2024-07, which is reserved. Decision pending after the core screen.
+- **Done this session:** `DATA_AUDIT.md`. An analysis script `scripts/screen_analysis.py` is being built by a Sonnet worker, with tests in `tests/test_screen_analysis.py`.
+- **Remaining:**
+  - run the analysis on v3, then write SCREENING_REPORT and DIAGNOSTIC (include v2 failure);
+  - deep tests only for gate-passing arms;
+  - BASELINE_REPORT, FINAL_RECOMMENDATIONS, EXECUTIVE_SUMMARY.
+
 **Date: 2026-10-19. Author: Codex.** User requested this handoff because usage was running low. Research is **in progress**, not complete. Two authorized CPU workers were still running when checked. This document is the primary continuation entry point after `docs/HANDOFF.md` and `CLAUDE.md`.
 
 ## Current user request and authority
