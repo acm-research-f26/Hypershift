@@ -1,0 +1,5 @@
+test_year,training_signal_dates,validation_signal_dates,test_forecasts,train_first_signal,train_last_label,validation_first_signal,validation_last_label,first_test_fill,unobserved_training_targets,unobserved_validation_targets
+2022,75,49,51,2019-07-03,2020-12-29,2021-01-05,2021-12-27,2022-01-03,1,3
+2023,125,49,50,2019-07-03,2021-12-27,2022-01-07,2022-12-30,2023-01-09,4,0
+2024,176,49,50,2019-07-03,2022-12-30,2023-01-06,2023-12-29,2024-01-08,4,0
+2025,200,49,50,2020-01-08,2023-12-29,2024-01-05,2024-12-27,2025-01-06,3,0

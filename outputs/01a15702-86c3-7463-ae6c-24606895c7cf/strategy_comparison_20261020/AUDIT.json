@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "strategies_independently_recomputed": 267,
+  "daily_observations": 1003,
+  "full_materialized_sharpe_bootstraps": [
+    "original/SPY/10",
+    "original/QQQ/10",
+    "original/think_mix/10"
+  ],
+  "bootstrap_replicates": 10000,
+  "block_sessions": 20,
+  "workbook_sheets": 4,
+  "source_hashes_verified": 29,
+  "workbook_comparison_rows_verified": 271,
+  "audit_source_sha256": "955a07b7ed0ddf043d3ff3dc333ab18a72a2755d2ff37c4561af5cfeb5a35ba8",
+  "workbook_builder_sha256": "95b5e8f4358f56184eeed82799b4a8479d4efa33614a960e699f5bc87b94f9a5",
+  "output_sha256": {
+    "NASDAQ100_strategy_comparison.xlsx": "7beb5582769cf674534aa57f0eb8e25ae9b70c8516010679e09d5e6eabb8b50c",
+    "all_strategies.csv": "f37b8f5e65281bdfab34279892feecfc5f6913292ae68f838452c961270199c1",
+    "COMPARISON.md": "decabdf158544024336bc3f398e655de0f1626ccc49403318ce0543586d2b500",
+    "sharpe_block_sensitivity.csv": "33d7dd3ab6378fdc4e27e02a0fe480d82e5c096bf7de1725b7913ffec962fd1d"
+  }
+}

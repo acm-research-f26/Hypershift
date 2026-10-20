@@ -1,0 +1,66 @@
+{
+  "purpose": "Fixed seed-count expansion of original strongest architecture; no test-performance seed selection",
+  "created_local_date": "2026-10-20",
+  "test_years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "original_seeds": [
+    7,
+    19,
+    42,
+    61,
+    97
+  ],
+  "new_seeds": [
+    1828801906,
+    1868046758,
+    239154507,
+    287727767,
+    981756941,
+    1847760412,
+    1561637969,
+    800300753,
+    353601183,
+    1532402804,
+    1062654956,
+    1924761289,
+    861712994,
+    194507142,
+    1364609292,
+    1965942311,
+    2025206937,
+    491751056,
+    1758880111,
+    1573082958
+  ],
+  "planned_new_fits": 80,
+  "primary": "Equal eligible-rank ensemble of all 25 seeds",
+  "controls": [
+    "original_five",
+    "new_twenty"
+  ],
+  "core": "Unchanged original five-feature THINK+mixer, train-only graph/scaling, raw MSE, all prior-year validation MSE earliest tie 1e-7, 30 epochs, patience 6, batch 8, AdamW lr .001 weight_decay .001, clip 1; deterministic FP32 CUDA",
+  "portfolio": "Fixed equal top ten, original reviewed next-close continuous accounts, 1 percent ADV caps, base/double/quadruple fees",
+  "risk_policies": [
+    "full",
+    "trend_half"
+  ],
+  "cost_multipliers": [
+    1,
+    2,
+    4
+  ],
+  "seed_bootstrap": {
+    "replicates": 128,
+    "seed": 20261020,
+    "rule": "Resample 25 seed indices with replacement; same draw across all annual folds and both risk policies; rerank, form portfolio and replay full net accounting for each draw at base fees; diagnostic finite initialization approximation, no new market histories"
+  },
+  "references": "Every base-cost ensemble top-ten full-exposure path in original monthly, Alpaca and ranking studies; all base-cost ensemble broad/correction policy paths. Match exact dates; compare each primary risk policy with every available reference path, including other risk policies with their labels. This intentionally broad family is exploratory, not correction for the full research search.",
+  "intervals": "10000 whole-day paired circular-block samples, blocks 5/20/60; one max-statistic family across all primary comparisons. Additional pointwise joint seed/time diagnostic draws a seed-bootstrap account then circularly resamples paired daily active returns; conditions on fixed checkpoints/selection and finite 128 initialization draws, not full training/data uncertainty.",
+  "historical_screen": "Beat SPY CAGR at base and double costs, at least 3/4 calendar years and 28/48 months, max drawdown no more than 5 percentage points worse than SPY. No promotion from screen alone.",
+  "stop_rule": "Freeze sources/data/protocol and every seed before any new fit or metric. Train all 80; publish original five, new twenty, combined twenty-five, every seed, all bootstrap accounts, cost/risk controls and references. Never select seeds, weights or exposure from test performance.",
+  "history": "Previously inspected 2022-2025 exploratory development; no untouched future evidence."
+}

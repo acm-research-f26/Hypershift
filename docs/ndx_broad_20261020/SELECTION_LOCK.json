@@ -1,0 +1,659 @@
+{
+  "created_before_new_financial_metrics": true,
+  "choices": [
+    {
+      "year": 2022,
+      "top_three": [
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": 0.0052354163187087605,
+          "protocol_order": 3
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": -0.0026379262363835504,
+          "protocol_order": 10
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": -0.005443988727450871,
+          "protocol_order": 9
+        }
+      ],
+      "single_best": {
+        "view": "daily",
+        "target": "residual",
+        "family": "ridge",
+        "validation_stability": 0.0052354163187087605,
+        "protocol_order": 3
+      },
+      "all_cells_ordered": [
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": 0.0052354163187087605,
+          "protocol_order": 3
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": -0.0026379262363835504,
+          "protocol_order": 10
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": -0.005443988727450871,
+          "protocol_order": 9
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": -0.015472384505938205,
+          "protocol_order": 8
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": -0.019616258523236063,
+          "protocol_order": 4
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": -0.02299387510165548,
+          "protocol_order": 5
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "boosted_trees",
+          "validation_stability": -0.026039119200216343,
+          "protocol_order": 7
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": -0.029637160590357224,
+          "protocol_order": 11
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": -0.030757018544053317,
+          "protocol_order": 2
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "boosted_trees",
+          "validation_stability": -0.034134230121999926,
+          "protocol_order": 1
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "ridge",
+          "validation_stability": -0.03735994267878619,
+          "protocol_order": 6
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "ridge",
+          "validation_stability": -0.055613310231354136,
+          "protocol_order": 0
+        }
+      ]
+    },
+    {
+      "year": 2023,
+      "top_three": [
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.05253318012516214,
+          "protocol_order": 5
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.035948617036843655,
+          "protocol_order": 11
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": 0.034480265686728864,
+          "protocol_order": 9
+        }
+      ],
+      "single_best": {
+        "view": "daily",
+        "target": "residual",
+        "family": "shared_network",
+        "validation_stability": 0.05253318012516214,
+        "protocol_order": 5
+      },
+      "all_cells_ordered": [
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.05253318012516214,
+          "protocol_order": 5
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.035948617036843655,
+          "protocol_order": 11
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": 0.034480265686728864,
+          "protocol_order": 9
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": 0.020060828198703484,
+          "protocol_order": 3
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": 0.009066252656011176,
+          "protocol_order": 4
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": 0.004127546539560687,
+          "protocol_order": 10
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "ridge",
+          "validation_stability": -0.001271082552650963,
+          "protocol_order": 0
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "ridge",
+          "validation_stability": -0.0028179472171014734,
+          "protocol_order": 6
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "boosted_trees",
+          "validation_stability": -0.008565400189059925,
+          "protocol_order": 7
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "boosted_trees",
+          "validation_stability": -0.014158808084819223,
+          "protocol_order": 1
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": -0.03952391464984489,
+          "protocol_order": 8
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": -0.04457159136009947,
+          "protocol_order": 2
+        }
+      ]
+    },
+    {
+      "year": 2024,
+      "top_three": [
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.015543440806532909,
+          "protocol_order": 5
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.015160015360689082,
+          "protocol_order": 11
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": 0.009446475684614961,
+          "protocol_order": 8
+        }
+      ],
+      "single_best": {
+        "view": "daily",
+        "target": "residual",
+        "family": "shared_network",
+        "validation_stability": 0.015543440806532909,
+        "protocol_order": 5
+      },
+      "all_cells_ordered": [
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.015543440806532909,
+          "protocol_order": 5
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.015160015360689082,
+          "protocol_order": 11
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": 0.009446475684614961,
+          "protocol_order": 8
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": 0.0038023857382467365,
+          "protocol_order": 4
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": -3.1080770728619117e-06,
+          "protocol_order": 9
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": -0.008618818501429048,
+          "protocol_order": 10
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": -0.015036067455021692,
+          "protocol_order": 2
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "boosted_trees",
+          "validation_stability": -0.017655992506437877,
+          "protocol_order": 7
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "boosted_trees",
+          "validation_stability": -0.020258120726169324,
+          "protocol_order": 1
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": -0.022241608018650633,
+          "protocol_order": 3
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "ridge",
+          "validation_stability": -0.02461053002673395,
+          "protocol_order": 6
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "ridge",
+          "validation_stability": -0.04342733561154301,
+          "protocol_order": 0
+        }
+      ]
+    },
+    {
+      "year": 2025,
+      "top_three": [
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": 0.027314062154517177,
+          "protocol_order": 4
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": 0.02329868680492775,
+          "protocol_order": 2
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.014706675239533848,
+          "protocol_order": 5
+        }
+      ],
+      "single_best": {
+        "view": "daily",
+        "target": "residual",
+        "family": "boosted_trees",
+        "validation_stability": 0.027314062154517177,
+        "protocol_order": 4
+      },
+      "all_cells_ordered": [
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": 0.027314062154517177,
+          "protocol_order": 4
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": 0.02329868680492775,
+          "protocol_order": 2
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": 0.014706675239533848,
+          "protocol_order": 5
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "boosted_trees",
+          "validation_stability": 0.011680192316821311,
+          "protocol_order": 1
+        },
+        {
+          "view": "daily",
+          "target": "raw",
+          "family": "ridge",
+          "validation_stability": 0.0012501990620188072,
+          "protocol_order": 0
+        },
+        {
+          "view": "daily",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": -0.0021146176540540584,
+          "protocol_order": 3
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "boosted_trees",
+          "validation_stability": -0.0037411759008959856,
+          "protocol_order": 10
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "ridge",
+          "validation_stability": -0.008164886032594276,
+          "protocol_order": 9
+        },
+        {
+          "view": "intraday",
+          "target": "residual",
+          "family": "shared_network",
+          "validation_stability": -0.01091639293318,
+          "protocol_order": 11
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "ridge",
+          "validation_stability": -0.01274277109638144,
+          "protocol_order": 6
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "boosted_trees",
+          "validation_stability": -0.023986507768609326,
+          "protocol_order": 7
+        },
+        {
+          "view": "intraday",
+          "target": "raw",
+          "family": "shared_network",
+          "validation_stability": -0.041748111278959756,
+          "protocol_order": 8
+        }
+      ]
+    }
+  ],
+  "validation_artifact_hashes": {
+    "daily\\2022\\ridge_raw_7_predictions.npz": "9db15c21402b082e11e7bd3d232ace5a8383be23ecb4aec9c5805fa11ac14cc7",
+    "daily\\2022\\boosted_trees_raw_7_predictions.npz": "0077db33cba96a05177ad1005a37ba2a4dcba800d103519eda9e5926cc4b54fc",
+    "daily\\2022\\boosted_trees_raw_19_predictions.npz": "0077db33cba96a05177ad1005a37ba2a4dcba800d103519eda9e5926cc4b54fc",
+    "daily\\2022\\boosted_trees_raw_42_predictions.npz": "0077db33cba96a05177ad1005a37ba2a4dcba800d103519eda9e5926cc4b54fc",
+    "daily\\2022\\boosted_trees_raw_61_predictions.npz": "0077db33cba96a05177ad1005a37ba2a4dcba800d103519eda9e5926cc4b54fc",
+    "daily\\2022\\boosted_trees_raw_97_predictions.npz": "0077db33cba96a05177ad1005a37ba2a4dcba800d103519eda9e5926cc4b54fc",
+    "daily\\2022\\shared_network_raw_7_predictions.npz": "35ea085462e19f026495aad00e6dc35523e6a9db3ea5d80d6c5efb6801cd1bc4",
+    "daily\\2022\\shared_network_raw_19_predictions.npz": "a38c14d57c9d685424da7b3618c5d70bc0cd55373671fd01159fbb97da2b4435",
+    "daily\\2022\\shared_network_raw_42_predictions.npz": "9f664f6316dec75b131b75e095c14733b9efff58868fee00b780f18347222215",
+    "daily\\2022\\shared_network_raw_61_predictions.npz": "511e99dbec7e6c8b355632186c655f8e4fe390f91092771dbab512df80472c85",
+    "daily\\2022\\shared_network_raw_97_predictions.npz": "974f43f2a0eda0396ada30c889ef37a0e9ed762c3f2dbeb3ce400675430b6777",
+    "daily\\2022\\ridge_residual_7_predictions.npz": "6edc967179e40de05bdee3ebc9c9de9039032e1899b9d41faae694e9f2b09f52",
+    "daily\\2022\\boosted_trees_residual_7_predictions.npz": "1cee768dd27bc8989d679b26b03ded5b2cc041bd917d2e35cb732575a9a969fd",
+    "daily\\2022\\boosted_trees_residual_19_predictions.npz": "1cee768dd27bc8989d679b26b03ded5b2cc041bd917d2e35cb732575a9a969fd",
+    "daily\\2022\\boosted_trees_residual_42_predictions.npz": "1cee768dd27bc8989d679b26b03ded5b2cc041bd917d2e35cb732575a9a969fd",
+    "daily\\2022\\boosted_trees_residual_61_predictions.npz": "1cee768dd27bc8989d679b26b03ded5b2cc041bd917d2e35cb732575a9a969fd",
+    "daily\\2022\\boosted_trees_residual_97_predictions.npz": "1cee768dd27bc8989d679b26b03ded5b2cc041bd917d2e35cb732575a9a969fd",
+    "daily\\2022\\shared_network_residual_7_predictions.npz": "7a0003c24d50814c607ae9e4478386b4b81f4565ebbf9c53bb9d322240a80c45",
+    "daily\\2022\\shared_network_residual_19_predictions.npz": "468c9bf970243b650eab530c592d0606ec96204e778cc859df39bd39399e2da8",
+    "daily\\2022\\shared_network_residual_42_predictions.npz": "601b56c4c29e07dc44a20b7b05f5a95952515d8248e8679048ba1507edba92af",
+    "daily\\2022\\shared_network_residual_61_predictions.npz": "64fdedbc0513916eb2180b4e788e09de5c15903db52527be539e15084f07c7e7",
+    "daily\\2022\\shared_network_residual_97_predictions.npz": "078d61e31d5f0692d6eb8eb7f48795ba47ec6863c3bf43bc88892ea4ab791abe",
+    "intraday\\2022\\ridge_raw_7_predictions.npz": "7956a70c0cd0c4180389c8ab8c98bf5faa6028f6fc0ec7381d8d9a91378d70d7",
+    "intraday\\2022\\boosted_trees_raw_7_predictions.npz": "0e0628449429212831f28952553bcf780710e0b49fd4f87c98ead332320f808f",
+    "intraday\\2022\\boosted_trees_raw_19_predictions.npz": "0e0628449429212831f28952553bcf780710e0b49fd4f87c98ead332320f808f",
+    "intraday\\2022\\boosted_trees_raw_42_predictions.npz": "0e0628449429212831f28952553bcf780710e0b49fd4f87c98ead332320f808f",
+    "intraday\\2022\\boosted_trees_raw_61_predictions.npz": "0e0628449429212831f28952553bcf780710e0b49fd4f87c98ead332320f808f",
+    "intraday\\2022\\boosted_trees_raw_97_predictions.npz": "0e0628449429212831f28952553bcf780710e0b49fd4f87c98ead332320f808f",
+    "intraday\\2022\\shared_network_raw_7_predictions.npz": "5726983afd3ca3e77a75377ddd076f81b43430844defb8f743b216d8c92feaeb",
+    "intraday\\2022\\shared_network_raw_19_predictions.npz": "96c4ec2336eff0c09656380f7beb9fdb7741d7161632ad3fa3782ea5c3ad9611",
+    "intraday\\2022\\shared_network_raw_42_predictions.npz": "00f19cf3d3e51210b171375b4d7225dfab1195586104b1c2dd4daedc5bf51550",
+    "intraday\\2022\\shared_network_raw_61_predictions.npz": "02cb1629274908e9507e755427b811bd1b61fc098d22f889cf4d19dc96a2288c",
+    "intraday\\2022\\shared_network_raw_97_predictions.npz": "c51f4096508960d70bfd736f0ead6e4c33b2d4ddc42488676fa7f9402fb218ff",
+    "intraday\\2022\\ridge_residual_7_predictions.npz": "6d9d052481a9b9edf6bc0cc8664eb1958a4ad79a1cc43e3672f38bf1cd1137b4",
+    "intraday\\2022\\boosted_trees_residual_7_predictions.npz": "81465811a0a2282b7c8635030b0ad9f364bf7e10040537f491f25f0b16dc2182",
+    "intraday\\2022\\boosted_trees_residual_19_predictions.npz": "81465811a0a2282b7c8635030b0ad9f364bf7e10040537f491f25f0b16dc2182",
+    "intraday\\2022\\boosted_trees_residual_42_predictions.npz": "81465811a0a2282b7c8635030b0ad9f364bf7e10040537f491f25f0b16dc2182",
+    "intraday\\2022\\boosted_trees_residual_61_predictions.npz": "81465811a0a2282b7c8635030b0ad9f364bf7e10040537f491f25f0b16dc2182",
+    "intraday\\2022\\boosted_trees_residual_97_predictions.npz": "81465811a0a2282b7c8635030b0ad9f364bf7e10040537f491f25f0b16dc2182",
+    "intraday\\2022\\shared_network_residual_7_predictions.npz": "d588f888ba2367f1cd1bdb429e1ae1f5f0fc726d9028d8fd3dae50a809d52828",
+    "intraday\\2022\\shared_network_residual_19_predictions.npz": "9a149e7ace23f8057f932ad57793df18fe17df97d8edcd896bc1e13622c75185",
+    "intraday\\2022\\shared_network_residual_42_predictions.npz": "c132d8530d075c2c15cfdbebf18688dcdd3dfa78f3175b0d5e70a77cc85ec0b1",
+    "intraday\\2022\\shared_network_residual_61_predictions.npz": "79f5ce4670613d0e8f484863c7273745e9c7fc11892dae023fced02816a919f1",
+    "intraday\\2022\\shared_network_residual_97_predictions.npz": "8870d43297d6b36f3326368708052e91f8fb64e470d8f9ce75c397210edee21d",
+    "daily\\2023\\ridge_raw_7_predictions.npz": "96249b4e9d6f678be1c03950b98272702ce9036a10e980b643a48f343131e394",
+    "daily\\2023\\boosted_trees_raw_7_predictions.npz": "cd7ca563f19038970a0a481609ca0d326bf87ad5cfc43457f2f73a4570a0b563",
+    "daily\\2023\\boosted_trees_raw_19_predictions.npz": "cd7ca563f19038970a0a481609ca0d326bf87ad5cfc43457f2f73a4570a0b563",
+    "daily\\2023\\boosted_trees_raw_42_predictions.npz": "cd7ca563f19038970a0a481609ca0d326bf87ad5cfc43457f2f73a4570a0b563",
+    "daily\\2023\\boosted_trees_raw_61_predictions.npz": "cd7ca563f19038970a0a481609ca0d326bf87ad5cfc43457f2f73a4570a0b563",
+    "daily\\2023\\boosted_trees_raw_97_predictions.npz": "cd7ca563f19038970a0a481609ca0d326bf87ad5cfc43457f2f73a4570a0b563",
+    "daily\\2023\\shared_network_raw_7_predictions.npz": "f31c28d32e1ad7d175368200207f3e6514c696fd6fb6abd4608c346814cfc821",
+    "daily\\2023\\shared_network_raw_19_predictions.npz": "e4659a930664e948031fbc91d774d860816d0fff7828d6f3e7dc198ca3ede439",
+    "daily\\2023\\shared_network_raw_42_predictions.npz": "e154e7e489b9b710e36eba8e143534e99d0af15821affae5e0d81ede249fc8af",
+    "daily\\2023\\shared_network_raw_61_predictions.npz": "f63c26a48477bc9abe11588f08a67ec3ce2d26dd9e35e4128de8ef9ac0290c8e",
+    "daily\\2023\\shared_network_raw_97_predictions.npz": "f23c3b9d80343a1bf02e7882a27250c40852cd32cc2068cf173ca3569ea6b8d8",
+    "daily\\2023\\ridge_residual_7_predictions.npz": "f6c02866e6b8a7b838a4e1a6f27224eb0496ccb14ccfdc2d3f92fed563f56724",
+    "daily\\2023\\boosted_trees_residual_7_predictions.npz": "e6d555c5678a094aeb9948a500817cdea96b60f159591e9218175ee2e6455c83",
+    "daily\\2023\\boosted_trees_residual_19_predictions.npz": "e6d555c5678a094aeb9948a500817cdea96b60f159591e9218175ee2e6455c83",
+    "daily\\2023\\boosted_trees_residual_42_predictions.npz": "e6d555c5678a094aeb9948a500817cdea96b60f159591e9218175ee2e6455c83",
+    "daily\\2023\\boosted_trees_residual_61_predictions.npz": "e6d555c5678a094aeb9948a500817cdea96b60f159591e9218175ee2e6455c83",
+    "daily\\2023\\boosted_trees_residual_97_predictions.npz": "e6d555c5678a094aeb9948a500817cdea96b60f159591e9218175ee2e6455c83",
+    "daily\\2023\\shared_network_residual_7_predictions.npz": "f0334e59a6712eb3fd8c3692a6115ac569943f03264ac71bf1bde085dbe5cbeb",
+    "daily\\2023\\shared_network_residual_19_predictions.npz": "86b6a93462e5bf6bdedca879ca75a0a5d6f9a7a873e4e91abc0353320610a4d4",
+    "daily\\2023\\shared_network_residual_42_predictions.npz": "0888fd0659a2007ff552100db399e0983ad8ea521f30206bc482e6122780f90b",
+    "daily\\2023\\shared_network_residual_61_predictions.npz": "73251a99f02f69d0b2216e8f0927f5d7fd71851a9c0b50879e320ae08ca71582",
+    "daily\\2023\\shared_network_residual_97_predictions.npz": "450aef334b2c42f997cd3e637c7c9d5f76173100997fae535d9a663926284a9f",
+    "intraday\\2023\\ridge_raw_7_predictions.npz": "ffb3178f92aaffedd57a5265544ccfddc9b15ba6eba45f6ae77ca5071b156501",
+    "intraday\\2023\\boosted_trees_raw_7_predictions.npz": "3660a24ced04f1ac67574a5fbb751100d95ee98d671fff82666c76a62c09d49b",
+    "intraday\\2023\\boosted_trees_raw_19_predictions.npz": "3660a24ced04f1ac67574a5fbb751100d95ee98d671fff82666c76a62c09d49b",
+    "intraday\\2023\\boosted_trees_raw_42_predictions.npz": "3660a24ced04f1ac67574a5fbb751100d95ee98d671fff82666c76a62c09d49b",
+    "intraday\\2023\\boosted_trees_raw_61_predictions.npz": "3660a24ced04f1ac67574a5fbb751100d95ee98d671fff82666c76a62c09d49b",
+    "intraday\\2023\\boosted_trees_raw_97_predictions.npz": "3660a24ced04f1ac67574a5fbb751100d95ee98d671fff82666c76a62c09d49b",
+    "intraday\\2023\\shared_network_raw_7_predictions.npz": "71606de00a065c382cf0a5a04a2685225c14e22de991542283cd369446c8bb7e",
+    "intraday\\2023\\shared_network_raw_19_predictions.npz": "b497d593e816f26227945744b902d32b2819b713ab8c3284f33cca673386c47c",
+    "intraday\\2023\\shared_network_raw_42_predictions.npz": "4a822fd124de1491e43e7d8ff4c21e554c6fb4c761f2aa28452c5fead4bbc594",
+    "intraday\\2023\\shared_network_raw_61_predictions.npz": "ac5b3aaa1de7c470bf20b6dac3c092590bf9436c43a11d6d6a40a18561c8bc9a",
+    "intraday\\2023\\shared_network_raw_97_predictions.npz": "e56e9296f9f7442237bbf3e2e74a718413bbb011198f7566eaf74baf66fa348c",
+    "intraday\\2023\\ridge_residual_7_predictions.npz": "c094d018631ca942bb2293fd93be900d9b910b9d61920fca92dc2945ecf4a9c4",
+    "intraday\\2023\\boosted_trees_residual_7_predictions.npz": "883931ff990616130dbe91e79ba817ab621c7384b68b7a3a99301d76909ad93f",
+    "intraday\\2023\\boosted_trees_residual_19_predictions.npz": "883931ff990616130dbe91e79ba817ab621c7384b68b7a3a99301d76909ad93f",
+    "intraday\\2023\\boosted_trees_residual_42_predictions.npz": "883931ff990616130dbe91e79ba817ab621c7384b68b7a3a99301d76909ad93f",
+    "intraday\\2023\\boosted_trees_residual_61_predictions.npz": "883931ff990616130dbe91e79ba817ab621c7384b68b7a3a99301d76909ad93f",
+    "intraday\\2023\\boosted_trees_residual_97_predictions.npz": "883931ff990616130dbe91e79ba817ab621c7384b68b7a3a99301d76909ad93f",
+    "intraday\\2023\\shared_network_residual_7_predictions.npz": "e9c694cf0783200f538c1f334111c1074ac0459dfe42c52429c4973c3b4b8b95",
+    "intraday\\2023\\shared_network_residual_19_predictions.npz": "7d05bc8fada749f0b04b9af225653911eb2419d2fcabcadf6cc4949934999996",
+    "intraday\\2023\\shared_network_residual_42_predictions.npz": "0a8879fc22f4387102915a37c15f23ca7198d9d3e99b7f5574938236f540a106",
+    "intraday\\2023\\shared_network_residual_61_predictions.npz": "1dad5d6bddc7a78c0c50c739ff2b6a8071112e86f28f569b9a190cf1fb288120",
+    "intraday\\2023\\shared_network_residual_97_predictions.npz": "5d60038d62c82a7ef4f76be57ca1c9d9b34386f583ff3be75e73aa4605f30662",
+    "daily\\2024\\ridge_raw_7_predictions.npz": "2fe0b61988754ca6ecf04a76a9af67ee974bdc227e92e6bcc0ad2ce1e4e82eb0",
+    "daily\\2024\\boosted_trees_raw_7_predictions.npz": "6c662c3e8903b8a1a1dbbc30124a0343d9eb70862405ab7e50c6985a808807bd",
+    "daily\\2024\\boosted_trees_raw_19_predictions.npz": "6c662c3e8903b8a1a1dbbc30124a0343d9eb70862405ab7e50c6985a808807bd",
+    "daily\\2024\\boosted_trees_raw_42_predictions.npz": "6c662c3e8903b8a1a1dbbc30124a0343d9eb70862405ab7e50c6985a808807bd",
+    "daily\\2024\\boosted_trees_raw_61_predictions.npz": "6c662c3e8903b8a1a1dbbc30124a0343d9eb70862405ab7e50c6985a808807bd",
+    "daily\\2024\\boosted_trees_raw_97_predictions.npz": "6c662c3e8903b8a1a1dbbc30124a0343d9eb70862405ab7e50c6985a808807bd",
+    "daily\\2024\\shared_network_raw_7_predictions.npz": "431bebf87d487764ef7e260733ee198489df4640caca760dc05d9ef012cd208c",
+    "daily\\2024\\shared_network_raw_19_predictions.npz": "3ae4f33d7c437314ae38d78f43de2e515069a4c6b1ade17f7161e3352f2e79bb",
+    "daily\\2024\\shared_network_raw_42_predictions.npz": "2a937f0257fb174dd02f88e271e33c504fe4ae858ce87f24966f7eebaea7127c",
+    "daily\\2024\\shared_network_raw_61_predictions.npz": "8ea5ef511cd1b9b1ec7532bd489dd0c429522c4239e48c24af93f7c6c3c02d43",
+    "daily\\2024\\shared_network_raw_97_predictions.npz": "c59f80cb4086e066cdc3875e43e7515f78120d75e00e7d0e7af7ce6ae7ab3134",
+    "daily\\2024\\ridge_residual_7_predictions.npz": "7f26c9b542104d34e639fd6986a75bbfd11fa8fc62ec71bb7fb8834a6e739190",
+    "daily\\2024\\boosted_trees_residual_7_predictions.npz": "bdd9ca40d4c674fdd7e565c2c12931794c4538139aa9a26eaaaed04a943abeb8",
+    "daily\\2024\\boosted_trees_residual_19_predictions.npz": "bdd9ca40d4c674fdd7e565c2c12931794c4538139aa9a26eaaaed04a943abeb8",
+    "daily\\2024\\boosted_trees_residual_42_predictions.npz": "bdd9ca40d4c674fdd7e565c2c12931794c4538139aa9a26eaaaed04a943abeb8",
+    "daily\\2024\\boosted_trees_residual_61_predictions.npz": "bdd9ca40d4c674fdd7e565c2c12931794c4538139aa9a26eaaaed04a943abeb8",
+    "daily\\2024\\boosted_trees_residual_97_predictions.npz": "bdd9ca40d4c674fdd7e565c2c12931794c4538139aa9a26eaaaed04a943abeb8",
+    "daily\\2024\\shared_network_residual_7_predictions.npz": "b28dc8c06ea82846da10682f0052f103e11a123e714a28f909bbf16b1de9dffb",
+    "daily\\2024\\shared_network_residual_19_predictions.npz": "5c6be418d3f96daf6c59a9d85cb5ba1fa30c1268b1605752240e1bff6fd5da82",
+    "daily\\2024\\shared_network_residual_42_predictions.npz": "7df7234194569aadbb63391e7e841cc4672c21bffb95fee01c1b61a73c3cc106",
+    "daily\\2024\\shared_network_residual_61_predictions.npz": "b5bf00dd7c30fc810e08f23d2cd1387f3e30a912c49583d297200f0f90cb8cc2",
+    "daily\\2024\\shared_network_residual_97_predictions.npz": "ae1e3156247175d0fc0c6e2e69d86243e129d309eae6e16810715fa4c723fa94",
+    "intraday\\2024\\ridge_raw_7_predictions.npz": "e3e196c4b143485bd37975faaaf1af739437de0aa3dcfef8f9a6a50a2fc6fdbf",
+    "intraday\\2024\\boosted_trees_raw_7_predictions.npz": "10a03bdbfea47f9c32f51d971a2467c9f516303c9eb9f499ff77fa46b3b74459",
+    "intraday\\2024\\boosted_trees_raw_19_predictions.npz": "10a03bdbfea47f9c32f51d971a2467c9f516303c9eb9f499ff77fa46b3b74459",
+    "intraday\\2024\\boosted_trees_raw_42_predictions.npz": "10a03bdbfea47f9c32f51d971a2467c9f516303c9eb9f499ff77fa46b3b74459",
+    "intraday\\2024\\boosted_trees_raw_61_predictions.npz": "10a03bdbfea47f9c32f51d971a2467c9f516303c9eb9f499ff77fa46b3b74459",
+    "intraday\\2024\\boosted_trees_raw_97_predictions.npz": "10a03bdbfea47f9c32f51d971a2467c9f516303c9eb9f499ff77fa46b3b74459",
+    "intraday\\2024\\shared_network_raw_7_predictions.npz": "50b071b431d95fd7032d8574245b9f954983d115d5b2b2c9b09160f514c82a6f",
+    "intraday\\2024\\shared_network_raw_19_predictions.npz": "2fd2eeb0e4c4330a9efa09efba25e55e70237d009567c72fdd1c2ef9d4fcb7a9",
+    "intraday\\2024\\shared_network_raw_42_predictions.npz": "c0237be70ea07685e01817942e62a0cd323c2dffbc83db4272766732d950fe3a",
+    "intraday\\2024\\shared_network_raw_61_predictions.npz": "f7bbe312a4e991a58db706ac31dfe724cad1dbef33c131724865d76ff0486742",
+    "intraday\\2024\\shared_network_raw_97_predictions.npz": "818f7b423217ef6c0f75ce0f480d1206c824a6d7b6c9f1ef19f067be721d3a85",
+    "intraday\\2024\\ridge_residual_7_predictions.npz": "5ada60a6fb20c6272e35490bc40e09bf5df0fdd0e447a587f142f6aa9f2d8ee0",
+    "intraday\\2024\\boosted_trees_residual_7_predictions.npz": "916ee4b47ef5d23ccebcc2763a36cfea496a1bed2ae19acee87c08f07120c6eb",
+    "intraday\\2024\\boosted_trees_residual_19_predictions.npz": "916ee4b47ef5d23ccebcc2763a36cfea496a1bed2ae19acee87c08f07120c6eb",
+    "intraday\\2024\\boosted_trees_residual_42_predictions.npz": "916ee4b47ef5d23ccebcc2763a36cfea496a1bed2ae19acee87c08f07120c6eb",
+    "intraday\\2024\\boosted_trees_residual_61_predictions.npz": "916ee4b47ef5d23ccebcc2763a36cfea496a1bed2ae19acee87c08f07120c6eb",
+    "intraday\\2024\\boosted_trees_residual_97_predictions.npz": "916ee4b47ef5d23ccebcc2763a36cfea496a1bed2ae19acee87c08f07120c6eb",
+    "intraday\\2024\\shared_network_residual_7_predictions.npz": "8ab909fd362bb098e98b94afd2fe700d41bd83eabc8f31a18a2f3e15a65d7373",
+    "intraday\\2024\\shared_network_residual_19_predictions.npz": "a6de8ee8b0d34d3b5445e63c67da6dba7987375b1a2af4b9b922102b5a21c8ba",
+    "intraday\\2024\\shared_network_residual_42_predictions.npz": "d1599f99d30a4603933ec575f4ace6af050625b15f728d0a81749a64b504a4b5",
+    "intraday\\2024\\shared_network_residual_61_predictions.npz": "8b3c406aa0f3dddf7d73847bd97b5e4c6b05fa45c9a8a8b59be1821a3a484bf9",
+    "intraday\\2024\\shared_network_residual_97_predictions.npz": "7037edc588c4ef9ab408f5d4fc9db3cfd504108c2a78f4a0ace92fa9732c27a5",
+    "daily\\2025\\ridge_raw_7_predictions.npz": "ff8e004b2453ffea575fa368aa2a50756fa3b2ca2fba7134776e395499ca624a",
+    "daily\\2025\\boosted_trees_raw_7_predictions.npz": "f9672c7d15ab2d6a3e1c78acca9db67e354f5d4a328b43cb451088accc994d79",
+    "daily\\2025\\boosted_trees_raw_19_predictions.npz": "f9672c7d15ab2d6a3e1c78acca9db67e354f5d4a328b43cb451088accc994d79",
+    "daily\\2025\\boosted_trees_raw_42_predictions.npz": "f9672c7d15ab2d6a3e1c78acca9db67e354f5d4a328b43cb451088accc994d79",
+    "daily\\2025\\boosted_trees_raw_61_predictions.npz": "f9672c7d15ab2d6a3e1c78acca9db67e354f5d4a328b43cb451088accc994d79",
+    "daily\\2025\\boosted_trees_raw_97_predictions.npz": "f9672c7d15ab2d6a3e1c78acca9db67e354f5d4a328b43cb451088accc994d79",
+    "daily\\2025\\shared_network_raw_7_predictions.npz": "e51bc10f3f0cffc4cf0883c84d394287f536f485e8e6478967b3547ba534d501",
+    "daily\\2025\\shared_network_raw_19_predictions.npz": "50793ff090183a90b1786aac7db3ee91048a0ab86e70108b64aac55ce23af285",
+    "daily\\2025\\shared_network_raw_42_predictions.npz": "ef4da8ddf26b881d0a62a99a1d02c925de1cb6994c3b98fd53ee7b5de009b7e3",
+    "daily\\2025\\shared_network_raw_61_predictions.npz": "363819091240a7e2de4c07ba8eadd54760a0a91e20d08b819e409a77e052392e",
+    "daily\\2025\\shared_network_raw_97_predictions.npz": "80c11593a453ca28b266d983833936813eb235e6b5bb2f748b601c28a2a0737a",
+    "daily\\2025\\ridge_residual_7_predictions.npz": "b633ea48f7eeb5801a83747afd6b86eb57f0e377868616dfd377461e63821d04",
+    "daily\\2025\\boosted_trees_residual_7_predictions.npz": "66594a4e2b6786ba8ddcb33927668aa0adabbbf9ce658de64d2112c7d182a9d0",
+    "daily\\2025\\boosted_trees_residual_19_predictions.npz": "66594a4e2b6786ba8ddcb33927668aa0adabbbf9ce658de64d2112c7d182a9d0",
+    "daily\\2025\\boosted_trees_residual_42_predictions.npz": "66594a4e2b6786ba8ddcb33927668aa0adabbbf9ce658de64d2112c7d182a9d0",
+    "daily\\2025\\boosted_trees_residual_61_predictions.npz": "66594a4e2b6786ba8ddcb33927668aa0adabbbf9ce658de64d2112c7d182a9d0",
+    "daily\\2025\\boosted_trees_residual_97_predictions.npz": "66594a4e2b6786ba8ddcb33927668aa0adabbbf9ce658de64d2112c7d182a9d0",
+    "daily\\2025\\shared_network_residual_7_predictions.npz": "7f429b6d0fcce5d9b188eb5b2f5dff53d9d8dbb920d22bbf43bcdf0c199b6ee8",
+    "daily\\2025\\shared_network_residual_19_predictions.npz": "7791a565463918a6798f8966874d7ff20bcc4343bab813bec2bf0a8015a3a604",
+    "daily\\2025\\shared_network_residual_42_predictions.npz": "dc374dfa67146d1bbc39fd202885bb663cb7521005414bce528eea7c8eb4d5f8",
+    "daily\\2025\\shared_network_residual_61_predictions.npz": "c36342b9d51566da75af85fda8f48a543e116d81b228f3a7e3fa48200b748aa3",
+    "daily\\2025\\shared_network_residual_97_predictions.npz": "57f3c9d3217cfd86d912456c444b89b116e5270ea9edd440551cf680ee366e84",
+    "intraday\\2025\\ridge_raw_7_predictions.npz": "88cfef93c21365100e7448c57bbbeb8d27dc0911dd0c63dbe139ae81c774d49c",
+    "intraday\\2025\\boosted_trees_raw_7_predictions.npz": "4863f06ba25f269a9e7890b0a75e2c4624c029d45ba704cb028c90d3c7381db1",
+    "intraday\\2025\\boosted_trees_raw_19_predictions.npz": "4863f06ba25f269a9e7890b0a75e2c4624c029d45ba704cb028c90d3c7381db1",
+    "intraday\\2025\\boosted_trees_raw_42_predictions.npz": "4863f06ba25f269a9e7890b0a75e2c4624c029d45ba704cb028c90d3c7381db1",
+    "intraday\\2025\\boosted_trees_raw_61_predictions.npz": "4863f06ba25f269a9e7890b0a75e2c4624c029d45ba704cb028c90d3c7381db1",
+    "intraday\\2025\\boosted_trees_raw_97_predictions.npz": "4863f06ba25f269a9e7890b0a75e2c4624c029d45ba704cb028c90d3c7381db1",
+    "intraday\\2025\\shared_network_raw_7_predictions.npz": "2ef07244fbedbf3d4d050a48bd7ba4f623d51369a68ca010df87983f41d2ae0d",
+    "intraday\\2025\\shared_network_raw_19_predictions.npz": "d097c5e61524034878855a18a84d182155dd4489e1e3763bd6041a0b428483e7",
+    "intraday\\2025\\shared_network_raw_42_predictions.npz": "00646df453abbd4e249806966b72d2d30dce595eb499d75e27c287e42843f25f",
+    "intraday\\2025\\shared_network_raw_61_predictions.npz": "5993582dbca236caaab04cd195f2ef668e4feee3e07c9ce02920ec97ccb46901",
+    "intraday\\2025\\shared_network_raw_97_predictions.npz": "2e05e39c8cc2d26b6b4f170ef0d96da12c84703d815bf234c7edfeab89adf2d1",
+    "intraday\\2025\\ridge_residual_7_predictions.npz": "e119ec152066136ed4edf844cf9058333174fb703793f90a47c17eb6a61dfeb1",
+    "intraday\\2025\\boosted_trees_residual_7_predictions.npz": "5256161440dbc9036ae6fe09877afaaf6a9bc22981ff6a8b967549c2491bc0ae",
+    "intraday\\2025\\boosted_trees_residual_19_predictions.npz": "5256161440dbc9036ae6fe09877afaaf6a9bc22981ff6a8b967549c2491bc0ae",
+    "intraday\\2025\\boosted_trees_residual_42_predictions.npz": "5256161440dbc9036ae6fe09877afaaf6a9bc22981ff6a8b967549c2491bc0ae",
+    "intraday\\2025\\boosted_trees_residual_61_predictions.npz": "5256161440dbc9036ae6fe09877afaaf6a9bc22981ff6a8b967549c2491bc0ae",
+    "intraday\\2025\\boosted_trees_residual_97_predictions.npz": "5256161440dbc9036ae6fe09877afaaf6a9bc22981ff6a8b967549c2491bc0ae",
+    "intraday\\2025\\shared_network_residual_7_predictions.npz": "79e50f5992fe784f4e76686db43015f28511bb1461c526cb4c8edd22118c1da4",
+    "intraday\\2025\\shared_network_residual_19_predictions.npz": "424e7f3f181b15c52258ecbac2999f18640a01fa8b53f89914051f3a910f59a9",
+    "intraday\\2025\\shared_network_residual_42_predictions.npz": "90db846af40c7654b46039e7fea107723dace232cd7165ee8313eb3e78017311",
+    "intraday\\2025\\shared_network_residual_61_predictions.npz": "5b9ba0deaea4af79f8e1595bf4f48a9be49a2689d6310efac359cc24c2a1dc60",
+    "intraday\\2025\\shared_network_residual_97_predictions.npz": "2bcd09881deca46f2fbee28275def2638ca4d667dd6f3ee6666ba14feba57496"
+  }
+}

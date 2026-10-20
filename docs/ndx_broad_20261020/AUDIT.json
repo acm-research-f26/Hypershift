@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "fold_models_reproduced": 176,
+  "ridge_coefficients_refitted": 48,
+  "tree_models_independently_refitted": 16,
+  "annual_model_selections_reproduced": 4,
+  "independent_accounts": 216,
+  "largest_nav_difference_dollars": 6.100162863731384e-08,
+  "untouched_confirmation": "not performed; historical development only"
+}

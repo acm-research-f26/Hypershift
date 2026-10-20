@@ -1,0 +1,33 @@
+{
+  "status": "completed_research_update_goal_not_established",
+  "source_sha256": "4a97a13a622470c9962d7341922abb4275af1175869726c340325c4c3588ce92",
+  "report_sha256": "7d23ee12324e67ec7f23ce3a3e6d48e03bed226625c07fcacb4c2d3e34fa24fe",
+  "publication_artifacts_verified": 126,
+  "publications": [
+    {
+      "study": "Alpaca matched features",
+      "publication_sha256": "45452193f0be41247faefcc86e7b3f4c6c731903dfcb5a40f57c056d3cc4e93d",
+      "publication": "runs\\nasdaq100_alpaca_20261019\\FINAL_PUBLICATION.json"
+    },
+    {
+      "study": "Ranking / benchmark-residual targets",
+      "publication_sha256": "57b7784b8be2f464de97ac3e150a41663e5bdc7d71d90eee893564509c8f7ed5",
+      "publication": "runs\\ndx_ranking_20261020\\FINAL_PUBLICATION.json"
+    },
+    {
+      "study": "Rich features / trees / shared networks",
+      "publication_sha256": "6017f60c4817e41de107afe4deadd2a66d5936f6a703a6cb0a5c08546eea3c76",
+      "publication": "runs\\ndx_broad_20261020\\FINAL_PUBLICATION.json"
+    },
+    {
+      "study": "Frozen-core corrections",
+      "publication_sha256": "9c3bf332670efc56f03948a937519c52a016d7bbc315faa63b438e253d221d63",
+      "publication": "runs\\ndx_corrections_20261020\\FINAL_PUBLICATION.json"
+    },
+    {
+      "study": "Fixed seed-count expansion",
+      "publication_sha256": "fd3312e786909ea8686059d7484ed25382065a44ee361b6d05a41211e756b873",
+      "publication": "runs\\ndx_seed_expansion_20261020\\FINAL_PUBLICATION.json"
+    }
+  ]
+}

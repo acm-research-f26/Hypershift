@@ -1,5 +1,11 @@
 # Research charts
 
+- [Latest NASDAQ-100 research status and confidence limits](NASDAQ_RESEARCH_STATUS_20261020.md)
+- [Alpaca matched daily/intraday comparison](nasdaq_alpaca_20261019/REPORT.md)
+- [Ranking and benchmark-residual objectives](ndx_ranking_20261020/REPORT.md)
+- [Rich features, model families and risk controls](ndx_broad_20261020/REPORT.md)
+- [Frozen-core corrections and validation acceptance](ndx_corrections_20261020/REPORT.md)
+- [Fixed 25-seed expansion and initialization uncertainty](ndx_seed_expansion_20261020/REPORT.md)
 - [Active historical monthly NASDAQ-100 study](nasdaq_monthly_pit/CHARTS.md)
 - [Historical data contract and free-source findings](nasdaq_monthly_pit/DATA_REQUIREMENTS.md)
 - [Earlier random samples, seeds and averages](random_trials_20261010/CHARTS.md)
@@ -12,6 +18,9 @@ The active universe is the user-authorized historical official NASDAQ-100
 fallback, sampled monthly and retaining every official share class. The custom
 100-largest-NASDAQ-company ranking remains deferred. The active charts page
 contains the completed 120-fit batch, independent audit and all results.
+The latest research status links the completed Alpaca, ranking, broad-feature,
+frozen-core correction and seed-expansion studies. Their higher historical
+returns do not establish reliable future superiority over SPY or other models.
 It also includes the audited 20-fit pseudo-Huber follow-up and all-model
 top-5/top-10/top-20 wealth charts, yearly breakdowns and seed comparisons.
 The same page compares fixed long/short allocations with matched cash controls,

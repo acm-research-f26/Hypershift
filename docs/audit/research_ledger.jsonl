@@ -1,0 +1,3 @@
+{"run": "runs\\ndx_broad_20261020", "protocol_sha256": "2d57602a29d0d0a8c3000339c28a8477322280c4a928b9608040b2a77c357c73", "timestamp_utc": "2026-10-20T07:07:56.578017+00:00", "selected_fold_models": 176, "candidate_fits": 208, "prior_research": "Full prior search is broader than this ledger; prior published runs remain preserved."}
+{"experiment": "ndx_corrections_20261020", "protocol_sha256": "2f8df34316d51f15cfcca86e068a02a00efc03a858e9c47b6eb864b243f40a83", "frozen_at_utc": "2026-10-20T16:04:04.007972+00:00", "previous_history_exploratory": true, "planned_fits": 100}
+{"experiment": "ndx_seed_expansion_20261020", "protocol_sha256": "258db7714a36205b688bc3fd68c28fec9276f97a78bc957cb9c720db2cca3089", "planned_fits": 80, "all_seeds_prespecified": true}

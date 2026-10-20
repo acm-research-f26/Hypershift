@@ -1,0 +1,9 @@
+{
+  "status": "complete_pending_audit",
+  "selected_fold_models": 176,
+  "candidate_fits": 208,
+  "portfolio_accounts": 216,
+  "contrasts": 28,
+  "test_history": "exploratory 2022-2025",
+  "validation_selection_preceded_metrics": true
+}

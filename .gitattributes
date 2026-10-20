@@ -10,3 +10,15 @@
 *.npz binary
 *.npy binary
 *.pt binary
+
+# Frozen research hashes require exact source and published artifact bytes.
+*.py -text
+*.mjs -text
+/config/*20261019*.json -text
+/config/*20261020*.json -text
+/docs/nasdaq_alpaca_20261019/** -text
+/docs/ndx_*_20261020/** -text
+/docs/audit/nasdaq100_model_audit_20261019/** -text
+/docs/audit/research_status_20261020.json -text
+/docs/NASDAQ_RESEARCH_STATUS_20261020.md -text
+/outputs/** -text

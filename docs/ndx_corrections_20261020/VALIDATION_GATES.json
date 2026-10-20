@@ -1,0 +1,350 @@
+{
+  "gates": [
+    {
+      "year": 2022,
+      "results": {
+        "primary": {
+          "h1_candidate": {
+            "cell": "rich_features__net_utility",
+            "epoch": 5,
+            "shrink": 0.5
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.005627180896699428,
+            "variance": 0.007282231665831702,
+            "wins": 1,
+            "score": 0.004898957730116258
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "intraday_window__top_rank": {
+          "h1_candidate": null,
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.0,
+            "variance": 0.0,
+            "wins": 0,
+            "score": 0.0
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "intraday_window__net_utility": {
+          "h1_candidate": null,
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.0,
+            "variance": 0.0,
+            "wins": 0,
+            "score": 0.0
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "rich_features__top_rank": {
+          "h1_candidate": null,
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.0,
+            "variance": 0.0,
+            "wins": 0,
+            "score": 0.0
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "rich_features__net_utility": {
+          "h1_candidate": {
+            "cell": "rich_features__net_utility",
+            "epoch": 5,
+            "shrink": 0.5
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.005627180896699428,
+            "variance": 0.007282231665831702,
+            "wins": 1,
+            "score": 0.004898957730116258
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        }
+      }
+    },
+    {
+      "year": 2023,
+      "results": {
+        "primary": {
+          "h1_candidate": {
+            "cell": "rich_features__net_utility",
+            "epoch": 20,
+            "shrink": 0.25
+          },
+          "h2_statistics": {
+            "observations": 25,
+            "omitted": 0,
+            "mean": 0.05045627602338802,
+            "variance": 0.26580919838498424,
+            "wins": 10,
+            "score": 0.023875356184889597
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "intraday_window__top_rank": {
+          "h1_candidate": {
+            "cell": "intraday_window__top_rank",
+            "epoch": 5,
+            "shrink": 0.25
+          },
+          "h2_statistics": {
+            "observations": 25,
+            "omitted": 0,
+            "mean": -0.012330689334869272,
+            "variance": 0.07261177827866863,
+            "wins": 3,
+            "score": -0.019591867162736136
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "intraday_window__net_utility": {
+          "h1_candidate": null,
+          "h2_statistics": {
+            "observations": 25,
+            "omitted": 0,
+            "mean": 0.0,
+            "variance": 0.0,
+            "wins": 0,
+            "score": 0.0
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "rich_features__top_rank": {
+          "h1_candidate": null,
+          "h2_statistics": {
+            "observations": 25,
+            "omitted": 0,
+            "mean": 0.0,
+            "variance": 0.0,
+            "wins": 0,
+            "score": 0.0
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "rich_features__net_utility": {
+          "h1_candidate": {
+            "cell": "rich_features__net_utility",
+            "epoch": 20,
+            "shrink": 0.25
+          },
+          "h2_statistics": {
+            "observations": 25,
+            "omitted": 0,
+            "mean": 0.05045627602338802,
+            "variance": 0.26580919838498424,
+            "wins": 10,
+            "score": 0.023875356184889597
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        }
+      }
+    },
+    {
+      "year": 2024,
+      "results": {
+        "primary": {
+          "h1_candidate": {
+            "cell": "intraday_window__net_utility",
+            "epoch": 20,
+            "shrink": 0.25
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": -0.12609303609157602,
+            "variance": 0.12671974320149648,
+            "wins": 9,
+            "score": -0.13876501041172568
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "intraday_window__top_rank": {
+          "h1_candidate": null,
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.0,
+            "variance": 0.0,
+            "wins": 0,
+            "score": 0.0
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "intraday_window__net_utility": {
+          "h1_candidate": {
+            "cell": "intraday_window__net_utility",
+            "epoch": 20,
+            "shrink": 0.25
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": -0.12609303609157602,
+            "variance": 0.12671974320149648,
+            "wins": 9,
+            "score": -0.13876501041172568
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "rich_features__top_rank": {
+          "h1_candidate": null,
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.0,
+            "variance": 0.0,
+            "wins": 0,
+            "score": 0.0
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "rich_features__net_utility": {
+          "h1_candidate": null,
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.0,
+            "variance": 0.0,
+            "wins": 0,
+            "score": 0.0
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        }
+      }
+    },
+    {
+      "year": 2025,
+      "results": {
+        "primary": {
+          "h1_candidate": {
+            "cell": "rich_features__net_utility",
+            "epoch": 20,
+            "shrink": 0.5
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.14429936029016974,
+            "variance": 0.7423877651488557,
+            "wins": 13,
+            "score": 0.07006058377528417
+          },
+          "accepted": true,
+          "deployed_candidate": {
+            "cell": "rich_features__net_utility",
+            "epoch": 20,
+            "shrink": 0.5
+          }
+        },
+        "intraday_window__top_rank": {
+          "h1_candidate": {
+            "cell": "intraday_window__top_rank",
+            "epoch": 10,
+            "shrink": 1
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.08507221392666309,
+            "variance": 1.5570491293535138,
+            "wins": 15,
+            "score": -0.0706326990086883
+          },
+          "accepted": true,
+          "deployed_candidate": {
+            "cell": "intraday_window__top_rank",
+            "epoch": 10,
+            "shrink": 1
+          }
+        },
+        "intraday_window__net_utility": {
+          "h1_candidate": {
+            "cell": "intraday_window__net_utility",
+            "epoch": 10,
+            "shrink": 0.5
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.020723022768894844,
+            "variance": 0.5961065613657187,
+            "wins": 10,
+            "score": -0.03888763336767703
+          },
+          "accepted": false,
+          "deployed_candidate": null
+        },
+        "rich_features__top_rank": {
+          "h1_candidate": {
+            "cell": "rich_features__top_rank",
+            "epoch": 10,
+            "shrink": 0.25
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.20844199903309338,
+            "variance": 0.4187019687420996,
+            "wins": 13,
+            "score": 0.16657180215888343
+          },
+          "accepted": true,
+          "deployed_candidate": {
+            "cell": "rich_features__top_rank",
+            "epoch": 10,
+            "shrink": 0.25
+          }
+        },
+        "rich_features__net_utility": {
+          "h1_candidate": {
+            "cell": "rich_features__net_utility",
+            "epoch": 20,
+            "shrink": 0.5
+          },
+          "h2_statistics": {
+            "observations": 24,
+            "omitted": 0,
+            "mean": 0.14429936029016974,
+            "variance": 0.7423877651488557,
+            "wins": 13,
+            "score": 0.07006058377528417
+          },
+          "accepted": true,
+          "deployed_candidate": {
+            "cell": "rich_features__net_utility",
+            "epoch": 20,
+            "shrink": 0.5
+          }
+        }
+      }
+    }
+  ],
+  "h1_lock_sha256": "3eb990bc424d8f65162802477d5849b32c29c6a6883465e5a7e8332babf30a03",
+  "created_before_test_metrics": true
+}

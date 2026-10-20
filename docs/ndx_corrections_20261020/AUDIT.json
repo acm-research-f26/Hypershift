@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checkpoints_reproduced": 260,
+  "fits": 100,
+  "independent_accounts": 144,
+  "largest_nav_difference_dollars": 6.100162863731384e-08,
+  "independent_h1_choices": 20,
+  "independent_h2_gates": 20,
+  "future_confirmation": "not performed; previously inspected historical development"
+}

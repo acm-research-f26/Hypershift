@@ -1,0 +1,3 @@
+policy,base_cagr_above_spy,double_cost_cagr_above_spy,years_above_spy,months_above_spy,drawdown_within_five_pp,historical_screen_passed,positive_simultaneous_contrasts,comparisons
+full,True,True,2,22,False,False,0,110
+trend_half,False,False,1,24,True,False,0,110

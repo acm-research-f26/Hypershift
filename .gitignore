@@ -149,6 +149,8 @@ activemq-data/
 
 # Environments
 .env
+.env.*
+!.env.example
 .envrc
 .venv
 env/
@@ -220,3 +222,10 @@ __marimo__/
 # Generated tutorial data, checkpoints, and experiment outputs
 data/
 runs/
+
+# Local spreadsheet runtime and reproducible render intermediates
+**/node_modules/
+outputs/**/analysis_paths.npz
+outputs/**/*_preview.png
+outputs/**/*.inspect.ndjson
+outputs/**/workbook_inspection.json

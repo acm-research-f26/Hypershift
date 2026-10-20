@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "new_checkpoints_reproduced": 120,
+  "ridge_models_reproduced": 8,
+  "parent_forecast_exports_reconstructed": 40,
+  "independent_accounts": 69,
+  "ranking_ensembles_reconstructed": 10,
+  "independent_beta_samples": 80,
+  "largest_nav_difference_dollars": 4.98257577419281e-08,
+  "future_confirmation": "not evaluated; no untouched historical claim"
+}

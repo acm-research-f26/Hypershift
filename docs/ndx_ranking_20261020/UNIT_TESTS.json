@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "tests": 46,
+  "failures": 0,
+  "errors": 0,
+  "modules": [
+    "test_ndx_ranking",
+    "test_alpaca_15min",
+    "test_ndx_alpaca",
+    "test_ndx_alpaca_reporting",
+    "test_pit_models",
+    "test_pit_research_engine",
+    "test_historical_ndx_timing"
+  ],
+  "source_hashes": {
+    "test_ndx_ranking.py": "c5792bb0c038b70be02b948a46e799c4d624313248006b2dfad0c7f927882c0f",
+    "test_alpaca_15min.py": "ee5db3fd0de941218b80027d5f7053c88327ec700ad373a18c3cb701e2276e9e",
+    "test_ndx_alpaca.py": "09204dc44f71369107ebc52fc4b5a1b0ce388d0024c23116b36744a54613e6f1",
+    "test_ndx_alpaca_reporting.py": "64fb384b579b074d25ee70707c3329ff8d984eedf952125294f3e8e7ffefe184",
+    "test_pit_models.py": "72301dc9c00253084b5a8d45ea30701bedaa235b31bd80d4ae9b13e7e4a75a7d",
+    "test_pit_research_engine.py": "5adca367463b4180d3fdf8c2f3292432aac4fbac7c1da5f9397cde9df51e9706",
+    "test_historical_ndx_timing.py": "bb488e25a535e256b98bd29795c2ccd7e96f3e82411679ae4fe2b1b9f377fcc5"
+  }
+}

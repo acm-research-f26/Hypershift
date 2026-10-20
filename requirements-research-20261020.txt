@@ -1,0 +1,9 @@
+# Additional research libraries; preserve the existing numerical/model runtime.
+numpy==2.5.3
+pandas==3.0.6
+scikit-learn==1.9.1
+scipy==1.18.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+cloudpickle==3.1.2
+narwhals==2.27.1
