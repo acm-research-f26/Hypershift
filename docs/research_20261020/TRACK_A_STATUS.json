@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-10-20T08:35:46+00:00",
+  "feat_rs_head": "202f2855046aeb93d968f0fc167d1bc3a90e8d83",
+  "feat_rs_head_note": "202f285 changes analysis/docs only; model/engine files identical to d83c4a4; no tracked data/ or runs/; no releases",
+  "passed": false,
+  "missing_inputs": 9,
+  "missing_baseline": 64,
+  "source_integrity_passed": true,
+  "verdict": "BLOCKED",
+  "next": "Provide Rishi's original data/nasdaq_monthly_pit/assembled and runs/nasdaq100_historical_monthly_20261011 (see Codex worktree docs/depth_ablation_20261019/RECOVERY.md). Do not re-check this session."
+}
