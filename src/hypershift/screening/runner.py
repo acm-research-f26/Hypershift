@@ -28,6 +28,8 @@ ARMS = {
     'random_graph': ('A', 'random_graph', 'raw', 'mse', 'static'),
     'market_target': ('B', 'static', 'market', 'mse', 'static'),
     'cluster_target': ('B', 'static', 'cluster', 'mse', 'static'),
+    'sector_target': ('B', 'static', 'sector', 'mse', 'static'),
+    'sector_graph': ('A', 'sector_graph', 'raw', 'mse', 'static'),
     'pairwise': ('C', 'static', 'raw', 'pairwise', 'static'),
     'listwise': ('C', 'static', 'raw', 'listwise', 'static'),
     'hybrid': ('C', 'static', 'raw', 'hybrid', 'static'),
@@ -107,7 +109,8 @@ def fit(arm, panel, seed, path, cfg):
     kind, target_kind, loss_kind = ARMS[arm][1:4]
     torch.manual_seed(seed); np.random.seed(seed)
     rng = np.random.default_rng(seed)
-    model = ScreenModel(kind, len(panel.tickers), cfg['hidden'], panel.groups).to(cfg['device'])
+    groups = panel.sectors if kind == 'sector_graph' else panel.groups
+    model = ScreenModel(kind, len(panel.tickers), cfg['hidden'], groups).to(cfg['device'])
     opt = torch.optim.Adam(model.parameters(), lr=.001, weight_decay=0.)
     best, best_state, bad, start_epoch = float('inf'), None, 0, 0
     history = []
@@ -132,9 +135,9 @@ def fit(arm, panel, seed, path, cfg):
             print('pretrain', ep, float(np.mean(losses)), flush=True)
         # Reset optimizer so supervised optimization has the same fresh moments.
         opt = torch.optim.Adam(model.parameters(), lr=.001, weight_decay=0.)
-    # Fixed non-overlapping validation signal schedule for checkpoint selection;
-    # evaluation forecasts remain daily. Shared by every neural arm.
-    validation_signals = panel.valid[::5]
+    # Fixed validation signal schedule for checkpoint selection (v2: every fifth
+    # session; v3: daily); evaluation forecasts remain daily. Shared by every neural arm.
+    validation_signals = panel.valid[::cfg['validation_stride']]
     val_y, val_m = panel.target(validation_signals, target_kind)
     for epoch in range(start_epoch, cfg['epochs']):
         if bad >= cfg['patience']:
@@ -156,14 +159,18 @@ def fit(arm, panel, seed, path, cfg):
             opt.step(); losses.append(float(loss.detach())); grads.append(float(g))
         pv = predict(model, panel, validation_signals, cfg['batch'], cfg['device'])/panel.yscale
         vmse = float(np.mean((pv[val_m]-val_y[val_m])**2))
+        vric = rank_metrics(pv, val_y, val_m)[0]['RankIC']
+        # Selection score, lower is better. Predeclared per protocol, same for all arms.
+        score = -vric if cfg.get('select', 'mse') == 'rankic' else vmse
         row = {'epoch': epoch, 'train_loss': float(np.mean(losses)), 'validation_MSE': vmse,
+               'validation_RankIC': vric,
                'gradient_norm': float(np.mean(grads)), 'prediction_std': float(pv[val_m].std()),
                'embedding_variance': getattr(model, 'embedding_variance', None),
                'representation_cosine': getattr(model, 'representation_cosine', None),
                'assignment_entropy': getattr(model, 'assignment_entropy', None)}
         history.append(row)
-        if vmse < best-1e-6:
-            best = vmse; best_state = copy.deepcopy(model.state_dict()); bad = 0
+        if score < best-1e-6:
+            best = score; best_state = copy.deepcopy(model.state_dict()); bad = 0
         else:
             bad += 1
         state = {'model': model.state_dict(), 'optimizer': opt.state_dict(), 'best': best,
@@ -177,7 +184,7 @@ def fit(arm, panel, seed, path, cfg):
     model.load_state_dict(best_state)
     torch.save(best_state, path/'best_state.pt')
     return (predict(model, panel, panel.evaluate, cfg['batch'], cfg['device']),
-            {'epochs': len(history), 'best_validation_MSE': best,
+            {'epochs': len(history), 'best_validation_score': best, 'select': cfg.get('select', 'mse'),
              'parameters': sum(p.numel() for p in model.parameters()), 'history': history})
 
 
@@ -189,7 +196,7 @@ def run(args):
     source = source_manifest()
     for year in args.years:
         print('loading fold', year, flush=True)
-        panel = load_panel(args.panel, year)
+        panel = load_panel(args.panel, year, args.train_stride)
         if args.smoke:
             # Functionality validation only, retained separately from empirical records.
             panel.train = panel.train[:4]; panel.valid = panel.valid[:4]; panel.evaluate = panel.evaluate[:4]
@@ -205,12 +212,12 @@ def run(args):
                  'panel_path': str(args.panel)}
         dump(output/f'data_audit_{year}.json', audit)
         for arm in args.arms:
-            reference_year = 2015 if year < 2020 else 2020
-            if arm == 'frozen' and year == reference_year:
+            reference_year = args.frozen_reference
+            if arm == 'frozen' and year <= reference_year:
                 continue  # Identical to static on this fold; do not duplicate it.
             arm_panel = panel
             if arm == 'frozen':
-                old = load_panel(args.panel, reference_year)
+                old = load_panel(args.panel, reference_year, args.train_stride)
                 arm_panel = replace(panel, train=old.train, valid=old.valid, groups=old.groups,
                                     scale=old.scale, yscale=old.yscale)
             for seed in args.seeds:
@@ -221,7 +228,10 @@ def run(args):
                        'source': source, 'epochs': 1 if args.smoke else args.epochs,
                        'patience': args.patience, 'batch': args.batch, 'hidden': 16,
                        'device': args.device, 'smoke': args.smoke, 'threads': args.threads,
-                       'protocol': 'broad-screen-v2-self-edges', 'train_stride': 5, 'validation_stride': 5, 'horizon': 5}
+                       'protocol': args.protocol, 'train_stride': args.train_stride,
+                       'validation_stride': args.validation_stride, 'horizon': 5}
+                if args.select != 'mse':
+                    cfg['select'] = args.select
                 cfg['preprocessing'] = {'scale': arm_panel.scale.tolist(), 'target_scale': arm_panel.yscale,
                                         'groups_sha256': hashlib.sha256(arm_panel.groups.tobytes()).hexdigest(),
                                         'train_signals': arm_panel.train.tolist(), 'validation_signals': arm_panel.valid.tolist()}
@@ -241,10 +251,12 @@ def run(args):
                     raw, mask = panel.target(panel.evaluate)
                     raw *= panel.yscale
                     result, daily = rank_metrics(pred, raw, mask)
-                    neutral, nm = panel.target(panel.evaluate, 'cluster')
+                    neutral_kind = 'cluster' if panel.sectors is None else 'sector'
+                    neutral, nm = panel.target(panel.evaluate, neutral_kind)
                     nr, nd = rank_metrics(pred, neutral*panel.yscale, nm)
                     result['neutral_RankIC'] = nr['RankIC']
                     result['neutral_spread10'] = nr['spread10']
+                    result['neutral_kind'] = neutral_kind
                     portfolio, pnl = trading(pred, panel.evaluate, panel)
                     result.update(portfolio)
                     result.update({'runtime_s': time.monotonic()-start, 'training': training,
@@ -274,9 +286,14 @@ def main():
     p.add_argument('--threads', type=int, default=2)
     p.add_argument('--device', default='cpu')
     p.add_argument('--smoke', action='store_true')
+    p.add_argument('--train-stride', type=int, default=5)
+    p.add_argument('--validation-stride', type=int, default=5)
+    p.add_argument('--select', choices=('mse', 'rankic'), default='mse')
+    p.add_argument('--frozen-reference', type=int, default=2015)
+    p.add_argument('--protocol', default='broad-screen-v2-self-edges')
     args = p.parse_args()
     if args.smoke and 'smoke' not in args.output.lower():
         p.error('smoke output must contain smoke to prevent accidental empirical reuse')
-    if any(y not in (2015, 2016, 2020, 2022) for y in args.years):
-        p.error('only predeclared exploratory folds 2015/2016 or 2020/2022 allowed')
+    if any(y not in (2015, 2016, 2020, 2022, 2023) for y in args.years):
+        p.error('only predeclared exploratory folds 2015/2016 (RSR) or 2022/2023 (S&P 500) allowed')
     run(args)

@@ -27,13 +27,13 @@ def forward_labels(price, mask, horizon=5):
     return y, ok
 
 
-def split_signals(dates, year, horizon=5, history=64):
+def split_signals(dates, year, horizon=5, history=64, train_stride=5):
     t = np.arange(history - 1, len(dates) - horizon)
     mature = dates[t + horizon]
     vi = np.datetime64(f'{year-1}-01-01')
     ti = np.datetime64(f'{year}-01-01')
     end = np.datetime64(f'{year+1}-01-01')
-    return (t[mature < vi][::5], t[(dates[t] >= vi) & (mature < ti)],
+    return (t[mature < vi][::train_stride], t[(dates[t] >= vi) & (mature < ti)],
             t[(dates[t] >= ti) & (mature < end)])
 
 
@@ -59,6 +59,7 @@ class Panel:
     yscale: float
     beta: np.ndarray
     digest: str
+    sectors: np.ndarray = None
 
     def batch(self, signals):
         indices = np.asarray(signals)[:, None] - np.arange(63, -1, -1)
@@ -75,15 +76,16 @@ class Panel:
         if kind != 'raw':
             market = (y * mask).sum(1) / np.maximum(mask.sum(1), 1)
             y -= self.beta[:, signals].T * market[:, None]
-            if kind == 'cluster':
-                for g in np.unique(self.groups):
-                    ix = self.groups == g
+            if kind in ('cluster', 'sector'):
+                labels = self.groups if kind == 'cluster' else self.sectors
+                for g in np.unique(labels):
+                    ix = labels == g
                     residual = (y[:, ix] * mask[:, ix]).sum(1) / np.maximum(mask[:, ix].sum(1), 1)
                     y[:, ix] -= residual[:, None]
         return y.astype(np.float32) / self.yscale, mask
 
 
-def load_panel(path, year):
+def load_panel(path, year, train_stride=5):
     z = np.load(Path(path), allow_pickle=False)
     ident = z['identity_ok'].astype(bool)
     # Truncate before constructing features, labels, statistics or relationships.
@@ -98,7 +100,7 @@ def load_panel(path, year):
     # Same 64-session eligibility for all methods, including 16-session models.
     cs = np.pad(np.cumsum(~observed, axis=1), ((0, 0), (1, 0)))
     eligible[:, 63:] = cs[:, 64:] - cs[:, :-64] == 0
-    train, valid, evaluation = split_signals(dates, year)
+    train, valid, evaluation = split_signals(dates, year, train_stride=train_stride)
     train, valid, evaluation = [usable_signals(ts, eligible & ok) for ts in (train, valid, evaluation)]
     if not len(train) or not len(valid) or not len(evaluation):
         raise ValueError('panel does not cover requested fold')
@@ -111,7 +113,8 @@ def load_panel(path, year):
     standardized = train_returns / np.maximum(train_returns.std(1, keepdims=True), 1e-4)
     groups = KMeans(n_clusters=16, random_state=7, n_init=5).fit_predict(standardized)
     p = Panel(f, price, observed, dates, z['tickers'][ident], y, ok, eligible,
-              train, valid, evaluation, groups, np.ones(5), 1., np.ones_like(price), sha256(path))
+              train, valid, evaluation, groups, np.ones(5), 1., np.ones_like(price), sha256(path),
+              z['sectors'][ident].astype(int) if 'sectors' in z.files else None)
     sample = train[::max(1, len(train)//32)]
     xs, es = p.batch(sample)
     p.scale = np.maximum(xs[es].std(axis=(0, 1)), .01).astype(np.float32)

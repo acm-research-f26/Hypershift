@@ -1,0 +1,52 @@
+{
+  "source_files": {
+    "data\\fresh\\sp500_daily\\panel.npz": "429b64ae67e0d7f061fcb485d2448496250343426576d114c4cdd25ff93ecb58",
+    "data\\fresh\\sp500_daily\\tickers.txt": "0338bc2b3f8f1e69fd80586f489323be4fbb993eaa7c29da185f3f3c281eb7ae",
+    "data\\fresh\\sp500_daily\\universe.csv": "5a47bf7b60b44813f7c9e733e0305866137fe431be4e664208d7d4229f07e287",
+    "data\\fresh\\sp500_daily\\bars.csv.gz": "b9154bec94315a659d05e49199fa690b745fdeda2d260c0959957a192177d229"
+  },
+  "panel_sha256": "4b0d10dc67baa44b567cde1b6a6143a8cf201636672a782990f62df2eedfb975",
+  "shape": [
+    462,
+    2932,
+    5
+  ],
+  "dates": [
+    "2015-01-02",
+    "2026-08-31"
+  ],
+  "sector_names": [
+    "Communication Services",
+    "Consumer Discretionary",
+    "Consumer Staples",
+    "Energy",
+    "Financials",
+    "Health Care",
+    "Industrials",
+    "Information Technology",
+    "Materials",
+    "Real Estate",
+    "Utilities"
+  ],
+  "sector_counts": [
+    19,
+    44,
+    32,
+    20,
+    73,
+    57,
+    71,
+    66,
+    23,
+    28,
+    29
+  ],
+  "h5_tail": {
+    "max_abs_h5": 1.1834001541137695,
+    "n_h5_above_100pct": 5,
+    "n_h5_above_50pct": 130,
+    "n_labels": 1351817
+  },
+  "bias": "current constituents (survivorship); current GICS labels (not point-in-time)",
+  "normalization": "per-stock train-max scalar cancels in window ratios and returns"
+}

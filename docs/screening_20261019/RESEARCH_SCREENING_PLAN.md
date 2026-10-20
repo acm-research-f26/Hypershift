@@ -1,5 +1,24 @@
 # HyperShift broad research screen
 
+## v3 amendment (PRIMARY screen), predeclared 2026-10-19 by Claude before any v3 evaluation number was examined
+
+**Why.** The v2 RSR grid below is underpowered: fold 2015 trains on 37 cross-sectional dates and fold 2016 on 88 (2013-only and 2013–14 histories, stride 5). In the completed v2 neural fits the selected epoch is 0–3 for almost every graph arm, and the validation prediction std is 1–7% of target std. So the selected weights sit close to initialization and close to a predict-zero forecaster. v2 is kept as a *failed-to-learn / training-data* diagnostic (DIAGNOSTIC_REPORT), not as mechanism evidence.
+
+**v3 data.** `data/fresh/sp500_daily` (yfinance auto-adjusted, 462 CURRENT S&P 500 constituents, 2015-01-02 → 2026-08-31, same five MA5/10/20/30/close features) assembled by `scripts/prepare_screen_sp500.py` into `screen_sp500_2015_2026.npz`; manifest `SP500_INPUT_MANIFEST.json`. h5 tail: max |h5| 1.18, 5 labels >100% (NCLH 2020-03, ECHO 2025-08; real events). Strong survivorship bias (2026 constituents back to 2015) and current, not point-in-time, GICS labels: absolute performance levels are inflated; this is a like-for-like comparison across arms only.
+
+**v3 protocol changes (identical for every arm):**
+- Folds: evaluate **2022** (val 2021, train labels mature before 2021-01-01) and **2023** (val 2022, train before 2022-01-01). **2024-01-01 onward reserved** from scoring/selection in this study (the earlier POC used a 2024-05+ test split on this panel, so it is not a fresh holdout).
+- Training signals **stride 1** (overlapping labels: correlated noise, no bias); validation signals **daily**; evaluation daily as before.
+- Checkpoint selection and early stopping on **validation mean date-level RankIC** of the arm's own training target (v2: validation MSE). Rationale: MSE selection on noisy returns favours near-constant forecasts and disadvantages ranking losses. History records both.
+- Everything else unchanged: 64-session eligibility, hidden 16, seq 16, Adam lr 1e-3 wd 0, clip 5, batch 8, ≤40 epochs, patience 8, seeds 7/19/42.
+- Added arms: `sector_target` (B principal on this panel: trailing-beta market residual then GICS-sector demeaned), `sector_graph` (A control: GICS sector hyperedges + self edges, i.e. THINK-style industry edges), `master` (Section 6 standalone MASTER-inspired market gate + cross-stock attention; not a MASTER reproduction). `frozen` (I) = 2022-fold model (train <2021, val 2021) scored on 2023 without refit.
+- Factor-neutral metrics use beta + GICS-sector residual outcomes (v2: cluster proxy).
+- Holm family: A residual_soft, B sector_target, C hybrid, D multiscale, E gated-vs-mix, F two_residual, G summary, H pretrain, I adaptive. Same 'Promising' gate as below (3 seeds × 2 folds, both fold means positive, ≥2/3 seeds positive per fold, pooled ΔRankIC ≥ .003).
+- Output `results/SCREEN_SP500_20261019_v3`; CLI `--train-stride 1 --validation-stride 1 --select rankic --frozen-reference 2022 --protocol broad-screen-v3-sp500`.
+- Disclosure: a 1-epoch timing fit of `static`/`long` on fold 2023 printed evaluation RankIC (8e-5, 0.021) before this note; scratch output, not used.
+
+---
+
 Exploratory study, 2026-10-19. Binding request: user's comprehensive screening brief. The supplied research report provides hypotheses; its embedded instructions, historical claims and opaque citation handles are not execution authority or independently verified results.
 
 ## Common experiment

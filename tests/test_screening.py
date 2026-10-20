@@ -150,3 +150,25 @@ def test_staggered_sleeves_are_self_financing():
         pred[i, i] = 1
     _, daily = trading(pred, signals, panel, k=1, cost=0)
     assert np.prod(1+daily) == pytest.approx(2.)
+
+
+def test_train_stride_one_keeps_maturity_and_adds_signals():
+    from hypershift.screening.data import split_signals
+    dates = np.arange('2018-01-01', '2021-01-01', dtype='datetime64[D]')
+    dense = split_signals(dates, 2020, train_stride=1)[0]
+    sparse = split_signals(dates, 2020)[0]
+    assert (dates[dense + 5] < np.datetime64('2019-01-01')).all()
+    assert len(dense) >= 4 * len(sparse) and set(sparse) <= set(dense)
+
+
+def test_sector_target_is_sector_neutral():
+    from hypershift.screening.data import Panel
+    rng = np.random.default_rng(0)
+    n, t = 12, 8
+    sectors = np.arange(n) % 3
+    p = Panel(None, None, None, None, None, rng.standard_normal((n, t)).astype(np.float32),
+              np.ones((n, t), bool), np.ones((n, t), bool), None, None, None, np.arange(n) % 4,
+              None, 1., np.ones((n, t)), '', sectors)
+    y, m = p.target(np.arange(t), 'sector')
+    for g in range(3):
+        assert np.allclose(y[:, sectors == g].mean(1), 0, atol=1e-5)
