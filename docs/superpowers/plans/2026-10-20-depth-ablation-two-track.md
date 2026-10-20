@@ -107,8 +107,13 @@
   - CLI: `python -m depth_b.archive_fetch --folder 1S746H5ItQskWnANWCCOnGSCrSGH-yrdJ --manifest-id 17CNga4Yr68knE7FP8MFEw-2E941-AMXT --dest <archive dir>`.
   - Fixed metadata ids: universe csv `1EXyA5BDsCPjuBGzE4G0wWZS4lX7UzlbX`, notes `1dkeQHEvXTlLT5QrCf_GkyPWqR_KFUL1k`.
 
+- [ ] **Step 0:** Add a `docs/HANDOFF.md` **Running now** line on `tom-shlom` before the first background job: "Claude: Track B depth study in worktree `Hypershift-depthB`; no file overlap with the Codex screening study." Commit only that hunk.
 - [ ] **Step 1:** Create the worktree with superpowers:using-git-worktrees (path and branch from Global Constraints). Check that `git check-ignore local-data/x local-experiments/x` prints both paths.
-- [ ] **Step 2:** Create `.venv-b` (3.12) and install torch from `--index-url https://download.pytorch.org/whl/cu130`, then numpy, pandas, exchange-calendars, scipy and pytest. Verify with `.venv-b/Scripts/python.exe -c "import data.calendars, experiments.market_ablation.dataset, torch; print(torch.cuda.is_available())"`. If the import fails on syntax, recreate with `--python 3.14`.
+- [ ] **Step 2:** Pin the environment from Ethan's `uv.lock`.
+  - Run `uv sync --frozen` into `.venv-b` (`UV_PROJECT_ENVIRONMENT=.venv-b`). Use the lock's Python and exchange-calendars version, since the session grid depends on it.
+  - If the locked torch is CPU-only, layer the cu130 torch 2.14 on top with `uv pip install --index-url https://download.pytorch.org/whl/cu130 torch==2.14.0`.
+  - Verify with `.venv-b/Scripts/python.exe -c "import data.calendars, experiments.market_ablation.dataset, torch; print(torch.cuda.is_available())"`.
+  - Fall back to an unlocked 3.12 venv only if `uv sync` fails, and record that in `DATA_GATE.json`.
 - [ ] **Step 3:** Write the failing tests, using an injected `http_get(url) -> bytes` to fake the downloads:
 
 ```python
@@ -129,7 +134,9 @@ def test_fetch_skips_verified_and_never_keeps_bad_bytes(tmp_path):
 - [ ] **Step 4:** Run `pytest tests/depth_b/test_archive_fetch.py -v` and confirm it fails with ImportError.
 - [ ] **Step 5:** Implement the functions. Write to `*.part`, verify sha256, then rename atomically. Back off for 2, 4, 8… s on HTTP 429/5xx or a hash mismatch. Download with `https://drive.google.com/uc?export=download&confirm=t&id=<id>`.
 - [ ] **Step 6:** Run the tests. Expected: PASS.
-- [ ] **Step 7:** Download `manifest.json` and the universe files, then run the CLI in the background (`run_in_background`). Expected at completion: `verified + skipped == 15250`, `failed == []`, and the summary `bars` total is 127,690,000.
+- [ ] **Step 7:** Download `manifest.json` and the universe files, then run the CLI in the background (`run_in_background`) with `--max-month 2025-09`. This enforces the seal by construction: partitions after September 2025 are never downloaded.
+  - Expected at completion: `verified + skipped` equals the number of manifest partitions with month ≤ 2025-09 (about 12,250), and `failed == []`.
+  - Record the expected count and the summed `rows` from the manifest in `DATA_GATE.json`.
 - [ ] **Step 8:** Commit `depth_b/__init__.py`, `depth_b/archive_fetch.py` and the tests with `git commit -m "feat(depth-b): verified resumable Drive archive fetch"`.
 
 ### Task 2: Prepare Ethan's 1-minute dataset
@@ -142,7 +149,8 @@ def test_fetch_skips_verified_and_never_keeps_bad_bytes(tmp_path):
 - Consumes: Ethan's `experiments.market_ablation.config.SweepConfig` and `experiments.market_ablation.dataset.prepare, MarketDataset` (unchanged).
 - Produces:
   - `RUN_ROOT = Path("local-experiments/runs/depth_b_20261020")`
-  - `sweep_config() -> SweepConfig`, which returns `SweepConfig(output=str(RUN_ROOT), intervals=("1m",), lookback=20)`
+  - `sweep_config() -> SweepConfig`, which returns `SweepConfig(output=str(RUN_ROOT), intervals=("1m",), lookback=20, end="2025-09-26")`. The `end` keeps protected-period bars out of the prepared arrays.
+  - `FOLD_IDS = {"earlier": 302, "main": 303}`. The dict passed to `MarketDataset.moments` is `{"id": FOLD_IDS[f], "fit_cutoff": cutoff}`, so normalization cache paths cannot collide.
   - `open_dataset() -> MarketDataset`, which returns `MarketDataset(sweep_config(), "1m")`
 
 - [ ] **Step 1:** Write `test_prepare_config`. It asserts `sweep_config().intervals == ("1m",)`, `lookback == 20`, that the archive path ends with `1min/2021-09-26_2026-09-26`, and that `RUN_ROOT` is git-ignored.
@@ -202,7 +210,12 @@ def test_q_is_chronological_rank_selection():
   - every count in the table matches exactly
   - both RMS values agree to a relative difference of 1e-6 or less
   - the protected-date check holds
-- [ ] **Step 4:** On a mismatch, diagnose for at most 2 hours. Candidates: origin rule, per-origin "any eligible" filter, half-days, RMS over channel 0 versus in-session targets. Record each hypothesis and its counts in `DATA_GATE.json`. If still mismatched:
+- [ ] **Step 4:** On a mismatch, diagnose for at most 2 hours. The declared rule predicts 44,030 earlier-fold origins against Ethan's 43,996; main already matches (63 × 370 + 190). Test these hypotheses in order:
+  1. Apply the "at least one target-eligible stock" filter to eval origins.
+  2. Drop minutes absent from the archive for every symbol.
+  3. Compute RMS over all eligible TRAIN targets versus over Q only.
+  4. Compare RMS over channel 0 (which includes overnight returns) with in-session targets.
+  5. Check exchange-calendars session-grid differences (for example 2025-01-09). Record each hypothesis and its counts in `DATA_GATE.json`. If still mismatched:
   - set `"comparable_to_ethan": false`
   - ask the user to request Ethan's `scientific_definitions_v4.json` and eligibility arrays
   - continue with the declared rule, labelled "non-comparable to Ethan's tables"
@@ -301,6 +314,8 @@ def test_nonfinite_loss_writes_failed_json(tmp_path): ...  # injected NaN target
 
 - [ ] **Step 2:** Run `pytest tests/depth_b/test_train.py -v`. Expected: FAIL.
 - [ ] **Step 3:** Implement `run_fit`.
+  - Set `torch.use_deterministic_algorithms(True)` and `CUBLAS_WORKSPACE_CONFIG=:4096:8`, as in Rishi's `fit_seed_job`.
+  - Log the exp0 input-radius quantiles (0.5/0.9/0.99) at the first batch.
   - Checkpoint `{model, optimizer, torch/numpy/python RNG states, pass, position, permutation}` atomically every 1024 updates and at the end.
   - Hold an exclusive lock file per fit directory.
   - Log the pre-clip gradient norm and loss every 256 updates.
@@ -308,7 +323,12 @@ def test_nonfinite_loss_writes_failed_json(tmp_path): ...  # injected NaN target
   - After training, forecast every eval origin once.
   - `RUN_MANIFEST.json` records the code, data-gate, manifest and universe hashes.
 - [ ] **Step 4:** Run the tests. Expected: PASS. Commit with `git commit -m "feat(depth-b): resumable deterministic runner"`.
-- [ ] **Step 5:** Run the smoke stage on the GPU after the Process checks. **Gates:** finite loss and gradients for all arms, peak memory ≤ 3,200 MB, and timing written to `SMOKE.json`. Project `40 × 16,384 × s_per_update(arm)` and stop if the total exceeds 6 GPU-hours (then switch to Kaggle per `kaggle/README.md`).
+- [ ] **Step 5:** Run the smoke stage on the GPU after the Process checks. **Gates:**
+  - finite loss and gradients for all arms
+  - peak memory ≤ 3,200 MB
+  - median exp0 input radius < 0.9. If not, stop and amend the input scale before any outcome is seen.
+  - a CUDA check: H2 with `max_updates=128`, run once uninterrupted and once interrupted at update 64 and resumed, gives an equal `pred_sha256`
+  - timing written to `SMOKE.json` Project `40 × 16,384 × s_per_update(arm)` and stop if the total exceeds 6 GPU-hours (then switch to Kaggle per `kaggle/README.md`).
 - [ ] **Step 6:** Run the pilot stage (12 fits) in the background. **Engineering gates only:** every fit complete, all predictions finite, no `failed.json`. Do not open RankIC before all 40 fits are complete.
 - [ ] **Step 7:** Run the full stage (the remaining 28 fits) in the background. On a crash, relaunch the same command, which resumes.
 
