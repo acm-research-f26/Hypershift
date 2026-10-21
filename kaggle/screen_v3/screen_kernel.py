@@ -8,9 +8,10 @@ from pathlib import Path
 
 ARMS = __ARMS__
 TAG = '__TAG__'
-YEARS = ['2022', '2023']
+YEARS = __YEARS__              # v3 screen: ['2022', '2023']
+SEEDS = __SEEDS__              # [] = runner default (7 19 42)
 WORKERS = 2
-OUT_NAME = 'results/SCREEN_SP500_20261019_v3'
+OUT_NAME = '__OUT__'           # v3 screen: results/SCREEN_SP500_20261019_v3
 
 inp = Path('/kaggle/input')
 work = Path('/kaggle/working')
@@ -35,10 +36,11 @@ assert got == exp, ('source mismatch', {k for k in set(got) | set(exp) if got.ge
 import torch
 print('source verified; torch', torch.__version__, 'cpus', os.cpu_count(), 'panel', panel, flush=True)
 
-cmd = lambda w: [sys.executable, 'scripts/screen_queue.py', '--worker', f'{TAG}w{w}', '--output', OUT_NAME,
-                 '--years', *YEARS, '--arms', *ARMS, '--', '--panel', str(panel), '--threads', '2',
-                 '--train-stride', '1', '--validation-stride', '1', '--select', 'rankic',
-                 '--frozen-reference', '2022', '--protocol', 'broad-screen-v3-sp500']
+cmd = lambda w: ([sys.executable, 'scripts/screen_queue.py', '--worker', f'{TAG}w{w}', '--output', OUT_NAME,
+                  '--years', *YEARS, '--arms', *ARMS, '--', '--panel', str(panel), '--threads', '2',
+                  '--train-stride', '1', '--validation-stride', '1', '--select', 'rankic',
+                  '--frozen-reference', '2022', '--protocol', 'broad-screen-v3-sp500']
+                 + (['--seeds', *map(str, SEEDS)] if SEEDS else []))
 procs = [subprocess.Popen(cmd(w)) for w in range(WORKERS)]
 start = time.time()
 while any(p.poll() is None for p in procs):

@@ -16,9 +16,11 @@ p = argparse.ArgumentParser()
 p.add_argument('--root', required=True)
 p.add_argument('zips', nargs='+')
 p.add_argument('--dry-run', action='store_true')
+p.add_argument('--ref', help='reference config.json (default: a static config under --root)')
 args = p.parse_args()
 root = Path(args.root)
-ref = json.loads(next(root.glob('*/static/seed_*/config.json')).read_text())
+root.mkdir(parents=True, exist_ok=True)
+ref = json.loads(Path(args.ref).read_text() if args.ref else next(root.glob('*/static/seed_*/config.json')).read_text())
 norm = lambda d: {k.replace('\\', '/'): v for k, v in d.items()}
 counts = {'merged': 0, 'exists': 0, 'incomplete': 0, 'mismatch': 0}
 touched = set()
