@@ -4,6 +4,7 @@
   timing    seconds per signal day on given pre-2024 dates; nothing saved
   run       forecast one shard of the evaluation days of each (year, seed) -> shard npz (resumable)
   assemble  merge shards and write config.json / predictions.npz / daily.npz / metrics.json like the runner
+  combine   kronos_static arm from finished static and kronos run folders (no fitting)
 
   python scripts/j_kronos.py prep --bars data/fresh/sp500_daily/bars.csv.gz --out data/fresh/sp500_daily/ohlcv_sp500_2015_2026.npz
   python scripts/j_kronos.py run --years 2025 2026 --seeds 7 --shard 0 2 --device cuda:0 ...
@@ -197,26 +198,60 @@ def assemble(args):
                    'chunk': args.chunk, 'T': 1., 'top_k': 0, 'top_p': .9, 'max_context': args.max_context,
                    'amp_fp16': not args.no_amp, 'shards': args.shards, 'horizon': 5, 'environment': env,
                    'torch': torch.__version__}
-            (folder/'config.json').write_text(json.dumps(cfg, indent=2))
-            raw, mask = panel.target(signals)
-            raw *= panel.yscale
-            result, daily = rank_metrics(pred, raw, mask)
-            neutral, nm = panel.target(signals, 'sector')
-            nr, nd = rank_metrics(pred, neutral*panel.yscale, nm)
-            result.update({'neutral_RankIC': nr['RankIC'], 'neutral_spread10': nr['spread10'], 'neutral_kind': 'sector'})
-            r1, d1 = rank_metrics(first, raw, mask)
-            result['RankIC_path1'] = r1['RankIC']
-            portfolio, pnl = trading(pred, signals, panel)
-            result.update(portfolio)
-            result.update({'training': {'epochs': 0, 'parameters': None}, 'year': year, 'seed': seed, 'arm': args.arm,
-                           'experiment': 'J', 'parent': 'static', 'smoke': bool(args.max_days), 'status': 'complete'})
-            np.savez_compressed(folder/'predictions.npz', prediction=pred, prediction_path1=first, target=raw, mask=mask,
-                                signals=signals, dates=panel.dates[signals], tickers=panel.tickers)
-            np.savez_compressed(folder/'daily.npz', **daily, neutral_RankIC=nd['RankIC'], RankIC_path1=d1['RankIC'],
-                                portfolio=pnl)
-            result['artifacts'] = {name: sha256(folder/name) for name in ('config.json', 'predictions.npz', 'daily.npz')}
-            (folder/'metrics.json').write_text(json.dumps(result, indent=2))
-            print('COMPLETE', args.arm, year, seed, 'RankIC', round(result['RankIC'], 6), flush=True)
+            write_run(folder, cfg, panel, signals, pred, first)
+
+
+def write_run(folder, cfg, panel, signals, pred, first=None):
+    """Score pred like the runner and write config.json / predictions.npz / daily.npz / metrics.json."""
+    (folder/'config.json').write_text(json.dumps(cfg, indent=2))
+    raw, mask = panel.target(signals)
+    raw *= panel.yscale
+    result, daily = rank_metrics(pred, raw, mask)
+    neutral, nm = panel.target(signals, 'sector')
+    nr, nd = rank_metrics(pred, neutral*panel.yscale, nm)
+    result.update({'neutral_RankIC': nr['RankIC'], 'neutral_spread10': nr['spread10'], 'neutral_kind': 'sector'})
+    extra = {}
+    if first is not None:
+        r1, d1 = rank_metrics(first, raw, mask)
+        result['RankIC_path1'] = r1['RankIC']
+        extra = {'RankIC_path1': d1['RankIC']}
+    portfolio, pnl = trading(pred, signals, panel)
+    result.update(portfolio)
+    result.update({'training': {'epochs': 0, 'parameters': None}, 'year': cfg['year'], 'seed': cfg['seed'], 'arm': cfg['arm'],
+                   'experiment': 'J', 'parent': 'static', 'smoke': cfg['smoke'], 'status': 'complete'})
+    np.savez_compressed(folder/'predictions.npz', prediction=pred, target=raw, mask=mask, signals=signals,
+                        dates=panel.dates[signals], tickers=panel.tickers,
+                        **({} if first is None else {'prediction_path1': first}))
+    np.savez_compressed(folder/'daily.npz', **daily, neutral_RankIC=nd['RankIC'], portfolio=pnl, **extra)
+    result['artifacts'] = {name: sha256(folder/name) for name in ('config.json', 'predictions.npz', 'daily.npz')}
+    (folder/'metrics.json').write_text(json.dumps(result, indent=2))
+    print('COMPLETE', cfg['arm'], cfg['year'], cfg['seed'], 'RankIC', round(result['RankIC'], 6), flush=True)
+
+
+def combine(args):
+    """kronos_static: per day, mean of cross-sectional z-scores (over eligible stocks) of static seed k and kronos seed k."""
+    root = Path(args.output)
+    for year in args.years:
+        panel = load_panel(args.panel, year, 1)
+        for seed in args.seeds:
+            folder = root/str(year)/'kronos_static'/f'seed_{seed}'
+            src = {a: root/str(year)/a/f'seed_{seed}' for a in ('static', 'kronos')}
+            if (folder/'metrics.json').exists() or not all((d/'metrics.json').exists() for d in src.values()):
+                print('skip', folder, flush=True); continue
+            k, s = (np.load(src[a]/'predictions.npz') for a in ('kronos', 'static'))
+            signals = k['signals']
+            pos = {int(t): i for i, t in enumerate(s['signals'])}
+            ps = s['prediction'][[pos[int(t)] for t in signals]]
+            e = panel.eligible[:, signals].T
+
+            def z(p):
+                m = np.where(e, p, np.nan)
+                return np.where(e, (p - np.nanmean(m, 1, keepdims=True)) / np.maximum(np.nanstd(m, 1, keepdims=True), 1e-12), 0)
+            folder.mkdir(parents=True, exist_ok=True)
+            cfg = {'arm': 'kronos_static', 'year': year, 'seed': seed, 'dataset_sha256': panel.digest, 'smoke': False,
+                   'protocol': 'study-j-kronos-zero-shot', 'combine': 'mean of daily cross-sectional z-scores, eligible stocks',
+                   'inputs': {a: sha256(src[a]/'predictions.npz') for a in src}, 'script_sha256': sha256(__file__)}
+            write_run(folder, cfg, panel, signals, (z(k['prediction']) + z(ps)) / 2)
 
 
 def main():
@@ -229,12 +264,13 @@ def main():
     q = sub.add_parser('timing'); common(q); q.add_argument('--dates', nargs='+', required=True)
     q = sub.add_parser('run'); common(q); q.add_argument('--shard', nargs=2, type=int, default=[0, 1])
     q = sub.add_parser('assemble'); common(q); q.add_argument('--shards', type=int, default=1)
+    q = sub.add_parser('combine'); common(q)
     args = p.parse_args()
     if getattr(args, 'max_days', None) and 'smoke' not in args.output.lower():
         p.error('--max-days output must contain smoke')
     if getattr(args, 'years', None) and any(y not in (2022, 2023, 2024, 2025, 2026) for y in args.years):
         p.error('Study J folds: 2024-2026 (reserved) or 2022/2023 (memorisation diagnostic)')
-    {'prep': prep, 'timing': timing, 'run': run, 'assemble': assemble}[args.cmd](args)
+    {'prep': prep, 'timing': timing, 'run': run, 'assemble': assemble, 'combine': combine}[args.cmd](args)
 
 
 if __name__ == '__main__':
