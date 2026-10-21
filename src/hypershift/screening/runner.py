@@ -51,7 +51,14 @@ ARMS = {
     'momentum': ('baseline', None, 'raw', 'mse', 'static'),
     'reversal': ('baseline', None, 'raw', 'mse', 'static'),
     'random': ('baseline', None, 'raw', 'mse', 'static'),
+    # Study J: written by scripts/j_kronos.py and scripts/j_combine.py, never fitted here.
+    'kronos': ('J', None, 'raw', 'mse', 'static'),
+    'kronos_static': ('J', None, 'raw', 'mse', 'static'),
+    'kronos_base': ('J', None, 'raw', 'mse', 'static'),
+    'kronos_mini': ('J', None, 'raw', 'mse', 'static'),
+    'kronos_lb64': ('J', None, 'raw', 'mse', 'static'),
 }
+J_ARMS = {a for a, v in ARMS.items() if v[0] == 'J'}
 
 
 def dump(path, value):
@@ -94,6 +101,8 @@ def summaries(panel, signals):
 
 
 def statistical(arm, panel, seed, signals):
+    if arm in J_ARMS:
+        raise ValueError(f'{arm} is produced by scripts/j_kronos.py, not the runner')
     if arm == 'random':
         return np.random.default_rng(seed).standard_normal((len(signals), len(panel.tickers))).astype(np.float32)*panel.yscale
     if arm in ('momentum', 'reversal'):
@@ -296,9 +305,14 @@ def main():
     p.add_argument('--select', choices=('mse', 'rankic'), default='mse')
     p.add_argument('--frozen-reference', type=int, default=2015)
     p.add_argument('--protocol', default='broad-screen-v2-self-edges')
+    p.add_argument('--reserved-j', action='store_true', help='Study J only: permit reserved folds 2024-2026')
     args = p.parse_args()
     if args.smoke and 'smoke' not in args.output.lower():
         p.error('smoke output must contain smoke to prevent accidental empirical reuse')
-    if any(y not in (2015, 2016, 2020, 2022, 2023) for y in args.years):
-        p.error('only predeclared exploratory folds 2015/2016 (RSR) or 2022/2023 (S&P 500) allowed')
+    allowed = (2015, 2016, 2020, 2022, 2023) + ((2024, 2025, 2026) if args.reserved_j else ())
+    if any(y not in allowed for y in args.years):
+        p.error('only predeclared exploratory folds 2015/2016 (RSR) or 2020/2022/2023 (S&P 500) allowed; '
+                'reserved 2024-2026 need --reserved-j (Study J amendment)')
+    if args.reserved_j and set(args.arms) - {'static', 'none', 'reversal', 'momentum', 'ridge', 'random'}:
+        p.error('Study J scores only static, none and the statistical baselines on reserved folds')
     run(args)
