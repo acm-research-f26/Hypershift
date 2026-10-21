@@ -2,6 +2,8 @@
 
 These are mechanism tests, not reproductions of the named papers.
 """
+from itertools import combinations
+
 import numpy as np
 import torch
 from torch import nn
@@ -49,9 +51,24 @@ class ScreenModel(nn.Module):
             self.mlp = nn.Sequential(nn.Flatten(-2), nn.Linear(80, hidden), nn.GELU(), nn.Linear(hidden, 1))
         if kind == 'pretrain':
             self.decoder = nn.Linear(hidden, 20)
+        if kind == 'star':
+            # Explicit star expansion: one hub per cluster with its own node->hub and hub->node maps.
+            self.to_hub = nn.Linear(hidden, hidden)
+            self.from_hub = nn.Linear(hidden, hidden)
+            self.self_fc = nn.Linear(hidden, hidden)
+        self._graphs = {}
 
     def graph(self, eligible, history=None):
         ids = np.flatnonzero(eligible.detach().cpu().numpy())
+        if self.kind == 'clique':
+            # Clique (pairwise) expansion: every within-cluster pair is a 2-node hyperedge. Cached per
+            # eligible set because the pair list is large and rebuilt on every forward otherwise.
+            key = ids.tobytes()
+            if key not in self._graphs:
+                groups = [tuple(i for i in ids if self.groups[i] == g) for g in np.unique(self.groups)]
+                pairs = tuple(p for g in groups for p in combinations(g, 2))
+                self._graphs[key] = Hypergraph(len(eligible), pairs + tuple((int(i),) for i in ids)).to_torch(eligible.device)
+            return self._graphs[key]
         if history is None:
             groups = [tuple(i for i in ids if self.groups[i] == g) for g in np.unique(self.groups)]
         else:
@@ -98,6 +115,15 @@ class ScreenModel(nn.Module):
         if self.kind != 'none':
             if self.kind == 'soft':
                 pass
+            elif self.kind == 'star':
+                member = torch.as_tensor(np.eye(self.groups.max()+1)[self.groups], dtype=h.dtype, device=h.device)
+                member = member[None] * eligible[:, :, None]                                  # B x N x G
+                count = member.sum(1)
+                hub = torch.einsum('bng,btnc->btgc', member, h) / count.clamp_min(1)[:, None, :, None]
+                hub = F.relu(self.to_hub(hub))
+                back = torch.einsum('bng,btgc->btnc', member, hub)
+                active = (member * (count[:, None, :] >= 2)).sum(-1) > 0
+                h = torch.where(active[:, None, :, None], F.relu(self.self_fc(h) + self.from_hub(back)), h)
             else:
                 h = torch.cat([self.spatial(h[b:b+1], self.graph(eligible[b], x[b] if self.kind == 'rolling' else None))
                                for b in range(len(x))], 0)

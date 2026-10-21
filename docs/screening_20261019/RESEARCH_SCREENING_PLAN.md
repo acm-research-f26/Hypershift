@@ -1,5 +1,65 @@
 # HyperShift broad research screen
 
+## Study X amendment — pairwise / star expansion (neural) and pairs trading. Predeclared 2026-10-21 by Claude, before any X number
+
+The user asked to test "Pairwise Trading / Star Expansion" and then to "test out all possibilities". The phrase has no definition in the repo, so it is read three ways, and each reading is tested on the v3 S&P 500 panel. 2024+ stays reserved. Everything is exploratory: the years have been inspected before.
+
+Already measured, not rerun:
+- the C `pairwise` ranking-loss arm (−0.005, Negative preliminary);
+- Phase 1 hypergraph vs clique on 309 RSR stocks (not established).
+
+### X1. Neural graph expansion (Kaggle)
+
+- **Arms**, all with the v3 model, data, CLI and selection rule (validation RankIC):
+  - `static`: parent; correlation-cluster hyperedges plus self edges.
+  - `clique`: each cluster expanded into all within-cluster pairs, as 2-node hyperedges plus self edges, in the **same** attention layer. Only the graph changes. 8.5–9.6k pairs per fold.
+    - Known confound, inherent to clique expansion: softmax over incident edges gives the self edge weight ≈ 1/k instead of ≈ 1/2, so self information is diluted.
+  - `star`: explicit star expansion. One hub per cluster: hub = ReLU(W_in · mean of member nodes). Each member then gets ReLU(W_self·h + W_out·hub). **This changes the layer as well as the expansion.** The current static attention layer is itself already a node→hyperedge→node scheme, so a star arm built with the same layer would duplicate static.
+  - `none`: no graph (graph-free bar).
+  - `random_graph`: random partition; known-null calibration.
+- **Design:**
+  - Folds 2020, 2022, 2023; seeds 7, 19, 42, 101, 202.
+  - **One Kaggle kernel per seed, running all 5 arms, so every paired contrast is session-matched.** `lscpu` is logged.
+  - The source edit changes hashes, so this is a new root, `results/SCREEN_SP500_20261021_x`, and static is rerun. Before launch, a laptop rerun of v3 `2022/static/seed_7` under the new source must be bit-identical to v3.
+- **Decision rule (as in the deep test):**
+  - Primary family {clique, star} vs static, Holm over 2, on a two-sided Wilcoxon of 15 (fold, seed) deltas, plus the date bootstrap.
+  - **STRONG** = Holm p < .05, pooled CI excludes 0 and all fold means > 0. **SEED-ROBUST ONLY** = Holm p < .05 only. **NO EVIDENCE** = otherwise.
+  - Descriptive only: each arm vs `none`, clique vs star, and random_graph vs static as the noise floor.
+
+### X2. Pairs trading on graph structure (laptop, deterministic, `scripts/pairs_trading.py`)
+
+Gatev–Goetzmann–Rouwenhorst distance method, adapted.
+
+- **Formation:** 252 sessions before each trading start. Stocks must be fully observed in formation. Prices are normalised to 1 at formation start (adjusted closes, as in DATA_AUDIT).
+- **Trading:** 6 months. A new portfolio is formed at every month start, and the daily return is the mean over the ≤ 6 overlapping active portfolios. Only returns dated inside 2020, 2022 or 2023 are scored.
+- **Groupings, recomputed at each formation from formation data only:**
+  - `cluster`: KMeans-16 on standardised formation returns.
+  - `sector`: GICS; current labels, which is a caveat.
+  - `random`: a random partition with the cluster sizes; 20 draws, averaged.
+  - `all`: no grouping.
+- **Strategy families:**
+  - **Pairwise (clique):** candidates are all within-group pairs, and the 20 with the smallest SSD of normalised prices are selected. Spread = P̃_i − P̃_j.
+  - **Star:** candidates are each stock vs its group centre. The centre is a buy-and-hold basket of the group's other members (P̃ mean, excluding the stock), and the 20 stock–centre pairs with the smallest SSD are selected. For `all`, the centre is the rest of the market.
+- **Rules (primary):**
+  - z = (spread − formation mean) / formation std.
+  - Open when |z| > 2; close when z crosses 0 or at the end of the trading period.
+  - **Wait one day:** execute at the next close after the signal, for both entry and exit.
+  - Hold $1 long the cheap leg and $1 short the rich leg; the pair's daily return is r_long − r_short.
+  - Portfolio return is on committed capital (sum / 20).
+  - Costs are 10 bp per leg per side.
+  - If a stock stops trading, its position is closed at the last observed price.
+- **Sensitivities (descriptive):** same-close execution, costs of 0 and 25 bp, top-50 pairs.
+- **Tests:** stationary bootstrap (block 10, B = 5000) of daily net returns, with years pooled at equal weight.
+  - (a) **Absolute:** mean > 0. Family of 6: {pairwise, star} × {cluster, sector, all}; Holm over 6.
+  - (b) **Structure:** grouped minus the random-group null (mean of 20 draws). Family of 4: {pairwise, star} × {cluster, sector}; Holm over 4.
+  - (c) Star minus pairwise, per grouping: descriptive.
+- **Labels:**
+  - **STRUCTURE EFFECT** = (a) and (b) Holm p < .05 with CIs > 0, and net Sharpe > 0 in all 3 years.
+  - **POSITIVE ONLY** = (a) passes and (b) fails; for `all`, (a) passes.
+  - **NO EVIDENCE** = (a) fails.
+- **Survivorship bias is decisive here.** The panel holds only 2026 constituents, so pairs that diverge permanently (bankruptcy, delisting, takeover at a gap) are excluded, and those are exactly the pairs where the distance method loses. Absolute returns are therefore an upper bound, and inference leans on the null-relative test (b).
+
+
 ## Deep-test amendment, predeclared 2026-10-21 by Claude after the v3 screen and before any deep-test number
 
 **Candidates.** Only arms that passed the v3 'Promising' gate: **F `two_residual`** and **H `pretrain`**, each against **`static`**. No other arm is promoted. `hybrid` failed the gate (2023: 1/3 seeds positive); `frozen` stays Inconclusive.

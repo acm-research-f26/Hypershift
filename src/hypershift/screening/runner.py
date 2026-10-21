@@ -45,6 +45,8 @@ ARMS = {
     'adaptive': ('I', 'adaptive', 'raw', 'mse', 'static'),
     'frozen': ('I', 'static', 'raw', 'mse', 'static'),
     'master': ('extra', 'master', 'raw', 'mse', 'static'),
+    'clique': ('X', 'clique', 'raw', 'mse', 'static'),
+    'star': ('X', 'star', 'raw', 'mse', 'static'),
     'ridge': ('baseline', None, 'raw', 'mse', 'static'),
     'momentum': ('baseline', None, 'raw', 'mse', 'static'),
     'reversal': ('baseline', None, 'raw', 'mse', 'static'),
