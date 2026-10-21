@@ -8,6 +8,8 @@ We screened 10 research directions (A–J) plus MASTER- and MDGNN-inspired arms 
 
 **No direction beats the baseline after multiple-testing correction.** The two arms that passed the screen gate, F two-stage residual hypergraph and H masked pretraining, were deep-tested with 10 seeds × 3 folds (2020/2022/2023). Both are **NO EVIDENCE** under the predeclared rule. An exploratory third candidate (C, hybrid listwise loss) is also NO EVIDENCE. A random-hypergraph null arm produces an "effect" the same size as pretrain and hybrid. The baseline itself cannot be separated from simple models (no graph, MLP, 16-day reversal, Ridge). Diagnostics point to weak learnable signal, not undertraining.
 
+**Study X (added 2026-10-21):** pairwise (clique) and star expansion of the cluster graph are both NO EVIDENCE as neural arms. Pairs trading on the same groups is NO EVIDENCE, and no grouping beats random groups. See `X_PAIRWISE_STAR_REPORT.md`.
+
 ## Numbers that matter
 
 | | Value |
@@ -79,6 +81,8 @@ flowchart LR
 | J Kronos foundation features | **Untested: blocked** | Pretraining (to 2024-06) overlaps 2022/23. A clean test needs 2024-07+ evaluation, which is the user's decision. |
 | MASTER-inspired | Measured (screen) | Neutral; simplified, not a reproduction. |
 | MDGNN-inspired | Partly measured (via A) | Neutral; no multi-relational dynamic graph was built. |
+| X1 clique vs star graph expansion | Measured (Study X, 5 seeds × 3 folds, session-matched) | **NO EVIDENCE** vs static. clique +0.0020 (Holm 0.890); star +0.0080 (Holm 0.146). Star only reaches the no-graph level (star − none −0.0001). In this run, static is nominally below no-graph (raw p 0.048, not significant after Holm). See `X_PAIRWISE_STAR_REPORT.md`. |
+| X2 pairs trading (pairwise vs star; cluster / sector / all) | Measured (Study X) | **NO EVIDENCE** for every variant after 10 bp costs. No grouping beats random groups; star does worse than pairwise. |
 | Combinations of directions | **Untested by design** | No single effect is established, so combinations are not justified. |
 | Reserved 2024+ period | **Never scored** | Kept for a future confirmatory test. |
 | Richer inputs (volume, fundamentals), other targets or model sizes | **Untested** | Out of this screen's scope; this is the recommended next direction. |

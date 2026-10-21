@@ -1,6 +1,6 @@
 # Final recommendations — HyperShift research screen (2026-10-21)
 
-**Status: exploratory.** These recommendations rest on these documents:
+**Status: exploratory.** These recommendations rest on these documents (plus `X_PAIRWISE_STAR_REPORT.md`, Study X):
 - `SCREENING_REPORT.md`: v3 screen, 31 arms, 171 fits;
 - `DIAGNOSTIC_REPORT.md`: failure analysis, budget probe and platform control;
 - `DEEP_ABLATIONS.md`: 150 deep fits, 10 seeds × 3 folds.
@@ -15,7 +15,7 @@ Every year used has been inspected before in this repository, so none of this is
 
 | # | Recommendation | Evidence |
 |---|---|---|
-| 1 | **Do not adopt any arm.** In particular, do not add second graph stages (F), masked pretraining (H) or listwise loss mixing (C) on the strength of this screen. | Deep test: two_residual Holm p 0.077, 2023 fold negative. pretrain Holm p 0.184. hybrid exploratory p 0.100. A random hypergraph gets +0.0028, the same size as pretrain and hybrid. |
+| 1 | **Do not adopt any arm.** In particular, do not add second graph stages (F), masked pretraining (H), listwise loss mixing (C), or clique/star graph expansion (Study X) on the strength of this screen. Do not trade within-group pairs either. | Study X: clique Holm 0.890; star Holm 0.146, and star only reaches the no-graph level (star − none −0.0001). Pairs trading is NO EVIDENCE for every variant and does not beat random groups (`X_PAIRWISE_STAR_REPORT.md`). Deep test: two_residual Holm p 0.077, 2023 fold negative. pretrain Holm p 0.184. hybrid exploratory p 0.100. A random hypergraph gets +0.0028, the same size as pretrain and hybrid. |
 | 2 | **Treat the bottleneck as signal, not optimisation.** More budget makes the fit better but not the ranking. Any next step should change *inputs or targets*, not add architecture. | Budget probe: training loss falls 3–4× further, but the selected epoch stays at 5.5–7. Predictions correlate 0.8–0.9 with the market move. Factor-neutral RankIC is ≤ 0.009 for every arm. |
 | 3 | **Strengthen the parent before testing any child.** Tune the baseline's budget with the same tuning budget for every arm (project convention). Report no-graph, MLP and reversal as standing bars. | static gains +0.011 under the budget probe (2022 +0.023). Against that parent, two_residual goes from +0.009 to −0.0048. |
 | 4 | **Screen with ≥ 5 seeds and a built-in null arm.** The 3-seed 'Promising' gate is too fragile to promote anything. Include `random_graph` (or a seed-shuffled graph) in every screen, so that "beats parent" is measured against a structure-free perturbation. | Re-pairing on Kaggle static flips 4 labels, including the null arm. hybrid's per-fold seed pattern reverses between v3 and deep, with 7 more seeds and a rerun parent (2023: 1/3 → 9/10 positive; 2022: 2/3 → 3/10). The parent rerun alone flips 2 of hybrid's 6 original seed deltas. |
