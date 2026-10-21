@@ -52,9 +52,9 @@ Under Holm over 3, two_residual's adjusted p is 0.115 and pretrain's is 0.201. T
 
 ## What the calibration arm shows
 
-- **A random hypergraph "beats" static by +0.0028 pooled.** That is the same size as pretrain (+0.0042) and hybrid (+0.0023), with similar Wilcoxon p (0.12 vs 0.18 and 0.10). So effects of that size are indistinguishable from what a structure-free perturbation of static produces. Only two_residual (+0.0065) clearly exceeds the null arm's effect size, and only modestly. Its 2023 mean is negative.
+- **A random hypergraph "beats" static by +0.0028 pooled.** That is the same size as pretrain (+0.0042) and hybrid (+0.0023), with similar Wilcoxon p (0.12 vs 0.18 and 0.10). So effects of that size are indistinguishable from what a structure-free perturbation of static produces. Only two_residual (+0.0065, more than 2× the null) clearly exceeds the null arm's effect size, and only modestly. Its 2023 mean is negative. This comparison is descriptive: random_graph and hybrid were not session-matched to their static parent (see Reproducibility).
 - **2022 is a weak-parent fold.** Deep static's 2022 RankIC is −0.0031, and random_graph beats it there by +0.0067. two_residual's 2022 delta (+0.0107) is inflated by the same weak parent. This matches the budget probe (DIAGNOSTIC §2b): a better-trained static gains +0.023 in 2022, and against that parent two_residual's edge becomes −0.0048 (2022 −0.0073, 2023 −0.0023; 2/6 seeds positive; 3 seeds, laptop).
-- **3-seed per-fold patterns are not reliable.** Seeds 7/19/42 of hybrid are bit-identical between v3 and deep (same Kaggle numerics; see below). Yet hybrid's fold pattern reverses once 10 seeds are added:
+- **3-seed per-fold patterns are not reliable.** Seeds 7/19/42 of hybrid are bit-identical between v3 and deep (same Kaggle numerics; see below). Even so, a rerun of the parent alone flips seed signs: 2022 seed 19 goes from +0.0004 to −0.0009, and 2023 seed 42 from −0.0005 to +0.0012. With 7 more seeds and the rerun parent, hybrid's fold pattern reverses between v3 and deep:
   - 2023 goes from 1/3 seeds positive in v3 to 9/10 in deep;
   - 2022 goes from 2/3 positive to 3/10.
 
@@ -76,7 +76,10 @@ The deep design reruns seeds 7/19/42 for 2022/2023, so 30 runs can be compared w
 - **Laptop reruns are bit-identical.** Within a machine, a run is deterministic.
 - **Across machines the runs drift numerically.** Laptop and Kaggle never match, and two Kaggle sessions sometimes don't either: kernel d1, seeds 7/19, has 4/4 runs differ. A tiny numeric difference can send a fit down a different early-stopping path, as with pretrain 2022 seed 7: −0.0024 vs +0.0067.
 - The likely cause is different CPU hardware and BLAS code paths. This was not verified.
-- The drift is the same size as seed noise, so it does not bias any comparison. Every deep contrast pairs runs from the same set of Kaggle kernels.
+- The drift is the same size as seed noise.
+- **Session matching differs by arm:**
+  - The primary contrasts (two_residual, pretrain) are matched seed by seed: candidate and static ran in the same kernel (d1–d5).
+  - hybrid (d6) and random_graph (d7) are paired against static from d1–d5, i.e. different sessions. In v3, swapping the static session moved contrasts by about 0.0015, half of random_graph's +0.0028. Their deltas may partly reflect session drift.
 
 Files:
 - `deep_REPRO.csv`: the primary candidates vs v3;

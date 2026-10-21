@@ -36,7 +36,9 @@ We screened 10 research directions (A–J) plus MASTER- and MDGNN-inspired arms 
 
 ![Deep: random-graph calibration](figures/deep_calib_seed_deltas.png)
 
-Training curves: `figures/v3_training_curves.png`.
+## Training curves (validation RankIC peaks early; the fits barely leave initialisation)
+
+![Training curves](figures/v3_training_curves.png)
 
 ## Architecture: the common baseline and where each direction plugs in
 
@@ -87,7 +89,7 @@ flowchart LR
 - **Survivorship bias:** 2026 S&P 500 constituents are traced back to 2015. GICS labels are current, not point-in-time.
 - **Simplified adaptations** of each paper's mechanism, not reproductions.
 - **Trading results are optimistic:** close-of-signal entry, no delisting payouts, costs only as turnover × bp. Net Sharpe of 0.7–1.8 for every non-random baseline in 2023 reflects the year and the survivorship bias, not skill.
-- **Numerical drift across compute sessions** (laptop vs Kaggle, and sometimes Kaggle vs Kaggle) is the same size as seed noise. Paired comparisons share sessions wherever possible.
+- **Numerical drift across compute sessions** (laptop vs Kaggle, and sometimes Kaggle vs Kaggle) is the same size as seed noise. The primary deep contrasts are session-matched seed by seed. The hybrid and random_graph contrasts are not.
 - **Post-hoc arms:** hybrid and random_graph were added to the deep tests after the v3 numbers were seen. They are kept out of the primary family.
 
 ## Read next
