@@ -178,6 +178,7 @@ def main():
     (out/f'{args.tag}_TABLES.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
     if csv:
         write_csv(out/f'{args.tag}_PAIRED.csv', csv, list(csv[0]))
+    sys.stdout.reconfigure(encoding='utf-8')
     print('\n'.join(L))
 
 
