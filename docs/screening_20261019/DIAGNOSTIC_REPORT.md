@@ -55,9 +55,42 @@ Sources: `v3_SCREENING_TABLES.md`, `v3_PAIRED.csv`, and `metrics.json` → `trai
 
 (Means over the 6 fits unless marked median. Full per-arm table in Appendix 2A.)
 
-### (b) Training-budget probe
+### (b) Training-budget probe (diagnostic; cannot change any verdict)
 
-*Running* (`results/SCREEN_SP500_20261019_v3_budget`: static and two_residual, patience 20, lr 3e-3, seeds 7/19/42, folds 2022/2023, on the laptop like their v3 parents). The `--lr` flag was checked to be behaviour-neutral by rerunning `2022/static/seed_7` at the default (`results/SCREEN_SP500_20261019_v3_lrcheck`). Results will be added here. The probe cannot change any screen or deep verdict.
+`results/SCREEN_SP500_20261019_v3_budget`: static and two_residual, **patience 20, lr 3e-3**; everything else is v3. Seeds 7/19/42 × 2022/2023, run on the laptop like their v3 parents, so the comparison with v3 is platform-matched. The `--lr` flag is behaviour-neutral: a rerun of `2022/static/seed_7` at the default lr is bit-identical to v3 (`results/SCREEN_SP500_20261019_v3_lrcheck`).
+
+| | static v3 | static budget | two_residual v3 | two_residual budget |
+|---|---|---|---|---|
+| Selected epoch (median) | 3 | 7 | 9.5 | 5.5 |
+| Epochs run (range) | 9–24 | 22–34 | 12–24 | 23–29 |
+| Train-loss drop to selected epoch (mean) | 0.014 | 0.019 | 0.016 | 0.014 |
+| Train-loss drop to minimum (mean) | — | 0.054 | — | 0.058 |
+| Test RankIC 2022 / 2023 (seed mean) | −0.0071 / +0.0213 | +0.0162 / +0.0207 | +0.0107 / +0.0217 | +0.0090 / +0.0184 |
+
+- **Undertraining is not the bottleneck.** With 3× the learning rate and 2.5× the patience, the training loss falls 3–4× further (≈ 0.055). Validation RankIC still peaks early (median epoch 5.5–7), and later, better-fitted epochs do not rank better. This is consistent with little learnable cross-sectional signal at this model size and these features, not with an optimisation failure.
+- **The budget helps static (+0.011 RankIC), and all of the gain is in 2022 (+0.023).** The budget does not help two_residual (−0.002).
+- **Under the larger budget, two_residual − static = −0.0048 (2022 −0.0073, 2023 −0.0023; 2 of 6 seeds positive).** Part of two_residual's v3 advantage, which was concentrated in 2022, reflects an undertrained static parent in that fold rather than a graph-depth mechanism. This is 3 seeds and exploratory, but it points the same way as the deep test's NO EVIDENCE.
+
+Per-run output:
+
+```
+arm year seed | budget: RankIC best ran dTL@best dTLmax valRIC | v3: RankIC best ran dTL@best valRIC
+static       2022  7 | -0.0015  1 22 +0.002 +0.060 +0.0311 | +0.0013  3 12 +0.006 +0.0279
+static       2022 19 | +0.0221  5 26 +0.025 +0.064 +0.0168 | -0.0131  3 12 +0.014 +0.0351
+static       2022 42 | +0.0281  9 30 +0.021 +0.053 +0.0476 | -0.0094  1 10 +0.008 +0.0469
+static       2023  7 | +0.0243 10 31 +0.019 +0.048 +0.0295 | +0.0002  0  9 +0.000 +0.0082
+static       2023 19 | +0.0205 13 34 +0.032 +0.056 +0.0257 | +0.0237 15 24 +0.032 +0.0087
+static       2023 42 | +0.0174  4 25 +0.014 +0.045 +0.0236 | +0.0400 15 24 +0.026 +0.0133
+two_residual 2022  7 | +0.0051  5 26 +0.002 +0.075 +0.0298 | -0.0049  3 12 +0.004 +0.0322
+two_residual 2022 19 | +0.0156  8 29 +0.030 +0.065 +0.0282 | +0.0165  8 17 +0.017 +0.0344
+two_residual 2022 42 | +0.0063  2 23 +0.008 +0.048 +0.0250 | +0.0204  4 13 +0.018 +0.0298
+two_residual 2023  7 | +0.0209  4 25 +0.002 +0.064 +0.0147 | +0.0225 15 24 +0.012 +0.0112
+two_residual 2023 19 | +0.0214  8 29 +0.018 +0.051 +0.0273 | +0.0301 15 24 +0.027 +0.0137
+two_residual 2023 42 | +0.0129  6 27 +0.022 +0.045 +0.0244 | +0.0124 11 20 +0.020 +0.0285
+static budget-v3 RankIC mean 0.0114 per fold 0.0233 -0.0005 median best 7.0 vs 3.0 mean dTL@best 0.019 vs 0.014 max dTL 0.054
+two_residual budget-v3 RankIC mean -0.0024 per fold -0.0017 -0.0032 median best 5.5 vs 9.5 mean dTL@best 0.014 vs 0.016 max dTL 0.058
+budget two_residual - static: mean -0.0048 folds -0.0073 -0.0023 pos 2 /6
+```
 
 ### (c) Failure-specific findings (no extra training)
 
