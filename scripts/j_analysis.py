@@ -91,6 +91,7 @@ def main():
     args = p.parse_args()
     out = Path(args.out)
     runs, status, folds, arms = load_runs(args.root)
+    folds = [f for f in folds if f >= 2024]             # 2022/23 hold only the memorisation diagnostic
     store = Store(runs)
     print('complete', len(runs), 'not complete', sum(v != 'complete' for v in status.values()), 'folds', folds, 'arms', arms)
     L = [f'# Study J — Kronos zero-shot ({args.tag})', '',
@@ -104,10 +105,14 @@ def main():
     csv = []
     for c, r in res.items():
         v = deep_verdict(hp[c], r['ci'], [x['mean'] for x in r['per_fold'].values()])
+        if v != 'NO EVIDENCE' and r['pooled'] < 0:
+            v += ' (−)'                                # rule is sign-blind below STRONG; mark harmful direction
         L.append(row(c, r, wil[c], hp[c], v))
         csv += [{'family': 'primary', 'candidate': c, 'parent': 'static', 'fold': f, 'seed': s, 'dRankIC': d, 'pooled': r['pooled'],
                  'ci_lo': r['ci'][0], 'ci_hi': r['ci'][1], 'wilcoxon_p': wil[c], 'holm_p': hp[c], 'verdict': v}
                 for f, x in r['per_fold'].items() for s, d in x['seed_delta'].items()]
+    L += ['', '(−) = the predeclared rule (Holm p < .05, not STRONG) fired in the harmful direction: evidence of no improvement, '
+          'not of a gain. All seeds score the same dates, so the Wilcoxon reflects seed noise; the date-bootstrap CI is the date uncertainty.']
     # ---- absolute on common dates
     L += ['', '## Absolute RankIC on common dates (seed mean; pooled CI over primary folds)', '',
           '| Arm | ' + ' | '.join(map(str, folds)) + ' | pooled 2025-26 [95% CI] | p (mean = 0) |', '|---' * (len(folds) + 3) + '|']
@@ -157,9 +162,16 @@ def main():
         if c in arms:
             r, w = family(store, PRIMARY, [c])
             if c in r:
-                L.append(row(f'(s3/s4) {c} (seed 7)', r[c], w[c]))
+                L.append(row(f'(s3/s4) {c} (seed 7; Wilcoxon on 2 deltas, uninformative)', r[c], w[c]))
     # ---- trading (primary folds: identical date ranges, so metrics.json scalars are comparable)
-    L += ['', '## Trading block, primary folds (seed mean of metrics.json; top-10, 10 bp)', '',
+    for f in PRIMARY:                                   # scalars are comparable only if every run scores the same dates
+        ref = None
+        for a in shown:
+            for s in store.seeds(f, a):
+                d = np.load(store.by[(f, a, s)]['dir']/'predictions.npz')['dates']
+                ref = d if ref is None else ref
+                assert d.shape == ref.shape and (d == ref).all(), (f, a, s)
+    L += ['', '## Trading block, primary folds (seed mean of metrics.json; top-10, 10 bp; dates asserted identical across arms)', '',
           '| Arm | ' + ' | '.join(f'{f} net Sharpe' for f in PRIMARY) + ' | neutral RankIC ' + ' / '.join(map(str, PRIMARY)) + ' |', '|---' * 4 + '|']
     for a in shown:
         if all(store.seeds(f, a) for f in PRIMARY):
