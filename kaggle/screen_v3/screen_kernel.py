@@ -35,6 +35,8 @@ exp = {k.replace('\\', '/'): v for k, v in expected.items()}
 assert got == exp, ('source mismatch', {k for k in set(got) | set(exp) if got.get(k) != exp.get(k)})
 import torch
 print('source verified; torch', torch.__version__, 'cpus', os.cpu_count(), 'panel', panel, flush=True)
+cpu_model = next((l.split(':', 1)[1].strip() for l in open('/proc/cpuinfo') if l.startswith('model name')), 'unknown')
+print('cpu model:', cpu_model, flush=True)
 
 cmd = lambda w: ([sys.executable, 'scripts/screen_queue.py', '--worker', f'{TAG}w{w}', '--output', OUT_NAME,
                   '--years', *YEARS, '--arms', *ARMS, '--', '--panel', str(panel), '--threads', '2',
@@ -51,7 +53,7 @@ print('exit codes', [p.returncode for p in procs], flush=True)
 
 # Ship complete artifacts only (no optimizer checkpoints), plus logs and the environment.
 (repo/OUT_NAME/f'kaggle_env_{TAG}.json').write_text(json.dumps({'torch': torch.__version__, 'python': sys.version,
-                                                               'cpus': os.cpu_count(), 'arms': ARMS}))
+                                                               'cpus': os.cpu_count(), 'cpu_model': cpu_model, 'arms': ARMS}))
 with zipfile.ZipFile(work/f'results_{TAG}.zip', 'w', zipfile.ZIP_DEFLATED) as z:
     for f in (repo/'results').rglob('*'):
         if f.is_file() and f.name not in ('last.pt', 'last.tmp'):
