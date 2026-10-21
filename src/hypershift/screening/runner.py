@@ -111,7 +111,7 @@ def fit(arm, panel, seed, path, cfg):
     rng = np.random.default_rng(seed)
     groups = panel.sectors if kind == 'sector_graph' else panel.groups
     model = ScreenModel(kind, len(panel.tickers), cfg['hidden'], groups).to(cfg['device'])
-    opt = torch.optim.Adam(model.parameters(), lr=.001, weight_decay=0.)
+    opt = torch.optim.Adam(model.parameters(), lr=cfg.get('lr', .001), weight_decay=0.)
     best, best_state, bad, start_epoch = float('inf'), None, 0, 0
     history = []
     if (path/'last.pt').exists():
@@ -134,7 +134,7 @@ def fit(arm, panel, seed, path, cfg):
                 losses.append(loss.item())
             print('pretrain', ep, float(np.mean(losses)), flush=True)
         # Reset optimizer so supervised optimization has the same fresh moments.
-        opt = torch.optim.Adam(model.parameters(), lr=.001, weight_decay=0.)
+        opt = torch.optim.Adam(model.parameters(), lr=cfg.get('lr', .001), weight_decay=0.)
     # Fixed validation signal schedule for checkpoint selection (v2: every fifth
     # session; v3: daily); evaluation forecasts remain daily. Shared by every neural arm.
     validation_signals = panel.valid[::cfg['validation_stride']]
@@ -230,6 +230,8 @@ def run(args):
                        'device': args.device, 'smoke': args.smoke, 'threads': args.threads,
                        'protocol': args.protocol, 'train_stride': args.train_stride,
                        'validation_stride': args.validation_stride, 'horizon': 5}
+                if args.lr != .001:
+                    cfg['lr'] = args.lr
                 if args.select != 'mse':
                     cfg['select'] = args.select
                 cfg['preprocessing'] = {'scale': arm_panel.scale.tolist(), 'target_scale': arm_panel.yscale,
@@ -282,6 +284,7 @@ def main():
     p.add_argument('--seeds', nargs='+', type=int, default=[7, 19, 42])
     p.add_argument('--epochs', type=int, default=40)
     p.add_argument('--patience', type=int, default=8)
+    p.add_argument('--lr', type=float, default=.001)
     p.add_argument('--batch', type=int, default=8)
     p.add_argument('--threads', type=int, default=2)
     p.add_argument('--device', default='cpu')
