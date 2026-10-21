@@ -66,6 +66,6 @@ for job in JOBS:
 with zipfile.ZipFile(work/f'results_{TAG}.zip', 'w', zipfile.ZIP_DEFLATED) as z:
     for f in Path('results').rglob('*'):
         if f.is_file():
-            z.write(f, f.relative_to(repo))
+            z.write(f, f.as_posix())             # cwd is repo; paths are already relative
 os.chdir(work); shutil.rmtree(repo)
 print('zipped', (work/f'results_{TAG}.zip').stat().st_size, flush=True)

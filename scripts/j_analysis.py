@@ -125,7 +125,7 @@ def main():
         L.append(f'| {a} | ' + ' | '.join(cells) + f' | {m:+.4f} [{ci[0]:+.4f}, {ci[1]:+.4f}] | {pv:.3f} |')
     ens = {f: ensemble_daily(store, f, common_dates(store, f, ['kronos'])) for f in PRIMARY}
     m, ci, pv = pooled_ci(ens)
-    L.append('| kronos 5-seed ensemble | ' + ' | '.join(f'{ens[f].mean():+.4f}' if f in ens else '—' for f in folds)
+    L.append(f'| kronos {len(store.seeds(PRIMARY[0], "kronos"))}-seed ensemble | ' + ' | '.join(f'{ens[f].mean():+.4f}' if f in ens else '—' for f in folds)
              + f' | {m:+.4f} [{ci[0]:+.4f}, {ci[1]:+.4f}] | {pv:.3f} |')
     p1 = {f: absolute(store, f, 'kronos', common_dates(store, f, ['kronos']), 'RankIC_path1') for f in PRIMARY}
     m, ci, pv = pooled_ci(p1)
