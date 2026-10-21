@@ -1,5 +1,22 @@
 # HyperShift broad research screen
 
+## Deep-test amendment, predeclared 2026-10-21 by Claude after the v3 screen and before any deep-test number
+
+**Candidates.** Only arms that passed the v3 'Promising' gate: **F `two_residual`** and **H `pretrain`**, each against **`static`**. No other arm is promoted. `hybrid` failed the gate (2023: 1/3 seeds positive); `frozen` stays Inconclusive.
+
+**Design (identical v3 source, data and CLI; nothing in hashed source changes).**
+- Folds **2020** (val 2019, train labels mature before 2019; COVID crash inside the evaluation year; shorter training history 2015–2018), **2022** and **2023**. 2021 is not used because adding it needs a hashed-source edit. 2024+ stays reserved.
+- **10 seeds**: 7 19 42 101 202 303 404 505 606 707. Seeds 7/19/42 are rerun, so every deep comparison runs on one platform (Kaggle CPU, torch 2.11). Their rerun is also a reproducibility check against the laptop v3 runs (torch 2.14).
+- Output `results/SCREEN_SP500_20261019_v3_deep`. The v3 tables stay frozen.
+
+**Decision rule (per candidate; Holm over the 2 candidates).**
+- Seed-level: the paired delta is test RankIC(candidate) − RankIC(static) for each (fold, seed), 30 deltas. Use a two-sided Wilcoxon signed-rank, Holm-adjusted. This is the project convention, and it captures training-seed variance, which the date bootstrap omits.
+- Date-level: the v3 stationary bootstrap of the seed-averaged daily ΔRankIC, pooled as an equal-weight fold mean.
+- **STRONG**: Holm Wilcoxon p < .05, the pooled bootstrap CI excludes 0, and all 3 fold means are > 0. **SEED-ROBUST ONLY**: Holm Wilcoxon p < .05 but one of the other two conditions fails. **NO EVIDENCE**: otherwise. Effect sizes are reported regardless of the verdict.
+- Everything stays exploratory: these years have been inspected before.
+
+**Training-budget probe (diagnostic, separate namespace `results/SCREEN_SP500_20261019_v3_budget`).** Trigger met: median selected epoch 5; train loss falls only 0.01–0.03. Arms `static` and `two_residual`, folds 2022/2023, seeds 7/19/42, patience 20 and lr 3e-3. It needs an `--lr` flag, which changes the source hash, so it is added only after the deep kernels launch. One seed at the default lr is rerun first, to show the flag is behaviour-neutral. Probe results never change a screen or deep verdict.
+
 ## v3 amendment (PRIMARY screen), predeclared 2026-10-19 by Claude before any v3 evaluation number was examined
 
 **Why.** The v2 RSR grid below is underpowered: fold 2015 trains on 37 cross-sectional dates and fold 2016 on 88 (2013-only and 2013–14 histories, stride 5). In the completed v2 neural fits the selected epoch is 0–3 for almost every graph arm, and the validation prediction std is 1–7% of target std. So the selected weights sit close to initialization and close to a predict-zero forecaster. v2 is kept as a *failed-to-learn / training-data* diagnostic (DIAGNOSTIC_REPORT), not as mechanism evidence.
