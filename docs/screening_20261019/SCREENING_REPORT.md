@@ -5,7 +5,7 @@
 ## What was run
 
 - **Data.** 462 current S&P 500 constituents from yfinance, daily 2015–2026, with five MA/close features and 11 GICS sectors (`DATA_AUDIT.md`, `SP500_INPUT_MANIFEST.json`). Strong survivorship bias.
-- **Folds.** Evaluate 2022 (validate on 2021) and 2023 (validate on 2022). 2024 onward is reserved and was never scored.
+- **Folds.** Evaluate 2022 (validate on 2021) and 2023 (validate on 2022). 2024 onward is reserved and was never scored in this screen. It was later spent for Study J arms only (`J_KRONOS_REPORT.md`).
 - **Protocol.** Identical for every arm and predeclared before any v3 number (`RESEARCH_SCREENING_PLAN.md`, v3 amendment).
   - h5 forward-return target; 64-session eligibility; stride-1 training.
   - Checkpoint selection on validation RankIC; seeds 7, 19, 42.
@@ -34,7 +34,7 @@
 | G | Long context | summary: residual 16/32/64-session summaries | +0.0013 [−0.017, +0.021] | 1.00 | Neutral | Full 64-session encoder (`long`) −0.007. Ridge on window summaries has little signal. |
 | H | Self-supervised pretraining | pretrain: 20% masked reconstruction, 5 epochs | **+0.0036 [−0.007, +0.015]** | 1.00 | **Promising** (gate only) | Per fold: 2022 +0.006 (+0.005 / +0.004 / +0.008), 2023 +0.002 (+0.029 / +0.007 / −0.031). Masked reconstruction ≠ CI-STHPAN. |
 | I | Regime adaptation | adaptive: signal-local adaptive normalisation | −0.0017 [−0.026, +0.023] | 1.00 | Neutral | frozen (2022-fold model scored on 2023) +0.022 raw, Inconclusive. Its neutral RankIC is lower than retrained static, so the gain is factor tilt (DIAGNOSTIC §2c). Adaptive norm ≠ DoubleAdapt. |
-| J | Foundation-model features (Kronos) | — | not run | — | **Data/resource blocked** | Kronos pretraining runs to June 2024 and covers NASDAQ, so 2022/23 evaluation is contaminated. A clean test needs evaluation in the reserved ≥ 2024-07 period; that is the user's decision. |
+| J | Foundation-model features (Kronos) | — | not in v3 screen | — | **Tested separately (Study J)** | Kronos pretraining runs to June 2024, so 2022/23 evaluation is contaminated and J was not screened here. Study J then scored zero-shot Kronos-small on the reserved 2025–26 folds, authorised for J only: RankIC +0.003; kronos − static −0.0165; kronos_static − static −0.0059. Rule output SEED-ROBUST ONLY (−), i.e. no evidence of improvement. See `J_KRONOS_REPORT.md`. |
 | MASTER-inspired | Market gate + cross-stock attention | master (standalone) | +0.0028 [−0.009, +0.014] | — | Neutral | Not a MASTER reproduction. Most expensive arm (1,024 s/fit). |
 | MDGNN-inspired | Dynamic multi-relational graphs | covered by A (soft and rolling) | see A | — | Neutral | Minimal relation-learning test only; no MDGNN reproduction. |
 

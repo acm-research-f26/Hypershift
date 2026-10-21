@@ -10,6 +10,8 @@ We screened 10 research directions (A–J) plus MASTER- and MDGNN-inspired arms 
 
 **Study X (added 2026-10-21):** pairwise (clique) and star expansion of the cluster graph are both NO EVIDENCE as neural arms. Pairs trading on the same groups is NO EVIDENCE, and no grouping beats random groups. See `X_PAIRWISE_STAR_REPORT.md`.
 
+**Study J (added 2026-10-21):** zero-shot Kronos-small was tested on the reserved period, authorised for J only. On 2025–26 its pooled RankIC is +0.003 [−0.031, +0.036]. It is below static in 10 of 10 seed pairs (−0.0165), and averaging it with static also falls below static (−0.0059). The predeclared rule outputs SEED-ROBUST ONLY in the harmful direction (Holm 0.004; date CI includes 0), which means **no evidence of improvement**. See `J_KRONOS_REPORT.md`.
+
 ## Numbers that matter
 
 | | Value |
@@ -60,7 +62,7 @@ flowchart LR
     L["Loss on h5 forward return<br/>MSE · C: ListNet / hybrid / pairwise<br/>B: market / sector / cluster residual target"]
     X --> N --> T1 --> S --> G --> G2 --> T2 --> M --> L
     T1 -.-> P
-    K["J: Kronos features<br/>(blocked: pretraining overlaps eval)"] -.-> T1
+    K["J: zero-shot Kronos score<br/>(tested on 2025–26: ≈ 0 RankIC)"] -.-> M
     style G2 fill:#fde68a,stroke:#b45309
     style K stroke-dasharray: 5 5
 ```
@@ -78,13 +80,13 @@ flowchart LR
 | G long context | Measured (screen) | Neutral / slightly negative. |
 | H self-supervised pretraining | Measured (screen + deep, primary) | **NO EVIDENCE** (Holm p 0.184). CI-STHPAN not reproduced. |
 | I regime adaptation | Measured (screen) | Neutral. The frozen model's +0.022 is factor tilt. DoubleAdapt not reproduced. |
-| J Kronos foundation features | **Untested: blocked** | Pretraining (to 2024-06) overlaps 2022/23. A clean test needs 2024-07+ evaluation, which is the user's decision. |
+| J Kronos foundation model | Measured (Study J, zero-shot, 2025–26, 5 sampling seeds) | **No evidence of improvement.** kronos RankIC +0.003 (≈ random baskets in trading); kronos − static −0.0165 and kronos_static − static −0.0059. Rule output SEED-ROBUST ONLY (−), Holm 0.004, date CI includes 0. Kronos embeddings as model inputs were not run, because of the pretraining overlap. See `J_KRONOS_REPORT.md`. |
 | MASTER-inspired | Measured (screen) | Neutral; simplified, not a reproduction. |
 | MDGNN-inspired | Partly measured (via A) | Neutral; no multi-relational dynamic graph was built. |
 | X1 clique vs star graph expansion | Measured (Study X, 5 seeds × 3 folds, session-matched) | **NO EVIDENCE** vs static. clique +0.0020 (Holm 0.890); star +0.0080 (Holm 0.146). Star only reaches the no-graph level (star − none −0.0001). In this run, static is nominally below no-graph (raw p 0.048, not significant after Holm). See `X_PAIRWISE_STAR_REPORT.md`. |
 | X2 pairs trading (pairwise vs star; cluster / sector / all) | Measured (Study X) | **NO EVIDENCE** for every variant after 10 bp costs. No grouping beats random groups; star does worse than pairwise. |
 | Combinations of directions | **Untested by design** | No single effect is established, so combinations are not justified. |
-| Reserved 2024+ period | **Never scored** | Kept for a future confirmatory test. |
+| Reserved 2024+ period | **Spent for J only** | Scored only for the Study J arms (kronos, kronos_static, static, none, reversal, momentum, ridge, random). Every other arm remains unscored on 2024+. |
 | Richer inputs (volume, fundamentals), other targets or model sizes | **Untested** | Out of this screen's scope; this is the recommended next direction. |
 | Rishi's `feat-rs` model/data | **Untested** | Unavailable. |
 
