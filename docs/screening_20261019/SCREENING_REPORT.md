@@ -48,9 +48,12 @@ Full tables: `v3_SCREENING_TABLES.md`. Per-seed paired deltas: `v3_PAIRED.csv`. 
 
 1. **Nothing is statistically distinguishable from the baseline.** Holm p = 1.00 for all nine primary comparisons, and every 95% CI includes 0.
 2. **The common baseline is weak and not separable from simpler models.** Pooled RankIC: static 0.007, no-graph 0.011, MLP 0.011, reversal(16) 0.011, Ridge 0.006, random 0.000 (`BASELINE_REPORT.md`). Graph structure gives no measurable benefit here: correlation clusters, GICS sectors and random groups all look the same.
-3. **The models barely leave initialisation.** The selected epoch has a median of 5, training loss falls by about 0.01–0.03, and predictions track the market move (correlation 0.8–0.9). A training-budget probe (patience 20, lr 3e-3) is running as a diagnostic (DIAGNOSTIC §2b).
+3. **The models barely leave initialisation.** The selected epoch has a median of 5, training loss falls by about 0.01–0.03, and predictions track the market move (correlation 0.8–0.9). A training-budget probe (patience 20, lr 3e-3; DIAGNOSTIC §2b) shows that undertraining is not the bottleneck:
+   - training loss falls further, but the selected epoch stays early;
+   - static gains +0.011;
+   - two_residual's edge reverses against the better-trained static (−0.0048, 2/6 seeds positive).
 4. **The screen is noise-limited.** Per-fold seed-to-seed ΔRankIC spread is ±0.02–0.03, against mean effects ≤ 0.009. With 3 seeds, the 'Promising' gate is a weak filter.
-5. **Two arms pass the gate: F two_residual and H pretrain.** Both, and their parent, ran on the laptop, so their v3 contrasts are platform-matched. They go to the predeclared deep test (10 seeds × folds 2020/2022/2023, all on one platform; `DEEP_ABLATIONS.md`). Post hoc, after the platform check, C hybrid is added as an exploratory third candidate. It has the highest ΔRankIC among non-passers under both pairings. random_graph is added as a deep calibration control. Neither changes the primary deep family.
+5. **Two arms pass the gate: F two_residual and H pretrain.** Both, and their parent, ran on the laptop, so their v3 contrasts are platform-matched. They go to the predeclared deep test (10 seeds × folds 2020/2022/2023, all on one platform; `DEEP_ABLATIONS.md`). Post hoc, after the platform check, C hybrid is added as an exploratory third candidate. It has the highest ΔRankIC among non-passers under both pairings. random_graph is added as a deep calibration control. Neither changes the primary deep family. **Deep result:** all four are NO EVIDENCE. two_residual: +0.0065, Holm p 0.077. pretrain: +0.0042, Holm p 0.184. hybrid: +0.0023 (exploratory). random_graph: +0.0028 (calibration). See `DEEP_ABLATIONS.md`.
 6. **Negative preliminary results:** B residual targets on raw RankIC; pairwise loss; mix, low-rank and long context (descriptive). Every one of these CIs also includes 0. Treat them as "not supported here", not as refuted.
 
 ## Caveats
@@ -58,6 +61,7 @@ Full tables: `v3_SCREENING_TABLES.md`. Per-seed paired deltas: `v3_PAIRED.csv`. 
 - **Survivorship bias** (2026 constituents traced back to 2015) and **current GICS labels**. Comparisons are only like-for-like across arms.
 - **Platform.** 22 arms ran on Kaggle (torch 2.11) and are paired against the laptop static (torch 2.14).
   - A Kaggle rerun of static shows jitter of seed-noise size (mean −0.0015; 2 of 6 runs diverge).
+  - The deep runs show that two Kaggle sessions can also disagree, so the jitter is session-level rather than strictly platform-level (DIAGNOSTIC §2e).
   - Re-pairing on Kaggle static flips residual_soft, hybrid, sector_graph and the negative control random_graph to 'Promising' (`v3_PLATFORM_SENSITIVITY.md`).
   - So the gate is fragile near its threshold. Post hoc, hybrid was added to the deep runs as an exploratory candidate and random_graph as a known-null calibration arm. The primary deep family is unchanged.
 - **Simplified adaptations, not reproductions:** ListNet ≠ LapSum; pooled fusion ≠ TimeMixer; masked reconstruction ≠ CI-STHPAN; adaptive normalisation ≠ DoubleAdapt; master ≠ MASTER; soft/rolling ≠ MDGNN.

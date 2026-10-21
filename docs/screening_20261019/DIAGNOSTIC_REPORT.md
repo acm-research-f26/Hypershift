@@ -116,8 +116,13 @@ budget two_residual - static: mean -0.0048 folds -0.0073 -0.0023 pos 2 /6
 The 120 Kaggle-run fits used torch 2.11 CPU; the 51 laptop fits used torch 2.14 + cu130, run on CPU. Static was rerun on Kaggle (seeds 7/19/42 × 2022/2023; `v3_PLATFORM_SENSITIVITY.md`).
 - Four of six runs agree with the laptop to within 0.0004 RankIC (prediction correlation ≥ 0.9988).
 - Two 2023 runs diverge: −0.0075 and −0.0018, prediction correlation 0.97 and 0.95. Small numeric differences sent them down different training paths.
-- That is platform jitter of seed-noise size, not a bias. Mean −0.0015.
-- Laptop reruns are bit-identical (`2022/static/seed_7`, lr-check), so the jitter comes from the platform, not from nondeterminism within one machine.
+- That is numerical jitter of seed-noise size, not a bias. Mean −0.0015.
+- Laptop reruns are bit-identical (`2022/static/seed_7`, lr-check).
+- **Correction (2026-10-21, deep runs):** the jitter comes from the compute session, not only the platform. Kaggle-on-Kaggle twins:
+  - Deep hybrid and random_graph match their v3 Kaggle runs bit for bit (12/12).
+  - Deep static matches the Kaggle static rerun for seed 42 (kernel d2, 2/2 identical) but not for seeds 7/19 (kernel d1, 4/4 differ; max |ΔRankIC| 0.006).
+  - So two Kaggle sessions can disagree numerically. The likely cause is different CPU hardware and BLAS paths, which was not verified.
+  - Files: `deep_REPRO_vs_v3_all_arms.csv`, `deep_REPRO_vs_kaggle_static.csv`.
 
 Re-pairing the Kaggle arms against Kaggle static shifts every contrast by ≈ +0.0015. That flips the gate label of residual_soft, hybrid, sector_graph and the negative control random_graph to 'Promising'. **The 3-seed gate cannot separate arms within about 0.002 of its threshold.** The predeclared labels remain primary. Every CI includes 0 under both pairings.
 
