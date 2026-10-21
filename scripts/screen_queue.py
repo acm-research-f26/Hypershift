@@ -9,8 +9,10 @@ claim directories of units that are not finished and relaunch.
 """
 import argparse
 import os
+import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 p = argparse.ArgumentParser()
@@ -24,6 +26,7 @@ rest = [a for a in args.rest if a != '--']
 out = Path(args.output)
 (out/'.claims').mkdir(parents=True, exist_ok=True)
 (out/'logs').mkdir(parents=True, exist_ok=True)
+crashes = 0
 for arm in args.arms:          # arm-major: expensive arms listed first finish first
     for year in args.years:
         unit = f'{year}_{arm}'
@@ -37,6 +40,18 @@ for arm in args.arms:          # arm-major: expensive arms listed first finish f
         print(args.worker, 'START', unit, flush=True)
         with open(out/'logs'/f'{unit}.log', 'a') as log:
             code = subprocess.call(cmd, stdout=log, stderr=subprocess.STDOUT)
-        (out/'.claims'/unit/('done' if code == 0 else f'exit_{code}')).write_text('')
         print(args.worker, 'END', unit, code, flush=True)
+        if not 0 <= code <= 255:
+            # Windows NTSTATUS exit (e.g. 0xC0000142 DLL init failed during logoff/sleep, or a
+            # terminated process): infrastructure, not the experiment. Release the claim so the
+            # unit is retried, and stop this worker instead of burning through the queue.
+            shutil.rmtree(out/'.claims'/unit, ignore_errors=True)
+            crashes += 1
+            if crashes >= 3:
+                print(args.worker, 'STOPPING after repeated process crashes', flush=True)
+                sys.exit(2)
+            time.sleep(60)
+            continue
+        crashes = 0
+        (out/'.claims'/unit/('done' if code == 0 else f'exit_{code}')).write_text('')
 print(args.worker, 'QUEUE EMPTY', flush=True)
