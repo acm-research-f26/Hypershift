@@ -15,6 +15,14 @@
 - **STRONG**: Holm Wilcoxon p < .05, the pooled bootstrap CI excludes 0, and all 3 fold means are > 0. **SEED-ROBUST ONLY**: Holm Wilcoxon p < .05 but one of the other two conditions fails. **NO EVIDENCE**: otherwise. Effect sizes are reported regardless of the verdict.
 - Everything stays exploratory: these years have been inspected before.
 
+**Post-hoc addendum, 2026-10-21 ~02:00, written before any deep-test number.**
+- The platform-control rerun of static on Kaggle (`results/SCREEN_SP500_20261019_v3_platform_static`) moves every Kaggle-run arm's contrast by about +0.0015. That shift flips the gate label of residual_soft, hybrid, random_graph (a negative control) and sector_graph to 'Promising' (`v3_PLATFORM_SENSITIVITY.md`). The gate cannot separate arms within about 0.002 of its threshold.
+- Two arms are added to the deep runs. Neither changes the primary family:
+  - **C `hybrid`** is an exploratory third candidate. It has the highest ΔRankIC among non-passers under both pairings (+0.0072 laptop, +0.0087 Kaggle). It is reported separately, with Holm over 3 shown as a sensitivity.
+  - **`random_graph`** is a deep calibration arm: a known-null control that shows what the deep rule does with no mechanism.
+- Same deep root, seeds, folds and platform. The primary deep Holm family stays {two_residual, pretrain}.
+- residual_soft is not added: its soft assignment never leaves uniform entropy (DIAGNOSTIC §2c), so it does not test learned relations.
+
 **Training-budget probe (diagnostic, separate namespace `results/SCREEN_SP500_20261019_v3_budget`).** Trigger met: median selected epoch 5; train loss falls only 0.01–0.03. Arms `static` and `two_residual`, folds 2022/2023, seeds 7/19/42, patience 20 and lr 3e-3. It needs an `--lr` flag, which changes the source hash, so it is added only after the deep kernels launch. One seed at the default lr is rerun first, to show the flag is behaviour-neutral. Probe results never change a screen or deep verdict.
 
 ## v3 amendment (PRIMARY screen), predeclared 2026-10-19 by Claude before any v3 evaluation number was examined
