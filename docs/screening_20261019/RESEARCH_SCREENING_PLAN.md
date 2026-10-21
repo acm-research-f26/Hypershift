@@ -1,5 +1,52 @@
 # HyperShift broad research screen
 
+## Study J amendment — Kronos foundation model on the reserved period. Predeclared 2026-10-21 by Claude, before any J evaluation number
+
+**Authorisation.** The user said "unblock J Kronos, start doing it" (2026-10-21), which selects option (b) of FINAL_RECOMMENDATIONS: evaluate J on the reserved ≥ 2024-07 period. The reserved spend is limited to the arms listed below. **No other arm may be scored on 2024+ later on the strength of this amendment.** As DATA_AUDIT notes, 2024+ is not a fresh holdout (an earlier POC tested 2024-05 onward).
+
+**Disclosure of one peek.** While timing the smoke test, Kronos-small was scored on one reserved day, 2024-07-01: day RankIC −0.22, correlation +0.29 with 5-day reversal. That number played no part in any choice below. All later timing and consistency checks use pre-2024 days only.
+
+### Model and provenance
+- Official repo `shiyu-coder/Kronos` at commit `67b630e`, MIT licence. Weights `NeoQuasar/Kronos-small` (sha `901c26c1`) with `Kronos-Tokenizer-base` (`0e011738`). Sensitivity weights: `Kronos-base` (`2b554741`) and `Kronos-mini` (`f4e68697`) with `Kronos-Tokenizer-2k` (`26966d00`).
+- **Pretraining cutoff:**
+  - The paper (arXiv 2508.02739, App. D) says the pretraining data "extends up to June 2024". The HF model cards state no cutoff.
+  - The HF weights were uploaded 2025-06-30/07-01 and never changed, so the released checkpoints cannot have seen anything after 2025-06-30. That is a hard bound.
+  - That the released checkpoints share the paper's June 2024 cutoff is **not confirmed**.
+- **Inputs:** adjusted OHLCV from `data/fresh/sp500_daily/bars.csv.gz`, aligned to the panel. close/panel-close is constant per stock to within 1.2e-7, and no bar is missing where the panel is observed. `amount = volume × mean(OHLC)` (the official predictor's fill). Time stamps are the real session dates; future stamps are the next 5 calendar sessions, since the trading calendar is known in advance.
+- Per-window z-normalisation and the ±5 clip exactly as in `KronosPredictor`. Inference calls the official `auto_regressive_inference` with T = 1.0, top_k = 0, top_p = 0.9 (the predictor defaults), and **fp16 autocast** (a deviation from the official fp32, adopted for speed).
+
+### Arms scored on the reserved period (complete list)
+- `kronos`: zero-shot Kronos-small. Lookback 256 sessions (64 for a stock without 256 observed sessions, in a separate batch, so the universe equals static's eligibility). 5-step forecast. Score = mean over **M = 4** sampled paths of predicted close(t+5) / close(t) − 1.
+  - **Why M = 4:** on 4 pre-2024 days (2021), path-to-path rank correlation was 0.72–0.82 for single paths and 0.88–0.94 for 4-path vs 4-path means. A single path would attenuate skill.
+  - **Seeds:** Kronos seed k = sampling seed k (7, 19, 42, 101, 202), with the RNG reseeded per (seed, signal day, lookback group). Kronos seed k is paired with static seed k.
+  - **Budget fallback:** if the pre-2024 Kaggle GPU smoke shows the M = 4 × 5-seed run will not fit in about 12 GPU-hours, the lookback drops to 128. M is never reduced.
+- `kronos_static`: no fitting. Per day, the average of the cross-sectional z-scores of the static seed-k and kronos seed-k predictions over eligible stocks.
+- `static` and `none`: the v3 model and CLI (stride 1, validation-RankIC selection), seeds as above, on runner folds 2024, 2025 and 2026. Fold Y trains on labels maturing before Y−1, validates on Y−1 and evaluates Y. Fold 2026 runs to the last mature label in 2026-08.
+- `reversal`, `momentum`, `ridge` and `random`: the deterministic and statistical baselines, unchanged.
+- **Not run: Kronos embeddings as model inputs** (the feature-input version of J). Training-year features come from inside Kronos's pretraining window. A model trained on them could learn to rely on memorised information, and validation-based selection could not detect it.
+
+### Folds and decision rule
+- **Primary folds: 2025 and 2026** (signal dates 2025-01-01 → 2026-08). These have at least a 6-month margin after the paper's stated cutoff.
+- **Primary family:** {kronos, kronos_static} vs static, Holm over 2. Two-sided Wilcoxon on the 10 (fold, seed) deltas, plus the stationary date bootstrap (block 10, B = 5000), pooled as the equal-weight mean of fold means. STRONG / SEED-ROBUST ONLY / NO EVIDENCE exactly as in the deep test.
+- **Descriptive:**
+  - kronos RankIC vs 0 (bootstrap CI);
+  - kronos vs none, reversal, momentum and ridge;
+  - the 5-seed kronos ensemble;
+  - single-path kronos (from path 1 of each seed);
+  - neutral RankIC and the trading block.
+- **Sensitivities (descriptive):**
+  - (s1) add fold 2024H2 (signal dates ≥ 2024-07-01; static is restricted to the same dates);
+  - (s2) hard-clean only: signal dates ≥ 2025-07-01;
+  - (s3) Kronos-base and Kronos-mini, seed 7, primary folds;
+  - (s4) lookback 64, seed 7.
+- **Memorisation diagnostic (contaminated, descriptive):** kronos seed 7 on 2022 and 2023, inside the pretraining window. A higher in-sample IC is **not** proof of memorisation, because the regimes differ.
+- All absolute and trading numbers are computed from daily series on the common dates of the compared arms, not from `metrics.json` scalars.
+
+### Compute and code
+- Runner: an explicit `--reserved-j` flag permits years 2024–2026; without it the old guard stands. `kronos` and `kronos_static` are added to ARMS under experiment J, and `statistical()` raises for them. Because the source hash changes, this is a new root: `results/SCREEN_SP500_20261021_j`.
+- static/none/baselines: one Kaggle CPU kernel per seed, as in X1.
+- Kronos: `scripts/j_kronos.py` on Kaggle GPU. The Kronos code and weights go in a private Kaggle dataset loaded from a local path. Days are sharded across GPUs, and the per-(seed, day) RNG makes this deterministic. Configs record the GPU model, fp16, lookback, M and the source/weight hashes.
+
 ## Study X amendment — pairwise / star expansion (neural) and pairs trading. Predeclared 2026-10-21 by Claude, before any X number
 
 The user asked to test "Pairwise Trading / Star Expansion" and then to "test out all possibilities". The phrase has no definition in the repo, so it is read three ways, and each reading is tested on the v3 S&P 500 panel. 2024+ stays reserved. Everything is exploratory: the years have been inspected before.
