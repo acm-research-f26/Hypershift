@@ -105,6 +105,7 @@ def main():
     P += ['', f'Days needed for MDE 0.01: **{need[.01]}**; for MDE 0.02: **{need[.02]}** (neutral RankIC, paired contrast of two deterministic scorers; a contrast against a weaker or less correlated comparator has a larger SD).',
           '', 'Caveat: estimated from one contrast (ridge vs reversal) in two years; contrasts between highly correlated models have smaller SD and smaller MDE.']
     (out/'POWER.md').write_text('\n'.join(P) + '\n', encoding='utf-8')
+    sys.stdout.reconfigure(encoding='utf-8')
     print('\n'.join(L[4:]) + '\n\n' + '\n'.join(P[6:]))
 
 
