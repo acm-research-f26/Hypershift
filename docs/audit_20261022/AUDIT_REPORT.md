@@ -331,3 +331,29 @@ See `PROSPECTIVE_ADDENDUM.md`.
 - **The leak (D1) is class 2.** It gets a predeclared leak-free sensitivity run, v1-LF, done once at the same time as v1.
 - **Low power (D2) is not a validity defect,** but it makes NO EVIDENCE uninformative.
 - **No matched raw-vs-residual prospective protocol.** About 18 years would be needed.
+
+---
+
+## Correction (2026-10-22, BC pre-execution review): read before using the memo above
+
+The BC review (`BC_REVIEW.md`; evidence in A7–A10) invalidates several statements above. They are left in place for the audit trail and superseded here.
+
+- **Memo Q1 and Q7, and §1.1's "positive stock-specific IC about 0.01 — Suggestive": withdrawn.**
+  - A style-only placebo scores +0.0088 [+0.003, +0.015] on the same style-residual metric. That is the same LightGBM with only beta, size, 60-day return, volatility and sector as inputs.
+  - On FB's neutral metric it scores +0.0265, about twice the full model.
+  - Model − placebo is +0.002 ± 0.008, and model − residual reversal is +0.0002 ± 0.009.
+  - **Corrected reading:** the model's predictive information is not distinguishable from a style-only learner or a zero-parameter residual reversal. The residualised metric is not style-free; trees exploit style interactions.
+  - **Category:** Unsupported, no longer Suggestive.
+- **Memo Q8 and Q9, and roadmap P1 "backcast Study BC": withdrawn.** The decision is **STOP**.
+  - The BC estimand fails the placebo.
+  - The valid estimand (the increment over matched controls) has a dev effect of about 0.000–0.002, against a backcast MDE of 0.010–0.016.
+  - The survivor universe covers at most 43–58% of the historical index.
+  - Revised recommendation: `BC_REVIEW.md` §9.
+- **Memo Q6 and the roadmap P1 cost sweep: done (A8).**
+  - Weekly buffered neutral books cut turnover from about 0.76 to 0.13 per day.
+  - The best arm reaches net Sharpe +0.56 [−0.32, +1.44] at 5 bp, but it is not separable from the raw-neutralised, RR or reversal16 books.
+  - "Cost-dominated" becomes "cost-borderline once buffered; no arm distinguishable".
+- **Part 12 / addendum: the bias direction and the agreement rule were corrected** (see the addendum's correction section).
+  - v1-LF is now implemented, hash-pinned and leak-strict.
+  - **v1-LF is the scientific result; v1 is the reproducibility record.**
+- **Defect in this audit's own code.** `scripts/fbaudit_dividends.py` contained a SyntaxError introduced by a `sed` edit. It is fixed, with a regression test.

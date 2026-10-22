@@ -130,3 +130,5 @@ The LRV may differ in 2004–2012, with 2008 driving it up. Report the realised 
 5. `FREEZE_MANIFEST_BC.json`: spec, thresholds and code sha256, committed before step 2.
 
 **Cost:** about 1 day of engineering and about 1 h of CPU. No GPU.
+
+> **Superseded (2026-10-22):** after the pre-execution review the decision is **STOP**; see `BC_REVIEW.md`. The corrected conditional design is `STUDY_BC_SPEC_v2.md`.

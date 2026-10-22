@@ -45,7 +45,8 @@ def main():
          '- **Index members** = point-in-time S&P 500 on the first listed date ≥ 1 July.',
          '- **C2** = members that are also among the 462 current-constituent survivors (direct symbol match after '
          'normalising "." to "-").',
-         '- **Survivor share** = C2 / members: the fraction of the historical index the backcast can see.', '',
+         '- **Survivor share** = C2 / members: the fraction of the historical index the backcast can see. This is a '
+         '**lower bound**: members that later renamed are not matched by symbol, which also inflates the last column.', '',
          '| Year | Index members | C2 (members ∩ our 462) | Survivor share | Our 462 not members that day |',
          '|---|---|---|---|---|']
     for y in range(2004, 2013):
@@ -69,8 +70,9 @@ def main():
           f'({", ".join(never[:20])}{" …" if len(never) > 20 else ""}). Likely symbol changes or class-share notation.',
           f'- Our tickers first in the index after 2012 (pre-inclusion names in BC, or renamed): {len(late)} of 462.',
           f'- Our tickers first in the index on or before 2004-07-01: {len(early)}.',
-          f'- Symbols with a gap of more than 1 year between index intervals (possible **symbol reuse by a different '
-          f'company**; point-in-time matching by symbol is unsafe for the earlier interval): {len(reused)}: ' +
+          f'- Symbols with a gap of more than 1 year between index intervals (a mix of re-entries by the same '
+          f'company, e.g. AMD, DD, PCG, TER, and **possible symbol reuse by a different company**, e.g. BR, AMP, CNC; '
+          f'point-in-time matching by symbol is unsafe for the earlier interval): {len(reused)}: ' +
           ('; '.join(reused[:25]) if reused else 'none') + ('' if len(reused) <= 25 else ' …'), '',
           '## Limits that cannot be removed with free data', '',
           '- **No delisting returns.** Stocks that left the index or failed are absent: survivor share above.',
