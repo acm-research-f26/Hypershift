@@ -10,6 +10,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8"]
 fresh = ["yfinance>=0.2.40", "alpaca-py>=0.30", "lxml>=5"]
+featbench = ["lightgbm>=4.5"]
 
 [build-system]
 requires = ["setuptools>=68"]

@@ -1,0 +1,3 @@
+# Study FB progress (plan: docs/superpowers/plans/2026-10-22-feature-benchmark.md)
+
+- 2026-10-22 01:20 Task 1 done. LightGBM 4.7.0 installed in .venv (imports fine; no fallback needed). Data audit: OHLCV aligned to the panel (462/462 tickers, all dates), 0 NaN, 3,251 zero-volume cells of 1.05M, 1 low>min(open,close) cell. Power: MDE (80%, two-sided 0.05) for a paired neutral-RankIC contrast = 0.046 per fold, 0.021 pooled over 5 folds; a prospective test needs ~1,300 days for MDE 0.02 and ~5,200 for 0.01. Effects of the size seen so far (~0.01) are below what any feasible design here can detect.
