@@ -29,6 +29,11 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
 - **Phase 1.5b (post-2017 frozen test): done.** A new replication of R5_f2 alpha=0 (exp `R5_f3_alpha0_train`, weights saved, frozen) scored once on 2018-2023 Alpaca data: HH pooled Sharpe about 0.43 vs hold-all 0.51; NO EVIDENCE of learned ranking (Holm p ≥ 0.6); HH vs EH INSUFFICIENT SEEDS. See `docs/phase1_5b/REPORT_POST2017.md`.
 - **Phase 1.5c (walk-forward annual retraining, 2019-2023): done.** HH pooled Sharpe 0.70 (seed mean) vs hold-all 0.69; ranking skill NO EVIDENCE (Holm p = 1.0); not distinguishable from the frozen 1.5b model. EH (paper's Euclidean arm) 0.51; HH vs EH (F5) Wilcoxon p 0.3125, seed-avg contrast +0.21 (CI -0.19 to +0.60), verdict INSUFFICIENT SEEDS (5 seeds; descriptively NO EVIDENCE). Spec `docs/phase1_5c/SPEC.md`, tables `docs/phase1_5c/wf_tables.md`.
 - **Phase 2 (exhaustiveness closure): done.** `docs/phase2/REPORT_CLOSURE.md`: the THINK advantage cannot be recreated under any leak-free evaluation; the paper values appear only under test-epoch selection, annualised Sharpe or buggy NDCG; the ordering is not robust (identical-config replications flip THINK vs EH). RSR authors' code reproduces its own paper metric but shows no leak-free skill; STHGCN official code is not runnable (data deleted).
+- **Research screen (2026-10-19 to 10-21): done.** `docs/screening_20261019/` (start with `EXECUTIVE_SUMMARY.md`, `FINAL_RECOMMENDATIONS.md`). 462 current S&P 500 stocks, 5-day target, RankIC selection. Ten directions (A–J) plus MASTER/MDGNN-inspired arms: nothing separable from the static hypergraph baseline (Holm 1.00); the baseline is not separable from no graph, MLP, 16-day reversal or Ridge (pooled RankIC about 0.01). Deep test (10 seeds × 2020/2022/2023): two_residual Holm 0.077, pretrain 0.184, both NO EVIDENCE; a random graph gets +0.0028.
+- **Study X (pairwise/star expansion, pairs trading): done.** `X_PAIRWISE_STAR_REPORT.md`: clique Holm 0.890, star 0.146 (star equals no graph); pairs trading does not beat random groups.
+- **Study J (zero-shot Kronos on the reserved period): done.** `J_KRONOS_REPORT.md`: RankIC +0.003 on 2025–26, below static in 10/10 seed pairs; no evidence of improvement. **2024+ is now spent for the J arms only.**
+- **Study FB (simple models, richer features, targets, horizons; 2026-10-22): done, exploratory.** `docs/featbench_20261022/FB_REPORT.md`. Ridge/LightGBM/MLP on 20 OHLCV features do not beat 16-day reversal; volume/liquidity features do not help; factor-residual or sector-relative targets are the one consistent lever (LightGBM residual − raw +0.0140, 5/5 folds, Holm 0.065, NO EVIDENCE). Power: MDE about 0.021 neutral RankIC over 5 folds. `lgbm:rich:residual` is **frozen** for a prospective test on signal dates after 2026-10-22 (`PROSPECTIVE_PROTOCOL.md`, ≥ 250 days).
+- **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
 ## Docs map
@@ -36,6 +41,8 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
 - `docs/PHASE1_TRACKER.md`: running record, verdict, all R/A/G/C/PA/U entries.
 - `docs/phase1/`: `HANDOFF_2026-10-01.md` (what is running, next steps), `paper_audit.md`, `R5_full_nyse_g2.md`, `R8_baselines_results.md` (+ `R8_baselines.md`), `g2_small_results.md`, `A10_G5_full_nyse.md`, `fig3_degree_reconcile.md`, `R1`–`R3`, `R7`.
 - `docs/phase1_5/`: fidelity-audit notes.
+- `docs/screening_20261019/`: research screen v2/v3, deep test, Studies X and J (plan with all predeclared amendments: `RESEARCH_SCREENING_PLAN.md`).
+- `docs/featbench_20261022/`: Study FB (report, tables, power, freeze manifest, prospective protocol, execution ledger). Plan: `docs/superpowers/plans/2026-10-22-feature-benchmark.md`.
 - `docs/phase1_5/PHASE1_5_SUMMARY.md`: consolidated Phase 1.5 status (start here). Parts:
   - `A_evaluator.md`: evaluator, target alignment, normalization leak; ties and the Sharpe constant.
   - `B_model.md`: tensor-level model audit against eq. 6-17, departures ranked, new attention switches.
@@ -96,6 +103,11 @@ bash scripts/overnight/driver.sh [--dry-run|--reset]                   # one ove
 $PY scripts/baselines.py | hyperbolicity.py | time_budget.py
 $PY scripts/fetch_fresh.py --source yf --kind daily --start 2015-01-01 --end 2026-09-01 --name sp500_daily
 $PY scripts/poc_sectors.py run|tune|tune-select|summarize [--variant V] [--arms ...] [--input-mode relative] [--use-tuned] [--seeds 0-9] [--set K=V ...] [--dry-run]
+$PY scripts/research_screen.py ...                        # screening runner (src/hypershift/screening; --reserved-j only for J arms)
+$PY scripts/featbench.py --years 2019 ... 2023 --arms lgbm:rich ridge:rich:residual:5:cs_z block:reversal16 --jobs 3   # Study FB (arm = model:features:target:horizon:repr)
+$PY scripts/featbench_analysis.py --root results/FEATBENCH_SP500_20261022 --out docs/featbench_20261022 --tag fb
+$PY scripts/featbench_portfolio.py --root results/FEATBENCH_SP500_20261022 --out docs/featbench_20261022
+$PY scripts/featbench_prospective.py --panel <ext panel> --ohlcv <ext ohlcv> --manifest docs/featbench_20261022/FREEZE_MANIFEST.json --out results/FEATBENCH_PROSPECTIVE
 $PY scripts/run_pygt.py --dataset chickenpox --protocol leakfree --arm <arm>   # R1-R3 (PyG-T datasets)
 $PY scripts/run_clf.py --exp E11_clf_g2 [--dry-run] [--seeds N]               # R7 NASDAQ 3-class F1
 $PY scripts/r5_g2_analysis.py [--fig] | r8_analysis.py [--fig] | a10_g5_analysis.py   # Phase 1 full-NYSE tables (CPU)
@@ -156,4 +168,7 @@ A run is skipped if `metrics.json` exists, so everything is resumable. `aggregat
 - Never tune only one arm. Every compared variant gets the same tuning budget and the same seeds.
 - NASDAQ has T = 1245: the raw files have 1246 rows, and the loader drops the last one (`parse_eod(drop_last=True)`, 2017-12-11). It is **not** all missing: 474 of the 1026 listed stocks are missing there, 552 have real values (Phase 1.5 C; rechecked on the raw files).
 - **Never train with coupled `weight_decay=5e-4` (the old default).** With Adam at `lr 1e-3` the decay gradient is 10-40x the loss gradient and shrinks the stacked hyperbolic layers to a constant output; planted-signal recovery is 26% of oracle. Use `weight_decay=0` + `input_mode=relative` (63-84% THINK, Phase 1.5 F, `docs/phase1_5/F_learnability.md`). All Phase 1 nulls used the collapsed setup; verdict pending the `R5_f_*` rerun.
+- **Reserved data is spent.** Every year 2015–2023 on the RSR and S&P 500 panels has been inspected, and 2024+ was spent for the Study J arms only (`featbench.data.load_fb` refuses years > 2023). New claims can only be confirmatory on data after 2026-10-22 (the FB prospective scorer refuses earlier signal dates).
+- **S&P 500 OHLCV is yfinance `auto_adjust`:** prices are back-adjusted for dividends paid later, so level features built on price × volume (`log_dvol_20`, `amihud_20`) carry a small future factor. Ratio and return features are unaffected. Survivorship: current constituents, current GICS sectors.
+- **LightGBM** is an optional dependency (`pip install -e .[featbench]`); Study FB's fixed settings are in `featbench/models.py` (`LGBM_PARAMS`).
 - **Prediction ties:** the evaluator breaks top-5 ties by lowest index. Collapsed models tie a lot (THINK: 73 of 237 test days). `scripts/tiebreak_report.py` gives a random tie-break column; the default is unchanged.
