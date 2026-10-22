@@ -120,3 +120,12 @@ def test_run_arm_matches_saved():
     out = refit.run_arm(load_fb(2021, 5), 'lgbm', 'rich', 'residual', seed=7)
     saved, _ = stats.load_daily(FB_ROOT, 2021, 'lgbm:rich:residual')
     assert np.abs(out['daily'] - saved).max() < 1e-4
+
+
+def test_freeze_hashes_unchanged():
+    import hashlib
+    import json
+    man = json.load(open('docs/featbench_20261022/FREEZE_MANIFEST.json'))
+    for path, h in man['source_sha256'].items():
+        got = hashlib.sha256(Path(path).read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+        assert got == h, path
