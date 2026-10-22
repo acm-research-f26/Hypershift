@@ -279,3 +279,57 @@ def test_lf_missing_raw_close_makes_ineligible_not_adjusted():
     assert not fb.eligible[2, 30:50].any()          # any missing raw close in the 20-day window -> ineligible
     assert fb.eligible[2, 50:].all() and fb.eligible[[0, 1, 3]].all()
     assert fb.lf_dropped == 20
+
+
+def test_nested_inputs():
+    from hypershift.fbaudit import matched
+    from hypershift.featbench.data import FEATURES
+    fb = _toy_style_fb()
+    sig = np.arange(30, 36)
+    full, style = matched.nested_inputs(fb, sig, 'full'), matched.nested_inputs(fb, sig, 'style')
+    ns = len(np.unique(fb.sectors))
+    assert full.shape == (6, 40, 20 + ns) and style.shape == (6, 40, 4 + ns)
+    for k, name in enumerate(matched.STYLE_COLS):
+        assert np.array_equal(style[..., k], full[..., FEATURES.index(name)])
+    assert np.array_equal(style[..., 4:], full[..., 20:])
+
+
+def test_encompass_constant_base():
+    from hypershift.fbaudit import matched
+    rng = np.random.default_rng(16)
+    full, y = rng.normal(size=(3, 50)), rng.normal(size=(3, 50))
+    m = np.ones((3, 50), bool)
+    got = matched.encompass(full, np.ones((3, 50)), y, m)
+    assert np.allclose(got, stats.spearman_daily(full, y, m))
+
+
+def test_synth_deterministic():
+    from hypershift.fbaudit import matched
+    a, b = matched.synth_panel('S', 3, N=60, T=40), matched.synth_panel('S', 3, N=60, T=40)
+    assert np.array_equal(a['X'], b['X']) and np.array_equal(a['y'], b['y'])
+    c = matched.synth_panel('I', 3, N=60, T=40)
+    assert np.array_equal(a['X'], c['X']) and not np.array_equal(a['y'], c['y'])
+    assert a['X'].shape == (60, 40, 10) and a['sectors'].shape == (60,)
+
+
+def test_lf_neutral_uses_post_lf_mask():
+    """v1-LF: stocks made ineligible by missing raw prices must not enter the neutral target's market/sector means."""
+    from types import SimpleNamespace
+    from hypershift.fbaudit import prospective_lf as LF
+    from hypershift.featbench.data import _neutralise
+    rng = np.random.default_rng(17)
+    N, T = 8, 60
+    cl = np.cumprod(1 + .01 * rng.normal(size=(N, T)), 1) * 50
+    ohlcv = np.stack([cl, cl, cl, cl, np.full((N, T), 1000.)], -1)
+    raw = cl.copy()
+    raw[2, 30] = np.nan
+    y = rng.normal(size=(N, T)) * .05
+    beta, sectors = rng.normal(1, .3, size=(N, T)), np.array([0, 0, 0, 0, 1, 1, 1, 1])
+    ok = np.ones((N, T), bool)
+    fb = SimpleNamespace(X=np.zeros((N, T, 20), np.float32), observed=ok.copy(), eligible=ok.copy(), y=y, y_ok=ok,
+                         beta=beta, sectors=sectors,
+                         neutral=_neutralise(y.T, ok.T, beta.T, sectors).T.astype(np.float32))
+    LF.make_leakfree(fb, ohlcv, raw)
+    want = _neutralise(y.T, (ok & fb.eligible).T, beta.T, sectors).T
+    assert np.allclose(fb.neutral[:, 30:50], want[:, 30:50], atol=1e-6)
+    assert not np.allclose(fb.neutral[0, 35], _neutralise(y.T, ok.T, beta.T, sectors).T[0, 35])

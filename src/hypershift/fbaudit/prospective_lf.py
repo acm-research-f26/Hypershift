@@ -27,6 +27,12 @@ def make_leakfree(fb, ohlcv, raw_close):
     fb.lf_dropped = int(drop.sum())
     fb.eligible = fb.eligible & ~window
     ldv, ami = corrected_columns(ohlcv[:, :T], fb.observed, fb.eligible, raw_close)
+    if fb.lf_dropped and hasattr(fb, 'neutral'):
+        # recompute the evaluation/training neutral target with the post-LF eligibility (FB convention: masked by
+        # label-ok & eligible), so dropped stocks do not enter the market mean or sector demeaning
+        from hypershift.featbench.data import _neutralise
+        m = (fb.y_ok & fb.eligible).T
+        fb.neutral = _neutralise(fb.y.T, m, fb.beta.T, fb.sectors).T.astype(np.float32)   # exactly as load_range
     fb.X = fb.X.copy()
     fb.X[..., FEATURES.index('log_dvol_20')] = ldv
     fb.X[..., FEATURES.index('amihud_20')] = ami

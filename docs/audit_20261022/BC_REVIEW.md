@@ -126,3 +126,11 @@
 2. **Keep the prospective tests running passively.** v1 plus v1-LF, scored once at 250 or more days or later, with no interim looks. They are nearly free. Read NO EVIDENCE as uninformative.
 3. **Only if prediction research must continue:** acquire **point-in-time data**: a constituent history with delisting returns (for example CRSP or a commercial survivorship-free US equities dataset) plus point-in-time fundamentals. Then run a GKX-style monthly study whose **primary contrast is full model − matched style-only placebo**, with RR as a second benchmark (`STUDY_BC_SPEC_v2.md` gives that framework). Do not start this without the data.
 4. **If you nonetheless want a cheap economic look at 2004–2012 on survivors:** treat it as descriptive only, freeze `STUDY_BC_SPEC_v2.md`'s survivor-cohort variant, and label every result as **not an investable backtest**. I do not recommend it.
+
+---
+
+## Erratum (2026-10-22, closure review): survivor coverage bound
+
+- **What was wrong.** This file and `AUDIT_REPORT.md`'s correction say the survivor cohort "covers **at most** 43–58%" of the 2004–2012 index while also calling the figure a "lower bound". These contradict each other.
+- **Correct statement.** The measured share (43–58% of 1 July members matched among the 462 current constituents) is a **lower bound** on true coverage: members that later changed symbol are not matched by symbol. The cohort therefore covers **at least** 43–58% of the historical index, and **at most** 42–57% of members are missing.
+- **Effect on the STOP decision.** The true share is unknown without a symbol-history map. The STOP reasoning does not depend on it: even full coverage of members would leave the delisting-return and placebo problems unsolved.
