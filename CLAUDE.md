@@ -33,14 +33,16 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
 - **Study X (pairwise/star expansion, pairs trading): done.** `X_PAIRWISE_STAR_REPORT.md`: clique Holm 0.890, star 0.146 (star equals no graph); pairs trading does not beat random groups.
 - **Study J (zero-shot Kronos on the reserved period): done.** `J_KRONOS_REPORT.md`: RankIC +0.003 on 2025–26, below static in 10/10 seed pairs; no evidence of improvement. **2024+ is now spent for the J arms only.**
 - **Study FB (simple models, richer features, targets, horizons; 2026-10-22): done, exploratory.** `docs/featbench_20261022/FB_REPORT.md`. Ridge/LightGBM/MLP on 20 OHLCV features do not beat 16-day reversal; volume/liquidity features do not help; factor-residual or sector-relative targets are the one consistent lever (LightGBM residual − raw +0.0140, 5/5 folds, Holm 0.065, NO EVIDENCE). Power: MDE about 0.021 neutral RankIC over 5 folds. `lgbm:rich:residual` is **frozen** for a prospective test on signal dates after 2026-10-22 (`PROSPECTIVE_PROTOCOL.md`, ≥ 250 days).
-- **FB audit + BC pre-execution review (2026-10-22): done, exploratory.** `docs/audit_20261022/AUDIT_REPORT.md` (read its final correction section first) and `BC_REVIEW.md`.
+- **FB audit → BC review → closure (2026-10-22): done, exploratory. Read `docs/audit_20261022/FINAL_DECISION.md` first.**
   - **Dividend look-ahead.** yfinance `auto_adjust` dollar-volume levels leak future prices (future-only IC +0.031). Use `fbaudit/leakfree.py`.
-  - **Residual-target gain is tilt removal.**
-  - **Neutral and residualised RankIC both reward style.** A **style-only placebo** LightGBM scores +0.027 on the neutral metric and +0.009 on the style-residual metric.
-  - **No increment.** Model − placebo is about +0.002 ± 0.008 and model − residual reversal +0.000 ± 0.009. Measure "beyond style" only as an increment over a matched style-only learner.
-  - **Costs.** Buffered weekly neutral books are borderline (best net Sharpe +0.56 at 5 bp, CI includes 0; arms not separable).
-  - **Study BC: STOP** (`STUDY_BC_SPEC_v2.md` is the conditional design; it needs point-in-time data with delisting returns). Survivor coverage of the 2004–2012 index is ≤ 43–58%.
-  - **Prospective.** v1-LF (`fbaudit/prospective_lf.py`, hash in `PROSPECTIVE_ADDENDUM.md`) is the scientific result; v1 is the reproducibility record.
+  - **Neutral RankIC rewards style.** A matched style-only LightGBM scores at least as well as the full model (A11).
+  - **Residualised "style-residual" metrics are invalid** (synthetic proof, A12).
+  - **The FB LightGBM config (50 rounds) cannot exploit a planted incremental feature of standalone IC 0.046** (A12). FB feature/model-class nulls are therefore untested, not negative.
+  - **Question B (information beyond style and reversal): INCONCLUSIVE.** Resource decision: **STOP** price-only work on the current-constituent universe. Study BC (2004–2012 backcast) STOP.
+  - **Economics.** Buffered beta-hedged neutral books are positive net of linear costs, but style-only books do as well or better (A13). No model advantage.
+  - **Survivor coverage** "43–58%" is a symbol-match count, not a bound.
+  - **Prospective.** v1-LF (`fbaudit/prospective_lf.py`, hash in `PROSPECTIVE_ADDENDUM.md`, last row) is the scientific result; v1 is the reproducibility record. Score both once at ≥ 250 days.
+  - **Next only with new methods or data:** `FINAL_DECISION.md` §8; publication plan in `PUBLICATION_OUTLINE.md`.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
@@ -51,7 +53,7 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
 - `docs/phase1_5/`: fidelity-audit notes.
 - `docs/screening_20261019/`: research screen v2/v3, deep test, Studies X and J (plan with all predeclared amendments: `RESEARCH_SCREENING_PLAN.md`).
 - `docs/featbench_20261022/`: Study FB (report, tables, power, freeze manifest, prospective protocol, execution ledger). Plan: `docs/superpowers/plans/2026-10-22-feature-benchmark.md`.
-- `docs/audit_20261022/`: FB audit (A1–A6, AUDIT_REPORT, PROSPECTIVE_ADDENDUM) and BC review (A7–A10, BC_REVIEW, STUDY_BC_SPEC_v2; NEXT_STUDY_SPEC superseded). Code `src/hypershift/fbaudit/`, `scripts/fbaudit_*.py`; plan `docs/superpowers/plans/2026-10-22-fb-audit.md`.
+- `docs/audit_20261022/`: FB audit (A1–A6, AUDIT_REPORT, PROSPECTIVE_ADDENDUM) BC review (A7–A10, BC_REVIEW, STUDY_BC_SPEC_v2; NEXT_STUDY_SPEC superseded) and closure (A11–A13, FINAL_DECISION, PUBLICATION_OUTLINE). Code `src/hypershift/fbaudit/`, `scripts/fbaudit_*.py`; plan `docs/superpowers/plans/2026-10-22-fb-audit.md`.
 - `docs/phase1_5/PHASE1_5_SUMMARY.md`: consolidated Phase 1.5 status (start here). Parts:
   - `A_evaluator.md`: evaluator, target alignment, normalization leak; ties and the Sharpe constant.
   - `B_model.md`: tensor-level model audit against eq. 6-17, departures ranked, new attention switches.

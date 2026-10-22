@@ -357,3 +357,10 @@ The BC review (`BC_REVIEW.md`; evidence in A7–A10) invalidates several stateme
   - v1-LF is now implemented, hash-pinned and leak-strict.
   - **v1-LF is the scientific result; v1 is the reproducibility record.**
 - **Defect in this audit's own code.** `scripts/fbaudit_dividends.py` contained a SyntaxError introduced by a `sed` edit. It is fixed, with a regression test.
+
+## Correction 2 (2026-10-22, closure review): read `FINAL_DECISION.md`
+
+- **Coverage.** "43–58%" is a symbol-match count, not a bound (`BC_REVIEW.md` Erratum 2).
+- **"Model − placebo ≈ +0.002" and "no increment over a matched placebo"** were unmatched comparisons. They are superseded by A11: matched full − style is −0.0017 / −0.0011 with CIs of about ±0.01, unresolved.
+- **Reclassified FB negative claims.** "Volume features don't help", "rich ≈ price", "model class not the bottleneck" and "full ≈ style" all rest on the FB LightGBM configuration. A12 shows that configuration cannot exploit a planted incremental feature of standalone IC 0.046 (scoped: 3 replicates plus a 1-seed probe, at an easier signal-to-noise ratio than the real case). These claims are therefore **Untested with a learner shown to have power**, not Unsupported.
+- **Final status:** question B (information beyond style and reversal) is **INCONCLUSIVE**; the resource recommendation is **STOP** for price-only work on this universe.

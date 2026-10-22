@@ -134,3 +134,14 @@
 - **What was wrong.** This file and `AUDIT_REPORT.md`'s correction say the survivor cohort "covers **at most** 43–58%" of the 2004–2012 index while also calling the figure a "lower bound". These contradict each other.
 - **Correct statement.** The measured share (43–58% of 1 July members matched among the 462 current constituents) is a **lower bound** on true coverage: members that later changed symbol are not matched by symbol. The cohort therefore covers **at least** 43–58% of the historical index, and **at most** 42–57% of members are missing.
 - **Effect on the STOP decision.** The true share is unknown without a symbol-history map. The STOP reasoning does not depend on it: even full coverage of members would leave the delisting-return and placebo problems unsolved.
+
+## Erratum 2 (2026-10-22, closure review): supersedes Erratum 1 and the increment claims above
+
+1. **Coverage.** The 43–58% figure is a **symbol-match count, not a bound in either direction.**
+   - Renamed members are unmatched, which pushes it down.
+   - Symbol reuse by a different company (e.g. BR, which was Burlington Resources until 2006) and pre-buyout symbols with no yfinance history for that period (KMI, HCA, HLT, DG) are matched, which pushes usable coverage up.
+   - The true coverage is unknown without a symbol-history map.
+2. **"Model − placebo +0.002 ± 0.008" and "no increment over a matched placebo"** (§1 and §9) came from an **unmatched** comparison: different target, rounds and feature nesting. They are superseded by `A11_MATCHED_2x2.md`:
+   - full − style is −0.0017 (residual target) and −0.0011 (neutral target), with CIs of about ±0.01, unresolved;
+   - `A12_SYNTHETIC.md` shows the FB LightGBM learner could not have detected increments of that size anyway.
+3. **The STOP decision stands and is strengthened.** BC's learner could not have detected the increments it was meant to test. See `FINAL_DECISION.md`.
