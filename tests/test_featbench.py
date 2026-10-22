@@ -120,3 +120,62 @@ def test_transform_kinds_shapes():
         z = transform(xs, m, kind, fb)
         assert z.shape == xs.shape and np.isfinite(z).all()
         assert (z[~m] == 0).all()
+
+
+# ---------------------------------------------------------------- Task 3: models and CLI
+import csv  # noqa: E402
+import subprocess  # noqa: E402
+import sys  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+from hypershift.featbench.models import evaluate_arm, fit_predict  # noqa: E402
+
+
+def planted():
+    fb = synthetic_fb(n=60, t=420, seed=3)
+    j = FEATURES.index('ret_5')
+    z = fb.X[..., j] / max(fb.X[..., j][fb.eligible].std(), 1e-9)
+    fb.y = (0.02 * z + np.random.default_rng(4).normal(0, .02, z.shape)).astype(np.float32)
+    fb.neutral = fb.y.copy()
+    return fb
+
+
+def split_arrays(fb, s):
+    return fb.X[:, s].transpose(1, 0, 2), fb.y[:, s].T, fb.eligible[:, s].T
+
+
+def test_fit_predict_planted_signal():
+    fb = planted()
+    Xtr, ytr, mtr = split_arrays(fb, fb.train)
+    Xva, nva, mva = split_arrays(fb, fb.valid)
+    Xev, _, _ = split_arrays(fb, fb.evaluate)
+    for model in ('ridge', 'lgbm'):
+        pred, info = fit_predict(model, Xtr, ytr, mtr, Xva, nva, mva, Xev, seed=7, threads=2)
+        assert pred.shape == (len(fb.evaluate), 60)
+        assert info['val_neutral_RankIC'] > 0.3, (model, info)
+
+
+@pytest.mark.slow
+def test_reversal16_matches_v3():
+    rows = list(csv.DictReader(open('docs/screening_20261019/SCREENING_RESULTS.csv')))
+    for year in (2022, 2023):
+        m = evaluate_arm('block:reversal16', year, 7)
+        ref = [r for r in rows if r['arm'] == 'reversal' and r['fold'] == str(year)][0]
+        assert abs(m['RankIC'] - float(ref['RankIC'])) < 1e-6, (year, m['RankIC'], ref['RankIC'])
+        assert abs(m['neutral_RankIC'] - float(ref['neutral_RankIC'])) < 1e-6, (year, m['neutral_RankIC'])
+
+
+def test_cli_smoke_writes_run_folder(tmp_path):
+    root = tmp_path / 'smoke_root'
+    cmd = [sys.executable, 'scripts/featbench.py', '--years', '2019', '--arms', 'ridge:rich:raw:5:cs_z',
+           '--max-days', '30', '--root', str(root)]
+    subprocess.run(cmd, check=True, env={**__import__('os').environ, 'CUDA_VISIBLE_DEVICES': '-1'})
+    run = root / '2019' / 'ridge:rich:raw:5:cs_z'.replace(':', '__') / 'seed_7'
+    for name in ('config.json', 'metrics.json', 'predictions.npz', 'daily.npz'):
+        assert (run / name).exists(), name
+
+
+def test_cli_refuses_smoke_without_smoke_root(tmp_path):
+    cmd = [sys.executable, 'scripts/featbench.py', '--years', '2019', '--arms', 'ridge:rich',
+           '--max-days', '30', '--root', str(tmp_path / 'real')]
+    assert subprocess.run(cmd).returncode != 0
