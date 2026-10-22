@@ -333,3 +333,19 @@ def test_lf_neutral_uses_post_lf_mask():
     want = _neutralise(y.T, (ok & fb.eligible).T, beta.T, sectors).T
     assert np.allclose(fb.neutral[:, 30:50], want[:, 30:50], atol=1e-6)
     assert not np.allclose(fb.neutral[0, 35], _neutralise(y.T, ok.T, beta.T, sectors).T[0, 35])
+
+
+def test_permute_within_bins():
+    from hypershift.fbaudit import matched
+    rng = np.random.default_rng(18)
+    S_, N, k = 3, 100, 2
+    X = rng.normal(size=(S_, N, k))
+    base = rng.normal(size=(S_, N))
+    m = np.ones((S_, N), bool)
+    P = matched.permute_within_bins(X, base, m, bins=10, seed=1)
+    for d in range(S_):
+        bin_of = np.minimum(((np.argsort(np.argsort(base[d]))) * 10) // N, 9)
+        for b in range(10):
+            ix = bin_of == b
+            assert sorted(map(tuple, P[d, ix])) == sorted(map(tuple, X[d, ix]))   # rows permuted jointly within bin
+    assert not np.array_equal(P, X)

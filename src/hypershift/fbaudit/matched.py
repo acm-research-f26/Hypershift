@@ -52,3 +52,22 @@ def synth_panel(scenario, seed, N=400, T=1250, n_sectors=10, b=.15, noise=10.):
     eps = np.random.default_rng((seed, 1)).normal(size=(N, T)) * noise
     y = f + eps + (b * X[..., 4] if scenario == 'I' else 0.)
     return {'X': X, 'y': y, 'sectors': sectors, 'mask': np.ones((N, T), bool)}
+
+
+def permute_within_bins(X, base, mask, bins=20, seed=0):
+    """Conditional-permutation control: per date, permute rows of X [S, N, k] jointly among masked stocks that fall in
+    the same quantile bin of `base` (e.g. the style-only prediction). Keeps the input dimension and, approximately,
+    the association of X with style; destroys stock-specific information in X."""
+    rng = np.random.default_rng(seed)
+    out = np.array(X, copy=True)
+    for d in range(len(X)):
+        ix = np.flatnonzero(mask[d])
+        if len(ix) < 2:
+            continue
+        r = np.argsort(np.argsort(base[d, ix], kind='stable'), kind='stable')
+        b = np.minimum(r * bins // len(ix), bins - 1)
+        for g in range(bins):
+            sel = ix[b == g]
+            if len(sel) > 1:
+                out[d, sel] = X[d, rng.permutation(sel)]
+    return out

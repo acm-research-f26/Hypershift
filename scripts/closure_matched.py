@@ -120,8 +120,6 @@ def report():
     r = pool({f: inc['residual'][f] - inc['neutral'][f] for f in S.FOLDS})
     L.append(f"| interaction: (full − style)_residual − (full − style)_neutral | {fmt(r)} | [{r['ci90'][0]:+.4f}, {r['ci90'][1]:+.4f}] | {yrs(r)} | "
              f"{sum(x > 0 for x in r['per_fold'].values())}/5 | — | {'DETECTED' if r['ci95'][0] > 0 or r['ci95'][1] < 0 else 'not detected'} |")
-    for tgt in ('residual', 'neutral'):
-        r = pool({f: avg(cell('full', tgt), 'neutral')[f] - avg(cell('full', 'neutral' if tgt == 'residual' else 'residual'), 'neutral')[f] for f in S.FOLDS})
     rt = pool({f: avg(cell('full', 'neutral'), 'neutral')[f] - avg(cell('full', 'residual'), 'neutral')[f] for f in S.FOLDS})
     rs = pool({f: avg(cell('style', 'neutral'), 'neutral')[f] - avg(cell('style', 'residual'), 'neutral')[f] for f in S.FOLDS})
     L += ['', '## Target effect within feature set (descriptive)', '', '| Contrast | Pooled [95% CI] | Per year |', '|---|---|---|',
