@@ -41,9 +41,11 @@ def weights_rule(pred, fb, signals, rule, k=10):
             order = idx[np.argsort(-pred[d, idx], kind='stable')]
             lo, sh = order[:n], order[-n:]
             b = fb.beta[:, t].astype(np.float64)
+            # Dollar-neutral legs (gross 1 each); the residual beta is hedged with an equal-weight position in
+            # all eligible stocks, so gross stays 2 + |hedge| (scaling one leg by a beta ratio levered up to ~20x).
             w[d, lo] = 1 / n
-            bl, bs = b[lo].mean(), b[sh].mean()
-            w[d, sh] = -(bl / bs) / n if abs(bs) > 1e-6 else -1 / n
+            w[d, sh] = -1 / n
+            w[d, idx] -= (w[d] @ b) / b[idx].sum()
         elif rule == 'E_buffer':
             rank = np.empty(N); rank[np.argsort(-score, kind='stable')] = np.arange(N)
             keep = [i for i in held if e[i] and rank[i] < 2 * k]

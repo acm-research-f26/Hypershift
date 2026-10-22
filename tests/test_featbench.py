@@ -227,7 +227,7 @@ def test_beta_ls_zero_beta():
     w = weights_rule(pred, fb, s, 'D_beta_ls')
     for d, t in enumerate(s):
         assert abs(w[d] @ fb.beta[:, t]) < 1e-8
-        assert abs(w[d][w[d] > 0].sum() - 1) < 1e-12
+        assert np.abs(w[d]).sum() <= 2 + 3  # two unit legs plus a bounded market hedge
 
 
 def test_rules_respect_eligibility_and_gross():
@@ -238,7 +238,8 @@ def test_rules_respect_eligibility_and_gross():
     for rule in ('A_top10', 'B_sector_ls', 'C_volscaled', 'D_beta_ls', 'E_buffer'):
         w = weights_rule(pred, fb, s, rule)
         assert np.abs(w[:, :5]).max() == 0, rule
-        assert np.allclose(w.clip(0).sum(1), 1), rule
+        if rule != 'D_beta_ls':  # D adds a market hedge across all eligible names
+            assert np.allclose(w.clip(0).sum(1), 1), rule
 
 
 def test_subgroup_terciles_cover_eligible():
@@ -296,3 +297,16 @@ def test_score_runs_on_synthetic_post_freeze():
     out = score(fb, manifest, threads=2)
     assert set(out) == set(manifest['arms'])
     assert all(len(v['neutral_RankIC']) == len(fb.evaluate) for v in out.values())
+
+
+def test_beta_ls_gross_bounded_with_low_beta_shorts():
+    """Final review: scaling the short leg by beta_long/beta_short levered rule D up to ~20x."""
+    fb = synthetic_fb()
+    s = fb.evaluate[:5]
+    pred = np.tile(np.arange(40, 0, -1, dtype=float), (5, 1))  # stocks 36-39 are the short decile
+    fb.beta[:, s] = 1.2
+    fb.beta[36:, s] = 0.05
+    w = weights_rule(pred, fb, s, 'D_beta_ls')
+    for d, t in enumerate(s):
+        assert abs(w[d] @ fb.beta[:, t]) < 1e-8
+        assert np.abs(w[d]).sum() <= 4.0, np.abs(w[d]).sum()

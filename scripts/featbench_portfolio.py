@@ -56,7 +56,7 @@ def main():
          'target weights (no drift); cost 10 bp × turnover; Sharpe annualised (√252), no risk-free rate. Pooled Sharpe is '
          'computed on the concatenated daily net returns of the 5 folds. `lgbm:rich:residual` was added post hoc because '
          'it had the highest neutral RankIC. Rules: A equal-weight top 10; B long top 20% / short bottom 20% within each '
-         'sector; C top 10 weighted by 1/vol_60; D long top decile / short bottom decile, short leg scaled to zero beta; '
+         'sector; C top 10 weighted by 1/vol_60; D long top decile / short bottom decile (gross 1 each) plus an equal-weight hedge across eligible stocks that sets net beta to 0 (revised after the final review: the first version scaled the short leg by a beta ratio, up to about 5x); '
          'E top-10 entry, keep until rank > 20.', '',
          '| Arm | Rule | Pooled net Sharpe | Fold net Sharpe 2019–2023 | Ann. net return | Turnover / day | Beta to market | Max DD (worst fold) |',
          '|---|---|---|---|---|---|---|---|']
