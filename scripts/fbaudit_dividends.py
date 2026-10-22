@@ -12,9 +12,11 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, 'src')
-from hypershift.featbench.data import OHLCV, PANEL, _roll_mean  # noqa: E402
+from hypershift.featbench.data import OHLCV, PANEL  # noqa: E402
+from hypershift.fbaudit.leakfree import corrected_columns  # noqa: E402,F401
 
 RAW = Path('data/audit/yf_unadjusted')
+# Note: A5_DIVIDENDS_part1.md (written by analyze/yield) was merged by hand into A5_DIVIDENDS.md.
 OUT = Path('docs/audit_20261022')
 END = '2024-01-12'
 
@@ -47,23 +49,6 @@ def fetch():
     RAW.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(RAW / 'unadjusted.npz', tickers=tick, dates=dates[keep].astype(str), **out)
     print('saved', RAW / 'unadjusted.npz', {k: v.shape for k, v in out.items()})
-
-
-def corrected_columns(ohlcv, observed, eligible, raw_close):
-    """Return corrected (log_dvol_20, amihud_20) [N, T] using unadjusted close for the dollar-volume level.
-
-    Same formulas as featbench compute_features; returns stay total-return (adjusted closes)."""
-    cl, vo = ohlcv[..., 3].astype(np.float64), ohlcv[..., 4].astype(np.float64)
-    both = observed.copy(); both[:, 0] = False
-    both[:, 1:] &= observed[:, :-1]
-    r = np.zeros_like(cl)
-    r[:, 1:] = np.where(both[:, 1:], cl[:, 1:] / np.maximum(cl[:, :-1], 1e-12) - 1, 0)
-    rc = np.where(np.isfinite(raw_close), raw_close, cl)          # fall back to adjusted where raw is missing
-    dvol = rc * vo
-    ldv = np.log1p(_roll_mean(dvol, 20))
-    ami = _roll_mean(np.abs(r) / (dvol + 1), 20) * 1e9
-    clean = lambda x: np.where(eligible & np.isfinite(x), x, 0.).astype(np.float32)
-    return clean(ldv), clean(ami)
 
 
 def load_aligned(T):
@@ -140,7 +125,7 @@ def analyze():
           f'Leak term L at the signal close used as a score: pooled neutral RankIC **{r["pooled"]:+.4f} '
           f'[{r["ci95"][0]:+.4f}, {r["ci95"][1]:+.4f}]**, fold means ' +
           ' / '.join(f'{v:+.4f}' for v in r['per_fold'].values()) + '.', '']
-    (OUT / 'A5_DIVIDENDS_part1.md'  # merged by hand into A5_DIVIDENDS.md).write_text('\n'.join(L) + '\n', encoding='utf-8')
+    (OUT / 'A5_DIVIDENDS_part1.md').write_text('\n'.join(L) + '\n', encoding='utf-8')
     sys.stdout.reconfigure(encoding='utf-8')
     print('\n'.join(L))
 
@@ -192,7 +177,7 @@ def yield_check():
         r = S.pooled(out[k], 'stationary', 10)
         L.append(f"| {lab} | {r['pooled']:+.4f} [{r['ci95'][0]:+.4f}, {r['ci95'][1]:+.4f}] | "
                  + ' / '.join(f'{v:+.4f}' for v in r['per_fold'].values()) + ' |')
-    with open(OUT / 'A5_DIVIDENDS_part1.md'  # merged by hand into A5_DIVIDENDS.md, 'a', encoding='utf-8') as fh:
+    with open(OUT / 'A5_DIVIDENDS_part1.md', 'a', encoding='utf-8') as fh:
         fh.write('\n'.join(L) + '\n')
     sys.stdout.reconfigure(encoding='utf-8')
     print('\n'.join(L))

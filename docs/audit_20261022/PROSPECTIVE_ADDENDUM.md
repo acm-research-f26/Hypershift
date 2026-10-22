@@ -48,3 +48,39 @@ Everything is identical to v1 (model, parameters, comparators, rule, minimum day
 | Date | File | Reason (defect #) | New sha256 |
 |---|---|---|---|
 | — | — | none yet | — |
+
+---
+
+## Correction (2026-10-22, BC pre-execution review; still before any post-freeze data exists)
+
+This section supersedes the statements quoted below. Nothing above is deleted, so the audit trail stays intact.
+
+1. **Withdrawn: "the bias on the frozen model is upward or zero".**
+   - The direction of the leak's effect is **unknown**. In development, contaminated inputs *lowered* both LightGBM arms: raw −0.0012 contaminated vs +0.0048 leak-free, residual +0.0127 vs +0.0136 (A5).
+   - A model can learn a spurious mapping from a leaked level, so the leak can hurt as easily as help.
+   - The sign of v1 − v1-LF is therefore not predictable and must not be interpreted as a bias estimate.
+2. **Withdrawn: "if both agree, report v1 as the protocol result".**
+   - Both runs have about 7% power at the development effect (A1). They will most likely agree on NO EVIDENCE whatever the truth, so agreement validates nothing.
+   - **Reporting hierarchy (binding from this commit):**
+     - **v1-LF is the scientific result.** It is the only uncontaminated evaluation.
+     - **v1 is the reproducibility record** of the frozen pipeline. It is always reported, and it is never cited as evidence of skill on its own.
+     - If the two differ in verdict, v1 is labelled **Compromised**.
+     - Either way, a NO EVIDENCE result is reported as **uninformative (underpowered)**, not as evidence of no effect.
+3. **v1-LF is now fully specified and frozen** (it was not before this commit: no code, no raw-data format).
+   - **Code:**
+     - `src/hypershift/fbaudit/prospective_lf.py` (`load_range_lf`, `make_leakfree`, `score_lf`, which is v1's `score` unchanged, including the freeze guard);
+     - `src/hypershift/fbaudit/leakfree.py` (`corrected_columns`, the FB formulas with unadjusted Close × Volume).
+
+     Hashes are in the code-change log below.
+   - **Raw data:** in the same session as the v1 fetch, a yfinance `auto_adjust=False` download of the same 462 tickers, saved as npz with arrays `tickers`, `dates` and `close`, where close is the unadjusted, split-adjusted Close aligned to the panel dates. Record its sha256 in this file before scoring.
+   - **Everything else is identical to v1:** model, 50 rounds, seed, training window, comparators, primary contrast, test, at least 250 days, universe.
+4. **Removed: the descriptive style-residual secondary** declared above for v1-LF.
+   - The BC review (A7) shows that a style-only placebo model scores positive on both the linear and the quintile style-residual metrics. They therefore do not isolate stock-specific information, and reporting them would invite misreading.
+   - v1-LF reports exactly the quantities v1 reports.
+
+### Code-change log (continued)
+
+| Date | File | Reason | sha256 |
+|---|---|---|---|
+| 2026-10-22 | `src/hypershift/fbaudit/prospective_lf.py` | v1-LF implementation (D1) | `b02da95d1abe954d39264a35da37d9669aaf3ef2ac3441b0438251edc7f88f0e` |
+| 2026-10-22 | `src/hypershift/fbaudit/leakfree.py` | leak-free dollar-volume formulas (D1) | `0ddc3aa34acc7a7bf6bac91d3cc350996a9a6b1284bd8607007d2d2855075b4c` |

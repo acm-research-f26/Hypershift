@@ -219,3 +219,46 @@ def test_book_missing_price_no_nan():
         ohlcv = np.stack([fb.price] * 5, -1)
         out = book.simulate_book(pred, fb, sig, 'weekly_buffer', ex, ohlcv=ohlcv)
         assert np.isfinite(out['gross']).all() and np.isfinite(out['traded']).all()
+
+
+def test_lf_corrected_columns_used():
+    from types import SimpleNamespace
+    from hypershift.fbaudit import prospective_lf as LF
+    from hypershift.featbench.data import FEATURES, _roll_mean
+    rng = np.random.default_rng(14)
+    N, T = 6, 80
+    cl = np.cumprod(1 + .01 * rng.normal(size=(N, T)), 1) * 50
+    vo = rng.integers(1000, 5000, size=(N, T)).astype(float)
+    ohlcv = np.stack([cl, cl * 1.01, cl * .99, cl, vo], -1)
+    factor = np.exp(-np.linspace(.3, 0, T))[None] * np.ones((N, 1))   # future-dividend factor: adj = raw * factor
+    raw_close = cl / factor
+    fb = SimpleNamespace(X=np.zeros((N, T, 20), np.float32), observed=np.ones((N, T), bool), eligible=np.ones((N, T), bool))
+    LF.make_leakfree(fb, ohlcv, raw_close)
+    want = np.log1p(_roll_mean(raw_close * vo, 20))[:, 50]
+    assert np.allclose(fb.X[:, 50, FEATURES.index('log_dvol_20')], want, rtol=1e-5)
+
+
+def test_lf_guard():
+    from types import SimpleNamespace
+    from hypershift.fbaudit import prospective_lf as LF
+    fb = SimpleNamespace(dates=np.array(['2026-10-20', '2026-10-21', '2026-10-22'], dtype='datetime64[D]'),
+                         evaluate=np.array([0, 1, 2]))
+    with pytest.raises(ValueError):
+        LF.score_lf(fb, {'arms': {}})
+
+
+def test_audit_scripts_parse():
+    """Regression: a sed edit once put a comment inside a call in fbaudit_dividends.py (SyntaxError)."""
+    import ast
+    for p in sorted(Path('scripts').glob('fbaudit_*.py')) + sorted(Path('scripts').glob('bcreview_*.py')):
+        ast.parse(p.read_text(encoding='utf-8'), filename=str(p))
+
+
+def test_v1lf_hashes_match_addendum():
+    import hashlib
+    import re
+    text = Path('docs/audit_20261022/PROSPECTIVE_ADDENDUM.md').read_text(encoding='utf-8')
+    for path in ('src/hypershift/fbaudit/prospective_lf.py', 'src/hypershift/fbaudit/leakfree.py'):
+        want = re.search(re.escape(f'`{path}`') + r'.*?`([0-9a-f]{64})`', text).group(1)
+        got = hashlib.sha256(Path(path).read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+        assert got == want, path
