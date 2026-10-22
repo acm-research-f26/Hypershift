@@ -84,3 +84,39 @@ def test_shifted_close1_equals_manual():
     t = 11
     assert abs(raw[1, 2] - (fb.price[2, t + 6] / fb.price[2, t + 1] - 1)) < 1e-12
     assert np.allclose(neu[keep], _neutralise(raw[keep], ok[keep], fb.beta[:, fb.evaluate[keep]].T, fb.sectors))
+
+
+def _toy_target_fb(S_=8, N=40, seed=6):
+    from types import SimpleNamespace
+    rng = np.random.default_rng(seed)
+    T = S_ + 5
+    return SimpleNamespace(y=rng.normal(size=(N, T)), y_ok=np.ones((N, T), bool), eligible=np.ones((N, T), bool),
+                           sectors=np.repeat(np.arange(4), N // 4), beta=rng.normal(1, .3, size=(N, T)),
+                           neutral=rng.normal(size=(N, T)).astype(np.float32),
+                           X=rng.normal(size=(N, T, 20)).astype(np.float32))
+
+
+def test_refit_target_kinds_shapes():
+    from hypershift.fbaudit import refit
+    fb = _toy_target_fb()
+    sig = np.arange(8)
+    for kind in ('raw', 'sector', 'residual', 'demean', 'sector_beta', 'neutral'):
+        y, m = refit.target_values(fb, sig, kind)
+        assert y.shape == (8, 40) and m.shape == (8, 40) and np.isfinite(y).all()
+    y, m = refit.target_values(fb, sig, 'demean')
+    assert np.abs(y.mean(1)).max() < 1e-12
+    y, m = refit.target_values(fb, sig, 'sector_beta')
+    for d in range(8):
+        A = np.column_stack([(fb.sectors[:, None] == np.arange(4)).astype(float), fb.beta[:, d]])
+        assert np.abs(A.T @ y[d]).max() < 1e-8
+
+
+@pytest.mark.data
+def test_run_arm_matches_saved():
+    if not (FB_ROOT / '2021' / 'lgbm__rich__residual' / 'seed_7').exists():
+        pytest.skip('FB results missing')
+    from hypershift.fbaudit import refit
+    from hypershift.featbench.data import load_fb
+    out = refit.run_arm(load_fb(2021, 5), 'lgbm', 'rich', 'residual', seed=7)
+    saved, _ = stats.load_daily(FB_ROOT, 2021, 'lgbm:rich:residual')
+    assert np.abs(out['daily'] - saved).max() < 1e-4
