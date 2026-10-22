@@ -129,3 +129,93 @@ def test_freeze_hashes_unchanged():
     for path, h in man['source_sha256'].items():
         got = hashlib.sha256(Path(path).read_bytes().replace(b'\r\n', b'\n')).hexdigest()
         assert got == h, path
+
+
+def _toy_style_fb(T=90, N=40, seed=8):
+    from types import SimpleNamespace
+    rng = np.random.default_rng(seed)
+    price = np.cumprod(1 + .01 * rng.normal(size=(N, T)), 1)
+    X = rng.normal(size=(N, T, 20)).astype(np.float32)
+    X[..., 9] = np.abs(X[..., 9]) * .02 + .005          # vol_60 positive
+    return SimpleNamespace(price=price, observed=np.ones((N, T), bool), eligible=np.ones((N, T), bool),
+                           beta=rng.normal(1, .3, size=(N, T)), sectors=np.repeat(np.arange(4), N // 4), X=X)
+
+
+def test_rr_sign_and_neutral():
+    from hypershift.fbaudit import diag2
+    from hypershift.featbench.data import FEATURES
+    fb = _toy_style_fb()
+    sig = np.arange(30, 60)
+    rr = diag2.residual_reversal(fb, sig, k=21)
+    n21 = -rr * np.maximum(fb.X[:, sig, FEATURES.index('vol_60')].T, 1e-4)
+    for g in range(4):
+        assert np.abs(n21[:, fb.sectors == g].mean(1)).max() < 1e-10
+    r = (fb.price[:, sig] / fb.price[:, sig - 21] - 1).T
+    assert np.corrcoef(r[0], n21[0])[0, 1] > .5
+
+
+def test_quintile_dummies_ties():
+    from hypershift.fbaudit import diag2
+    fb = _toy_style_fb()
+    fb.beta[:] = 1.0
+    Q = diag2.quintile_dummies(fb, np.arange(30, 35))
+    ns = len(np.unique(fb.sectors))
+    assert Q.shape == (5, 40, ns + 16)
+    assert np.all(Q[..., ns:ns + 4] == 0)          # constant beta -> no beta dummies
+    assert np.isfinite(Q).all()
+
+
+def test_nl_resid_orthogonal():
+    from hypershift.fbaudit import diag2
+    fb = _toy_style_fb()
+    sig = np.arange(30, 35)
+    m = np.ones((5, 40), bool)
+    y = np.random.default_rng(9).normal(size=(5, 40))
+    r = diag2.nl_resid(y, fb, sig, m)
+    Q = diag2.quintile_dummies(fb, sig)
+    for d in range(5):
+        assert np.abs(np.column_stack([np.ones(40), Q[d]]).T @ r[d]).max() < 1e-8
+
+
+def test_book_gross_and_beta():
+    from hypershift.fbaudit import book
+    rng = np.random.default_rng(10)
+    N = 45
+    sectors = np.r_[np.repeat(np.arange(4), 10), np.full(5, 4)]      # sector 4 has 5 stocks -> skipped
+    pre, hedged = book.book_targets(rng.normal(size=N), np.ones(N, bool), sectors, rng.normal(1, .3, N))
+    assert abs(np.abs(pre).sum() - 1) < 1e-9 and abs(pre.sum()) < 1e-9
+    assert np.all(pre[sectors == 4] == 0)
+    beta = rng.normal(1, .3, N)
+    pre, hedged = book.book_targets(rng.normal(size=N), np.ones(N, bool), sectors, beta)
+    assert abs(hedged @ beta) < 1e-9
+
+
+def _toy_book_fb(T=40, N=40, seed=11, flat=False):
+    from types import SimpleNamespace
+    rng = np.random.default_rng(seed)
+    price = np.ones((N, T)) if flat else np.cumprod(1 + .01 * rng.normal(size=(N, T)), 1)
+    return SimpleNamespace(price=price, observed=np.ones((N, T), bool), eligible=np.ones((N, T), bool),
+                           beta=np.ones((N, T)), sectors=np.repeat(np.arange(4), N // 4))
+
+
+def test_book_drift_buy_and_hold():
+    from hypershift.fbaudit import book
+    fb = _toy_book_fb(flat=True)
+    sig = np.arange(5, 30)
+    pred = np.tile(np.random.default_rng(12).normal(size=40), (len(sig), 1))
+    out = book.simulate_book(pred, fb, sig, 'weekly', 'close1')
+    assert out['traded'][0] > 0 and np.all(out['traded'][1:] < 1e-12)
+    assert np.all(np.abs(out['gross']) < 1e-12)
+
+
+def test_book_missing_price_no_nan():
+    from hypershift.fbaudit import book
+    fb = _toy_book_fb()
+    fb.observed[3, 10:15] = False
+    fb.price[3, 10:15] = np.nan
+    sig = np.arange(5, 30)
+    pred = np.random.default_rng(13).normal(size=(len(sig), 40))
+    for ex in ('close1', 'open1'):
+        ohlcv = np.stack([fb.price] * 5, -1)
+        out = book.simulate_book(pred, fb, sig, 'weekly_buffer', ex, ohlcv=ohlcv)
+        assert np.isfinite(out['gross']).all() and np.isfinite(out['traded']).all()
