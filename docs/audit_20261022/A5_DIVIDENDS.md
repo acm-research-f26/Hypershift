@@ -71,6 +71,13 @@ Shift corrected − original: residual − raw -0.0051; rich − price +0.0060 (
   - residual − raw: +0.0140 → +0.0089 (CI now touches 0, 4/5 folds).
   - rich − price: −0.0088 (0/5 folds) → −0.0028 (1/5).
 
+### Mechanism: why the leak term predicts returns
+
+- **The factor depends on future prices.** The back-adjustment factor at t is F(t) = ∏ over later ex-dates e of (1 − D_e / P_{e−1}). Each term divides a future dividend by a **future price**.
+- **So the 5-day return feeds the factor.** A stock whose price rises after t, including over the 5-day label window, has smaller future D/P ratios. Its L = log F(t) then sits closer to 0.
+- **L is therefore partly a function of the label.** It is not only a function of the future dividend policy. This is an exact algebraic channel and needs no economic story.
+- **Size of the channel.** The sensitivity is dL/dlog P ≈ cumulative future yield, about 0.1–0.4 over 2019–2023. A 5% move therefore shifts L by about 0.005–0.02, against a cross-sectional SD of L of about 0.05–0.11. That is small next to the spread of `log_dvol_20` (rank correlation 0.995), but strongly predictive once isolated: +0.031.
+
 ### Reading
 
 - **The residual-target model does not depend on the leak.** Corrected it scores +0.0136, against +0.0127 originally. With no volume inputs at all (`lgbm:price:residual`) it scores +0.0131.
