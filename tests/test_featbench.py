@@ -179,3 +179,28 @@ def test_cli_refuses_smoke_without_smoke_root(tmp_path):
     cmd = [sys.executable, 'scripts/featbench.py', '--years', '2019', '--arms', 'ridge:rich',
            '--max-days', '30', '--root', str(tmp_path / 'real')]
     assert subprocess.run(cmd).returncode != 0
+
+
+# ---------------------------------------------------------------- Task 4: analysis
+def _fake_run(root, year, arm, seed, values, dates):
+    p = Path(root) / str(year) / arm.replace(':', '__') / f'seed_{seed}'
+    p.mkdir(parents=True)
+    np.savez(p / 'daily.npz', neutral_RankIC=np.asarray(values, float), RankIC=np.asarray(values, float),
+             dates=np.asarray(dates))
+
+
+def test_paired_matches_manual(tmp_path):
+    sys.path.insert(0, 'scripts')
+    from featbench_analysis import paired, verdict
+    d1, d2 = [f'2019-01-{i:02d}' for i in range(1, 21)], [f'2020-01-{i:02d}' for i in range(1, 21)]
+    rng = np.random.default_rng(0)
+    a1, b1, a2, b2 = (rng.normal(size=20) for _ in range(4))
+    _fake_run(tmp_path, 2019, 'x:a', 7, a1, d1); _fake_run(tmp_path, 2019, 'x:b', 7, b1, d1)
+    _fake_run(tmp_path, 2020, 'x:a', 7, a2, d2); _fake_run(tmp_path, 2020, 'x:b', 7, b2[:19], d2[:19])
+    r = paired(tmp_path, [2019, 2020], 'x:a', 'x:b')
+    manual = np.mean([(a1 - b1).mean(), (a2[:19] - b2[:19]).mean()])
+    assert abs(r['pooled'] - manual) < 1e-12
+    assert r['ci'][0] <= r['pooled'] <= r['ci'][1]
+    assert verdict(0.01, (0.001, 0.02), [0.01, 0.02, 0.01, 0.005, -0.001]) == 'SUPPORTED'
+    assert verdict(0.01, (0.001, 0.02), [0.01, 0.02, -0.01, 0.005, -0.001]) == 'NO EVIDENCE'
+    assert verdict(0.10, (0.001, 0.02), [0.01] * 5) == 'NO EVIDENCE'
