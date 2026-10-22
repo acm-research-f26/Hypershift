@@ -12,9 +12,21 @@ from hypershift.fbaudit.leakfree import corrected_columns
 
 
 def make_leakfree(fb, ohlcv, raw_close):
-    """Replace log_dvol_20 / amihud_20 in fb.X (in place) with unadjusted-close versions; returns fb."""
+    """Replace log_dvol_20 / amihud_20 in fb.X (in place) with unadjusted-close versions; returns fb.
+
+    Never falls back to the adjusted close: a stock-day whose 20-day dollar-volume window contains a missing
+    unadjusted close becomes ineligible (count in fb.lf_dropped, to be reported at scoring)."""
     T = fb.X.shape[1]
-    ldv, ami = corrected_columns(ohlcv[:, :T], fb.observed, fb.eligible, raw_close[:, :T])
+    raw_close = raw_close[:, :T]
+    missing = ~np.isfinite(raw_close)
+    c = np.pad(np.cumsum(missing, 1), ((0, 0), (1, 0)))
+    window = np.zeros_like(missing)
+    for t in range(T):
+        window[:, t] = (c[:, t + 1] - c[:, max(0, t - 19)]) > 0
+    drop = window & fb.eligible
+    fb.lf_dropped = int(drop.sum())
+    fb.eligible = fb.eligible & ~window
+    ldv, ami = corrected_columns(ohlcv[:, :T], fb.observed, fb.eligible, raw_close)
     fb.X = fb.X.copy()
     fb.X[..., FEATURES.index('log_dvol_20')] = ldv
     fb.X[..., FEATURES.index('amihud_20')] = ami

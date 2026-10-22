@@ -78,9 +78,10 @@ This section supersedes the statements quoted below. Nothing above is deleted, s
    - The BC review (A7) shows that a style-only placebo model scores positive on both the linear and the quintile style-residual metrics. They therefore do not isolate stock-specific information, and reporting them would invite misreading.
    - v1-LF reports exactly the quantities v1 reports.
 
-### Code-change log (continued)
+### Code-change log (continued; sha256 of the file with CRLF normalised to LF, the FREEZE_MANIFEST convention)
 
 | Date | File | Reason | sha256 |
 |---|---|---|---|
 | 2026-10-22 | `src/hypershift/fbaudit/prospective_lf.py` | v1-LF implementation (D1) | `b02da95d1abe954d39264a35da37d9669aaf3ef2ac3441b0438251edc7f88f0e` |
 | 2026-10-22 | `src/hypershift/fbaudit/leakfree.py` | leak-free dollar-volume formulas (D1) | `0ddc3aa34acc7a7bf6bac91d3cc350996a9a6b1284bd8607007d2d2855075b4c` |
+| 2026-10-22 | `src/hypershift/fbaudit/prospective_lf.py` | **Supersedes the row above.** No fallback to the adjusted close: a stock-day whose 20-day window has a missing unadjusted close becomes ineligible, and the count (`fb.lf_dropped`) is reported at scoring | `3c76023a1e3d581b666c99af77e2d1105b1c50e6fce703b27e13919fb39ae3e0` |

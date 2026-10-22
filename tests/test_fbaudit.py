@@ -259,6 +259,23 @@ def test_v1lf_hashes_match_addendum():
     import re
     text = Path('docs/audit_20261022/PROSPECTIVE_ADDENDUM.md').read_text(encoding='utf-8')
     for path in ('src/hypershift/fbaudit/prospective_lf.py', 'src/hypershift/fbaudit/leakfree.py'):
-        want = re.search(re.escape(f'`{path}`') + r'.*?`([0-9a-f]{64})`', text).group(1)
+        want = re.findall(re.escape(f'`{path}`') + r'.*?`([0-9a-f]{64})`', text)[-1]   # last row supersedes
         got = hashlib.sha256(Path(path).read_bytes().replace(b'\r\n', b'\n')).hexdigest()
         assert got == want, path
+
+
+def test_lf_missing_raw_close_makes_ineligible_not_adjusted():
+    """v1-LF must never fall back to the dividend-adjusted close (that would reintroduce the leak)."""
+    from types import SimpleNamespace
+    from hypershift.fbaudit import prospective_lf as LF
+    rng = np.random.default_rng(15)
+    N, T = 4, 60
+    cl = np.cumprod(1 + .01 * rng.normal(size=(N, T)), 1) * 50
+    ohlcv = np.stack([cl, cl, cl, cl, np.full((N, T), 1000.)], -1)
+    raw = cl.copy()
+    raw[2, 30] = np.nan
+    fb = SimpleNamespace(X=np.zeros((N, T, 20), np.float32), observed=np.ones((N, T), bool), eligible=np.ones((N, T), bool))
+    LF.make_leakfree(fb, ohlcv, raw)
+    assert not fb.eligible[2, 30:50].any()          # any missing raw close in the 20-day window -> ineligible
+    assert fb.eligible[2, 50:].all() and fb.eligible[[0, 1, 3]].all()
+    assert fb.lf_dropped == 20
