@@ -59,3 +59,28 @@ def test_recompute_matches_saved():
     mine = stats.spearman_daily(z['prediction'], z['neutral'], z['mask'])
     saved, _ = stats.load_daily(FB_ROOT, 2021, 'lgbm:rich:residual')
     assert np.abs(mine - saved).max() < 1e-6
+
+
+def _toy_fb(T=20, N=6, seed=5):
+    from types import SimpleNamespace
+    rng = np.random.default_rng(seed)
+    price = np.cumprod(1 + .01 * rng.normal(size=(N, T)), 1)
+    return SimpleNamespace(price=price, observed=np.ones((N, T), bool), beta=np.ones((N, T)),
+                           sectors=np.array([0, 0, 0, 1, 1, 1]), eligible=np.ones((N, T), bool),
+                           evaluate=np.arange(10, 15), horizon=5)
+
+
+def test_shifted_labels_drop_tail():
+    fb = _toy_fb()
+    neu, raw, ok, keep = diag.shifted_neutral(fb, fb.evaluate, 'close1')
+    assert keep.tolist() == [True, True, True, True, False]
+    assert neu.shape == (5, 6) and np.isfinite(neu).all()
+
+
+def test_shifted_close1_equals_manual():
+    from hypershift.featbench.data import _neutralise
+    fb = _toy_fb()
+    neu, raw, ok, keep = diag.shifted_neutral(fb, fb.evaluate, 'close1')
+    t = 11
+    assert abs(raw[1, 2] - (fb.price[2, t + 6] / fb.price[2, t + 1] - 1)) < 1e-12
+    assert np.allclose(neu[keep], _neutralise(raw[keep], ok[keep], fb.beta[:, fb.evaluate[keep]].T, fb.sectors))
