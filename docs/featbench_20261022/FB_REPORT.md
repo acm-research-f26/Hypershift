@@ -68,3 +68,5 @@ Files:
 - **If more exploratory work is wanted:** the evidence points to targets and neutral evaluation, not models. Two candidates:
   - a factor-residual target combined with reversal-type features at the 1-day lag;
   - an identity-based learned-hyperedge design, which must pass the synthetic test in `fb_HYPEREDGE.md` first.
+
+> **Audit (2026-10-22):** an independent audit found a dividend look-ahead in `log_dvol_20` and `amihud_20`, which overturns "volume features hurt" and shrinks residual − raw to +0.0089. It also found that the residual-target gain is mostly removal of style tilts, and that the "factor-neutral" metric rewards style exposure. See `docs/audit_20261022/AUDIT_REPORT.md`.

@@ -33,6 +33,14 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
 - **Study X (pairwise/star expansion, pairs trading): done.** `X_PAIRWISE_STAR_REPORT.md`: clique Holm 0.890, star 0.146 (star equals no graph); pairs trading does not beat random groups.
 - **Study J (zero-shot Kronos on the reserved period): done.** `J_KRONOS_REPORT.md`: RankIC +0.003 on 2025–26, below static in 10/10 seed pairs; no evidence of improvement. **2024+ is now spent for the J arms only.**
 - **Study FB (simple models, richer features, targets, horizons; 2026-10-22): done, exploratory.** `docs/featbench_20261022/FB_REPORT.md`. Ridge/LightGBM/MLP on 20 OHLCV features do not beat 16-day reversal; volume/liquidity features do not help; factor-residual or sector-relative targets are the one consistent lever (LightGBM residual − raw +0.0140, 5/5 folds, Holm 0.065, NO EVIDENCE). Power: MDE about 0.021 neutral RankIC over 5 folds. `lgbm:rich:residual` is **frozen** for a prospective test on signal dates after 2026-10-22 (`PROSPECTIVE_PROTOCOL.md`, ≥ 250 days).
+- **FB audit (2026-10-22): done, exploratory.** `docs/audit_20261022/AUDIT_REPORT.md` (memo, register, roadmap). Findings:
+  - **Dividend look-ahead.** yfinance `auto_adjust` back-adjustment depends on future prices, so `log_dvol_20` and `amihud_20` leak. The future-only factor has IC +0.031. Corrected, residual − raw is +0.0089 and the "volume hurts" result goes away.
+  - **Residual-target gain is tilt removal.** Ex-ante style neutralisation of raw predictions recovers it.
+  - **The FB neutral metric rewards size/momentum/volatility exposure.** Co-report style-residual RankIC.
+  - **Stock-specific IC** is about +0.011 [+0.003, +0.019]: suggestive only.
+  - **Neutral books** are gross-positive and break even at 2–14 bp per unit turnover.
+  - **Prospective v1** has about 7% power at the dev effect. A leak-free sensitivity run (v1-LF) is predeclared in `PROSPECTIVE_ADDENDUM.md`.
+  - **Next:** backcast on untouched 2004–2012 (`NEXT_STUDY_SPEC.md`, MDE about 0.008), not yet frozen.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
@@ -43,6 +51,7 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
 - `docs/phase1_5/`: fidelity-audit notes.
 - `docs/screening_20261019/`: research screen v2/v3, deep test, Studies X and J (plan with all predeclared amendments: `RESEARCH_SCREENING_PLAN.md`).
 - `docs/featbench_20261022/`: Study FB (report, tables, power, freeze manifest, prospective protocol, execution ledger). Plan: `docs/superpowers/plans/2026-10-22-feature-benchmark.md`.
+- `docs/audit_20261022/`: FB audit (A1–A6 evidence files, AUDIT_REPORT, NEXT_STUDY_SPEC, PROSPECTIVE_ADDENDUM). Code `src/hypershift/fbaudit/`, `scripts/fbaudit_*.py`; plan `docs/superpowers/plans/2026-10-22-fb-audit.md`.
 - `docs/phase1_5/PHASE1_5_SUMMARY.md`: consolidated Phase 1.5 status (start here). Parts:
   - `A_evaluator.md`: evaluator, target alignment, normalization leak; ties and the Sharpe constant.
   - `B_model.md`: tensor-level model audit against eq. 6-17, departures ranked, new attention switches.
@@ -169,6 +178,6 @@ A run is skipped if `metrics.json` exists, so everything is resumable. `aggregat
 - NASDAQ has T = 1245: the raw files have 1246 rows, and the loader drops the last one (`parse_eod(drop_last=True)`, 2017-12-11). It is **not** all missing: 474 of the 1026 listed stocks are missing there, 552 have real values (Phase 1.5 C; rechecked on the raw files).
 - **Never train with coupled `weight_decay=5e-4` (the old default).** With Adam at `lr 1e-3` the decay gradient is 10-40x the loss gradient and shrinks the stacked hyperbolic layers to a constant output; planted-signal recovery is 26% of oracle. Use `weight_decay=0` + `input_mode=relative` (63-84% THINK, Phase 1.5 F, `docs/phase1_5/F_learnability.md`). All Phase 1 nulls used the collapsed setup; verdict pending the `R5_f_*` rerun.
 - **Reserved data is spent.** Every year 2015–2023 on the RSR and S&P 500 panels has been inspected, and 2024+ was spent for the Study J arms only (`featbench.data.load_fb` refuses years > 2023). New claims can only be confirmatory on data after 2026-10-22 (the FB prospective scorer refuses earlier signal dates).
-- **S&P 500 OHLCV is yfinance `auto_adjust`:** prices are back-adjusted for dividends paid later, so level features built on price × volume (`log_dvol_20`, `amihud_20`) carry a small future factor. Ratio and return features are unaffected. Survivorship: current constituents, current GICS sectors.
+- **S&P 500 OHLCV is yfinance `auto_adjust`:** prices are back-adjusted for dividends paid later, and the factor depends on **future prices**. Level features built on price × volume (`log_dvol_20`, `amihud_20`) therefore carry real look-ahead: the future-only part has IC +0.031 (audit A5). Build dollar volume from unadjusted Close × Volume (`scripts/fbaudit_dividends.py`; raw download in `data/audit/yf_unadjusted/`). Ratio and return features are unaffected. Survivorship: current constituents, current GICS sectors.
 - **LightGBM** is an optional dependency (`pip install -e .[featbench]`); Study FB's fixed settings are in `featbench/models.py` (`LGBM_PARAMS`).
 - **Prediction ties:** the evaluator breaks top-5 ties by lowest index. Collapsed models tie a lot (THINK: 73 of 237 test days). `scripts/tiebreak_report.py` gives a random tie-break column; the default is unchanged.
