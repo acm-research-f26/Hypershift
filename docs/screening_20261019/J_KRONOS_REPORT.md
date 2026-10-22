@@ -30,7 +30,7 @@ The right reading is "Kronos ≈ 0; static nominally higher". It is not "Kronos 
 | `kronos_static` | No fitting. The daily mean of the cross-sectional z-scores of kronos seed k and static seed k. |
 | Baselines | v3 static and none (5 seeds; Kaggle CPU, one kernel per seed); reversal, momentum, ridge, random (deterministic, seed 7 kernel). |
 | Folds | Primary 2025 (245 days) and 2026 (161 days, to 2026-08-24). Sensitivity 2024H2 (123 days, 2024-07-01 → 12-23). Eligibility is identical across arms (mean 462 stocks/day). |
-| Compute | Kaggle T4×2: about 80 min per Kronos seed (2025–26 plus 2024H2); 5 kernels. The sensitivity kernel (memorisation 2022/23, base, mini, lookback 64) ran separately. |
+| Compute | Kaggle T4×2. About 80 min per Kronos seed (2025–26 plus 2024H2), 5 kernels. The sensitivity kernel took 7.5 h: memorisation 78 min, lookback 64 17 min, mini 19 min, base 340 min. |
 
 ## Primary result (folds 2025 and 2026, vs static, Holm over 2)
 
@@ -69,9 +69,23 @@ momentum is the sign flip of reversal. 2024H2 uses the kronos dates for every ar
 | (s1) kronos_static, add 2024H2 | −0.0022 [−0.0199, +0.0163] | +0.0053 / −0.0087 / −0.0031 | 5/15 |
 | (s2) kronos, signal dates ≥ 2025-07-01 | −0.0234 [−0.0647, +0.0166] | 2025H2 −0.0321 / 2026 −0.0147 | 0/10 |
 | (s2) kronos_static, ≥ 2025-07-01 | −0.0123 [−0.0365, +0.0120] | −0.0216 / −0.0031 | 1/10 |
-| (s3) Kronos-base, seed 7 | S3_BASE | | |
-| (s3) Kronos-mini, seed 7 | S3_MINI | | |
-| (s4) lookback 64, seed 7 | S4_LB64 | | |
+| (s3) Kronos-base, seed 7 | −0.0226 [−0.0687, +0.0233] | 2025 −0.0191 / 2026 −0.0261 | 0/2 |
+| (s3) Kronos-mini (+ Tokenizer-2k, context 2048), seed 7 | −0.0156 [−0.0512, +0.0180] | −0.0126 / −0.0187 | 0/2 |
+| (s4) lookback 64, seed 7 | −0.0127 [−0.0501, +0.0238] | −0.0092 / −0.0163 | 0/2 |
+
+The s3 and s4 rows have only 2 deltas each, so their Wilcoxon p (0.5) carries no information.
+
+Absolute RankIC for seed 7 in 2025 / 2026:
+
+| Variant | 2025 | 2026 |
+|---|---|---|
+| Kronos-small (primary) | +0.0033 | +0.0024 |
+| Kronos-base | −0.0022 | +0.0013 |
+| Kronos-mini | +0.0043 | +0.0086 |
+| lookback 64 | +0.0077 | +0.0110 |
+| static | +0.0169 | +0.0274 |
+
+No model size and no lookback brings Kronos up to static. The larger model is not better. The shorter lookback is nominally the least bad, but it is one seed and within noise.
 
 - **2024H2 is the only window where Kronos beats static (+0.013, 5/5 seeds).** It is also the window where static is negative (−0.010) and reversal is strong (+0.049). It contains the one peeked day (2024-07-01; see Disclosures). It also lies within 6 months of the paper's stated pretraining cutoff. Treat it as descriptive only.
 - **The hard-clean window (s2) is worse for Kronos, not better.** This window is after 2025-06-30, the upload date of the released weights, so no leakage is possible. A memorisation story would predict the opposite.
@@ -93,7 +107,12 @@ kronos trades no better than random baskets in either year, and factor-neutral R
 
 ## Memorisation diagnostic (inside the pretraining window; contaminated)
 
-MEMO_ROWS
+| Fold | kronos RankIC (seed 7) [95% CI] |
+|---|---|
+| 2022 | +0.0098 [−0.0241, +0.0429] |
+| 2023 | +0.0098 [−0.0162, +0.0354] |
+
+Inside the pretraining window, Kronos scores +0.010 in both years, against +0.003 on 2025–26. The CIs overlap heavily and the regimes differ, so this is neither proof of memorisation nor evidence against it. Even in-sample, the score is small: about the same as the v3 screen's 2022/23 baselines (pooled 0.006–0.011; static 0.007).
 
 ## Disclosures and deviations
 
@@ -111,7 +130,7 @@ MEMO_ROWS
 - **Kronos 2025 seed 7.** RankIC recomputed by hand from `predictions.npz` = 0.0033016, equal to `metrics.json`.
 - **Kronos and static 2025 seed 202.** Hand 0.0021033 and 0.0219921, equal to stored.
 - **kronos_static 2026 seed 101.** Rebuilt from the raw kronos and static predictions = 0.0085230; stored 0.0085230 (difference 1e-11).
-- **Merging.** 84 runs complete, 0 incomplete. Kernel outputs were merged without overwriting.
+- **Merging.** 92 runs complete, 0 incomplete. Kernel outputs were merged without overwriting.
 
 ## Implication
 
