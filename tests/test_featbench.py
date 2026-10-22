@@ -204,3 +204,47 @@ def test_paired_matches_manual(tmp_path):
     assert verdict(0.01, (0.001, 0.02), [0.01, 0.02, 0.01, 0.005, -0.001]) == 'SUPPORTED'
     assert verdict(0.01, (0.001, 0.02), [0.01, 0.02, -0.01, 0.005, -0.001]) == 'NO EVIDENCE'
     assert verdict(0.10, (0.001, 0.02), [0.01] * 5) == 'NO EVIDENCE'
+
+
+# ---------------------------------------------------------------- Task 7: portfolios and subgroups
+from hypershift.featbench.portfolio import simulate, subgroup_rankic, weights_rule  # noqa: E402
+
+
+def test_simulate_constant_weights_turnover_zero():
+    fb = synthetic_fb()
+    s = fb.evaluate
+    w = np.zeros((len(s), 40)); w[:, :10] = .1
+    r = simulate(w, fb, s, hold=5, cost=.001)
+    assert r['turnover'] < 1e-12 + .1 * 5 / len(s) * 2  # only the initial ramp-in trades
+    r2 = simulate(w, fb, s, hold=5, cost=0.)
+    assert r2['net_Sharpe'] >= r['net_Sharpe']
+
+
+def test_beta_ls_zero_beta():
+    fb = synthetic_fb()
+    s = fb.evaluate[:10]
+    pred = np.random.default_rng(1).normal(size=(10, 40))
+    w = weights_rule(pred, fb, s, 'D_beta_ls')
+    for d, t in enumerate(s):
+        assert abs(w[d] @ fb.beta[:, t]) < 1e-8
+        assert abs(w[d][w[d] > 0].sum() - 1) < 1e-12
+
+
+def test_rules_respect_eligibility_and_gross():
+    fb = synthetic_fb()
+    s = fb.evaluate[:10]
+    fb.eligible[:5, s] = False
+    pred = np.random.default_rng(2).normal(size=(10, 40)); pred[:, :5] = 99
+    for rule in ('A_top10', 'B_sector_ls', 'C_volscaled', 'D_beta_ls', 'E_buffer'):
+        w = weights_rule(pred, fb, s, rule)
+        assert np.abs(w[:, :5]).max() == 0, rule
+        assert np.allclose(w.clip(0).sum(1), 1), rule
+
+
+def test_subgroup_terciles_cover_eligible():
+    fb = synthetic_fb()
+    s = fb.evaluate[:30]
+    pred = fb.neutral[:, s].T + np.random.default_rng(3).normal(0, .01, (30, 40))
+    out = subgroup_rankic(pred, fb, s, 'vol_60')
+    assert set(out) == {'low', 'mid', 'high'}
+    assert all(v.mean() > .5 for v in out.values())
