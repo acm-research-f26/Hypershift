@@ -1,0 +1,64 @@
+{
+ "study": "FB (feature benchmark), prospective test",
+ "frozen_on": "2026-10-22",
+ "freeze_date_rule": "score only signal dates > 2026-10-22",
+ "horizon": 5,
+ "min_days": 250,
+ "selection": {
+  "rule": "highest pooled neutral RankIC 2019-2023 among h=5 Ridge/LightGBM arms of Tasks 4-6; ties within 0.001 -> Ridge",
+  "winner": "lgbm:rich:residual",
+  "winner_pooled_neutral_RankIC": 0.0127,
+  "runner_up": "ridge:lags (+0.0115)",
+  "caveat": "winner of 17 arms on inspected years: expect its prospective value to be lower (selection bias)"
+ },
+ "arms": {
+  "frozen": {
+   "model": "lgbm",
+   "features": "rich",
+   "target": "residual",
+   "repr": "cs_z",
+   "params": {
+    "n_estimators": 50
+   },
+   "params_rule": "median of selected best_iteration 2019-2023 = median(40, 20, 300, 90, 50)"
+  },
+  "ridge_rich": {
+   "model": "ridge",
+   "features": "rich",
+   "target": "raw",
+   "repr": "cs_z",
+   "params": {
+    "alpha": 1000
+   },
+   "params_rule": "median of selected alpha 2019-2023 = median(10, 0.1, 1000, 1000, 1000)"
+  },
+  "reversal16": {
+   "model": "block",
+   "features": "reversal16"
+  },
+  "random": {
+   "model": "random",
+   "seed": 7
+  }
+ },
+ "primary": [
+  "frozen",
+  "reversal16"
+ ],
+ "primary_rule": "two-sided stationary bootstrap (block 10, B 5000) on the daily neutral-RankIC difference over all post-freeze signal dates with mature labels; SUPPORTED if p < 0.05 and the CI excludes 0; evaluated once, when >= min_days exist",
+ "secondary": [
+  "frozen vs 0",
+  "frozen - ridge_rich"
+ ],
+ "mde_at_min_days": 0.046,
+ "mde_source": "docs/featbench_20261022/POWER.md",
+ "training": "all signals whose 5-day label matures on or before 2026-10-22 (includes 2015-2026 data); no validation step; no FB metric is computed before the freeze",
+ "source_sha256": {
+  "src/hypershift/featbench/data.py": "4cf8a8cd85c0c6e17cce9c40ca4dfa160b8f3d54c40fa18771162e5db15e91a7",
+  "src/hypershift/featbench/models.py": "6df7140e7053abc528ff49ff1b12da265585ae91a4ab0e2f06d0cde60666eab4",
+  "src/hypershift/featbench/prospective.py": "1ccb4a74401853e861646e211a7a9af6d50473caecff9bb8f8fcaeea77841981",
+  "scripts/featbench_prospective.py": "ca9802f3fb942f2753f01e82a658a36e5c04f4c07a076ad79cad36c9c6f48bd3",
+  "src/hypershift/screening/data.py": "875aa9662f5e68932e1828ebfdcd8dd30b01e9ad8b61e4ca8f03eb27ed8ae503",
+  "src/hypershift/screening/metrics.py": "417835d33fb916375a4958ee275d990971a7cfa4d5e6a12c32b2ac7b9488e686"
+ }
+}

@@ -248,3 +248,51 @@ def test_subgroup_terciles_cover_eligible():
     out = subgroup_rankic(pred, fb, s, 'vol_60')
     assert set(out) == {'low', 'mid', 'high'}
     assert all(v.mean() > .5 for v in out.values())
+
+
+# ---------------------------------------------------------------- Task 9: freeze and prospective scorer
+from hypershift.featbench.prospective import FREEZE, check_scoring_dates, fit_fixed, prospective_signals  # noqa: E402
+
+
+def test_prospective_guard():
+    with pytest.raises(ValueError):
+        check_scoring_dates(np.array(['2026-10-22', '2026-10-23'], dtype='datetime64[D]'))
+    check_scoring_dates(np.array(['2026-10-23', '2026-11-02'], dtype='datetime64[D]'))
+
+
+def test_prospective_signals_split_at_freeze():
+    dates = np.arange('2026-01-01', '2027-03-01', dtype='datetime64[D]')
+    dates = dates[np.is_busday(dates)]
+    train, score = prospective_signals(dates, horizon=5, history=64)
+    assert (dates[train + 5] <= FREEZE).all() and (dates[score] > FREEZE).all()
+    assert (score + 5 < len(dates)).all()
+    assert len(np.intersect1d(train, score)) == 0
+
+
+def test_fit_fixed_ridge_matches_sklearn():
+    from sklearn.linear_model import Ridge
+    rng = np.random.default_rng(0)
+    Xtr, ytr = rng.normal(size=(30, 20, 4)), rng.normal(size=(30, 20))
+    mtr = rng.random((30, 20)) > .2
+    Xev = rng.normal(size=(5, 20, 4))
+    pred = fit_fixed('ridge', Xtr, ytr, mtr, Xev, {'alpha': 1000})
+    ys = ytr[mtr] / ytr[mtr].std()
+    ref = Ridge(alpha=1000).fit(Xtr[mtr], ys).predict(Xev.reshape(-1, 4)).reshape(5, 20)
+    np.testing.assert_allclose(pred, ref, rtol=1e-10)
+
+
+def test_score_runs_on_synthetic_post_freeze():
+    from hypershift.featbench.prospective import score
+    fb = synthetic_fb(n=40, t=400)
+    fb.dates = np.arange('2025-12-01', 400, dtype='datetime64[D]')  # spans the freeze
+    fb.train = np.arange(64, 300)
+    fb.evaluate = np.arange(np.searchsorted(fb.dates, FREEZE) + 1, 390)
+    manifest = {'arms': {'frozen': {'model': 'lgbm', 'features': 'rich', 'target': 'residual', 'repr': 'cs_z',
+                                    'params': {'n_estimators': 20}},
+                         'ridge': {'model': 'ridge', 'features': 'rich', 'target': 'raw', 'repr': 'cs_z',
+                                   'params': {'alpha': 1000}},
+                         'reversal16': {'model': 'block', 'features': 'reversal16'},
+                         'random': {'model': 'random', 'seed': 7}}}
+    out = score(fb, manifest, threads=2)
+    assert set(out) == set(manifest['arms'])
+    assert all(len(v['neutral_RankIC']) == len(fb.evaluate) for v in out.values())
