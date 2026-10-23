@@ -56,3 +56,4 @@ Each ruling: what was decided, why, and what it costs if wrong.
   - I1: formatting is reported as a diagnostic (filing-agent switch ratio 1.30 among changers), not changed; the text rule stays frozen.
   - I5 (the IR entity carries Gardner Denver prices 2017-05 to 2020-03) is noted as a panel limitation and not fixed: one entity of about 500.
   - Cost if wrong: small.
+Suite: .venv/Scripts/python.exe -m pytest -q -> 568 passed, 2 xfailed (I1, M5 known limitations) in 667.61s

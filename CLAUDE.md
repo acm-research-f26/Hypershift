@@ -62,6 +62,13 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - **Engine:** `strategy/pit_engine.run_pit` for any PIT test. Frozen `engine.run` keeps weights of names that leave eligibility.
   - **Result** (predeclared, `PREREG.md`): PIT retrain net Sharpe +0.11 [−0.61, +0.90], alpha t 0.15 (GICS sectors −0.17) → STOP as a capital candidate. Not distinguishable from zero, not proven zero; the drop from +1.19 has confounded causes (universe, training procedure, sectors, exit rule, data source, turnover). PIT equal-weight alpha −0.7% vs survivor +3.1%. Paper trade retired before start (its code also omits the membership filter). PEAD/H-B withdrawn (Martineau 2022).
   - **Next:** Lazy Prices (EDGAR 10-K/10-Q text change): freeze the spec, then EDGAR ingestion, then a 2016–2023 kill screen; Norgate ($630/yr) only on the user's authorisation after the screen. Literature: `LIT_VERIFY.md` (access levels), `LIT_SYNTHESIS.md`.
+- **Filing-text (Lazy Prices) round (2026-10-23): STOP.** Start with `docs/strategy_lazyprices_20261023/REPORT.md` (deliverables A–I).
+  - **Result:** S&P 500 changer avoidance (long-only, FF12-neutral, full 10-K/10-Q cosine similarity) was run once under a frozen PREREG with pre-outcome amendments A1/A2 → net active IR −0.01 [−0.66, +0.68], alpha t −0.13.
+  - **Literature:** Cheng–Liu–Qiao–Wang (JFQA 2026) also find no S&P 500 effect.
+  - **Reusable code:** `data/edgar.py` (SEC client; acceptance time; the submissions JSON time zone is inconsistent, so use the next-day/filingDate rule; XML-declaration strip; name matching), `strategy/lazyprices.py`, `pit_engine.run_targets`, `scripts/lazy_*.py`.
+  - **Data (git-ignored):** `data/edgar/` holds the dated CIK map (Wikipedia revisions, SEC-verified, 99.8% of member-months), term counts and the submissions cache.
+  - **SEC needs env `SEC_USER_AGENT`** (the user authorised their email; never commit it).
+  - **Next:** EAR drift overlay (`docs/overnight_20261024/NEXT_RESEARCH_SPEC.md`). The overnight review and tests come from branch `overnight-20261024` (merged).
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
