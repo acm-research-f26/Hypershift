@@ -44,6 +44,10 @@ three constraints:
 It needs no new data: the submissions JSON is already cached, and the PIT panel and engine are reused. Its stated
 failure mode is that large-cap drift has been arbitraged away (Martineau) or is masked by one-month reversal.
 
+**Caveat:** the signal itself is a price return. The non-price information is the dated disclosure event (8-K 2.02
+acceptance). The spec's declared placebo diagnostic, the same 3-day return without event conditioning, tests whether
+that event timing adds anything beyond price-only momentum or reversal.
+
 ## 3. Critical risks for the current experiment
 
 | ID | Status | Location | Must act before interpreting? |
@@ -104,8 +108,7 @@ Was EVAL produced after the C1 fix, with all deviations logged as amendments bef
   - `tests/test_sec_integrity.py`
   - `docs/overnight_20261024/{OVERNIGHT_RESEARCH, OVERNIGHT_RISK_REVIEW, OVERNIGHT_TESTS, MORNING_DECISION_TEMPLATE, IMPLEMENTABILITY, NEXT_RESEARCH_SPEC, OVERNIGHT_HANDOFF}.md`
   - `patches/*.patch`, `tools/*.py`
-- **Tests run:** `tests/test_sec_integrity.py`, `test_edgar.py`, `test_lazyprices.py` and `test_pit.py` (78 passed,
-  6 xfailed). The full suite was not run, because no shared code was changed.
+- **Tests run:** full suite in this worktree: 523 passed, 35 skipped, 6 xfailed, 3 failed. The same 3 failures occur without the new file (missing data in the worktree: `test_baselines_r8`, `test_featbench`). The related suites alone: 78 passed, 6 xfailed.
 - **SEC usage:** 8 requests to www.sec.gov (head probes of 4 documents, then a fetch of 4 documents), ≥ 2.5 s apart,
   with the User-Agent from the environment, never printed. Raw documents are kept outside the repository (`/tmp`).
 - **Read but not modified:** the PIT panel (`member`, `observed`, `raw_close` of a few entities for identity checks).

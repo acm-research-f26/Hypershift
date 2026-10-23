@@ -70,6 +70,10 @@ the same industry. The release is the 8-K Item 2.02, timed by its EDGAR acceptan
 4. Overlay turnover.
 5. Alpha without ST_Rev, which shows the reversal collision.
 6. Event-time average market-adjusted return of Bottom and Top from d0+2 to d0+60 (equal weight).
+7. **Placebo EAR (tests the non-price content).** The only non-price input is the event date. Recompute the tilt
+   with the same 3-day market-adjusted return measured over the 3 sessions ending at F−1 (no event conditioning).
+   The event-conditioned IR should exceed the placebo IR. If it does not, the "signal" is short-horizon price
+   momentum or reversal, which Study FB already covered, and a CONTINUE must be reported with that caveat.
 
 ## 5. Pre-outcome checks (no forward returns; must pass before the single scoring)
 

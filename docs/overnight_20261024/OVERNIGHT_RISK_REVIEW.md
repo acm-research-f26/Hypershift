@@ -4,7 +4,9 @@ Scope: code and documents only, at commit a14fd5d (`PREREG.md`, `edgar.py`, `laz
 `study.py`, `factors.py`, `scripts/lazy_{signals,checks,eval,cik_map}.py`). No outputs were read: not `EVAL.md`,
 `PRECHECKS.md`, `signals.csv`, token files or `results/`. Two inputs were read: the PIT panel's membership and raw
 closes for a few entities (identity checks), and four public 10-K primary documents fetched from SEC (8 requests in
-total). The main checkout's copies of the reviewed files are identical to a14fd5d (CRLF ignored).
+total). The main checkout's copies of every reviewed file (`edgar.py`, `pit_sp500.py`, `lazyprices.py`, `pit_engine.py`,
+`pit.py`, `engine.py`, `study.py`, `factors.py`, `lazy_*.py`, the two tests and `PREREG.md`) were identical to
+a14fd5d at review time (CRLF ignored).
 
 Classes:
 - **CRITICAL**: a verified defect that can change the economic conclusion; fix it before interpreting.
