@@ -93,4 +93,23 @@ These must pass before the single scoring run. A failure is fixed by amendment b
 
 ## Amendments
 
-(none)
+**A1 (2026-10-23, after the first pre-outcome check run and before any return was computed).** The first
+`PRECHECKS.md` failed P1, P3, P4 and P5.
+- **Extraction bug (cause of P3–P5).** 4,096 documents raised lxml's "Unicode strings with encoding declaration are
+  not supported" and were stored with zero tokens, giving similarity 0. These were mostly inline-XBRL filings from
+  2019–2021, whose files begin with `<?xml … encoding=…?>`.
+  - **Fix:** the declaration is stripped before parsing (`edgar.extract_tokens`; test
+    `test_extract_tokens_handles_xml_encoding_declaration`).
+  - Failed or empty documents are re-fetched and re-parsed.
+  - The text rules themselves are unchanged.
+- **P1 time zone.** SEC's JSON `acceptanceDateTime` is inconsistent: some filings are double-converted (+8/+10 h),
+  others are correct UTC. So the inverted clock time matched the index page for 8 of 12 sampled filings, and was
+  4–5 h early for the other 4.
+  - Only the **availability day** enters the signal. EDGAR accepts filings only between 06:00 and 22:00 ET, so a
+    4–5 h early clock time never moves the date earlier.
+  - **Added guard:** a filing is also never available before the trading day after SEC's official `filingDate`
+    (`available_index(..., filing_date)`, tested).
+  - **P1's pass condition is restated as an exact match of the availability day** with the one computed from the
+    index-page time. Clock times are still reported.
+- **Cost if wrong:** none for timing (the guard is more conservative). The extraction fix changes which documents
+  have text. Every outcome is still uncomputed.

@@ -88,3 +88,17 @@ def test_name_match_strict_and_accents():
     assert not ED.name_match(['Paramount', 'CBS Corp.'], ['Paramount Gold Nevada Corp.'], strict=True)
     assert ED.name_match(['Red Hat Inc.'], ['RED HAT INC'], strict=True)
     assert ED.name_match(['Paramount Global'], ['Paramount Global'], strict=True)
+
+
+def test_extract_tokens_handles_xml_encoding_declaration():
+    doc = '<?xml version="1.0" encoding="utf-8"?>\n<html xmlns:ix="http://www.xbrl.org/2013/inlineXBRL"><body>' \
+          '<div style="display:none"><ix:header>hidden facts</ix:header></div><p>Results of operations improved</p></body></html>'
+    for d in (doc, doc.encode('utf-8')):
+        tok = ED.extract_tokens(d)
+        assert tok['results'] == 1 and tok['operations'] == 1 and 'hidden' not in tok
+
+
+def test_available_index_never_before_official_filing_date():
+    cal = np.array(['2023-11-02', '2023-11-03', '2023-11-06'], dtype='datetime64[D]')
+    assert ED.available_index(np.datetime64('2023-11-02T10:00'), cal, filing_date='2023-11-03') == 2
+    assert ED.available_index(np.datetime64('2023-11-02T10:00'), cal, filing_date='2023-11-02') == 1

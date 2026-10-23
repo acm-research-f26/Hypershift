@@ -30,7 +30,7 @@ def parse(args):
     except Exception as e:     # recorded, never silently dropped
         tok, err = {}, repr(e)[:200]
     rec = {'accession': acc, 'cik': cik, 'url': url, 'sha256': sha, 'retrieved': time.strftime('%Y-%m-%dT%H:%M:%S'),
-           'n_tokens': int(sum(tok.values())), 'error': err, 'counts': dict(tok)}
+           'n_tokens': int(sum(tok.values())), 'error': err, 'parser': 2, 'counts': dict(tok)}
     (TOK / f'{acc}.json.gz').write_bytes(gzip.compress(json.dumps(rec).encode()))
     return acc, rec['n_tokens'], err
 
@@ -58,7 +58,13 @@ def main():
             plan.append((cik, by[a]))
         for f in orig:
             meta[f['accession']] = (cik, f, prior.get(f['accession']))
-    todo = [(c, f) for c, f in plan if not (TOK / f"{f['accession']}.json.gz").exists()]
+    def bad(a):
+        q = TOK / f'{a}.json.gz'
+        if not q.exists():
+            return True
+        r = json.loads(gzip.decompress(q.read_bytes()))
+        return bool(r['error']) or r['n_tokens'] == 0 and r.get('parser') != 2
+    todo = [(c, f) for c, f in plan if bad(f['accession'])]   # missing, failed, or empty under the old parser
     print(f'{len(ciks)} CIKs, {len(plan)} documents needed, {len(todo)} to fetch', flush=True)
     with ProcessPoolExecutor(max_workers=4) as pool:
         pending, done = [], 0
@@ -78,7 +84,7 @@ def main():
             p.result()
     with open(SIG, 'w', newline='') as fh:
         w = csv.writer(fh)
-        w.writerow(['cik', 'accession', 'form', 'reportDate', 'acceptance_et', 'prior_accession', 'similarity',
+        w.writerow(['cik', 'accession', 'form', 'reportDate', 'acceptance_et', 'filingDate', 'prior_accession', 'similarity',
                     'n_tokens', 'n_tokens_prior', 'inline_xbrl', 'prior_inline_xbrl', 'error'])
         for a, (cik, f, p) in sorted(meta.items(), key=lambda x: x[1][1]['acceptance_et']):
             if f['acceptance_et'] < FIRST or p is None:
@@ -89,7 +95,7 @@ def main():
             from collections import Counter
             sim = ED.cosine(Counter(ra['counts']), Counter(rp['counts']))
             pf = meta[p][1]
-            w.writerow([cik, a, f['form'], f['reportDate'], str(f['acceptance_et']), p, f'{sim:.6f}', ra['n_tokens'],
+            w.writerow([cik, a, f['form'], f['reportDate'], str(f['acceptance_et']), f['filingDate'], p, f'{sim:.6f}', ra['n_tokens'],
                         rp['n_tokens'], int(f['inline_xbrl']), int(pf['inline_xbrl']), ra['error'] or rp['error']])
     print('wrote', SIG, flush=True)
 

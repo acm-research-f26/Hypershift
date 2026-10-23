@@ -25,11 +25,11 @@ def signal_rows(cal, labels, path='data/edgar/signals.csv', cmap_path='data/edga
     by_cik = {}
     for i, lab in enumerate(labels):
         for s, e, c in cmap.get(lab, {}).get('segments', []):
-            by_cik.setdefault(int(c), []).append((i, np.datetime64(s) - 120, np.datetime64(e)))
+            by_cik.setdefault(int(c), []).append((i, np.datetime64(s) - np.timedelta64(120, 'D'), np.datetime64(e)))
     rows, recs = [], list(csv.DictReader(open(path)))
     for r in recs:
         acc = np.datetime64(r['acceptance_et'])
-        a = ED.available_index(acc, cal)
+        a = ED.available_index(acc, cal, filing_date=r.get('filingDate'))
         if a >= len(cal) or r['error']:
             continue
         for i, s, e in by_cik.get(int(r['cik']), []):
@@ -56,7 +56,7 @@ def main():
     sec = ED.SecClient()
     rng = np.random.default_rng(0)
     sample = [recs[k] for k in rng.choice(len(recs), size=min(12, len(recs)), replace=False)]
-    ok = 0
+    ok = same_day = 0
     lines = []
     for r in sample:
         a = r['accession']
@@ -64,9 +64,13 @@ def main():
         m = re.search(r'Accepted</div>\s*<div class="info">([^<]+)<', x)
         idx = m.group(1).strip() if m else '?'
         mine = str(np.datetime64(r['acceptance_et'], 's')).replace('T', ' ')
+        avail_true = ED.available_index(np.datetime64(idx.replace(' ', 'T')), cal) if m else -1
+        avail_mine = ED.available_index(np.datetime64(r['acceptance_et']), cal, filing_date=r.get('filingDate'))
         ok += idx == mine
+        same_day += avail_true == avail_mine
         lines.append(f'{a}: index {idx} / pipeline {mine}')
-    L += [f'**P1 timestamps:** {ok}/{len(sample)} random filings match the index-page "Accepted" time exactly.',
+    L += [f'**P1 timestamps:** {ok}/{len(sample)} random filings match the index-page "Accepted" clock time exactly; '
+          f'**{same_day}/{len(sample)} give the same availability day** (the quantity the signal uses; PREREG amendment A1).',
           '', '<details><summary>sample</summary>', ''] + [f'- {x}' for x in lines] + ['', '</details>', '']
 
     # P3 coverage

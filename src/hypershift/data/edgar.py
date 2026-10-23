@@ -69,9 +69,13 @@ def acceptance_et(s):
     return t - np.timedelta64(8, 'h')
 
 
-def available_index(acc_et, cal):
-    """Index in trading calendar `cal` of the first trading day strictly after the acceptance date (ET)."""
-    return int(np.searchsorted(cal, np.datetime64(acc_et, 'D'), side='right'))
+def available_index(acc_et, cal, filing_date=None):
+    """Index in trading calendar `cal` of the first trading day strictly after the acceptance date (ET), and never
+    before the day after SEC's official filing date (guards against the JSON timestamp's inconsistent time zone)."""
+    d = np.datetime64(acc_et, 'D')
+    if filing_date:
+        d = max(d, np.datetime64(filing_date, 'D'))
+    return int(np.searchsorted(cal, d, side='right'))
 
 
 _HIDDEN = re.compile(r'display\s*:\s*none', re.I)
@@ -87,6 +91,7 @@ def extract_tokens(doc):
         doc = doc.decode('utf-8', errors='replace')
     if '<' not in doc[:2000] and '<html' not in doc.lower()[:5000]:
         return Counter(_TOKEN.findall(doc.lower()))
+    doc = re.sub(r'^\s*<\?xml[^>]*\?>', '', doc)       # lxml refuses str input with an encoding declaration
     root = lxml.html.fromstring(doc)
     drop = [el for el in root.iter() if isinstance(el.tag, str) and (
         el.tag.lower() in ('script', 'style') or el.tag.lower().endswith('header') and ':' in el.tag
