@@ -208,3 +208,45 @@ Commands to reproduce today's results:
 .venv/Scripts/python.exe scripts/strategy_pit.py           # STYLE_PIT.md (~20 min; scores cached in results/STRATEGY_PIT_20261023)
 .venv/Scripts/python.exe scripts/strategy_pit_sector_check.py
 ```
+
+---
+
+## Addendum (2026-10-23, later): final disposition and wording corrections (append-only)
+
+**Final decision: STOP the style-only book as a capital candidate.** This is the predeclared kill test on the PIT
+universe, 2018–2023:
+
+| Measure | Value |
+|---|---|
+| Net Sharpe at 10 bp + 50 bp/yr borrow | **+0.11, 95% CI [−0.61, +0.90]** |
+| FF5 + MOM + ST_Rev alpha | +0.2%/yr (t +0.15) |
+| Net Sharpe at 20 bp / 30 bp | −0.41 / −0.92 |
+
+Turnover is about 19× NAV per year, so more conservative costs reduce performance materially. The continuation
+threshold (≥ 0.60 with alpha t ≥ 1.5) was not met; the STOP threshold (< 0.30) was.
+
+**Two statements above are corrected:**
+1. "Survivor artefact" (section A) and "the true PIT edge is about 0" overstate the result. The test shows the edge is
+   **not distinguishable from zero**; it does not prove that the true alpha is zero. Six years give a Sharpe standard
+   error of about 0.4.
+2. The fall from +1.19 (survivor panel, saved predictions) to +0.11 has **several confounded causes, not survivorship
+   alone**:
+   - universe and membership (failed and acquired names now included);
+   - training procedure (annual retrain on all matured labels, versus FB-fold predictions);
+   - sector classification (return-correlation proxy, 73% agreement with GICS; with GICS for survivors the result is −0.17);
+   - the engine exit rule (frozen engine +0.22 vs PIT engine +0.11);
+   - the data source (Alpaca, rebuilt from raw bars, versus yfinance);
+   - turnover (19.2× vs 12.5× NAV per year).
+
+   The design does not separate these causes, and no further runs are planned to separate them.
+
+**Infrastructure checks after closure** (`docs/strategy_lazyprices_20261023/INFRA_CHECKS.md`):
+- The sector proxy used up to 62 later returns for 18 entities in 2018–2023 (201 stock-signals). A causal 63-return
+  variant is now stored (`sectors_causal`). The next strategy uses SIC-based industries instead.
+- Opening fills never use the same day's close; this is tested.
+- No long or short position sat on a neutralised corporate-action day.
+- The failure flags reconcile: 4 entities are flagged, of which 2 were members at their last bar.
+- One identity break was found: FBHS→FBIN in 2022, with negligible weight.
+
+None of these can move the STOP. The specification, results and audit trail of the style book are preserved
+unchanged above.

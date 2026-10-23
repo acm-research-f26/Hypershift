@@ -163,3 +163,20 @@ def test_clean_returns_rejects_adjustment_without_price_event_or_overcorrection(
     r, kind = PS.clean_returns(raw_c, raw_o, all_c, obs)
     assert kind[0, 2] == 'neutralised' and r[0, 2] == 0
     assert kind[1, 2] == 'neutralised' and r[1, 2] == 0
+
+
+def test_price_index_open_uses_no_same_day_close():
+    obs = np.ones((1, 5), bool)
+    raw_c = np.array([[100., 102, 101, 99, 98]])
+    raw_o = np.array([[100., 101, 100, 98.5, 97]])
+    all_c = raw_c * np.array([[1 / 1.02, 1 / 1.02, 1 / 1.02, 1., 1.]])     # 2% dividend, ex-date day 3
+    r, kind = PS.clean_returns(raw_c, raw_o, all_c, obs)
+    close, open_ = PS.price_index(raw_c, raw_o, r, kind, obs)
+    assert np.isclose(open_[0, 2], close[0, 1] * raw_o[0, 2] / raw_c[0, 1])          # plain day
+    raw_c2 = raw_c.copy(); raw_c2[0, 2] = 120.                                         # a different same-day close
+    r2, k2 = PS.clean_returns(raw_c2, raw_o, all_c * raw_c2 / raw_c, obs)
+    assert np.isclose(PS.price_index(raw_c2, raw_o, r2, k2, obs)[1][0, 2], open_[0, 2])
+    assert np.isclose(open_[0, 3] / close[0, 2], raw_o[0, 3] / raw_c[0, 2] * 1.02)    # ex-date gap includes dividend
+    kind[0, 4], r[0, 4] = 'neutralised', 0.
+    close, open_ = PS.price_index(raw_c, raw_o, r, kind, obs)
+    assert open_[0, 4] == close[0, 4] == close[0, 3]                                   # value-neutral day

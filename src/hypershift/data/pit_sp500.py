@@ -149,3 +149,14 @@ def clean_returns(raw_c, raw_o, all_c, observed, max_adj=.15, gap_min=.3, tol=.0
     r[:, 1:] = np.where(ok, out, 0.)
     kind[:, 1:] = np.where(ok, k, 'missing')
     return r, kind
+
+
+def price_index(raw_c, raw_o, r, kind, observed):
+    """Total-return close index (cumulated cleaned returns) and an open on the same scale.
+
+    open_t = index_t x raw_open_t / raw_close_t = index_{t-1} x (adjustment factor of day t) x raw_open_t / raw_close_{t-1}
+    on a raw or adjusted day, so it never uses the day's close; on a neutralised day open = close = previous close."""
+    idx = np.exp(np.cumsum(np.log1p(r), 1))
+    scale = np.where(observed, idx / raw_c, np.nan)
+    close, open_ = raw_c * scale, raw_o * scale
+    return close, np.where(kind == 'neutralised', close, open_)

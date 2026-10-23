@@ -121,12 +121,8 @@ def main():
     for lab, day in MANUAL_NEUTRAL:
         i, t = labels.index(lab), int(np.searchsorted(dates, np.datetime64(day)))
         r_all[i, t], kind[i, t] = 0., 'neutralised'
-    idx = np.exp(np.cumsum(np.log1p(r_all), 1))
-    scale = np.where(observed, idx / arr['raw_close'], np.nan)
     arr['all_close'] = arr['close'].copy()
-    for name, src in (('close', 'raw_close'), ('open', 'raw_open')):
-        arr[name] = arr[src] * scale
-    arr['open'] = np.where(kind == 'neutralised', arr['close'], arr['open'])   # value-neutral day: no gap, no intraday
+    arr['close'], arr['open'] = PS.price_index(arr['raw_close'], arr['raw_open'], r_all, kind, observed)
     for name in ('high', 'low'):
         arr[name] = arr[name] / arr['all_close'] * arr['close']
     arr['volume'] = arr['raw_volume']
@@ -165,10 +161,11 @@ def main():
             e2.append((str(ytick[j]), best[0], best[2], best[3]))
     ref = np.where(surv >= 0, ysec[np.maximum(surv, 0)], -1)
     sectors = PS.sector_proxy(r_all, obs_r, ref, window=126)
+    sectors_causal = PS.sector_proxy(r_all, obs_r, ref, window=63)   # only returns before first possible eligibility
     last = np.where(observed.any(1), T - 1 - observed[:, ::-1].argmax(1), -1)
     fail = PS.failure_flags(arr['close'], observed, last)
     np.savez_compressed(NPZ, dates=dates.astype(str), labels=np.array(labels), member=member, observed=observed,
-                        sectors=sectors, gics_ref=ref, survivor_index=surv, failure=fail, last=last, kind=kind,
+                        sectors=sectors, sectors_causal=sectors_causal, gics_ref=ref, survivor_index=surv, failure=fail, last=last, kind=kind,
                         **{k: v.astype(np.float64) for k, v in arr.items()})
 
     # report
