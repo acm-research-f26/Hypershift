@@ -59,7 +59,7 @@ def main():
     sec = ED.SecClient()
     rng = np.random.default_rng(0)
     sample = [recs[k] for k in rng.choice(len(recs), size=min(12, len(recs)), replace=False)]
-    ok = same_day = 0
+    ok = same_day = later = earlier = 0
     lines = []
     for r in sample:
         a = r['accession']
@@ -71,9 +71,13 @@ def main():
         avail_mine = ED.available_index(np.datetime64(r['acceptance_et']), cal, filing_date=r.get('filingDate'))
         ok += idx == mine
         same_day += avail_true == avail_mine
+        later += avail_mine > avail_true
+        earlier += avail_mine < avail_true
         lines.append(f'{a}: index {idx} / pipeline {mine}')
     L += [f'**P1 timestamps:** {ok}/{len(sample)} random filings match the index-page "Accepted" clock time exactly; '
-          f'**{same_day}/{len(sample)} give the same availability day** (the quantity the signal uses; PREREG amendment A1).',
+          f'availability day (the quantity the signal uses): **same {same_day}, later {later} (filings accepted after 17:30 ET '
+          f'carry the next business day as SEC filing date; the A1 guard waits for it), earlier {earlier}**. Pass = no '
+          f'filing available earlier than the index-page time allows.',
           '', '<details><summary>sample</summary>', ''] + [f'- {x}' for x in lines] + ['', '</details>', '']
 
     # P3 coverage

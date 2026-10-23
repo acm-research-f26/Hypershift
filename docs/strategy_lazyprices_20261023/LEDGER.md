@@ -44,3 +44,15 @@ Each ruling: what was decided, why, and what it costs if wrong.
   - Why: the plan requires an agent that has not seen the experiment's results.
   - Its limits: no access to `EVAL.md`, `PRECHECKS.md`, `results/` or signals; at most 30 SEC requests.
   - Cost if wrong: none; the deliverables are unchanged.
+
+**Pre-outcome checks and amendments (2026-10-23, daytime)**
+- Ruling: the first pre-check run failed. 4,096 documents with an XML encoding declaration parsed to zero tokens. Fixed and re-fetched under amendment A1 before any return; the independent overnight review found the same defect (its C1).
+  - Cost if wrong: none.
+- Ruling: SEC's JSON acceptance time is inconsistently converted (double-converted for some filings, correct UTC for others). The signal uses only the availability day. The filingDate guard makes after-17:30 filings available one day later than the index-page time would; P1 counts this as conservative (same 9, later 3, earlier 0).
+  - Cost if wrong: none (later, never earlier).
+- Ruling: amendment A2 is adopted from the overnight review.
+  - I3: the latest filing without a comparison now gives no signal.
+  - I2: checks run on valid rows only.
+  - I1: formatting is reported as a diagnostic (filing-agent switch ratio 1.30 among changers), not changed; the text rule stays frozen.
+  - I5 (the IR entity carries Gardner Denver prices 2017-05 to 2020-03) is noted as a panel limitation and not fixed: one entity of about 500.
+  - Cost if wrong: small.
