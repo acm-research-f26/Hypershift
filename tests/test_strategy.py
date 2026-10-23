@@ -99,3 +99,13 @@ def test_attribute_recovers_alpha():
     ret = .0004 + .5 * ff['Mkt-RF'] - .3 * ff['MOM'] + rng.normal(0, .002, n)
     a = FA.attribute(ret, dates, ff)
     assert abs(a['alpha_ann'] - .0004 * 252) < .02 and abs(a['betas']['Mkt-RF'] - .5) < .02 and a['t'] > 3
+
+
+def test_trace_contributions_sum_to_gross_close_exec():
+    d = _data(N=40, T=80, seed=3)
+    d.sectors = np.repeat(np.arange(2), 20)
+    out = EN.run({20: np.arange(40.), 45: np.arange(40.)[::-1]}, d, mode='LS', top=.2, band=.4, execution='close',
+                 cost_bp=0, borrow_bp=0, trace=True)
+    contrib = (out['w_start'] * out['r']).sum(1)
+    assert np.allclose(contrib, out['gross'], atol=1e-12)
+    assert out['w_start'].shape == (len(out['gross']), 40)

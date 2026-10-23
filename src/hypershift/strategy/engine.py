@@ -54,7 +54,11 @@ def _ls_targets(score, tradable, sectors, held_l, held_s, top, band):
     return np.array(longs, int), np.array(shorts, int)
 
 
-def run(scores, data, mode='LO', top=.2, band=.4, execution='open', cost_bp=10., borrow_bp=50., end=None, equal=False):
+def run(scores, data, mode='LO', top=.2, band=.4, execution='open', cost_bp=10., borrow_bp=50., end=None, equal=False,
+        trace=False):
+    """trace=True also returns w_start [D, N] (weights at the start of each day) and r [D, N] (close-to-close
+    returns), so per-name contributions w_start * r sum to gross exactly for close execution and approximately for
+    open execution (the trade-day open split is ignored)."""
     T = data.close.shape[1]
     days = sorted(scores)
     t0, t1 = days[0], (T - 1 if end is None else end)
@@ -62,9 +66,12 @@ def run(scores, data, mode='LO', top=.2, band=.4, execution='open', cost_bp=10.,
     w = np.zeros(N)
     held_l, held_s = np.zeros(N, bool), np.zeros(N, bool)
     out = {k: [] for k in ('gross', 'traded', 'borrow', 'net')}
-    dates = []
+    dates, ws, rs = [], [], []
     for t in range(t0, t1 + 1):
         ok = data.observed[:, t] & data.observed[:, t - 1]
+        if trace:
+            ws.append(w.copy())
+            rs.append(_ret(data.close[:, t - 1], data.close[:, t], ok))
         target = None
         if t in scores:
             px = data.open[:, t] if execution == 'open' else data.close[:, t]
@@ -114,6 +121,8 @@ def run(scores, data, mode='LO', top=.2, band=.4, execution='open', cost_bp=10.,
         dates.append(data.dates[t])
     res = {k: np.array(v) for k, v in out.items()}
     res['dates'] = np.array(dates)
+    if trace:
+        res['w_start'], res['r'] = np.array(ws), np.array(rs)
     return res
 
 
