@@ -55,3 +55,5 @@
 - [ ] Remove or replace any file that contains redistributable-restricted raw prices from the public repository.
 - [ ] Add a top-level `REPRODUCE.md` that maps each table and figure to its command.
 - [ ] Run `scripts/pub_verify.py` from a clean clone with the data scripts.
+
+> **Superseded in part (2026-10-22):** see `REPRODUCE.md` for the environment record, the clean-clone procedure and the release audit. That audit found the THINK PDF and the AGPL-derived arrays in git.

@@ -13,3 +13,13 @@ Final review: self-review (no subagent dispatched — session rule); manuscript 
 Final: minor (deferred): pubfig_* plotting scripts not written (spec only).
 Final: minor (deferred): environment lock (pip freeze, hardware) not yet recorded.
 Suite: .venv/Scripts/python.exe -m pytest -q → 469 passed, 3 warnings in 730.09s
+
+## Revision 2 (2026-10-22)
+
+- Ruling: added a construction-based decomposition (L_div / L_path) on data already on disk. It is analysis, not a new experiment or period, and it is needed to replace an over-interpreted regression residual. Cost: none.
+- Ruling: recommendation switched from "short note first" to Option B (combined paper), after the prior-art check showed the core mechanism is known to practitioners. Cost: framing.
+- Ruling: EH planted-IC mismatch (earlier report 0.090 vs files 0.098) recorded, not hidden. The manuscript does not use the value.
+- Ruling: an event-count bug in pub_leak_mechanism (summed across folds) was fixed before publication of the numbers.
+- Release blockers found: the THINK PDF (IEEE) and RSR-derived test_gt.npy arrays (AGPL) are tracked in git.
+- Suite: 469 passed (642 s).
+- Final review: self-review (no subagent dispatched; session rule).

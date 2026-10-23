@@ -1,57 +1,61 @@
-# F. Final publication recommendation
+# Publication recommendation and submission readiness (revision 2, 2026-10-22)
 
-## Is the thesis supported?
+Revision 1 is preserved in git (commit `1561e2a`). This revision follows the mathematical, prior-art and leakage audits (`MATH_ADJUSTMENT.md`, `PRIOR_ART.md`, `LEAKAGE_AUDIT.md`).
 
-**Proposed thesis:** "Financial machine-learning benchmarks can systematically misattribute performance to sophisticated architectures when experimental protocols, optimisation settings, market exposures and statistical power are not adequately controlled."
+## Option A vs Option B
 
-**Verdict: partly supported. Narrow it.**
+| Criterion | **A: short note on adjusted-price look-ahead** | **B: combined reproducibility + methods paper** |
+|---|---|---|
+| Novelty | **Modest.** Dependence on future distributions is known in practitioner sources. New: an explicit future-price derivation, a quantified association, and a benchmark effect | Moderate. The combination of mechanisms, quantified in one case with diagnostics, plus a careful reproduction |
+| Evidential strength | Mechanism: MATH (certain). Size: one vendor, one universe, one fetch date, inspected years. The strongest number (L_path +0.094) is partly mechanical by construction, which supports the mechanism but makes the number unsurprising. Benchmark effect about 0.005 | Mixed: T1–T3 recomputed; T4–T8 report-level; learner-power claims rest on one synthetic design |
+| Coherence | High | High if organised by mechanism; risk of sprawl |
+| Main reviewer risks | "Known issue"; "obviously mechanical"; "single dataset" | Implementation gap to THINK; single test year; synthetic learner power; exploratory status |
+| Remaining preparation | Low: figures exist; needs a second-vendor or fetch-date check to be convincing | Medium: learner-power simulation (or cut C3), economics re-execution for figures, licence clean-up, outside review |
 
-- **What the evidence supports.** In *one* reproduction case and *one* simple-model benchmark, each named mechanism did produce, or could have produced, a misleading conclusion, and each is shown with a controlled diagnostic. The mechanisms:
-  - protocol [T5];
-  - optimisation [T2];
-  - leakage [L1, L2];
-  - exposure [S1–S3];
-  - power [P1, M2].
-- **What it does not support.** "Systematically" across the field. We examined one model lineage (RSR → STHGCN/STHAN-SR → THINK) and our own benchmark.
+**Recommendation: Option B.**
+- **Option A alone is thin.** Once prior practitioner awareness is credited, the remaining novelty is a quantification in one dataset. Its most striking number is close to mechanical.
+- **The mechanisms reinforce each other in B.** They are the paper's real lesson: optimisation failure, protocol, adjusted-level look-ahead, characteristic exposure and power. Section 6 becomes one well-derived mechanism among five.
+- **If a short output is wanted quickly,** publish the adjustment material as a technical note or preprint section, not as a standalone peer-reviewed claim of novelty.
 
-**Recommended thesis:** *"In a reproduction of a hypergraph stock ranker and a matched simple-model benchmark, apparent skill was attributable to identifiable mechanisms (test-informed selection, an optimisation failure, leakage through vendor-adjusted price levels, exposure to known characteristics, and comparisons lacking statistical and learner power). We quantify each and give inexpensive diagnostics. After controlling for them, the available evidence cannot identify stock-specific information beyond characteristics and simple reversal."*
+**Venue fit for B:** an ML reproducibility or evaluation track, or an ML-in-finance methods venue.
 
-## Contributions, assessed
+## Readiness checklist
 
-| Contribution | Novelty | Strength | Keep? |
-|---|---|---|---|
-| Vendor-adjustment leakage via future prices in level features, with an ex-ante/future decomposition and its size | **Strongest original finding.** Practitioners know adjusted prices are "look-ahead" in a vague sense; the quantified predictive channel and the decomposition are rarely shown | Algebraic mechanism; recomputed (R) | **Lead contribution** |
-| Residualised metrics do not isolate information beyond characteristics for nonlinear learners; matched characteristics-only learner as control | Moderate: known in principle, rarely demonstrated in a benchmark | Synthetic plus real placebo | Keep, framed as demonstration plus control |
-| Learner power as a precondition for feature-ablation claims | Moderate; a useful warning | One synthetic design: needs strengthening | Keep **only after** a small simulation extension (below), or present as a preliminary observation |
-| Weight-decay collapse in stacked Poincaré layers | Low–moderate (AdamW is known) | Clean planted-signal evidence | Keep, brief |
-| THINK non-reproduction under leak-free protocols | Useful to the field; reviewers will probe the implementation gap | Many seeds and nulls, one test year plus out-of-sample years | Keep, with careful wording |
-| Economics (buffering, costs) | Not novel (Novy-Marx & Velikov, 2016) | Descriptive | Short section only |
+| # | Item | Status |
+|---|---|---|
+| 1 | Correct the adjusted-return mathematics | **Done** (draft 2 §6; `MATH_ADJUSTMENT.md`) |
+| 2 | Reinterpret the trailing-yield decomposition; add a construction-based decomposition | **Done** (L2b; `LEAK_MECHANISM.md`) |
+| 3 | Audit every "leak-free" usage | **Done** (`LEAKAGE_AUDIT.md`; terminology replaced) |
+| 4 | Prior-art check | **Done** (limited search; `PRIOR_ART.md`) |
+| 5 | Claims register with evidential status | **Done** (revision 2) |
+| 6 | Figures and tables from saved outputs | **Done** for Figs 1–5 / Tabs 1–5 (`scripts/pubfig.py`). Economics and synthetic figures need re-execution (listed in REPRODUCE) |
+| 7 | Environment record | **Done** (`REPRODUCE.md`, `requirements-frozen.txt`) |
+| 8 | Clean-clone reproduction | **Not done:** procedure written but not executed |
+| 9 | Release audit | **Done.** Two blockers found: the THINK PDF and the AGPL-derived `test_gt.npy` arrays in git |
+| 10 | References | **Done:** all verified, including Lo & MacKinlay (1990) |
+| 11 | Technical appendix | **Done** (`APPENDIX.md`) |
+| 12 | Learner-power contribution (C3) | **Open.** Either run a methods-only simulation (more replicates, signal-to-noise grid, 2–3 learner configurations, no market data) or cut C3 to a one-paragraph caveat. Draft 2 currently presents it as preliminary |
+| 13 | Independent fresh-context review | **Open.** All review so far has been by the authoring process. Two of our own errors were found late (a confounded placebo comparison; coverage bounds). In this revision we also caught a mathematical misstatement and over-interpreted terminology |
+| 14 | Unexplained mismatch (EH planted IC, earlier report) | Documented; not used in the manuscript; trace or retract in that report |
 
-## Venue and format
+## Claims to exclude
 
-**A combined reproducibility and methodology paper.** Suitable targets, ordered by fit:
-1. a reproducibility or ML-evaluation track (e.g. a datasets-and-benchmarks or reproducibility venue, or ML-for-finance workshops), emphasising diagnostics;
-2. a quantitative-finance methods journal, emphasising the leakage decomposition and metric control, with the THINK reproduction as a case study;
-3. alternatively, a short focused note on the vendor-adjustment leakage alone. This is the fastest route and has the clearest novelty.
+- Stock-specific predictive skill.
+- Unpredictability of returns.
+- What the THINK authors did.
+- A "future-only" component identified by regression residual.
+- Investability or factor attribution of any book.
+- Any "leak-free" label.
+- Equivalence from non-significant differences.
 
-**Recommended route:** a short leakage note first (it is self-contained), then the combined paper.
+## Judgment
 
-## Ready for external review?
+**READY AFTER SPECIFIED CORRECTIONS.**
 
-**Not yet.** Required before submission:
-1. **Learner-power simulation extension** (methods only, no market data): more replicates and seeds, a signal-to-noise grid, two or three learner configurations, and reported power curves. Without it, contribution C3 must be cut to a one-paragraph caveat. This is the only additional computation we recommend, and it uses no market data.
-2. **Plotting scripts** for Figs 1–7 from saved outputs (`FIGURES_TABLES.md`).
-3. **Licence check and release plan** for data (`REPRODUCIBILITY.md`). Do not publish raw Yahoo or Alpaca prices.
-4. **Verify the secondary-only reference** (Lo & MacKinlay, 1990), or drop it.
-5. **Independent fresh-context review** of the manuscript against `CLAIMS_REGISTER.md` and `CLAIMS_VERIFICATION.md`, ideally by someone outside the project. The project's own audit found and fixed several of its errors; an outside check is still needed.
-6. **Optional, cheap:** a style-factor attribution regression of the characteristics-only books on saved returns (supports or removes E2's interpretation).
-7. **Optional:** a query to the THINK authors (draft exists). Report any answer.
+The manuscript (draft 2) is scientifically consistent with the verified evidence and suitable to share with an independent reviewer now. It should not go to a journal until items **8, 9, 12 and 13** are resolved:
+- **8:** clean-clone run;
+- **9:** remove the THINK PDF from the release, and resolve AGPL compliance for the RSR-derived arrays;
+- **12:** the learner-power simulation, or the cut;
+- **13:** independent review.
 
-## Exclude from the paper
-
-- Any claim of stock-specific predictive skill.
-- Any claim that returns are unpredictable, or that features carry no information.
-- Any statement of what the THINK authors actually did.
-- Investability or attribution claims for any portfolio.
-- Results from 2024+ (Kronos zero-shot) except as a one-line footnote. That study was separate and is not needed for the thesis.
-- Exact numbers that are doc-only and not regenerable from local files (Phase 2 protocol-matrix cells): present them as tabulated in the project report, clearly sourced.
+None of these requires new financial experiments or access to unused periods.

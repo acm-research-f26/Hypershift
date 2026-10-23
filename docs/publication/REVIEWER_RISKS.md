@@ -24,3 +24,12 @@ Ranked by how likely each objection is and how much damage it could do.
 - "The characteristics-only books earn known style premia." Not attributed.
 - Any rank-IC Clark–West statistic presented as formally valid.
 - "Coverage is at most / at least 43–58%."
+
+## Added in revision 2
+
+| # | Likely objection | Severity | Response |
+|---|---|---|---|
+| 13 | "Back-adjustment look-ahead is already known." | High for a standalone note | We agree; it is credited in §2 and `PRIOR_ART.md`. Our contribution is the explicit future-price derivation, the measured association, and the benchmark effect |
+| 14 | "L_path predicts returns because it is built from future prices: trivially mechanical." | Medium | Yes, that is the mechanism by construction. The empirical questions are how much of the *feature* (L, dominated by L_div) carries (+0.019), and how much it moved conclusions (about 0.005). We do not present +0.094 as a discovery about markets |
+| 15 | "The regression-residual 'future-only' claim was wrong." | — | Corrected in draft 2 (L2b) |
+| 16 | "'Leak-free' was overstated (full-series normalisation, survivorship)." | — | Terminology replaced; per-experiment status in `LEAKAGE_AUDIT.md` |

@@ -64,6 +64,11 @@ def main():
     base = [r['test_ic'] for r in a['runs']['high|relative']['HH_hyper'].values()]
     add('T2', 'Planted signal: THINK test IC with coupled wd 5e-4 (D baseline)', 0.074, 3, float(np.mean(base)), len(base),
         'results/known_signal_analysis.json runs[high|relative][HH_hyper]')
+    eh = [r['test_ic'] for r in a['runs']['high|relative']['EH_hyper'].values()]
+    add('T2', 'Planted signal: EH test IC with coupled wd 5e-4 (F_learnability.md table)', 0.090, 3, float(np.mean(eh)), len(eh),
+        'results/known_signal_analysis.json runs[high|relative][EH_hyper]')
+    v, n = ks_ic('results/f_f2_c1_high_relative/EH_hyper')
+    add('T2', 'Planted signal: EH test IC with wd 0 (c1)', 0.202, 3, v, n, 'results/f_f2_c1_high_relative/EH_hyper/*/known_signal.json')
     v, n = ks_ic('results/f_f2_c1_high_relative/HH_hyper')
     add('T2', 'Planted signal: THINK test IC with wd 0 (c1)', 0.174, 3, v, n, 'results/f_f2_c1_high_relative/HH_hyper/*/known_signal.json')
     # Study FB and audit (neutral RankIC, pooled mean of 2019-2023 fold means)
@@ -136,7 +141,22 @@ def main():
     for cid, what, where in doc_only:
         L.append(f'| {cid} | {what} | {where} |')
     n_bad = sum(r[5] != 'MATCH' for r in rows)
-    L += ['', f'Summary: {len(rows) - n_bad} of {len(rows)} recomputed claims MATCH; {n_bad} not matched or not found.']
+    L += ['', f'Summary: {len(rows) - n_bad} of {len(rows)} recomputed claims MATCH; {n_bad} not matched or not found.', '',
+          '## Notes on mismatches', '',
+          '- **EH planted-signal IC under coupled decay.** `docs/phase1_5/F_learnability.md` cites +0.090. The saved '
+          'per-seed values in `results/known_signal_analysis.json` average 0.0984 (5 seeds; the first 3 seeds average '
+          '0.0999). The source of the cited value could not be located in the local files. The manuscript cites only the '
+          'THINK value (0.074, MATCH) and the qualitative EH pattern; the cited 0.090 is not used.', '',
+          '## What this verification establishes, and what it does not', '',
+          '- **Establishes:** the cited summary statistics equal the values recomputed by independent aggregation code '
+          'from the saved per-run outputs (metrics, daily series, predictions, the audit download). This checks '
+          'transcription and aggregation.',
+          '- **Does not establish:** that the models, data pipelines, feature builders or evaluators that produced those '
+          'outputs are correct; that the saved outputs are free of the limitations in `LEAKAGE_AUDIT.md`; or that the '
+          'results replicate on other data or with another implementation. Those rest on the project unit tests, its '
+          'internal audits (`docs/phase1_5/`, `docs/audit_20261022/`) and, ultimately, on independent re-implementation, '
+          'which has not been done.',
+          '- **Doc-only rows** (below) are not checked here at all, beyond their regenerating commands existing.']
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(chr(10).join(L) + chr(10), encoding="utf-8")
     sys.stdout.reconfigure(encoding='utf-8')

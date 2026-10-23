@@ -250,7 +250,7 @@ def test_lf_guard():
 def test_audit_scripts_parse():
     """Regression: a sed edit once put a comment inside a call in fbaudit_dividends.py (SyntaxError)."""
     import ast
-    for p in sorted(Path('scripts').glob('fbaudit_*.py')) + sorted(Path('scripts').glob('bcreview_*.py')):
+    for p in [q for pat in ('fbaudit_*.py', 'bcreview_*.py', 'closure_*.py', 'pub*.py') for q in sorted(Path('scripts').glob(pat))]:
         ast.parse(p.read_text(encoding='utf-8'), filename=str(p))
 
 

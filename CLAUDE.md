@@ -43,12 +43,13 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - **Survivor coverage** "43–58%" is a symbol-match count, not a bound.
   - **Prospective.** v1-LF (`fbaudit/prospective_lf.py`, hash in `PROSPECTIVE_ADDENDUM.md`, last row) is the scientific result; v1 is the reproducibility record. Score both once at ≥ 250 days.
   - **Next only with new methods or data:** `FINAL_DECISION.md` §8; publication plan in `PUBLICATION_OUTLINE.md`.
-- **Publication package (2026-10-22): draft.** `docs/publication/`:
-  - `MANUSCRIPT.md` (draft 1);
-  - `CLAIMS_REGISTER.md` (every claim, class and wording; IDs used in the manuscript);
-  - `CLAIMS_VERIFICATION.md` (18/18 headline numbers recomputed from saved outputs by `scripts/pub_verify.py`);
-  - `FIGURES_TABLES.md`, `REVIEWER_RISKS.md`, `REPRODUCIBILITY.md`, `RECOMMENDATION.md` (not ready for submission; lists what remains).
-  - Lead contribution: the vendor-adjustment leakage decomposition. No claim of stock-specific skill, and no claim of unpredictability.
+- **Publication package (2026-10-22): draft 2, READY AFTER SPECIFIED CORRECTIONS.** Start with `docs/publication/RECOMMENDATION.md` (Option B: combined paper; open items: clean-clone run, release blockers, learner-power simulation or cut, independent review).
+  - **Main files:** `MANUSCRIPT.md` (draft 2), `MANUSCRIPT_CHANGES.md`, `CLAIMS_REGISTER.md` (evidential status), `CLAIMS_VERIFICATION.md` (19 of 20 recomputed match; the EH planted-IC mismatch comes from an earlier report).
+  - **Analysis files:** `MATH_ADJUSTMENT.md`, `LEAK_MECHANISM.md`, `LEAKAGE_AUDIT.md`, `PRIOR_ART.md`, `APPENDIX.md`, `REPRODUCE.md`.
+  - **Figures:** `scripts/pubfig.py`.
+  - **Adjustment math.** Adjusted returns cancel only post-window factors, so they are total returns. Adjusted *levels* carry log F(t), which depends on later distributions and later prices.
+  - **Adjustment empirics.** Price-path component IC +0.094; full term +0.019. The TY residual (+0.031) is not "future-only".
+  - **Terminology.** Do not use "leak-free": say "validation-selected" or "adjustment-corrected". The THINK PDF and the RSR-derived `test_gt.npy` arrays must not go into a public release as-is.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 

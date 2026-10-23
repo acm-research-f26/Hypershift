@@ -31,3 +31,22 @@ Every item is built from saved outputs only; no item needs a new experiment or a
 - Every figure caption states: the data period; that the result is exploratory (inspected years); seeds; the CI method (stationary bootstrap, block 10, unless stated); and the claim ID.
 - Colour and palette follow the repository's dataviz guidance.
 - No figure shows best-test values without the shuffled-label reference.
+
+## Status (revision 2, 2026-10-22)
+
+- **Generated** from saved outputs by `scripts/pubfig.py`:
+  - Fig 1 / Tab 1 (reproduction);
+  - Fig 2 / Tab 2 (planted signal);
+  - Fig 3 / Tab 3 (adjustment term: TY, L, residual, L_div, L_path, L(end));
+  - Fig 4 / Tab 4 (matched 2×2);
+  - Fig 5 / Tab 5 (power).
+
+  Files are in `docs/publication/figures/` and `docs/publication/tables/`.
+- **Not generated** (they need deterministic re-execution, not saved outputs):
+  - protocol-matrix table;
+  - collapse-probe figure;
+  - synthetic panel;
+  - economics figure.
+
+  See `REPRODUCE.md`.
+- **Numbering change.** The planned Figs 2/5/6/7 were renumbered to match the manuscript; this file's earlier table is superseded where it conflicts.
