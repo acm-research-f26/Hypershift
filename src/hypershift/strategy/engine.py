@@ -54,6 +54,22 @@ def _ls_targets(score, tradable, sectors, held_l, held_s, top, band):
     return np.array(longs, int), np.array(shorts, int)
 
 
+def ls_weights(score, tradable, sectors, beta, held_l, held_s, top=.1, band=.3):
+    """Sector-neutral long/short (0.5 gross per leg) plus an equal-weight basket of tradable names sized to zero
+    ex-ante beta. Returns (weights [N], long idx, short idx)."""
+    w = np.zeros(len(score))
+    lo, sh = _ls_targets(score, tradable, sectors, held_l, held_s, top, band)
+    if len(lo) and len(sh):
+        w[lo] = .5 / len(lo)
+        w[sh] = -.5 / len(sh)
+        e = np.flatnonzero(tradable)
+        b = np.nan_to_num(beta)
+        bm = b[e].mean()
+        if abs(bm) > 1e-12:
+            w[e] -= (w @ b) / (len(e) * bm)
+    return w, lo, sh
+
+
 def run(scores, data, mode='LO', top=.2, band=.4, execution='open', cost_bp=10., borrow_bp=50., end=None, equal=False,
         trace=False):
     """trace=True also returns w_start [D, N] (weights at the start of each day) and r [D, N] (close-to-close
@@ -88,15 +104,8 @@ def run(scores, data, mode='LO', top=.2, band=.4, execution='open', cost_bp=10.,
                 held_l[:] = False
                 held_l[pick] = True
             else:
-                lo, sh = _ls_targets(scores[t], tradable, data.sectors, held_l, held_s, top, band)
-                if len(lo) and len(sh):
-                    target[lo] = .5 / len(lo)
-                    target[sh] = -.5 / len(sh)
-                    e = np.flatnonzero(tradable)
-                    b = np.nan_to_num(data.beta[:, t - 1])
-                    bm = b[e].mean()
-                    if abs(bm) > 1e-12:
-                        target[e] -= (target @ b) / (len(e) * bm)
+                wl, lo, sh = ls_weights(scores[t], tradable, data.sectors, data.beta[:, t - 1], held_l, held_s, top, band)
+                target[tradable] = wl[tradable]
                 held_l[:] = False
                 held_l[lo] = True
                 held_s[:] = False

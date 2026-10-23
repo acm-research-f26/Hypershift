@@ -1,0 +1,49 @@
+{
+ "spec": "docs/strategy_20261022/PAPER_TRADING.md",
+ "frozen_on": "2026-10-22",
+ "first_signal_close": "2026-11-30",
+ "first_trade_open": "2026-12-01",
+ "rebalance_every_trading_days": 5,
+ "retrain_every_trading_days": 252,
+ "model": {
+  "learner": "lightgbm",
+  "params": "featbench.models.LGBM_PARAMS",
+  "rounds": 50,
+  "seeds": [
+   7,
+   19,
+   42
+  ],
+  "features": "style (beta, log_dvol_20 unadjusted, ret_60, vol_60) + sector one-hot",
+  "target": "residual"
+ },
+ "book": {
+  "type": "sector-neutral long/short",
+  "top": 0.1,
+  "band": 0.3,
+  "leg_gross": 0.5,
+  "hedge": "EW basket, ex-ante beta 0"
+ },
+ "costs": {
+  "trade_bp_per_unit_traded": 10,
+  "borrow_bp_per_year": 50,
+  "cash_rate": 0
+ },
+ "stop_rules": {
+  "net_sharpe_12m_below": -0.5,
+  "drawdown_below": -0.1
+ },
+ "capital_rule": "survivorship-free re-test (LS net Sharpe >= 0.5, FF alpha t >= 2, 2016-2023, PIT incl. delisted) AND >= 12 months paper net Sharpe > 0",
+ "source_sha256": {
+  "src/hypershift/strategy/paper.py": "6a428502d83edf46f974699626e1cd75aa41fae74426105bbbc3b08fcaac7c2a",
+  "src/hypershift/strategy/engine.py": "87ff917d1fc8cd270c98b3445505d498ca45de8b9c16bdea64f4952157ef8dc8",
+  "src/hypershift/fbaudit/matched.py": "4ef2877123b70b9fa30de67c427f45df015b86c8697e872b19a1a8ca10e61839",
+  "src/hypershift/fbaudit/refit.py": "20b933a68695ef2f94b23127d9b3a3393671d99af14b140a2b036daafc153a57",
+  "src/hypershift/fbaudit/leakfree.py": "0ddc3aa34acc7a7bf6bac91d3cc350996a9a6b1284bd8607007d2d2855075b4c",
+  "src/hypershift/fbaudit/prospective_lf.py": "060303473aa39b4c2727ec6e878407fe65427199a7b0c791b4975f12ae996f23",
+  "scripts/paper_trade.py": "0fde15b3df41846e768d68c98a5a926f971fdc93227b9cc5886f758ca63bd595",
+  "src/hypershift/featbench/data.py": "4cf8a8cd85c0c6e17cce9c40ca4dfa160b8f3d54c40fa18771162e5db15e91a7",
+  "src/hypershift/featbench/models.py": "6df7140e7053abc528ff49ff1b12da265585ae91a4ab0e2f06d0cde60666eab4",
+  "src/hypershift/featbench/prospective.py": "1ccb4a74401853e861646e211a7a9af6d50473caecff9bb8f8fcaeea77841981"
+ }
+}

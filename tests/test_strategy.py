@@ -109,3 +109,40 @@ def test_trace_contributions_sum_to_gross_close_exec():
     contrib = (out['w_start'] * out['r']).sum(1)
     assert np.allclose(contrib, out['gross'], atol=1e-12)
     assert out['w_start'].shape == (len(out['gross']), 40)
+
+
+def test_ls_weights_beta_neutral():
+    rng = np.random.default_rng(5)
+    N = 60
+    sectors = np.repeat(np.arange(3), 20)
+    beta = rng.normal(1, .3, N)
+    tradable = np.ones(N, bool)
+    w, lo, sh = EN.ls_weights(rng.normal(size=N), tradable, sectors, beta, np.zeros(N, bool), np.zeros(N, bool), .1, .3)
+    assert abs(w @ beta) < 1e-10
+    assert len(lo) == len(sh) == 6
+
+
+def _toy_fb(N=40, T=200, seed=7):
+    from types import SimpleNamespace
+    rng = np.random.default_rng(seed)
+    return SimpleNamespace(X=rng.normal(size=(N, T, 20)).astype(np.float32), y=rng.normal(0, .02, (N, T)),
+                           y_ok=np.ones((N, T), bool), eligible=np.ones((N, T), bool), beta=rng.normal(1, .2, (N, T)),
+                           sectors=np.repeat(np.arange(4), N // 4), horizon=5)
+
+
+def test_style_predictions_guard_and_shape():
+    from hypershift.strategy import paper
+    fb = _toy_fb()
+    with pytest.raises(ValueError):
+        paper.style_scores(fb, np.arange(70, 190), asof=190, seeds=(7,))      # label of t=189 matures after 190
+    s = paper.style_scores(fb, np.arange(70, 185), asof=190, seeds=(7, 19))
+    assert s.shape == (40,) and np.isfinite(s).all()
+
+
+def test_paper_trading_manifest_hashes_unchanged():
+    import hashlib
+    import json
+    from pathlib import Path
+    m = json.load(open('docs/strategy_20261022/STRATEGY_MANIFEST.json'))
+    for f, h in m['source_sha256'].items():
+        assert hashlib.sha256(Path(f).read_bytes().replace(b'\r\n', b'\n')).hexdigest() == h, f
