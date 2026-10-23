@@ -39,11 +39,7 @@ def test_extract_tokens_without_encoding_declaration(decl):
     assert ED.extract_tokens((decl + BODY).encode()) == WANT
 
 
-@pytest.mark.xfail(strict=True, raises=ValueError, reason=(
-    'C1 (CRITICAL): extract_tokens decodes bytes to str and lxml refuses a str whose XML declaration names an '
-    'encoding. Microsoft 10-Ks 0001564590-22-026876 and 0000950170-23-035122 (DFIN inline XBRL) start with '
-    '<?xml version="1.0" encoding="ASCII"?> and raise. lazy_signals.parse records the error and the pair gets no '
-    'signal. Fix: patches/C1_xml_declaration_and_refetch.patch'))
+# C1 (CRITICAL, found independently by the overnight review) fixed by PREREG amendment A1.
 @pytest.mark.parametrize('decl', ['<?xml version="1.0" encoding="ASCII"?>', "<?xml version='1.0' encoding='utf-8'?>",
                                   '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'])
 def test_extract_tokens_with_encoding_declaration(decl):
@@ -179,11 +175,7 @@ def test_duplicate_original_for_same_period_uses_latest_as_prior():
 
 # ---------------------------------------------------------------- signal validity (PREREG "Validity" and "Comparison")
 
-@pytest.mark.xfail(strict=True, reason=(
-    'I3 (IMPORTANT, spec deviation): PREREG says the signal is the latest original filing and that a filing without '
-    'a comparison gives no signal; signals_at skips a latest filing with no finite similarity and falls back to an '
-    'older one inside the 3-month window. In the pipeline, filings without a prior or with a parse error are absent '
-    'from the rows altogether, so the fallback happens silently'))
+# I3 fixed by PREREG amendment A2: the latest filing wins; NaN similarity means no signal.
 def test_latest_filing_without_comparison_gives_no_signal():
     cal = _cal()
     F = int(np.searchsorted(cal, np.datetime64('2020-06-01')))
@@ -191,7 +183,7 @@ def test_latest_filing_without_comparison_gives_no_signal():
     a_new = int(np.searchsorted(cal, np.datetime64('2020-05-06')))
     rows = [(0, a_old, .4, '10-K'), (0, a_new, np.nan, '10-Q')]      # latest 10-Q has no comparison
     sim, form = LP.signals_at(rows, 1, F, cal)
-    assert np.isnan(sim[0]) and form[0] == ''
+    assert np.isnan(sim[0])
 
 
 def test_changer_ties_are_broken_deterministically_by_entity_order():
@@ -231,13 +223,15 @@ def test_cik_segments_do_not_splice_predecessor_or_successor_filings(tmp_path):
     assert got == [(0, .8), (0, .9)]
 
 
-def test_errored_rows_never_become_signals(tmp_path):
+def test_errored_rows_give_no_signal(tmp_path):
     cal = _cal('2019-01-01', 400)
     rows = [(100, 'a1', '10-K', '2019-02-20T16:00:00', '0.000000', "ValueError('Unicode strings ...')"),
             (100, 'a2', '10-Q', '2019-05-01T16:00:00', '.95', '')]
     p, c = _write_inputs(tmp_path, rows, {'X': {'segments': [['2019-01-01', '2020-06-30', 100]]}})
     out, recs = signal_rows(cal, ['X'], path=p, cmap_path=c)
-    assert [(e, f) for e, a, s, f in out] == [(0, '10-Q')] and len(recs) == 2
+    # A2: a failed document stays in the table with NaN similarity (no signal, and it blocks older filings)
+    assert [(e, f) for e, a, s, f in out] == [(0, '10-K'), (0, '10-Q')] and len(recs) == 2
+    assert np.isnan(out[0][2]) and out[1][2] == .95
 
 
 def test_one_accession_shared_by_two_share_classes_gives_one_row_per_entity(tmp_path):
