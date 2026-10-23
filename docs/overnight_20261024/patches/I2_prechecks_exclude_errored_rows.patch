@@ -1,0 +1,17 @@
+--- a/scripts/lazy_checks.py
++++ b/scripts/lazy_checks.py
+@@ -87,10 +87,12 @@
+           + ', '.join(f'{a} {b}/{c}/{d}' for a, b, c, d in form_share[::6]) + ' (every 6th month).', '']
+ 
+     # P4 extraction and distribution
++    errs = [r['accession'] for r in recs if r['error']]
++    recs = [r for r in recs if not r['error']]        # errored pairs carry similarity 0 and 0 tokens
+     ntok = np.array([int(r['n_tokens']) for r in recs])
+     small = [(r['accession'], r['form'], r['n_tokens']) for r in recs if int(r['n_tokens']) < 1000]
+-    errs = [r['accession'] for r in recs if r['error']]
+-    L += [f'**P4 extraction:** {len(recs)} signal filings; parse errors {len(errs)}; documents under 1,000 tokens: '
++    L += [f'**P4 extraction:** {len(recs) + len(errs)} signal filings; parse errors {len(errs)} (excluded from P4-P6); '
++          f'documents under 1,000 tokens: '
+           f'{len(small)}' + (': ' + ', '.join(f'{a} ({f}, {n})' for a, f, n in small[:15]) if small else '') + '.',
+           f'Token counts: median {int(np.median(ntok))}, 5th pct {int(np.percentile(ntok, 5))}.', '',
+           '| Year | Form | N | Mean sim | SD | p10 | p50 | p90 |', '|---|---|---|---|---|---|---|---|']
