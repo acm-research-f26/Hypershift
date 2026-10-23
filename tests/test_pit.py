@@ -131,3 +131,35 @@ def test_annual_scores_shape_and_eligibility():
     assert all(b - a == 5 for a, b in zip(days, days[1:]))
     assert all(fb.dates[d - 1].astype('datetime64[Y]') == np.datetime64('2018', 'Y') for d in days)
     assert np.isnan(sc[days[0]][3]) and np.isfinite(np.delete(sc[days[0]], 3)).all()
+
+
+def test_clean_returns_rules():
+    obs = np.ones((1, 12), bool)
+    raw_c = np.array([[100., 100, 65, 66, 66, 33, 33, 25, 25, 26, 6.5, 6.6]])
+    raw_o = np.array([[100., 100, 64, 66, 66, 33.2, 33, 25.5, 25, 25.5, 6.4, 6.6]])
+    # Alpaca factors: a spin recorded as a 1:3 reverse split before day 2 (absurd), a genuine 4:1 split before day 10
+    all_c = raw_c * np.where(np.arange(12) < 10, .25, 1.)[None] * np.where(np.arange(12) < 2, 3.06, 1.)[None]
+    r, kind = PS.clean_returns(raw_c, raw_o, all_c, obs)
+    assert kind[0, 2] == 'neutralised' and r[0, 2] == 0                         # bad adjustment -> value-neutral day
+    assert kind[0, 5] == 'neutralised' and r[0, 5] == 0                         # unflagged 1:1 distribution
+    assert kind[0, 7] == 'raw' and np.isclose(r[0, 7], 25 / 33 - 1)              # -24% gap, no flag: kept
+    assert kind[0, 10] == 'adjusted' and np.isclose(r[0, 10], all_c[0, 10] / all_c[0, 9] - 1)   # genuine split
+    assert kind[0, 11] == 'raw' and np.isclose(r[0, 11], 6.6 / 6.5 - 1)
+
+
+def test_clean_returns_keeps_crash_near_two_thirds():
+    obs = np.ones((1, 3), bool)
+    raw_c = np.array([[267.83, 267.83, 106.04]])          # SIVB 2023-03-09: gap to 176.55 is 0.659 of the close
+    raw_o = np.array([[267.83, 267.83, 176.55]])
+    r, kind = PS.clean_returns(raw_c, raw_o, raw_c.copy(), obs)
+    assert kind[0, 2] == 'raw' and np.isclose(r[0, 2], 106.04 / 267.83 - 1)
+
+
+def test_clean_returns_rejects_adjustment_without_price_event_or_overcorrection():
+    obs = np.ones((2, 3), bool)
+    raw_c = np.array([[50., 50, 50], [40., 40, 31.6]])     # IR 2020-03-02: no raw move; XRX 2017-01-03: -21% spin
+    raw_o = raw_c.copy()
+    all_c = raw_c * np.array([[1 / .882, 1 / .882, 1.], [1 / 1.518, 1 / 1.518, 1.]])
+    r, kind = PS.clean_returns(raw_c, raw_o, all_c, obs)
+    assert kind[0, 2] == 'neutralised' and r[0, 2] == 0
+    assert kind[1, 2] == 'neutralised' and r[1, 2] == 0

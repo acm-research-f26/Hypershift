@@ -95,4 +95,20 @@ Evaluation window: 2018-01-02 to 2023-12-29 (O: 2019–2023).
 
 ## Amendments
 
-(none)
+**A1 (2026-10-23, after building the panel, before any strategy or benchmark number was computed).** Check E3
+found that Alpaca's `adjustment=all` series are wrong around several spin-offs: Alpaca records them as reverse
+splits (TGNA 2017-06-01 as 1:3, WRK 2016-05-16 as 1:6, UTX 2020-04-03 as 1:2, DLPH/APTV 2017-12-05 as 1:3). That
+produced fake one-day returns of −70% to −89%; AIV's adjusted close was 0.83 against a raw 32. Changes:
+- **Returns** are rebuilt from `adjustment=raw` bars (`pit_sp500.clean_returns`, tested). Alpaca's adjustment is
+  used on a day only if the adjusted return is within ±15% and no larger in size than the raw return. That covers
+  dividends and consistent splits. Otherwise the day gets a zero return.
+- **Unrecorded share-ratio gaps** (raw overnight gap within 1% of 1/2, 1/3, 1/4, 1/5, 1/10, 2, 3, 4, 5 or 10, and
+  above 30%) are also zeroed. One hand-listed event: UA 2016-04-08, the Class C 1:1 share dividend (gap 0.527).
+- **Result:** 12 member-days zeroed, listed in `PIT_DATA.md`. Every remaining one-day move above 40% is a dated news
+  event (deal, bankruptcy, bank failure, COVID/oil shock).
+- **Prices for the engine** are a total-return index built from these returns. Opens are scaled by the same factor,
+  and a zeroed day has no gap.
+- **Arm S survivors** are the 430 entities matched by ticker to the yfinance survivor panel, with more than 90% of
+  days agreeing within 0.5%. The other 32 survivors were not 2016–2023 members under that ticker.
+- **Cost if wrong:** a true spin-off day return is set to 0 instead of its small market move, on 12 member-days in
+  eight years.

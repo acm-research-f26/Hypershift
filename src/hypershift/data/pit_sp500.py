@@ -105,3 +105,47 @@ def bars_frame(bars):
     """Alpaca v2 bar dicts -> DataFrame o,h,l,c,v indexed by session date."""
     idx = pd.DatetimeIndex([pd.Timestamp(b['t']).tz_convert('UTC').tz_localize(None).normalize() for b in bars])
     return pd.DataFrame({k: [float(b[k]) for b in bars] for k in 'ohlcv'}, index=idx).sort_index()
+
+
+FRACTIONS = (1 / 2, 1 / 3, 1 / 4, 1 / 5, 1 / 10, 2., 3., 4., 5., 10.)   # 2/3 dropped: SIVB/SEDG crashes sat there
+
+
+def clean_returns(raw_c, raw_o, all_c, observed, max_adj=.15, gap_min=.3, tol=.01):
+    """Daily total returns from RAW bars, using Alpaca's adjustment only where it is plausible.
+
+    Alpaca records some spin-offs as reverse splits (TGNA 2017, WRK 2016, UTX 2020, DLPH 2017), so its adjusted
+    series can show -80% days. Rules per stock-day (PREREG amendment A1):
+    - no adjustment change: raw close-to-close return ('raw');
+    - adjustment change whose adjusted return is within +-max_adj: Alpaca's adjusted return ('adjusted';
+      dividends, consistent splits);
+    - adjustment change of more than 5% whose adjusted return is beyond +-max_adj or larger in size than the raw
+      return (an adjustment without a matching price event, e.g. IR 2020-03-02), or no adjustment change but a raw
+      overnight gap beyond gap_min that equals a simple share ratio within tol (unrecorded split or distribution):
+      zero return ('neutralised': the event is treated as value-neutral; the day's own bars can be spliced,
+      e.g. ARNC 2020-04-01, so its open-to-close return is not trusted either).
+    Returns r [N, T] (0 where not observed on both days) and kind [N, T]."""
+    N, T = raw_c.shape
+    r = np.zeros((N, T))
+    kind = np.full((N, T), 'missing', dtype='<U11')
+    with np.errstate(divide='ignore', invalid='ignore'):
+        rr = raw_c[:, 1:] / raw_c[:, :-1]
+        F = all_c / raw_c
+        dF = F[:, 1:] / F[:, :-1]
+        ar = rr * dF - 1
+        intra = raw_c[:, 1:] / raw_o[:, 1:] - 1
+        gap = raw_o[:, 1:] / raw_c[:, :-1]
+    flagged = np.abs(dF - 1) > 1e-6
+    out = np.where(flagged, ar, rr - 1)
+    k = np.where(flagged, 'adjusted', 'raw')
+    bad = (np.abs(dF - 1) > .05) & ((np.abs(ar) > max_adj) | (np.abs(ar) > np.abs(rr - 1)))
+    near = np.zeros_like(bad)
+    for f in FRACTIONS:
+        near |= np.abs(gap / f - 1) < tol
+    unflagged = ~flagged & near & (np.abs(gap - 1) > gap_min)
+    neut = bad | unflagged
+    out = np.where(neut, 0., out)
+    k = np.where(neut, 'neutralised', k)
+    ok = observed[:, 1:] & observed[:, :-1] & np.isfinite(out)
+    r[:, 1:] = np.where(ok, out, 0.)
+    kind[:, 1:] = np.where(ok, k, 'missing')
+    return r, kind
