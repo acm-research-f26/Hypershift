@@ -70,3 +70,21 @@ def test_original_filings_and_prior_match():
                                      (3711, 2), (2080, 1), (4813, 7), (2821, 5), (3560, 3), (7011, 12), (None, 12)])
 def test_ff12(sic, ind):
     assert ED.ff12(sic) == ind
+
+
+@pytest.mark.parametrize('wiki,edgar,ok', [
+    ('3M Company', '3M CO', True), ('CSX Corp.', 'CSX CORP', True), ('AT&T Inc.', 'AT&T INC.', True),
+    ("Kohl's Corp.", 'KOHLS Corp', True), ('DuPont', 'DU PONT E I DE NEMOURS & CO', True),
+    ('Red Hat Inc.', 'RED HAT INC', True), ('BB&T Corporation', 'BB&T CORP', True),
+    ('Endo International', 'ENDONOVO THERAPEUTICS, INC.', False), ('Twenty-First Century Fox', 'FOX FACTORY HOLDING CORP', False),
+    ('Dow Inc.', 'Churchill Downs Inc', False), ('Gap Inc.', 'GAP INC', True)])
+def test_name_match(wiki, edgar, ok):
+    assert ED.name_match([wiki], [edgar]) == ok
+
+
+def test_name_match_strict_and_accents():
+    assert ED.name_match(['Estée Lauder Companies'], ['ESTEE LAUDER COMPANIES INC'])
+    assert ED.name_match(['Paramount'], ['Paramount Gold Nevada Corp.'])                 # lenient: prefix
+    assert not ED.name_match(['Paramount', 'CBS Corp.'], ['Paramount Gold Nevada Corp.'], strict=True)
+    assert ED.name_match(['Red Hat Inc.'], ['RED HAT INC'], strict=True)
+    assert ED.name_match(['Paramount Global'], ['Paramount Global'], strict=True)

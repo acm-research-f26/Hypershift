@@ -164,7 +164,11 @@ class SecClient:
             if wait > 0:
                 time.sleep(wait)
             self.last = time.time()
-            r = self.s.get(url, timeout=60)
+            try:
+                r = self.s.get(url, timeout=60)
+            except Exception:          # dropped connection / timeout: back off and retry
+                time.sleep(2 ** attempt)
+                continue
             if r.status_code == 200:
                 return r.content
             if r.status_code in (429, 500, 502, 503, 504):
@@ -196,3 +200,39 @@ class SecClient:
         url = f"https://www.sec.gov/Archives/edgar/data/{int(cik)}/{accession.replace('-', '')}/{primary}"
         body = self.get(url)
         return url, hashlib.sha256(body).hexdigest(), body
+
+
+NAME_STOP = {'inc', 'incorporated', 'corp', 'corporation', 'co', 'company', 'ltd', 'limited', 'plc', 'the', 'holdings',
+             'holding', 'group', 'class', 'new', 'de', 'nv', 'sa', 'lp', 'and', 'of', 'international', 'common', 'stock',
+             'llc', 'trust'}
+
+
+def _sig(name):
+    import unicodedata
+    name = unicodedata.normalize('NFKD', str(name)).encode('ascii', 'ignore').decode()
+    toks = re.findall(r'[a-z0-9]+', name.lower().replace("'", ''))
+    return [t for t in toks if t not in NAME_STOP]
+
+
+def _pair_match(a, b, strict=False):
+    if not a or not b:
+        return False
+    ca, cb = ''.join(a), ''.join(b)
+    if ca == cb:
+        return True
+    if strict:
+        return any(len(x) >= 2 and set(x) <= set(y) for x, y in ((a, b), (b, a)))
+    for x, y in ((a, b), (b, a)):
+        cx = ''.join(x)
+        if len(cx) >= 3 and set(x) <= set(y):
+            return True
+        if len(cx) >= 4 and any(''.join(y[:k]) == cx for k in range(1, len(y) + 1)):
+            return True
+    return False
+
+
+def name_match(names_a, names_b, strict=False):
+    """Same company name: equal canonical names, one name's significant words a subset of the other's, or one name
+    equal to a word-aligned prefix of the other (\"DuPont\" ~ \"DU PONT E I DE NEMOURS\"; \"Endo\" !~ \"ENDONOVO\").
+    strict=True (candidates found by name search): only equal names or a subset of at least two significant words."""
+    return any(_pair_match(_sig(x), _sig(y), strict) for x in names_a for y in names_b)
