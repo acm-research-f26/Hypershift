@@ -101,3 +101,33 @@ def test_failure_flags():
     obs = np.ones_like(close, bool)
     last = np.array([99, 99])
     assert PS.failure_flags(close, obs, last).tolist() == [True, False]
+
+
+def _toy_pit_fb(N=48, T=400, seed=7):
+    rng = np.random.default_rng(seed)
+    dates = np.busday_offset('2017-06-01', np.arange(T), roll='forward')
+    return SimpleNamespace(X=rng.normal(size=(N, T, 20)).astype(np.float32), y=rng.normal(0, .02, (N, T)),
+                           y_ok=np.ones((N, T), bool), eligible=np.ones((N, T), bool), beta=rng.normal(1, .2, (N, T)),
+                           sectors=np.repeat(np.arange(4), N // 4), horizon=5, dates=dates)
+
+
+def test_train_signals_only_matured_and_pit_eligible():
+    from hypershift.strategy import pit as SP
+    fb = _toy_pit_fb()
+    fb.eligible[:, 100:120] = False
+    fb.eligible[:5, 100:120] = True                   # too few eligible names on those dates
+    tr = SP.train_signals(fb, asof=300)
+    assert tr.max() + fb.horizon <= 300 and tr.min() >= 63
+    assert not np.isin(np.arange(100, 120), tr).any()
+
+
+def test_annual_scores_shape_and_eligibility():
+    from hypershift.strategy import pit as SP
+    fb = _toy_pit_fb()
+    fb.eligible[3, :] = False
+    sc = SP.annual_scores(fb, 'ridge', years=(2018,))
+    days = sorted(sc)
+    assert days[0] - 1 == int(np.searchsorted(fb.dates, np.datetime64('2018-01-01')))
+    assert all(b - a == 5 for a, b in zip(days, days[1:]))
+    assert all(fb.dates[d - 1].astype('datetime64[Y]') == np.datetime64('2018', 'Y') for d in days)
+    assert np.isnan(sc[days[0]][3]) and np.isfinite(np.delete(sc[days[0]], 3)).all()

@@ -46,7 +46,7 @@ def member_from_intervals(entity_intervals, dates):
 def group_entities(series, tol=1e-5, min_overlap=20):
     """Group keys whose close series have identical daily returns on their overlap (scale-free)."""
     keys = list(series)
-    rets = {k: series[k].pct_change().iloc[1:] for k in keys}
+    R = pd.concat({k: series[k].pct_change(fill_method=None) for k in keys}, axis=1).to_numpy().T   # [K, T]
     parent = {k: k for k in keys}
 
     def root(k):
@@ -54,12 +54,13 @@ def group_entities(series, tol=1e-5, min_overlap=20):
             k = parent[k]
         return k
     for i, a in enumerate(keys):
-        for b in keys[i + 1:]:
-            if root(a) == root(b):
-                continue
-            ra, rb = rets[a].align(rets[b], join='inner')
-            ok = ra.notna() & rb.notna()
-            if ok.sum() >= min_overlap and float((ra[ok] - rb[ok]).abs().quantile(.99)) < tol:
+        D = np.abs(R[i + 1:] - R[i])
+        ok = np.isfinite(D)
+        n = ok.sum(1)
+        bad = (np.where(ok, D, 0) >= tol).sum(1)          # days that differ
+        for j in np.flatnonzero((n >= min_overlap) & (bad <= .01 * n)):
+            b = keys[i + 1 + j]
+            if root(a) != root(b):
                 parent[root(b)] = root(a)
     groups = {}
     for k in keys:
