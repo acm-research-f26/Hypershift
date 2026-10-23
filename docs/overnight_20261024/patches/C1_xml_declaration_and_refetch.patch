@@ -1,0 +1,36 @@
+--- a/src/hypershift/data/edgar.py
++++ b/src/hypershift/data/edgar.py
+@@ -76,6 +76,7 @@
+ 
+ _HIDDEN = re.compile(r'display\s*:\s*none', re.I)
+ _TOKEN = re.compile(r'[a-z]{2,}')
++_XML_DECL = re.compile(r'^\s*<\?xml[^>]*\?>', re.S)
+ 
+ 
+ def extract_tokens(doc):
+@@ -87,7 +88,10 @@
+         doc = doc.decode('utf-8', errors='replace')
+     if '<' not in doc[:2000] and '<html' not in doc.lower()[:5000]:
+         return Counter(_TOKEN.findall(doc.lower()))
+-    root = lxml.html.fromstring(doc)
++    try:
++        root = lxml.html.fromstring(doc)
++    except ValueError:      # str with an XML encoding declaration (DFIN inline XBRL): lxml refuses it
++        root = lxml.html.fromstring(_XML_DECL.sub('', doc.lstrip('\ufeff'), count=1))
+     drop = [el for el in root.iter() if isinstance(el.tag, str) and (
+         el.tag.lower() in ('script', 'style') or el.tag.lower().endswith('header') and ':' in el.tag
+         or _HIDDEN.search(el.get('style') or ''))]
+--- a/scripts/lazy_signals.py
++++ b/scripts/lazy_signals.py
+@@ -58,7 +58,10 @@
+             plan.append((cik, by[a]))
+         for f in orig:
+             meta[f['accession']] = (cik, f, prior.get(f['accession']))
+-    todo = [(c, f) for c, f in plan if not (TOK / f"{f['accession']}.json.gz").exists()]
++    def stored_ok(acc):        # a token file written after a parse error must be fetched and parsed again
++        p = TOK / f'{acc}.json.gz'
++        return p.exists() and not load(acc)['error']
++    todo = [(c, f) for c, f in plan if not stored_ok(f['accession'])]
+     print(f'{len(ciks)} CIKs, {len(plan)} documents needed, {len(todo)} to fetch', flush=True)
+     with ProcessPoolExecutor(max_workers=4) as pool:
+         pending, done = [], 0
