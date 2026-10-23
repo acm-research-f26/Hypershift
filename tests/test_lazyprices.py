@@ -65,3 +65,12 @@ def test_run_targets_equals_equal_weight_benchmark():
     mine = PE.run_targets(tg, d, cost_bp=10)
     for k in ('gross', 'traded', 'net'):
         assert np.allclose(bench[k], mine[k])
+
+
+def test_latest_filing_without_comparison_gives_no_signal():
+    cal = _cal()
+    F = int(np.searchsorted(cal, np.datetime64('2020-05-01')))
+    rows = [(0, int(np.searchsorted(cal, np.datetime64('2020-03-02'))), .4, '10-Q'),
+            (0, int(np.searchsorted(cal, np.datetime64('2020-04-15'))), np.nan, '10-K')]   # latest: no prior-year match
+    sim, form = LP.signals_at(rows, n=1, F=F, cal=cal)
+    assert np.isnan(sim[0])

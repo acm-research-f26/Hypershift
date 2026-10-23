@@ -11,14 +11,15 @@ def formation_days(cal, start, end):
 
 
 def signals_at(rows, n, F, cal, months=3):
-    """Latest signal per entity at formation index F. rows: (entity, available_index, similarity, form).
+    """Latest filing per entity at formation index F. rows: (entity, available_index, similarity, form); similarity is
+    NaN for a filing without a prior-year comparison, which then gives no signal (PREREG), never an older filing.
     Usable if available on or before F-1 and available no earlier than the first day of the month `months` before F."""
     floor = (cal[F].astype('datetime64[M]') - months).astype('datetime64[D]')
     sim = np.full(n, np.nan)
     form = np.full(n, '', dtype='<U4')
     best = np.full(n, -1)
     for e, a, s, f in rows:
-        if a <= F - 1 and cal[a] >= floor and a > best[e] and np.isfinite(s):
+        if a <= F - 1 and cal[a] >= floor and a > best[e]:     # latest filing wins even without a comparison (NaN)
             best[e], sim[e], form[e] = a, s, f
     return sim, form
 

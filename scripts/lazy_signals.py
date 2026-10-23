@@ -87,16 +87,20 @@ def main():
         w.writerow(['cik', 'accession', 'form', 'reportDate', 'acceptance_et', 'filingDate', 'prior_accession', 'similarity',
                     'n_tokens', 'n_tokens_prior', 'inline_xbrl', 'prior_inline_xbrl', 'error'])
         for a, (cik, f, p) in sorted(meta.items(), key=lambda x: x[1][1]['acceptance_et']):
-            if f['acceptance_et'] < FIRST or p is None:
+            if f['acceptance_et'] < FIRST:
                 continue
-            if not (TOK / f'{a}.json.gz').exists() or not (TOK / f'{p}.json.gz').exists():
+            if p is None:          # no prior-year comparison: the filing still counts and gives NO signal (PREREG)
+                w.writerow([cik, a, f['form'], f['reportDate'], str(f['acceptance_et']), f['filingDate'], '', '', '', '',
+                            int(f['inline_xbrl']), '', 'no comparison'])
                 continue
-            ra, rp = load(a), load(p)
+            ok = (TOK / f'{a}.json.gz').exists() and (TOK / f'{p}.json.gz').exists()
+            ra, rp = (load(a), load(p)) if ok else ({'counts': {}, 'n_tokens': 0, 'error': 'missing'}, {'counts': {}, 'n_tokens': 0, 'error': ''})
+            err = ra['error'] or rp['error'] or ('empty document' if not ra['n_tokens'] or not rp['n_tokens'] else '')
             from collections import Counter
-            sim = ED.cosine(Counter(ra['counts']), Counter(rp['counts']))
+            sim = '' if err else f"{ED.cosine(Counter(ra['counts']), Counter(rp['counts'])):.6f}"
             pf = meta[p][1]
-            w.writerow([cik, a, f['form'], f['reportDate'], str(f['acceptance_et']), f['filingDate'], p, f'{sim:.6f}', ra['n_tokens'],
-                        rp['n_tokens'], int(f['inline_xbrl']), int(pf['inline_xbrl']), ra['error'] or rp['error']])
+            w.writerow([cik, a, f['form'], f['reportDate'], str(f['acceptance_et']), f['filingDate'], p, sim, ra['n_tokens'],
+                        rp['n_tokens'], int(f['inline_xbrl']), int(pf['inline_xbrl']), err])
     print('wrote', SIG, flush=True)
 
 

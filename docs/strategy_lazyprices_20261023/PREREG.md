@@ -113,3 +113,12 @@ These must pass before the single scoring run. A failure is fixed by amendment b
     index-page time. Clock times are still reported.
 - **Cost if wrong:** none for timing (the guard is more conservative). The extraction fix changes which documents
   have text. Every outcome is still uncomputed.
+
+**A2 (2026-10-23, before any return was computed). From the independent pre-results review
+(`../Hypershift-overnight/docs/overnight_20261024/OVERNIGHT_RISK_REVIEW.md`).**
+
+| Item | Problem | Resolution |
+|---|---|---|
+| I3: implementation deviated from this spec | When a firm's latest filing had no prior-year comparison, `signals_at` silently used an older filing still inside the window. This spec says such a filing gives **no signal** | Fixed: every 2016–2023 original filing enters the signal table, with NaN similarity when it has no comparison or its document failed, and the latest filing always wins (test `test_latest_filing_without_comparison_gives_no_signal`) |
+| I2: check hygiene | P4–P6 included failed rows | These checks are now computed on valid comparisons only, and the counts of no-comparison and failed filings are reported |
+| I1: formatting | Text between adjacent HTML blocks is joined without a separator, so a template or filing-agent change can move tokens. The measured effect is small (same-document cosine 0.9997–0.9999) | The frozen text rule is **unchanged**. A diagnostic is reported next to the verdict: the share of filing-agent switches among changer pairs compared with all pairs |
