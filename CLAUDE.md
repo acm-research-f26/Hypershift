@@ -50,6 +50,12 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - **Adjustment math.** Adjusted returns cancel only post-window factors, so they are total returns. Adjusted *levels* carry log F(t), which depends on later distributions and later prices.
   - **Adjustment empirics.** Price-path component IC +0.094; full term +0.019. The TY residual (+0.031) is not "future-only".
   - **Terminology.** Do not use "leak-free": say "validation-selected" or "adjustment-corrected". The THINK PDF and the RSR-derived `test_gt.npy` arrays must not go into a public release as-is.
+- **Strategy pivot (2026-10-22): WP-A done, no validated strategy.** `docs/strategy_20261022/STRATEGY_REPORT.md` (decisions A–G).
+  - **Code:** `src/hypershift/strategy/` (signals, buffered LO/LS engine with open execution, costs, borrow; FF attribution; paper trading).
+  - **PRICE3** (momentum + low-volatility + residual reversal, monthly LO): NOT GO (active IR −0.74, alpha −4.6%).
+  - **Style-only LightGBM sector-neutral book:** net Sharpe +1.19 on survivors, but +0.61 (alpha t 0.9) under point-in-time membership, with a survivorship signature. **Paper trading frozen** (`PAPER_TRADING.md`, first trade 2026-12-01, no capital).
+  - **Next:** survivorship-free data (Norgate Platinum about $630/yr; `NEW_DATA.md`).
+  - **Data rules:** 2024–2026 and 2004–2012 are still unused by strategies. The survivor panel is for engineering only, never for decisions.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
