@@ -349,3 +349,13 @@ def test_permute_within_bins():
             ix = bin_of == b
             assert sorted(map(tuple, P[d, ix])) == sorted(map(tuple, X[d, ix]))   # rows permuted jointly within bin
     assert not np.array_equal(P, X)
+
+
+def test_check_marks():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('pub_verify', 'scripts/pub_verify.py')
+    pv = importlib.util.module_from_spec(spec); spec.loader.exec_module(pv)
+    assert pv.check(0.089, 0.0891, 3) == 'MATCH'          # rounding in the printed digit
+    assert pv.check(0.089, 0.0896, 3) == 'MISMATCH'
+    assert pv.check(1.531, None, 3) == 'NOT FOUND'
+    assert pv.check(-0.0017, -0.00174, 4) == 'MATCH'
