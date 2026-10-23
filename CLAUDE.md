@@ -43,6 +43,12 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - **Survivor coverage** "43–58%" is a symbol-match count, not a bound.
   - **Prospective.** v1-LF (`fbaudit/prospective_lf.py`, hash in `PROSPECTIVE_ADDENDUM.md`, last row) is the scientific result; v1 is the reproducibility record. Score both once at ≥ 250 days.
   - **Next only with new methods or data:** `FINAL_DECISION.md` §8; publication plan in `PUBLICATION_OUTLINE.md`.
+- **Publication package (2026-10-22): draft.** `docs/publication/`:
+  - `MANUSCRIPT.md` (draft 1);
+  - `CLAIMS_REGISTER.md` (every claim, class and wording; IDs used in the manuscript);
+  - `CLAIMS_VERIFICATION.md` (18/18 headline numbers recomputed from saved outputs by `scripts/pub_verify.py`);
+  - `FIGURES_TABLES.md`, `REVIEWER_RISKS.md`, `REPRODUCIBILITY.md`, `RECOMMENDATION.md` (not ready for submission; lists what remains).
+  - Lead contribution: the vendor-adjustment leakage decomposition. No claim of stock-specific skill, and no claim of unpredictability.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
