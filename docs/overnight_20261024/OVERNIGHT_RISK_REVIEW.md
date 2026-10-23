@@ -21,7 +21,8 @@ Classes:
 | I3 | IMPORTANT | The signal falls back to an older filing when the latest one has no comparison (PREREG says no signal) | Yes (test) | Count the fallbacks |
 | I4 | IMPORTANT (interpretation) | Alpha t ≥ 1 is the binding gate; PREREG's operating characteristics cover IR only | Arithmetic | None; read verdicts with this in mind |
 | I5 | IMPORTANT (panel reuse) | Entity `IR` carries Gardner Denver prices while its membership and CIK are Ingersoll-Rand plc (2017-05-12 to 2020-03-02) | Yes (panel) | None for this verdict; fix before reusing the panel |
-| M1–M7 | MINOR | Current (not dated) SIC; dual-class double rows; 1.25× not a cap; leg diagnostic not industry-neutral; subsidiary name matches; silent factor-date truncation; Exhibit-13 10-Ks | Mixed | Notes only |
+| I6 | IMPORTANT (interpretation) | COVID-2020 and Regulation S-K (Nov 2020) mass rewrites cluster "changes" | General knowledge | Read the per-year active returns |
+| M1–M8 | MINOR | Current (not dated) SIC; dual-class double rows; 1.25× not a cap; leg diagnostic not industry-neutral; subsidiary name matches; silent factor-date truncation; Exhibit-13 10-Ks; coverage dips from the 3-month window | Mixed | Notes only |
 
 Checked and found correct: listed at the end.
 
@@ -164,6 +165,19 @@ Checked and found correct: listed at the end.
   - Generic check for any reuse: membership starting before the first bar, with the price level jumping against the
     CIK's company.
 
+## I6 (IMPORTANT, interpretation). Mass rewrites in the sample: COVID and Regulation S-K
+
+- **What happened.** In 2020, most 10-Qs added COVID-19 risk factors and MD&A text. The SEC's amendments to
+  Regulation S-K Items 101 (business, including the new human-capital disclosure), 103 and 105 (risk factors) took
+  effect on 9 Nov 2020, so FY2020 10-Ks filed in early 2021 rewrote those items.
+- **Why it matters.** Within-form ranking removes the market-wide level, but who lands in the bottom quintile in those
+  windows reflects exposure to COVID or to the rule change, not inattention. Industry neutrality only partly controls
+  for this.
+- **Verified:** general knowledge, not checked in the data.
+- **Diagnostic (no returns):** the P4 table of mean similarity by year and form, with a 2020–2021 dip expected.
+- **When reading the result:** the per-year active returns that `lazy_eval` reports. If 2020–2021 make up most of the
+  cumulative active return, record the verdict as fragile; that is not a new criterion.
+
 ## MINOR
 
 - **M1. Current, not dated, SIC.**
@@ -199,6 +213,16 @@ Checked and found correct: listed at the end.
     integrated 10-K looks like a large change.
   - This follows from the PREREG design (primary document only, as in Cohen et al.). Diagnostic: changers with
     |Δ log tokens| > 0.7 (P6 inputs).
+
+- **M8. Structural coverage dips from the 3-month validity rule.**
+  - A December-FYE firm whose Q3 10-Q became available in October has no valid signal at the February formation
+    (floor 1 Nov), because its 10-K arrives later in February. The same happens in May, August and November for early
+    filers.
+  - A synthetic calendar (`tools/turnover_sim.py`; assumed FYE mix 80% December) gives mean coverage 0.63 in
+    February, 0.84 in May, 0.78 in August and 0.75 in November, against about 1.00 elsewhere.
+  - These dips add about 0.1–0.3× NAV/yr of overlay turnover compared with a 4-month window.
+  - This is the frozen rule, not a bug. P3's minimum column will show it.
+  - The number of changers is smallest in February.
 
 ## Checked and found correct (no action)
 
