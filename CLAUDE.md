@@ -69,6 +69,11 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - **Data (git-ignored):** `data/edgar/` holds the dated CIK map (Wikipedia revisions, SEC-verified, 99.8% of member-months), term counts and the submissions cache.
   - **SEC needs env `SEC_USER_AGENT`** (the user authorised their email; never commit it).
   - **Next:** EAR drift overlay (`docs/overnight_20261024/NEXT_RESEARCH_SPEC.md`). The overnight review and tests come from branch `overnight-20261024` (merged).
+- **EAR (earnings-announcement-return) round (2026-10-23): STOP.** Start with `docs/strategy_ear_20261023/HANDOFF.md`.
+  - **Timing:** d0 = SEC filing date (the acceptance clock is unreliable); window d0−1..d0+1; trade at the next monthly open.
+  - **Result** (single predeclared run, PREREG frozen at 35ae347): net active IR −0.47, alpha t −1.44; no event information beyond a matched pre-event control (IR −0.08).
+  - **Decisions:** stable reporters ARCHIVED. Next: an S&P 400 feasibility probe for filing-text avoidance (`ALTERNATIVES.md`).
+  - **Code:** `strategy/ear.py`, `scripts/ear_*.py`. The `IR` entity is ineligible before 2020-03-03 (Gardner Denver splice). Dated SIC is in `data/edgar/sic_hist.json`.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
