@@ -67,3 +67,24 @@ GICS (current) for the 430 matched survivors, return-correlation proxy only for 
 | P | -0.17 [-1.03, +0.65] | -0.70 | -0.005 (-0.37) | 19.8 |
 | S | -0.34 [-1.23, +0.54] | -0.93 | -0.018 (-1.18) | 21.9 |
 | O | +0.49 [-0.27, +1.37] | +0.21 | +0.009 (+0.49) | 12.6 |
+
+## Reading notes (written after the numbers)
+
+- **Arm R (Ridge) is uninformative by construction, and P − R is not evidence.** The residual target is the 5-day
+  return after a per-date OLS on sector dummies plus the same four z-scored characteristics that Ridge receives as
+  inputs. Within each date the target is therefore nearly orthogonal to Ridge's features. Its coefficients are noise,
+  and its ranking is an arbitrary linear tilt: R² 0.39 on factors, −28% in 2020. The same construction means the style
+  book can only ever capture *nonlinear interactions* of the four characteristics. The simpler benchmarks that do mean
+  something are RR21 (zero parameters; P − RR21 −0.27) and the equal-weight universe (alpha ≈ 0).
+- **Three model variants (both sector rules: return-correlation proxy for all / GICS for survivors):**
+  - O, survivor-trained saved predictions: +0.20 / +0.49. Scores exist only for names known to survive to 2026, so
+    the universe is conditioned on the future.
+  - S, the paper-trading spec's universe and procedure: +0.34 / −0.34.
+  - P, PIT retrain including failed names: +0.11 / −0.17.
+
+  The edge does not reproduce under the paper spec's own procedure, with or without failed names.
+- **Selection.** The candidate was chosen on survivor data from 2019–2023, which overlaps this window. Selection
+  biases the estimate upward, so a low result is conservative: the STOP is firmer than its confidence interval
+  suggests.
+- **Stuck weights (E6) explain little.** The frozen engine gives +0.22 vs +0.11 (P) and +0.24 vs +0.20 (O). The drop
+  from the earlier +0.61 PIT figure comes from the universe and the retraining procedure, not the exit bug.

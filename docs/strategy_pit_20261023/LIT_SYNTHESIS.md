@@ -46,9 +46,9 @@ large caps? · already tested in HyperShift? · new idea.
 | Low beta / low idiosyncratic volatility (Frazzini & Pedersen 2014; Ang et al. 2006) | Leverage constraints; lottery demand | Prices | Monthly | — | Yes (low turnover) | AHXZ: −0.44%/month FF3 alpha without small growth | **Yes.** LOWVOL tilt no net edge; vol_60 and beta are style-book inputs | Factor tilt. STOP as alpha |
 | Profitability / value / quality (Novy-Marx 2013; Fama & French 2015) | Risk or mispricing of profitable firms | Fundamentals (XBRL / Compustat) | Annual | — | Yes | Large-cap profitability spread 26 bp/month, t = 1.88 (Novy-Marx) | **No** | Already priced as RMW/CMA and buyable via ETFs. Use as attribution, not as a research target |
 | PEAD / SUE (Bernard & Thomas 1989 *(secondary)*; Chan, Jegadeesh & Lakonishok 1996 *(abstract)*) | Delayed reaction to earnings news | Quarterly EPS, filing dates | 60 days | **Gone for large caps since 2006** (Martineau 2022; 2025 rebuttals unverified) | — | No | No (planned as H-B in `NEW_DATA.md`) | **STOP H-B.** The best available evidence says the effect is gone in exactly our universe |
-| Earnings-announcement premium (Frazzini & Lamont 2007; Savor & Wilson 2016) | Attention-driven buying or systematic announcement risk | **Announcement dates** (predictable from the prior year) | Announcement month or week | FL: 61 bp/month, "strong in large caps", 1973–2004; SW: 9.9%/yr abnormal *(abstract)* | Plausibly (monthly; entry/exit once per event) | **Claimed yes** | **No** | **F candidate #1.** New, cheap information (EDGAR 8-K Item 2.02 dates, free), large-cap claim, low turnover. Post-2004/2009 decay unknown |
-| Filing-text change, "Lazy prices" (Cohen, Malloy & Nguyen 2020) | Inattention to subtle 10-K/10-Q changes | EDGAR filing text | 3 months; no reversal to 18 months | VW 34–58 bp/month (up to 7%/yr), 1995–2014 | Plausibly (quarterly) | VW figure given | **No** | **F candidate #2.** Free data from the late 1990s gives long history. Heavier engineering (text diffing) |
-| Insider trading (Cohen, Malloy & Pomorski 2012) | Opportunistic (non-routine) insiders know more | SEC Form 4 | Monthly | VW 82 bp/month (t 2.15), 1986–2007 | Plausibly | VW headline, so not microcap-driven | **No** | **F candidate #3.** Free structured Form 4 data (XML from 2003). Signals are sparse in large caps; post-2007 persistence unverified |
+| Earnings-announcement premium (Frazzini & Lamont 2007; Savor & Wilson 2016) | Attention-driven buying or systematic announcement risk | **Announcement dates** (predictable from the prior year) | Announcement month or week | FL: 61 bp/month, "strong in large caps", 1973–2004; SW: 9.9%/yr abnormal *(abstract)* | **Doubtful**: a long-announcers book replaces most of each leg every month (~20× NAV/yr, like the failed style book). Halved for decay and net of ~2%/yr costs, a net Sharpe near 0.2 | Claimed yes | **No** | **F candidate #3.** Free dates (EDGAR 8-K Item 2.02 from Aug 2004) but high turnover; test only as a low-cost overlay on another book |
+| Filing-text change, "Lazy prices" (Cohen, Malloy & Nguyen 2020) | Inattention to subtle 10-K/10-Q changes | EDGAR filing text | 3 months; no reversal to 18 months | VW 34–58 bp/month (up to 7%/yr), 1995–2014 | Plausibly (quarterly) | VW figure given | **No** | **F candidate #1.** Quarterly signal, 3-month hold (about 4× NAV/yr), a value-weighted claim, free text from about 1996, so the longest testable history. Heavier engineering (text diffing) |
+| Insider trading (Cohen, Malloy & Pomorski 2012) | Opportunistic (non-routine) insiders know more | SEC Form 4 | Monthly | VW 82 bp/month (t 2.15), 1986–2007 | Plausibly | VW headline, so not microcap-driven | **No** | **F candidate #2.** Free structured Form 4 data (XML from 2003). Signals are sparse in large caps; post-2007 persistence unverified |
 | Short interest / lending (Asquith et al. 2005; Engelberg et al. 2018; Rapach et al. 2016) | Short-sale constraints; informed shorting | Short interest (FINRA, free, semi-monthly); lending fees (paid) | Monthly | Effect concentrated where constraints bind | — | **Weak:** VW insignificant (APR) | No | DEFER: the constraint barely binds in S&P 500 names; the useful data (fees) are paid |
 | ML on characteristics (Gu, Kelly & Xiu 2020; Avramov et al. 2023; Krauss et al. 2017) | Nonlinear combination of known signals | Characteristics | Monthly (GKX) / daily (Krauss) | Avramov: limits to arbitrage | Krauss: negative after costs 2010–15 | Contested | **Yes, exhaustively** (THINK, screen A–J, FB, style book) | STOP architecture work. Our nulls agree with Krauss and Avramov |
 | Analyst revisions (Stickel 1991 *(secondary)*; Da et al. 2014) | Sluggish incorporation of analyst news | I/B/E/S (institutional) | 3–12 months *(secondary)* | — | — | — | No | DEFER: no affordable point-in-time source for an individual |
@@ -57,11 +57,18 @@ large caps? · already tested in HyperShift? · new idea.
 
 1. **Stop spending on price-only, short-horizon, high-turnover signals in large caps.** The literature (NMV, FIM, Krauss) and
    HyperShift's five studies agree: the gross effect is small and costs take it.
-2. **New information beats new models.** All three remaining candidates add information the program never had (event
-   dates, filing text, insider filings), are low-turnover, and come with a value-weighted or large-cap claim in the
-   original paper.
-3. **Expect decay.** Plan with less than half the published magnitude (McLean–Pontiff). For a 61 bp/month announcement
-   premium that is under about 30 bp/month on the announcing subset. A long-short Sharpe near 0.3–0.5 is a realistic
+2. **New information beats new models.** All three remaining candidates add information the program never had (filing
+   text, insider filings, event dates) and come with a value-weighted or large-cap claim in the original paper. They are
+   ranked by **turnover** and **years of free point-in-time history**, the two quantities that decide whether an edge
+   can survive costs and be tested at all:
+
+   | Candidate | Est. turnover | Free information history | Rank |
+   |---|---|---|---|
+   | Lazy prices (10-K/10-Q text change) | ~4× NAV/yr (quarterly, 3-month hold) | EDGAR full text, about 1996 onward | 1 |
+   | Opportunistic insider purchases | Low (monthly, sparse signals) | Form 4 XML, 2003 onward | 2 |
+   | Earnings-announcement premium | ~20× NAV/yr | 8-K Item 2.02 dates, Aug 2004 onward | 3 |
+3. **Expect decay.** Plan with less than half the published magnitude (McLean–Pontiff). For Lazy Prices' value-weighted
+   34–58 bp/month that is roughly 15–30 bp/month. A long-short Sharpe near 0.3–0.5 is a realistic
    ceiling, and confirming it needs 30+ years of point-in-time data. **History length, not model choice, decides
    whether any of these can be tested.**
 4. **PEAD (the H-B plan in `NEW_DATA.md`) is withdrawn:** Martineau (2022) reports no large-cap drift since 2006.

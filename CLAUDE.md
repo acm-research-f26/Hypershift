@@ -56,6 +56,12 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - **Style-only LightGBM sector-neutral book:** net Sharpe +1.19 on survivors, but +0.61 (alpha t 0.9) under point-in-time membership, with a survivorship signature. **Paper trading frozen** (`PAPER_TRADING.md`, first trade 2026-12-01, no capital).
   - **Next:** survivorship-free data (Norgate Platinum about $630/yr; `NEW_DATA.md`).
   - **Data rules:** 2024–2026 and 2004–2012 are still unused by strategies. The survivor panel is for engineering only, never for decisions.
+- **PIT validation (2026-10-23): style book STOPPED.** `docs/strategy_pit_20261023/STRATEGY_PIT_REPORT.md` (deliverables A–I).
+  - **Data:** free point-in-time S&P 500 panel 2016–2023 = Alpaca SIP bars (`asof` per membership interval) + fja05680 membership, including failed and acquired names (`scripts/pit_build_panel.py` -> git-ignored `data/pit/`; validation in `PIT_DATA.md`).
+  - **Alpaca pitfalls:** spin-offs recorded as reverse splits corrupt the `all`/`split` series; returns are rebuilt from RAW bars (`data/pit_sp500.clean_returns`, PREREG A1). Multi-symbol `asof` requests can drop symbols. No terminal returns after delisting. No data before 2016.
+  - **Engine:** `strategy/pit_engine.run_pit` for any PIT test. Frozen `engine.run` keeps weights of names that leave eligibility.
+  - **Result** (predeclared, `PREREG.md`): PIT retrain net Sharpe +0.11 (GICS sectors −0.17); PIT equal-weight alpha −0.7% (survivor +3.1% was an artefact). Paper trade retired before start (its code also omits the membership filter). PEAD/H-B withdrawn (Martineau 2022).
+  - **Next:** Lazy Prices (EDGAR 10-K/10-Q text change): freeze the spec, then EDGAR ingestion, then a 2016–2023 kill screen; Norgate ($630/yr) only on the user's authorisation after the screen. Literature: `LIT_VERIFY.md` (access levels), `LIT_SYNTHESIS.md`.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
