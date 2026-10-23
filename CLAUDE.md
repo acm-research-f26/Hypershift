@@ -2,6 +2,18 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session start: READ `docs/START_HERE.md` FIRST
+
+`docs/START_HERE.md` is the authoritative handoff. It covers:
+- current state and the open user decision;
+- every closed strategy decision, with key numbers and reports;
+- the experiment discipline: feasibility gate, a frozen PREREG committed before outcomes, pre-outcome amendments only, one scoring;
+- the literature-verification standard;
+- reusable infrastructure;
+- the data traps already found.
+
+Since 2026-10-22 the project is **evidence-driven strategy research** (net-of-cost US equity edge). The THINK work below is closed history. Keep `docs/START_HERE.md` current at the end of every round: its state table, closed decisions, next step and traps.
+
 ## What this is
 
 `hypershift` is a from-scratch reimplementation of **THINK: Temporal Hypergraph Hyperbolic Network** (Agarwal, Sawhney et al., ICDM 2022). The official repo is empty. The code attempts to reproduce the paper's NYSE/NASDAQ stock-ranking results and runs ablations:
@@ -74,6 +86,7 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - **Result** (single predeclared run, PREREG frozen at 35ae347): net active IR −0.47, alpha t −1.44; no event information beyond a matched pre-event control (IR −0.08).
   - **Decisions:** stable reporters ARCHIVED. Next: an S&P 400 feasibility probe for filing-text avoidance (`ALTERNATIVES.md`).
   - **Code:** `strategy/ear.py`, `scripts/ear_*.py`. The `IR` entity is ineligible before 2020-03-03 (Gardner Denver splice). Dated SIC is in `data/edgar/sic_hist.json`.
+- **S&P 400 feasibility (2026-10-24): STOP, the free approach is not viable.** `docs/sp400_feasibility_20261024/HANDOFF.md`. Wikipedia S&P 400 snapshots lag the index: 41% of companies promoted to the S&P 500 stay listed 2–26 months too long. The change log covers 87% of independently dated removals. There are no CIKs, and ticker reuse gives wrong-company matches. The economics are marginal even with good data. Open user decision: Norgate Platinum ($630/yr) or pause.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
