@@ -1,0 +1,330 @@
+id,strategy,figure,section
+original/SPY/10,SPY,models_original_daily_01.png,Models / Original daily
+original/QQQ/10,QQQ,models_original_daily_01.png,Models / Original daily
+original/mlp/10,MLP,models_original_daily_01.png,Models / Original daily
+original/momentum126/10,126-session momentum,models_original_daily_01.png,Models / Original daily
+original/monthly_basket/10,Monthly equal-weight Nasdaq-100 basket,models_original_daily_01.png,Models / Original daily
+original/reversal5/10,Five-session reversal,models_original_daily_01.png,Models / Original daily
+original/ridge/10,Ridge,models_original_daily_01.png,Models / Original daily
+original/stockmixer/10,StockMixer,models_original_daily_01.png,Models / Original daily
+original/think/10,THINK,models_original_daily_01.png,Models / Original daily
+original/think_huber/10,THINK + Huber,models_original_daily_02.png,Models / Original daily
+original/think_mix/10,THINK + mixer (original five seeds),models_original_daily_02.png,Models / Original daily
+original/think_mix_huber/10,THINK + mixer + Huber,models_original_daily_02.png,Models / Original daily
+original/think_mix_pseudohuber/10,THINK + mixer + pseudo-Huber,models_original_daily_02.png,Models / Original daily
+alpaca/daily_control/mlp/10,MLP / Daily padded,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/daily_control/ridge/10,Ridge / Daily padded,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/daily_control/stockmixer/10,StockMixer / Daily padded,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/daily_control/think/10,THINK / Daily padded,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/daily_control/think_huber/10,THINK + Huber / Daily padded,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/daily_control/think_mix/10,THINK + mixer / Daily padded,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/daily_control/think_mix_huber/10,THINK + mixer + Huber / Daily padded,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/daily_control/think_mix_pseudohuber/10,THINK + mixer + pseudo-Huber / Daily padded,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/intraday_augmented/mlp/10,MLP / Alpaca intraday,models_alpaca_matched_features_01.png,Models / Alpaca matched features
+alpaca/intraday_augmented/ridge/10,Ridge / Alpaca intraday,models_alpaca_matched_features_02.png,Models / Alpaca matched features
+alpaca/intraday_augmented/stockmixer/10,StockMixer / Alpaca intraday,models_alpaca_matched_features_02.png,Models / Alpaca matched features
+alpaca/intraday_augmented/think/10,THINK / Alpaca intraday,models_alpaca_matched_features_02.png,Models / Alpaca matched features
+alpaca/intraday_augmented/think_huber/10,THINK + Huber / Alpaca intraday,models_alpaca_matched_features_02.png,Models / Alpaca matched features
+alpaca/intraday_augmented/think_mix/10,THINK + mixer / Alpaca intraday,models_alpaca_matched_features_02.png,Models / Alpaca matched features
+alpaca/intraday_augmented/think_mix_huber/10,THINK + mixer + Huber / Alpaca intraday,models_alpaca_matched_features_02.png,Models / Alpaca matched features
+alpaca/intraday_augmented/think_mix_pseudohuber/10,THINK + mixer + pseudo-Huber / Alpaca intraday,models_alpaca_matched_features_02.png,Models / Alpaca matched features
+ranking/daily_control/raw_mse,Raw MSE / RankIC stopping / daily padded,models_ranking_objectives_01.png,Models / Ranking objectives
+ranking/daily_control/residual_mse,QQQ-residual MSE / daily padded,models_ranking_objectives_01.png,Models / Ranking objectives
+ranking/daily_control/residual_rank,QQQ-residual + ranking / daily padded,models_ranking_objectives_01.png,Models / Ranking objectives
+ranking/daily_control/ridge,QQQ-residual ridge / daily padded,models_ranking_objectives_01.png,Models / Ranking objectives
+ranking/intraday_augmented/raw_mse,Raw MSE / RankIC stopping / Alpaca intraday,models_ranking_objectives_01.png,Models / Ranking objectives
+ranking/intraday_augmented/residual_mse,QQQ-residual MSE / Alpaca intraday,models_ranking_objectives_01.png,Models / Ranking objectives
+ranking/intraday_augmented/residual_rank,QQQ-residual + ranking / Alpaca intraday,models_ranking_objectives_01.png,Models / Ranking objectives
+ranking/intraday_augmented/ridge,QQQ-residual ridge / Alpaca intraday,models_ranking_objectives_01.png,Models / Ranking objectives
+ndx_broad_20261020/daily__raw__boosted_trees/full,"Boosted trees (daily, raw)",models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/daily__raw__ridge/full,"Ridge (daily, raw)",models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/daily__raw__shared_network/full,"Shared neural net (daily, raw)",models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/daily__residual__boosted_trees/full,"Boosted trees (daily, residual)",models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/daily__residual__ridge/full,"Ridge (daily, residual)",models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/daily__residual__shared_network/full,"Shared neural net (daily, residual)",models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/equal_all/full,Equal blend of all 12 models,models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/intraday__raw__boosted_trees/full,"Boosted trees (intraday, raw)",models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/intraday__raw__ridge/full,"Ridge (intraday, raw)",models_broad_features_01.png,Models / Broad features
+ndx_broad_20261020/intraday__raw__shared_network/full,"Shared neural net (intraday, raw)",models_broad_features_02.png,Models / Broad features
+ndx_broad_20261020/intraday__residual__boosted_trees/full,"Boosted trees (intraday, residual)",models_broad_features_02.png,Models / Broad features
+ndx_broad_20261020/intraday__residual__ridge/full,"Ridge (intraday, residual)",models_broad_features_02.png,Models / Broad features
+ndx_broad_20261020/intraday__residual__shared_network/full,"Shared neural net (intraday, residual)",models_broad_features_02.png,Models / Broad features
+ndx_broad_20261020/validation_best/full,Validation best single model,models_broad_features_02.png,Models / Broad features
+ndx_broad_20261020/validation_top3/full,Validation top-three blend,models_broad_features_02.png,Models / Broad features
+ndx_corrections_20261020/intraday_window__net_utility/full,Intraday-window correction / utility (gated),models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/intraday_window__top_rank/full,Intraday-window correction / ranking (gated),models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/paired_core/full,Paired core (H1 validation stopping),models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/primary/full,Validation-gated correction,models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/rich_features__net_utility/full,Rich-feature correction / utility (gated),models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/rich_features__top_rank/full,Rich-feature correction / ranking (gated),models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/ungated__intraday_window__net_utility/full,Intraday-window correction / utility (ungated),models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/ungated__intraday_window__top_rank/full,Intraday-window correction / ranking (ungated),models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/ungated__rich_features__net_utility/full,Rich-feature correction / utility (ungated),models_frozen_core_corrections_01.png,Models / Frozen-core corrections
+ndx_corrections_20261020/ungated__rich_features__top_rank/full,Rich-feature correction / ranking (ungated),models_frozen_core_corrections_02.png,Models / Frozen-core corrections
+seeds/all_twenty_five/full,THINK + mixer (25-seed ensemble),models_seed_expansion_01.png,Models / Seed expansion
+seeds/new_twenty/full,THINK + mixer (20 new seeds),models_seed_expansion_01.png,Models / Seed expansion
+extended/daily/ten_seed,THINK + mixer / Daily / ten seeds,models_extended_hours_information_01.png,Models / Extended-hours information
+extended/daily/new_five,THINK + mixer / Daily / new five seeds,models_extended_hours_information_01.png,Models / Extended-hours information
+extended/after_hours/ten_seed,THINK + mixer / Daily + AH / ten seeds,models_extended_hours_information_01.png,Models / Extended-hours information
+extended/after_hours/original_five,THINK + mixer / Daily + AH / original five seeds,models_extended_hours_information_01.png,Models / Extended-hours information
+extended/after_hours/new_five,THINK + mixer / Daily + AH / new five seeds,models_extended_hours_information_01.png,Models / Extended-hours information
+extended/after_hours_premarket/ten_seed,THINK + mixer / Daily + AH + PM / ten seeds,models_extended_hours_information_01.png,Models / Extended-hours information
+extended/after_hours_premarket/original_five,THINK + mixer / Daily + AH + PM / original five seeds,models_extended_hours_information_01.png,Models / Extended-hours information
+extended/after_hours_premarket/new_five,THINK + mixer / Daily + AH + PM / new five seeds,models_extended_hours_information_01.png,Models / Extended-hours information
+ndx_broad_20261020/QQQ_timing/trend_half,QQQ with fixed trend exposure,defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/daily__raw__boosted_trees/trend_half,"Boosted trees (daily, raw)",defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/daily__raw__ridge/trend_half,"Ridge (daily, raw)",defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/daily__raw__shared_network/trend_half,"Shared neural net (daily, raw)",defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/daily__residual__boosted_trees/trend_half,"Boosted trees (daily, residual)",defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/daily__residual__ridge/trend_half,"Ridge (daily, residual)",defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/daily__residual__shared_network/trend_half,"Shared neural net (daily, residual)",defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/equal_all/trend_half,Equal blend of all 12 models,defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/intraday__raw__boosted_trees/trend_half,"Boosted trees (intraday, raw)",defensive_broad_features_01.png,Defensive / Broad features
+ndx_broad_20261020/intraday__raw__ridge/trend_half,"Ridge (intraday, raw)",defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/intraday__raw__shared_network/trend_half,"Shared neural net (intraday, raw)",defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/intraday__residual__boosted_trees/trend_half,"Boosted trees (intraday, residual)",defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/intraday__residual__ridge/trend_half,"Ridge (intraday, residual)",defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/intraday__residual__shared_network/trend_half,"Shared neural net (intraday, residual)",defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/reference_original_think_mix/trend_half,Original THINK + mixer,defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/reference_rank_daily/trend_half,Daily raw MSE / RankIC stopping,defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/reference_rank_intraday/trend_half,Intraday raw MSE / RankIC stopping,defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/validation_best/trend_half,Validation best single model,defensive_broad_features_02.png,Defensive / Broad features
+ndx_broad_20261020/validation_top3/trend_half,Validation top-three blend,defensive_broad_features_03.png,Defensive / Broad features
+ndx_corrections_20261020/intraday_window__net_utility/trend_half,Intraday-window correction / utility (gated),defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/intraday_window__top_rank/trend_half,Intraday-window correction / ranking (gated),defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/paired_core/trend_half,Paired core (H1 validation stopping),defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/primary/trend_half,Validation-gated correction,defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/rich_features__net_utility/trend_half,Rich-feature correction / utility (gated),defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/rich_features__top_rank/trend_half,Rich-feature correction / ranking (gated),defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/ungated__intraday_window__net_utility/trend_half,Intraday-window correction / utility (ungated),defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/ungated__intraday_window__top_rank/trend_half,Intraday-window correction / ranking (ungated),defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/ungated__rich_features__net_utility/trend_half,Rich-feature correction / utility (ungated),defensive_frozen_core_corrections_01.png,Defensive / Frozen-core corrections
+ndx_corrections_20261020/ungated__rich_features__top_rank/trend_half,Rich-feature correction / ranking (ungated),defensive_frozen_core_corrections_02.png,Defensive / Frozen-core corrections
+seeds/all_twenty_five/trend_half,THINK + mixer (25-seed ensemble),defensive_seed_expansion_01.png,Defensive / Seed expansion
+seeds/new_twenty/trend_half,THINK + mixer (20 new seeds),defensive_seed_expansion_01.png,Defensive / Seed expansion
+original/mlp/20,MLP / top 20,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/mlp/5,MLP / top 5,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/momentum126/20,126-session momentum / top 20,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/momentum126/5,126-session momentum / top 5,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/reversal5/20,Five-session reversal / top 20,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/reversal5/5,Five-session reversal / top 5,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/ridge/20,Ridge / top 20,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/ridge/5,Ridge / top 5,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/stockmixer/20,StockMixer / top 20,portfolio_variants_original_daily_01.png,Portfolio variants / Original daily
+original/stockmixer/5,StockMixer / top 5,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think/20,THINK / top 20,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think/5,THINK / top 5,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think_huber/20,THINK + Huber / top 20,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think_huber/5,THINK + Huber / top 5,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think_mix/20,THINK + mixer (original five seeds) / top 20,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think_mix/5,THINK + mixer (original five seeds) / top 5,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think_mix_huber/20,THINK + mixer + Huber / top 20,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think_mix_huber/5,THINK + mixer + Huber / top 5,portfolio_variants_original_daily_02.png,Portfolio variants / Original daily
+original/think_mix_pseudohuber/20,THINK + mixer + pseudo-Huber / top 20,portfolio_variants_original_daily_03.png,Portfolio variants / Original daily
+original/think_mix_pseudohuber/5,THINK + mixer + pseudo-Huber / top 5,portfolio_variants_original_daily_03.png,Portfolio variants / Original daily
+alpaca/daily_control/mlp/20,MLP / Daily padded / top 20,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/mlp/5,MLP / Daily padded / top 5,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/ridge/20,Ridge / Daily padded / top 20,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/ridge/5,Ridge / Daily padded / top 5,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/stockmixer/20,StockMixer / Daily padded / top 20,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/stockmixer/5,StockMixer / Daily padded / top 5,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think/20,THINK / Daily padded / top 20,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think/5,THINK / Daily padded / top 5,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think_huber/20,THINK + Huber / Daily padded / top 20,portfolio_variants_alpaca_matched_features_01.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think_huber/5,THINK + Huber / Daily padded / top 5,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think_mix/20,THINK + mixer / Daily padded / top 20,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think_mix/5,THINK + mixer / Daily padded / top 5,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think_mix_huber/20,THINK + mixer + Huber / Daily padded / top 20,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think_mix_huber/5,THINK + mixer + Huber / Daily padded / top 5,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think_mix_pseudohuber/20,THINK + mixer + pseudo-Huber / Daily padded / top 20,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/daily_control/think_mix_pseudohuber/5,THINK + mixer + pseudo-Huber / Daily padded / top 5,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/mlp/20,MLP / Alpaca intraday / top 20,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/mlp/5,MLP / Alpaca intraday / top 5,portfolio_variants_alpaca_matched_features_02.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/ridge/20,Ridge / Alpaca intraday / top 20,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/ridge/5,Ridge / Alpaca intraday / top 5,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/stockmixer/20,StockMixer / Alpaca intraday / top 20,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/stockmixer/5,StockMixer / Alpaca intraday / top 5,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think/20,THINK / Alpaca intraday / top 20,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think/5,THINK / Alpaca intraday / top 5,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think_huber/20,THINK + Huber / Alpaca intraday / top 20,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think_huber/5,THINK + Huber / Alpaca intraday / top 5,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think_mix/20,THINK + mixer / Alpaca intraday / top 20,portfolio_variants_alpaca_matched_features_03.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think_mix/5,THINK + mixer / Alpaca intraday / top 5,portfolio_variants_alpaca_matched_features_04.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think_mix_huber/20,THINK + mixer + Huber / Alpaca intraday / top 20,portfolio_variants_alpaca_matched_features_04.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think_mix_huber/5,THINK + mixer + Huber / Alpaca intraday / top 5,portfolio_variants_alpaca_matched_features_04.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think_mix_pseudohuber/20,THINK + mixer + pseudo-Huber / Alpaca intraday / top 20,portfolio_variants_alpaca_matched_features_04.png,Portfolio variants / Alpaca matched features
+alpaca/intraday_augmented/think_mix_pseudohuber/5,THINK + mixer + pseudo-Huber / Alpaca intraday / top 5,portfolio_variants_alpaca_matched_features_04.png,Portfolio variants / Alpaca matched features
+signed/mlp/10/long50_cash50,MLP / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/10/long50_short50,MLP / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/10/long75_cash25,MLP / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/10/long75_short25,MLP / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/20/long50_cash50,MLP / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/20/long50_short50,MLP / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/20/long75_cash25,MLP / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/20/long75_short25,MLP / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/5/long50_cash50,MLP / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_01.png,Portfolio variants / Original allocations
+signed/mlp/5/long50_short50,MLP / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/mlp/5/long75_cash25,MLP / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/mlp/5/long75_short25,MLP / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/momentum126/10/long50_cash50,126-session momentum / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/momentum126/10/long50_short50,126-session momentum / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/momentum126/10/long75_cash25,126-session momentum / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/momentum126/10/long75_short25,126-session momentum / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/momentum126/20/long50_cash50,126-session momentum / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/momentum126/20/long50_short50,126-session momentum / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_02.png,Portfolio variants / Original allocations
+signed/momentum126/20/long75_cash25,126-session momentum / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/momentum126/20/long75_short25,126-session momentum / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/momentum126/5/long50_cash50,126-session momentum / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/momentum126/5/long50_short50,126-session momentum / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/momentum126/5/long75_cash25,126-session momentum / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/momentum126/5/long75_short25,126-session momentum / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/reversal5/10/long50_cash50,Five-session reversal / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/reversal5/10/long50_short50,Five-session reversal / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/reversal5/10/long75_cash25,Five-session reversal / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_03.png,Portfolio variants / Original allocations
+signed/reversal5/10/long75_short25,Five-session reversal / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/reversal5/20/long50_cash50,Five-session reversal / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/reversal5/20/long50_short50,Five-session reversal / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/reversal5/20/long75_cash25,Five-session reversal / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/reversal5/20/long75_short25,Five-session reversal / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/reversal5/5/long50_cash50,Five-session reversal / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/reversal5/5/long50_short50,Five-session reversal / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/reversal5/5/long75_cash25,Five-session reversal / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/reversal5/5/long75_short25,Five-session reversal / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_04.png,Portfolio variants / Original allocations
+signed/ridge/10/long50_cash50,Ridge / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/10/long50_short50,Ridge / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/10/long75_cash25,Ridge / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/10/long75_short25,Ridge / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/20/long50_cash50,Ridge / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/20/long50_short50,Ridge / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/20/long75_cash25,Ridge / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/20/long75_short25,Ridge / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/5/long50_cash50,Ridge / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_05.png,Portfolio variants / Original allocations
+signed/ridge/5/long50_short50,Ridge / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/ridge/5/long75_cash25,Ridge / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/ridge/5/long75_short25,Ridge / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/stockmixer/10/long50_cash50,StockMixer / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/stockmixer/10/long50_short50,StockMixer / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/stockmixer/10/long75_cash25,StockMixer / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/stockmixer/10/long75_short25,StockMixer / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/stockmixer/20/long50_cash50,StockMixer / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/stockmixer/20/long50_short50,StockMixer / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_06.png,Portfolio variants / Original allocations
+signed/stockmixer/20/long75_cash25,StockMixer / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/stockmixer/20/long75_short25,StockMixer / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/stockmixer/5/long50_cash50,StockMixer / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/stockmixer/5/long50_short50,StockMixer / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/stockmixer/5/long75_cash25,StockMixer / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/stockmixer/5/long75_short25,StockMixer / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/think/10/long50_cash50,THINK / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/think/10/long50_short50,THINK / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/think/10/long75_cash25,THINK / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_07.png,Portfolio variants / Original allocations
+signed/think/10/long75_short25,THINK / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think/20/long50_cash50,THINK / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think/20/long50_short50,THINK / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think/20/long75_cash25,THINK / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think/20/long75_short25,THINK / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think/5/long50_cash50,THINK / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think/5/long50_short50,THINK / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think/5/long75_cash25,THINK / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think/5/long75_short25,THINK / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_08.png,Portfolio variants / Original allocations
+signed/think_huber/10/long50_cash50,THINK + Huber / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/10/long50_short50,THINK + Huber / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/10/long75_cash25,THINK + Huber / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/10/long75_short25,THINK + Huber / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/20/long50_cash50,THINK + Huber / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/20/long50_short50,THINK + Huber / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/20/long75_cash25,THINK + Huber / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/20/long75_short25,THINK + Huber / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/5/long50_cash50,THINK + Huber / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_09.png,Portfolio variants / Original allocations
+signed/think_huber/5/long50_short50,THINK + Huber / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_huber/5/long75_cash25,THINK + Huber / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_huber/5/long75_short25,THINK + Huber / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_mix/10/long50_cash50,THINK + mixer (original five seeds) / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_mix/10/long50_short50,THINK + mixer (original five seeds) / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_mix/10/long75_cash25,THINK + mixer (original five seeds) / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_mix/10/long75_short25,THINK + mixer (original five seeds) / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_mix/20/long50_cash50,THINK + mixer (original five seeds) / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_mix/20/long50_short50,THINK + mixer (original five seeds) / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_10.png,Portfolio variants / Original allocations
+signed/think_mix/20/long75_cash25,THINK + mixer (original five seeds) / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix/20/long75_short25,THINK + mixer (original five seeds) / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix/5/long50_cash50,THINK + mixer (original five seeds) / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix/5/long50_short50,THINK + mixer (original five seeds) / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix/5/long75_cash25,THINK + mixer (original five seeds) / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix/5/long75_short25,THINK + mixer (original five seeds) / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix_huber/10/long50_cash50,THINK + mixer + Huber / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix_huber/10/long50_short50,THINK + mixer + Huber / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix_huber/10/long75_cash25,THINK + mixer + Huber / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_11.png,Portfolio variants / Original allocations
+signed/think_mix_huber/10/long75_short25,THINK + mixer + Huber / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_huber/20/long50_cash50,THINK + mixer + Huber / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_huber/20/long50_short50,THINK + mixer + Huber / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_huber/20/long75_cash25,THINK + mixer + Huber / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_huber/20/long75_short25,THINK + mixer + Huber / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_huber/5/long50_cash50,THINK + mixer + Huber / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_huber/5/long50_short50,THINK + mixer + Huber / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_huber/5/long75_cash25,THINK + mixer + Huber / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_huber/5/long75_short25,THINK + mixer + Huber / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_12.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/10/long50_cash50,THINK + mixer + pseudo-Huber / top 10 / 50% long + 50% cash,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/10/long50_short50,THINK + mixer + pseudo-Huber / top 10 / 50% long / 50% short,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/10/long75_cash25,THINK + mixer + pseudo-Huber / top 10 / 75% long + 25% cash,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/10/long75_short25,THINK + mixer + pseudo-Huber / top 10 / 75% long / 25% short,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/20/long50_cash50,THINK + mixer + pseudo-Huber / top 20 / 50% long + 50% cash,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/20/long50_short50,THINK + mixer + pseudo-Huber / top 20 / 50% long / 50% short,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/20/long75_cash25,THINK + mixer + pseudo-Huber / top 20 / 75% long + 25% cash,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/20/long75_short25,THINK + mixer + pseudo-Huber / top 20 / 75% long / 25% short,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/5/long50_cash50,THINK + mixer + pseudo-Huber / top 5 / 50% long + 50% cash,portfolio_variants_original_allocations_13.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/5/long50_short50,THINK + mixer + pseudo-Huber / top 5 / 50% long / 50% short,portfolio_variants_original_allocations_14.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/5/long75_cash25,THINK + mixer + pseudo-Huber / top 5 / 75% long + 25% cash,portfolio_variants_original_allocations_14.png,Portfolio variants / Original allocations
+signed/think_mix_pseudohuber/5/long75_short25,THINK + mixer + pseudo-Huber / top 5 / 75% long / 25% short,portfolio_variants_original_allocations_14.png,Portfolio variants / Original allocations
+extended_detail/daily/individual/7/1,THINK + mixer / Daily / seed 7,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/19/1,THINK + mixer / Daily / seed 19,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/42/1,THINK + mixer / Daily / seed 42,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/61/1,THINK + mixer / Daily / seed 61,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/97/1,THINK + mixer / Daily / seed 97,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/1828801906/1,THINK + mixer / Daily / seed 1828801906,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/1868046758/1,THINK + mixer / Daily / seed 1868046758,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/239154507/1,THINK + mixer / Daily / seed 239154507,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/287727767/1,THINK + mixer / Daily / seed 287727767,individual_seed_diagnostic_01.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/individual/981756941/1,THINK + mixer / Daily / seed 981756941,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/7/1,THINK + mixer / Daily + AH / seed 7,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/19/1,THINK + mixer / Daily + AH / seed 19,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/42/1,THINK + mixer / Daily + AH / seed 42,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/61/1,THINK + mixer / Daily + AH / seed 61,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/97/1,THINK + mixer / Daily + AH / seed 97,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/1828801906/1,THINK + mixer / Daily + AH / seed 1828801906,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/1868046758/1,THINK + mixer / Daily + AH / seed 1868046758,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/239154507/1,THINK + mixer / Daily + AH / seed 239154507,individual_seed_diagnostic_02.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/287727767/1,THINK + mixer / Daily + AH / seed 287727767,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours/individual/981756941/1,THINK + mixer / Daily + AH / seed 981756941,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/7/1,THINK + mixer / Daily + AH + PM / seed 7,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/19/1,THINK + mixer / Daily + AH + PM / seed 19,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/42/1,THINK + mixer / Daily + AH + PM / seed 42,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/61/1,THINK + mixer / Daily + AH + PM / seed 61,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/97/1,THINK + mixer / Daily + AH + PM / seed 97,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/1828801906/1,THINK + mixer / Daily + AH + PM / seed 1828801906,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/1868046758/1,THINK + mixer / Daily + AH + PM / seed 1868046758,individual_seed_diagnostic_03.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/239154507/1,THINK + mixer / Daily + AH + PM / seed 239154507,individual_seed_diagnostic_04.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/287727767/1,THINK + mixer / Daily + AH + PM / seed 287727767,individual_seed_diagnostic_04.png,Extended-hours / Individual-seed diagnostic
+extended_detail/after_hours_premarket/individual/981756941/1,THINK + mixer / Daily + AH + PM / seed 981756941,individual_seed_diagnostic_04.png,Extended-hours / Individual-seed diagnostic
+extended_detail/daily/ten_seed/ensemble/2,THINK + mixer / Daily / ten seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/daily/ten_seed/ensemble/4,THINK + mixer / Daily / ten seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/daily/original_five/ensemble/2,THINK + mixer / Daily / original five seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/daily/original_five/ensemble/4,THINK + mixer / Daily / original five seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/daily/new_five/ensemble/2,THINK + mixer / Daily / new five seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/daily/new_five/ensemble/4,THINK + mixer / Daily / new five seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours/ten_seed/ensemble/2,THINK + mixer / Daily + AH / ten seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours/ten_seed/ensemble/4,THINK + mixer / Daily + AH / ten seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours/original_five/ensemble/2,THINK + mixer / Daily + AH / original five seeds,cost_sensitivity_01.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours/original_five/ensemble/4,THINK + mixer / Daily + AH / original five seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours/new_five/ensemble/2,THINK + mixer / Daily + AH / new five seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours/new_five/ensemble/4,THINK + mixer / Daily + AH / new five seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours_premarket/ten_seed/ensemble/2,THINK + mixer / Daily + AH + PM / ten seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours_premarket/ten_seed/ensemble/4,THINK + mixer / Daily + AH + PM / ten seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours_premarket/original_five/ensemble/2,THINK + mixer / Daily + AH + PM / original five seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours_premarket/original_five/ensemble/4,THINK + mixer / Daily + AH + PM / original five seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours_premarket/new_five/ensemble/2,THINK + mixer / Daily + AH + PM / new five seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/after_hours_premarket/new_five/ensemble/4,THINK + mixer / Daily + AH + PM / new five seeds,cost_sensitivity_02.png,Extended-hours / Cost sensitivity
+extended_detail/SPY/ten_seed/ensemble/2,SPY,cost_sensitivity_03.png,Extended-hours / Cost sensitivity
+extended_detail/QQQ/ten_seed/ensemble/2,QQQ,cost_sensitivity_03.png,Extended-hours / Cost sensitivity
+extended_detail/monthly_basket/ten_seed/ensemble/2,Monthly Nasdaq-100 basket,cost_sensitivity_03.png,Extended-hours / Cost sensitivity
+extended_detail/SPY/ten_seed/ensemble/4,SPY,cost_sensitivity_03.png,Extended-hours / Cost sensitivity
+extended_detail/QQQ/ten_seed/ensemble/4,QQQ,cost_sensitivity_03.png,Extended-hours / Cost sensitivity
+extended_detail/monthly_basket/ten_seed/ensemble/4,Monthly Nasdaq-100 basket,cost_sensitivity_03.png,Extended-hours / Cost sensitivity

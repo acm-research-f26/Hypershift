@@ -1,5 +1,7 @@
 # Research charts
 
+- [Master charts, current historical leaders and updated comparison workbook](../charts.md)
+- [After-hours and premarket information experiment (October 24)](ndx_extended_hours_20261024/REPORT.md)
 - [Latest NASDAQ-100 research status and confidence limits](NASDAQ_RESEARCH_STATUS_20261020.md)
 - [Alpaca matched daily/intraday comparison](nasdaq_alpaca_20261019/REPORT.md)
 - [Ranking and benchmark-residual objectives](ndx_ranking_20261020/REPORT.md)

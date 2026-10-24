@@ -1,23 +1,27 @@
 {
   "status": "passed",
-  "strategies_independently_recomputed": 267,
-  "daily_observations": 1003,
-  "full_materialized_sharpe_bootstraps": [
-    "original/SPY/10",
-    "original/QQQ/10",
-    "original/think_mix/10"
-  ],
+  "updated_local_date": "2026-10-24",
+  "main_strategies": 275,
+  "extended_hours_accounts": 66,
+  "workbook_comparison_rows_verified": 345,
+  "prior_main_rows_preserved": 271,
+  "unchanged_allocation_tabs": 2,
+  "source_hashes_verified": 37,
+  "independent_new_sharpe_bootstraps": 8,
   "bootstrap_replicates": 10000,
   "block_sessions": 20,
-  "workbook_sheets": 4,
-  "source_hashes_verified": 29,
-  "workbook_comparison_rows_verified": 271,
-  "audit_source_sha256": "955a07b7ed0ddf043d3ff3dc333ab18a72a2755d2ff37c4561af5cfeb5a35ba8",
-  "workbook_builder_sha256": "95b5e8f4358f56184eeed82799b4a8479d4efa33614a960e699f5bc87b94f9a5",
+  "scalar_financial_accounts_checked": 333,
+  "chart_panels": 329,
+  "chart_figures": 46,
+  "prior_cell_formats_preserved": true,
+  "allocation_tables_preserved": true,
+  "analysis_source_sha256": "4c8fcbf8bf84a8925a0c464269ae5183bc9c02dac1583aa39a5201d8f0ad5041",
+  "workbook_builder_sha256": "90d9c4ac728b4a86d0c52df8c7744f12dd9d92418ed4d0f39c33030327e8920c",
   "output_sha256": {
-    "NASDAQ100_strategy_comparison.xlsx": "7beb5582769cf674534aa57f0eb8e25ae9b70c8516010679e09d5e6eabb8b50c",
-    "all_strategies.csv": "f37b8f5e65281bdfab34279892feecfc5f6913292ae68f838452c961270199c1",
-    "COMPARISON.md": "decabdf158544024336bc3f398e655de0f1626ccc49403318ce0543586d2b500",
-    "sharpe_block_sensitivity.csv": "33d7dd3ab6378fdc4e27e02a0fe480d82e5c096bf7de1725b7913ffec962fd1d"
+    "NASDAQ100_strategy_comparison.xlsx": "c073d606a256cd58465a5fd23a6e087e6ec76c0f84e7798a58677604788baed5",
+    "all_strategies.csv": "56faa7c602e64299585a69bb7f5266daaf6520c025bddfe949c837d6a974f7ca",
+    "extended_hours_all_accounts.csv": "798e466a1d7e0c8318d69a09727df509d5467d9c25584a716438db53ee75df35",
+    "COMPARISON.md": "d59648a1242eca3ea53133cb5c4603e4e6ca3cbd3e179462b907ba877ddb8a96",
+    "charts.md": "a5aabdf98e62881e22c749ab8a0a2c4f82ed512011becbfa7e0a9148b7d475d2"
   }
 }

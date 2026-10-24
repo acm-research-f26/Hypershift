@@ -16,8 +16,10 @@
 *.mjs -text
 /config/*20261019*.json -text
 /config/*20261020*.json -text
+/config/*20261024*.json -text
 /docs/nasdaq_alpaca_20261019/** -text
 /docs/ndx_*_20261020/** -text
+/docs/ndx_*_20261024/** -text
 /docs/audit/nasdaq100_model_audit_20261019/** -text
 /docs/audit/research_status_20261020.json -text
 /docs/NASDAQ_RESEARCH_STATUS_20261020.md -text

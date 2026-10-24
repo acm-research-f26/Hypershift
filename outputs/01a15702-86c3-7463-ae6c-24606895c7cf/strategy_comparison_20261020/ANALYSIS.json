@@ -1,13 +1,10 @@
 {
   "status": "completed_audited",
-  "created_at_utc": "2026-10-20T16:43:26.345087+00:00",
-  "strategies": 267,
-  "sections": {
-    "Portfolio variants": 172,
-    "Models": 64,
-    "Defensive": 31
-  },
+  "updated_local_date": "2026-10-24",
+  "strategies": 275,
   "daily_observations": 1003,
+  "extended_hours_accounts": 66,
+  "additional_detail_accounts": 54,
   "source_hashes": {
     "runs\\nasdaq_topk_pseudohuber_20261011\\metrics.csv": "cd22ea983891966f869da9d99e060ce2f128748352a8c4e80566c7a3344b7619",
     "runs\\nasdaq_topk_pseudohuber_20261011\\curves.csv": "1ec0105c6cebfefcd0ce621f1034e5cce556ba3dc00e1478d746544054d6e52c",
@@ -37,9 +34,22 @@
     "data\\nasdaq_monthly_pit\\assembled\\membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
     "data\\nasdaq_monthly_pit\\assembled\\monthly_members.csv": "a04d458cb9c976cad37014733989755c38cffc034e6ee5df3b7d6d0ef0f04ecc",
     "data\\nasdaq_monthly_pit\\assembled\\raw_close.csv": "02d2b2477564bca67f1ece58f0c55ce471678f727972fbe836f9b4b9e8b3682b",
-    "data\\nasdaq_monthly_pit\\assembled\\tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648"
+    "data\\nasdaq_monthly_pit\\assembled\\tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "docs\\ndx_extended_hours_20261024\\metrics.csv": "2a1ce5f1f23097acd8b8236e8a26aa3f9232f435e99e5f91b42de66eae5c0e03",
+    "docs\\ndx_extended_hours_20261024\\curves.csv": "790aefe476c2f3c46797e88dcb818398593eaa699fda400b22a4339b6ea0d07c",
+    "docs\\ndx_extended_hours_20261024\\ranking.csv": "99399da8a467cccf52f22a35ff312a638609ae053047169414edb71b5d08559e",
+    "docs\\ndx_extended_hours_20261024\\prediction_quality.csv": "23acb1d41472a6d7cbae7d0a8599130e7396dd82f311f8ef5b2a3369f4ccc65f",
+    "docs\\ndx_extended_hours_20261024\\sharpe_intervals.csv": "7730bec4812b0e3b7a14ea9014b6d4f4c7ee6cdb2a1ce37d2aa7cc9a1449823a",
+    "docs\\ndx_extended_hours_20261024\\AUDIT.json": "777eae6d1bb894d94d3cef91cee2aaa7d0d8705de713d6cb562870fa50ef9476",
+    "docs\\ndx_extended_hours_20261024\\ten_seed_intervals.csv": "82e075d7612185406fbbf43b399e9cde8bbbd620f6d734a821f24a199d7a0d06",
+    "docs\\ndx_extended_hours_20261024\\REPORT.md": "5405f17c37839f5fc715dc05e3e014b2ab008e76fdf78365a7db25fe4d7c46d9"
   },
-  "analysis_source_sha256": "8b2ab3720963d47683a1e7c90329431abfd3f60316c986ee0a042966cb37c4c7",
-  "method": "10000 circular-block percentile Sharpe replicates, 5/20/60 sessions; 3 percent annual hurdle",
-  "workbook": "NASDAQ100_strategy_comparison.xlsx"
+  "analysis_source_sha256": "4c8fcbf8bf84a8925a0c464269ae5183bc9c02dac1583aa39a5201d8f0ad5041",
+  "prior_audit_sha256": "ac39654441c30dc5eb7eb6cc3642165102805e89296cf2ebdcaab48484fea14e",
+  "prior_workbook_sha256": "7beb5582769cf674534aa57f0eb8e25ae9b70c8516010679e09d5e6eabb8b50c",
+  "source_policy": "Existing 267 strategies preserved; eight new base-cost ensembles appended; all 66 extended-hours accounts disclosed separately.",
+  "workbook": "NASDAQ100_strategy_comparison.xlsx",
+  "workbook_sheets": 5,
+  "workbook_comparison_rows": 345,
+  "chart_panels": 329
 }

@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "checkpoints_reproduced": 120,
+  "daily_parent_forecasts_reproduced": 40,
+  "raw_chunk_hashes_verified": 1288,
+  "independent_feature_samples": 80,
+  "timing_origins_verified": 350,
+  "feature_summary_cutoffs_verified": 494048,
+  "independent_accounts": 66,
+  "largest_nav_difference_dollars": 6.752088665962219e-08,
+  "history": "exploratory; no prospective confirmation"
+}

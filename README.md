@@ -6,7 +6,9 @@ financial companies. The original custom universe of the 100 largest
 NASDAQ-listed companies remains deferred because complete historical caps and
 publication dates could not be established with the free sources.
 
+- [Master charts, current historical leaders and updated comparison workbook](charts.md)
 - [Historical monthly NASDAQ study and current status](docs/nasdaq_monthly_pit/CHARTS.md)
+- [After-hours and premarket information experiment (October 24)](docs/ndx_extended_hours_20261024/REPORT.md)
 - [Latest research status, model comparisons and remaining evidence](docs/NASDAQ_RESEARCH_STATUS_20261020.md)
 - [Completed Alpaca 15-minute feature comparison, all models and confidence intervals](docs/nasdaq_alpaca_20261019/REPORT.md)
 - [Ranking and benchmark-relative target experiment](docs/ndx_ranking_20261020/REPORT.md)

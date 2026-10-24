@@ -1,5 +1,14 @@
 # Alpaca 15-minute historical stock data
 
+The separate [October 24 extended-hours experiment](ndx_extended_hours_20261024/REPORT.md)
+tests daily inputs, daily plus after-hours, and daily plus after-hours plus
+premarket information. Its versioned features are in
+`data/nasdaq_monthly_pit/extended_hours_features_20261024/features.npz`.
+All three views use a 09:20 Eastern decision, with premarket bars ending by
+09:15, and fill at that entry session's regular close. Earlier regular-session
+feature snapshots and model results remain unchanged. Sparse trading is
+represented explicitly; no member is dropped for missing extended-hours bars.
+
 The full 2018–2025 SIP snapshot and matched 2022–2025 model evaluation are
 complete. See the [audited report, charts, all metrics and confidence intervals](nasdaq_alpaca_20261019/REPORT.md).
 Raw responses retain their price-only source status; the separate feature

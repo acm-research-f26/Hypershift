@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "tests": 11,
+  "source_hashes": {
+    "prepare_ndx_extended_hours.py": "027336b719cd2db09ea02839f7de471b0ae28945abe525462b9c649f2f1e3315",
+    "ndx_extended_hours.py": "a1e1c9d23fa80c54c19f6dc3f061327a25183b2f6f15c23fdd96aae4d98d2ef9",
+    "run_ndx_extended_hours.py": "044aa13e5fb0e69aa4143af5dae23925f5e43b40c08dbf2870e4d692bdb4f8d2",
+    "test_ndx_extended_hours.py": "9d326397e302e1c95ee9b1a7b2503a5e81cb2d685ce8b61372a72fc09df57d1d"
+  }
+}
