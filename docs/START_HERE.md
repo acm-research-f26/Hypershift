@@ -18,8 +18,9 @@ goals.
 | Item | Status |
 |---|---|
 | Running processes | None |
-| Last completed round | **S&P 400 feasibility** (`docs/sp400_feasibility_20261024/`): **STOP, the free S&P 400 approach is not viable** |
-| Open decision for the user | Authorise long-history, survivorship-free data with dated index membership (Norgate Platinum, $630/yr), **or** pause strategy research. Nothing has been purchased |
+| Last completed round | **Cross-branch unification with Rishi's `feat-rs`** (2026-10-24). Branch **`unify-20261024`** (worktree `../Hypershift-unify`, unpushed, not merged). Start with `docs/unify_20261024/FINAL_DECISION.md` on that branch. Verdict: no learned model in either branch beats 5-session reversal on whole-universe RankIC. feat-rs's top-5 headlines are best-of-k, best-seed-group cells (DSR 0.28–0.45), with QQQ beta about 1.2 and P&L concentrated in a few AI names. **GO: Stage 0** (re-score Rishi's saved predictions plus an identity-tilt control; no training). Then a shared prospective log from 2026-11 |
+| Previous round | S&P 400 feasibility (`docs/sp400_feasibility_20261024/`): STOP, the free approach is not viable |
+| Open decisions for the user | (1) Ask Rishi to export the Stage 0 files (list in `docs/unify_20261024/IMPLEMENTATION_PLAN.md`, task 1). (2) Whether to merge `unify-20261024` into `tom-shlom`. (3) Whether to spend the S&P 500 2024-01..2026-09 protected window on Stage A. (4) Still open: Norgate Platinum ($630/yr) or pause. Nothing has been purchased |
 | Protected data | 2024-01..2026-09: unscored for every strategy since the pivot. Pre-2016: needs paid data |
 | Capital | None authorised. Capital deployment is never an outcome of a research round |
 
@@ -35,12 +36,19 @@ goals.
 | Stable reporters (post-hoc diagnostic) | — | ARCHIVED | Selected diagnostic; no independent evidence | `docs/strategy_ear_20261023/ALTERNATIVES.md` |
 | S&P 400 filing-text expansion | Free Wikipedia membership | STOP (free approach not viable) | Promotion lag: 41% of names stay listed 2–26 months too long; change log 87% complete | `docs/sp400_feasibility_20261024/HANDOFF.md` |
 | Paper trade of the style book | — | Retired before start | Its capital rule failed | `docs/strategy_pit_20261023/STRATEGY_PIT_REPORT.md` |
+| feat-rs THINK / StockMixer / THINK+mixer headlines (Rishi) | NDX 2022–25 (spent) | Not evidence of skill | StockMixer RankIC − reversal5 +0.0003; top-5 blend 22.5% vs seeds 1.6–11.1%; 25-seed THINK+mixer 12.9% | `docs/unify_20261024/` on branch `unify-20261024` |
+| Graph, residual targets, intraday/AH features, trees, overlays | Both branches | STOP (tested null on both) | — | `docs/unify_20261024/CROSS_BRANCH_OPPORTUNITIES.md` |
 
 **Lessons that set priorities:**
 - Large-cap edges after costs are small (IR 0.1–0.3 at best), and 7.5 years cannot confirm them (IR SE ≈ 0.37).
 - **The binding constraint is data** (history length, universe), not models or ideas.
 
 ## 4. Next step options (choose with the user)
+
+0. **Current GO (from the unification round):** Stage 0, then the shared prospective log.
+   - Spec: `docs/unify_20261024/UNIFIED_EXPERIMENT_SPEC.md` §1 and §6 on branch `unify-20261024`.
+   - Reusable code: `src/hypershift/unify/` (rank blend identical to feat-rs, deciles, DSR, prediction contract, buffered top-k).
+   - feat-rs is inspected read-only in the detached worktree `../Hypershift-rishi`. Its data are not in git.
 
 1. **If Norgate Platinum is authorised.** Build `data/norgate.py`: dated S&P 400/500/600 membership,
    survivorship-free prices from 1990, delisting dates. Then test the best-documented signal in the long sample:

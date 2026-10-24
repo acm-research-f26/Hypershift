@@ -87,6 +87,13 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - **Decisions:** stable reporters ARCHIVED. Next: an S&P 400 feasibility probe for filing-text avoidance (`ALTERNATIVES.md`).
   - **Code:** `strategy/ear.py`, `scripts/ear_*.py`. The `IR` entity is ineligible before 2020-03-03 (Gardner Denver splice). Dated SIC is in `data/edgar/sic_hist.json`.
 - **S&P 400 feasibility (2026-10-24): STOP, the free approach is not viable.** `docs/sp400_feasibility_20261024/HANDOFF.md`. Wikipedia S&P 400 snapshots lag the index: 41% of companies promoted to the S&P 500 stay listed 2–26 months too long. The change log covers 87% of independently dated removals. There are no CIKs, and ticker reuse gives wrong-company matches. The economics are marginal even with good data. Open user decision: Norgate Platinum ($630/yr) or pause.
+- **Cross-branch unification with Rishi's `origin/feat-rs` (2026-10-24): GO Stage 0.**
+  - Where: branch `unify-20261024` (worktree `../Hypershift-unify`; unpushed, unmerged), `docs/unify_20261024/FINAL_DECISION.md`.
+  - Neither branch's learned models beat 5-session reversal on RankIC.
+  - feat-rs top-5 headlines are best-of-k / seed-group cells: DSR 0.28–0.45, QQQ beta about 1.2, P&L concentrated in AI names.
+  - New tested package `hypershift.unify`: rank blend identical to feat-rs, deciles, deflated Sharpe, prediction contract, buffered top-k.
+  - Next: Rishi exports his saved predictions (Stage 0, no training), then the shared prospective log.
+  - feat-rs data and predictions are not in git.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
