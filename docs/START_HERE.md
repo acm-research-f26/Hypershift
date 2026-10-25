@@ -18,7 +18,12 @@ goals.
 | Item | Status |
 |---|---|
 | Running processes | None |
-| Last completed round | **External claims and prospective gate** (2026-10-25). Branch `gate-20261025` (worktree `../Hypershift-unify`), `docs/gate_20261025/NEXT_DECISION.md`.
+| Last completed round | **Independent dynamic-hypergraph and StockMixer evaluation** (2026-10-25): **STOP DYNAMIC HYPERGRAPH**.
+  - Branch `dynhg-20261025`, `docs/dynhg_20261025/FINAL_DECISION.md`.
+  - The causal correlation hypergraph passed the synthetic gates, but on the PIT S&P 500 2020–23 it showed graph − no-graph +0.0013 [−0.004, +0.006], equal to the random-peer placebo, and −0.007 vs reversal.
+  - Our reconstructed learned-incidence variant failed the synthetic gate.
+  - Simple rankers (ridge, reversal, static ranking, each about +0.013) beat every neural model (0.005–0.007). |
+| Earlier round | **External claims and prospective gate** (2026-10-25). Branch `gate-20261025` (worktree `../Hypershift-unify`), `docs/gate_20261025/NEXT_DECISION.md`.
   - PRISM-VQ's S&P claim is not established; Rishi's transfer of the author code to NDX failed (RankIC −0.016).
   - Rishi `06e2460`: dynamic-HG blend 0.919 is a selected cell (declared primary 0.755); standalone dynamic-HG RankIC 0.031, the only NDX ranking result above reversal. The audit is BLOCKED on artifacts.
   - Factor conditioning: DEFER on power.
@@ -43,6 +48,7 @@ goals.
 | Paper trade of the style book | — | Retired before start | Its capital rule failed | `docs/strategy_pit_20261023/STRATEGY_PIT_REPORT.md` |
 | feat-rs THINK / StockMixer / THINK+mixer headlines (Rishi) | NDX 2022–25 (spent) | Not evidence of skill | StockMixer RankIC − reversal5 +0.0003; top-5 blend 22.5% vs seeds 1.6–11.1%; 25-seed THINK+mixer 12.9% | `docs/unify_20261024/` on branch `unify-20261024` |
 | Graph, residual targets, intraday/AH features, trees, overlays | Both branches | STOP (tested null on both) | — | `docs/unify_20261024/CROSS_BRANCH_OPPORTUNITIES.md` |
+| Dynamic (correlation) hypergraph; StockMixer | PIT S&P 500 2020–23 | **STOP** | Graph − matched no-graph +0.0013; equals the random placebo; −0.007 vs reversal | `docs/dynhg_20261025/RESULTS.md` |
 | PIT accounting fundamentals + LightGBM, 21 sessions | PIT S&P 500 2019–23 | **DEFER** (no retuning on these years) | Δ RankIC +0.018; aug book −1.3%/yr vs EW at 20 bp | `docs/alpha_20261024/INCREMENTAL_INFORMATION_RESULTS.md` |
 
 **Lessons that set priorities:**

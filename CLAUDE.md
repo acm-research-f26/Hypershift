@@ -105,6 +105,11 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - PRISM-VQ is not established (Rishi's NDX transfer failed). Rishi's dynamic-HG 0.919 is a selected cell; declared primary 0.755.
   - 901 tracked feat-rs paths behave like about 6–58 independent active bets. The earlier "0.919 = expected max of 272" claim is withdrawn.
   - Prospective spec: StockMixer ten-seed top 5 (primary), dynamic-HG blend (secondary, conditional on the audit).
+- **Independent dynamic-hypergraph / StockMixer study (2026-10-25): STOP.**
+  - Where: branch `dynhg-20261025`, `docs/dynhg_20261025/`. Code: `src/hypershift/dynhg/`, 18 tests.
+  - Synthetic gate first: the learned incidence failed; the causal correlation hypergraph passed.
+  - PIT S&P 500: graph − matched no-graph +0.0013, equal to the random placebo; simple rankers beat all neural models.
+  - `../Hypershift-rishi` is pinned at feat-rs `be3523d` (the 20-seed protocol imports its old layout); `../Hypershift-rishi-latest` is at `06e2460`.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
