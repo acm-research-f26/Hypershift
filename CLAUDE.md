@@ -95,6 +95,11 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - New tested package `hypershift.unify`: rank blend identical to feat-rs, deciles, deflated Sharpe, prediction contract, buffered top-k.
   - Next: Rishi exports his saved predictions (Stage 0, no training), then the shared prospective log.
   - feat-rs data and predictions are not in git.
+- **Alpha discovery round, PIT accounting fundamentals (2026-10-24): DEFER.**
+  - Where: branch `alpha-20261024` (worktree `../Hypershift-unify`); start with `docs/alpha_20261024/FINAL_RECOMMENDATION.md`.
+  - Data: first-reported SEC XBRL companyfacts (`data/fundamentals.py`, `scripts/alpha_fundamentals_panel.py` → `data/pit/fundamentals_v1.npz`). companyfacts de-duplicates, so availability is per feature (it can only delay, never advance).
+  - Test (PREREG `d85776c`, learner gate first): LightGBM +fundamentals vs price-only, 21 sessions: RankIC +0.018 [−0.004, +0.042], industry-neutral +0.009; no book beats EW after costs. The information sits mostly in the bottom decile (losers).
+  - Next: an authorised one-shot 2024–26 holdout of the frozen arms, plus prospective P2. Do not retune on 2019–23.
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
