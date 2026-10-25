@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "timestamp_utc": "2026-10-25T04:22:25.702282+00:00",
+  "relocation_manifest": "config/source_layout_20261024.json",
+  "manifest_sha256": "a6241e5cec7b3c0632299b35f682a2810a6470c6f4729514a32baaad0106ad13",
+  "moved_python_files": 149,
+  "moved_requirements_files": 5,
+  "all_154_original_files_byte_identical": true,
+  "moved_file_counts": {
+    "requirements": 5,
+    "research/analysis": 9,
+    "research/core": 6,
+    "research/data": 20,
+    "research/evaluation": 16,
+    "research/models": 11,
+    "research/reporting": 37,
+    "research/training": 20,
+    "tests": 30
+  },
+  "root_python_files_after_commands": 0,
+  "runtime_lease_removed_after_commands": true,
+  "parsed_python_sources": 153,
+  "unit_tests_passed": 173,
+  "launcher_tests_included": 11,
+  "verified_existing_publication_seals": {
+    "ndx_loss_optimizer_20261024": "2ecc4ef296abe28736848de177f6e8514a17cfeb07472b3bf4b48a9bb09c0691",
+    "ndx_reference_networks_20261024": "a1c8c8aab1fad6a9681bef168e69f1b3d0646f0ef87d594795a0043a718b9f16"
+  },
+  "read_only_current_workbook_chart_audit": {
+    "status": "passed",
+    "strategies": 346,
+    "sheets": 8,
+    "chart_catalog_entries": 634,
+    "command": "python -m hypershift python -c \"from update_ndx_new_findings_20261024 import audit; audit(write_outputs=False)\""
+  },
+  "training_or_evaluation_changes": false,
+  "existing_sources_and_experiment_locks_rewritten": false,
+  "launcher_sources_sha256": {
+    "hypershift/workspace.py": "dbb575b403042e3c4e24d4d3a9477813271efc11ca73c02b17528035ddada021",
+    "hypershift/__init__.py": "a6572641baec063d475c2c2275c18f48767adf0ff0804d5486edc7095e815049",
+    "hypershift/__main__.py": "18f19842c64807b1ccc1d6feeafdb85bafd5bf3d6ec796060f42a43fb7958eb9"
+  }
+}

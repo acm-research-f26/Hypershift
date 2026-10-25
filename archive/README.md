@@ -1,7 +1,9 @@
 # Archived experiments
 
-Superseded work was moved here on October 5, 2026 to keep the active project
-focused on the controlled THINK/literature architecture research.
+Superseded work was moved here on October 5, 2026. The active project now studies
+historical monthly NASDAQ-100 models, including Alpaca regular-session and
+extended-hours inputs. Start with the [current source map](../research/README.md)
+and [master charts](../charts.md).
 
 `cleanup_manifest.json` records each original and destination path. `legacy/`
 preserves the original GNN/direction tutorials, hourly and hyperbolicity audits,

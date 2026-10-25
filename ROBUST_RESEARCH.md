@@ -1,5 +1,7 @@
 # Robust losses, portfolio construction and daily forecasting
 
+> Historical scope: this protocol and its tables describe the earlier robust-loss cohort study. Current historical-monthly NASDAQ-100, AH/PM and optimizer/network comparisons are indexed in [master charts](charts.md) and [docs](docs/README.md). Commands below use the current root launcher for this older study.
+
 <!-- benchmark-audit-20261010:start -->
 NYSX is the passive Global X NYSE 100 ETF. It launched March 25, 2026 and has no tradable 2022–2025 history. Its index covers technology and growth companies across exchanges, not the 100 largest NYSE-listed companies. NYSX performance is unavailable here. NYSE historical charts use the simulated equal-weight cohort basket (scheduled rebalances and modeled costs), not an ETF. NASDAQ charts retain QQQ; SPY supplies broad-market context. [Issuer and inception](https://www.globalxetfs.com/funds/nysx/) and [prospectus](https://assets.globalxetfs.com/funds/documents/nysx/prospectus-regulatory/Summary-Prospectus_NYSX.pdf).
 
@@ -80,15 +82,15 @@ The stop rule is to finish this predeclared batch and report every outcome. Ther
 ## Reproduction
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest -v test_research test_robust_research
-.\.venv\Scripts\python.exe run_robust_research.py --device cpu --workers 3 --out runs/robust_new
-.\.venv\Scripts\python.exe run_robust_research.py --device cpu --workers 3 --horizon 1 --batch 40 --variants think think_huber think_mix think_mix_huber stockmixer stockmixer_huber multiscale_mse multiscale_huber --out runs/daily_new
-.\.venv\Scripts\python.exe report_robust_research.py --runs runs/robust_new runs/daily_new --out runs/comparison_new
-.\.venv\Scripts\python.exe plot_robust_diagnostics.py --run runs/comparison_new
-.\.venv\Scripts\python.exe summarize_robust_findings.py --run runs/comparison_new
-.\.venv\Scripts\python.exe add_etf_controls.py --run runs/comparison_new
-.\.venv\Scripts\python.exe audit_robust_regimes.py --run runs/comparison_new
-.\.venv\Scripts\python.exe plot_combined_research.py --run runs/comparison_new
+.\.venv\Scripts\python.exe -m hypershift test -v test_research test_robust_research
+.\.venv\Scripts\python.exe -m hypershift run run_robust_research --device cpu --workers 3 --out runs/robust_new
+.\.venv\Scripts\python.exe -m hypershift run run_robust_research --device cpu --workers 3 --horizon 1 --batch 40 --variants think think_huber think_mix think_mix_huber stockmixer stockmixer_huber multiscale_mse multiscale_huber --out runs/daily_new
+.\.venv\Scripts\python.exe -m hypershift run report_robust_research --runs runs/robust_new runs/daily_new --out runs/comparison_new
+.\.venv\Scripts\python.exe -m hypershift run plot_robust_diagnostics --run runs/comparison_new
+.\.venv\Scripts\python.exe -m hypershift run summarize_robust_findings --run runs/comparison_new
+.\.venv\Scripts\python.exe -m hypershift run add_etf_controls --run runs/comparison_new
+.\.venv\Scripts\python.exe -m hypershift run audit_robust_regimes --run runs/comparison_new
+.\.venv\Scripts\python.exe -m hypershift run plot_combined_research --run runs/comparison_new
 ```
 
 The actual five-session execution reuses the 108 previously fitted 2024-2025 baseline checkpoints after verifying exact predictions, inputs, splits, architecture hashes and settings. The complete batch comprises 576 neural fits, of which 468 are newly trained; fresh reproduction retrains all 576. Run folders contain source snapshots, checkpoint histories, predicted scores, date splits, portfolio selections and input hashes.
@@ -99,10 +101,10 @@ For the authoritative completed run folders, refresh the additional audit and
 documentation artifacts with these commands from the repository root:
 
 ```powershell
-.\.venv\Scripts\python.exe audit_pooled_chronology.py
-.\.venv\Scripts\python.exe report_pooled_uncertainty.py
-.\.venv\Scripts\python.exe plot_combined_research.py
-.\.venv\Scripts\python.exe publish_research_docs.py
+.\.venv\Scripts\python.exe -m hypershift run audit_pooled_chronology
+.\.venv\Scripts\python.exe -m hypershift run report_pooled_uncertainty
+.\.venv\Scripts\python.exe -m hypershift run plot_combined_research
+.\.venv\Scripts\python.exe -m hypershift run publish_research_docs
 ```
 
 These supplemental commands inspect the saved final runs and do not refit models.

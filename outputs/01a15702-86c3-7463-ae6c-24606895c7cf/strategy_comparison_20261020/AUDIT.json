@@ -1,27 +1,52 @@
 {
   "status": "passed",
-  "updated_local_date": "2026-10-24",
-  "main_strategies": 275,
-  "extended_hours_accounts": 66,
-  "workbook_comparison_rows_verified": 345,
-  "prior_main_rows_preserved": 271,
-  "unchanged_allocation_tabs": 2,
-  "source_hashes_verified": 37,
-  "independent_new_sharpe_bootstraps": 8,
-  "bootstrap_replicates": 10000,
-  "block_sessions": 20,
-  "scalar_financial_accounts_checked": 333,
-  "chart_panels": 329,
-  "chart_figures": 46,
-  "prior_cell_formats_preserved": true,
-  "allocation_tables_preserved": true,
-  "analysis_source_sha256": "4c8fcbf8bf84a8925a0c464269ae5183bc9c02dac1583aa39a5201d8f0ad5041",
-  "workbook_builder_sha256": "90d9c4ac728b4a86d0c52df8c7744f12dd9d92418ed4d0f39c33030327e8920c",
+  "main_strategies": 346,
+  "sections": {
+    "Models": 105,
+    "Defensive": 31,
+    "Portfolio variants": 210
+  },
+  "added_main_rows": 66,
+  "new_account_rows": 346,
+  "seed_comparison_rows": 26,
+  "workbook_sheets": 8,
+  "chart_catalog_entries": 634,
+  "additional_diagnostic_accounts": 288,
+  "prior_workbook_cells_preserved": true,
+  "prior_280_return_paths_preserved": true,
+  "prior_native_styles_layout_tables_and_panes_preserved": true,
+  "all_346_new_account_rows_verified": true,
+  "source_audits": {
+    "loss_optimizer": {
+      "status": "passed",
+      "checkpoint_exports_reproduced": 280,
+      "independent_accounts": 174,
+      "prior_accounts_reproduced": 34,
+      "validation_lr_choices_checked": 12,
+      "materialized_bootstrap_accounts": 4,
+      "bootstrap_replicates": 10000,
+      "largest_nav_difference_dollars": 6.752088665962219e-08
+    },
+    "reference": {
+      "status": "passed",
+      "reference_checkpoint_exports_reproduced": 120,
+      "selected_stages_checked": 160,
+      "independent_portfolio_replays": 172,
+      "prior_accounts_reproduced": 34,
+      "largest_nav_difference_dollars": 6.984919309616089e-08
+    }
+  },
   "output_sha256": {
-    "NASDAQ100_strategy_comparison.xlsx": "c073d606a256cd58465a5fd23a6e087e6ec76c0f84e7798a58677604788baed5",
-    "all_strategies.csv": "56faa7c602e64299585a69bb7f5266daaf6520c025bddfe949c837d6a974f7ca",
-    "extended_hours_all_accounts.csv": "798e466a1d7e0c8318d69a09727df509d5467d9c25584a716438db53ee75df35",
-    "COMPARISON.md": "d59648a1242eca3ea53133cb5c4603e4e6ca3cbd3e179462b907ba877ddb8a96",
-    "charts.md": "a5aabdf98e62881e22c749ab8a0a2c4f82ed512011becbfa7e0a9148b7d475d2"
-  }
+    "docs\\NASDAQ100_strategy_comparison.xlsx": "5826cbadbe38fa40745d512311c8f5279402cce046803e96ec4b828a1f813981",
+    "charts.md": "3efa62b8501bbf05624ad4f75109fa2168fb4896ec7af510851506fc0066588a",
+    "outputs\\01a15702-86c3-7463-ae6c-24606895c7cf\\strategy_comparison_20261020\\all_strategies.csv": "8db33d148e9d03944bfd4caa9fed7a41a736f5e2c87bb44df03862f902671e50",
+    "docs\\strategy_comparison_20261024\\chart_catalog.csv": "3cd3fafe6c7679a56fb5a94ae7fd29d22574da1fc4758292fa31814170b69122",
+    "outputs\\01a15702-86c3-7463-ae6c-24606895c7cf\\strategy_comparison_20261020\\new_experiment_all_accounts.csv": "e1d9eed99d9db101477a93ef89090767bdc314e72e5e749e94c84aae84f878b6",
+    "outputs\\01a15702-86c3-7463-ae6c-24606895c7cf\\strategy_comparison_20261020\\new_findings_seed_summary.csv": "200f7ae79e50147e1190abb44567712267c90c4e5f7aae9b825af870b557ed7a",
+    "outputs\\01a15702-86c3-7463-ae6c-24606895c7cf\\strategy_comparison_20261020\\new_holdings_uncertainty.csv": "5ff982591ee9c2282a4adaadd7ca7a1891656487bfac40f8e9faa3aa0f8f2284",
+    "outputs\\01a15702-86c3-7463-ae6c-24606895c7cf\\strategy_comparison_20261020\\sharpe_block_sensitivity.csv": "54cb8248e20a61b51b7437c84ee7538e544f22c8412c60bba8ef652fa2c9147f",
+    "docs\\strategy_comparison_20261024\\FIGURE_MANIFEST.json": "393933fbb9a606a8526df83b7c907159026cb451e4b01d0f839135b7f07a15a5"
+  },
+  "analysis_source_sha256": "83c0af1412e928f597ee2720494238cfa757f48f3ee731eeaeea66afa0673895",
+  "workbook_builder_sha256": "5e7f1aaf1e1c0527da277c114483b8843db25d0ea2b25a4cfca59a5b80e6aa84"
 }

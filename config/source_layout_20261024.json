@@ -1,0 +1,932 @@
+{
+  "date": "2026-10-24",
+  "type": "byte_preserving_source_reorganization",
+  "python_files": 149,
+  "requirements_files": 5,
+  "files": [
+    {
+      "original": "add_etf_controls.py",
+      "path": "research/data/add_etf_controls.py",
+      "sha256": "23d5acd0ba9569a95e41bf81685c7c80218dcc28e6ebe1daa4ea27a38443890f",
+      "previously_tracked": true
+    },
+    {
+      "original": "analyze_exchange_common_movement.py",
+      "path": "research/analysis/analyze_exchange_common_movement.py",
+      "sha256": "d58d3d5c3cd75f5e1146b65f1422167ab1fb993c0bc25a5986560cb799c98379",
+      "previously_tracked": true
+    },
+    {
+      "original": "analyze_exchange_hyperbolicity.py",
+      "path": "research/analysis/analyze_exchange_hyperbolicity.py",
+      "sha256": "9f22a5299c56f556084a961c2d0839266db2a7de233f8a04acb67c7def8619ad",
+      "previously_tracked": true
+    },
+    {
+      "original": "analyze_largecap_retraining.py",
+      "path": "research/analysis/analyze_largecap_retraining.py",
+      "sha256": "065b6336ec900d9a15c947a8a4c6c50d9234c4f799a11e29d833ad4c85d5da0f",
+      "previously_tracked": true
+    },
+    {
+      "original": "analyze_ndx_loss_similarity.py",
+      "path": "research/analysis/analyze_ndx_loss_similarity.py",
+      "sha256": "21bc3bb940eb84d41f5f3aed9f3f2c082576e34a1000ca18d0faf04fa4ad12c7",
+      "previously_tracked": true
+    },
+    {
+      "original": "analyze_ndx_rank_depth.py",
+      "path": "research/analysis/analyze_ndx_rank_depth.py",
+      "sha256": "f88d1a33f4588fa29b27a79f76c22547b1115246f662b2238fca2acf2887904f",
+      "previously_tracked": true
+    },
+    {
+      "original": "analyze_recent_research.py",
+      "path": "research/analysis/analyze_recent_research.py",
+      "sha256": "b1d6b224506da2157924cf1ca440d3fc34bda13d39f59ddb99fc272f2302ae10",
+      "previously_tracked": true
+    },
+    {
+      "original": "assemble_historical_ndx.py",
+      "path": "research/data/assemble_historical_ndx.py",
+      "sha256": "c414d2215cfcdd2349304c5cf68584445c23234d5de420c1f67f50995f5b25c5",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_architecture_research.py",
+      "path": "research/evaluation/audit_architecture_research.py",
+      "sha256": "24f4eb8f57c5bc9434eb793a4f14be497c1094f48f1730576f9433e826c54854",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_backtests.py",
+      "path": "research/evaluation/audit_backtests.py",
+      "sha256": "8cfcba7e8408501103b9d8b6face6d53952243994ac25734c0acc8582ceb5bde",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_historical_ndx.py",
+      "path": "research/evaluation/audit_historical_ndx.py",
+      "sha256": "99cf9010c5e03eda96684eae36b044714494e5c2094a13a721ab85fdb4c0223e",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_historical_ndx_ranking.py",
+      "path": "research/evaluation/audit_historical_ndx_ranking.py",
+      "sha256": "56aaafa09c8bb91461cf250f28247cb427cf5e3721ec4236fb50e17bf37099ad",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_ndx_alpaca.py",
+      "path": "research/evaluation/audit_ndx_alpaca.py",
+      "sha256": "630f2bc69aca25b3ab1cf1656d91eb211a4a2b2172e33409885a68eb7186f449",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_ndx_long_short.py",
+      "path": "research/evaluation/audit_ndx_long_short.py",
+      "sha256": "6f2f4435ffbd8b416cb615019fcdf2e9d38f0a3c19387354b0f34cb914291f4d",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_ndx_strategy_comparison_20261020.py",
+      "path": "research/evaluation/audit_ndx_strategy_comparison_20261020.py",
+      "sha256": "955a07b7ed0ddf043d3ff3dc333ab18a72a2755d2ff37c4561af5cfeb5a35ba8",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_ndx_topk_pseudohuber.py",
+      "path": "research/evaluation/audit_ndx_topk_pseudohuber.py",
+      "sha256": "631a5c6a342a85f79d2c2394fbc1e1af63fe2d704cbdf196fa5d5fb79e51ce81",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_pooled_chronology.py",
+      "path": "research/evaluation/audit_pooled_chronology.py",
+      "sha256": "6bd547af946197a4c3b78a578b0da7a2127f63dc61bf965f35298cef70b4c2f2",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_robust_regimes.py",
+      "path": "research/evaluation/audit_robust_regimes.py",
+      "sha256": "6e7b900d989e723b20437123f4ec8ffb275ec923e4d5bd379c0ba282f7935d9e",
+      "previously_tracked": true
+    },
+    {
+      "original": "audit_saved_models.py",
+      "path": "research/evaluation/audit_saved_models.py",
+      "sha256": "e1f4996c9211a6eba4aea90b5f12fd8d12041d6424746a46ef22f9c333aedd22",
+      "previously_tracked": true
+    },
+    {
+      "original": "build_exchange_geometry_report.py",
+      "path": "research/reporting/build_exchange_geometry_report.py",
+      "sha256": "ae285664b23718861f27d7fdfff0ce9410e11990afcc4d9d322014e0bd908559",
+      "previously_tracked": true
+    },
+    {
+      "original": "build_largecap_results_document.py",
+      "path": "research/reporting/build_largecap_results_document.py",
+      "sha256": "6c69602b595550958e6d2cb72afe589eaf43167c1cc11d9ed53d2a22dfa08458",
+      "previously_tracked": true
+    },
+    {
+      "original": "chart_performance_labels.py",
+      "path": "research/reporting/chart_performance_labels.py",
+      "sha256": "cee9b95da8272356a97a19cbad633292358251b8d74b4e9c544a1990b2e3365d",
+      "previously_tracked": true
+    },
+    {
+      "original": "check_exchange_geometry_sensitivity.py",
+      "path": "research/analysis/check_exchange_geometry_sensitivity.py",
+      "sha256": "b272843f7ac0e3a931eb98aa4eff9d9c7091d59a0bfcc823a798724714f2cfb4",
+      "previously_tracked": true
+    },
+    {
+      "original": "compare_ndx_strategies_20261020.py",
+      "path": "research/analysis/compare_ndx_strategies_20261020.py",
+      "sha256": "8b2ab3720963d47683a1e7c90329431abfd3f60316c986ee0a042966cb37c4c7",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_alpaca_15min.py",
+      "path": "research/data/fetch_alpaca_15min.py",
+      "sha256": "200e4884546d5abde183cb885a3e3845f881dc73b70e751af96d38462e04c378",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_alpaca_batch.py",
+      "path": "research/data/fetch_alpaca_batch.py",
+      "sha256": "5183896322b066dca556cb2c345bda5e1ab02d582caeb0bc2b565565b09886a5",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_historical_ndx_yahoo.py",
+      "path": "research/data/fetch_historical_ndx_yahoo.py",
+      "sha256": "e27d3a8a221a81dbaf307c68df796ac761acef5d963260866108b9de73f63ad0",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_largecap_universes.py",
+      "path": "research/data/fetch_largecap_universes.py",
+      "sha256": "6c999a5afe192b87fbd8dabb54a0abfaf6ce08365dbf7e8458246e91dc24cdd2",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_ndx_reference_assets.py",
+      "path": "research/data/fetch_ndx_reference_assets.py",
+      "sha256": "3f03ecab7c98a3cbfe589211bf97d17485aa5db0d22de5a186e15469193ac9d2",
+      "previously_tracked": false
+    },
+    {
+      "original": "fetch_random_trials.py",
+      "path": "research/data/fetch_random_trials.py",
+      "sha256": "5f9e752655aece1f61312ba75b2e26e8d6e893593d77d4425972bed0ad6c02d1",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_recent_cohorts.py",
+      "path": "research/data/fetch_recent_cohorts.py",
+      "sha256": "d1e987980505b5dee02fbdd5acb36ae970d54f6a786b77e732a0773dc148d505",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_research_cohorts.py",
+      "path": "research/data/fetch_research_cohorts.py",
+      "sha256": "c552e169d1289d50b26d1dfb5cb5de7cd6cb6766230bd836fd92c0fc1677ff88",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_research_panel.py",
+      "path": "research/data/fetch_research_panel.py",
+      "sha256": "e852eb2308a4daf5bf2a6de251925f4688e0f63567f41ecaa15da7218f250007",
+      "previously_tracked": true
+    },
+    {
+      "original": "fetch_tiingo_pit.py",
+      "path": "research/data/fetch_tiingo_pit.py",
+      "sha256": "b063dc39b9c70e03b5893fcea3a560677a45bffd8bc2920f8f7e202b20da5446",
+      "previously_tracked": true
+    },
+    {
+      "original": "finalize_robust_reporting.py",
+      "path": "research/reporting/finalize_robust_reporting.py",
+      "sha256": "ab7fc551fa51119463b6abc6a6926124236dc9a1c8b1039570aee12bbc4732e0",
+      "previously_tracked": true
+    },
+    {
+      "original": "finish_benchmark_publication.py",
+      "path": "research/reporting/finish_benchmark_publication.py",
+      "sha256": "00918c9fb08713e1f214b7276df8cbec12ca5b6b4f46aa01baebad1dd0325e2f",
+      "previously_tracked": true
+    },
+    {
+      "original": "historical_nasdaq_universe.py",
+      "path": "research/data/historical_nasdaq_universe.py",
+      "sha256": "583b14f35a1ca516dc9e52be02d5103c41323f635577dfed81a4e3760628c159",
+      "previously_tracked": true
+    },
+    {
+      "original": "historical_ndx_membership.py",
+      "path": "research/data/historical_ndx_membership.py",
+      "sha256": "6641c9eb35bff1daa0026dd0d604243d10e952355adec2f27bfdf7e6c696e008",
+      "previously_tracked": true
+    },
+    {
+      "original": "integrate_ranking_docs.py",
+      "path": "research/reporting/integrate_ranking_docs.py",
+      "sha256": "2ae203e506863443cfd4627fce4b530272c2fa9a9c6cc23315017d862a48cf56",
+      "previously_tracked": true
+    },
+    {
+      "original": "lock_ranking_selection.py",
+      "path": "research/training/lock_ranking_selection.py",
+      "sha256": "467457e96276f300b85e7d46e9962add6c4c1756603105dcd9ddc7a78000ca96",
+      "previously_tracked": true
+    },
+    {
+      "original": "long_short_pit.py",
+      "path": "research/core/long_short_pit.py",
+      "sha256": "c6770319e7648921d9639962103b26cdc19fb7e110365c0201d7adaf8911cc9b",
+      "previously_tracked": true
+    },
+    {
+      "original": "make_document_benchmark_images.py",
+      "path": "research/reporting/make_document_benchmark_images.py",
+      "sha256": "98a93ddbe30adc8d403a031a27591e990c8179b27540e0aeb88c194287aaa6cc",
+      "previously_tracked": true
+    },
+    {
+      "original": "ndx_alpaca_models.py",
+      "path": "research/models/ndx_alpaca_models.py",
+      "sha256": "bc3f114dbbaf68a610b76bc71c1087029223355f2bc79472695234c1d0368bda",
+      "previously_tracked": true
+    },
+    {
+      "original": "ndx_broad_models.py",
+      "path": "research/models/ndx_broad_models.py",
+      "sha256": "234c486d7e85a1aaadda11fe5bdd11eed1c9f81c33628eb02d1935c3c98b54ca",
+      "previously_tracked": true
+    },
+    {
+      "original": "ndx_corrections.py",
+      "path": "research/models/ndx_corrections.py",
+      "sha256": "8e95290e5a77bded4ba45b21b439cf08bf2f010a6069aa21002afa4ad321c586",
+      "previously_tracked": true
+    },
+    {
+      "original": "ndx_extended_hours.py",
+      "path": "research/models/ndx_extended_hours.py",
+      "sha256": "a1e1c9d23fa80c54c19f6dc3f061327a25183b2f6f15c23fdd96aae4d98d2ef9",
+      "previously_tracked": true
+    },
+    {
+      "original": "ndx_loss_optimizer.py",
+      "path": "research/models/ndx_loss_optimizer.py",
+      "sha256": "0e00580813633f1e2c342b2de50befa157e7b5df183c7f2fd0714760070b4e54",
+      "previously_tracked": false
+    },
+    {
+      "original": "ndx_policy_engine.py",
+      "path": "research/core/ndx_policy_engine.py",
+      "sha256": "4eb656afd17344acad928a0e9edd5d6af7bbd246fab23f9c9235d3588b2bcc78",
+      "previously_tracked": true
+    },
+    {
+      "original": "ndx_ranking_objectives.py",
+      "path": "research/models/ndx_ranking_objectives.py",
+      "sha256": "57c410b6baa6b20cb2ab0d1967b09f2040c7dc9ef325cf5cd114d091f3946f38",
+      "previously_tracked": true
+    },
+    {
+      "original": "ndx_reference_models.py",
+      "path": "research/models/ndx_reference_models.py",
+      "sha256": "1e25ed60e5d9f922f61cb2441a7a1232c1fcc033d28755a2abc00b87d8899535",
+      "previously_tracked": false
+    },
+    {
+      "original": "ndx_reference_training.py",
+      "path": "research/training/ndx_reference_training.py",
+      "sha256": "8fa4b4d558ffccfcb6c84f568e5ff13f40a34b420996d3108f93a1193b9e7809",
+      "previously_tracked": false
+    },
+    {
+      "original": "pit_research_engine.py",
+      "path": "research/core/pit_research_engine.py",
+      "sha256": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+      "previously_tracked": true
+    },
+    {
+      "original": "plot_combined_research.py",
+      "path": "research/reporting/plot_combined_research.py",
+      "sha256": "1ced856cd1a50b84a1cfff1cafd9eb3028dd318263699fcd9b7b0886b8ea9dc0",
+      "previously_tracked": true
+    },
+    {
+      "original": "plot_research_metrics.py",
+      "path": "research/reporting/plot_research_metrics.py",
+      "sha256": "f5415abadd8c803c3e0e60c0bf90cc3663e5649dbdf022989044ba36d6d8fdc6",
+      "previously_tracked": true
+    },
+    {
+      "original": "plot_robust_diagnostics.py",
+      "path": "research/reporting/plot_robust_diagnostics.py",
+      "sha256": "abc8ae60436e13e38ab1dd3b8cf8a0c87a2533a8092b95743025c5db935c7195",
+      "previously_tracked": true
+    },
+    {
+      "original": "prefit_historical_ndx_workers.py",
+      "path": "research/training/prefit_historical_ndx_workers.py",
+      "sha256": "20e41c3f4bb24e3e3ce858076332c6a165d59c5a971ca40d665d394983e14d97",
+      "previously_tracked": true
+    },
+    {
+      "original": "prepare_ndx_alpaca.py",
+      "path": "research/data/prepare_ndx_alpaca.py",
+      "sha256": "fe8eed60b8ec01905444c138c337724a429d0376afad77cb39ad4a726ba78969",
+      "previously_tracked": true
+    },
+    {
+      "original": "prepare_ndx_extended_hours.py",
+      "path": "research/data/prepare_ndx_extended_hours.py",
+      "sha256": "027336b719cd2db09ea02839f7de471b0ae28945abe525462b9c649f2f1e3315",
+      "previously_tracked": true
+    },
+    {
+      "original": "probe_alpha_capabilities.py",
+      "path": "research/data/probe_alpha_capabilities.py",
+      "sha256": "679eeaf6d556e3710daa2bea4d76e3c4fd75fbec16337aea343e02d4067054fc",
+      "previously_tracked": true
+    },
+    {
+      "original": "probe_public_nasdaq_sources.py",
+      "path": "research/data/probe_public_nasdaq_sources.py",
+      "sha256": "a1d922f746f30fbda7ccf874d5d48c716bf7874eccb9c68d25bab494b371a64d",
+      "previously_tracked": true
+    },
+    {
+      "original": "pseudohuber_think_mixer.py",
+      "path": "research/models/pseudohuber_think_mixer.py",
+      "sha256": "e8e810054af938fb1a0bfd6b30070311c33c921d8c5f0f30e170a4c25899018f",
+      "previously_tracked": true
+    },
+    {
+      "original": "publish_historical_ndx.py",
+      "path": "research/reporting/publish_historical_ndx.py",
+      "sha256": "c156579f6500b338c9c371c50a0913c979d170b202b0e2368509106ebeb9a7f0",
+      "previously_tracked": true
+    },
+    {
+      "original": "publish_ndx_alpaca.py",
+      "path": "research/reporting/publish_ndx_alpaca.py",
+      "sha256": "87a092f785b527648ab92c89ef4829dbcdec93eb88199d5f2f0c4296805b9450",
+      "previously_tracked": true
+    },
+    {
+      "original": "publish_ndx_long_short.py",
+      "path": "research/reporting/publish_ndx_long_short.py",
+      "sha256": "e08bf3167b8e7752640b6114bb8bf20202a9d49f4e60e62568c91d0ecb4744a0",
+      "previously_tracked": true
+    },
+    {
+      "original": "publish_ndx_loss_similarity.py",
+      "path": "research/reporting/publish_ndx_loss_similarity.py",
+      "sha256": "7e52ecd1ff5c5e8092fcb3e3a350068d5137412e4bc08bcce130849b836df2a1",
+      "previously_tracked": true
+    },
+    {
+      "original": "publish_ndx_rank_depth.py",
+      "path": "research/reporting/publish_ndx_rank_depth.py",
+      "sha256": "22d330624c36cdb4521fff987aefe50b3cb80c1f5583354c51a86975ebc33ce0",
+      "previously_tracked": true
+    },
+    {
+      "original": "publish_ndx_research_status.py",
+      "path": "research/reporting/publish_ndx_research_status.py",
+      "sha256": "4a97a13a622470c9962d7341922abb4275af1175869726c340325c4c3588ce92",
+      "previously_tracked": true
+    },
+    {
+      "original": "publish_ndx_topk_extension.py",
+      "path": "research/reporting/publish_ndx_topk_extension.py",
+      "sha256": "1ccc2b8ab954f23d8fa3e3ff92d727a3b7ae2edba5fa4dd5f1b925e169e19a3d",
+      "previously_tracked": true
+    },
+    {
+      "original": "publish_research_docs.py",
+      "path": "research/reporting/publish_research_docs.py",
+      "sha256": "3d793f53e7e4906b90c889cca33b2f49b1ab2e76a6aadd03436edb2d4cc5a045",
+      "previously_tracked": true
+    },
+    {
+      "original": "refresh_audited_charts.py",
+      "path": "research/reporting/refresh_audited_charts.py",
+      "sha256": "2e65a11d9204918426f4013f83467e7a7d7c3bda3cee7c2582c8869ee66a9bca",
+      "previously_tracked": true
+    },
+    {
+      "original": "repair_research_corporate_actions.py",
+      "path": "research/data/repair_research_corporate_actions.py",
+      "sha256": "c1ff70c4828512a90ba7745d1a35b97dd9944a9634572e970401fda8e03a4e17",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_architecture_research.py",
+      "path": "research/reporting/report_architecture_research.py",
+      "sha256": "86e1674477e462bd875d1424349a590ce7cc5157efba04d9e73fd7a40952d719",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_huber_ranking.py",
+      "path": "research/reporting/report_huber_ranking.py",
+      "sha256": "67ce675660ca842fd4f3895c5a6c73f63f6bde4b8fb8ca3410cce9dc454b2929",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_ndx_alpaca.py",
+      "path": "research/reporting/report_ndx_alpaca.py",
+      "sha256": "a896df86bdcacaa7ea160361e0fd0fb1168313b8508e9bd1d9d0831e37640377",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_ndx_broad.py",
+      "path": "research/reporting/report_ndx_broad.py",
+      "sha256": "20ce62d5ed29015bdf4221b67cace68c30286dbe55fe86ccedcd3afe3a684876",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_ndx_corrections.py",
+      "path": "research/reporting/report_ndx_corrections.py",
+      "sha256": "82bf1b2bdaddd2800330ac6fce0051d653a18c92b8f21b65bd590e8515e0ed7c",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_ndx_extended_hours.py",
+      "path": "research/reporting/report_ndx_extended_hours.py",
+      "sha256": "28fa3a2828d8642f9b65ef7b0ff5d2e28471c13e9fc1fd013711bc99d2c0daf3",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_ndx_loss_optimizer.py",
+      "path": "research/reporting/report_ndx_loss_optimizer.py",
+      "sha256": "d00146e12d57e9cd405d022722cfebf08c6658d42347c33f7eb7b60ad4d45cea",
+      "previously_tracked": false
+    },
+    {
+      "original": "report_ndx_ranking.py",
+      "path": "research/reporting/report_ndx_ranking.py",
+      "sha256": "ef9fefad6969eda540870038b7c0a427998dee2568c1aa266ff7a133f96abadb",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_ndx_reference_networks.py",
+      "path": "research/reporting/report_ndx_reference_networks.py",
+      "sha256": "04f4952cf3d2bc4dcf439d614bddd3d3e61f018c1cc584bf9227a99f2eafbbb3",
+      "previously_tracked": false
+    },
+    {
+      "original": "report_ndx_seed_expansion.py",
+      "path": "research/reporting/report_ndx_seed_expansion.py",
+      "sha256": "12e8f82936b475994bd2f8e751ad8cf33083957012be16c0462372962542d373",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_pooled_uncertainty.py",
+      "path": "research/reporting/report_pooled_uncertainty.py",
+      "sha256": "eec87674da1110b4a6d332b1057c083fd2f007b703e75ff881f18c741d034fae",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_random_trials.py",
+      "path": "research/reporting/report_random_trials.py",
+      "sha256": "22f3fe79e674f27eee45ad4e1d707f1ed273151929f0dd7ed366daf078e570a3",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_recent_research.py",
+      "path": "research/reporting/report_recent_research.py",
+      "sha256": "f7c945e9a340d1984a30fae46f427559f248f258e71c84e86697712b3563543e",
+      "previously_tracked": true
+    },
+    {
+      "original": "report_robust_research.py",
+      "path": "research/reporting/report_robust_research.py",
+      "sha256": "8882af4605891c6dafc8594a621c4bde6cd587d7eb460d71eff004944fc03b6a",
+      "previously_tracked": true
+    },
+    {
+      "original": "research_engine.py",
+      "path": "research/core/research_engine.py",
+      "sha256": "82406389f66ae2e6b2c541a58517d5a1dba3308aba3397e3e02f44923ae95c80",
+      "previously_tracked": true
+    },
+    {
+      "original": "research_models.py",
+      "path": "research/models/research_models.py",
+      "sha256": "437d9f6deaeb6241ec079a17400c12ec35fc19bba74a6bfdfa310ae8c6262e72",
+      "previously_tracked": true
+    },
+    {
+      "original": "review_historical_ndx_inputs.py",
+      "path": "research/data/review_historical_ndx_inputs.py",
+      "sha256": "fd0cbc55760e05757f1a757fbc9a1db9189377b3d9563f38a932eb48517bd558",
+      "previously_tracked": true
+    },
+    {
+      "original": "robust_engine.py",
+      "path": "research/core/robust_engine.py",
+      "sha256": "33d44fa9bdbf3b703654ca7d0e39ed25317cb9176bb749351e09f14c78f9b10d",
+      "previously_tracked": true
+    },
+    {
+      "original": "robust_models.py",
+      "path": "research/models/robust_models.py",
+      "sha256": "06086a7b6433db5c38977ed5060cab869c2185bddc9b26a52371a0207e462513",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_architecture_research.py",
+      "path": "research/training/run_architecture_research.py",
+      "sha256": "01c83a4da334e676e5733a25f5d7aba7c7801cc67b9686c1f8f75b3ab6c41730",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_historical_ndx.py",
+      "path": "research/training/run_historical_ndx.py",
+      "sha256": "a9f1dac3f48ecfd97a4580618be71889788854b1b252a3d5d2b18be6f050ef4d",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_largecap_retraining.py",
+      "path": "research/training/run_largecap_retraining.py",
+      "sha256": "6a2a6877350ddfafef3c9b538c966c6b4b39b8a20703a6d28fd96b8938858e54",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_alpaca_pipeline.py",
+      "path": "research/training/run_ndx_alpaca_pipeline.py",
+      "sha256": "558099f3ee36e0cc9a23e9b2ba630e8555e337543920b75224a8841da6df6c4a",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_alpaca_training.py",
+      "path": "research/training/run_ndx_alpaca_training.py",
+      "sha256": "141e2b9885e5fdec28ac8d18802db350a5863720bb742a347bb8b4f5af9954b9",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_broad.py",
+      "path": "research/training/run_ndx_broad.py",
+      "sha256": "c79edd14c35c3fd621532ad7ca73ef3183f4ad7cd70b3e02b28424774600b2ea",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_corrections.py",
+      "path": "research/training/run_ndx_corrections.py",
+      "sha256": "d7a033ef9d2c3f989ad2ee12e671050022f5d0ae5bd9df19215e826c48b1ad13",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_extended_hours.py",
+      "path": "research/training/run_ndx_extended_hours.py",
+      "sha256": "044aa13e5fb0e69aa4143af5dae23925f5e43b40c08dbf2870e4d692bdb4f8d2",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_extended_hours_top5.py",
+      "path": "research/training/run_ndx_extended_hours_top5.py",
+      "sha256": "b711266673bf508eec7c8a630270f6c5cd586242ac4166eed6e50123590ff8f4",
+      "previously_tracked": false
+    },
+    {
+      "original": "run_ndx_long_short.py",
+      "path": "research/training/run_ndx_long_short.py",
+      "sha256": "6b738267ffe1ad06a9ec580f39d28d350b9d4f06793b32f815681e9d97e49231",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_loss_optimizer.py",
+      "path": "research/training/run_ndx_loss_optimizer.py",
+      "sha256": "17ac8700303bb20b6e4dcac7cf8a584d139de3c9eff9338f0a3d0ac546a8b5f8",
+      "previously_tracked": false
+    },
+    {
+      "original": "run_ndx_ranking.py",
+      "path": "research/training/run_ndx_ranking.py",
+      "sha256": "1346b1ba05ccf80ac99521b5079942c4fe28335cc58614b41aad829117961ddd",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_reference_networks.py",
+      "path": "research/training/run_ndx_reference_networks.py",
+      "sha256": "afac7f432ad86b4f2a1ba019e052dd64d3a876658828c1a4c57fd1cd21214bfe",
+      "previously_tracked": false
+    },
+    {
+      "original": "run_ndx_reference_parallel.py",
+      "path": "research/training/run_ndx_reference_parallel.py",
+      "sha256": "d7f87668b848ddc7bd1de032ccae0345fe2a6d2d736d9fd39de6b19053e50754",
+      "previously_tracked": false
+    },
+    {
+      "original": "run_ndx_seed_expansion.py",
+      "path": "research/training/run_ndx_seed_expansion.py",
+      "sha256": "b1ffe8afcf469c0d5d57a3f56e237772ee17e6f835bf46c9b33d874a2ae93a90",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_ndx_topk_pseudohuber.py",
+      "path": "research/training/run_ndx_topk_pseudohuber.py",
+      "sha256": "c3e767f2eb7bcd00e09c089dac49100ebfd423f59cbf5568ac4d3dd8a70c7dbf",
+      "previously_tracked": true
+    },
+    {
+      "original": "run_robust_research.py",
+      "path": "research/training/run_robust_research.py",
+      "sha256": "68701ba0fe89ceba2050230f379b19649105916a463bc6c67896d4342b6f743b",
+      "previously_tracked": true
+    },
+    {
+      "original": "seal_ndx_comparison.py",
+      "path": "research/evaluation/seal_ndx_comparison.py",
+      "sha256": "03a5b65d201d190faa0608df5a7d81f0a0209d344a385762ddfa7b9854845bbb",
+      "previously_tracked": false
+    },
+    {
+      "original": "summarize_robust_findings.py",
+      "path": "research/analysis/summarize_robust_findings.py",
+      "sha256": "d0d09bd7195f7ce53b0af768912fab32b8fadf87ede9857f08d44a7baeea9ea6",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_alpaca_15min.py",
+      "path": "tests/test_alpaca_15min.py",
+      "sha256": "ee5db3fd0de941218b80027d5f7053c88327ec700ad373a18c3cb701e2276e9e",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_historical_nasdaq_universe.py",
+      "path": "tests/test_historical_nasdaq_universe.py",
+      "sha256": "301c1ef343a77febcc26209da00b0faca385f03109dc905bdc1dc1f666d16bce",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_historical_ndx_audit.py",
+      "path": "tests/test_historical_ndx_audit.py",
+      "sha256": "547064ae0c3a875c31bcaa09bc3f08483294501a6b527cd6353b5ce654f5aa6c",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_historical_ndx_membership.py",
+      "path": "tests/test_historical_ndx_membership.py",
+      "sha256": "d39f5dd140d6d9f790ebd96805544bfd9fd0773f8e92ed4ee400c60e7e64678d",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_historical_ndx_timing.py",
+      "path": "tests/test_historical_ndx_timing.py",
+      "sha256": "bb488e25a535e256b98bd29795c2ccd7e96f3e82411679ae4fe2b1b9f377fcc5",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_huber_ranking.py",
+      "path": "tests/test_huber_ranking.py",
+      "sha256": "73ffe66b3cd706633a1663433422d647a7480c7fb90ce229cf49168e34ef0714",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_largecap_retraining.py",
+      "path": "tests/test_largecap_retraining.py",
+      "sha256": "6557ec525e29791adca52dca07db616ceaa384ab5d04dfa8d88ca51f319cd8c4",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_long_short_pit.py",
+      "path": "tests/test_long_short_pit.py",
+      "sha256": "bcd55c4fc4f1802e292b9da3dc685d6a664068e7fbb9fff01009ce6e62c7b1cf",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_alpaca.py",
+      "path": "tests/test_ndx_alpaca.py",
+      "sha256": "09204dc44f71369107ebc52fc4b5a1b0ce388d0024c23116b36744a54613e6f1",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_alpaca_reporting.py",
+      "path": "tests/test_ndx_alpaca_reporting.py",
+      "sha256": "64fb384b579b074d25ee70707c3329ff8d984eedf952125294f3e8e7ffefe184",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_broad.py",
+      "path": "tests/test_ndx_broad.py",
+      "sha256": "2e561cdf7124628a979c431949631a7182893a12a842cb070d0585c99467f4fb",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_broad_report.py",
+      "path": "tests/test_ndx_broad_report.py",
+      "sha256": "bd6126eb4947c78a986cc0bb0f809b6696669ed183201b7fdc561a21d4ef8b8a",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_corrections.py",
+      "path": "tests/test_ndx_corrections.py",
+      "sha256": "e64d49c283495558e977c274cc624e2e623dfba59736911934014eaf40a91840",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_corrections_report.py",
+      "path": "tests/test_ndx_corrections_report.py",
+      "sha256": "d1a82ba4247ae3171308ffee7545ade0888500f8cd4d61487bb79672700630d2",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_extended_hours.py",
+      "path": "tests/test_ndx_extended_hours.py",
+      "sha256": "9d326397e302e1c95ee9b1a7b2503a5e81cb2d685ce8b61372a72fc09df57d1d",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_extended_hours_report.py",
+      "path": "tests/test_ndx_extended_hours_report.py",
+      "sha256": "3380de83c25eb0c217773db1780d0d40225bf121f3ea89269d0bc8f12e904a5b",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_loss_optimizer.py",
+      "path": "tests/test_ndx_loss_optimizer.py",
+      "sha256": "cd90fceb7e0e9162cea6f631ea320a603ce6ce206c273d12ba8160d55f0d1d9a",
+      "previously_tracked": false
+    },
+    {
+      "original": "test_ndx_loss_optimizer_evaluation.py",
+      "path": "tests/test_ndx_loss_optimizer_evaluation.py",
+      "sha256": "08d4cdd49449a65e79d76dce2c7db84c24817bb4a1ef1c4f23985a23ad0f1d2e",
+      "previously_tracked": false
+    },
+    {
+      "original": "test_ndx_ranking.py",
+      "path": "tests/test_ndx_ranking.py",
+      "sha256": "c5792bb0c038b70be02b948a46e799c4d624313248006b2dfad0c7f927882c0f",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_ranking_report.py",
+      "path": "tests/test_ndx_ranking_report.py",
+      "sha256": "a3acabe2cfe6d9e4001c96aad4dc3f693d6f00243f6e2c66a79fb80ab7331d0e",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_reference_evaluation.py",
+      "path": "tests/test_ndx_reference_evaluation.py",
+      "sha256": "38efff72da1166bc62f5c7f61042b30e5fa0829d86d0c339f9924b74c4d90dd8",
+      "previously_tracked": false
+    },
+    {
+      "original": "test_ndx_reference_models.py",
+      "path": "tests/test_ndx_reference_models.py",
+      "sha256": "65528ae71c85e88b6b423b4980625ed99a44285dfdaa6e197306bda62b6a4866",
+      "previously_tracked": false
+    },
+    {
+      "original": "test_ndx_seed_expansion.py",
+      "path": "tests/test_ndx_seed_expansion.py",
+      "sha256": "61ae76c79a8562206a8a8efcf2685c80d8274e32d8d00ed3ee81f12dd58745d8",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_seed_report.py",
+      "path": "tests/test_ndx_seed_report.py",
+      "sha256": "de11b7bb7114709a79f8ecf5f73f1f84d13b5a8078520747364f1ec5e9448026",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_ndx_strategy_comparison.py",
+      "path": "tests/test_ndx_strategy_comparison.py",
+      "sha256": "cc764f1e0b023218cfeea53e9329fa233b39b6ef8984fbe4c6733167e0ca11c3",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_pit_models.py",
+      "path": "tests/test_pit_models.py",
+      "sha256": "72301dc9c00253084b5a8d45ea30701bedaa235b31bd80d4ae9b13e7e4a75a7d",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_pit_research_engine.py",
+      "path": "tests/test_pit_research_engine.py",
+      "sha256": "5adca367463b4180d3fdf8c2f3292432aac4fbac7c1da5f9397cde9df51e9706",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_pseudohuber_think_mixer.py",
+      "path": "tests/test_pseudohuber_think_mixer.py",
+      "sha256": "2c5991a81dcb99da5bd4bc5f750f173d2061adb7da41ac3f45f196f424a8e7bc",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_research.py",
+      "path": "tests/test_research.py",
+      "sha256": "f54934f104242c451bb5b3417d0aa66bee4f05e01a8cffcdf6361b2bb907c1d1",
+      "previously_tracked": true
+    },
+    {
+      "original": "test_robust_research.py",
+      "path": "tests/test_robust_research.py",
+      "sha256": "103e27a48c2abf7551128b444b68949c2138e3f1587c4c676d4a3b3c4fbfaf87",
+      "previously_tracked": true
+    },
+    {
+      "original": "think_model.py",
+      "path": "research/models/think_model.py",
+      "sha256": "ee05058dba2be85fc6bde6d768a5f6397e078108037717dc5512c5dac7da85bb",
+      "previously_tracked": true
+    },
+    {
+      "original": "training_device.py",
+      "path": "research/core/training_device.py",
+      "sha256": "e07899eacf6fec4f563f35ae3f671410ffa6015983e5c83a4e5299278d1e7fe8",
+      "previously_tracked": true
+    },
+    {
+      "original": "update_benchmark_artifacts.py",
+      "path": "research/reporting/update_benchmark_artifacts.py",
+      "sha256": "63959b7a69a385a6f7288be28ad8b24aa3d629e4ca97f85a8d8ee126ecb1aeb3",
+      "previously_tracked": true
+    },
+    {
+      "original": "update_ndx_new_findings_20261024.py",
+      "path": "research/reporting/update_ndx_new_findings_20261024.py",
+      "sha256": "83c0af1412e928f597ee2720494238cfa757f48f3ee731eeaeea66afa0673895",
+      "previously_tracked": false
+    },
+    {
+      "original": "update_ndx_strategy_comparison_20261024.py",
+      "path": "research/reporting/update_ndx_strategy_comparison_20261024.py",
+      "sha256": "23f55095dea0743fb1d9819fef8e70dc978fb150f1efc8fa072a170df4698ecc",
+      "previously_tracked": true
+    },
+    {
+      "original": "update_ndx_top5_comparison_20261024.py",
+      "path": "research/reporting/update_ndx_top5_comparison_20261024.py",
+      "sha256": "a22ad4f5ed20da84f6e5745c3e75a6910bdfc3365a1e1f0656a39eb5f67d5a76",
+      "previously_tracked": false
+    },
+    {
+      "original": "verify_audited_publication.py",
+      "path": "research/evaluation/verify_audited_publication.py",
+      "sha256": "cfd567d7ba178a084c459772f144fc975c4cf5340097e47dcfcfe3ed2897a378",
+      "previously_tracked": true
+    },
+    {
+      "original": "verify_cuda.py",
+      "path": "research/evaluation/verify_cuda.py",
+      "sha256": "0a0974def959a73ebb8b703e20531eef237d54ded18485731391e2bd999ec69c",
+      "previously_tracked": true
+    },
+    {
+      "original": "verify_ndx_long_short_publication.py",
+      "path": "research/evaluation/verify_ndx_long_short_publication.py",
+      "sha256": "9e793799bc8f65fa4894fd999d4acb5a250f0d99cdb97116fbfd018d88751a10",
+      "previously_tracked": true
+    },
+    {
+      "original": "verify_robust_outputs.py",
+      "path": "research/evaluation/verify_robust_outputs.py",
+      "sha256": "264328b33271bf6099a3dba440853097c4c62fc7e55c6124b802491c6c81c687",
+      "previously_tracked": true
+    },
+    {
+      "original": "requirements-cuda.txt",
+      "path": "requirements/requirements-cuda.txt",
+      "sha256": "c3f4f0b567f6d10145e07e280ba83eead0c8f11611c70996121ec4063c3ad931",
+      "previously_tracked": true
+    },
+    {
+      "original": "requirements-data.txt",
+      "path": "requirements/requirements-data.txt",
+      "sha256": "ffac9e6077d01ea5549fb75d5d8cb25b641a23d6474d562e84d1edbc348e7d22",
+      "previously_tracked": true
+    },
+    {
+      "original": "requirements-research-20261020.txt",
+      "path": "requirements/requirements-research-20261020.txt",
+      "sha256": "96324185dada5bfc2bbbe34e760fcc65eaab7cdbdb247d0b39ff066e4eb1a195",
+      "previously_tracked": true
+    },
+    {
+      "original": "requirements-tested-cpu.txt",
+      "path": "requirements/requirements-tested-cpu.txt",
+      "sha256": "63c8c7472c3c91ed9be20542efba9e97a89a0e1b1f5299ee76a0f952b9e7c219",
+      "previously_tracked": true
+    },
+    {
+      "original": "requirements-tested.txt",
+      "path": "requirements/requirements-tested.txt",
+      "sha256": "c33774f5db5fe5b539ce04b68f9dc8a5de722d146369c0438d10e5cc363efc26",
+      "previously_tracked": true
+    }
+  ]
+}

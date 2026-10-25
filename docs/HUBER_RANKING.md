@@ -1,5 +1,7 @@
 # THINK+mixer: Huber plus ranking follow-up
 
+> Historical scope: the earlier Huber-plus-ranking cohort follow-up. The separate October 24 AH/PM MSE/Huber/pseudo-Huber and optimizer test is summarized in the [master charts](../charts.md). Commands below use the current root launcher for this older study.
+
 <!-- benchmark-audit-20261010:start -->
 NYSX is the passive Global X NYSE 100 ETF. It launched March 25, 2026 and has no tradable 2022–2025 history. Its index covers technology and growth companies across exchanges, not the 100 largest NYSE-listed companies. NYSX performance is unavailable here. NYSE historical charts use the simulated equal-weight cohort basket (scheduled rebalances and modeled costs), not an ETF. NASDAQ charts retain QQQ; SPY supplies broad-market context. [Issuer and inception](https://www.globalxetfs.com/funds/nysx/) and [prospectus](https://assets.globalxetfs.com/funds/documents/nysx/prospectus-regulatory/Summary-Prospectus_NYSX.pdf).
 
@@ -285,10 +287,10 @@ Execution and costs are unchanged: signal after close, fill next close, five-ses
 ## Reproduction and complete tables
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest -v test_research test_robust_research test_huber_ranking
-.\.venv\Scripts\python.exe run_robust_research.py --out runs/huber_ranking_2022_2025 --experiment-plan config/huber_ranking_experiment_plan.json --reuse-fits-from runs/robust_2022_2025_final --variants think_mix_huber think_mix think think_mix_huber_rank_01 think_mix_huber_rank_03 think_mix_huber_rank_10 --workers 3
-.\.venv\Scripts\python.exe report_huber_ranking.py
-.\.venv\Scripts\python.exe publish_research_docs.py
+.\.venv\Scripts\python.exe -m hypershift test -v test_research test_robust_research test_huber_ranking
+.\.venv\Scripts\python.exe -m hypershift run run_robust_research --out runs/huber_ranking_2022_2025 --experiment-plan config/huber_ranking_experiment_plan.json --reuse-fits-from runs/robust_2022_2025_final --variants think_mix_huber think_mix think think_mix_huber_rank_01 think_mix_huber_rank_03 think_mix_huber_rank_10 --workers 3
+.\.venv\Scripts\python.exe -m hypershift run report_huber_ranking
+.\.venv\Scripts\python.exe -m hypershift run publish_research_docs
 ```
 
 Use a fresh output directory to retrain; completed runs are immutable. This reporting script reads the named completed run.

@@ -1,7 +1,7 @@
 {
   "status": "completed_audited",
   "updated_local_date": "2026-10-24",
-  "strategies": 275,
+  "strategies": 346,
   "daily_observations": 1003,
   "extended_hours_accounts": 66,
   "additional_detail_accounts": 54,
@@ -42,14 +42,31 @@
     "docs\\ndx_extended_hours_20261024\\sharpe_intervals.csv": "7730bec4812b0e3b7a14ea9014b6d4f4c7ee6cdb2a1ce37d2aa7cc9a1449823a",
     "docs\\ndx_extended_hours_20261024\\AUDIT.json": "777eae6d1bb894d94d3cef91cee2aaa7d0d8705de713d6cb562870fa50ef9476",
     "docs\\ndx_extended_hours_20261024\\ten_seed_intervals.csv": "82e075d7612185406fbbf43b399e9cde8bbbd620f6d734a821f24a199d7a0d06",
-    "docs\\ndx_extended_hours_20261024\\REPORT.md": "5405f17c37839f5fc715dc05e3e014b2ab008e76fdf78365a7db25fe4d7c46d9"
+    "docs\\ndx_extended_hours_20261024\\REPORT.md": "5405f17c37839f5fc715dc05e3e014b2ab008e76fdf78365a7db25fe4d7c46d9",
+    "docs\\ndx_extended_hours_top5_20261024\\metrics.csv": "cbafad9630bddb23a7fd989a929877498591a1fd103efb9c6303974c9fdb2953",
+    "docs\\ndx_extended_hours_top5_20261024\\AUDIT.json": "a8da6ad9d825dad3012092f92bffe661acd5a5651b95ccf177bbe504fc78a533",
+    "runs\\ndx_loss_optimizer_20261024\\FINAL_PUBLICATION.json": "2ecc4ef296abe28736848de177f6e8514a17cfeb07472b3bf4b48a9bb09c0691",
+    "runs\\ndx_reference_networks_20261024\\FINAL_PUBLICATION.json": "a1c8c8aab1fad6a9681bef168e69f1b3d0646f0ef87d594795a0043a718b9f16"
   },
-  "analysis_source_sha256": "4c8fcbf8bf84a8925a0c464269ae5183bc9c02dac1583aa39a5201d8f0ad5041",
+  "analysis_source_sha256": "83c0af1412e928f597ee2720494238cfa757f48f3ee731eeaeea66afa0673895",
   "prior_audit_sha256": "ac39654441c30dc5eb7eb6cc3642165102805e89296cf2ebdcaab48484fea14e",
   "prior_workbook_sha256": "7beb5582769cf674534aa57f0eb8e25ae9b70c8516010679e09d5e6eabb8b50c",
-  "source_policy": "Existing 267 strategies preserved; eight new base-cost ensembles appended; all 66 extended-hours accounts disclosed separately.",
-  "workbook": "NASDAQ100_strategy_comparison.xlsx",
-  "workbook_sheets": 5,
-  "workbook_comparison_rows": 345,
-  "chart_panels": 329
+  "source_policy": "Preserved 280 prior main rows and paths; appended 66 base-cost ensembles, 346 declared batch accounts and 278 new unique chart accounts. No new models fit for consolidation.",
+  "workbook": "docs\\NASDAQ100_strategy_comparison.xlsx",
+  "workbook_sheets": 8,
+  "workbook_comparison_rows": 850,
+  "chart_panels": 634,
+  "top5_followup_accounts": 62,
+  "additional_diagnostic_accounts": 288,
+  "sections": {
+    "Models": 105,
+    "Defensive": 31,
+    "Portfolio variants": 210
+  },
+  "top5_followup_source": "update_ndx_top5_comparison_20261024.py",
+  "top5_followup_source_sha256": "a22ad4f5ed20da84f6e5745c3e75a6910bdfc3365a1e1f0656a39eb5f67d5a76",
+  "new_experiment_accounts": 346,
+  "new_findings_source": "update_ndx_new_findings_20261024.py",
+  "gallery_pages": 79,
+  "figures": 83
 }

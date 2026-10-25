@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "unsealed_documents_checked": 38,
+  "local_links_checked": 373,
+  "hash_referenced_documents_preserved": 15,
+  "broken_local_links": 0,
+  "master_charts_sha256": "3efa62b8501bbf05624ad4f75109fa2168fb4896ec7af510851506fc0066588a",
+  "comparison_workbook_sha256": "5826cbadbe38fa40745d512311c8f5279402cce046803e96ec4b828a1f813981",
+  "policy": "Preserved hash-referenced reports and master result bytes; scoped current directory guides and unsealed historical documents; converted old commands in editable guides.",
+  "staged_source_and_artifact_hashes_verified": 177,
+  "unit_tests_passed": 173
+}

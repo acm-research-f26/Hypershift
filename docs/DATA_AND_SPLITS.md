@@ -1,5 +1,7 @@
 # Training dates and leakage audit
 
+> Historical scope: data and chronological splits for the earlier cohort experiments. Current historical membership and Alpaca inputs are described in the [data contract](nasdaq_monthly_pit/DATA_REQUIREMENTS.md) and [Alpaca guide](ALPACA_15MIN.md).
+
 <!-- benchmark-audit-20261010:start -->
 NYSX is the passive Global X NYSE 100 ETF. It launched March 25, 2026 and has no tradable 2022–2025 history. Its index covers technology and growth companies across exchanges, not the 100 largest NYSE-listed companies. NYSX performance is unavailable here. NYSE historical charts use the simulated equal-weight cohort basket (scheduled rebalances and modeled costs), not an ETF. NASDAQ charts retain QQQ; SPY supplies broad-market context. [Issuer and inception](https://www.globalxetfs.com/funds/nysx/) and [prospectus](https://assets.globalxetfs.com/funds/documents/nysx/prospectus-regulatory/Summary-Prospectus_NYSX.pdf).
 

@@ -1,0 +1,19 @@
+{
+  "purpose": "User-requested fixed top-five versus top-ten allocation test using existing after-hours plus premarket forecasts",
+  "created_local_date": "2026-10-24",
+  "parent": "ndx_extended_hours_20261024",
+  "new_training_fits": 0,
+  "views": ["daily", "after_hours_premarket"],
+  "groups": ["original_five", "ten_seed", "new_five"],
+  "holdings": [5, 10],
+  "cost_multipliers": [1, 2, 4],
+  "individual_accounts": "All ten saved AH+PM individual-seed forecasts at five and ten holdings, base fees",
+  "accounts": 62,
+  "primary_question": "For the original-five AH+PM rank ensemble, does changing only target holding count from ten to five improve net historical performance?",
+  "diagnostics": "Fixed ten-seed/new-five ensembles, matched daily-only controls, all ten individual seeds, fee stress, annual and monthly returns. No new feature, checkpoint, seed, holding count or exposure tuning.",
+  "execution": "Identical 09:15 Eastern feature cutoff, 09:20 entry-day decision and same entry-day regular-close fill, with shares sized from the known preceding close. Equal long-only targets, five-session rebalance, continuous $1m account, existing 1% ADV share limits, fees, cancellations and corporate-action accounting. No extended-hours fills.",
+  "source_checks": "Verify completed parent source/data/checkpoint locks and published hashes, reconstruct rank ensembles from saved predictions, reproduce every matching prior top-ten account and original daily top-five reference.",
+  "confidence": "10000 paired circular-block replicates at 5/20/60 sessions, 20 primary. Absolute Sharpe intervals and paired CAGR/Sharpe/annual-arithmetic-active-return differences. One fixed 12-contrast family: each AH+PM group's top-five versus its top-ten, SPY, QQQ and matched daily-only top-five. Simultaneous diagnostics cover these twelve, not the earlier research search.",
+  "stop_rule": "Freeze protocol, source and saved forecast inputs before computing the new top-five test returns. Independently replay all 62 accounts and publish every declared group, seed, cost and negative result.",
+  "history": "2022-2025 is previously inspected exploratory development. The original-five subgroup is requested explicitly; it is not an unseen confirmation. No deployment, trades or recurring jobs."
+}

@@ -39,7 +39,7 @@ These checks do not establish a training speedup; benchmark the actual workload 
 ## Future use
 
 ```powershell
-.\.venv\Scripts\python.exe run_robust_research.py --device cuda --workers 1 --out runs/gpu_new
+.\.venv\Scripts\python.exe -m hypershift run run_robust_research --device cuda --workers 1 --out runs/gpu_new
 ```
 
 Installation used:
@@ -48,8 +48,9 @@ Installation used:
 uv pip install --python .venv\Scripts\python.exe --cache-dir .cache\uv-cuda --link-mode copy --no-deps 'torch==2.14.0+cu130' --index-url https://download.pytorch.org/whl/cu130
 ```
 
-`requirements-tested.txt` records the current CUDA packages. `requirements-tested-cpu.txt`
-preserves the historical CPU environment; `requirements-cuda.txt` pins the CUDA wheel.
+`requirements/requirements-tested.txt` records the current CUDA packages.
+`requirements/requirements-tested-cpu.txt` preserves the historical CPU environment;
+`requirements/requirements-cuda.txt` pins the CUDA wheel.
 Use the matching official wheel index when installing these local-version pins.
 See [PyTorch installation](https://pytorch.org/get-started/locally/) and
 [reproducibility guidance](https://docs.pytorch.org/docs/2.14/notes/randomness.html).

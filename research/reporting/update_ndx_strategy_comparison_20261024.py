@@ -23,6 +23,7 @@ OUT = ROOT/'outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_202
 PRIOR = ROOT/'.cache/strategy_comparison_20261024_previous'
 DOC = ROOT/'docs/strategy_comparison_20261024'
 EXT = ROOT/'docs/ndx_extended_hours_20261024'
+BOOK = ROOT/'docs/NASDAQ100_strategy_comparison.xlsx'
 VIEWS = dict(daily='Daily', after_hours='Daily + AH', after_hours_premarket='Daily + AH + PM',
              SPY='SPY', QQQ='QQQ', monthly_basket='Monthly Nasdaq-100 basket')
 GROUPS = dict(ten_seed='ten seeds', original_five='original five seeds', new_five='new five seeds')
@@ -228,7 +229,7 @@ def charts():
         'The SR intervals use a fixed 3% annual hurdle and 10,000 circular-block resamples, with 20 sessions primary. They condition on fitted paths, omit the full research search and retraining uncertainty, and do not measure the probability of beating a benchmark. These years have been repeatedly inspected.', '',
         '![Historical leaders](docs/strategy_comparison_20261024/figures/historical_leaders.png)', '',
         '## Files and scope', '',
-        '- [Updated comparison workbook](outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/NASDAQ100_strategy_comparison.xlsx): 275 distinct base-cost strategies; 72 Models, 31 Defensive and 172 Portfolio variants. Benchmarks repeat in the latter tabs for convenience.',
+        '- [Updated comparison workbook](docs/NASDAQ100_strategy_comparison.xlsx): 275 distinct base-cost strategies; 72 Models, 31 Defensive and 172 Portfolio variants. Benchmarks repeat in the latter tabs for convenience.',
         '- [Every extended-hours account](outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/extended_hours_all_accounts.csv): all 66 accounts, including individual seeds and 2x/4x fees, also in the new workbook tab.',
         '- [Chart catalog](docs/strategy_comparison_20261024/chart_catalog.csv): one chart-panel entry for each of 275 main strategies and 54 additional extended-hours diagnostic accounts. Twelve reference accounts are aliases already represented in the main gallery.',
         '- [All strategy metrics](outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/all_strategies.csv) and [5/20/60-session SR sensitivity](outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/sharpe_block_sensitivity.csv).', '',
@@ -282,7 +283,7 @@ def audit():
                     cells[c.attrib['r']] = (value, t, c.findtext('s:f', None, ns))
                 result[name] = (cells, xml)
         return result
-    before = contents(PRIOR/'NASDAQ100_strategy_comparison.xlsx'); after = contents(OUT/'NASDAQ100_strategy_comparison.xlsx')
+    before = contents(PRIOR/'NASDAQ100_strategy_comparison.xlsx'); after = contents(BOOK)
     assert list(after) == ['Models', 'Defensive', 'Portfolio variants', 'Method', 'Extended-hours']
     # Compare effective cell formats rather than volatile exported style indices.
     def native_styles(path):
@@ -304,10 +305,10 @@ def audit():
                 answer[index] = {c.attrib['r']: signature(c) for c in xml.findall('s:sheetData/s:row/s:c', ns)}
             return answer
     old_styles = native_styles(PRIOR/'NASDAQ100_strategy_comparison.xlsx')
-    new_styles = native_styles(OUT/'NASDAQ100_strategy_comparison.xlsx')
+    new_styles = native_styles(BOOK)
     for index in [1, 2, 3]:
         for address, style in old_styles[index].items(): assert style == new_styles[index][address], ('style', index, address)
-    with zipfile.ZipFile(PRIOR/'NASDAQ100_strategy_comparison.xlsx') as old_zip, zipfile.ZipFile(OUT/'NASDAQ100_strategy_comparison.xlsx') as new_zip:
+    with zipfile.ZipFile(PRIOR/'NASDAQ100_strategy_comparison.xlsx') as old_zip, zipfile.ZipFile(BOOK) as new_zip:
         for index in [2, 3]: assert old_zip.read(f'xl/tables/table{index}.xml') == new_zip.read(f'xl/tables/table{index}.xml')
     verified = 0
     for name, matrix in expected.items():
@@ -343,7 +344,7 @@ def audit():
     markdown = (ROOT/'charts.md').read_text(encoding='utf-8')
     for target in re.findall(r'\]\(([^)]+)\)', markdown): assert (ROOT/target).exists(), target
     assert not any(v[1] == 'e' for cells, xml in after.values() for v in cells.values())
-    receipt.update(status='completed_audited', analysis_source_sha256=sha(__file__), workbook='NASDAQ100_strategy_comparison.xlsx', workbook_sheets=5,
+    receipt.update(status='completed_audited', analysis_source_sha256=sha(__file__), workbook=str(BOOK.relative_to(ROOT)), workbook_sheets=5,
                    workbook_comparison_rows=verified, chart_panels=329)
     dump(OUT/'ANALYSIS.json', receipt)
     proof = dict(status='passed', updated_local_date='2026-10-24', main_strategies=275, extended_hours_accounts=66,
@@ -353,7 +354,7 @@ def audit():
         chart_panels=329, chart_figures=len(list((DOC/'figures').glob('*.png'))),
         prior_cell_formats_preserved=True, allocation_tables_preserved=True,
         analysis_source_sha256=sha(__file__), workbook_builder_sha256=sha(OUT/'build_workbook.mjs'),
-        output_sha256={p.name: sha(p) for p in [OUT/'NASDAQ100_strategy_comparison.xlsx', OUT/'all_strategies.csv', OUT/'extended_hours_all_accounts.csv', OUT/'COMPARISON.md', ROOT/'charts.md']})
+        output_sha256={p.name: sha(p) for p in [BOOK, OUT/'all_strategies.csv', OUT/'extended_hours_all_accounts.csv', OUT/'COMPARISON.md', ROOT/'charts.md']})
     dump(OUT/'AUDIT.json', proof); dump(DOC/'AUDIT.json', proof)
     dump(DOC/'FIGURE_MANIFEST.json', figure_hashes)
     print(json.dumps(proof, indent=2), flush=True)

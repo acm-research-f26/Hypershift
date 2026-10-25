@@ -1,5 +1,7 @@
 # Robust-loss and daily-session experiments, 2022-2025
 
+> Historical scope: pooled cohort report preceding the historical-monthly NASDAQ-100 and Alpaca experiments. Its dates, universes and statistics belong to that study. See the [master charts](../charts.md) and [documentation index](README.md) for the latest comparisons.
+
 <!-- benchmark-audit-20261010:start -->
 NYSX is the passive Global X NYSE 100 ETF. It launched March 25, 2026 and has no tradable 2022–2025 history. Its index covers technology and growth companies across exchanges, not the 100 largest NYSE-listed companies. NYSX performance is unavailable here. NYSE historical charts use the simulated equal-weight cohort basket (scheduled rebalances and modeled costs), not an ETF. NASDAQ charts retain QQQ; SPY supplies broad-market context. [Issuer and inception](https://www.globalxetfs.com/funds/nysx/) and [prospectus](https://assets.globalxetfs.com/funds/documents/nysx/prospectus-regulatory/Summary-Prospectus_NYSX.pdf).
 
@@ -410,10 +412,10 @@ Same model name and equal-weight K=10; each uses its own matched-date SPY and fo
 Training commands (use fresh output directories):
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest -v test_research test_robust_research
-.\.venv\Scripts\python.exe run_robust_research.py --workers 3 --out runs/robust_new
-.\.venv\Scripts\python.exe run_robust_research.py --workers 3 --horizon 1 --batch 40 --variants think think_huber think_mix think_mix_huber stockmixer stockmixer_huber multiscale_mse multiscale_huber --out runs/daily_new
-.\.venv\Scripts\python.exe report_robust_research.py --runs runs/robust_new runs/daily_new --out runs/comparison_new
+.\.venv\Scripts\python.exe -m hypershift test -v test_research test_robust_research
+.\.venv\Scripts\python.exe -m hypershift run run_robust_research --workers 3 --out runs/robust_new
+.\.venv\Scripts\python.exe -m hypershift run run_robust_research --workers 3 --horizon 1 --batch 40 --variants think think_huber think_mix think_mix_huber stockmixer stockmixer_huber multiscale_mse multiscale_huber --out runs/daily_new
+.\.venv\Scripts\python.exe -m hypershift run report_robust_research --runs runs/robust_new runs/daily_new --out runs/comparison_new
 ```
 
 The actual five-session run reused verified old 2024-2025 baseline fits; exact predictions, preprocessing, fold definitions, training settings and model/source hashes were checked. FIT_REUSE_AUDIT.json records them. Fresh reproduction retrains all fits.

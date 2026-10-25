@@ -1,5 +1,7 @@
 # Pooled Sharpe confidence intervals
 
+> Historical scope: uncertainty methods for the earlier pooled cohort experiment. The current comparison uses its own block-bootstrap definitions in the [master charts](../charts.md) and workbook Method tab; do not substitute the older conventions.
+
 <!-- benchmark-audit-20261010:start -->
 NYSX is the passive Global X NYSE 100 ETF. It launched March 25, 2026 and has no tradable 2022–2025 history. Its index covers technology and growth companies across exchanges, not the 100 largest NYSE-listed companies. NYSX performance is unavailable here. NYSE historical charts use the simulated equal-weight cohort basket (scheduled rebalances and modeled costs), not an ETF. NASDAQ charts retain QQQ; SPY supplies broad-market context. [Issuer and inception](https://www.globalxetfs.com/funds/nysx/) and [prospectus](https://assets.globalxetfs.com/funds/documents/nysx/prospectus-regulatory/Summary-Prospectus_NYSX.pdf).
 

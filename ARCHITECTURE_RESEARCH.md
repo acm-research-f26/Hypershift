@@ -1,5 +1,7 @@
 # Previous 2024–2025 architecture evaluation
 
+> Historical scope: this document describes the earlier architecture/cohort batch. Current historical-monthly NASDAQ-100 results are in [master charts](charts.md) and the [comparison workbook](docs/NASDAQ100_strategy_comparison.xlsx). Current executable sources are in [research](research/README.md).
+
 <!-- benchmark-audit-20261010:start -->
 NYSX is the passive Global X NYSE 100 ETF. It launched March 25, 2026 and has no tradable 2022–2025 history. Its index covers technology and growth companies across exchanges, not the 100 largest NYSE-listed companies. NYSX performance is unavailable here. NYSE historical charts use the simulated equal-weight cohort basket (scheduled rebalances and modeled costs), not an ETF. NASDAQ charts retain QQQ; SPY supplies broad-market context. [Issuer and inception](https://www.globalxetfs.com/funds/nysx/) and [prospectus](https://assets.globalxetfs.com/funds/documents/nysx/prospectus-regulatory/Summary-Prospectus_NYSX.pdf).
 

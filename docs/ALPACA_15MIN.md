@@ -14,7 +14,8 @@ complete. See the [audited report, charts, all metrics and confidence intervals]
 Raw responses retain their price-only source status; the separate feature
 snapshot passed the documented input gate before training.
 
-The downloader is `fetch_alpaca_15min.py`. It uses the existing `requests`,
+The downloader is [fetch_alpaca_15min.py](../research/data/fetch_alpaca_15min.py).
+Run it through the [workspace launcher](PROJECT_LAYOUT.md). It uses the existing `requests`,
 `numpy`, and `pandas` dependencies. It only sends market-data GET requests.
 
 Alpaca's paper trading URL is `https://paper-api.alpaca.markets/v2`. Historical
@@ -48,19 +49,19 @@ suppressed on errors, and credentials are excluded from saved metadata.
 Inspect the full default plan without credentials, network calls, or dataset writes:
 
 ```powershell
-.\.venv\Scripts\python.exe fetch_alpaca_15min.py --dry-run
+.\.venv\Scripts\python.exe -m hypershift run fetch_alpaca_15min --dry-run
 ```
 
 After filling `.env`, first check a small period and the benchmark feeds:
 
 ```powershell
-.\.venv\Scripts\python.exe fetch_alpaca_15min.py --symbols AAPL MSFT SPY QQQ --start 2025-01-02 --end 2025-01-09
+.\.venv\Scripts\python.exe -m hypershift run fetch_alpaca_15min --symbols AAPL MSFT SPY QQQ --start 2025-01-02 --end 2025-01-09
 ```
 
 Download the full historical membership ticker union and SPY/QQQ:
 
 ```powershell
-.\.venv\Scripts\python.exe fetch_alpaca_15min.py
+.\.venv\Scripts\python.exe -m hypershift run fetch_alpaca_15min
 ```
 
 Default dates are January 1, 2018 inclusive through January 1, 2026 exclusive,
@@ -149,7 +150,7 @@ on the same held-out dates with consistent costs and portfolio rules.
 ## Verification
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest -v test_alpaca_15min
+.\.venv\Scripts\python.exe -m hypershift test test_alpaca_15min -v
 ```
 
 Tests use mocked HTTP responses and synthetic bars. They exercise pagination,
@@ -193,19 +194,19 @@ exclusion inventory are saved with the feature review.
 The full download can resume with a shared 190-requests/minute limit:
 
 ```powershell
-.\.venv\Scripts\python.exe fetch_alpaca_batch.py
+.\.venv\Scripts\python.exe -m hypershift run fetch_alpaca_batch
 ```
 
 Completed symbol/year chunks and model fits are hash-verified before reuse.
 The independently resumable stages are:
 
 ```powershell
-.\.venv\Scripts\python.exe run_ndx_alpaca_training.py --view daily_control --workers 2
-.\.venv\Scripts\python.exe prepare_ndx_alpaca.py
-.\.venv\Scripts\python.exe run_ndx_alpaca_training.py --view intraday_augmented --workers 2
-.\.venv\Scripts\python.exe report_ndx_alpaca.py
-.\.venv\Scripts\python.exe audit_ndx_alpaca.py
-.\.venv\Scripts\python.exe publish_ndx_alpaca.py
+.\.venv\Scripts\python.exe -m hypershift run run_ndx_alpaca_training --view daily_control --workers 2
+.\.venv\Scripts\python.exe -m hypershift run prepare_ndx_alpaca
+.\.venv\Scripts\python.exe -m hypershift run run_ndx_alpaca_training --view intraday_augmented --workers 2
+.\.venv\Scripts\python.exe -m hypershift run report_ndx_alpaca
+.\.venv\Scripts\python.exe -m hypershift run audit_ndx_alpaca
+.\.venv\Scripts\python.exe -m hypershift run publish_ndx_alpaca
 ```
 
 `prepare_ndx_alpaca.py --cache-available` precomputes verified regular-session

@@ -223,6 +223,11 @@ __marimo__/
 data/
 runs/
 
+# Acquisition source code belongs in research/data; market data stays ignored.
+!/research/data/
+!/research/data/*.py
+!/research/data/README.md
+
 # Local spreadsheet runtime and reproducible render intermediates
 **/node_modules/
 outputs/**/analysis_paths.npz

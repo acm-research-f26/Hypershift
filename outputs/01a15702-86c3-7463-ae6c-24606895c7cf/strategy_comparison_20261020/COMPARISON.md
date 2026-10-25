@@ -1,5 +1,7 @@
 # NASDAQ-100 strategy comparison, updated October 24, 2026
 
+Current consolidation: **346 distinct base-cost strategies**. The refreshed [master charts](../../../charts.md) give the current leaderboard, seed comparisons and new model definitions. Earlier study-specific headline sections below record the preceding research snapshots.
+
 All financial metrics use the same 2022–2025 dates. Main strategies are at base modeled costs. See [master charts](../../../charts.md).
 
 ## Models
@@ -295,3 +297,88 @@ All financial metrics use the same 2022–2025 dates. Main strategies are at bas
 ## Extended-hours individual seeds and fee stresses
 
 All 66 accounts, including reference aliases, are in extended_hours_all_accounts.csv and the workbook Extended-hours tab.
+
+## Five-holding after-hours follow-up
+
+Five new base-cost ensemble portfolios are included in the workbook and main CSV. All 62 matched accounts are in top5_all_accounts.csv. See [the audited report](../../../docs/ndx_extended_hours_top5_20261024/REPORT.md).
+
+| Strategy | CAGR | Sharpe | Max drawdown |
+| --- | ---: | ---: | ---: |
+| THINK + mixer / Daily / ten seed / top 5 | 14.39% | 0.476 | -39.03% |
+| THINK + mixer / Daily / new five / top 5 | 1.36% | 0.123 | -47.65% |
+| THINK + mixer / Daily + AH + PM / original five / top 5 | 14.51% | 0.485 | -43.13% |
+| THINK + mixer / Daily + AH + PM / ten seed / top 5 | 16.73% | 0.531 | -44.05% |
+| THINK + mixer / Daily + AH + PM / new five / top 5 | 0.89% | 0.106 | -49.51% |
+
+## New loss, optimizer and reference-network findings
+
+Sixty-six new base-cost ensembles are appended. See [master charts](../../../charts.md) for seed splits, uncertainty, model definitions and the complete new gallery. New findings in the workbook compares all ten-seed recipes and both seed halves. New accounts retains all 346 declared new-batch accounts.
+
+| Strategy | Sharpe | CAGR | RankIC | Max drawdown | 95% SR interval |
+| --- | ---: | ---: | ---: | ---: | --- |
+| THINK+mixer AH+PM / Huber / fixed AdamW / ten seeds / top 5 | 0.341 | 9.17% | -0.0003 | -51.31% | [-0.559, 1.291] |
+| THINK+mixer AH+PM / Huber / fixed AdamW / ten seeds / top 10 | 0.233 | 5.67% | -0.0003 | -42.42% | [-0.609, 1.125] |
+| THINK+mixer AH+PM / Huber / fixed AdamW / original five seeds / top 5 | 0.547 | 16.59% | 0.0007 | -42.35% | [-0.350, 1.474] |
+| THINK+mixer AH+PM / Huber / fixed AdamW / original five seeds / top 10 | 0.319 | 8.36% | 0.0007 | -41.31% | [-0.519, 1.206] |
+| THINK+mixer AH+PM / Huber / fixed AdamW / new five seeds / top 5 | -0.059 | -3.69% | 0.0011 | -56.52% | [-0.929, 0.833] |
+| THINK+mixer AH+PM / Huber / fixed AdamW / new five seeds / top 10 | 0.355 | 9.42% | 0.0011 | -38.98% | [-0.517, 1.254] |
+| THINK+mixer AH+PM / pseudo-Huber / fixed AdamW / ten seeds / top 5 | 0.403 | 11.51% | 0.0009 | -50.51% | [-0.516, 1.360] |
+| THINK+mixer AH+PM / pseudo-Huber / fixed AdamW / ten seeds / top 10 | 0.254 | 6.29% | 0.0009 | -43.78% | [-0.590, 1.141] |
+| THINK+mixer AH+PM / pseudo-Huber / fixed AdamW / original five seeds / top 5 | 0.630 | 19.97% | 0.0024 | -43.79% | [-0.252, 1.541] |
+| THINK+mixer AH+PM / pseudo-Huber / fixed AdamW / original five seeds / top 10 | 0.388 | 10.59% | 0.0024 | -42.38% | [-0.454, 1.271] |
+| THINK+mixer AH+PM / pseudo-Huber / fixed AdamW / new five seeds / top 5 | -0.024 | -2.71% | 0.0016 | -58.35% | [-0.918, 0.895] |
+| THINK+mixer AH+PM / pseudo-Huber / fixed AdamW / new five seeds / top 10 | 0.322 | 8.41% | 0.0016 | -39.56% | [-0.525, 1.201] |
+| THINK+mixer AH+PM / MSE / tuned AdamW / ten seeds / top 5 | 0.285 | 7.04% | 0.0053 | -46.70% | [-0.596, 1.197] |
+| THINK+mixer AH+PM / MSE / tuned AdamW / ten seeds / top 10 | 0.479 | 14.01% | 0.0053 | -40.13% | [-0.380, 1.377] |
+| THINK+mixer AH+PM / MSE / tuned AdamW / original five seeds / top 5 | 0.750 | 24.68% | 0.0066 | -39.84% | [-0.099, 1.667] |
+| THINK+mixer AH+PM / MSE / tuned AdamW / original five seeds / top 10 | 0.644 | 20.19% | 0.0066 | -40.70% | [-0.203, 1.534] |
+| THINK+mixer AH+PM / MSE / tuned AdamW / new five seeds / top 5 | 0.265 | 6.36% | 0.0099 | -48.24% | [-0.568, 1.145] |
+| THINK+mixer AH+PM / MSE / tuned AdamW / new five seeds / top 10 | 0.407 | 11.26% | 0.0099 | -35.56% | [-0.475, 1.317] |
+| THINK+mixer AH+PM / MSE / tuned RAdam / ten seeds / top 5 | 0.426 | 12.45% | 0.0009 | -37.13% | [-0.425, 1.314] |
+| THINK+mixer AH+PM / MSE / tuned RAdam / ten seeds / top 10 | 0.380 | 10.52% | 0.0009 | -37.10% | [-0.438, 1.237] |
+| THINK+mixer AH+PM / MSE / tuned RAdam / original five seeds / top 5 | 0.473 | 14.36% | 0.0051 | -39.97% | [-0.325, 1.318] |
+| THINK+mixer AH+PM / MSE / tuned RAdam / original five seeds / top 10 | 0.612 | 19.18% | 0.0051 | -36.66% | [-0.220, 1.497] |
+| THINK+mixer AH+PM / MSE / tuned RAdam / new five seeds / top 5 | 0.004 | -2.48% | 0.0010 | -53.12% | [-0.843, 0.893] |
+| THINK+mixer AH+PM / MSE / tuned RAdam / new five seeds / top 10 | 0.448 | 12.63% | 0.0010 | -33.79% | [-0.365, 1.313] |
+| THINK+mixer AH+PM / MSE / tuned momentum SGD / ten seeds / top 5 | 0.719 | 25.05% | 0.0238 | -45.29% | [-0.227, 1.715] |
+| THINK+mixer AH+PM / MSE / tuned momentum SGD / ten seeds / top 10 | 0.626 | 19.22% | 0.0238 | -33.81% | [-0.277, 1.553] |
+| THINK+mixer AH+PM / MSE / tuned momentum SGD / original five seeds / top 5 | 0.759 | 26.52% | 0.0299 | -46.12% | [-0.141, 1.732] |
+| THINK+mixer AH+PM / MSE / tuned momentum SGD / original five seeds / top 10 | 0.634 | 19.34% | 0.0299 | -39.90% | [-0.284, 1.582] |
+| THINK+mixer AH+PM / MSE / tuned momentum SGD / new five seeds / top 5 | 0.799 | 27.13% | 0.0177 | -31.25% | [-0.096, 1.735] |
+| THINK+mixer AH+PM / MSE / tuned momentum SGD / new five seeds / top 10 | 0.466 | 12.88% | 0.0177 | -31.68% | [-0.442, 1.409] |
+| MASTER transfer / ten seeds / top 5 | -0.056 | -5.88% | 0.0197 | -50.40% | [-0.883, 0.789] |
+| MASTER transfer / ten seeds / top 10 | 0.164 | 2.99% | 0.0197 | -41.13% | [-0.669, 1.025] |
+| MASTER transfer / original five seeds / top 5 | 0.158 | 2.27% | 0.0140 | -53.53% | [-0.756, 1.107] |
+| MASTER transfer / original five seeds / top 10 | 0.287 | 7.29% | 0.0140 | -46.61% | [-0.607, 1.215] |
+| MASTER transfer / new five seeds / top 5 | 0.081 | -0.56% | 0.0211 | -41.95% | [-0.791, 0.975] |
+| MASTER transfer / new five seeds / top 10 | 0.245 | 5.89% | 0.0211 | -39.54% | [-0.619, 1.148] |
+| Dynamic hypergraph (restricted) / ten seeds / top 5 | 0.657 | 20.53% | 0.0307 | -34.68% | [-0.204, 1.524] |
+| Dynamic hypergraph (restricted) / ten seeds / top 10 | 0.530 | 15.32% | 0.0307 | -36.62% | [-0.343, 1.438] |
+| Dynamic hypergraph (restricted) / original five seeds / top 5 | 0.353 | 9.53% | 0.0219 | -49.10% | [-0.546, 1.251] |
+| Dynamic hypergraph (restricted) / original five seeds / top 10 | 0.614 | 18.35% | 0.0219 | -40.95% | [-0.313, 1.550] |
+| Dynamic hypergraph (restricted) / new five seeds / top 5 | 0.463 | 13.70% | 0.0308 | -40.00% | [-0.372, 1.389] |
+| Dynamic hypergraph (restricted) / new five seeds / top 10 | 0.366 | 9.89% | 0.0308 | -40.90% | [-0.483, 1.317] |
+| PRISM-VQ transfer / ten seeds / top 5 | 0.067 | -1.78% | -0.0160 | -61.49% | [-0.770, 0.914] |
+| PRISM-VQ transfer / ten seeds / top 10 | -0.037 | -4.00% | -0.0160 | -56.63% | [-0.834, 0.775] |
+| PRISM-VQ transfer / original five seeds / top 5 | 0.021 | -1.93% | -0.0112 | -53.44% | [-0.855, 0.920] |
+| PRISM-VQ transfer / original five seeds / top 10 | 0.070 | 0.37% | -0.0112 | -49.56% | [-0.799, 0.955] |
+| PRISM-VQ transfer / new five seeds / top 5 | 0.133 | 0.63% | -0.0141 | -49.22% | [-0.687, 0.974] |
+| PRISM-VQ transfer / new five seeds / top 10 | 0.063 | -0.95% | -0.0141 | -45.11% | [-0.739, 0.891] |
+| THINK+mixer AH+PM + MASTER / 50:50 ranks / ten seeds / top 5 | 0.544 | 17.41% | 0.0146 | -43.99% | [-0.356, 1.480] |
+| THINK+mixer AH+PM + MASTER / 50:50 ranks / ten seeds / top 10 | 0.382 | 10.58% | 0.0146 | -42.38% | [-0.506, 1.319] |
+| THINK+mixer AH+PM + MASTER / 50:50 ranks / original five seeds / top 5 | 0.672 | 22.54% | 0.0106 | -41.59% | [-0.236, 1.629] |
+| THINK+mixer AH+PM + MASTER / 50:50 ranks / original five seeds / top 10 | 0.640 | 19.96% | 0.0106 | -37.19% | [-0.266, 1.600] |
+| THINK+mixer AH+PM + MASTER / 50:50 ranks / new five seeds / top 5 | 0.515 | 16.11% | 0.0169 | -34.23% | [-0.380, 1.441] |
+| THINK+mixer AH+PM + MASTER / 50:50 ranks / new five seeds / top 10 | 0.540 | 16.06% | 0.0169 | -38.45% | [-0.377, 1.507] |
+| THINK+mixer AH+PM + dynamic HG / 50:50 ranks / ten seeds / top 5 | 0.896 | 31.87% | 0.0189 | -40.94% | [0.001, 1.829] |
+| THINK+mixer AH+PM + dynamic HG / 50:50 ranks / ten seeds / top 10 | 0.755 | 23.92% | 0.0189 | -34.88% | [-0.095, 1.649] |
+| THINK+mixer AH+PM + dynamic HG / 50:50 ranks / original five seeds / top 5 | 0.919 | 32.94% | 0.0180 | -34.89% | [0.041, 1.833] |
+| THINK+mixer AH+PM + dynamic HG / 50:50 ranks / original five seeds / top 10 | 0.848 | 27.79% | 0.0180 | -35.04% | [-0.006, 1.739] |
+| THINK+mixer AH+PM + dynamic HG / 50:50 ranks / new five seeds / top 5 | 0.633 | 20.92% | 0.0191 | -34.67% | [-0.184, 1.485] |
+| THINK+mixer AH+PM + dynamic HG / 50:50 ranks / new five seeds / top 10 | 0.467 | 13.27% | 0.0191 | -35.76% | [-0.392, 1.374] |
+| THINK+mixer AH+PM + PRISM-VQ / 50:50 ranks / ten seeds / top 5 | 0.200 | 3.58% | 0.0006 | -48.11% | [-0.630, 1.034] |
+| THINK+mixer AH+PM + PRISM-VQ / 50:50 ranks / ten seeds / top 10 | 0.522 | 15.95% | 0.0006 | -39.55% | [-0.313, 1.384] |
+| THINK+mixer AH+PM + PRISM-VQ / 50:50 ranks / original five seeds / top 5 | 0.171 | 2.86% | 0.0033 | -52.91% | [-0.739, 1.109] |
+| THINK+mixer AH+PM + PRISM-VQ / 50:50 ranks / original five seeds / top 10 | 0.191 | 4.03% | 0.0033 | -44.14% | [-0.645, 1.067] |
+| THINK+mixer AH+PM + PRISM-VQ / 50:50 ranks / new five seeds / top 5 | 0.313 | 8.08% | -0.0011 | -47.89% | [-0.551, 1.209] |
+| THINK+mixer AH+PM + PRISM-VQ / 50:50 ranks / new five seeds / top 10 | 0.601 | 18.83% | -0.0011 | -36.18% | [-0.220, 1.461] |

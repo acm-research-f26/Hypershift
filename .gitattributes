@@ -24,3 +24,11 @@
 /docs/audit/research_status_20261020.json -text
 /docs/NASDAQ_RESEARCH_STATUS_20261020.md -text
 /outputs/** -text
+/requirements/*.txt -text
+/charts.md -text
+/docs/strategy_comparison_20261024/** -text
+/docs/CHARTS.md -text
+/docs/audit/backtests_20261010/EXPLANATION.md -text
+/docs/largecap_retraining_20261010/ARCHIVED_NYSE_CHARTS.md -text
+/docs/nasdaq_monthly_pit/CHARTS.md -text
+/docs/random_trials_20261010/CHARTS.md -text
