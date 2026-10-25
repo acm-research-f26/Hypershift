@@ -8,9 +8,9 @@ not be interpreted as an independent replication on fresh dates.
   `audit_ndx_long_short` verify the corresponding NASDAQ studies.
 - `audit_ndx_strategy_comparison_20261020` verifies the original cross-study
   consolidation; the latest workbook audit is described below.
-- `audit_saved_models`, `verify_*` and the remaining `audit_*` sources preserve
-  checkpoint, hardware, publication and earlier cohort checks.
-- [seal_ndx_comparison.py](seal_ndx_comparison.py) verifies frozen sources,
+- Shared hardware and NASDAQ publication verifiers remain here; older pooled
+  cohort auditors are in [archive](../../archive/README.md).
+- [seal_ndx_comparison.py](../../latest/evaluation/seal_ndx_comparison.py) verifies frozen sources,
   fit artifacts and publication hashes for the loss/optimizer and reference studies.
 
 From the repository root, verify the existing seals:

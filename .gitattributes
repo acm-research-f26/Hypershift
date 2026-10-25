@@ -32,3 +32,6 @@
 /docs/largecap_retraining_20261010/ARCHIVED_NYSE_CHARTS.md -text
 /docs/nasdaq_monthly_pit/CHARTS.md -text
 /docs/random_trials_20261010/CHARTS.md -text
+/latest/** -text
+/archive/studies_20261025/** -text
+/config/study_layout_20261025.json -text

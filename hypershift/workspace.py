@@ -24,10 +24,14 @@ def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def catalog(root=ROOT):
+def catalog(root=ROOT,include_archived=False):
     """Find grouped modules by unique original basename; include new scripts."""
     root=Path(root).resolve();result={}
     sources=sorted((root/'research').rglob('*.py'))+sorted((root/'tests').rglob('test_*.py'))
+    sources+=sorted((root/'latest').rglob('*.py'))
+    if include_archived:
+        archive=root/'archive/studies_20261025'
+        sources+=sorted((archive/'research').rglob('*.py'))+sorted((archive/'tests').glob('test_*.py'))
     for path in sources:
         if path.name=='__init__.py' or '__pycache__' in path.parts:continue
         if path.name in result:raise ValueError(f'Duplicate module basename: {path.name}')
@@ -36,6 +40,28 @@ def catalog(root=ROOT):
         path=root/'requirements'/name
         if path.exists():result[name]=path
     return result
+
+
+def runtime_sources(root=ROOT,include_archived=False):
+    """Supply relocated protocols at the real paths used by frozen experiments."""
+    root=Path(root).resolve();result=catalog(root,include_archived)
+    manifest=root/'config/study_layout_20261025.json'
+    if manifest.exists():
+        for record in json.loads(manifest.read_text(encoding='utf8'))['files']:
+            name=record.get('runtime_alias')
+            if name and (record['role']=='latest' or include_archived):
+                if name in result:raise ValueError('Duplicate runtime alias: '+name)
+                result[name]=root/record['path']
+    return result
+
+
+def safe_target(root,name):
+    relative=Path(name);target=root/relative
+    if relative.is_absolute() or '..' in relative.parts or not target.resolve().is_relative_to(root):
+        raise RuntimeError('Unsafe compatibility lease path: '+name)
+    if len(relative.parts)>1 and (len(relative.parts)!=2 or relative.parts[0]!='config'):
+        raise RuntimeError('Unsafe compatibility lease path: '+name)
+    return target
 
 
 def process_alive(pid):
@@ -84,7 +110,7 @@ def command_lock(path):
 
 class CompatibilityWorkspace:
     def __init__(self,root=ROOT,sources=None):
-        self.root=Path(root).resolve();self.sources=catalog(self.root) if sources is None else sources
+        self.root=Path(root).resolve();self.sources=runtime_sources(self.root) if sources is None else sources
         self.state=self.root/'.cache/source_layout_runtime';self.lease=self.state/'lease.json'
         self.lock=None;self.record=None;self.keep=False
 
@@ -96,9 +122,7 @@ class CompatibilityWorkspace:
         # Resolve and check every recorded file before removing any of them.
         targets=[]
         for name,expected in record.get('aliases',{}).items():
-            path=self.root/name
-            if Path(name).name!=name or path.resolve().parent!=self.root:
-                raise RuntimeError('Unsafe compatibility lease path: '+name)
+            path=safe_target(self.root,name)
             if not path.exists():continue
             if path.is_symlink() or not path.is_file() or digest(path)!=expected:
                 raise RuntimeError('Compatibility file was edited; preserved for recovery: '+str(path))
@@ -118,9 +142,10 @@ class CompatibilityWorkspace:
         try:
             self._recover();aliases={}
             for name,source in self.sources.items():
-                source=Path(source).resolve();target=self.root/name
-                if Path(name).name!=name or target.parent!=self.root or not source.is_relative_to(self.root):
+                source=Path(source).resolve();target=safe_target(self.root,name)
+                if not source.is_relative_to(self.root):
                     raise RuntimeError('Source is outside the intended workspace: '+name)
+                if not target.parent.is_dir():raise RuntimeError('Missing compatibility parent directory: '+str(target.parent))
                 if target.exists() or target.is_symlink():raise RuntimeError('Refusing to overwrite an existing root file: '+str(target))
                 aliases[name]=digest(source)
             self.record=dict(owner_pid=os.getpid(),child_pid=None,aliases=aliases)
@@ -156,9 +181,9 @@ def test_environment(root=ROOT):
     return dict(os.environ,TMPDIR=str(directory),TEMP=str(directory),TMP=str(directory))
 
 
-def run_python(arguments,root=ROOT,env=None):
+def run_python(arguments,root=ROOT,env=None,include_archived=False):
     root=Path(root).resolve()
-    with CompatibilityWorkspace(root) as workspace:
+    with CompatibilityWorkspace(root,runtime_sources(root,include_archived)) as workspace:
         child=subprocess.Popen([sys.executable,*arguments],cwd=root,env=env)
         workspace.attach_child(child.pid)
         try:return child.wait()

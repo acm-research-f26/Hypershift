@@ -7,7 +7,7 @@ import sys
 import tempfile
 import unittest
 
-from hypershift.workspace import ROOT,CompatibilityWorkspace,catalog,clean,digest,process_alive,run_python
+from hypershift.workspace import ROOT,CompatibilityWorkspace,catalog,clean,digest,process_alive,run_python,runtime_sources
 
 
 class WorkspaceLayoutTests(unittest.TestCase):
@@ -91,6 +91,40 @@ class WorkspaceLayoutTests(unittest.TestCase):
         p=folder/'requirements-cuda.txt';p.write_bytes(b'torch==2.14.0+cu130\n')
         with CompatibilityWorkspace(self.root):self.assertEqual((self.root/p.name).read_bytes(),p.read_bytes())
         self.assertFalse((self.root/p.name).exists())
+
+    def test_latest_sources_are_discovered_without_archived_sources(self):
+        latest=self.root/'latest/models';latest.mkdir(parents=True)
+        (latest/'current.py').write_bytes(b'X=1\n')
+        archive=self.root/'archive/studies_20261025/research/models';archive.mkdir(parents=True)
+        (archive/'earlier.py').write_bytes(b'X=2\n')
+        self.assertIn('current.py',catalog(self.root))
+        self.assertNotIn('earlier.py',catalog(self.root))
+        self.assertIn('earlier.py',catalog(self.root,include_archived=True))
+
+    def test_latest_protocol_uses_exact_original_path_then_cleans_up(self):
+        config=self.root/'config';config.mkdir()
+        latest=self.root/'latest/config';latest.mkdir(parents=True)
+        canonical=latest/'study.json';canonical.write_bytes(b'{"study":"frozen"}\n')
+        record={'files':[{'path':'latest/config/study.json','runtime_alias':'config/study.json','role':'latest'}]}
+        (config/'study_layout_20261025.json').write_text(json.dumps(record))
+        with CompatibilityWorkspace(self.root):
+            self.assertEqual((config/'study.json').read_bytes(),canonical.read_bytes())
+        self.assertFalse((config/'study.json').exists());self.assertTrue(canonical.exists())
+
+    def test_archived_protocol_aliases_require_explicit_opt_in(self):
+        config=self.root/'config';config.mkdir()
+        archived=self.root/'archive/studies_20261025/config';archived.mkdir(parents=True)
+        (archived/'old.json').write_bytes(b'{}\n')
+        record={'files':[{'path':'archive/studies_20261025/config/old.json','runtime_alias':'config/old.json','role':'archive'}]}
+        (config/'study_layout_20261025.json').write_text(json.dumps(record))
+        self.assertNotIn('config/old.json',runtime_sources(self.root))
+        self.assertIn('config/old.json',runtime_sources(self.root,include_archived=True))
+
+    def test_nested_alias_escape_is_rejected_before_copying(self):
+        source=self.source('example.py',b'X=1\n')
+        with self.assertRaisesRegex(RuntimeError,'Unsafe'):
+            with CompatibilityWorkspace(self.root,{'config/../../outside.py':source}):pass
+        self.assertFalse((self.root.parent/'outside.py').exists())
 
 
 if __name__=='__main__':unittest.main()

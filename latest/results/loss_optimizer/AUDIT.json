@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checkpoint_exports_reproduced": 280,
+  "independent_accounts": 174,
+  "prior_accounts_reproduced": 34,
+  "validation_lr_choices_checked": 12,
+  "materialized_bootstrap_accounts": 4,
+  "bootstrap_replicates": 10000,
+  "largest_nav_difference_dollars": 6.752088665962219e-08
+}

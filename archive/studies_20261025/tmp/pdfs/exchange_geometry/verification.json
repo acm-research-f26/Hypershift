@@ -1,0 +1,19 @@
+{
+  "input_and_code_hashes_match": true,
+  "independent_math_checks": {
+    "four_point_equals_equations_1_2_18_19": true,
+    "tree_zero": true,
+    "cycle_four_delta_one": true,
+    "scale_invariance": true,
+    "s_overlap_rule": true
+  },
+  "summary_rows": 64,
+  "equal_count_checks": 960,
+  "pages": 4,
+  "actual_fonts": [
+    "AAAAAA+Poppins-Black",
+    "AAAAAA+Poppins-Bold",
+    "AAAAAA+Poppins-Regular"
+  ],
+  "all_four_pages_visually_reviewed": true
+}

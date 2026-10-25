@@ -1,9 +1,0 @@
-dataset,model,median_seed_year_sharpe,min_seed_year_sharpe,seed_years_beating_huber,seed_year_cases,caveat
-NASDAQ_recent,think_mix_huber,0.6400374273238361,-0.771790659313539,0,12,Per-model validation-selected policies; this is a pipeline rather than fixed-policy seed comparison.
-NASDAQ_recent,think_mix_huber_rank_01,0.5340805519405627,-0.600330189400506,6,12,Per-model validation-selected policies; this is a pipeline rather than fixed-policy seed comparison.
-NASDAQ_recent,think_mix_huber_rank_03,0.4593035561963094,-0.600330189400506,7,12,Per-model validation-selected policies; this is a pipeline rather than fixed-policy seed comparison.
-NASDAQ_recent,think_mix_huber_rank_10,0.8233543096458587,-0.6026169793099188,8,12,Per-model validation-selected policies; this is a pipeline rather than fixed-policy seed comparison.
-NYSE_recent,think_mix_huber,0.4302760711607744,-0.9062700940696504,0,12,Per-model validation-selected policies; this is a pipeline rather than fixed-policy seed comparison.
-NYSE_recent,think_mix_huber_rank_01,0.4919030019789471,-0.9506428282766072,3,12,Per-model validation-selected policies; this is a pipeline rather than fixed-policy seed comparison.
-NYSE_recent,think_mix_huber_rank_03,0.30499442259139364,-1.207357532777852,4,12,Per-model validation-selected policies; this is a pipeline rather than fixed-policy seed comparison.
-NYSE_recent,think_mix_huber_rank_10,0.40609316756932956,-1.1275698348013448,6,12,Per-model validation-selected policies; this is a pipeline rather than fixed-policy seed comparison.

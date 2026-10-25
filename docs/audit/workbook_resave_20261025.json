@@ -1,0 +1,71 @@
+{
+  "status": "passed_semantic_equivalence",
+  "timestamp_utc": "2026-10-25T06:40:28.369151+00:00",
+  "baseline_commit": "06e2460cc2452d1d036578780dcb60ef5d836223",
+  "baseline_workbook_sha256": "5826cbadbe38fa40745d512311c8f5279402cce046803e96ec4b828a1f813981",
+  "current_workbook_sha256": "5ed08fea99e98566881361b3386200d244f19c8da92adee02714386f1f2b3445",
+  "absolute_numeric_tolerance": "1e-12",
+  "maximum_actual_numeric_difference": "1E-16",
+  "all_text_and_formulas_preserved": true,
+  "all_rows_preserved_including_duplicates": true,
+  "sheet_names_and_order_preserved": true,
+  "sheets": [
+    {
+      "sheet": "Models",
+      "nonempty_rows": 108,
+      "all_rows_and_formulas_equivalent": true,
+      "row_order_unchanged": true,
+      "frozen_panes_preserved": true
+    },
+    {
+      "sheet": "Defensive",
+      "nonempty_rows": 36,
+      "all_rows_and_formulas_equivalent": true,
+      "row_order_unchanged": true,
+      "frozen_panes_preserved": true
+    },
+    {
+      "sheet": "Portfolio variants",
+      "nonempty_rows": 215,
+      "all_rows_and_formulas_equivalent": true,
+      "row_order_unchanged": true,
+      "frozen_panes_preserved": true
+    },
+    {
+      "sheet": "Method",
+      "nonempty_rows": 39,
+      "all_rows_and_formulas_equivalent": true,
+      "row_order_unchanged": true,
+      "frozen_panes_preserved": true
+    },
+    {
+      "sheet": "Extended-hours",
+      "nonempty_rows": 69,
+      "all_rows_and_formulas_equivalent": true,
+      "row_order_unchanged": true,
+      "frozen_panes_preserved": true
+    },
+    {
+      "sheet": "AH PM holding counts",
+      "nonempty_rows": 65,
+      "all_rows_and_formulas_equivalent": true,
+      "row_order_unchanged": true,
+      "frozen_panes_preserved": true
+    },
+    {
+      "sheet": "New findings",
+      "nonempty_rows": 38,
+      "all_rows_and_formulas_equivalent": true,
+      "row_order_unchanged": false,
+      "frozen_panes_preserved": true
+    },
+    {
+      "sheet": "New accounts",
+      "nonempty_rows": 349,
+      "all_rows_and_formulas_equivalent": true,
+      "row_order_unchanged": true,
+      "frozen_panes_preserved": true
+    }
+  ],
+  "scope": "Read-only comparison. Preserve the workbook as found at commit time; no workbook writes, exports, recalculation or model changes. Numeric serialization changed and New findings rows were reordered. The earlier strict native-layout audit remains evidence for its original workbook hash; this receipt verifies the resaved current file."
+}

@@ -1,0 +1,27 @@
+{
+  "updated": [
+    {
+      "path": "docs\\largecap_retraining_20261010\\Hypershift_Large_Company_Retraining_Results_Benchmark_Corrected.docx",
+      "original": "docs\\largecap_retraining_20261010\\Hypershift_Large_Company_Retraining_Results.docx",
+      "original_replaced": false
+    },
+    {
+      "path": "docs\\slides\\Hypershift_Pooled_Datasets_2022_2025.pptx",
+      "changed_parts": []
+    },
+    {
+      "path": "presentations\\output\\Hypershift_Datasets_Canva_Poppins.pptx",
+      "changed_parts": []
+    },
+    {
+      "path": "presentations\\output\\Hypershift_Datasets_Canva_Style_v3.pptx",
+      "changed_parts": []
+    },
+    {
+      "path": "presentations\\output\\Hypershift_Datasets_Midpoint_v2.pptx",
+      "changed_parts": []
+    }
+  ],
+  "preserved": "Existing tables, slide positions, fonts and all unrelated OOXML parts; document procedure images regenerated with correct cohort references",
+  "NYSX_history": "unavailable before 2026-03-25"
+}

@@ -1,0 +1,98 @@
+{
+  "name": "Current large-company universes retrospective retraining 2022-2025",
+  "created": "2026-10-10",
+  "authorization": "User requested retraining and a separate results document; user selected the 100 largest NYSE-listed companies rather than the official NYSE 100 growth index.",
+  "membership_basis": "Current lists frozen before downloading histories and before viewing new test results. NYSE 100 distinct companies by market capitalization including ADRs; NASDAQ-100 100 companies and 101 security classes. Current membership is applied retrospectively, not presented as historical index membership.",
+  "data_snapshot": "data/largecap_20261010",
+  "stop_rule": "Finish this finite batch once and report every declared model. Do not change the universe, candidates, training settings or portfolio rules after inspecting new test statistics.",
+  "datasets": [
+    "NYSE_top100_20261010",
+    "NASDAQ100_20261010"
+  ],
+  "test_years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "five_session_models": [
+    "think",
+    "think_rank",
+    "think_gate",
+    "think_mix",
+    "think_risk",
+    "mlp",
+    "lstm",
+    "stockmixer",
+    "market_transformer",
+    "think_huber",
+    "think_mix_huber",
+    "stockmixer_huber",
+    "think_mix_shrink",
+    "think_mix_shrink_huber",
+    "multiscale_mse",
+    "multiscale_huber",
+    "think_mix_huber_rank_01",
+    "think_mix_huber_rank_03",
+    "think_mix_huber_rank_10"
+  ],
+  "daily_models": [
+    "think",
+    "think_huber",
+    "think_mix",
+    "think_mix_huber",
+    "stockmixer",
+    "stockmixer_huber",
+    "multiscale_mse",
+    "multiscale_huber"
+  ],
+  "seeds": [
+    7,
+    19,
+    42
+  ],
+  "neural_fits": 648,
+  "epochs": 30,
+  "patience": 6,
+  "lr": 0.001,
+  "batch_sizes": {
+    "five_session": 8,
+    "daily": 40
+  },
+  "early_stopping": "Prior validation MSE; no test-based epoch or seed selection.",
+  "training_device": "RTX 4070 Laptop GPU, deterministic float32 without AMP or TF32, three independent seed workers. Local 60-step test used under 80 MB model allocation per worker and improved combined throughput by about 2.4 times. Completed serial fits are reused only after exact input, checkpoint and prediction equality checks. Backend difference from the earlier CPU cohort is disclosed in the results report.",
+  "portfolio_methods": [
+    "equal",
+    "confidence",
+    "inverse_vol",
+    "buffer_equal",
+    "buffer_inverse_vol"
+  ],
+  "K": [
+    5,
+    10,
+    20
+  ],
+  "controls": [
+    "ridge",
+    "momentum126",
+    "reversal5",
+    "buy_hold",
+    "equal_universe",
+    "SPY",
+    "QQQ"
+  ],
+  "baseline_availability_amendment_before_test_metrics": "Recent listings exposed nonfinite six-month momentum scores during prior-validation policy selection. Momentum and reversal baselines now require a finite own historical score. Neural-model feature eligibility and completed neural fits are unchanged; exact reuse checks are required. This is a causal availability correction, not a test-outcome-driven change.",
+  "policy_selection": "Median prior-validation half-year/seed net Sharpe minus 0.25 times standard deviation; architecture choice uses only current and earlier validation folds.",
+  "evaluation": "Report pooled and annual net performance, fixed equal-K10 results, prediction ranking quality, trading costs, seed variation, date-specific eligibility and paired block-bootstrap uncertainty. Every outcome remains visible.",
+  "uncertainty": "1000 paired circular block-bootstrap samples, 20-session blocks, resample separately within annual folds; intervals exploratory and unadjusted for repeated comparisons.",
+  "limitations": [
+    "Current 2026 membership and market-cap selection applied to prior years creates future-universe selection and survivorship bias.",
+    "New IPOs/spin-offs cannot supply history before listing; no missing ticker replacements.",
+    "Revised public adjusted-price histories are not certified point-in-time data.",
+    "Previously inspected 2022-2025 outcomes; this is an exploratory cohort change, not a fresh confirmation test.",
+    "Pooled curves concatenate annual accounts and omit boundary sessions; they are not one continuous live account."
+  ],
+  "status": "retired; NASDAQ checkpoints/output folders deleted; NYSE deferred",
+  "superseded_by": "config/nasdaq_monthly_pit.json"
+}

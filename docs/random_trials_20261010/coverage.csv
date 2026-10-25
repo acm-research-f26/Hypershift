@@ -1,7 +1,0 @@
-dataset,chosen,recovered,eligible_min,eligible_max
-NYSE_draw101,100,58,43,48
-NYSE_draw202,100,62,49,58
-NYSE_draw303,100,63,47,59
-NASDAQ_draw101,100,54,43,52
-NASDAQ_draw202,100,65,49,62
-NASDAQ_draw303,100,70,52,62

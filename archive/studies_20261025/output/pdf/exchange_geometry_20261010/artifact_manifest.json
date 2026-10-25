@@ -1,0 +1,13 @@
+{
+  "pdf": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\output\\pdf\\exchange_geometry_20261010\\Hypershift_Exchange_Hyperbolicity_Analysis.pdf",
+  "figures": [
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\output\\pdf\\exchange_geometry_20261010\\exchange_geometry_comparison.png",
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\output\\pdf\\exchange_geometry_20261010\\same_policy_model_comparison.png"
+  ],
+  "data_packet": "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\output\\pdf\\exchange_geometry_20261010\\Exchange_Geometry_Calculations.zip",
+  "pages": 4,
+  "geometry_windows": 16,
+  "feature_metrics": 48,
+  "equal_count_checks": 960,
+  "all_primary_calculations_exact": true
+}

@@ -1,0 +1,226 @@
+{
+  "2022": {
+    "adamw": {
+      "lr": 0.003,
+      "mean_validation_mse": 21.887503623962402,
+      "candidates": [
+        {
+          "lr": 0.0003,
+          "mean_validation_mse": 21.9041805267334
+        },
+        {
+          "lr": 0.001,
+          "mean_validation_mse": 21.895852088928223
+        },
+        {
+          "lr": 0.003,
+          "mean_validation_mse": 21.887503623962402
+        }
+      ]
+    },
+    "radam": {
+      "lr": 0.003,
+      "mean_validation_mse": 21.90538787841797,
+      "candidates": [
+        {
+          "lr": 0.0003,
+          "mean_validation_mse": 22.03346538543701
+        },
+        {
+          "lr": 0.001,
+          "mean_validation_mse": 21.905747413635254
+        },
+        {
+          "lr": 0.003,
+          "mean_validation_mse": 21.90538787841797
+        }
+      ]
+    },
+    "sgd": {
+      "lr": 0.01,
+      "mean_validation_mse": 21.911386489868164,
+      "candidates": [
+        {
+          "lr": 0.01,
+          "mean_validation_mse": 21.911386489868164
+        },
+        {
+          "lr": 0.03,
+          "mean_validation_mse": 22.01334285736084
+        },
+        {
+          "lr": 0.1,
+          "mean_validation_mse": 21.97962188720703
+        }
+      ]
+    }
+  },
+  "2023": {
+    "adamw": {
+      "lr": 0.0003,
+      "mean_validation_mse": 38.74917411804199,
+      "candidates": [
+        {
+          "lr": 0.0003,
+          "mean_validation_mse": 38.74917411804199
+        },
+        {
+          "lr": 0.001,
+          "mean_validation_mse": 38.75865173339844
+        },
+        {
+          "lr": 0.003,
+          "mean_validation_mse": 38.79523849487305
+        }
+      ]
+    },
+    "radam": {
+      "lr": 0.0003,
+      "mean_validation_mse": 38.74591064453125,
+      "candidates": [
+        {
+          "lr": 0.0003,
+          "mean_validation_mse": 38.74591064453125
+        },
+        {
+          "lr": 0.001,
+          "mean_validation_mse": 38.746585845947266
+        },
+        {
+          "lr": 0.003,
+          "mean_validation_mse": 38.74853706359863
+        }
+      ]
+    },
+    "sgd": {
+      "lr": 0.1,
+      "mean_validation_mse": 38.807138442993164,
+      "candidates": [
+        {
+          "lr": 0.01,
+          "mean_validation_mse": 39.43662071228027
+        },
+        {
+          "lr": 0.03,
+          "mean_validation_mse": 39.63035011291504
+        },
+        {
+          "lr": 0.1,
+          "mean_validation_mse": 38.807138442993164
+        }
+      ]
+    }
+  },
+  "2024": {
+    "adamw": {
+      "lr": 0.003,
+      "mean_validation_mse": 22.19341278076172,
+      "candidates": [
+        {
+          "lr": 0.0003,
+          "mean_validation_mse": 22.207218170166016
+        },
+        {
+          "lr": 0.001,
+          "mean_validation_mse": 22.21093463897705
+        },
+        {
+          "lr": 0.003,
+          "mean_validation_mse": 22.19341278076172
+        }
+      ]
+    },
+    "radam": {
+      "lr": 0.003,
+      "mean_validation_mse": 22.206177711486816,
+      "candidates": [
+        {
+          "lr": 0.0003,
+          "mean_validation_mse": 22.36065101623535
+        },
+        {
+          "lr": 0.001,
+          "mean_validation_mse": 22.215219497680664
+        },
+        {
+          "lr": 0.003,
+          "mean_validation_mse": 22.206177711486816
+        }
+      ]
+    },
+    "sgd": {
+      "lr": 0.1,
+      "mean_validation_mse": 22.14495086669922,
+      "candidates": [
+        {
+          "lr": 0.01,
+          "mean_validation_mse": 22.164912223815918
+        },
+        {
+          "lr": 0.03,
+          "mean_validation_mse": 22.2001314163208
+        },
+        {
+          "lr": 0.1,
+          "mean_validation_mse": 22.14495086669922
+        }
+      ]
+    }
+  },
+  "2025": {
+    "adamw": {
+      "lr": 0.003,
+      "mean_validation_mse": 24.50667667388916,
+      "candidates": [
+        {
+          "lr": 0.0003,
+          "mean_validation_mse": 24.54341220855713
+        },
+        {
+          "lr": 0.001,
+          "mean_validation_mse": 24.530882835388184
+        },
+        {
+          "lr": 0.003,
+          "mean_validation_mse": 24.50667667388916
+        }
+      ]
+    },
+    "radam": {
+      "lr": 0.001,
+      "mean_validation_mse": 24.541484832763672,
+      "candidates": [
+        {
+          "lr": 0.0003,
+          "mean_validation_mse": 24.570354461669922
+        },
+        {
+          "lr": 0.001,
+          "mean_validation_mse": 24.541484832763672
+        },
+        {
+          "lr": 0.003,
+          "mean_validation_mse": 24.542768478393555
+        }
+      ]
+    },
+    "sgd": {
+      "lr": 0.1,
+      "mean_validation_mse": 24.553714752197266,
+      "candidates": [
+        {
+          "lr": 0.01,
+          "mean_validation_mse": 24.55689525604248
+        },
+        {
+          "lr": 0.03,
+          "mean_validation_mse": 24.56535053253174
+        },
+        {
+          "lr": 0.1,
+          "mean_validation_mse": 24.553714752197266
+        }
+      ]
+    }
+  }
+}

@@ -7,7 +7,10 @@ from .workspace import ROOT,catalog,clean,run_python,test_environment
 
 def main(arguments=None):
     arguments=list(sys.argv[1:] if arguments is None else arguments)
+    include_archived=bool(arguments[:1]==['--archived'])
+    if include_archived:arguments=arguments[1:]
     parser=argparse.ArgumentParser(description='Run the organized research sources with their original imports, paths and source hashes.')
+    parser.add_argument('--archived',action='store_true',help='Include older archived experiment sources and protocols; place before the command')
     commands=parser.add_subparsers(dest='command',required=True)
     listing=commands.add_parser('list',help='List modules and their organized source paths')
     listing.add_argument('filter',nargs='?',default='')
@@ -23,31 +26,31 @@ def main(arguments=None):
     if arguments[:1]==['python'] and arguments[1:] not in [['-h'],['--help']]:
         rest=arguments[1:]
         if rest[:1]==['--']:rest=rest[1:]
-        try:return run_python(rest)
+        try:return run_python(rest,include_archived=include_archived)
         except (OSError,RuntimeError,ValueError) as exc:print('Hypershift:',exc,file=sys.stderr);return 2
     if arguments[:1]==['test'] and arguments[1:] not in [['-h'],['--help']]:
         rest=arguments[1:]
         if rest[:1]==['--']:rest=rest[1:]
         if not rest or all(value in ['-v','-q','-b','-f','--locals','--buffer','--failfast'] for value in rest):
             rest=['discover','-s',str(ROOT),'-p','test_*.py',*rest]
-        try:return run_python(['-m','unittest',*rest],env=test_environment())
+        try:return run_python(['-m','unittest',*rest],env=test_environment(),include_archived=include_archived)
         except (OSError,RuntimeError,ValueError) as exc:print('Hypershift:',exc,file=sys.stderr);return 2
     options=parser.parse_args(arguments)
     try:
         if options.command=='list':
-            for name,path in catalog().items():
+            for name,path in catalog(include_archived=include_archived).items():
                 relative=path.relative_to(ROOT)
                 if options.filter.lower() in str(relative).lower():print(f'{Path(name).stem:<45} {relative.as_posix()}')
             return 0
         if options.command=='clean':clean();return 0
         if options.command=='run':
             name=options.module.removesuffix('.py')+'.py'
-            if Path(name).name!=name or name not in catalog():parser.error('Unknown research module. Use `python -m hypershift list`.')
-            return run_python([str(ROOT/name),*options.arguments])
+            if Path(name).name!=name or name not in catalog(include_archived=include_archived):parser.error('Unknown research module. Use `python -m hypershift list` or `python -m hypershift --archived list`.')
+            return run_python([str(ROOT/name),*options.arguments],include_archived=include_archived)
         if options.command=='test':
             args=options.arguments or ['discover','-s',str(ROOT),'-p','test_*.py']
-            return run_python(['-m','unittest',*args])
-        return run_python(options.arguments)
+            return run_python(['-m','unittest',*args],include_archived=include_archived)
+        return run_python(options.arguments,include_archived=include_archived)
     except (OSError,RuntimeError,ValueError) as exc:
         print('Hypershift:',exc,file=sys.stderr);return 2
 

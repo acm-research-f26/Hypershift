@@ -1,7 +1,7 @@
 # Comparisons and research diagnostics
 
-These sources analyze saved forecasts and portfolio paths. They cover strategy
-comparison, rank depth, loss similarity and earlier exchange-geometry diagnostics.
+These sources analyze saved NASDAQ-100 forecasts and portfolio paths. They cover
+strategy comparison, rank depth and loss similarity.
 
 - [compare_ndx_strategies_20261020.py](compare_ndx_strategies_20261020.py): base
   cross-study comparison and paired/block-bootstrap Sharpe analysis.
@@ -9,12 +9,12 @@ comparison, rank depth, loss similarity and earlier exchange-geometry diagnostic
   ranks-six-to-ten diagnostics.
 - [analyze_ndx_loss_similarity.py](analyze_ndx_loss_similarity.py): similarities
   between trained objective variants.
-- Other `analyze_*`, `check_*` and `summarize_*` modules: earlier cohort and
-  sensitivity analyses, preserved under their original scope.
+- Earlier cohort, exchange-geometry and pooled sensitivity sources are preserved
+  in [archive](../../archive/README.md).
 
 Use `python -m hypershift list analysis` from the repository root to locate sources.
 The latest consolidation extends the original comparison in
-[update_ndx_new_findings_20261024.py](../reporting/update_ndx_new_findings_20261024.py).
+[update_ndx_new_findings_20261024.py](../../latest/reporting/update_ndx_new_findings_20261024.py).
 The [master charts](../../charts.md), [workbook](../../docs/NASDAQ100_strategy_comparison.xlsx)
 and [reporting guide](../reporting/README.md) identify the current complete results.
 

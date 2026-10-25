@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "purpose": "Synthetic all-eligible author predictor forward parity",
+  "maximum_absolute_difference": 0.0,
+  "source": ".cache\\architecture_references_20261024\\PRISM_VQ\\trainer\\train_ypred.py",
+  "checkpoint_or_historical_returns_used": false
+}

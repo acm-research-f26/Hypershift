@@ -227,6 +227,13 @@ runs/
 !/research/data/
 !/research/data/*.py
 !/research/data/README.md
+!/latest/data/
+!/latest/data/*.py
+!/latest/data/README.md
+!/archive/studies_20261025/research/data/
+!/archive/studies_20261025/research/data/*.py
+!/archive/studies_20261025/research/data/README.md
+/archive/local_20261025/
 
 # Local spreadsheet runtime and reproducible render intermediates
 **/node_modules/

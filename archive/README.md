@@ -1,25 +1,26 @@
-# Archived experiments
+# Archived research
 
-Superseded work was moved here on October 5, 2026. The active project now studies
-historical monthly NASDAQ-100 models, including Alpaca regular-session and
-extended-hours inputs. Start with the [current source map](../research/README.md)
-and [master charts](../charts.md).
+The active project starts in [latest](../latest/README.md), with shared
+historical-monthly NASDAQ-100 infrastructure in [research](../research/README.md).
+Current results remain in the [master charts](../charts.md) and
+[comparison workbook](../docs/NASDAQ100_strategy_comparison.xlsx).
 
-`cleanup_manifest.json` records each original and destination path. `legacy/`
-preserves the original GNN/direction tutorials, hourly and hyperbolicity audits,
-the earlier THINK reconstruction runner, tests, data and result folders. The old
-README and THINK backbone were also copied here for historical context.
+| Folder | Contents |
+| --- | --- |
+| [studies_20261025](studies_20261025/README.md) | Unrelated cohort/NYSE experiments, retired-universe reports, old protocols, decks and document artifacts |
+| `local_20261025/` | Ignored old datasets, run directories and scratch files; preserved locally by same-volume directory renames |
+| [legacy](legacy/README.md) | Original tutorials, reconstruction and early GNN/hourly experiments archived October 5 |
 
-Nothing in this archive is required by the current training/evaluation pipeline.
-Frozen universe lists needed by current downloaders live in `config/`.
-Generated archived data and runs remain Git-ignored, like their original paths.
-
-From the project root, archived unit tests can be run with:
+[study_layout_20261025.json](../config/study_layout_20261025.json) records the new
+moves and hashes. The earlier `cleanup_manifest.json` records the October 5
+archive. Archived code is excluded from normal discovery; opt in with
+`python -m hypershift --archived list` for the October 25 study archive.
+The earlier tutorial tests retain their separate command:
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s archive\legacy -p "test_*.py"
+python -m unittest discover -s archive/legacy -p "test_*.py"
 ```
 
-Old scripts generally expect to run from `archive/legacy/` because their relative
-`data/` and `runs/` paths were preserved there. Their original documentation is
-historical and is not the current project entry point.
+Nothing was deleted or retrained. Shared helpers required by active NASDAQ models
+remain outside the archive. Historical datasets/runs are not copied back merely
+by selecting archived source code; see the study archive guide before a rerun.

@@ -1,123 +1,96 @@
-# Project layout
+# Project layout: latest NASDAQ-100 study first
 
-The research sources are grouped by purpose. Completed experiment sources were
-moved byte-for-byte, with their original hashes recorded in
-[the relocation manifest](../config/source_layout_20261024.json).
-The [verification receipt](audit/source_layout_20261024.json) records all 154
-moved-file hash checks, 173 passing tests and the unchanged experiment seals.
-Each source category has its own README, indexed in the
-[research source map](../research/README.md). Published guides and dated reports
-are indexed separately in [docs/README.md](README.md).
+The latest completed dynamic-hypergraph/rank-blend study is grouped in
+[latest/](../latest/README.md). Shared NASDAQ infrastructure and earlier active
+NASDAQ-100 experiments remain under `research/`. Unrelated studies are archived.
 
 ```text
-hypershift/             Workspace launcher and compatibility handling
-research/
-  core/                 Data panels, portfolio accounting and device helpers
-  models/               THINK, mixers, losses and reference-network adapters
-  data/                 Acquisition, membership, input review and preprocessing
-  training/             Experiment runners, fit workers and selection locks
-  analysis/             Ranking, model comparison and sensitivity analyses
-  evaluation/           Accounting audits, saved-model checks and publication seals
-  reporting/            Reports, plots, publication and workbook updates
-tests/                  Existing research tests and launcher tests
-requirements/           CUDA, acquisition and tested-environment dependency sets
-config/                 Experiment protocols and source-layout provenance
-docs/                   Research reports and the strategy comparison workbook
-data/                   Ignored local datasets
-runs/                   Ignored local checkpoints, predictions and audit artifacts
-outputs/                Published comparison tables and artifact builders
-archive/                Earlier preserved research
+latest/
+  models/               Reference-network adapters, losses and optimizer recipes
+  training/             Latest annual fits, freezes and workers
+  data/                 Pinned reference implementation/factor acquisition
+  evaluation/           Frozen study seals
+  reporting/            Latest reports and master-comparison integration
+  tests/                Latest study parity, loss and ranking tests
+  config/               Exact latest protocols and confirmation gate
+  results/              Sealed summary tables, metadata and export hashes
+  docs/                 Model explanation and study boundaries
+research/               Shared NASDAQ code and earlier active comparisons
+config/                 Shared NASDAQ protocols and layout manifests
+tests/                  Shared tests and workspace compatibility tests
+docs/                   Active NASDAQ reports, gallery and comparison workbook
+outputs/                Cross-study tables and workbook-build inputs
+hypershift/             Standard-library command launcher
+requirements/           Dependency sets
+archive/
+  studies_20261025/     Unrelated source, protocols, reports and decks
+  local_20261025/       Ignored old datasets, runs and scratch artifacts
+  legacy/              Earlier archived tutorials and experiments
 ```
 
-`README.md`, `charts.md`, the base `requirements.txt`, and `.env.example` stay at
-the root. Credentials remain in the ignored root `.env` file. Existing artifact,
-presentation and temporary directories were left in place.
 The root [charts.md](../charts.md) and
 [docs/NASDAQ100_strategy_comparison.xlsx](NASDAQ100_strategy_comparison.xlsx)
-remain the current combined result artifacts. The
-[gallery index](strategy_comparison_20261024/README.md) describes figure coverage;
-the [output index](../outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/README.md)
-describes comparison tables and workbook-build inputs.
+retain their exact bytes and canonical locations. Active market data, checkpoints
+and large ledgers stay in ignored root `data/`, `runs/` and `.cache/` locations.
+These paths are part of frozen scientific provenance. Credentials stay in `.env`.
 
-## Running research commands
-
-Run commands from the repository root using the existing virtual environment.
-Use a module's original basename; `.py` is optional.
+## Commands from the repository root
 
 ```powershell
-# Find source files by category or name.
-.\.venv\Scripts\python.exe -m hypershift list models
-.\.venv\Scripts\python.exe -m hypershift list extended_hours
-
-# Inspect or run an existing entry point.
-.\.venv\Scripts\python.exe -m hypershift run run_ndx_reference_networks --help
-.\.venv\Scripts\python.exe -m hypershift run seal_ndx_comparison ndx_reference_networks_20261024
-
-# Run the full suite or specific test modules.
-.\.venv\Scripts\python.exe -m hypershift test -v
-.\.venv\Scripts\python.exe -m hypershift test test_ndx_extended_hours test_ndx_reference_models -v
-
-# Use the original flat imports in a Python command or interactive session.
-.\.venv\Scripts\python.exe -m hypershift python -c "from ndx_extended_hours import ExtendedModel; print(ExtendedModel.__name__)"
+python -m hypershift list latest
+python -m hypershift run run_ndx_reference_networks --help
+python -m hypershift test -v
+python -m hypershift test test_ndx_reference_models test_ndx_reference_evaluation -v
+python -m hypershift run seal_ndx_comparison ndx_reference_networks_20261024
+python -m hypershift python -c "from update_ndx_new_findings_20261024 import audit; audit(write_outputs=False)"
 ```
 
-The ordinary test launcher keeps temporary test directories in `.cache/test_tmp`.
-The runtime itself uses only Python's standard library. A different interpreter
-can invoke it for reporting commands that need a separate dependency environment.
-
-## Why the launcher is necessary
-
-Many historical scripts import modules by their original flat names, derive the
-project root from `__file__`, or verify source paths saved in completed experiment
-locks. Rewriting these files during a cosmetic cleanup would change their hashes.
-
-For the duration of a command, the launcher copies the organized sources to
-their original root filenames and runs the child interpreter from the project
-root. These are actual byte-identical files, so ordinary imports, subprocess
-workers, `__file__` and strict source-hash checks continue to work. The original
-locks, trained models and result files are not rewritten or bypassed.
-
-The temporary copies disappear when the child exits, including nonzero exits.
-The organized files in `research/` and `tests/` are authoritative: edit those
-files, not temporary root copies. Files briefly appear at the root while a
-research command is active; perform Git staging after it finishes.
-
-Only one launcher owns this compatibility view at a time. A stopped command
-that still has a running child keeps its files. After an interrupted child has
-exited, use:
+Use the existing virtual environment, for example prefix commands with
+`.\.venv\Scripts\python.exe`. The active suite discovers both shared and latest
+study tests. Sources in the unrelated archive are excluded unless explicitly
+selected:
 
 ```powershell
-.\.venv\Scripts\python.exe -m hypershift clean
+python -m hypershift --archived list archive
+python -m hypershift --archived test test_huber_ranking test_largecap_retraining -v
 ```
 
-Cleanup checks the recorded ownership, path and file hash. It never overwrites
-an existing root file or removes an edited compatibility copy. If a temporary
-copy was edited, compare it with its organized source, recover the desired
-change there, and remove that recovered temporary copy before cleaning the rest.
+Archive mode restores archived source imports, old protocols and root document
+aliases. It does not restore large old datasets/runs or every old publication
+path. See the [archive guide](../archive/studies_20261025/README.md) before a full
+historical rerun. Normal commands remain focused on active NASDAQ work.
 
-## Adding or changing code
+## Why the compatibility launcher remains
 
-Add new scripts to the appropriate research folder and new tests to `tests/`.
-The launcher discovers them automatically. Keep basenames unique because the
-historical scripts use flat import names. Use the launcher for these historical
-modules rather than executing their nested paths directly.
+Historical sources import flat module names, derive root paths from `__file__`,
+and verify actual source/config hashes. They were moved without rewriting their
+bytes or scientific locks. During a command, the launcher supplies real temporary
+root source copies and original `config/` filenames for relocated protocols.
+It removes unchanged owned copies when the child exits, including nonzero exits.
 
-Ordinary code changes still trigger the existing frozen-run hash protections.
-The reorganization does not authorize changing a completed experiment's source
-locks or results. The relocation manifest records the initial move; it is not a
-replacement for experiment input/code locks.
+Edit the canonical files in `latest/`, `research/` and `tests/`, rather than the
+temporary copies. Stage Git changes after commands finish. Basenames must remain
+unique. New source scripts in these locations are discovered automatically.
+Ordinary source/protocol changes still invalidate frozen experiments; declare
+new runs for new research. Dataset acquisition does not imply broker execution.
 
-## Dated reports and old commands
+The launcher rejects collisions and concurrent commands. If an interrupted child
+is still running, its temporary paths are kept. Once it exits, recover unchanged
+copies with `python -m hypershift clean`. Edited temporary copies are preserved;
+compare and recover their desired edits into canonical sources before removing
+those copies and cleaning the remainder.
 
-Hash-sealed reports retain their published bytes and their study-specific dates,
-universes and statistics. They can contain original flat-path command examples.
-From the repository root, translate `python script.py ...` to
-`python -m hypershift run script ...`, and `python -m unittest ...` to
-`python -m hypershift test ...`. The launcher also restores the historical
-dependency filenames while a command runs. For direct installation, use their
-current `requirements/` paths.
+## Provenance and navigation
 
-Unsealed historical guides now state their scope and use current launcher
-commands. New directory READMEs describe only their own sources or artifacts;
-they link to the master charts and workbook for the combined current comparison.
-Preserved archives and existing slide decks describe earlier work.
+[study_layout_20261025.json](../config/study_layout_20261025.json) records current
+moves, file hashes and protocol aliases. The
+[latest layout receipt](audit/latest_layout_20261025.json) records verification.
+The October 24 [manifest](../config/source_layout_20261024.json) and
+[receipt](audit/source_layout_20261024.json) describe the previous layout, not a
+requirement that relocated paths still exist today.
+
+Frozen reports keep their original bytes and may contain historical relative
+links. Use the archive index and manifest to locate moved evidence. Translate
+old `python script.py` commands to `python -m hypershift run script` (with
+`--archived` before `run` for archived scripts). Current guides, source maps and
+indexes point at the organized locations. No model was retrained for this move.

@@ -12,6 +12,7 @@ outperformance result on a genuinely untouched period.
 
 | Start here | Contents |
 | --- | --- |
+| [Latest dynamic-hypergraph study](latest/README.md) | Direct model code, training, protocols, tests and sealed summary results |
 | [Master charts](charts.md) | Current historical leaders, uncertainty and the complete strategy gallery |
 | [Comparison workbook](docs/NASDAQ100_strategy_comparison.xlsx) | Eight tabs, 346 distinct main strategies, SPY/QQQ and seed/cost diagnostics |
 | [Documentation index](docs/README.md) | Current guides, dated study reports and historical material |
@@ -28,11 +29,13 @@ matched benchmarks and confidence limits alongside the leaders.
 
 ## Working with the repository
 
-Research code is grouped by purpose under `research/`; tests and dependency sets
-live in `tests/` and `requirements/`. Run commands from the repository root:
+The latest study is grouped under `latest/`; shared NASDAQ-100 code remains in
+`research/`, with shared tests and dependencies in `tests/` and `requirements/`.
+Run commands from the repository root:
 
 ```powershell
 .\.venv\Scripts\python.exe -m hypershift list
+.\.venv\Scripts\python.exe -m hypershift list latest
 .\.venv\Scripts\python.exe -m hypershift run run_ndx_reference_networks --help
 .\.venv\Scripts\python.exe -m hypershift test -v
 ```
@@ -48,8 +51,7 @@ and `.env`. See [Alpaca setup](docs/ALPACA_15MIN.md),
 and [evaluation commands](research/evaluation/README.md). Cloning the repository
 does not supply the full market data, reference-source cache or trained checkpoints.
 
-Earlier cohort studies and retired 2026-selected results are historical material;
-NYSE work is deferred. Root-level `ROBUST_RESEARCH.md`, `ARCHITECTURE_RESEARCH.md`
-and `STOCKMIXER_PAPER_REVIEW.md` retain legacy document paths. The documentation
-index explains their scope; the master charts and workbook are the current
-cross-study comparison.
+Unrelated cohort/NYSE studies, retired-universe reports, decks and scratch work
+are preserved in [archive/](archive/README.md). Archived sources are excluded from
+normal listings and tests; use `python -m hypershift --archived list` to opt in.
+The master charts and workbook retain the active NASDAQ-100 comparison history.

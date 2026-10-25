@@ -9,6 +9,7 @@ is the current cross-study visual record.
 
 | Document | Scope |
 | --- | --- |
+| [Latest dynamic-hypergraph study](../latest/README.md) | Direct sources, frozen protocols, tests and portable results for the newest study |
 | [Master charts](../charts.md) | 346 main strategies, seed sensitivity, current historical leaders and 634 chart panels |
 | [NASDAQ100_strategy_comparison.xlsx](NASDAQ100_strategy_comparison.xlsx) | Models, Defensive, Portfolio variants, Method, Extended-hours, AH PM holding counts, New findings and New accounts |
 | [Comparison gallery](strategy_comparison_20261024/README.md) | Figure catalog, audit and chart coverage |
@@ -21,7 +22,7 @@ The active universe is historical official NASDAQ-100 membership sampled monthly
 including former members and official share classes. The historical custom
 100-largest-NASDAQ-company ranking is deferred. AH/PM bars are prediction inputs;
 portfolio execution remains at the regular close, not in extended-hours trading.
-The 2022–2025 comparison is exploratory and does not establish reliable future
+The 2022â€“2025 comparison is exploratory and does not establish reliable future
 superiority over SPY, QQQ or other models.
 
 ## Studies and their own evidence
@@ -46,24 +47,16 @@ in a clone; the committed comparison tables and figures remain available.
 Dated reports describe their own study, not every subsequent experiment. The
 [October 20 status](NASDAQ_RESEARCH_STATUS_20261020.md) precedes the AH/PM and
 October 24 optimizer/network findings. Use the master charts for the combined
-latest picture. The [confirmation gate](../config/ndx_confirmation_gate_20261024.json)
+latest picture. The [confirmation gate](../latest/config/ndx_confirmation_gate_20261024.json)
 is not activated and has no mature confirmation sample.
 
-## Historical documents
+## Archived unrelated studies
 
-[Earlier pooled results](REPORT.md), [findings](FINDINGS.md),
-[combined comparisons](COMBINED_2022_2025.md), [benchmark controls](ETF_CONTROLS.md),
-[robust protocol](ROBUST_RESEARCH.md), [architecture evaluation](ARCHITECTURE_RESEARCH.md),
-[Huber/ranking follow-up](HUBER_RANKING.md), [data/splits](DATA_AND_SPLITS.md),
-[confidence methodology](CONFIDENCE_INTERVALS.md) and the
-[StockMixer paper review](STOCKMIXER_PAPER_REVIEW.md) document earlier cohorts.
-Their pooled universes and interval conventions should not be substituted for
-those of the latest historical-monthly NASDAQ study.
-
-[Original charts](CHARTS.md), [random trials](random_trials_20261010/CHARTS.md),
-[retired 2026-selected study](largecap_retraining_20261010/CHARTS.md) and
-[its retirement record](audit/nasdaq_2026_retirement.json) are historical evidence.
-NYSE work and existing presentation decks are outside the active comparison.
+Earlier pooled/cohort documents, random trials, NYSE work, retired 2026-selected
+reports, decks and their supporting tables are now in the
+[study archive](../archive/studies_20261025/README.md). They are outside the active
+historical-monthly NASDAQ-100 comparison. Earlier active NASDAQ-100 experiments
+listed above remain here because they are part of the current comparison history.
 
 Hash-sealed reports and charts retain their published bytes. Their old flat-path
 commands can be translated with the current [layout guide](PROJECT_LAYOUT.md):

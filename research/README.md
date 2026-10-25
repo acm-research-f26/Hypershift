@@ -1,6 +1,8 @@
 # Research source map
 
-This directory contains the executable research code. The active experiments use
+This directory contains shared NASDAQ-100 research code and earlier active
+NASDAQ-100 experiments. Direct sources for the latest dynamic-hypergraph study
+are grouped under [latest](../latest/README.md). The active experiments use
 historical monthly NASDAQ-100 membership, with daily prices for economic portfolio
 accounting and Alpaca 15-minute bars for regular-session and extended-hours features.
 
@@ -23,5 +25,6 @@ their original imports and exact source hashes; see the
 The [master charts](../charts.md) and
 [comparison workbook](../docs/NASDAQ100_strategy_comparison.xlsx) are the current
 cross-study result entry points. [Study reports](../docs/README.md) retain their
-own dated protocols and evidence. Earlier cohort and retired-universe modules
-remain here for reproducibility and are not active NASDAQ-100 benchmarks.
+own dated protocols and evidence. Unrelated cohort and retired-universe sources
+are now in [archive](../archive/README.md). Some shared modules, including the
+original training helpers, remain here because active models import them.

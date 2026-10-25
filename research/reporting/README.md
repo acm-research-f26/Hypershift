@@ -7,11 +7,11 @@ builder live in `outputs/`. The repository-root `charts.md` is the master galler
 | Sources | Responsibility |
 | --- | --- |
 | `report_ndx_*`, `report_*` | Study metrics, uncertainty and reports from saved artifacts |
-| `publish_ndx_*`, `publish_historical_ndx`, `publish_research_docs` | Study-specific publication |
-| `plot_*`, `build_*`, `make_*`, `chart_performance_labels` | Figures and earlier document builders |
+| `publish_ndx_*`, `publish_historical_ndx` | NASDAQ study-specific publication |
+| `chart_performance_labels` | Shared chart labeling |
 | [update_ndx_strategy_comparison_20261024.py](update_ndx_strategy_comparison_20261024.py) | Extended-hours comparison integration |
 | [update_ndx_top5_comparison_20261024.py](update_ndx_top5_comparison_20261024.py) | Earlier unblended AH+PM five-holding follow-up |
-| [update_ndx_new_findings_20261024.py](update_ndx_new_findings_20261024.py) | Latest sealed loss/optimizer and reference-network integration |
+| [update_ndx_new_findings_20261024.py](../../latest/reporting/update_ndx_new_findings_20261024.py) | Latest sealed loss/optimizer and reference-network integration |
 
 Current user-facing artifacts:
 
@@ -32,3 +32,7 @@ older stages alone will not include later appended studies. Preserve workbook
 edits and use the latest consolidation's staged validation before publication.
 For verification without rewriting artifacts, use the command in the
 [evaluation guide](../evaluation/README.md).
+
+Older pooled/cohort report and presentation builders are preserved in
+[archive](../../archive/README.md). Latest-study publishers live in
+[latest/reporting](../../latest/reporting/README.md).

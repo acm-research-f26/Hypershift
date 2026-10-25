@@ -1,0 +1,235 @@
+{
+  "type": "byte_identical_exports_of_sealed_study_summaries",
+  "excluded_large_artifacts": [
+    "curves.csv",
+    "ledgers.csv",
+    "checkpoint folders"
+  ],
+  "files": [
+    {
+      "source": "runs/ndx_reference_networks_20261024/active_mean_intervals.csv",
+      "path": "latest/results/reference_networks/active_mean_intervals.csv",
+      "sha256": "8777f72e75a0267c82b1233c2be988896348a7e1556e9d641056ef3b7dc52ae9"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/annual.csv",
+      "path": "latest/results/reference_networks/annual.csv",
+      "sha256": "44c6aa9c8bf71d821c142120036e9163759638c8d8447f0de3060dc37c085f6c"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/AUDIT.json",
+      "path": "latest/results/reference_networks/AUDIT.json",
+      "sha256": "6d46e79fea24eb4b1b265a174fe7aac9a380dde8eedd839ade634abc323256f5"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/complementarity.csv",
+      "path": "latest/results/reference_networks/complementarity.csv",
+      "sha256": "6f50e9c1b50bba1b9c49f0933d2e58071e21a081b6b17bc76607afd4a37a8159"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/EVALUATED.json",
+      "path": "latest/results/reference_networks/EVALUATED.json",
+      "sha256": "2d05c267eba9b5b20d5c52b7e517f029a925f9ea7c7b2261bdfc16f3785e93b6"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/EVALUATION_SOURCE_LOCK.json",
+      "path": "latest/results/reference_networks/EVALUATION_SOURCE_LOCK.json",
+      "sha256": "7b776aa242615c4782fc8ba9bb4df8914e4b14ed2b977f19fb4ec0373cdd3f80"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/EXECUTION_AMENDMENT.json",
+      "path": "latest/results/reference_networks/EXECUTION_AMENDMENT.json",
+      "sha256": "6fd92aac4ff1f95ce76ce17dc09a74dac4f577d434776fe5ebe7b903c4dabb49"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/EXECUTION_PRESERVATION_AUDIT.json",
+      "path": "latest/results/reference_networks/EXECUTION_PRESERVATION_AUDIT.json",
+      "sha256": "c2f2d35cf89e48b0c45bfebf895ffb3b5ff772ded88dc3feee463bb8783f8c66"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/FINAL_PUBLICATION.json",
+      "path": "latest/results/reference_networks/FINAL_PUBLICATION.json",
+      "sha256": "a1c8c8aab1fad6a9681bef168e69f1b3d0646f0ef87d594795a0043a718b9f16"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/FITS_COMPLETE_LOCK.json",
+      "path": "latest/results/reference_networks/FITS_COMPLETE_LOCK.json",
+      "sha256": "7f396b60158f0be40bb2d2cb3486788cedd66244ddd7ba09689a8357ac253ec4"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/FREEZE.json",
+      "path": "latest/results/reference_networks/FREEZE.json",
+      "sha256": "90b411a909384e2cb8cbeab1e9dfff3494ead433a9ced44d040cc7fe5b37c599"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/INPUT_CODE_LOCK.json",
+      "path": "latest/results/reference_networks/INPUT_CODE_LOCK.json",
+      "sha256": "69915e3121485db0e0d8ea2b969e65ecb4ce7025152a1e4e95fea97dc3791459"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/metrics.csv",
+      "path": "latest/results/reference_networks/metrics.csv",
+      "sha256": "4d7f5401669dc6a0fdbb502ecc513e7c000313f687d2a9f29d8926adbe826a1d"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/monthly.csv",
+      "path": "latest/results/reference_networks/monthly.csv",
+      "sha256": "8bb57e552f062afd380e4e473deac98132479e13ccd89d15496f95ce2c9c80e0"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/paired_intervals.csv",
+      "path": "latest/results/reference_networks/paired_intervals.csv",
+      "sha256": "855aae6fbcb92fd229065bc6d18144b7f941477f99f85ec5bde66869b32ca753"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/prediction_quality.csv",
+      "path": "latest/results/reference_networks/prediction_quality.csv",
+      "sha256": "9f17193a1b5a1b4b3c712d8c25ac266281686c20af934b470221ec589cf72acc"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/PREDICTOR_PARITY.json",
+      "path": "latest/results/reference_networks/PREDICTOR_PARITY.json",
+      "sha256": "bef7bc2added5dbbfb36c34810f72cbebf7c892590499492d02c7a84d16f49e7"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/PRESERVED_FITS_BEFORE_RESCHEDULE.json",
+      "path": "latest/results/reference_networks/PRESERVED_FITS_BEFORE_RESCHEDULE.json",
+      "sha256": "44dc01f6628348e7798c67952151208bc2b18134103be243d19c40752be12b9c"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/PROTOCOL.json",
+      "path": "latest/results/reference_networks/PROTOCOL.json",
+      "sha256": "938e0f2e529932a76df8315ed3a2774e38ad5f4a9510a567f43a74ff382b1b92"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/ranking.csv",
+      "path": "latest/results/reference_networks/ranking.csv",
+      "sha256": "01b47abaf017d0442403d66b212b125b3f865ccdd43d183eae3caead48f844d8"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/REFERENCE_REVISIONS.json",
+      "path": "latest/results/reference_networks/REFERENCE_REVISIONS.json",
+      "sha256": "223e58e9cb17e9d721f63270e05dd4eac7511cac668dfc65958bb49d05bfa59c"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/RESULTS.json",
+      "path": "latest/results/reference_networks/RESULTS.json",
+      "sha256": "31f11e53cb4ea4edb1c3100103d175628dad37105d1784276e06f66e128b2106"
+    },
+    {
+      "source": "runs/ndx_reference_networks_20261024/sharpe_intervals.csv",
+      "path": "latest/results/reference_networks/sharpe_intervals.csv",
+      "sha256": "ae1c28a381abf089a57cc6cc2446583daab548498f85f3412849144bc47ef34e"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/active_mean_intervals.csv",
+      "path": "latest/results/loss_optimizer/active_mean_intervals.csv",
+      "sha256": "d5ad789658aac04b391cadf94e26ee74c6ff2b25f68586a4d06d169eeea44bb6"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/annual.csv",
+      "path": "latest/results/loss_optimizer/annual.csv",
+      "sha256": "77b868ad5a99748d4d450654e2a55f714b01a508f4b216ad76f10ad0b89013fb"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/AUDIT.json",
+      "path": "latest/results/loss_optimizer/AUDIT.json",
+      "sha256": "dbc8b8912ddb960a6ea90bab4717093ac9c4b262fe1184b2ee7eff6bb3550543"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/complementarity.csv",
+      "path": "latest/results/loss_optimizer/complementarity.csv",
+      "sha256": "1fe4abeee10ece6d7958c691f79913e52cb7288f33274148d8cc40a4146aef04"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/ENVIRONMENT.json",
+      "path": "latest/results/loss_optimizer/ENVIRONMENT.json",
+      "sha256": "2bfcf9ba6b044d75a3f899289fa97d1716448652f046b3a4e4cc3330327fc58a"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/EVALUATED.json",
+      "path": "latest/results/loss_optimizer/EVALUATED.json",
+      "sha256": "64ec851bdbad7a61885113950a1f7d74fb17f6f67bc558ff229bac3f3b0fe607"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/EVALUATION_SOURCE_LOCK.json",
+      "path": "latest/results/loss_optimizer/EVALUATION_SOURCE_LOCK.json",
+      "sha256": "0c36962e34a106c71843efd7af65c4ca0c23c7341a2c826a0acc7e90efdd920e"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/FINAL_PUBLICATION.json",
+      "path": "latest/results/loss_optimizer/FINAL_PUBLICATION.json",
+      "sha256": "2ecc4ef296abe28736848de177f6e8514a17cfeb07472b3bf4b48a9bb09c0691"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/FITS_COMPLETE_LOCK.json",
+      "path": "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+      "sha256": "94597303b9d9ef650d5d3c9e85377a1bac604b60e39add51756f1b68f5f0594f"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/FREEZE.json",
+      "path": "latest/results/loss_optimizer/FREEZE.json",
+      "sha256": "284d27f9d5bb2bdfcc923ce129c4bd049654c6a82c9132c4219ef62ee464e6c3"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/INPUT_CODE_LOCK.json",
+      "path": "latest/results/loss_optimizer/INPUT_CODE_LOCK.json",
+      "sha256": "5c02f4dedb0fcd43b26b9c1a7d43d73cab8881decf87dce172b9b54bf0690d94"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/LR_SELECTION.json",
+      "path": "latest/results/loss_optimizer/LR_SELECTION.json",
+      "sha256": "6234ec5584319e0c7192d012a1c830f64285c467d4515a54e327039f233af125"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/metrics.csv",
+      "path": "latest/results/loss_optimizer/metrics.csv",
+      "sha256": "d0b480639b363cb0348e5d640e0dc61c26dc8efe4e4752d2bef5fc4927cd8401"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/monthly.csv",
+      "path": "latest/results/loss_optimizer/monthly.csv",
+      "sha256": "c814ff358206383dc81e1f79e8e10c03f27f407c26ef988f755d3f43d6111d98"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/paired_intervals.csv",
+      "path": "latest/results/loss_optimizer/paired_intervals.csv",
+      "sha256": "f723b1bbdade4d2675c8b9f7cbb3a1762b45ce391e7aeadf7ccdcd0a7d84c034"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/PARITY.json",
+      "path": "latest/results/loss_optimizer/PARITY.json",
+      "sha256": "faf2c750bba8ff7d652ff13ced230e8b5376ac45d5fd6e8b1b6976f4d0247e86"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/prediction_quality.csv",
+      "path": "latest/results/loss_optimizer/prediction_quality.csv",
+      "sha256": "4ab90a10b7f5fdcabfe72f2f00d4473202e80af56564ff166de70b85f014bbeb"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/PROTOCOL.json",
+      "path": "latest/results/loss_optimizer/PROTOCOL.json",
+      "sha256": "a1b6ac772ddcf07a03517914195fb1733c46d246c7a2aa7370a486e7dd28bbd2"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/ranking.csv",
+      "path": "latest/results/loss_optimizer/ranking.csv",
+      "sha256": "c602f641e749a5d923b56de17dfb596adaa7ef80dc8faa2e1052d7bda624e256"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/RESULTS.json",
+      "path": "latest/results/loss_optimizer/RESULTS.json",
+      "sha256": "799894b7ee308c26715597e744b5df6e202cb605d30fc0eb8276b9bae8ae2108"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/sharpe_intervals.csv",
+      "path": "latest/results/loss_optimizer/sharpe_intervals.csv",
+      "sha256": "52d14105d228c25d555224ae4e95c29f9f89bc324d04e519d8c2c791e9e4812e"
+    },
+    {
+      "source": "runs/ndx_loss_optimizer_20261024/UNIT_TESTS.json",
+      "path": "latest/results/loss_optimizer/UNIT_TESTS.json",
+      "sha256": "bd0c23587290f3a725d84c1891eac373de0ae6170cb4f32e74f93ec872721836"
+    }
+  ]
+}

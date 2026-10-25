@@ -1,0 +1,4548 @@
+{
+  "date": "2026-10-25",
+  "type": "latest_study_and_unrelated_archive",
+  "files": [
+    {
+      "original": "research/analysis/analyze_exchange_common_movement.py",
+      "path": "archive/studies_20261025/research/analysis/analyze_exchange_common_movement.py",
+      "role": "archive",
+      "sha256": "d58d3d5c3cd75f5e1146b65f1422167ab1fb993c0bc25a5986560cb799c98379",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/analysis/analyze_exchange_hyperbolicity.py",
+      "path": "archive/studies_20261025/research/analysis/analyze_exchange_hyperbolicity.py",
+      "role": "archive",
+      "sha256": "9f22a5299c56f556084a961c2d0839266db2a7de233f8a04acb67c7def8619ad",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/analysis/analyze_largecap_retraining.py",
+      "path": "archive/studies_20261025/research/analysis/analyze_largecap_retraining.py",
+      "role": "archive",
+      "sha256": "065b6336ec900d9a15c947a8a4c6c50d9234c4f799a11e29d833ad4c85d5da0f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/analysis/analyze_recent_research.py",
+      "path": "archive/studies_20261025/research/analysis/analyze_recent_research.py",
+      "role": "archive",
+      "sha256": "b1d6b224506da2157924cf1ca440d3fc34bda13d39f59ddb99fc272f2302ae10",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/analysis/check_exchange_geometry_sensitivity.py",
+      "path": "archive/studies_20261025/research/analysis/check_exchange_geometry_sensitivity.py",
+      "role": "archive",
+      "sha256": "b272843f7ac0e3a931eb98aa4eff9d9c7091d59a0bfcc823a798724714f2cfb4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/analysis/summarize_robust_findings.py",
+      "path": "archive/studies_20261025/research/analysis/summarize_robust_findings.py",
+      "role": "archive",
+      "sha256": "d0d09bd7195f7ce53b0af768912fab32b8fadf87ede9857f08d44a7baeea9ea6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/data/add_etf_controls.py",
+      "path": "archive/studies_20261025/research/data/add_etf_controls.py",
+      "role": "archive",
+      "sha256": "23d5acd0ba9569a95e41bf81685c7c80218dcc28e6ebe1daa4ea27a38443890f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/data/fetch_largecap_universes.py",
+      "path": "archive/studies_20261025/research/data/fetch_largecap_universes.py",
+      "role": "archive",
+      "sha256": "6c999a5afe192b87fbd8dabb54a0abfaf6ce08365dbf7e8458246e91dc24cdd2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/data/fetch_ndx_reference_assets.py",
+      "path": "latest/data/fetch_ndx_reference_assets.py",
+      "role": "latest",
+      "sha256": "3f03ecab7c98a3cbfe589211bf97d17485aa5db0d22de5a186e15469193ac9d2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/data/fetch_random_trials.py",
+      "path": "archive/studies_20261025/research/data/fetch_random_trials.py",
+      "role": "archive",
+      "sha256": "5f9e752655aece1f61312ba75b2e26e8d6e893593d77d4425972bed0ad6c02d1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/data/fetch_recent_cohorts.py",
+      "path": "archive/studies_20261025/research/data/fetch_recent_cohorts.py",
+      "role": "archive",
+      "sha256": "d1e987980505b5dee02fbdd5acb36ae970d54f6a786b77e732a0773dc148d505",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/data/fetch_research_cohorts.py",
+      "path": "archive/studies_20261025/research/data/fetch_research_cohorts.py",
+      "role": "archive",
+      "sha256": "c552e169d1289d50b26d1dfb5cb5de7cd6cb6766230bd836fd92c0fc1677ff88",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/data/fetch_research_panel.py",
+      "path": "archive/studies_20261025/research/data/fetch_research_panel.py",
+      "role": "archive",
+      "sha256": "e852eb2308a4daf5bf2a6de251925f4688e0f63567f41ecaa15da7218f250007",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/evaluation/audit_architecture_research.py",
+      "path": "archive/studies_20261025/research/evaluation/audit_architecture_research.py",
+      "role": "archive",
+      "sha256": "24f4eb8f57c5bc9434eb793a4f14be497c1094f48f1730576f9433e826c54854",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/evaluation/audit_backtests.py",
+      "path": "archive/studies_20261025/research/evaluation/audit_backtests.py",
+      "role": "archive",
+      "sha256": "8cfcba7e8408501103b9d8b6face6d53952243994ac25734c0acc8582ceb5bde",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/evaluation/audit_pooled_chronology.py",
+      "path": "archive/studies_20261025/research/evaluation/audit_pooled_chronology.py",
+      "role": "archive",
+      "sha256": "6bd547af946197a4c3b78a578b0da7a2127f63dc61bf965f35298cef70b4c2f2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/evaluation/audit_robust_regimes.py",
+      "path": "archive/studies_20261025/research/evaluation/audit_robust_regimes.py",
+      "role": "archive",
+      "sha256": "6e7b900d989e723b20437123f4ec8ffb275ec923e4d5bd379c0ba282f7935d9e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/evaluation/audit_saved_models.py",
+      "path": "archive/studies_20261025/research/evaluation/audit_saved_models.py",
+      "role": "archive",
+      "sha256": "e1f4996c9211a6eba4aea90b5f12fd8d12041d6424746a46ef22f9c333aedd22",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/evaluation/seal_ndx_comparison.py",
+      "path": "latest/evaluation/seal_ndx_comparison.py",
+      "role": "latest",
+      "sha256": "03a5b65d201d190faa0608df5a7d81f0a0209d344a385762ddfa7b9854845bbb",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/evaluation/verify_audited_publication.py",
+      "path": "archive/studies_20261025/research/evaluation/verify_audited_publication.py",
+      "role": "archive",
+      "sha256": "cfd567d7ba178a084c459772f144fc975c4cf5340097e47dcfcfe3ed2897a378",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/evaluation/verify_robust_outputs.py",
+      "path": "archive/studies_20261025/research/evaluation/verify_robust_outputs.py",
+      "role": "archive",
+      "sha256": "264328b33271bf6099a3dba440853097c4c62fc7e55c6124b802491c6c81c687",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/models/ndx_loss_optimizer.py",
+      "path": "latest/models/ndx_loss_optimizer.py",
+      "role": "latest",
+      "sha256": "0e00580813633f1e2c342b2de50befa157e7b5df183c7f2fd0714760070b4e54",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/models/ndx_reference_models.py",
+      "path": "latest/models/ndx_reference_models.py",
+      "role": "latest",
+      "sha256": "1e25ed60e5d9f922f61cb2441a7a1232c1fcc033d28755a2abc00b87d8899535",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/build_exchange_geometry_report.py",
+      "path": "archive/studies_20261025/research/reporting/build_exchange_geometry_report.py",
+      "role": "archive",
+      "sha256": "ae285664b23718861f27d7fdfff0ce9410e11990afcc4d9d322014e0bd908559",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/build_largecap_results_document.py",
+      "path": "archive/studies_20261025/research/reporting/build_largecap_results_document.py",
+      "role": "archive",
+      "sha256": "6c69602b595550958e6d2cb72afe589eaf43167c1cc11d9ed53d2a22dfa08458",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/finalize_robust_reporting.py",
+      "path": "archive/studies_20261025/research/reporting/finalize_robust_reporting.py",
+      "role": "archive",
+      "sha256": "ab7fc551fa51119463b6abc6a6926124236dc9a1c8b1039570aee12bbc4732e0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/finish_benchmark_publication.py",
+      "path": "archive/studies_20261025/research/reporting/finish_benchmark_publication.py",
+      "role": "archive",
+      "sha256": "00918c9fb08713e1f214b7276df8cbec12ca5b6b4f46aa01baebad1dd0325e2f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/integrate_ranking_docs.py",
+      "path": "archive/studies_20261025/research/reporting/integrate_ranking_docs.py",
+      "role": "archive",
+      "sha256": "2ae203e506863443cfd4627fce4b530272c2fa9a9c6cc23315017d862a48cf56",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/make_document_benchmark_images.py",
+      "path": "archive/studies_20261025/research/reporting/make_document_benchmark_images.py",
+      "role": "archive",
+      "sha256": "98a93ddbe30adc8d403a031a27591e990c8179b27540e0aeb88c194287aaa6cc",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/plot_combined_research.py",
+      "path": "archive/studies_20261025/research/reporting/plot_combined_research.py",
+      "role": "archive",
+      "sha256": "1ced856cd1a50b84a1cfff1cafd9eb3028dd318263699fcd9b7b0886b8ea9dc0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/plot_research_metrics.py",
+      "path": "archive/studies_20261025/research/reporting/plot_research_metrics.py",
+      "role": "archive",
+      "sha256": "f5415abadd8c803c3e0e60c0bf90cc3663e5649dbdf022989044ba36d6d8fdc6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/plot_robust_diagnostics.py",
+      "path": "archive/studies_20261025/research/reporting/plot_robust_diagnostics.py",
+      "role": "archive",
+      "sha256": "abc8ae60436e13e38ab1dd3b8cf8a0c87a2533a8092b95743025c5db935c7195",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/publish_research_docs.py",
+      "path": "archive/studies_20261025/research/reporting/publish_research_docs.py",
+      "role": "archive",
+      "sha256": "3d793f53e7e4906b90c889cca33b2f49b1ab2e76a6aadd03436edb2d4cc5a045",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/refresh_audited_charts.py",
+      "path": "archive/studies_20261025/research/reporting/refresh_audited_charts.py",
+      "role": "archive",
+      "sha256": "2e65a11d9204918426f4013f83467e7a7d7c3bda3cee7c2582c8869ee66a9bca",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/report_architecture_research.py",
+      "path": "archive/studies_20261025/research/reporting/report_architecture_research.py",
+      "role": "archive",
+      "sha256": "86e1674477e462bd875d1424349a590ce7cc5157efba04d9e73fd7a40952d719",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/report_huber_ranking.py",
+      "path": "archive/studies_20261025/research/reporting/report_huber_ranking.py",
+      "role": "archive",
+      "sha256": "67ce675660ca842fd4f3895c5a6c73f63f6bde4b8fb8ca3410cce9dc454b2929",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/report_ndx_loss_optimizer.py",
+      "path": "latest/reporting/report_ndx_loss_optimizer.py",
+      "role": "latest",
+      "sha256": "d00146e12d57e9cd405d022722cfebf08c6658d42347c33f7eb7b60ad4d45cea",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/report_ndx_reference_networks.py",
+      "path": "latest/reporting/report_ndx_reference_networks.py",
+      "role": "latest",
+      "sha256": "04f4952cf3d2bc4dcf439d614bddd3d3e61f018c1cc584bf9227a99f2eafbbb3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/report_pooled_uncertainty.py",
+      "path": "archive/studies_20261025/research/reporting/report_pooled_uncertainty.py",
+      "role": "archive",
+      "sha256": "eec87674da1110b4a6d332b1057c083fd2f007b703e75ff881f18c741d034fae",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/report_random_trials.py",
+      "path": "archive/studies_20261025/research/reporting/report_random_trials.py",
+      "role": "archive",
+      "sha256": "22f3fe79e674f27eee45ad4e1d707f1ed273151929f0dd7ed366daf078e570a3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/report_recent_research.py",
+      "path": "archive/studies_20261025/research/reporting/report_recent_research.py",
+      "role": "archive",
+      "sha256": "f7c945e9a340d1984a30fae46f427559f248f258e71c84e86697712b3563543e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/report_robust_research.py",
+      "path": "archive/studies_20261025/research/reporting/report_robust_research.py",
+      "role": "archive",
+      "sha256": "8882af4605891c6dafc8594a621c4bde6cd587d7eb460d71eff004944fc03b6a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/update_benchmark_artifacts.py",
+      "path": "archive/studies_20261025/research/reporting/update_benchmark_artifacts.py",
+      "role": "archive",
+      "sha256": "63959b7a69a385a6f7288be28ad8b24aa3d629e4ca97f85a8d8ee126ecb1aeb3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/reporting/update_ndx_new_findings_20261024.py",
+      "path": "latest/reporting/update_ndx_new_findings_20261024.py",
+      "role": "latest",
+      "sha256": "83c0af1412e928f597ee2720494238cfa757f48f3ee731eeaeea66afa0673895",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/training/lock_ranking_selection.py",
+      "path": "archive/studies_20261025/research/training/lock_ranking_selection.py",
+      "role": "archive",
+      "sha256": "467457e96276f300b85e7d46e9962add6c4c1756603105dcd9ddc7a78000ca96",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/training/ndx_reference_training.py",
+      "path": "latest/training/ndx_reference_training.py",
+      "role": "latest",
+      "sha256": "8fa4b4d558ffccfcb6c84f568e5ff13f40a34b420996d3108f93a1193b9e7809",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/training/run_largecap_retraining.py",
+      "path": "archive/studies_20261025/research/training/run_largecap_retraining.py",
+      "role": "archive",
+      "sha256": "6a2a6877350ddfafef3c9b538c966c6b4b39b8a20703a6d28fd96b8938858e54",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/training/run_ndx_loss_optimizer.py",
+      "path": "latest/training/run_ndx_loss_optimizer.py",
+      "role": "latest",
+      "sha256": "17ac8700303bb20b6e4dcac7cf8a584d139de3c9eff9338f0a3d0ac546a8b5f8",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/training/run_ndx_reference_networks.py",
+      "path": "latest/training/run_ndx_reference_networks.py",
+      "role": "latest",
+      "sha256": "afac7f432ad86b4f2a1ba019e052dd64d3a876658828c1a4c57fd1cd21214bfe",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "research/training/run_ndx_reference_parallel.py",
+      "path": "latest/training/run_ndx_reference_parallel.py",
+      "role": "latest",
+      "sha256": "d7f87668b848ddc7bd1de032ccae0345fe2a6d2d736d9fd39de6b19053e50754",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tests/test_huber_ranking.py",
+      "path": "archive/studies_20261025/tests/test_huber_ranking.py",
+      "role": "archive",
+      "sha256": "73ffe66b3cd706633a1663433422d647a7480c7fb90ce229cf49168e34ef0714",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tests/test_largecap_retraining.py",
+      "path": "archive/studies_20261025/tests/test_largecap_retraining.py",
+      "role": "archive",
+      "sha256": "6557ec525e29791adca52dca07db616ceaa384ab5d04dfa8d88ca51f319cd8c4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tests/test_ndx_loss_optimizer.py",
+      "path": "latest/tests/test_ndx_loss_optimizer.py",
+      "role": "latest",
+      "sha256": "cd90fceb7e0e9162cea6f631ea320a603ce6ce206c273d12ba8160d55f0d1d9a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tests/test_ndx_loss_optimizer_evaluation.py",
+      "path": "latest/tests/test_ndx_loss_optimizer_evaluation.py",
+      "role": "latest",
+      "sha256": "08d4cdd49449a65e79d76dce2c7db84c24817bb4a1ef1c4f23985a23ad0f1d2e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tests/test_ndx_reference_evaluation.py",
+      "path": "latest/tests/test_ndx_reference_evaluation.py",
+      "role": "latest",
+      "sha256": "38efff72da1166bc62f5c7f61042b30e5fa0829d86d0c339f9924b74c4d90dd8",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tests/test_ndx_reference_models.py",
+      "path": "latest/tests/test_ndx_reference_models.py",
+      "role": "latest",
+      "sha256": "65528ae71c85e88b6b423b4980625ed99a44285dfdaa6e197306bda62b6a4866",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "config/ndx_loss_optimizer_20261024.json",
+      "path": "latest/config/ndx_loss_optimizer_20261024.json",
+      "role": "latest",
+      "sha256": "858267168845125e9bec76accb4671800910fcfc67c8605dfdec7c2c870cc0ec",
+      "runtime_alias": "config/ndx_loss_optimizer_20261024.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/ndx_reference_networks_20261024.json",
+      "path": "latest/config/ndx_reference_networks_20261024.json",
+      "role": "latest",
+      "sha256": "1e6c4577e9bf0333f84f2da88576d74a6538c32bedeffa1b0b6e0f0b89bf5eaa",
+      "runtime_alias": "config/ndx_reference_networks_20261024.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/ndx_reference_assets_20261024.json",
+      "path": "latest/config/ndx_reference_assets_20261024.json",
+      "role": "latest",
+      "sha256": "190fa35bc1df7275a4715f3552f1843c225fca205e9ebbb82501dd307291b518",
+      "runtime_alias": "config/ndx_reference_assets_20261024.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/ndx_confirmation_gate_20261024.json",
+      "path": "latest/config/ndx_confirmation_gate_20261024.json",
+      "role": "latest",
+      "sha256": "a95aef76a05b84f4aadbd0f3d5f5dafd9921aa3acc78bb87f44559efe361ef1c",
+      "runtime_alias": "config/ndx_confirmation_gate_20261024.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/huber_ranking_experiment_plan.json",
+      "path": "archive/studies_20261025/config/huber_ranking_experiment_plan.json",
+      "role": "archive",
+      "sha256": "35b230afe0aa2269492e8765f9897dfcb2eaeacb3da5cbacf9c2c9e611e5dc74",
+      "runtime_alias": "config/huber_ranking_experiment_plan.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/largecap_retraining_20261010.json",
+      "path": "archive/studies_20261025/config/largecap_retraining_20261010.json",
+      "role": "archive",
+      "sha256": "e3b23804622f9be15a972c816bef4b7eeb0030b5edfd1edb8b4b405259adccfd",
+      "runtime_alias": "config/largecap_retraining_20261010.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/modern_source_snapshot.json",
+      "path": "archive/studies_20261025/config/modern_source_snapshot.json",
+      "role": "archive",
+      "sha256": "6fbc5acd097f5e7a202a204a4ca17db7d26d88eb62732db5c35a9ecc6b936782",
+      "runtime_alias": "config/modern_source_snapshot.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/NASDAQ_source_cohort.txt",
+      "path": "archive/studies_20261025/config/NASDAQ_source_cohort.txt",
+      "role": "archive",
+      "sha256": "d4543ab1f4fe046b0c4ca50520c2b8783e3e4c173f1e385492f0014cce2c16f4",
+      "runtime_alias": "config/NASDAQ_source_cohort.txt",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/NYSE_source_cohort.txt",
+      "path": "archive/studies_20261025/config/NYSE_source_cohort.txt",
+      "role": "archive",
+      "sha256": "628de28b3440b191dcda5d250a1ae2e861c773bff9168e27b7e8229e95cc26af",
+      "runtime_alias": "config/NYSE_source_cohort.txt",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/qqq_control_amendment.json",
+      "path": "archive/studies_20261025/config/qqq_control_amendment.json",
+      "role": "archive",
+      "sha256": "88968666653232e1ddd04d5101f1663750cb9becdf58324dbb1649fbca416a77",
+      "runtime_alias": "config/qqq_control_amendment.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/random_trials_20261010.json",
+      "path": "archive/studies_20261025/config/random_trials_20261010.json",
+      "role": "archive",
+      "sha256": "e9a592b45b49546058837a5acd77bd65e9217bd29f76d93d17522facee43be5d",
+      "runtime_alias": "config/random_trials_20261010.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/recent_identity_exclusions.json",
+      "path": "archive/studies_20261025/config/recent_identity_exclusions.json",
+      "role": "archive",
+      "sha256": "e4633fd4e1725f5f8c2e3f2268baebaeec1ac43216c62e642e0e53e0f91ee54c",
+      "runtime_alias": "config/recent_identity_exclusions.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/robust_diagnostics_lock.json",
+      "path": "archive/studies_20261025/config/robust_diagnostics_lock.json",
+      "role": "archive",
+      "sha256": "61ce5ed8359e1b405e039c1c709f4c1ff399df04530852cece97df5ca18760a2",
+      "runtime_alias": "config/robust_diagnostics_lock.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/robust_experiment_plan.json",
+      "path": "archive/studies_20261025/config/robust_experiment_plan.json",
+      "role": "archive",
+      "sha256": "ee1b594155d938202c9e0fc025b3020318dc62153cfd978038dcdd402e66d76a",
+      "runtime_alias": "config/robust_experiment_plan.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "config/robust_presentation_lock.json",
+      "path": "archive/studies_20261025/config/robust_presentation_lock.json",
+      "role": "archive",
+      "sha256": "da6d7cab96e6fb76c8a624cbc560d1d4eac48d23558f6c7549790e22e42700e5",
+      "runtime_alias": "config/robust_presentation_lock.json",
+      "previously_tracked": true
+    },
+    {
+      "original": "ARCHITECTURE_RESEARCH.md",
+      "path": "archive/studies_20261025/ARCHITECTURE_RESEARCH.md",
+      "role": "archive",
+      "sha256": "3ad5c569096faa05ea316ae0cb9845d5718dd175c78c4d6c136ef8107e912b70",
+      "runtime_alias": "ARCHITECTURE_RESEARCH.md",
+      "previously_tracked": true
+    },
+    {
+      "original": "ROBUST_RESEARCH.md",
+      "path": "archive/studies_20261025/ROBUST_RESEARCH.md",
+      "role": "archive",
+      "sha256": "81d9ba54746258f33f9b8ea36538d01f96214797bc19561cb1875f38d3636758",
+      "runtime_alias": "ROBUST_RESEARCH.md",
+      "previously_tracked": true
+    },
+    {
+      "original": "STOCKMIXER_PAPER_REVIEW.md",
+      "path": "archive/studies_20261025/STOCKMIXER_PAPER_REVIEW.md",
+      "role": "archive",
+      "sha256": "48cbc2bc6d27559d36dcb7a986f5635bd337b132b63e1423de5a6cc7deb4bed7",
+      "runtime_alias": "STOCKMIXER_PAPER_REVIEW.md",
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/accounting_audit.csv",
+      "path": "archive/studies_20261025/docs/accounting_audit.csv",
+      "role": "archive",
+      "sha256": "b32d7becccbbc1ec07ebe21a181f2475a93d388cf338ddcddcd1399185067e42",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/all_metrics.csv",
+      "path": "archive/studies_20261025/docs/all_metrics.csv",
+      "role": "archive",
+      "sha256": "f32917c383499ccf81f0031cbd7aadf53acc57249a290c5ca8140f3c17b2f642",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/annual_comparison.csv",
+      "path": "archive/studies_20261025/docs/annual_comparison.csv",
+      "role": "archive",
+      "sha256": "8831c7644335b350824dbd224964c74e193d5e5fc37f4e657fa483d2cd40a118",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/ARCHITECTURE_RESEARCH.md",
+      "path": "archive/studies_20261025/docs/ARCHITECTURE_RESEARCH.md",
+      "role": "archive",
+      "sha256": "bfd88f0ff290a9ee8d679cb0dc94c9b0cf053bd0350311528b8cbcf358d5f144",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audited_curves.csv",
+      "path": "archive/studies_20261025/docs/audited_curves.csv",
+      "role": "archive",
+      "sha256": "0382a144851c95b4180a4a0621d90d52c38c0cce4772b901b65253bbdcd72fe9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audited_metrics.csv",
+      "path": "archive/studies_20261025/docs/audited_metrics.csv",
+      "role": "archive",
+      "sha256": "fff21ff6cd47a57be498e809431bf2e567ba3ea511ed0085bf9500ea7e25f953",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/CHARTS.md",
+      "path": "archive/studies_20261025/docs/CHARTS.md",
+      "role": "archive",
+      "sha256": "71a46a9e9b4a7f277ec4b768494d669a9de871d076496d949cf9fed61f420519",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/chronology_audit.csv",
+      "path": "archive/studies_20261025/docs/chronology_audit.csv",
+      "role": "archive",
+      "sha256": "79c314633655f7bf9af29c5c4d8d5931b40ee49472939cac6100198d97f3279f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/COMBINED_2022_2025.md",
+      "path": "archive/studies_20261025/docs/COMBINED_2022_2025.md",
+      "role": "archive",
+      "sha256": "32d75cecb9d05110210371bd2b05fdc02435d20e3a32cdb95674dc9280a5ad46",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/combined_2022_2025_curves.csv",
+      "path": "archive/studies_20261025/docs/combined_2022_2025_curves.csv",
+      "role": "archive",
+      "sha256": "a880a3bf94e2a3af3bbc5597432b8582cfc3777054a1fcd23d96094b0debe8d4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/combined_2022_2025_curves_current.csv",
+      "path": "archive/studies_20261025/docs/combined_2022_2025_curves_current.csv",
+      "role": "archive",
+      "sha256": "9cb3f0a3ba0460e081f6d83219e612ccd1bd991072654981a6a96af4dff363c5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/combined_2022_2025_metrics.csv",
+      "path": "archive/studies_20261025/docs/combined_2022_2025_metrics.csv",
+      "role": "archive",
+      "sha256": "c9804ae9f2b0dabbe238ac7096ca291ddea592a7c119b6e3a3addf7263deaa4f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/combined_2022_2025_metrics_current.csv",
+      "path": "archive/studies_20261025/docs/combined_2022_2025_metrics_current.csv",
+      "role": "archive",
+      "sha256": "e0b7b9426c629d68fe4695991886b023d3fa09599994d93c7211d92d77d3eb46",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/combined_validation_selected.csv",
+      "path": "archive/studies_20261025/docs/combined_validation_selected.csv",
+      "role": "archive",
+      "sha256": "c2ee462f24c0efb9dd014d4aeb6a9a74ab04a44d6dfad1acfab8fa5eed923b16",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/CONFIDENCE_INTERVALS.md",
+      "path": "archive/studies_20261025/docs/CONFIDENCE_INTERVALS.md",
+      "role": "archive",
+      "sha256": "79542ffb18988c3021b9825429693ca4718306684f574d626b1d67697e1e7c43",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/DATA_AND_SPLITS.md",
+      "path": "archive/studies_20261025/docs/DATA_AND_SPLITS.md",
+      "role": "archive",
+      "sha256": "d08ea1740427b06b6c60be6d7ef33badbc6c6138e754fb214c16e0245e5de8c4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/ETF_CONTROLS.md",
+      "path": "archive/studies_20261025/docs/ETF_CONTROLS.md",
+      "role": "archive",
+      "sha256": "4b4115764c3fe4a1416e5063c537c280644dddda4e810d5d20f54a4cce71d6f0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/etf_controls_by_year.csv",
+      "path": "archive/studies_20261025/docs/etf_controls_by_year.csv",
+      "role": "archive",
+      "sha256": "34bca5bafb4419d22af96c9e80be7d0ad803b974e780bd0f55d7535e9c7ab360",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/execution_quality_by_year.csv",
+      "path": "archive/studies_20261025/docs/execution_quality_by_year.csv",
+      "role": "archive",
+      "sha256": "4dacd46c8727ce9723e8ea8f0c729d28aeee9c012b613324fe69fd0869e0c421",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/exploratory_stability_order.csv",
+      "path": "archive/studies_20261025/docs/exploratory_stability_order.csv",
+      "role": "archive",
+      "sha256": "5b569188c4c26cff9de9647f424b53c2e812fc233df256d883cd231a559bb5f2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/FINDINGS.md",
+      "path": "archive/studies_20261025/docs/FINDINGS.md",
+      "role": "archive",
+      "sha256": "186f6343e6a139f8cc0833b539d1695f1ff9c90f3724172c55bcf6977dc2c8d8",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/fixed_k10_ablations.csv",
+      "path": "archive/studies_20261025/docs/fixed_k10_ablations.csv",
+      "role": "archive",
+      "sha256": "8ef5b56c71bea25d6c74800a3eb7a7ada945ded857d815e45928feda4ee15789",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/fixed_k10_portfolio_effects.csv",
+      "path": "archive/studies_20261025/docs/fixed_k10_portfolio_effects.csv",
+      "role": "archive",
+      "sha256": "19809f196d5e53eef9b248f770881b9232cda36ae365db0a7e5a1fbdbc1cbb22",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/horizon_common_calendar.csv",
+      "path": "archive/studies_20261025/docs/horizon_common_calendar.csv",
+      "role": "archive",
+      "sha256": "19eb27021774e23e72b5089757b4b4f551136bfbcd29dd0cbb67f3dffec23664",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/horizon_comparison.csv",
+      "path": "archive/studies_20261025/docs/horizon_comparison.csv",
+      "role": "archive",
+      "sha256": "c9d0359a3974824c5f3846c945c7e01e97c1b46acf7f9500919f85f7588dfeb7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_mse_pooled_intervals.csv",
+      "path": "archive/studies_20261025/docs/huber_mse_pooled_intervals.csv",
+      "role": "archive",
+      "sha256": "927e3358cd16bb63e5d093d30866969d3d3b98385968efbc24e5f2f3bdc336f6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/HUBER_RANKING.md",
+      "path": "archive/studies_20261025/docs/HUBER_RANKING.md",
+      "role": "archive",
+      "sha256": "bf1cdd9d4b23cd3d52d874a1577fda6d2b011db5bfbcb45c17b9f15d16f91b17",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_annual.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_annual.csv",
+      "role": "archive",
+      "sha256": "65b796788fab2b21779805495657a32b27867b50abf47dc08027d4b0d05b02fe",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_chronology.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_chronology.csv",
+      "role": "archive",
+      "sha256": "aaad8b149bd4e4fae5c5aa19bb2744d96453be63da3c29612c0e6b3c7e59fa0e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_cost_stress.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_cost_stress.csv",
+      "role": "archive",
+      "sha256": "d3bc46bd53e6c6c712396c1d8944f7b6a328d2f86abd2f3500800c5fe09a199a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_curves.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_curves.csv",
+      "role": "archive",
+      "sha256": "f9bcc65d1d6d873e3f7b07b163aa9ebe0d798238ce4ad54c011691033a35e779",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_k_pooled.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_k_pooled.csv",
+      "role": "archive",
+      "sha256": "a46f280baac22434a8aa79d325cf86f8ad17758be2972d680f971731480fe6c8",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_k_sensitivity.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_k_sensitivity.csv",
+      "role": "archive",
+      "sha256": "05ff0d444d125d5139f51da1d280a25ee1daedc22e65e0d3b1ef6a84c2487749",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_pooled.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_pooled.csv",
+      "role": "archive",
+      "sha256": "dd67f810895a3d20affd03624c6b67ca3610088a77ea4e47012c52cdf65ad1b2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_seed_metrics.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_seed_metrics.csv",
+      "role": "archive",
+      "sha256": "24da800152060a4222616f77f96dbdfaf68eb6278fb8365e4e693f40852fe09f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_seed_summary.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_seed_summary.csv",
+      "role": "archive",
+      "sha256": "b32334f1b4483e668c7cac6f2481d3fee28bd93936847f65bee9e681302f2873",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/huber_ranking_selections.csv",
+      "path": "archive/studies_20261025/docs/huber_ranking_selections.csv",
+      "role": "archive",
+      "sha256": "4670bb173f5303754dff4f1f641ddd0662af629cf9304b28d4d6fc05db4da12d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/model_vs_spy_qqq_by_year.csv",
+      "path": "archive/studies_20261025/docs/model_vs_spy_qqq_by_year.csv",
+      "role": "archive",
+      "sha256": "96383369c343ddd7ce0a525baa348224774260cc891c4e7878b5adde3df6b222",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/pooled_comparison.csv",
+      "path": "archive/studies_20261025/docs/pooled_comparison.csv",
+      "role": "archive",
+      "sha256": "e6e61fa2d766c986f964b2a9a47383fd8d02484abd7253819c30dbaa7cc0277a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/pooled_confidence_intervals.csv",
+      "path": "archive/studies_20261025/docs/pooled_confidence_intervals.csv",
+      "role": "archive",
+      "sha256": "893b082b5a7b3ee0c12a8b434d81538b8889ead3262fac0f1bf798e2ef013785",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/pooled_confidence_intervals_current.csv",
+      "path": "archive/studies_20261025/docs/pooled_confidence_intervals_current.csv",
+      "role": "archive",
+      "sha256": "15bba4b7551cb8f72a8676ca2723f899667f3a7a95832717a609d7e7e6e71f39",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/pooled_model_vs_spy_qqq.csv",
+      "path": "archive/studies_20261025/docs/pooled_model_vs_spy_qqq.csv",
+      "role": "archive",
+      "sha256": "1e1e27939dfa13be8240b67f0d0a2c9436575447490445411360b9932cfeaa53",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/pooled_selection_procedures.csv",
+      "path": "archive/studies_20261025/docs/pooled_selection_procedures.csv",
+      "role": "archive",
+      "sha256": "2853b3b7474842815220cf8b7c0a94b1e941f7da5eb467a2e7a2dda519157bc0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/procedure_confidence_intervals.csv",
+      "path": "archive/studies_20261025/docs/procedure_confidence_intervals.csv",
+      "role": "archive",
+      "sha256": "d26194f14954f7952d33e325e7ce008603321f9e6b7cb7a2eccdba016ba1b202",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/publication_manifest.json",
+      "path": "archive/studies_20261025/docs/publication_manifest.json",
+      "role": "archive",
+      "sha256": "40d08f7ef141d677a493834162c362dda104f326b53732cc4a8051d847bdf6d4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_top10_controls.csv",
+      "path": "archive/studies_20261025/docs/random_top10_controls.csv",
+      "role": "archive",
+      "sha256": "b15cf15c14c7e3c28d964e08c4e747c4a837ad200cca171d61dbcd8e0cd46cdc",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/regime_diagnostics.csv",
+      "path": "archive/studies_20261025/docs/regime_diagnostics.csv",
+      "role": "archive",
+      "sha256": "5ad65ce2e79137956b043b986ab0bd24c67ddce39054dd23b97d5e7467fe1469",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/REPORT.md",
+      "path": "archive/studies_20261025/docs/REPORT.md",
+      "role": "archive",
+      "sha256": "c4c810d98db15cec1f8d26bd84d3b11250c6670481da4ba16945292c06ca8be9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/ROBUST_RESEARCH.md",
+      "path": "archive/studies_20261025/docs/ROBUST_RESEARCH.md",
+      "role": "archive",
+      "sha256": "795e21aac86aa16fa07c78e4cf3717bf3fff97db34085c71506155b89e4f82e6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/seed_stability.csv",
+      "path": "archive/studies_20261025/docs/seed_stability.csv",
+      "role": "archive",
+      "sha256": "7c5d65e8f6002086e6f8f6265e8defc6f33df27c82f7a1e809fc07d53c9a4b77",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/selection_procedures_vs_spy_qqq.csv",
+      "path": "archive/studies_20261025/docs/selection_procedures_vs_spy_qqq.csv",
+      "role": "archive",
+      "sha256": "1f456ad6f99b98c0d5338ff0358a424859f69f89443cdc03a338733516b0e7da",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/STOCKMIXER_PAPER_REVIEW.md",
+      "path": "archive/studies_20261025/docs/STOCKMIXER_PAPER_REVIEW.md",
+      "role": "archive",
+      "sha256": "26eb0f3b5f058720a819b6467692deba75f2bab8599514cad4120a09c18f0d4a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/validation_selected_by_year.csv",
+      "path": "archive/studies_20261025/docs/validation_selected_by_year.csv",
+      "role": "archive",
+      "sha256": "c1e66886046ff320ae7528064bbac510ac6a89ee0d8590e748a61269bb120de3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/all_models_h1_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/all_models_h1_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "4cdb76478662d22fb989e52787bfb875c6ecf0ffc8eb49f27ea3efcab87c6734",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/all_models_h1_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/all_models_h1_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "e9649cc635af20a89ce48baa4e692e9ac2b46d4c9673ff18f4ddf0084bb3aac2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/all_models_h5_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/all_models_h5_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "6ff2a978419653140651d03957b811f765adf93c058e72bddbdb671edc3d8783",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/all_models_h5_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/all_models_h5_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "c4fd49f64c762c70597d71cdd097e5a0a7872ff55853ff50a3d4ea5c311b5f3a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/audited_fixed_k10_h1_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/audited_fixed_k10_h1_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "e9e8ea094d38a0fe3c4f435ad344a419612df1ddad76c2223dbb51e1104f2e7a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/audited_fixed_k10_h1_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/audited_fixed_k10_h1_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "8fc3610baade4a42b65595bb3b0316bff55da9c7644debb38a5075482d45ce9a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/audited_fixed_k10_h5_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/audited_fixed_k10_h5_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "d4986af28149cae9bfb7f9a7b35771515f8763cc67f8c529a7bbbaf39a0e39ce",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/audited_fixed_k10_h5_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/audited_fixed_k10_h5_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "304f85ab4e487ba5997712db7a27f5987c078dadc4544a8003f3da87c94bd236",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/audited_focus_h1_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/audited_focus_h1_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "fd894932d3086ad484d02bb42e89a4d423834ecf254d9584c7dc169a054a29a9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/audited_focus_h1_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/audited_focus_h1_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "ac529ccec96ec61679b83d1a1f2c8fa2d6d5a62705242933800f2856fed2bc3d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/audited_focus_h5_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/audited_focus_h5_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "5350640fb11eaae071a0d970a5fd62e2e83ca184c65ce1de83602194e9ab0ca1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/audited_focus_h5_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/audited_focus_h5_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "b15a2a89dbf0225f56e3085c43081d2d7d94978d887d58be4c333a28f262f520",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/combined_h1_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/combined_h1_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "f9517484ee4f522dd10b0fded7979696e777afb6269853ec587a5058fea1d1a1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/combined_h1_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/combined_h1_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "6e2b3c1df9a326317bf3a6ed2155b396369af168dcbaa3d431837c3508461c12",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/combined_h5_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/combined_h5_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "75efd5038f047df1fdf84690c9cacad0103a6232bec5f07f4e26d1106054de06",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/combined_h5_NASDAQ_recent_focus.png",
+      "path": "archive/studies_20261025/docs/figures/combined_h5_NASDAQ_recent_focus.png",
+      "role": "archive",
+      "sha256": "fab10df8ea421662829fa0ca18167edbf8123b6e660f750e491a777bfb8e5ccf",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/combined_h5_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/combined_h5_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "b77be021f01c6072db3f47ef176e6ce7260e9837ee693755f7ad6d27f80f3d0c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/costs_h1.png",
+      "path": "archive/studies_20261025/docs/figures/costs_h1.png",
+      "role": "archive",
+      "sha256": "af2dcd51d409cd86da2d1f27d45d7b0b25892d9cdc33fb867a54412fa66fbfeb",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/costs_h5.png",
+      "path": "archive/studies_20261025/docs/figures/costs_h5.png",
+      "role": "archive",
+      "sha256": "2cf6d6cb454a144f071da4963023567c932c3e068ee4e1016ef76c0d41f53538",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/cost_stress.png",
+      "path": "archive/studies_20261025/docs/figures/cost_stress.png",
+      "role": "archive",
+      "sha256": "6ffb66c6b8e690609f72a3b1e70a28e3d4c5a1a9d83f4684c43c865f303795ea",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/frequency_effect_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/frequency_effect_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "563151c122db049f2ed4835d69c6515015ad804cec7dacd517f6eb800722e073",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/frequency_effect_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/frequency_effect_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "f6c96a25e1a054419f60e7c4eec52657d9cb3c5919bbe1a27d03493ae273c78a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/huber_fixed_k10_h1.png",
+      "path": "archive/studies_20261025/docs/figures/huber_fixed_k10_h1.png",
+      "role": "archive",
+      "sha256": "950784fabd79167c2f68f3d9769f60e4cbd3241a10fd3060cb18c459974d4b70",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/huber_fixed_k10_h5.png",
+      "path": "archive/studies_20261025/docs/figures/huber_fixed_k10_h5.png",
+      "role": "archive",
+      "sha256": "77e6549912f869188fd5657f97a5d604dd91a7c116eaf7b0fb80d34aed2abe96",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/huber_ranking_all_models_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/huber_ranking_all_models_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "3cdf2b1991ddd3b6fcd70a2e67cc3e23bbe24042a3fb9993d585cddb924d500b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/huber_ranking_all_models_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/huber_ranking_all_models_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "cfc634a59d3e969f2143017b9b97ad7342e25ef66a2bb17eb8c57eac88015367",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/huber_ranking_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/huber_ranking_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "bd341f726284eebdceb14e2486ab0dbae3973647a063f5741842fb3105623fca",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/huber_ranking_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/huber_ranking_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "cfc634a59d3e969f2143017b9b97ad7342e25ef66a2bb17eb8c57eac88015367",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/k_sensitivity_h1_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/k_sensitivity_h1_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "550b529e052958e51ee02707ec28516b90ca198eb3beeec89117cc1f6c3c2db2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/k_sensitivity_h1_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/k_sensitivity_h1_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "af8fafecf5f725fb870d0d4abc6f1d04c3a609c583d672a509d82aae586b0400",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/k_sensitivity_h5_NASDAQ_recent.png",
+      "path": "archive/studies_20261025/docs/figures/k_sensitivity_h5_NASDAQ_recent.png",
+      "role": "archive",
+      "sha256": "81f76679d63cca19031fc0c36bcbaed87d63d4518556f463ef09aa58182f1099",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/k_sensitivity_h5_NYSE_recent.png",
+      "path": "archive/studies_20261025/docs/figures/k_sensitivity_h5_NYSE_recent.png",
+      "role": "archive",
+      "sha256": "5d0bcae685068b79268d0013f3514bae63927d67c02c8370aa7ac7ce8242339f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h1_NASDAQ_recent_2022.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h1_NASDAQ_recent_2022.png",
+      "role": "archive",
+      "sha256": "eb6bd5681d247997d757f4f37f1533b65175575fe83c167a8156c064cf8d7e51",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h1_NASDAQ_recent_2023.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h1_NASDAQ_recent_2023.png",
+      "role": "archive",
+      "sha256": "9727702d7f2c7c80c0bad7591c08a92a17b477748d3fa44f0458a98550e98afe",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h1_NASDAQ_recent_2024.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h1_NASDAQ_recent_2024.png",
+      "role": "archive",
+      "sha256": "b73137b9956f1e668b2a5ddd846541ada6dd3bd42063f3be7be1028991edc377",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h1_NASDAQ_recent_2025.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h1_NASDAQ_recent_2025.png",
+      "role": "archive",
+      "sha256": "c50f31f8287f01a0a56db0b7fcbffcfecb0774c7b744d79c3ce2e3f1fd0974d9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h1_NYSE_recent_2022.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h1_NYSE_recent_2022.png",
+      "role": "archive",
+      "sha256": "8a7e665930b0f4c61eb157466231f686be3e4c9c80a8bda065d5cf43712b6d28",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h1_NYSE_recent_2023.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h1_NYSE_recent_2023.png",
+      "role": "archive",
+      "sha256": "c6826a8ab5609f20a7d291acd1c1f6b6772540bbc17bb920ed5bdbc197d6f433",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h1_NYSE_recent_2024.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h1_NYSE_recent_2024.png",
+      "role": "archive",
+      "sha256": "87c9f8e0f2442542f3d06593bc25c10418c9d663cf5637d20014299fd707bb0b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h1_NYSE_recent_2025.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h1_NYSE_recent_2025.png",
+      "role": "archive",
+      "sha256": "939031ce41f28b41310036038e08529d9a7e35d54becd9d21179dcf8bd5b4d80",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h5_NASDAQ_recent_2022.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h5_NASDAQ_recent_2022.png",
+      "role": "archive",
+      "sha256": "a9066140a60921489e81659e7246894ca97fc584be203dfc4446b1ac0394631a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h5_NASDAQ_recent_2023.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h5_NASDAQ_recent_2023.png",
+      "role": "archive",
+      "sha256": "29b873ff493932b4f8c8e5d8928a7bb81fb6bbf3dd4226d4eb24677b1f41f299",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h5_NASDAQ_recent_2024.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h5_NASDAQ_recent_2024.png",
+      "role": "archive",
+      "sha256": "cbf9e74a424b8514d890cdec1ee7cb56b8d7e10a614f9f5d093cfab02670a517",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h5_NASDAQ_recent_2025.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h5_NASDAQ_recent_2025.png",
+      "role": "archive",
+      "sha256": "87d01066feafb53eabb71ab351ba018b54f972b295dcb8889c502642de30f648",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h5_NYSE_recent_2022.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h5_NYSE_recent_2022.png",
+      "role": "archive",
+      "sha256": "5239b31435780c435bba764e310e3bbcfca75e9eef4cf63d9e9fbbbb490b5f87",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h5_NYSE_recent_2023.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h5_NYSE_recent_2023.png",
+      "role": "archive",
+      "sha256": "9b5ce01fccf9a2995a8ed67e86573962785485be2adb21432717de78e0c97c4f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h5_NYSE_recent_2024.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h5_NYSE_recent_2024.png",
+      "role": "archive",
+      "sha256": "057ceae0acc0234702a34231138a27a9672eb0b9f18e4deb4dae26fd5603da1c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/panel_h5_NYSE_recent_2025.png",
+      "path": "archive/studies_20261025/docs/figures/panel_h5_NYSE_recent_2025.png",
+      "role": "archive",
+      "sha256": "b70bdcacff06e612f64c45c08d6a6ba46f7c997772648926c6b2c2a56a15f57f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/ranking_h1.png",
+      "path": "archive/studies_20261025/docs/figures/ranking_h1.png",
+      "role": "archive",
+      "sha256": "6659b1f708109f6ee88e6936a729912c0caeb91c657608e1610340abd2155080",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/ranking_h5.png",
+      "path": "archive/studies_20261025/docs/figures/ranking_h5.png",
+      "role": "archive",
+      "sha256": "0fec68b09d3915291de1183a832e2282796323faec5f19574babcd76542ab515",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/risk_h1.png",
+      "path": "archive/studies_20261025/docs/figures/risk_h1.png",
+      "role": "archive",
+      "sha256": "d5a724fb3240651a52884cc181e4ef99f0e63e7630ace19150ea207d7c374369",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/risk_h5.png",
+      "path": "archive/studies_20261025/docs/figures/risk_h5.png",
+      "role": "archive",
+      "sha256": "b8d164adf2b3f7648afa2f4fa4b178efa7bf84a6d7ed6affdf8f2cfc7367ebcb",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/selected_procedures.png",
+      "path": "archive/studies_20261025/docs/figures/selected_procedures.png",
+      "role": "archive",
+      "sha256": "944a30c6c7898abe9d9907fd366bb973f7045b35460992999878359c498ee2f6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/sharpe_h1.png",
+      "path": "archive/studies_20261025/docs/figures/sharpe_h1.png",
+      "role": "archive",
+      "sha256": "6b5b23d675404c78296c8e16d9af0c7a3f2553ca781cfb6c9387a5ed023f3a7b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/figures/sharpe_h5.png",
+      "path": "archive/studies_20261025/docs/figures/sharpe_h5.png",
+      "role": "archive",
+      "sha256": "7bc1910d77b7bbb4e3c470aad943a61cd4becc798184e23ca2c95e30e9250ad6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/slides/Hypershift_Pooled_Datasets_2022_2025.pptx",
+      "path": "archive/studies_20261025/docs/slides/Hypershift_Pooled_Datasets_2022_2025.pptx",
+      "role": "archive",
+      "sha256": "8711f0f50862b20487a29119b3c087a8f217d457513e273a69be9774466a9df4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/annual.csv",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/annual.csv",
+      "role": "archive",
+      "sha256": "aac50f15bb9dc07219ece4c3ca6272e74401b82460b6f43ff1e96a4275ed7073",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/audit.json",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/audit.json",
+      "role": "archive",
+      "sha256": "16d06f1b342aa73b8f2a1f1828f225b943be300e0c1970f5d88732db52d30bfd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/CHARTS.md",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/CHARTS.md",
+      "role": "archive",
+      "sha256": "277926228268340db2da475fd258afbf571edc1797b2f99a27bb987181fbb424",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/coverage.csv",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/coverage.csv",
+      "role": "archive",
+      "sha256": "b0049afb184df0086a55ad24f066575db44d145af75d9404b1fa9b5e6dd0cc0c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/curves.csv",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/curves.csv",
+      "role": "archive",
+      "sha256": "77daebc6a03daf3ae375c604a15cf0e7534ee5ab1c7791459c414478726b7d37",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/mean_across_draws.csv",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/mean_across_draws.csv",
+      "role": "archive",
+      "sha256": "807cef51c8e59461431831b4cbcb85303be164211ab03eb15f83e4dcb9bb9ef6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/paired_differences.csv",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/paired_differences.csv",
+      "role": "archive",
+      "sha256": "aeedc4df32c3db52862f10cba0b26391c960963e1cc760658803fecb8de46bb5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/pooled.csv",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/pooled.csv",
+      "role": "archive",
+      "sha256": "a535d567e35ed79986694ae52c157bee217552e8355b23a30ceeb7301386beff",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/seed_fixed_k10.csv",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/seed_fixed_k10.csv",
+      "role": "archive",
+      "sha256": "fc652f29d961e16783b4f417316bfe10a4549735b191d848f20170767fd96e28",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NASDAQ_draw101_fixed_k10.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NASDAQ_draw101_fixed_k10.png",
+      "role": "archive",
+      "sha256": "ef5988195d68d088b01746896ad83bf92c97b07740551cf65bcdf566d382f8d5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NASDAQ_draw101_selected.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NASDAQ_draw101_selected.png",
+      "role": "archive",
+      "sha256": "850fd473922f0dc4800507ee234e2e47e178c3d810cb32e56832a552546d96f6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NASDAQ_draw202_fixed_k10.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NASDAQ_draw202_fixed_k10.png",
+      "role": "archive",
+      "sha256": "e5b9797710ebdbf696ba7e9346216b6a6a0656d7ea3d4ad725b0182a91aabbb0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NASDAQ_draw202_selected.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NASDAQ_draw202_selected.png",
+      "role": "archive",
+      "sha256": "622b25e0fc7449283bf21227002f032490238d4c3acb08b4fa6c953ea974625d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NASDAQ_draw303_fixed_k10.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NASDAQ_draw303_fixed_k10.png",
+      "role": "archive",
+      "sha256": "6f057abf3576ee0034950339c449a25f4e020bd2d6f353da20ffe1d931555d23",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NASDAQ_draw303_selected.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NASDAQ_draw303_selected.png",
+      "role": "archive",
+      "sha256": "d99cb4f38ca9d1d111c86c9f653d2f77c809c08282a06d0f9a543ed840028bba",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NASDAQ_draw_sensitivity.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NASDAQ_draw_sensitivity.png",
+      "role": "archive",
+      "sha256": "39d83aed354ce5deb435b10eaa4f4b7d1be78f19dbe8ca1f72225293f83db413",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NYSE_draw101_fixed_k10.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NYSE_draw101_fixed_k10.png",
+      "role": "archive",
+      "sha256": "71ff6fa089bd49ad821ede78f55a10ca1f6d9b877fce5019e8424445bb60fc45",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NYSE_draw101_selected.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NYSE_draw101_selected.png",
+      "role": "archive",
+      "sha256": "9503d8badf6dcbefbcb652ac8bff13a90dff754d8fd14c3d02e19f2717730e8b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NYSE_draw202_fixed_k10.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NYSE_draw202_fixed_k10.png",
+      "role": "archive",
+      "sha256": "c27eae6bfffe7e6ac60cb81c06d966cd28e9a913eb893ca83b21fdd730b96d68",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NYSE_draw202_selected.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NYSE_draw202_selected.png",
+      "role": "archive",
+      "sha256": "66aa9d707643885f7b226cb5aa746b38142da7ba7d26b6fa2b5b38f5cf4b280b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NYSE_draw303_fixed_k10.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NYSE_draw303_fixed_k10.png",
+      "role": "archive",
+      "sha256": "c3fefdc854112f601ac3b9f1eaab495ed04405c2a3024d6316f485b2ef51255a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NYSE_draw303_selected.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NYSE_draw303_selected.png",
+      "role": "archive",
+      "sha256": "41e4503b8454e2b3e98ab86c6f02b82dd992e2d5ed7986f83e219bc7f707179e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/random_trials_20261010/figures/NYSE_draw_sensitivity.png",
+      "path": "archive/studies_20261025/docs/random_trials_20261010/figures/NYSE_draw_sensitivity.png",
+      "role": "archive",
+      "sha256": "adcad83f56d848434e423bbddab51cfccfe24ff1b65ce275325cfc63b93d3af2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/ARCHIVED_NYSE_CHARTS.md",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/ARCHIVED_NYSE_CHARTS.md",
+      "role": "archive",
+      "sha256": "1a16eb0e4b0c23d8f12c97ce317596e3e44db916da8af5ae3560aa3dcb92c8ed",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/audited_curves.csv",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/audited_curves.csv",
+      "role": "archive",
+      "sha256": "0a9935b0ae2633c85ff6a412e573e2ded2c1e728e0fb891826b4190a216451a2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/audited_metrics.csv",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/audited_metrics.csv",
+      "role": "archive",
+      "sha256": "e2148c5034f8f3761e81998583683c5a2f2df21b34faab52992766918b39ac96",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/CHARTS.md",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/CHARTS.md",
+      "role": "archive",
+      "sha256": "8559af779e3846eb8ba9016bf7341e7f97ad41c048372a5c9dc6dfb699a2726f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/Hypershift_Large_Company_Results_Data.zip",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/Hypershift_Large_Company_Results_Data.zip",
+      "role": "archive",
+      "sha256": "f74710b9c47818b3bf3d3ed9b468c8fa3f80ba26068a87dfa2a2adf59c7eddd0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/Hypershift_Large_Company_Retraining_Results.docx",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/Hypershift_Large_Company_Retraining_Results.docx",
+      "role": "archive",
+      "sha256": "a53f979e8e132ede1bd5a3db167fdeb50fbc5ac5954f2417dfb0a7a707b9628c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/Hypershift_Large_Company_Retraining_Results.pdf",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/Hypershift_Large_Company_Retraining_Results.pdf",
+      "role": "archive",
+      "sha256": "ffdc57e670df57b63d774f05c1b5404ffd71b5d91daee11ab9616b9063ddf251",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/Hypershift_Large_Company_Retraining_Results_Benchmark_Corrected.docx",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/Hypershift_Large_Company_Retraining_Results_Benchmark_Corrected.docx",
+      "role": "archive",
+      "sha256": "ccb1579e3e7b924ee12b618b62a194216a0ecda33336f0d042b1b56b19342a89",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/primary_results.csv",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/primary_results.csv",
+      "role": "archive",
+      "sha256": "5bd0889a9e78e371efa04c81c317494ffeeb02bfad31c9c764ea9c84ba013f7c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/all_models_h1_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/all_models_h1_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "9c7df28685ee46b1bc4ba3fa3628ada7f4558ea4333ce94b3e49b867c66f8d61",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/all_models_h1_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/all_models_h1_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "cc7a3ab5c0817f925c3a96a4d8517dbf55d1614b27e3e9889b57969fea261dde",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/all_models_h5_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/all_models_h5_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "fbef5e62da5bcb8e01ba385aa8467ba10126414b62811ebe43d1691218624685",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/all_models_h5_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/all_models_h5_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "44c626e937fbc51b2b3f1d77c909939f07ecc48dbfa781248e2266c3156b245c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/audited_fixed_k10_h1_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/audited_fixed_k10_h1_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "ace4abdf26f4fe5b4613b358dcb2327c4191709678ff86cc8b8abc53713da6bc",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/audited_fixed_k10_h1_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/audited_fixed_k10_h1_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "aea692ec515d9f7b61fc3137d5d075e35eaae610f1d372a3dc5b23b754c07d72",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/audited_fixed_k10_h5_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/audited_fixed_k10_h5_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "f8e306c7fc1f235aaa35b648d17652f0a84550b5385bf5e3b433804fedb1846c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/audited_fixed_k10_h5_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/audited_fixed_k10_h5_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "65c0ef9d703565de469732133e2ba3fd632c82a763fc5adc55b640be53cde004",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/audited_focus_h1_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/audited_focus_h1_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "a92a0358e0df1c9aa0401f58091d5880eda70e7ee349e28cdff8e60365974739",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/audited_focus_h1_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/audited_focus_h1_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "29c6ce2bf34dbc9a4ea606e7c819435e7b9eff6fe01cf1a9cb7e774a2f7f911e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/audited_focus_h5_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/audited_focus_h5_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "403401154d3fdc99190d9e4467dd9f1a52c88ae1623dd4fe2b47700f6edb7a30",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/audited_focus_h5_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/audited_focus_h5_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "6529fe42cb179d72a5078ce845be178acaaa67e8de47018c806e0d4fc358f868",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/combined_h1_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/combined_h1_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "11a0244b05c4b48779b63fd62e289c699691411794666000ec24c60d1d89e624",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/combined_h1_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/combined_h1_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "070a074e232781ad604e0ab34df1b890ee1966d275f7a99207f2cdbeea086e4c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/combined_h5_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/combined_h5_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "1654f0992996c5b244a01568a485ba998e85b53ea2d55b64e49cb4be564d7612",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/combined_h5_NASDAQ100_20261010_focus.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/combined_h5_NASDAQ100_20261010_focus.png",
+      "role": "archive",
+      "sha256": "d773edff7e0dc65138e96b19016aa56541ebecbe30f5934490a805359cb28d50",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/combined_h5_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/combined_h5_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "faaee55dd0125f4c88cf4826ef273abb45ec2cd5bd6c842e67a39362633c6fe8",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/costs_h1.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/costs_h1.png",
+      "role": "archive",
+      "sha256": "7d812b34ffdb76c074b76b885dca324d1c9abd87fd859147c239b7253fc00745",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/costs_h5.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/costs_h5.png",
+      "role": "archive",
+      "sha256": "27b62fa4b0cda80052f768f2edba19a9bb323aae123ed8bf6c8e32e9ca3d4d77",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/cost_stress.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/cost_stress.png",
+      "role": "archive",
+      "sha256": "4b71fb582a7f0bceb8b15af98654f931535d144a8f59c225ade77073932d3752",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/frequency_effect_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/frequency_effect_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "2d700e94f27110a7d39b4f8a0b569308e3d6dc1e91d1dfebaa7c687ddf2c60ec",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/frequency_effect_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/frequency_effect_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "c1ab9d0e063a1f1230f73bf657e593e23329b2dc7d006c402449e3aa13f1c590",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/huber_fixed_k10_h1.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/huber_fixed_k10_h1.png",
+      "role": "archive",
+      "sha256": "3109f13122ce73ae62623850f902b0524817cc2859fb8257d65d8907b858335b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/huber_fixed_k10_h5.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/huber_fixed_k10_h5.png",
+      "role": "archive",
+      "sha256": "455f3b6c12e574ede7aeac25eb719e1392554ab1309082ff1e404645a029e386",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/k_sensitivity_h1_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/k_sensitivity_h1_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "1bad3c31f5cdbba6eafad6eadbca02a53c14ff859dafedd6ef7e0252ee3a9bad",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/k_sensitivity_h1_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/k_sensitivity_h1_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "1050d15fe721c9cdadb990510f3639e85758bf48f5e3e6e0a68c8734bff40f2d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/k_sensitivity_h5_NASDAQ100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/k_sensitivity_h5_NASDAQ100_20261010.png",
+      "role": "archive",
+      "sha256": "9520781206b0bf9ae7be7b13536044912f35149937ab14d46d48121217bdfee3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/k_sensitivity_h5_NYSE_top100_20261010.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/k_sensitivity_h5_NYSE_top100_20261010.png",
+      "role": "archive",
+      "sha256": "85031d3ee5383e26c36e5b4f2713cb3472d2ae491731d03d4146e6d3bb30b943",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h1_NASDAQ100_20261010_2022.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h1_NASDAQ100_20261010_2022.png",
+      "role": "archive",
+      "sha256": "b210036147e7b710822f76ce91372140a46ab143f342913b4c7a13b6a06d4ad4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h1_NASDAQ100_20261010_2023.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h1_NASDAQ100_20261010_2023.png",
+      "role": "archive",
+      "sha256": "bb6f9eccdd2acba7724ba9b63ce3ca2467c699984f8b1f48a6c8dc0e64bba3d1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h1_NASDAQ100_20261010_2024.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h1_NASDAQ100_20261010_2024.png",
+      "role": "archive",
+      "sha256": "4e2e3b281580664e4d72da0cbc9bf41d767ed1e777815a11cd452dda540cba38",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h1_NASDAQ100_20261010_2025.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h1_NASDAQ100_20261010_2025.png",
+      "role": "archive",
+      "sha256": "2b758140122eff0262a4bf655182f2d78863c06257853be3210b3027b6d0cf0d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h1_NYSE_top100_20261010_2022.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h1_NYSE_top100_20261010_2022.png",
+      "role": "archive",
+      "sha256": "08b8e801f83c06463d699da060f2738c96b3f65d79240ce6fef28bb8473cecb9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h1_NYSE_top100_20261010_2023.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h1_NYSE_top100_20261010_2023.png",
+      "role": "archive",
+      "sha256": "9b529b9b30563662b25f914f2e7f7206cfa235dd417cd3f544a508ac246a4f4e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h1_NYSE_top100_20261010_2024.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h1_NYSE_top100_20261010_2024.png",
+      "role": "archive",
+      "sha256": "2aaaf77e79b91a623093af07c8ea3f30e01eb38b89379227691b1d5d1bf753c1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h1_NYSE_top100_20261010_2025.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h1_NYSE_top100_20261010_2025.png",
+      "role": "archive",
+      "sha256": "67d6fdc9cde16e2d333044e05a823a0f79aae13e7dc398aac52a2c6b4829ead5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h5_NASDAQ100_20261010_2022.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h5_NASDAQ100_20261010_2022.png",
+      "role": "archive",
+      "sha256": "63dfda84dc37d61aadc1110e819386ec0a511b00a64857b82ba870a9dd784e0d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h5_NASDAQ100_20261010_2023.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h5_NASDAQ100_20261010_2023.png",
+      "role": "archive",
+      "sha256": "59f4cac6e1d41d1d9ea180f11160056832146bcfc0b09ea2020586cea91bb8e7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h5_NASDAQ100_20261010_2024.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h5_NASDAQ100_20261010_2024.png",
+      "role": "archive",
+      "sha256": "04cda8e2b7abe96335a04530ab7e154eecde85bb2804a57b57f80dd4597620d0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h5_NASDAQ100_20261010_2025.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h5_NASDAQ100_20261010_2025.png",
+      "role": "archive",
+      "sha256": "309e49b7c82ef1c6153a1f29953121a3cf4f56e858eba07f50146c57dfbac78c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h5_NYSE_top100_20261010_2022.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h5_NYSE_top100_20261010_2022.png",
+      "role": "archive",
+      "sha256": "9da2e266893962405ebb5f06ca1746205d409013384f57018d11755e91288430",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h5_NYSE_top100_20261010_2023.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h5_NYSE_top100_20261010_2023.png",
+      "role": "archive",
+      "sha256": "23f10658d933b6735336d5589431025ac995a635dcce767b84a28d1bc3506c87",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h5_NYSE_top100_20261010_2024.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h5_NYSE_top100_20261010_2024.png",
+      "role": "archive",
+      "sha256": "9d35a0d53bb2a5dcd79b850a01aff5bf9b1b8e31742cd7779dd641a6247c644b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/panel_h5_NYSE_top100_20261010_2025.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/panel_h5_NYSE_top100_20261010_2025.png",
+      "role": "archive",
+      "sha256": "f49f690f751752ff36470d9ea8808234b5824f8a9fefc77dddd4c266330b4d9e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/ranking_h1.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/ranking_h1.png",
+      "role": "archive",
+      "sha256": "888ac7872ac468b473ff0f4944cb58a57eba6d9032a32350e4140756d3410f56",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/ranking_h5.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/ranking_h5.png",
+      "role": "archive",
+      "sha256": "adf8159243cc7d58c9a338949ca4857730013af484bb6b808a8cd122600b3fe2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/risk_h1.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/risk_h1.png",
+      "role": "archive",
+      "sha256": "81356ec92aba520cdec91f95d8ff09a76690e3a517fcfd83940f2c8dfb8b4fc9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/risk_h5.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/risk_h5.png",
+      "role": "archive",
+      "sha256": "73f9a8e668eb4a70d6113c23e1d81368d9a1438bb3580c01ba46597050501df7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/selected_procedures.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/selected_procedures.png",
+      "role": "archive",
+      "sha256": "130bdc119107960ff6c2e6b469f7d1b4cad008ebdac047dd48850b9d31ee3db3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/sharpe_h1.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/sharpe_h1.png",
+      "role": "archive",
+      "sha256": "c69822c75d54b57a2b5194103efe2ef305125b4732da91f22c8da8941c8a51a2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/largecap_retraining_20261010/figures/sharpe_h5.png",
+      "path": "archive/studies_20261025/docs/largecap_retraining_20261010/figures/sharpe_h5.png",
+      "role": "archive",
+      "sha256": "e6a273813815665e41380fa46a8fc2786215c25c583222841d8b01c2c1b13e68",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "output/resume_hypershift/main.log",
+      "path": "archive/studies_20261025/output/resume_hypershift/main.log",
+      "role": "archive",
+      "sha256": "ec9154f9b774db5e0c35da7bd8681654b5e09833eea9e9e5be7205917de09de1",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "output/resume_hypershift/main.pdf",
+      "path": "archive/studies_20261025/output/resume_hypershift/main.pdf",
+      "role": "archive",
+      "sha256": "4bc922624ffdb464a70f8f6e0f21941e1289ca8d0a7662a3ac0c01c46d3fbb75",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "output/resume_hypershift/main.tex",
+      "path": "archive/studies_20261025/output/resume_hypershift/main.tex",
+      "role": "archive",
+      "sha256": "d6a13feec24e67164e2e4d885432153e4a494a209b40250088e472ae4fd26acb",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "output/pdf/exchange_geometry_20261010/artifact_manifest.json",
+      "path": "archive/studies_20261025/output/pdf/exchange_geometry_20261010/artifact_manifest.json",
+      "role": "archive",
+      "sha256": "37069e94e5eb6f4a02aafe9889628b505dc2d86775f6dd19d890cfed5bdd65f6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "output/pdf/exchange_geometry_20261010/Exchange_Geometry_Calculations.zip",
+      "path": "archive/studies_20261025/output/pdf/exchange_geometry_20261010/Exchange_Geometry_Calculations.zip",
+      "role": "archive",
+      "sha256": "38ebfc608e1b662b18c43f93c807aaef4bc423b5c3ea5a6be8a0373234682d39",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "output/pdf/exchange_geometry_20261010/exchange_geometry_comparison.png",
+      "path": "archive/studies_20261025/output/pdf/exchange_geometry_20261010/exchange_geometry_comparison.png",
+      "role": "archive",
+      "sha256": "6a844333170afc8783e249840e8bade9250c9443ccc1577b7ca78353352cb665",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "output/pdf/exchange_geometry_20261010/exchange_geometry_results.csv",
+      "path": "archive/studies_20261025/output/pdf/exchange_geometry_20261010/exchange_geometry_results.csv",
+      "role": "archive",
+      "sha256": "c10b6daf1ecc861a35a51511da79e353892e7cb13e5bc460a10f91c59d7d5db1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "output/pdf/exchange_geometry_20261010/Hypershift_Exchange_Hyperbolicity_Analysis.pdf",
+      "path": "archive/studies_20261025/output/pdf/exchange_geometry_20261010/Hypershift_Exchange_Hyperbolicity_Analysis.pdf",
+      "role": "archive",
+      "sha256": "42b500f337293c9567e621b682f2086a128edc1975c7a7d63ca107352626c0ed",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "output/pdf/exchange_geometry_20261010/same_policy_model_comparison.png",
+      "path": "archive/studies_20261025/output/pdf/exchange_geometry_20261010/same_policy_model_comparison.png",
+      "role": "archive",
+      "sha256": "c407d258bc6589e680983e07969b0ea49d5d26ec77fd76211587fb11cb270e18",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/README.md",
+      "path": "archive/studies_20261025/presentations/README.md",
+      "role": "archive",
+      "sha256": "48c55e08bcb06ce528d2e02209c90ac448bc3d50c22d694f6077560578d6d2df",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/build/build_datasets.mjs",
+      "path": "archive/studies_20261025/presentations/build/build_datasets.mjs",
+      "role": "archive",
+      "sha256": "54937814f623d5091f2f7d9f76d43ecba034a4f1a8469628b6e9c73c704432bd",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/candidate.pptx.inspect.ndjson",
+      "path": "archive/studies_20261025/presentations/build/candidate.pptx.inspect.ndjson",
+      "role": "archive",
+      "sha256": "d4a9f8193899f763fb2c4217a790b1e35a0922809d688469563e6f0b395c5215",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/inspect_pooled_source.mjs",
+      "path": "archive/studies_20261025/presentations/build/inspect_pooled_source.mjs",
+      "role": "archive",
+      "sha256": "53438befc5558c329ea1ced9ed93508b6b25633956bdff9bc065f2e39c1bfaef",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled-before-1.png",
+      "path": "archive/studies_20261025/presentations/build/pooled-before-1.png",
+      "role": "archive",
+      "sha256": "df88b12c2f4b592ac8f0025a40459006299b21247316c4d1471753bb348e5052",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled-before-2.png",
+      "path": "archive/studies_20261025/presentations/build/pooled-before-2.png",
+      "role": "archive",
+      "sha256": "c091bb00540ec292a97c2561beaca2747627d315242ddcfe14f97e5c8cc73baa",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled-before-3.png",
+      "path": "archive/studies_20261025/presentations/build/pooled-before-3.png",
+      "role": "archive",
+      "sha256": "ef5e710723e8f558cec2d1526ca8566d0ffe3d5bb17667890c488bff3daf132a",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled-before.ndjson",
+      "path": "archive/studies_20261025/presentations/build/pooled-before.ndjson",
+      "role": "archive",
+      "sha256": "2189feb31c88686ae06f0d584260d9beafaa290f1dbbf94167e7dc1fc25f4059",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/slide-1.png",
+      "path": "archive/studies_20261025/presentations/build/slide-1.png",
+      "role": "archive",
+      "sha256": "df88b12c2f4b592ac8f0025a40459006299b21247316c4d1471753bb348e5052",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/slide-2.png",
+      "path": "archive/studies_20261025/presentations/build/slide-2.png",
+      "role": "archive",
+      "sha256": "c091bb00540ec292a97c2561beaca2747627d315242ddcfe14f97e5c8cc73baa",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/slide-3.png",
+      "path": "archive/studies_20261025/presentations/build/slide-3.png",
+      "role": "archive",
+      "sha256": "ef5e710723e8f558cec2d1526ca8566d0ffe3d5bb17667890c488bff3daf132a",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/update_pooled_datasets.mjs",
+      "path": "archive/studies_20261025/presentations/build/update_pooled_datasets.mjs",
+      "role": "archive",
+      "sha256": "c7c3b74a86df4d4fc3d2f77c09c56af92ee0e08c86d4b061f3591059830c8907",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/validation-v2.json",
+      "path": "archive/studies_20261025/presentations/build/validation-v2.json",
+      "role": "archive",
+      "sha256": "35cc9997bab300cbdd6c02a7ee92bcb928f7613e3ebb1a023ef0ddce5e6e94bf",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/validation.json",
+      "path": "archive/studies_20261025/presentations/build/validation.json",
+      "role": "archive",
+      "sha256": "bfa0b7a68e1623bb1c30835e4ec84237504ed28bc4f9793c07b4504285afe3e1",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/output/Hypershift_Datasets_Canva_Poppins.pptx",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Datasets_Canva_Poppins.pptx",
+      "role": "archive",
+      "sha256": "9f394aa0fb943eec2536f65e245c63bcf5defdbc305f9a4d8716bf95750aa70a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Datasets_Canva_Style_v3.pptx",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Datasets_Canva_Style_v3.pptx",
+      "role": "archive",
+      "sha256": "602d9ec7c1605cee5dc6666633358a6b42c36574b795ee28ddb09de20a285b60",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Datasets_Midpoint_v2.pptx",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Datasets_Midpoint_v2.pptx",
+      "role": "archive",
+      "sha256": "fef735bcff14d0c73483d619e71476bb0e4f31321f420528db86a0d87da81ac0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images.zip",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images.zip",
+      "role": "archive",
+      "sha256": "42e5ad897cfdd2eb8680fddb3e7f9e7ce1d5b03557377d2b7d3f502a6ff08956",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images_Poppins.zip",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images_Poppins.zip",
+      "role": "archive",
+      "sha256": "336954a03c36d5d78cce541cab873b1e5efc41d693044afcf07741c96b7f96ce",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/build/canva_dataset/build_canva.mjs",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/build_canva.mjs",
+      "role": "archive",
+      "sha256": "f0319cb7695e5a893bdaf40dff1900859acacc714d0b73686509fc5837d6a179",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/candidate.pptx.inspect.ndjson",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/candidate.pptx.inspect.ndjson",
+      "role": "archive",
+      "sha256": "6e74f5bbb487cf42929ce1bdd773cba1291dbaf12cdfd956f87a85f5152258e4",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/check2.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/check2.png",
+      "role": "archive",
+      "sha256": "5d45aaa728f62845a4cb1e83a531a8ca52da5fc33c13aba9647bc22720e6ff74",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/draft-inspection.ndjson",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/draft-inspection.ndjson",
+      "role": "archive",
+      "sha256": "8d87170d5e7b360a223dbe51a439a0360ffbbc55367734e128a21a69446fc3bd",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/evidence.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/evidence.json",
+      "role": "archive",
+      "sha256": "22f7ba41fac84d3fa50e842651863dfda3b7afe93c17d57e5d760be9b8b822df",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/final-1.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/final-1.png",
+      "role": "archive",
+      "sha256": "98b6774a7a6ce715dcfab2df5910a502a8454630be5fb4d19f65cfb2e69780f4",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/final-2.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/final-2.png",
+      "role": "archive",
+      "sha256": "5d45aaa728f62845a4cb1e83a531a8ca52da5fc33c13aba9647bc22720e6ff74",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/final-3.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/final-3.png",
+      "role": "archive",
+      "sha256": "de4a9681df3ba3a98f39246bc42d043708dc3d904766c113fb14292b6c890e15",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/final-4.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/final-4.png",
+      "role": "archive",
+      "sha256": "c32feffbea894d3f25df1a07695eaf87e10ac8fb82859144c055535b7863652e",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/final-5.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/final-5.png",
+      "role": "archive",
+      "sha256": "fa1847ef0a17a7ad3332bcdbfb04df7a09925f10fba414378df4244a571c3e7f",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/final-6.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/final-6.png",
+      "role": "archive",
+      "sha256": "0d00f273eda34f60e593f1d6f47246c290b68d8dfb15bc6419c63bbadea95325",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/fresh-2.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/fresh-2.png",
+      "role": "archive",
+      "sha256": "8fc4f7440e2e599b7e83656e0d8d1fa1b81d6de81e3a99bc203366156eb08563",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/materialize_windows.py",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/materialize_windows.py",
+      "role": "archive",
+      "sha256": "68712063826c0881589608b93d705a9284ab707da764b7db435e92f4c98446e0",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/portable-1791615569278.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/portable-1791615569278.json",
+      "role": "archive",
+      "sha256": "62ca5ec0a4d44155b346148edd3cd595c73f33b7065c3150c3cd88f7208bf4ff",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/portable-1791615650225.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/portable-1791615650225.json",
+      "role": "archive",
+      "sha256": "1cb9f5c6a3067eeb23e04b78d61176671a15d43275ae0b4452172532b9736e9a",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/portable-1791615691055.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/portable-1791615691055.json",
+      "role": "archive",
+      "sha256": "50fe63123217b2c59b462ddcd2ad97a6aa4058dda2d38141aa0dd6e768107a1f",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/portable-1791648520490.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/portable-1791648520490.json",
+      "role": "archive",
+      "sha256": "760a09a4f0a1a53efa662afed0735a611d3cf61fe4101f99d0d01f659257abcd",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/preview-1.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/preview-1.png",
+      "role": "archive",
+      "sha256": "24817762b0050a02ef143033f5d19837c2ebca4fedc8356d12edb524795f33cb",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/preview-2.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/preview-2.png",
+      "role": "archive",
+      "sha256": "5d45aaa728f62845a4cb1e83a531a8ca52da5fc33c13aba9647bc22720e6ff74",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/preview-3.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/preview-3.png",
+      "role": "archive",
+      "sha256": "de4a9681df3ba3a98f39246bc42d043708dc3d904766c113fb14292b6c890e15",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/preview-4.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/preview-4.png",
+      "role": "archive",
+      "sha256": "c32feffbea894d3f25df1a07695eaf87e10ac8fb82859144c055535b7863652e",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/preview-5.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/preview-5.png",
+      "role": "archive",
+      "sha256": "fa1847ef0a17a7ad3332bcdbfb04df7a09925f10fba414378df4244a571c3e7f",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/preview-6.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/preview-6.png",
+      "role": "archive",
+      "sha256": "0d00f273eda34f60e593f1d6f47246c290b68d8dfb15bc6419c63bbadea95325",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/recheck-1.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/recheck-1.png",
+      "role": "archive",
+      "sha256": "98b6774a7a6ce715dcfab2df5910a502a8454630be5fb4d19f65cfb2e69780f4",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/recheck-2.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/recheck-2.png",
+      "role": "archive",
+      "sha256": "5d45aaa728f62845a4cb1e83a531a8ca52da5fc33c13aba9647bc22720e6ff74",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/render_one.mjs",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/render_one.mjs",
+      "role": "archive",
+      "sha256": "afaf4cdd2b7375a5c768d5766c9d113934198e85869f4a99de31be3a24568f6f",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/render_svg.mjs",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/render_svg.mjs",
+      "role": "archive",
+      "sha256": "982e1fead355ad23bd62a9f654be23331b273299a920a5ce4f8dbec42b950722",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/validation-poppins.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/validation-poppins.json",
+      "role": "archive",
+      "sha256": "c4174a3575102f0b7149dd9efe3417e05e4ea9c1e09d63d8d9370593c54f0c46",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/validation-v3.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/validation-v3.json",
+      "role": "archive",
+      "sha256": "48dcbed7e1337f36d00bf754be670a832d9b61374f0e54f29f779451f3b4c959",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/validation.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/validation.json",
+      "role": "archive",
+      "sha256": "be662b6b6be206bd13cf4d17f61c48629c8544e45f313171c2c46e2dd0e1e21b",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled/candidate.pptx.inspect.ndjson",
+      "path": "archive/studies_20261025/presentations/build/pooled/candidate.pptx.inspect.ndjson",
+      "role": "archive",
+      "sha256": "2df2e9102b873bb4fcffdacabeaabf116688cf1957d10c7a9bb4e4cca87a1e6a",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled/slide-1.png",
+      "path": "archive/studies_20261025/presentations/build/pooled/slide-1.png",
+      "role": "archive",
+      "sha256": "0f73691070d8967ef0dd0a0ee8fdea4756de27303378d8fcb4963adf90ce2477",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled/slide-2.png",
+      "path": "archive/studies_20261025/presentations/build/pooled/slide-2.png",
+      "role": "archive",
+      "sha256": "15feb90f51af51564b03ae626edf90635d6a7b8d4dc288d1f494e029f6594839",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled/slide-3.png",
+      "path": "archive/studies_20261025/presentations/build/pooled/slide-3.png",
+      "role": "archive",
+      "sha256": "ef5e710723e8f558cec2d1526ca8566d0ffe3d5bb17667890c488bff3daf132a",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled/slide-4.png",
+      "path": "archive/studies_20261025/presentations/build/pooled/slide-4.png",
+      "role": "archive",
+      "sha256": "424a2c5fa25a03517dbd7ba140395b631db1b7f84ce3e86226b1d5afefdad931",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/pooled/validation.json",
+      "path": "archive/studies_20261025/presentations/build/pooled/validation.json",
+      "role": "archive",
+      "sha256": "f313aadca8bc3606b4810c07693cfcde1777a9331968df9fd12aa47e9eb37b77",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/build_poppins.mjs",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/build_poppins.mjs",
+      "role": "archive",
+      "sha256": "acdf37c694e8daf695f6e0d3d98512e657f44821fd31cc302eb8fd2b7702aabb",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/deliver_pngs_and_audit.py",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/deliver_pngs_and_audit.py",
+      "role": "archive",
+      "sha256": "4b9c08a1ce4af084c0d5b0814e1caae2c2f4438f117c76c5ab123dae1a5eaea4",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/package_poppins.py",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/package_poppins.py",
+      "role": "archive",
+      "sha256": "361262d2c97c0b0605d2009a52a8046602393be06218430eb85f9180c5acce60",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/png_delivery_and_coverage_audit.json",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/png_delivery_and_coverage_audit.json",
+      "role": "archive",
+      "sha256": "2a1683d77e0346fc0923fe453044b21ae8740c2c5e3b395002f5fab91204cb32",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/render_poppins.ps1",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/render_poppins.ps1",
+      "role": "archive",
+      "sha256": "2ea6d129b6423c5ff9e1f26e6ef736391834a05e6973933de0ceb5d95a8ac38a",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/powerpoint/slide-1.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/powerpoint/slide-1.png",
+      "role": "archive",
+      "sha256": "41933f12ed60fe68109c430895381462833046e2c8dcdd8c05dee96ef8d5c3d1",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/powerpoint/slide-2.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/powerpoint/slide-2.png",
+      "role": "archive",
+      "sha256": "a87fcdabbb2f91a2c748850a8dc794aaa20937e4073d62ae6df59d6f8d5da472",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/powerpoint/slide-3.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/powerpoint/slide-3.png",
+      "role": "archive",
+      "sha256": "891b5181bd6e8b9be2bda38e6b144c62c2a74123dde0229ae3f686f5fdd25bb7",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/powerpoint/slide-4.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/powerpoint/slide-4.png",
+      "role": "archive",
+      "sha256": "156e3f852dfd1c6b7b48705caf787e55f701b412ba9918be2b55d7c7e323ff63",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/powerpoint/slide-5.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/powerpoint/slide-5.png",
+      "role": "archive",
+      "sha256": "f5a4ce3fee0329485fa8ca3cc91d811da8b0317043d5928c75b97946ff13a5ac",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/powerpoint/slide-6.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/powerpoint/slide-6.png",
+      "role": "archive",
+      "sha256": "59e26c83fe2fd988a736c54e432e0d4cb0361f242b0b0316d1a9f3c55505b7e2",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/fonts/OFL.txt",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/fonts/OFL.txt",
+      "role": "archive",
+      "sha256": "6be04893d770899a015649c7aa3b582f871b272f8747a92b78b17c3e5c8b2573",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/fonts/Poppins-Black.ttf",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/fonts/Poppins-Black.ttf",
+      "role": "archive",
+      "sha256": "d82aaaf98a9283f9a8edd24e51173337d8eaf09e25cd3d98831f8ec8461748a1",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/fonts/Poppins-Bold.ttf",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/fonts/Poppins-Bold.ttf",
+      "role": "archive",
+      "sha256": "983676516167748b74de6f4771fb384c664fd913acb8b471122ecacf5da5ea6c",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/fonts/Poppins-Regular.ttf",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/fonts/Poppins-Regular.ttf",
+      "role": "archive",
+      "sha256": "7e65201e9b79159e2300267cc885e16c8dcef2424cdfa09a29bfb0980a94a7ba",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/powerpoint/slide-1.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/powerpoint/slide-1.png",
+      "role": "archive",
+      "sha256": "60cb13ebaf0e47ba22cbc8191148175431639df5545b32318aae6ea737f0d1f7",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/powerpoint/slide-2.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/powerpoint/slide-2.png",
+      "role": "archive",
+      "sha256": "4287d3207ec6072bad2fbd63723d21ca9dec5cbc742f22c488e0177b47889c2d",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/powerpoint/slide-3.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/powerpoint/slide-3.png",
+      "role": "archive",
+      "sha256": "3ac1524e6d5e49fe4cd9fb8c0455b4f129cac2b01f00f8e28c6eed61a3b86562",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/powerpoint/slide-4.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/powerpoint/slide-4.png",
+      "role": "archive",
+      "sha256": "9b976eaed9b1714956870a8c1ac1cb2d97d952b6dbeba04e0784aa7bcc6f8869",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/powerpoint/slide-5.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/powerpoint/slide-5.png",
+      "role": "archive",
+      "sha256": "024636c5ed7779591a8dd59b4dff627a7003851baa788f25b4de608eb4a4cb2f",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/build/canva_dataset/poppins/powerpoint/slide-6.png",
+      "path": "archive/studies_20261025/presentations/build/canva_dataset/poppins/powerpoint/slide-6.png",
+      "role": "archive",
+      "sha256": "41f3f3df211c1d75d74d1acb774a6d918c4866c0a8c156501f5fa734bac0ea1c",
+      "runtime_alias": null,
+      "previously_tracked": false
+    },
+    {
+      "original": "presentations/output/Hypershift_Canva_PNGs_Poppins/01-data-sources.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Canva_PNGs_Poppins/01-data-sources.png",
+      "role": "archive",
+      "sha256": "d2c7b086a12529716c8b1e8f060ff4f44055a0e3a0a8e64430422382755b12a6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Canva_PNGs_Poppins/02-yearly-tests.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Canva_PNGs_Poppins/02-yearly-tests.png",
+      "role": "archive",
+      "sha256": "1f00b20167e1c37a43f9a8482d71b5af3db718e2516a06d8286946c3bcc25c4c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Canva_PNGs_Poppins/03-model-inputs.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Canva_PNGs_Poppins/03-model-inputs.png",
+      "role": "archive",
+      "sha256": "f06de2d2895157bec58b4db5e300c8d50ffdcf00299b1a36d4c0c0c4bfdf11bd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Canva_PNGs_Poppins/04-forecast-targets.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Canva_PNGs_Poppins/04-forecast-targets.png",
+      "role": "archive",
+      "sha256": "4ab67595f0a0e872ff3239736602b8eebb8b88b269768282e2384c4676b02572",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Canva_PNGs_Poppins/05-data-limits.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Canva_PNGs_Poppins/05-data-limits.png",
+      "role": "archive",
+      "sha256": "2f655fe36fb9d4d0ab5e9f0429fda78c5566894e9cd394d748fcebefb01967a0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Canva_PNGs_Poppins/06-reading-results.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Canva_PNGs_Poppins/06-reading-results.png",
+      "role": "archive",
+      "sha256": "34fca64033de4a20f2e0b2b99ed4de213b45ed2ad55fef0fb9ea1b5254290043",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Canva_PNGs_Poppins/README.txt",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Canva_PNGs_Poppins/README.txt",
+      "role": "archive",
+      "sha256": "30ecacc51aaf08616aa65391692ba989982f0ba05cb8b9fdaa5cf0d1b88ba6e6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images_Poppins/01-data-sources.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images_Poppins/01-data-sources.png",
+      "role": "archive",
+      "sha256": "d2c7b086a12529716c8b1e8f060ff4f44055a0e3a0a8e64430422382755b12a6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images_Poppins/02-yearly-tests.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images_Poppins/02-yearly-tests.png",
+      "role": "archive",
+      "sha256": "1f00b20167e1c37a43f9a8482d71b5af3db718e2516a06d8286946c3bcc25c4c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images_Poppins/03-model-inputs.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images_Poppins/03-model-inputs.png",
+      "role": "archive",
+      "sha256": "f06de2d2895157bec58b4db5e300c8d50ffdcf00299b1a36d4c0c0c4bfdf11bd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images_Poppins/04-forecast-targets.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images_Poppins/04-forecast-targets.png",
+      "role": "archive",
+      "sha256": "4ab67595f0a0e872ff3239736602b8eebb8b88b269768282e2384c4676b02572",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images_Poppins/05-data-limits.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images_Poppins/05-data-limits.png",
+      "role": "archive",
+      "sha256": "2f655fe36fb9d4d0ab5e9f0429fda78c5566894e9cd394d748fcebefb01967a0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images_Poppins/06-reading-results.png",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images_Poppins/06-reading-results.png",
+      "role": "archive",
+      "sha256": "34fca64033de4a20f2e0b2b99ed4de213b45ed2ad55fef0fb9ea1b5254290043",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "presentations/output/Hypershift_Dataset_Slide_Images_Poppins/README.txt",
+      "path": "archive/studies_20261025/presentations/output/Hypershift_Dataset_Slide_Images_Poppins/README.txt",
+      "role": "archive",
+      "sha256": "30ecacc51aaf08616aa65391692ba989982f0ba05cb8b9fdaa5cf0d1b88ba6e6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/benchmark_artifact_update.json",
+      "path": "archive/studies_20261025/docs/audit/benchmark_artifact_update.json",
+      "role": "archive",
+      "sha256": "74055e8e193e716c051daf97f828ba2713ede7bc5b4cb9102ac888fd2207481c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/benchmark_availability.json",
+      "path": "archive/studies_20261025/docs/audit/benchmark_availability.json",
+      "role": "archive",
+      "sha256": "03b1a41935b6abe240e5e9996fd7ae85f0ea2ad5297462c7000aca46d5caa461",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/benchmark_image_replacements.json",
+      "path": "archive/studies_20261025/docs/audit/benchmark_image_replacements.json",
+      "role": "archive",
+      "sha256": "54e984add088a376bc72b655eccf59c26596bf82063d2467dbcdef0aefd7f3ef",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/benchmark_markdown_update.json",
+      "path": "archive/studies_20261025/docs/audit/benchmark_markdown_update.json",
+      "role": "archive",
+      "sha256": "68d5f47bfa38c4d12587312419d236faf021a80397d8475c497cab013d5d8791",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/chronology_audit.json",
+      "path": "archive/studies_20261025/docs/audit/chronology_audit.json",
+      "role": "archive",
+      "sha256": "bfd59d573a03f14b72453227b9f8b473ac970443992b15c667a3244dd1556f5c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/combined_curve_audit.json",
+      "path": "archive/studies_20261025/docs/audit/combined_curve_audit.json",
+      "role": "archive",
+      "sha256": "779c17e2b9cee5660683c86a4f214c9e5babe57bae86098b7444bfa35763b8d7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/confidence_interval_audit.json",
+      "path": "archive/studies_20261025/docs/audit/confidence_interval_audit.json",
+      "role": "archive",
+      "sha256": "5566798ad7fca86c08d28d8a62e9c888e95ad87f54fdc98bdacc98766e6fe93d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/FINAL_AUDIT_20261010.json",
+      "path": "archive/studies_20261025/docs/audit/FINAL_AUDIT_20261010.json",
+      "role": "archive",
+      "sha256": "dbcf51bd733aec7b16a8ec00f090f9248cebfe2bfc40f2aea42570ddc0c2eb90",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/FINAL_AUDIT_20261011.json",
+      "path": "archive/studies_20261025/docs/audit/FINAL_AUDIT_20261011.json",
+      "role": "archive",
+      "sha256": "40d08f7ef141d677a493834162c362dda104f326b53732cc4a8051d847bdf6d4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/FINAL_VERIFICATION.json",
+      "path": "archive/studies_20261025/docs/audit/FINAL_VERIFICATION.json",
+      "role": "archive",
+      "sha256": "8848f97fc0534e941974fa7daa66cb47a10f0d8605ee583f610db6fe08a52131",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/nyse_benchmark_update.json",
+      "path": "archive/studies_20261025/docs/audit/nyse_benchmark_update.json",
+      "role": "archive",
+      "sha256": "7c4618f216830adcb8ad2273b41e36c2751b2bb767962852af96ff546e0aa9bb",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/presentation_draft_cleanup.json",
+      "path": "archive/studies_20261025/docs/audit/presentation_draft_cleanup.json",
+      "role": "archive",
+      "sha256": "56713845c5baaac8a57b882b5c8bc981b73080fb24fa40ca99f56edacf8df822",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/ranking_documentation_audit.json",
+      "path": "archive/studies_20261025/docs/audit/ranking_documentation_audit.json",
+      "role": "archive",
+      "sha256": "14c8486efbdc3b9b47b5997aea0f1141e6f6b9ce5b8bd04ae41352083b298baf",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/slide_export_update.json",
+      "path": "archive/studies_20261025/docs/audit/slide_export_update.json",
+      "role": "archive",
+      "sha256": "732e0fbb9ad08a675f865d06d7c5eb05b8f214ac08a45b567a03f9df08b2e5fe",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/annual.csv",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/annual.csv",
+      "role": "archive",
+      "sha256": "7c2013ded6ea58592328cedc4edebe63f7adba24f12ac8d045f79223645ad512",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/attribution.csv",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/attribution.csv",
+      "role": "archive",
+      "sha256": "b03026db37efa8f9e5938560bdb5bbfae29721327916f3a3c52ce900c3c25f20",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/audit.json",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/audit.json",
+      "role": "archive",
+      "sha256": "467899267b1203dadb543e4d343d9b31dbd10fd88d32fdaa7c7bb1c84c7e2cc1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/checkpoint_audit.json",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/checkpoint_audit.json",
+      "role": "archive",
+      "sha256": "cb8589bdae38d74eebcc007b8b794d0798c33b6bb98407d20dc5c1f6400980cb",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/EXPLANATION.md",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/EXPLANATION.md",
+      "role": "archive",
+      "sha256": "8ebbcefea9ca92c49cb57b8d2c5e15a875674c05c4e94b75dff93235435d6848",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/input_conservation.json",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/input_conservation.json",
+      "role": "archive",
+      "sha256": "e55b6b6aeb4d2bdbaa4ceff97673a43ee4f9007be211fdbd0f07079325779956",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/mixer_paired_differences.csv",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/mixer_paired_differences.csv",
+      "role": "archive",
+      "sha256": "317d0f3bce288874d76671d575e0e078bb9f56d15d8a2a804ac8ddd8f32f45e5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/pooled.csv",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/pooled.csv",
+      "role": "archive",
+      "sha256": "524e6eb87678d5f3032ae18ee02082e9e57f298871df8669cfecb476d597f84e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/seed_fixed_k10.csv",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/seed_fixed_k10.csv",
+      "role": "archive",
+      "sha256": "9f654c694ee9848d233e026807025618acd69f76b31c4f5d214dbc906239377e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "docs/audit/backtests_20261010/stress_and_random.csv",
+      "path": "archive/studies_20261025/docs/audit/backtests_20261010/stress_and_random.csv",
+      "role": "archive",
+      "sha256": "f1c587b7a1ce12016ccfc2648f12383f92d1dac97fe03905e9646629eb471ce3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_artifact_images/procedure_h1.png",
+      "path": "archive/studies_20261025/tmp/benchmark_artifact_images/procedure_h1.png",
+      "role": "archive",
+      "sha256": "966f89fbc01f2556ad162ae565d98c6d3292f85a67142616cc45ef4bfc71e564",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_artifact_images/procedure_h5.png",
+      "path": "archive/studies_20261025/tmp/benchmark_artifact_images/procedure_h5.png",
+      "role": "archive",
+      "sha256": "aae6b0d6a68fcac119ca996ea9078e169d2e27784997b8626d6c0a70fef9825d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-1.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-1.png",
+      "role": "archive",
+      "sha256": "5a0de084e3752e02c5f3e20fcafd4a3ca6c30f13f668aadd5bae9a681f45bedc",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-10.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-10.png",
+      "role": "archive",
+      "sha256": "b485db06c2c4bf0e91aeda6c8351a5bf2f70f5b84f322ec3f8b6e054cb460a23",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-11.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-11.png",
+      "role": "archive",
+      "sha256": "7dfe2b8acba020147823ae76240facc65f1f4655866aecafb010175f873e5959",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-12.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-12.png",
+      "role": "archive",
+      "sha256": "ab339e6ffb35c6796dd6167d8badad341689214940afbb0cd26baf444973a51a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-13.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-13.png",
+      "role": "archive",
+      "sha256": "09d5c71a447582a4a41914d83cde0f54400dc21bbba83df628fed34770c90ca9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-14.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-14.png",
+      "role": "archive",
+      "sha256": "173eb1b933425211ad62082a41bcb59d3a9209005f6ac8f88fd0d68b6314bbd5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-15.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-15.png",
+      "role": "archive",
+      "sha256": "54ac46a8e539dc331a6177b6f789ebb068b0a4a38fb034f30351eb72c6365474",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-2.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-2.png",
+      "role": "archive",
+      "sha256": "da2723d627acde4c405f3eacf58d6c460956a5aa352fa1bce047b7ced553e8fa",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-3.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-3.png",
+      "role": "archive",
+      "sha256": "e6390c6d3f846bf7e11a648b693c0003a51bf1ab2c62b643ff1a04d26c102c7b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-4.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-4.png",
+      "role": "archive",
+      "sha256": "6e1c1a5903588da1b62c7d4364675d465320bff156df499cba1f05cf6ba3aae1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-5.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-5.png",
+      "role": "archive",
+      "sha256": "af622d5844f83ee55ccffbab659b2f16b26b622585f3f6b5feaf274e5336da6f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-6.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-6.png",
+      "role": "archive",
+      "sha256": "151f7dccb67fe15c7fc0530a832b39f51f1ffcebd85e80d579166e9d8bbd6398",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-7.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-7.png",
+      "role": "archive",
+      "sha256": "2f38607163d5e434a99f5eb23be281637a36434fcbcb9e2a29072358580987bf",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-8.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-8.png",
+      "role": "archive",
+      "sha256": "53c67862c619ab9d2346d67e9ae7a23a36026f3b453ba8f3d762f252517d2894",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_after/page-9.png",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_after/page-9.png",
+      "role": "archive",
+      "sha256": "7e62ac41e7421debc4800487f26950f1e70f3897d3d4e3a10474fd5d247ffb14",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_doc_corrected.pdf",
+      "path": "archive/studies_20261025/tmp/benchmark_doc_corrected.pdf",
+      "role": "archive",
+      "sha256": "ffdc57e670df57b63d774f05c1b5404ffd71b5d91daee11ab9616b9063ddf251",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_slides_after/slide-1.png",
+      "path": "archive/studies_20261025/tmp/benchmark_slides_after/slide-1.png",
+      "role": "archive",
+      "sha256": "8cfad4413a3face393d41013d987e150ceaf7be724b9b418a668fcf6fb0e4017",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_slides_after/slide-2.png",
+      "path": "archive/studies_20261025/tmp/benchmark_slides_after/slide-2.png",
+      "role": "archive",
+      "sha256": "75b25740b75b1a1f2a7e7cd092c03b3cb8dd86ed90c1323b402789307c5b7386",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_slides_after/slide-3.png",
+      "path": "archive/studies_20261025/tmp/benchmark_slides_after/slide-3.png",
+      "role": "archive",
+      "sha256": "87561c746688c43220aadd11ea434555960009a5c50e3a06221cd16fbb475cf5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_slides_after/slide-4.png",
+      "path": "archive/studies_20261025/tmp/benchmark_slides_after/slide-4.png",
+      "role": "archive",
+      "sha256": "a7e9c07cff4f26c22022dd71fc8de729eb1bb8569f8c67fb1feb210c8e224aa8",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_slides_after_contact.png",
+      "path": "archive/studies_20261025/tmp/benchmark_slides_after_contact.png",
+      "role": "archive",
+      "sha256": "9f3967f254d59dee3998481f94a5f4d0a34058540193f7466cae8d6ad7ab3546",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/benchmark_training_workers.py",
+      "path": "archive/studies_20261025/tmp/benchmark_training_workers.py",
+      "role": "archive",
+      "sha256": "897f0c79faa52ea4f642aaee05912aa2a0f9696263beef2f234233fffe603fb9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/check_late_listings.py",
+      "path": "archive/studies_20261025/tmp/check_late_listings.py",
+      "role": "archive",
+      "sha256": "86508e0c9adec9e88f9a74a987724ae267c341f44cd06f54484e4b2b6c1db984",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/doc_benchmark_contact.png",
+      "path": "archive/studies_20261025/tmp/doc_benchmark_contact.png",
+      "role": "archive",
+      "sha256": "b0337a4df05e5559f5b476c162576bc5093388d6c574b4c54b0cde33bd99b198",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/fix_audit_text_encoding.py",
+      "path": "archive/studies_20261025/tmp/fix_audit_text_encoding.py",
+      "role": "archive",
+      "sha256": "6ee7a2b79c5eef98bd6ecf138bceba96c2ed05069181778ce672c03202eed2f8",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/image1.png",
+      "path": "archive/studies_20261025/tmp/image1.png",
+      "role": "archive",
+      "sha256": "93140a07ced5399403cde8eb7876cc0f812ee16fbe514d985ec571908b97a24f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/image2.png",
+      "path": "archive/studies_20261025/tmp/image2.png",
+      "role": "archive",
+      "sha256": "9c3d1e1e62b1dc34964a13c111472605c1486b4226295e413d78ab57805e672a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/image3.png",
+      "path": "archive/studies_20261025/tmp/image3.png",
+      "role": "archive",
+      "sha256": "b350c4e932af747f9f64ffcc1dcee94b77bb973bc924d3839d62e2def364be1d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/image4.png",
+      "path": "archive/studies_20261025/tmp/image4.png",
+      "role": "archive",
+      "sha256": "d28171e7561cfbc18b481a208f4012f03af54d6cede0a53562b76dd580b617b4",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/image5.png",
+      "path": "archive/studies_20261025/tmp/image5.png",
+      "role": "archive",
+      "sha256": "4bd3aca5d04fc5c97e39fe7405d92f3aef307dbecea3a9123a1cfbcba175d8b7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/costs.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/costs.png",
+      "role": "archive",
+      "sha256": "0effd1e6f34b88650a6989a90078523148582b1c09296cfc079e0e14e5ab8555",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/coverage.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/coverage.png",
+      "role": "archive",
+      "sha256": "c17a2574df86d64aae525721de380aa8ce8f1428b673fab6d45450c9e3e1371e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/document_summary.json",
+      "path": "archive/studies_20261025/tmp/largecap_report/document_summary.json",
+      "role": "archive",
+      "sha256": "3c793771729ab20a70647b5ff9d8002802b061edb3383698dbeaf5130ffd0690",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_artifact_checks.json",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_artifact_checks.json",
+      "role": "archive",
+      "sha256": "e645c2e91eb23024f18d12cad59855766e48b1c39f11bc591b6172017dff25b3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-01.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-01.png",
+      "role": "archive",
+      "sha256": "f1a952e175f5daf1b95f6119e46494aace77f701c97ce59b4eb52d185f0ab660",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-02.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-02.png",
+      "role": "archive",
+      "sha256": "1954cce15b34cbc4fece725957641f1f755accb7de087c018ffdbf8ea2c129dd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-03.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-03.png",
+      "role": "archive",
+      "sha256": "26fe72c127f753180debcd9d698ba1a3c0a6b1513b31df97697fb2aa79609afa",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-04.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-04.png",
+      "role": "archive",
+      "sha256": "711317106c980bff50bd3c1ebdd18a31005007d260c3514bb1072373b85284b0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-05.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-05.png",
+      "role": "archive",
+      "sha256": "6e00cb0440f5fe9986ef31ebe8dcae50b2bb9e709621f4a759ce1ff889d1acb9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-06.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-06.png",
+      "role": "archive",
+      "sha256": "afedc443bb2a85d2c311ff5949a954f4979e33241aed6f1fcc53e5f7f2ffb41b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-07.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-07.png",
+      "role": "archive",
+      "sha256": "90261d23bde2ec95dcacc6137457cc201b731bd99b138005c8744f12920b2bbd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-08.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-08.png",
+      "role": "archive",
+      "sha256": "7b44c9a34a0a787fe11617535fc6094b890dbba4b011bb891e967cb07765c77c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-09.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-09.png",
+      "role": "archive",
+      "sha256": "d07e0471a2a1a2a86ab3129ba50110f5bf07883627a9ce40c3a2fcbb01403cc7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-10.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-10.png",
+      "role": "archive",
+      "sha256": "ced651ab59c973c9725eb25d1b1f79b85e3da801cb9224ddc8517008c03e4c0f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-11.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-11.png",
+      "role": "archive",
+      "sha256": "b67d861b2c9d7443bec6d187ae8a7e2c2ae726e4de82d11b6c42d1c036439690",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-12.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-12.png",
+      "role": "archive",
+      "sha256": "11ea40542e266616167c310e0e77917cce9f1038b55195116b9a6d8839a1de20",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-13.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-13.png",
+      "role": "archive",
+      "sha256": "e8112481cd3e5e30101c91c62cec495950b2ebbfac14cc12f6c8f9fd40e99717",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-14.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-14.png",
+      "role": "archive",
+      "sha256": "db871bf54438ace41e305b1dc4ae0952b3ebd7ea8a90fe3633f181dccd2ed817",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/final_qa/page-15.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/final_qa/page-15.png",
+      "role": "archive",
+      "sha256": "4db728b8e629fd65b63a6aa37591818b89a7f9ce5a985b39968f4a4607b95eb5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/page_text.json",
+      "path": "archive/studies_20261025/tmp/largecap_report/page_text.json",
+      "role": "archive",
+      "sha256": "73d09242d39f8f58ba6e020fed465571205b26192a0d2691ef81f3cc347d1a5c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/procedure_h1.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/procedure_h1.png",
+      "role": "archive",
+      "sha256": "50521a920b246572d90c7776829f64b97ec8a95316149baae57628dc47bd52d1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/procedure_h5.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/procedure_h5.png",
+      "role": "archive",
+      "sha256": "cb1647ec393c04f0b2ec8849b57bacd8254c9e4ad29e962c26cfcd7c3318a63f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/ranking.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/ranking.png",
+      "role": "archive",
+      "sha256": "60c860527804766ff1eeb9ad8495266b0dd8978769deaf9b0e76b946bed44b0f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-01.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-01.png",
+      "role": "archive",
+      "sha256": "721f7ad8d94ad36dbae494b1a480f55c784baba4c520141dc9ce4ccd696f3890",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-02.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-02.png",
+      "role": "archive",
+      "sha256": "d7b363bfa38518eda6ef0b56ca16cfc44903c163bb2fd9e4d255a0aaa4e4a29d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-03.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-03.png",
+      "role": "archive",
+      "sha256": "681c9c9198e07109b083ea64a13faaa082d2ff810d683037b88d466ff8c5c1de",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-04.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-04.png",
+      "role": "archive",
+      "sha256": "a8b679bc2fa6a45c8790b6fb1567f1b6c60c80b0ad113ab38be2dc73768a0430",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-05.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-05.png",
+      "role": "archive",
+      "sha256": "22ca903472864d6ed2828496b8544300f251af5801780e0c087ca5faf87a12a7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-06.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-06.png",
+      "role": "archive",
+      "sha256": "c22b2ab7944de0331b4856989f56e6d343ebe1cf395a8a1d926eb77564ca87a5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-07.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-07.png",
+      "role": "archive",
+      "sha256": "2e7bbaad487b1cb8de2a5806c83dd98df320328cebbbe76faa0f37869291b069",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-08.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-08.png",
+      "role": "archive",
+      "sha256": "d40be697baf32bf491ac9e00098e7c5bb7e5e6661cdb4ab5c67a208cab59844f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-09.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-09.png",
+      "role": "archive",
+      "sha256": "065ec7a12e7333cdd528b8d13cf7d3b91a1971ccb6b020a3f7af6c79afabc72a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-10.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-10.png",
+      "role": "archive",
+      "sha256": "ea70ebc9bdb4fe71c56c86fbc24062cc5612cd86da98eb49c1e1c14b701a1a60",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-11.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-11.png",
+      "role": "archive",
+      "sha256": "2660a6e2a51391cd21effd491115219869b05e31d902eca28b1ba7ebd8a033a9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-12.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-12.png",
+      "role": "archive",
+      "sha256": "ec12b91f05a936a7c016004b77adb32f3789109d72d665f04a12a81dcf7cef95",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-13.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-13.png",
+      "role": "archive",
+      "sha256": "37054ed915680afee4f28e9884a6da2ada32772eaa648eae232b60ff78fe570c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-14.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-14.png",
+      "role": "archive",
+      "sha256": "9ba4d9e933131c51809c1ce315d1f465f56b1b9253dc2e4542518269f3caabf2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-15.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-15.png",
+      "role": "archive",
+      "sha256": "2d69abaa74c6d54cc9f801a0e55fe91fb971b5cfd735a7396b7585993286eeb0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-16.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-16.png",
+      "role": "archive",
+      "sha256": "b1967f677974a6fd42d78ed622fefc1f3edf4b678056ad15f81a1c3371818216",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-17.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-17.png",
+      "role": "archive",
+      "sha256": "01a21b45152f3e5d7a11c20f585b9af116802c7e53187c9c56b9107254cbd852",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-18.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-18.png",
+      "role": "archive",
+      "sha256": "93030ae0846bc2a3d45b07fcccc67f1143867e3d080aa8ed7c9c1e9ff34b3dc1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render/page-19.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render/page-19.png",
+      "role": "archive",
+      "sha256": "ddc1d690c12f829d05a026e668ce06186989f80459844e84fdea4d01d835b1be",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-01.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-01.png",
+      "role": "archive",
+      "sha256": "b031f19f22e70455b7a42bb90b4034e66e058a8ed8e8d5151ba9efdcae22585a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-02.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-02.png",
+      "role": "archive",
+      "sha256": "1954cce15b34cbc4fece725957641f1f755accb7de087c018ffdbf8ea2c129dd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-03.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-03.png",
+      "role": "archive",
+      "sha256": "26fe72c127f753180debcd9d698ba1a3c0a6b1513b31df97697fb2aa79609afa",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-04.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-04.png",
+      "role": "archive",
+      "sha256": "711317106c980bff50bd3c1ebdd18a31005007d260c3514bb1072373b85284b0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-05.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-05.png",
+      "role": "archive",
+      "sha256": "6e00cb0440f5fe9986ef31ebe8dcae50b2bb9e709621f4a759ce1ff889d1acb9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-06.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-06.png",
+      "role": "archive",
+      "sha256": "afedc443bb2a85d2c311ff5949a954f4979e33241aed6f1fcc53e5f7f2ffb41b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-07.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-07.png",
+      "role": "archive",
+      "sha256": "90261d23bde2ec95dcacc6137457cc201b731bd99b138005c8744f12920b2bbd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-08.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-08.png",
+      "role": "archive",
+      "sha256": "7b44c9a34a0a787fe11617535fc6094b890dbba4b011bb891e967cb07765c77c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-09.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-09.png",
+      "role": "archive",
+      "sha256": "d07e0471a2a1a2a86ab3129ba50110f5bf07883627a9ce40c3a2fcbb01403cc7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-10.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-10.png",
+      "role": "archive",
+      "sha256": "ced651ab59c973c9725eb25d1b1f79b85e3da801cb9224ddc8517008c03e4c0f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-11.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-11.png",
+      "role": "archive",
+      "sha256": "b67d861b2c9d7443bec6d187ae8a7e2c2ae726e4de82d11b6c42d1c036439690",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-12.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-12.png",
+      "role": "archive",
+      "sha256": "11ea40542e266616167c310e0e77917cce9f1038b55195116b9a6d8839a1de20",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-13.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-13.png",
+      "role": "archive",
+      "sha256": "e8112481cd3e5e30101c91c62cec495950b2ebbfac14cc12f6c8f9fd40e99717",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-14.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-14.png",
+      "role": "archive",
+      "sha256": "db871bf54438ace41e305b1dc4ae0952b3ebd7ea8a90fe3633f181dccd2ed817",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_final/page-15.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_final/page-15.png",
+      "role": "archive",
+      "sha256": "4db728b8e629fd65b63a6aa37591818b89a7f9ce5a985b39968f4a4607b95eb5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-01.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-01.png",
+      "role": "archive",
+      "sha256": "e7a475202cad769fed03eff01f41fe45a7666a8250ecc974ce9576efa5c4e451",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-02.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-02.png",
+      "role": "archive",
+      "sha256": "3eaf24298db1aa2c3a720c173c43cfb632d2f3b8ed9eeff52c32f7680a867259",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-03.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-03.png",
+      "role": "archive",
+      "sha256": "31f43091485ef2633f4ab74703e3689da8199d424f93f43eab93de31c4915a52",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-04.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-04.png",
+      "role": "archive",
+      "sha256": "d9cb7253f5b4859170695c627b0346563d2ba1adaa782d387a447bc7d13e932e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-05.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-05.png",
+      "role": "archive",
+      "sha256": "7b458bf6a43484c74c73be79f3c4d2d4a0aef39b3d2c0b1833c5637581284121",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-06.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-06.png",
+      "role": "archive",
+      "sha256": "b30eea9ab747ca59483c4bfac24a0b799cd39f4d2539271e1e69b019ce204d12",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-07.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-07.png",
+      "role": "archive",
+      "sha256": "559db3315798c30025535920bdab32137209f32b23cf3e4b78e0ce9f30fc10bd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-08.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-08.png",
+      "role": "archive",
+      "sha256": "1ed8c6e4c70a7dc9c38287838cec6940776edf9f64b1dc29fd88163ad7cd8d65",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-09.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-09.png",
+      "role": "archive",
+      "sha256": "e5c20e6eae01558b49d9ceb4aed8792e18e03831866f7905b62d414c48221eee",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-10.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-10.png",
+      "role": "archive",
+      "sha256": "d2249b42e9badd6e4c65e6d8ef238eb433446463ee2ee3d01f369706f784a817",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-11.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-11.png",
+      "role": "archive",
+      "sha256": "8f4db8ee73e75fb110cbacc44ed992910201797c6910d036456a0052ba880f8a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-12.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-12.png",
+      "role": "archive",
+      "sha256": "4566e2ad4ea0bb4b812393c266d8c3545d19ee7e40239583b001fa06e48ebbde",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-13.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-13.png",
+      "role": "archive",
+      "sha256": "0817bce496a275cd718c0254d0943ecddb9f3584272b46aa26d7f44db7a1c478",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-14.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-14.png",
+      "role": "archive",
+      "sha256": "d1f8118541ff43cd918b1b94d58951bfaab897f15be3c1a1d175a6605773d77e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-15.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-15.png",
+      "role": "archive",
+      "sha256": "dd3b96ab44387e65efe5f2fa5ee56672ca795a846e04514b07ad58eee8587a6a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-16.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-16.png",
+      "role": "archive",
+      "sha256": "1459f54ccf3f38382e3f1c18ab9991f5314322cb0aa6190c82de399be16208e7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-17.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-17.png",
+      "role": "archive",
+      "sha256": "dd31c09b0b908e7263c7fa48751b31f945810e44a2710302e092e4b034c1b4b1",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/render_v2/page-18.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/render_v2/page-18.png",
+      "role": "archive",
+      "sha256": "5afbd0f0db07f4bd7a3d42c0fc5201786a386028b81c7e6aaad681f24330b5be",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-01.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-01.png",
+      "role": "archive",
+      "sha256": "f1a952e175f5daf1b95f6119e46494aace77f701c97ce59b4eb52d185f0ab660",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-02.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-02.png",
+      "role": "archive",
+      "sha256": "1954cce15b34cbc4fece725957641f1f755accb7de087c018ffdbf8ea2c129dd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-03.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-03.png",
+      "role": "archive",
+      "sha256": "26fe72c127f753180debcd9d698ba1a3c0a6b1513b31df97697fb2aa79609afa",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-04.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-04.png",
+      "role": "archive",
+      "sha256": "711317106c980bff50bd3c1ebdd18a31005007d260c3514bb1072373b85284b0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-05.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-05.png",
+      "role": "archive",
+      "sha256": "6e00cb0440f5fe9986ef31ebe8dcae50b2bb9e709621f4a759ce1ff889d1acb9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-06.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-06.png",
+      "role": "archive",
+      "sha256": "afedc443bb2a85d2c311ff5949a954f4979e33241aed6f1fcc53e5f7f2ffb41b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-07.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-07.png",
+      "role": "archive",
+      "sha256": "a412c725ba12a4c6929a1690f08480ef0fed876b8372837db4dbdbb6ea8f2610",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-08.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-08.png",
+      "role": "archive",
+      "sha256": "7bc580289f6f585292596980b5cc15bfece6aa99999c993bc5fee5e505d1ac2a",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-09.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-09.png",
+      "role": "archive",
+      "sha256": "d07e0471a2a1a2a86ab3129ba50110f5bf07883627a9ce40c3a2fcbb01403cc7",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-10.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-10.png",
+      "role": "archive",
+      "sha256": "ced651ab59c973c9725eb25d1b1f79b85e3da801cb9224ddc8517008c03e4c0f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-11.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-11.png",
+      "role": "archive",
+      "sha256": "b67d861b2c9d7443bec6d187ae8a7e2c2ae726e4de82d11b6c42d1c036439690",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-12.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-12.png",
+      "role": "archive",
+      "sha256": "11ea40542e266616167c310e0e77917cce9f1038b55195116b9a6d8839a1de20",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-13.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-13.png",
+      "role": "archive",
+      "sha256": "247ad2d9ddddd148ed3e2e0f9dda9b1f9bf30f81774257be389955e52e83d305",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-14.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-14.png",
+      "role": "archive",
+      "sha256": "db871bf54438ace41e305b1dc4ae0952b3ebd7ea8a90fe3633f181dccd2ed817",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/largecap_report/verified_pages/page-15.png",
+      "path": "archive/studies_20261025/tmp/largecap_report/verified_pages/page-15.png",
+      "role": "archive",
+      "sha256": "4db728b8e629fd65b63a6aa37591818b89a7f9ce5a985b39968f4a4607b95eb5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/midpoint_benchmark_after/slide-1.png",
+      "path": "archive/studies_20261025/tmp/midpoint_benchmark_after/slide-1.png",
+      "role": "archive",
+      "sha256": "a92dfa2fe93aee879bdab6e54e78e748fe3d36b35a8a3be27edfcb9eacf2c19f",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/midpoint_benchmark_after/slide-2.png",
+      "path": "archive/studies_20261025/tmp/midpoint_benchmark_after/slide-2.png",
+      "role": "archive",
+      "sha256": "3c2a2ff0663ba94d5c5d1d738920e2a0038aa00a25e2e76292bf50f326a27572",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/midpoint_benchmark_after/slide-3.png",
+      "path": "archive/studies_20261025/tmp/midpoint_benchmark_after/slide-3.png",
+      "role": "archive",
+      "sha256": "87561c746688c43220aadd11ea434555960009a5c50e3a06221cd16fbb475cf5",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/midpoint_benchmark_after_contact.png",
+      "path": "archive/studies_20261025/tmp/midpoint_benchmark_after_contact.png",
+      "role": "archive",
+      "sha256": "ca69fc15a2fa676c0563827e4f92af4c8ff41bce4b7cfa91d71510ad4bfa75c3",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/pdfs/exchange_geometry/page-1.png",
+      "path": "archive/studies_20261025/tmp/pdfs/exchange_geometry/page-1.png",
+      "role": "archive",
+      "sha256": "09d60bf607c77373de1e5ab17765759e4542a74acd987c366714764bd4c2efeb",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/pdfs/exchange_geometry/page-2.png",
+      "path": "archive/studies_20261025/tmp/pdfs/exchange_geometry/page-2.png",
+      "role": "archive",
+      "sha256": "bf529dd87c662c8a17fa3bdac59c3bdceaeca3d73a302b8ebe85393541e76afa",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/pdfs/exchange_geometry/page-3.png",
+      "path": "archive/studies_20261025/tmp/pdfs/exchange_geometry/page-3.png",
+      "role": "archive",
+      "sha256": "16ca665a21e2631ddd960bcd15d09bec6db4060004a170689406a5db38b10f95",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/pdfs/exchange_geometry/page-4.png",
+      "path": "archive/studies_20261025/tmp/pdfs/exchange_geometry/page-4.png",
+      "role": "archive",
+      "sha256": "417235afb924a3ef50c5a5c50fb56ea05f13bd66ec3e904411523a9e6e9acc5b",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/pdfs/exchange_geometry/verification.json",
+      "path": "archive/studies_20261025/tmp/pdfs/exchange_geometry/verification.json",
+      "role": "archive",
+      "sha256": "49b344ac3d30ad95433119066ec5a0fd3a0a1e253fe7eccca6a65acae5a1a5cf",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/pdfs/stockmixer.txt",
+      "path": "archive/studies_20261025/tmp/pdfs/stockmixer.txt",
+      "role": "archive",
+      "sha256": "ebd1f2f14907ebf0ee390690a52f320868271885017c2cd726212849ef8d825d",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/pdfs/stockmixer_results.png",
+      "path": "archive/studies_20261025/tmp/pdfs/stockmixer_results.png",
+      "role": "archive",
+      "sha256": "a46a09b591a7cb1c895fc8b5f90130a1ed90160d22457f66ff211b7a3ef5dec2",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/pdfs/stockmixer_setup.png",
+      "path": "archive/studies_20261025/tmp/pdfs/stockmixer_setup.png",
+      "role": "archive",
+      "sha256": "cbea33b24043cad23d145e52dbf72220aff515571278775e6dac3657b7108027",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/poppins_benchmark_after/slide-1.png",
+      "path": "archive/studies_20261025/tmp/poppins_benchmark_after/slide-1.png",
+      "role": "archive",
+      "sha256": "d2c7b086a12529716c8b1e8f060ff4f44055a0e3a0a8e64430422382755b12a6",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/poppins_benchmark_after/slide-2.png",
+      "path": "archive/studies_20261025/tmp/poppins_benchmark_after/slide-2.png",
+      "role": "archive",
+      "sha256": "1f00b20167e1c37a43f9a8482d71b5af3db718e2516a06d8286946c3bcc25c4c",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/poppins_benchmark_after/slide-3.png",
+      "path": "archive/studies_20261025/tmp/poppins_benchmark_after/slide-3.png",
+      "role": "archive",
+      "sha256": "f06de2d2895157bec58b4db5e300c8d50ffdcf00299b1a36d4c0c0c4bfdf11bd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/poppins_benchmark_after/slide-4.png",
+      "path": "archive/studies_20261025/tmp/poppins_benchmark_after/slide-4.png",
+      "role": "archive",
+      "sha256": "4ab67595f0a0e872ff3239736602b8eebb8b88b269768282e2384c4676b02572",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/poppins_benchmark_after/slide-5.png",
+      "path": "archive/studies_20261025/tmp/poppins_benchmark_after/slide-5.png",
+      "role": "archive",
+      "sha256": "2f655fe36fb9d4d0ab5e9f0429fda78c5566894e9cd394d748fcebefb01967a0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/poppins_benchmark_after/slide-6.png",
+      "path": "archive/studies_20261025/tmp/poppins_benchmark_after/slide-6.png",
+      "role": "archive",
+      "sha256": "34fca64033de4a20f2e0b2b99ed4de213b45ed2ad55fef0fb9ea1b5254290043",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/poppins_benchmark_after_contact.png",
+      "path": "archive/studies_20261025/tmp/poppins_benchmark_after_contact.png",
+      "role": "archive",
+      "sha256": "2f84ac4d6940eb952521f260f586180122cdc7290665a18576e40028938c7ece",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/preflight_largecap.py",
+      "path": "archive/studies_20261025/tmp/preflight_largecap.py",
+      "role": "archive",
+      "sha256": "496ba9999adc3679b5db7fe9a0be78b123139a7a4efc3765a15d82e302d421bc",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/probe_largecap_sources.py",
+      "path": "archive/studies_20261025/tmp/probe_largecap_sources.py",
+      "role": "archive",
+      "sha256": "4f56c72fb4f9725045069a7ec4d12d59fbd134972cb344a5a3d31247d35f9d42",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/refresh_published_slide_exports.py",
+      "path": "archive/studies_20261025/tmp/refresh_published_slide_exports.py",
+      "role": "archive",
+      "sha256": "fc97ac0eb837dc4ece28cbea4dbafbcf56a2bad590bc51bbf21ccee614db6365",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/render_benchmark_artifacts.ps1",
+      "path": "archive/studies_20261025/tmp/render_benchmark_artifacts.ps1",
+      "role": "archive",
+      "sha256": "69a9dd8dd6f48854926715194b2d72cdeea6d4ab1a534b5b673c1a5546ba9437",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/render_benchmark_doc.py",
+      "path": "archive/studies_20261025/tmp/render_benchmark_doc.py",
+      "role": "archive",
+      "sha256": "4a3a4ae6f1f20d9fbbd4fdadbbb21ea80193c08fa5503cc663a18ce923805350",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/render_largecap_report.ps1",
+      "path": "archive/studies_20261025/tmp/render_largecap_report.ps1",
+      "role": "archive",
+      "sha256": "7e32dd88346cfc209a612d866a4110f1b5402866cb8e7ce5d8871a53ecf1a0f9",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/resume-final.png",
+      "path": "archive/studies_20261025/tmp/resume-final.png",
+      "role": "archive",
+      "sha256": "14d216d875b6b8862bb6aac6b4af4d6501d3496a57146eae3af343d161ffb67e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/resume-page-1.png",
+      "path": "archive/studies_20261025/tmp/resume-page-1.png",
+      "role": "archive",
+      "sha256": "c1995682b72fba760d6b3f207b63c96ba23c766f54183bf2506219e1aebfed05",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/resume-page-2.png",
+      "path": "archive/studies_20261025/tmp/resume-page-2.png",
+      "role": "archive",
+      "sha256": "40883e3e836050626526063aa4d47d53e96f5a2ad5719c815d1aa4dc6e2728c8",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/resume_tectonic/bundles/hashes/https,58,,47,,47,relay.fullyjustified.net,47,default_bundle_v33.lock",
+      "path": "archive/studies_20261025/tmp/resume_tectonic/bundles/hashes/https,58,,47,,47,relay.fullyjustified.net,47,default_bundle_v33.lock",
+      "role": "archive",
+      "sha256": "fb9f88d8820828b36b974f10b2a87edb873b4dcfc903e3bcd62302d3cce3062e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/resume_tectonic/bundles/hashes/https,58,,47,,47,relay.fullyjustified.net,47,default_bundle_v33.tar",
+      "path": "archive/studies_20261025/tmp/resume_tectonic/bundles/hashes/https,58,,47,,47,relay.fullyjustified.net,47,default_bundle_v33.tar",
+      "role": "archive",
+      "sha256": "1f94cb6e6893fb09037585fdde65d436f90e2d726175e06363723529f52c880e",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/resume_tectonic/formats/6ffe055852f8faf66c0acbe1a7fb27f87b869a90bad1204f3bf4d9683f597c7c-latex-33.fmt",
+      "path": "archive/studies_20261025/tmp/resume_tectonic/formats/6ffe055852f8faf66c0acbe1a7fb27f87b869a90bad1204f3bf4d9683f597c7c-latex-33.fmt",
+      "role": "archive",
+      "sha256": "a86ffcac335474fb9fae47cd9986b929719dc3ddf29bfb31123ecc1790ef6bbb",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/style_benchmark_after/slide-1.png",
+      "path": "archive/studies_20261025/tmp/style_benchmark_after/slide-1.png",
+      "role": "archive",
+      "sha256": "8f23a60a537bca34bd050cf23bc50f55b2f1d6cfcc70073b477602714df900bc",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/style_benchmark_after/slide-2.png",
+      "path": "archive/studies_20261025/tmp/style_benchmark_after/slide-2.png",
+      "role": "archive",
+      "sha256": "20f4028ae1f4e06dfe18ecdc46811209c7cb42888f52af0d11440e354b22c497",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/style_benchmark_after/slide-3.png",
+      "path": "archive/studies_20261025/tmp/style_benchmark_after/slide-3.png",
+      "role": "archive",
+      "sha256": "647a35a496fe030dd8f2f74b85a8c4ba8aec8c07302a143fa47a2b113d137d42",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/style_benchmark_after/slide-4.png",
+      "path": "archive/studies_20261025/tmp/style_benchmark_after/slide-4.png",
+      "role": "archive",
+      "sha256": "acdd352edfc525a06cda64c739e7ac297e3fa4890d8c2b1bc0ca4da42deed425",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/style_benchmark_after/slide-5.png",
+      "path": "archive/studies_20261025/tmp/style_benchmark_after/slide-5.png",
+      "role": "archive",
+      "sha256": "d29c03a15557d6ce5cb686df09fc5e13b9ff8b6663126f8fc1ddd70cd73a5d79",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/style_benchmark_after/slide-6.png",
+      "path": "archive/studies_20261025/tmp/style_benchmark_after/slide-6.png",
+      "role": "archive",
+      "sha256": "d20164e6482a2f9213eb88cfc2bd0fe4adde2d789a670c1970900ada1ce772c0",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/style_benchmark_after_contact.png",
+      "path": "archive/studies_20261025/tmp/style_benchmark_after_contact.png",
+      "role": "archive",
+      "sha256": "1e8380e3dc48f942599b21de3c01ed27997efc467c7a4e2feef57887419e54fd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/update_nyse_comparison_benchmark.py",
+      "path": "archive/studies_20261025/tmp/update_nyse_comparison_benchmark.py",
+      "role": "archive",
+      "sha256": "4382bf007651ac322d3d4ca5f626c99b0cda6a21c607f3ca9ce3f06acf90d8dd",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/update_nyse_results_document.py",
+      "path": "archive/studies_20261025/tmp/update_nyse_results_document.py",
+      "role": "archive",
+      "sha256": "391f7da2d60c150a48eba60748369a075af720658649007339200c777ee35cfe",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/verify_nyse_benchmark_update.py",
+      "path": "archive/studies_20261025/tmp/verify_nyse_benchmark_update.py",
+      "role": "archive",
+      "sha256": "bbdf274b54bece4823b5c2db0f55045bb906d2cb49f120acc13e9e4c6ae2c790",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/wait_largecap_reporting.py",
+      "path": "archive/studies_20261025/tmp/wait_largecap_reporting.py",
+      "role": "archive",
+      "sha256": "95834c778a683be7245ec76c3a779356236c067c2b92909895cef9d8ca366b15",
+      "runtime_alias": null,
+      "previously_tracked": true
+    },
+    {
+      "original": "tmp/weekly_preview.png",
+      "path": "archive/studies_20261025/tmp/weekly_preview.png",
+      "role": "archive",
+      "sha256": "33564e5cc2db067dfb11474e31708c442330be0c2d6b7f9b788b2d59833b2392",
+      "runtime_alias": null,
+      "previously_tracked": true
+    }
+  ],
+  "local_directories": [
+    {
+      "original": "data/largecap_20261010",
+      "path": "archive/local_20261025/data/largecap_20261010",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "data/random_trials_20261010",
+      "path": "archive/local_20261025/data/random_trials_20261010",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "data/recent_cohorts",
+      "path": "archive/local_20261025/data/recent_cohorts",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "data/research_cohorts",
+      "path": "archive/local_20261025/data/research_cohorts",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "data/research_panel",
+      "path": "archive/local_20261025/data/research_panel",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/architecture_research",
+      "path": "archive/local_20261025/runs/architecture_research",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/daily_2022_2025",
+      "path": "archive/local_20261025/runs/daily_2022_2025",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/daily_2022_2025_final",
+      "path": "archive/local_20261025/runs/daily_2022_2025_final",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/huber_ranking_2022_2025",
+      "path": "archive/local_20261025/runs/huber_ranking_2022_2025",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/hyperbolicity_20261010",
+      "path": "archive/local_20261025/runs/hyperbolicity_20261010",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/hyperbolicity_20261010_exact",
+      "path": "archive/local_20261025/runs/hyperbolicity_20261010_exact",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/largecap_20261010",
+      "path": "archive/local_20261025/runs/largecap_20261010",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/random_trials_20261010",
+      "path": "archive/local_20261025/runs/random_trials_20261010",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/recent_2024_2025",
+      "path": "archive/local_20261025/runs/recent_2024_2025",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/recent_2024_2025_incomplete",
+      "path": "archive/local_20261025/runs/recent_2024_2025_incomplete",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/robust_2022_2025",
+      "path": "archive/local_20261025/runs/robust_2022_2025",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/robust_2022_2025_final",
+      "path": "archive/local_20261025/runs/robust_2022_2025_final",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "runs/robust_comparison",
+      "path": "archive/local_20261025/runs/robust_comparison",
+      "reason": "No active NASDAQ input/code/fit lock references this directory"
+    },
+    {
+      "original": "tmp",
+      "path": "archive/local_20261025/scratch/tmp",
+      "reason": "Earlier document/visualization intermediates"
+    },
+    {
+      "original": ".chart-data-33iA3e",
+      "path": "archive/local_20261025/scratch/.chart-data-33iA3e",
+      "reason": "Earlier document/visualization intermediates"
+    },
+    {
+      "original": ".chart-data-kcaAAV",
+      "path": "archive/local_20261025/scratch/.chart-data-kcaAAV",
+      "reason": "Earlier document/visualization intermediates"
+    }
+  ],
+  "navigation_redirects": [
+    "docs/random_trials_20261010/CHARTS.md"
+  ]
+}
