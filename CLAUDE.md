@@ -100,6 +100,11 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - Data: first-reported SEC XBRL companyfacts (`data/fundamentals.py`, `scripts/alpha_fundamentals_panel.py` → `data/pit/fundamentals_v1.npz`). companyfacts de-duplicates, so availability is per feature (it can only delay, never advance).
   - Test (PREREG `d85776c`, learner gate first): LightGBM +fundamentals vs price-only, 21 sessions: RankIC +0.018 [−0.004, +0.042], industry-neutral +0.009; no book beats EW after costs. The information sits mostly in the bottom decile (losers).
   - Next: an authorised one-shot 2024–26 holdout of the frozen arms, plus prospective P2. Do not retune on 2019–23.
+- **External claims and prospective gate (2026-10-25): REQUEST ARTIFACTS FIRST.**
+  - Where: branch `gate-20261025`, `docs/gate_20261025/`.
+  - PRISM-VQ is not established (Rishi's NDX transfer failed). Rishi's dynamic-HG 0.919 is a selected cell; declared primary 0.755.
+  - 901 tracked feat-rs paths behave like about 6–58 independent active bets. The earlier "0.919 = expected max of 272" claim is withdrawn.
+  - Prospective spec: StockMixer ten-seed top 5 (primary), dynamic-HG blend (secondary, conditional on the audit).
 - **Retrospective of everything:** claude.ai doc "HyperShift Research Retrospective" (private; owner shares it).
 - **Paper source of truth: `docs/paper/icdm22-think.pdf`** (pp. 849–854, including the appendix on p. 854). Cite the page and section/equation/table. Anything the PDF doesn't state is labelled `INFERRED (not in paper)` or `UNKNOWN`; never guess.
 
