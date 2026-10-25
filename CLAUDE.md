@@ -91,6 +91,7 @@ Live state and next steps: `docs/HANDOFF.md` (keep it current).
   - Where: branch `unify-20261024` (worktree `../Hypershift-unify`; unpushed, unmerged), `docs/unify_20261024/FINAL_DECISION.md`.
   - Neither branch's learned models beat 5-session reversal on RankIC.
   - feat-rs top-5 headlines are best-of-k / seed-group cells: DSR 0.28–0.45, QQQ beta about 1.2, P&L concentrated in AI names.
+  - Controlled 20-seed run (feat-rs code on PIT S&P 500 2020–23): 3/5/0 of 20 seeds beat reversal5; blend CAGR swings up to 14 pp with seed count.
   - New tested package `hypershift.unify`: rank blend identical to feat-rs, deciles, deflated Sharpe, prediction contract, buffered top-k.
   - Next: Rishi exports his saved predictions (Stage 0, no training), then the shared prospective log.
   - feat-rs data and predictions are not in git.
