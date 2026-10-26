@@ -11,6 +11,13 @@ the companion [workbook](../NASDAQ100_strategy_comparison.xlsx) stays directly i
 - [AUDIT.json](AUDIT.json): workbook, source-study and chart verification.
 - `figures/`: 83 figures, including historical leaders, seed comparisons,
   confidence intervals and 79 strategy gallery pages.
+- [October 26 master overview](overview_20261026/master_all_strategies.png): all
+  346 main strategies together, with the best historical model and SPY/QQQ
+  emphasized. This supplements the original 83 figures.
+- [Overview verification](overview_20261026/MANIFEST.json): validates all 346 saved
+  paths against reported CAGR, Sharpe and drawdown, preserves the original figure
+  hashes, and records the revised `charts.md` hash. The original audit remains
+  the October 24 publication snapshot.
 
 The comparison covers the same 1,003 sessions in 2022–2025. It preserves weaker
 strategies, individual-seed diagnostics and fee stresses; the best observed

@@ -1,6 +1,107 @@
 # NASDAQ-100 master charts
 
-Updated October 24, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. All paths use the same 1,003 sessions.
+Presentation updated October 26, 2026; research results through October 24, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. All paths use the same 1,003 sessions.
+
+## Best model first: THINK+mixer AH+PM + dynamic hypergraph
+
+**Our best observed historical model is the 50:50 rank blend of THINK+mixer AH+PM and a restricted dynamic hypergraph network, using the original five seeds and five holdings: 0.919 Sharpe / 32.94% CAGR.** The same recipe across all ten seeds returned **0.896 / 31.87%**. The table keeps these seed ensembles separate and emphasizes the leader and matched SPY/QQQ benchmarks.
+
+| Strategy / seed ensemble | Holdings | Sharpe | CAGR | RankIC | Max drawdown | 95% SR interval |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| **Best model: THINK+mixer AH+PM + dynamic HG / original five / 50:50 ranks** | **5** | **0.919** | **32.94%** | **0.0180** | **-34.89%** | **[0.041, 1.833]** |
+| Same blend / ten seeds | 5 | 0.896 | 31.87% | 0.0189 | -40.94% | [0.001, 1.829] |
+| Same blend / original five | 10 | 0.848 | 27.79% | 0.0180 | -35.04% | [-0.006, 1.739] |
+| Same blend / ten seeds / primary portfolio | 10 | 0.755 | 23.92% | 0.0189 | -34.88% | [-0.095, 1.649] |
+| THINK+mixer AH+PM / tuned momentum SGD / ten seeds | 5 | 0.719 | 25.05% | 0.0238 | -45.29% | [-0.227, 1.715] |
+| Original daily THINK+mixer / original five | 10 | 0.629 | 19.60% | 0.0074 | -39.44% | [-0.186, 1.505] |
+| **SPY / buy and hold** | **ETF** | **0.498** | **10.85%** | — | **-24.55%** | **[-0.367, 1.419]** |
+| **QQQ / buy and hold** | **ETF** | **0.469** | **11.93%** | — | **-34.87%** | **[-0.408, 1.394]** |
+
+The leader has both the highest Sharpe and highest CAGR across the 346 base-cost strategies. This is a retrospective development ranking, including diagnostic seed halves and portfolio variants. Top ten was primary; top five was a declared secondary test. The repeatedly inspected history does not supply an untouched confirmation result.
+
+## Master graph: every strategy, with the leader and SPY/QQQ emphasized
+
+![All 346 strategy paths, with the best historical model, SPY and QQQ shown as thick labeled lines](docs/strategy_comparison_20261024/overview_20261026/master_all_strategies.png)
+
+All 346 main base-cost strategies are included. The **best model is the thick blue line**, **SPY is the thick dashed red line**, and **QQQ is the thick purple line**; the other 343 paths are thin gray lines. Each starts with $100 before the common evaluation period and compounds its saved daily returns after modeled costs. Additional individual-seed and cost-stress diagnostics remain in the complete gallery below. [Figure provenance and verification](docs/strategy_comparison_20261024/overview_20261026/MANIFEST.json).
+
+## What the dynamic hypergraph does, in plain language
+
+Think of each stock as having a recent trading history and several overlapping groups of peers. The network asks two questions: **"What has this stock been doing?"** and **"What are related stocks doing that helps interpret it?"** It learns how to combine the answers into a forecast of that stock's next five-session return.
+
+An ordinary graph connects stocks in pairs. A **hypergraph connects a whole group at once**. A stock can belong to several groups, with different strengths of membership. In this model, there are **64 learned groups**. Their memberships are calculated from the latest stock representations at each forecast date, so a stock can participate differently as its trading pattern changes. Those groups have no supplied industry names; interpreting one as a particular sector would require a separate analysis.
+
+The network first reads each stock's 16-session history, using attention to combine past observations and a learned decay mechanism to represent how historical influences accumulate and fade. It then gathers information from stocks into the learned groups, mixes the group information, and passes it back to the stocks. This lets a stock's forecast reflect a broader pattern that may be hard to see in that stock alone.
+
+Alongside those changing groups, a fixed relationship map is built from **training-period return correlations**. It gives the network another route for sharing information between historically related stocks. Learned weights combine the stock's own history, the dynamic group information, and this fixed-map information. A small prediction head produces one return forecast per stock.
+
+"Restricted" describes the adaptation used here: one training-only correlation snapshot replaces the author pipeline's broader sector and lead/lag snapshots. It is a NASDAQ transfer, with the project's own inputs and training budget. [Dynamic network adapter](latest/models/ndx_reference_models.py).
+
+## How its scores combine with THINK+mixer
+
+**There are two levels of averaging: seeds within each model family, then a fixed 50:50 average between families.** A seed is a separate training initialization of the same model recipe.
+
+1. Each trained THINK+mixer and dynamic network predicts returns for the eligible stocks.
+2. Each network's forecasts become cross-sectional percentile ranks: rank the eligible stocks from lowest to highest forecast, then divide by the eligible stock count. Higher is better; tied forecasts receive average ranks.
+3. Average those percentile ranks across the fixed seeds within each family. The historical leader uses five THINK+mixer networks and five dynamic networks; the ten-seed version uses ten of each.
+4. Calculate **final score = 0.5 × THINK family average + 0.5 × dynamic family average**. The family averages enter this calculation directly, without another ranking step first.
+5. Select the five highest final scores and assign equal 20% target weights. Boundary ties receive fractional allocation across tied names; trading constraints can make actual weights differ from targets.
+
+For example, suppose the family averages for three hypothetical stocks are:
+
+| Stock | THINK+mixer average percentile | Dynamic average percentile | Final 50:50 score |
+| --- | ---: | ---: | ---: |
+| A | 0.96 | 0.90 | **0.93** |
+| B | 1.00 | 0.50 | **0.75** |
+| C | 0.72 | 0.94 | **0.83** |
+
+The combined order is A, C, B. Agreement near the top helps A outrank B even though THINK alone prefers B. Converting forecasts to ranks gives both families comparable influence regardless of the numerical scale of their predicted returns. **The average combines stock rankings into one portfolio.** Its 50:50 weights are fixed in advance; they are not fitted to test returns. [Seed averaging](research/training/run_robust_research.py), [family blending](latest/reporting/report_ndx_reference_networks.py).
+
+```mermaid
+flowchart TD
+  A[16-session daily + after-hours + premarket history] --> B[THINK+mixer AH+PM forecasts per seed]
+  A --> C[Dynamic hypergraph forecasts per seed]
+  B --> D[Percentile ranks, then average across THINK seeds]
+  C --> E[Percentile ranks, then average across dynamic seeds]
+  D --> F[Final score = 0.5 THINK + 0.5 dynamic]
+  E --> F
+  F --> G[Choose top five stocks]
+  G --> H[Equal target weights; fill at regular close]
+```
+
+## Architecture, inputs and training behind the leader
+
+Both families use **16 sessions and 25 stock-feature channels**. Five daily channels describe return, price relative to its 5- and 20-day averages, 20-day volatility, and relative dollar volume. Ten after-hours and ten premarket channels describe return, range, within-bar volatility, price relative to VWAP, dollar volume, last-hour return, late volume share, coverage, first-trade delay, and last-trade age. Train-only normalization clips inputs at eight standard deviations and scales them by 0.2; missing extended-hours summaries use training means.
+
+The **THINK daily core** maps inputs into a Poincaré ball with curvature -1, compresses 16 sessions to four using a kernel of four, exchanges group information through distance-modulated hypergraph attention, then compresses the remaining four positions into one forecast. Its hidden width is 16. Each training-derived group contains a stock and up to its four most positively correlated peers. A cross-stock mixer adds a learned correction through an N-to-16-to-N network, where N is the fixed security-ID universe. This THINK implementation is an equation-based reconstruction, with documented choices where the paper was ambiguous.
+
+The **AH+PM correction branch** flattens each stock's 16 × 20 extended-hours channels into a 320-to-16-to-1 network with GELU and a final tanh. Its output layer starts at zero. The correction is `0.5 × core score SD × (stock tanh output − eligible-stock mean tanh output)`, with the SD detached from gradient computation. This constrains the correction relative to the core's forecast spread. The core and auxiliary branch train jointly. [THINK core](research/models/think_model.py), [mixer](research/models/research_models.py), [extended-hours branch](research/models/ndx_extended_hours.py).
+
+The **dynamic network** embeds 25 inputs into 32 dimensions, uses four-head causal attention plus a learned intensity/decay function and temporal attention, and combines two wavelet graph-convolution layers with 64 learned dynamic hyperedges. Learned softmax weights fuse the three representations before a 32-to-32-to-1 prediction head. It has 25,445 parameters in the saved fits.
+
+| Training setting | THINK+mixer AH+PM | Restricted dynamic hypergraph |
+| --- | --- | --- |
+| Target | Five-session economic stock return, in percentage points | Same target |
+| Optimizer | AdamW | Adam |
+| Learning rate | 0.001 | 0.0001 |
+| Weight decay | 0.001 | 0 |
+| Training loss | Masked mean squared error | Per-date sqrt(masked MSE + 1e-8) |
+| Update batch | Eight chronological forecast dates | One forecast date, across stocks |
+| Hidden width | 16; auxiliary width 16 | 32; four attention heads; 64 learned hyperedges |
+| Dropout | No explicit dropout in this branch | 0.1 |
+| Maximum epochs / early-stopping patience | 30 / 6 | 30 / 6 |
+| Gradient norm cap | 1.0 | 1.0 |
+| Checkpoint selection | Earliest prior-year validation MSE improvement greater than 1e-7 | Same rule |
+
+Each test year receives fresh annual fits. Training/validation/test periods advance chronologically: July 2019–2020 / 2021 / 2022; July 2019–2021 / 2022 / 2023; July 2019–2022 / 2023 / 2024; and 2020–2023 / 2024 / 2025. Outcomes crossing fold boundaries are purged. Normalization and correlation maps use training data only. The leader's original seeds are **7, 19, 42, 61 and 97** in each family. Neither winning branch directly optimizes Sharpe or a pairwise ranking loss; validation MSE selects checkpoints, and the fixed ranking rule converts forecasts into holdings. [Parent protocol](config/ndx_extended_hours_20261024.json), [reference protocol](latest/config/ndx_reference_networks_20261024.json).
+
+Premarket inputs end at **09:15 ET**, the decision is at **09:20**, and execution occurs at that session's regular close. Daily inputs end at the preceding regular close. Rebalancing occurs every five exchange sessions. Accounts include modeled fees and participation-dependent costs, liquidity caps, cash constraints, and corporate-action accounting.
+
+## Why the blend looks useful in this history
+
+At five holdings, the ten-seed THINK+mixer AH+PM branch returned **0.531 Sharpe / 16.73% CAGR**, the dynamic branch returned **0.657 / 20.53%**, and their blend returned **0.896 / 31.87%**. The two families' rankings correlate about **0.41**, and their top-ten selections overlap about **29%**, so they contribute substantially different stock choices. Averaging across seeds reduces dependence on one initialization; averaging across families combines different ways of interpreting the same inputs.
+
+These diagnostics support complementarity as an explanation, without establishing that any one architectural feature causes the gain. Raw forecast errors remain highly correlated (about 0.998). The original-five leader's RankIC is only 0.018, so the full ranking signal is weak even though the selected top-five portfolio did well. Its annual net returns were approximately **-23.1%, +72.9%, +30.7% and +78.8%** for 2022–2025. The wider uncertainty and seed comparisons below remain essential context. [Complementarity](latest/results/reference_networks/complementarity.csv), [annual results](latest/results/reference_networks/annual.csv).
 
 ## New findings: losses, optimizers and complementary networks
 
@@ -19,24 +120,6 @@ SPY: 10.85% CAGR / 0.498 Sharpe. QQQ: 11.93% / 0.469. Huber and pseudo-Huber wea
 
 ![New findings overview](docs/strategy_comparison_20261024/figures/new_findings_overview.png)
 
-## Does the dynamic blend still use THINK?
-
-**Yes.** One branch is the original THINK+mixer daily core plus its bounded AH+PM correction, trained with MSE and AdamW. The other is a separately trained dynamic hypergraph network using the same 25 stock-feature channels. Within each branch, fixed-seed forecasts are converted to eligible-stock percentile ranks and averaged. The final score is the fixed average of those two ensemble rank scores. One top-five or top-ten equal-weight portfolio is selected from it. This is not a 50/50 capital allocation between two portfolios.
-
-```mermaid
-flowchart LR
-  A[Daily + AH + PM features] --> B[THINK + mixer AH+PM]
-  A --> C[Restricted dynamic hypergraph]
-  B --> D[Mean percentile ranks across seeds]
-  C --> E[Mean percentile ranks across seeds]
-  D --> F[50/50 rank average]
-  E --> F
-  F --> G[Select top 5 or top 10]
-  G --> H[Equal weights at regular close]
-```
-
-Features end at 09:15 ET, the decision is at 09:20, and execution occurs at that session’s regular close. Portfolios rebalance every five exchange sessions. No after-hours trades or test-fitted blend weights are used.
-
 ## Seed robustness and uncertainty
 
 The ten-holding blend’s original-five/new-five Sharpe split is 0.848 versus 0.467; its new-five result does not improve the matched baseline’s 0.480. At five holdings the blend improves on the matched baseline in both halves, while SGD is more consistent across those halves. These are initialization diagnostics on one shared history, not independent market replications. SGD’s low turnover appears partly related to stable stock-specific mixer preferences, which also need testing on new dates.
@@ -51,18 +134,7 @@ Absolute SR intervals use a fixed 3% annual hurdle and 10,000 circular-block dra
 
 The author networks are NASDAQ transfers with declared feature and training adaptations. The restricted dynamic model replaces the full sector/lead-lag graph inputs with one train-only correlation snapshot. PRISM’s current factor vintage does not establish historical publication availability. These are not reproductions of published paper performance.
 
-## Best observed historical results
-
-These are retrospective rankings across all 346 base-cost strategies, including diagnostic seed halves and portfolio variants. The ten-seed comparison above remains separate.
-
-| Historical distinction | Strategy | Sharpe | CAGR | RankIC | Max drawdown | 95% SR interval |
-| --- | --- | ---: | ---: | ---: | ---: | --- |
-| Highest observed CAGR | THINK+mixer AH+PM + dynamic HG / 50:50 ranks / original five seeds / top 5 | 0.919 | 32.94% | 0.0180 | -34.89% | [0.041, 1.833] |
-| Highest observed Sharpe | THINK+mixer AH+PM + dynamic HG / 50:50 ranks / original five seeds / top 5 | 0.919 | 32.94% | 0.0180 | -34.89% | [0.041, 1.833] |
-| Highest top-ten CAGR | THINK+mixer AH+PM + dynamic HG / 50:50 ranks / original five seeds / top 10 | 0.848 | 27.79% | 0.0180 | -35.04% | [-0.006, 1.739] |
-| Ten-seed blend, secondary five holdings | THINK+mixer AH+PM + dynamic HG / 50:50 ranks / ten seeds / top 5 | 0.896 | 31.87% | 0.0189 | -40.94% | [0.001, 1.829] |
-| Ten-seed SGD, five holdings | THINK+mixer AH+PM / MSE / tuned momentum SGD / ten seeds / top 5 | 0.719 | 25.05% | 0.0238 | -45.29% | [-0.227, 1.715] |
-| Original daily reference | THINK + mixer (original five seeds) | 0.629 | 19.60% | 0.0074 | -39.44% | [-0.186, 1.505] |
+## Historical leaders in closer detail
 
 ![Historical leaders](docs/strategy_comparison_20261024/figures/historical_leaders.png)
 

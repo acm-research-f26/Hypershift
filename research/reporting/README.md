@@ -12,6 +12,7 @@ builder live in `outputs/`. The repository-root `charts.md` is the master galler
 | [update_ndx_strategy_comparison_20261024.py](update_ndx_strategy_comparison_20261024.py) | Extended-hours comparison integration |
 | [update_ndx_top5_comparison_20261024.py](update_ndx_top5_comparison_20261024.py) | Earlier unblended AH+PM five-holding follow-up |
 | [update_ndx_new_findings_20261024.py](../../latest/reporting/update_ndx_new_findings_20261024.py) | Latest sealed loss/optimizer and reference-network integration |
+| [publish_ndx_master_overview.py](publish_ndx_master_overview.py) | Presentation follow-up: validate all 346 saved paths and plot the full comparison with the leader and SPY/QQQ emphasized. |
 
 Current user-facing artifacts:
 
@@ -32,6 +33,13 @@ older stages alone will not include later appended studies. Preserve workbook
 edits and use the latest consolidation's staged validation before publication.
 For verification without rewriting artifacts, use the command in the
 [evaluation guide](../evaluation/README.md).
+
+The October 26 master overview is an additional presentation step after the
+completed consolidations. Run `python -m hypershift run publish_ndx_master_overview`
+to recreate its figure and provenance record from local `analysis_paths.npz`.
+The root `charts.md` contains the accompanying model explanation. Original
+publication audits remain dated snapshots; the supplementary overview manifest
+records the revised narrative hash and verifies the unchanged numerical outputs.
 
 Older pooled/cohort report and presentation builders are preserved in
 [archive](../../archive/README.md). Latest-study publishers live in

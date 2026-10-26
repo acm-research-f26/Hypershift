@@ -1,0 +1,32 @@
+{
+  "status": "verified_presentation_update",
+  "presentation_date": "2026-10-26",
+  "strategies": 346,
+  "background_strategies": 343,
+  "daily_observations": 1003,
+  "highlighted_ids": [
+    "reference/dynamic_restricted_blend/original_five/top5",
+    "original/SPY/10",
+    "original/QQQ/10"
+  ],
+  "coverage": "All 346 main base-cost strategies; additional seed/cost diagnostics remain in the gallery.",
+  "checks": [
+    "All 346 CAGR, Sharpe and drawdown values reproduced from saved daily returns",
+    "Complete unique strategy-ID and common-date coverage",
+    "Historical leader agrees with both highest CAGR and highest Sharpe",
+    "Prior numerical outputs and original figures retain their hashes; workbook matches its documented semantic-equivalence resave"
+  ],
+  "prior_publication_charts_sha256": "3efa62b8501bbf05624ad4f75109fa2168fb4896ec7af510851506fc0066588a",
+  "note": "Supplementary presentation record supersedes the prior charts.md hash only; original audit remains a dated snapshot.",
+  "input_sha256": {
+    "outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/all_strategies.csv": "8db33d148e9d03944bfd4caa9fed7a41a736f5e2c87bb44df03862f902671e50",
+    "outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/analysis_paths.npz": "a386ee3c33d71638db766cec17998eb9b4b15e7115706eebbf5f2acc3cc7d6d7",
+    "docs/strategy_comparison_20261024/AUDIT.json": "c959305c50fc5ec475cbf823d8cf885bba0088c4c3d34cfcb148ab4654c71f1c",
+    "docs/audit/workbook_resave_20261025.json": "9a50e0be1b2404e7fb1fb19d6914f721a083a89d21877d5784bef33a95bd91c9",
+    "research/reporting/publish_ndx_master_overview.py": "e9cda0ebc46725e690dbd179260a2369bf0eb8527d081ff79cf4f7fdeed24c18"
+  },
+  "output_sha256": {
+    "docs/strategy_comparison_20261024/overview_20261026/master_all_strategies.png": "b77c459bfd2413d089b289b32872f2cae6fba137b2a8d6d427a3cb1a1527635f",
+    "charts.md": "0466a98eb82101b9dd8cf0f98703889164571682f7c5975abcce36d609a94189"
+  }
+}
