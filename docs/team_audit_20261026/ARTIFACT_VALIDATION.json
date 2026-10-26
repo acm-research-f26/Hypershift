@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-26",
+  "deliverables": 7,
+  "verified_github_file_targets": 11,
+  "reference_summary_rows": 132,
+  "verified_older_daily_paths": 204,
+  "new_dynamic_raw_replay": "not available",
+  "independent_review": "passed after three corrections",
+  "figures_visually_checked": 2,
+  "sha256": {
+    "HYPERSHIFT_EVIDENCE_SYNTHESIS.md": "cf6e1a7bef184b9c92e481936366170c4edea16b1db6b3daadb4cca9eac586d4",
+    "HYPERSHIFT_FINAL_RECOMMENDATION.md": "57a61161750b62995bf867f580ac1bf10a45b5b98c1f7c9d1675debb02b31c05",
+    "HYPERSHIFT_FULL_TEAM_AUDIT.md": "f937eb4a5de68741952abbee2c5bdb78eb828916a985e29e831153b3e286e885",
+    "HYPERSHIFT_LITERATURE_POSITIONING.md": "085395f265b13f49b7df8e304ff7868fecc1cf0477672918f367f9f75a7023af",
+    "HYPERSHIFT_NEXT_EXPERIMENT.md": "5d2a066ff87f81341218c2714207a3c755f203fb645bdfcf2d6fc16674db3486",
+    "HYPERSHIFT_RESEARCH_PRIORITIES.md": "c749d04b875e29724e090305083f5151f261a4e4e87f4fd414e9e3228014879e",
+    "HYPERSHIFT_TEAM_PLAN.md": "ff312be4cc2192dc8d9096bfe19232edf0227cd85b5cea203bf6ea9679f2e08c",
+    "FIGURE_1_PAIRED_EVIDENCE.png": "1508b3dad9bc09cc0d9281172aae6821bc730e82f49e9c4c433642f601e03045",
+    "FIGURE_2_SEED_GROUPS.png": "54aaabbd608d6facbe9f3fd0c43b7cf8c548b7918432bc9c2b413b358d8f229a"
+  },
+  "repository_tests": {
+    "passed": 575,
+    "xfailed": 2,
+    "warnings": 9,
+    "seconds": 424.24,
+    "command": ".venv/Scripts/python.exe -m pytest -q --basetemp=.pytest_cache/team_audit_20261026",
+    "initial_issue": "Default Windows temp directory creation failed; writable-folder rerun passed"
+  }
+}

@@ -1,4 +1,4 @@
-# START HERE: HyperShift session handoff (authoritative; updated 2026-10-24)
+# START HERE: HyperShift session handoff (authoritative; updated 2026-10-26)
 
 Read this file first in every new session. It holds the current state, the decisions already taken, how the work
 is done, and the traps already found. `CLAUDE.md` holds durable environment and code rules. `docs/HANDOFF.md` is
@@ -18,7 +18,8 @@ goals.
 | Item | Status |
 |---|---|
 | Running processes | None |
-| Last completed round | **Independent dynamic-hypergraph and StockMixer evaluation** (2026-10-25): **STOP DYNAMIC HYPERGRAPH**.
+| Latest research audit | **Full-team GitHub audit (2026-10-26)**: `docs/team_audit_20261026/HYPERSHIFT_FINAL_RECOMMENDATION.md`. Six remote branches checked; latest Rishi `0b06f26`, Ethan `def988d`, Kavin still Cora-only. **GO bounded saved-prediction replay and identity/exposure attribution** of the fixed ten-seed/top10 parent–dynamic blend; no new training or alpha claim. Published primary SR .755; .919 is original-five/top5. New forecasts/ledgers remain missing. Older 204 paths independently recomputed; seed counts 3/5/0 above reversal RankIC versus 1/6/4 above gross EW CAGR. Seven reports, two static figures, evidence and branch inventory in that folder. |
+| Last completed model round | **Independent dynamic-hypergraph and StockMixer evaluation** (2026-10-25): **STOP tested correlation-hypergraph implementation**.
   - Branch `dynhg-20261025`, `docs/dynhg_20261025/FINAL_DECISION.md`.
   - The causal correlation hypergraph passed the synthetic gates, but on the PIT S&P 500 2020–23 it showed graph − no-graph +0.0013 [−0.004, +0.006], equal to the random-peer placebo, and −0.007 vs reversal.
   - Our reconstructed learned-incidence variant failed the synthetic gate.
@@ -56,6 +57,8 @@ goals.
 - **The binding constraint is data** (history length, universe), not models or ideas.
 
 ## 4. Next step options (choose with the user)
+
+**Latest audit refinement (2026-10-26):** obtain the existing latest Rishi parent/dynamic per-stock forecasts and trade/account tapes, independently replay, then compare the frozen ten-seed/top10 blend with its parent and a training-only persistent-stock substitute. Exact gated protocol and coordinated Rishi/Kavin/Ethan/Tom tasks: `docs/team_audit_20261026/HYPERSHIFT_NEXT_EXPERIMENT.md` and `HYPERSHIFT_TEAM_PLAN.md`. The newer SPF-based transfer is not refuted by the simpler S&P correlation-HG null. Prospective observation is only proposed after a freeze, no earlier than November 2, 2026; do not backfill or activate an automation. This refines Stage 0, does not reopen a historical model search, and does not release the protected window. The earlier 272-independent-trial expected-maximum claim is withdrawn; see `gate-20261025`.
 
 0. **Current GO (from the unification round):** Stage 0, then the shared prospective log.
    - Spec: `docs/unify_20261024/UNIFIED_EXPERIMENT_SPEC.md` §1 and §6 on branch `unify-20261024`.
