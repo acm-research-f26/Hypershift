@@ -1,8 +1,10 @@
 """Atomic run artifacts; portable source and private run directories are separate."""
 import hashlib
 import json
+import time
 from datetime import datetime, timezone
 from pathlib import Path
+from uuid import uuid4
 
 import numpy as np
 
@@ -38,18 +40,38 @@ def clean(value):
     return value
 
 
+def _replace(temporary, destination):
+    # Windows can briefly deny replacement while another worker renames the
+    # same status file. Retry bounded contention; real permission failures raise.
+    for attempt in range(20):
+        try:
+            temporary.replace(destination)
+            return
+        except PermissionError:
+            if attempt == 19:
+                raise
+            time.sleep(.005 * (attempt + 1))
+
+
 def atomic(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + '.partial')
+    # Workers share progress.json; each writer needs its own staging file.
+    temporary = path.with_name(path.name + '.' + uuid4().hex + '.partial')
     temporary.write_text(json.dumps(clean(value), indent=2, allow_nan=False) + '\n', encoding='utf-8')
-    temporary.replace(path)
+    try:
+        _replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def arrays(path, **values):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + '.partial')
+    temporary = path.with_name(path.name + '.' + uuid4().hex + '.partial')
     with temporary.open('wb') as stream:
         np.savez_compressed(stream, **values)
-    temporary.replace(path)
+    try:
+        _replace(temporary, path)
+    finally:
+        temporary.unlink(missing_ok=True)

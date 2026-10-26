@@ -148,3 +148,16 @@ def test_infeasible_fixed_point_retains_the_constraint_failure():
     result = project(wanted, sector, True, fixed, held)
     np.testing.assert_array_equal(result, held)
     assert constraint_error(result, sector, True) == .04
+
+
+def test_concurrent_status_writers_do_not_share_a_staging_file(tmp_path):
+    from concurrent.futures import ThreadPoolExecutor
+    from experiments.strategy_search.storage import atomic, read
+
+    destination = tmp_path / 'progress.json'
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        list(pool.map(lambda number: atomic(destination, {'writer': number, 'payload': 'x' * 1000}), range(100)))
+    saved = read(destination)
+    assert saved['writer'] in range(100)
+    assert saved['payload'] == 'x' * 1000
+    assert not list(tmp_path.glob('*.partial'))
