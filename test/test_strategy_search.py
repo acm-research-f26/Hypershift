@@ -4,7 +4,7 @@ import pytest
 
 pytest.importorskip('numba')
 
-from experiments.strategy_search.execution import replay
+from experiments.strategy_search.execution import replay, project, constraint_error
 from experiments.strategy_search.features import event_targets, window_sum, moments
 from experiments.strategy_search.statistics import daily_rows, scales
 
@@ -138,3 +138,13 @@ def test_higher_fee_reduces_flat_price_round_trip_nav():
     low, *_ = run(base, fee=.01)
     high, *_ = run(base, fee=1.)
     assert high[-1, 1] < low[-1, 1]
+
+
+def test_infeasible_fixed_point_retains_the_constraint_failure():
+    wanted = np.zeros(3)
+    sector = np.zeros(3, np.int64)
+    fixed = np.array([True, False, False])
+    held = np.array([.04, 0., 0.])
+    result = project(wanted, sector, True, fixed, held)
+    np.testing.assert_array_equal(result, held)
+    assert constraint_error(result, sector, True) == .04

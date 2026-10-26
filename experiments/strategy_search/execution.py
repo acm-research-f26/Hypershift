@@ -32,6 +32,7 @@ def project(weights, sector, neutral, fixed, fixed_weights, operating=False):
     for j in range(len(w)):
         w[j] = fixed_weights[j] if fixed[j] else min(stock_cap, max(-stock_cap if neutral else 0., w[j]))
     for iteration in range(160):
+        before = w.copy()
         gross = np.abs(w).sum()
         if gross > gross_cap:
             locked = np.abs(w[fixed]).sum()
@@ -64,7 +65,9 @@ def project(weights, sector, neutral, fixed, fixed_weights, operating=False):
         for k in range(int(sector.max()) + 1):
             total = w[sector == k].sum()
             err = max(err, abs(total) - sector_cap if neutral else total - sector_cap)
-        if err < 1e-10:
+        # A deterministic pass at an exact fixed point cannot improve on a
+        # subsequent pass. Preserve the infeasibility for the accounting audit.
+        if err < 1e-10 or np.array_equal(w, before):
             break
     return w
 
