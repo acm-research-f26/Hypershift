@@ -836,6 +836,10 @@ dependencies = [
 cuda = [
     { name = "torch" },
 ]
+strategies = [
+    { name = "numba" },
+    { name = "numpy" },
+]
 
 [package.dev-dependencies]
 experiments = [
@@ -862,6 +866,8 @@ notebooks = [
 requires-dist = [
     { name = "exchange-calendars", specifier = ">=4.13.2" },
     { name = "geoopt", specifier = ">=0.5.1" },
+    { name = "numba", marker = "extra == 'strategies'", specifier = ">=0.68" },
+    { name = "numpy", marker = "extra == 'strategies'", specifier = ">=2.4" },
     { name = "pydantic", specifier = ">=2.13.5" },
     { name = "pytest", specifier = ">=9.1.1" },
     { name = "torch", specifier = ">=2.14.0" },
@@ -869,7 +875,7 @@ requires-dist = [
     { name = "torch-geometric", specifier = ">=2.8.0.post1" },
     { name = "yfinance", specifier = ">=1.7.0" },
 ]
-provides-extras = ["cuda"]
+provides-extras = ["cuda", "strategies"]
 
 [package.metadata.requires-dev]
 experiments = [

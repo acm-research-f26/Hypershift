@@ -1,0 +1,17 @@
+{
+  "fills": "Full fractional-share fills at fresh finite positive recorded minute opens; no bid/ask, partial fill, queue, minimum lot, participation or market impact model",
+  "universe": "Retrospective static 2026 universe and GICS taxonomy; no point-in-time investability claim",
+  "timing": "Completed-close decisions; primary origin+2 open, stresses origin+3 and origin+5; no variable processing/feed latency",
+  "closing": "Begin flattening five minutes before final close; fresh final-close fallback; carry and invalidate unavailable residuals",
+  "cash": "Zero interest and risk-free return; long-only portfolio SR does not establish market-neutral alpha",
+  "borrow": "3 percent annual short market value, 10 percent stress, no historical locate constraints; zero-borrow diagnostic for long-short",
+  "train": "Normalize, PCA, volume baseline and pooled forecast horizon calibration on first60 earlier sessions only; horizon labels remain inside fitting cutoff",
+  "evaluation": "Five chronological development blocks; later replay previously research-exposed; no untouched holdout claim; 20 initial cash warmup days included per cohort",
+  "sizing": "New sleeve daily-vol budget .005/sqrt390/minuteSD, capped .04; operating gross .9, sector .2 LO or sector-net .04 LS; hard gross1/stock.05/sector.25 LO or sector-net.05 LS",
+  "exits": "Stateful share holdings; new/changed sleeves enter at delayed open, completed-close exits have identical delay; risk corrections and closing cannot be blocked",
+  "inventory": "S04 partial adjustment and daily turnover budget reserve exit dollars; actual cap breaches invalidate the run",
+  "S09": "Equal average sector and industry leave-self-out peer moves, with sector leave-self-out directional breadth and at most two sector event bars per day",
+  "S02": "Fixed fit-period-coverage eligible industry constituents for equal-dollar hedge baskets; not beta-neutral",
+  "S03": "Pooled OLS intercept/slope calibrate persistent mean forecasts to directly measured residual return horizon on fit period only",
+  "inference": "Daily Sharpe sqrt252; five-session moving block bootstrap; all trials and risk shadows disclosed; no search-adjusted significance claim"
+}

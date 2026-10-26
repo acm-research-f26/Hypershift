@@ -1,0 +1,1074 @@
+{
+  "costs_bps": [
+    0.0,
+    0.01,
+    0.025,
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    5.0
+  ],
+  "configurations": 66,
+  "policy_cost_combinations": 660,
+  "rows": [
+    {
+      "family": "S01",
+      "name": "Extreme multi-minute reversal",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 5,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 15
+      },
+      "requires_volume": false,
+      "id": "96d5f5ed2f90"
+    },
+    {
+      "family": "S01",
+      "name": "Extreme multi-minute reversal",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 30
+      },
+      "requires_volume": false,
+      "id": "b7fde7d182f9"
+    },
+    {
+      "family": "S01",
+      "name": "Extreme multi-minute reversal",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 30,
+        "entry_z": 2.5,
+        "exit_z": 0.5,
+        "max_hold": 60
+      },
+      "requires_volume": false,
+      "id": "a74115fb84c6"
+    },
+    {
+      "family": "S01",
+      "name": "Extreme multi-minute reversal",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 5,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 15
+      },
+      "requires_volume": false,
+      "id": "8671806902b4"
+    },
+    {
+      "family": "S01",
+      "name": "Extreme multi-minute reversal",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 30
+      },
+      "requires_volume": false,
+      "id": "a3a2dfe944c7"
+    },
+    {
+      "family": "S01",
+      "name": "Extreme multi-minute reversal",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 30,
+        "entry_z": 2.5,
+        "exit_z": 0.5,
+        "max_hold": 60
+      },
+      "requires_volume": false,
+      "id": "14edd8d75ec0"
+    },
+    {
+      "family": "S02",
+      "name": "Industry spread convergence",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 30
+      },
+      "requires_volume": false,
+      "id": "623fd4258c72"
+    },
+    {
+      "family": "S02",
+      "name": "Industry spread convergence",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 30,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 60
+      },
+      "requires_volume": false,
+      "id": "06ec186f8f65"
+    },
+    {
+      "family": "S02",
+      "name": "Industry spread convergence",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 60,
+        "entry_z": 2.5,
+        "exit_z": 0.5,
+        "max_hold": 90
+      },
+      "requires_volume": false,
+      "id": "ff80b5405ad2"
+    },
+    {
+      "family": "S02",
+      "name": "Industry spread convergence",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 30
+      },
+      "requires_volume": false,
+      "id": "f21d93647735"
+    },
+    {
+      "family": "S02",
+      "name": "Industry spread convergence",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 30,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 60
+      },
+      "requires_volume": false,
+      "id": "6c3bda2218cb"
+    },
+    {
+      "family": "S02",
+      "name": "Industry spread convergence",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 60,
+        "entry_z": 2.5,
+        "exit_z": 0.5,
+        "max_hold": 90
+      },
+      "requires_volume": false,
+      "id": "9bbbdbab9f21"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 1,
+      "model": "HYB_LN",
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 3,
+        "max_hold": 15,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "139a46f9ac98"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 2,
+      "model": "HYB_LN",
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 5,
+        "max_hold": 30,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "c1b8cf36b338"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 3,
+      "model": "HYB_LN",
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 10,
+        "max_hold": 60,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "81eb1e0968e4"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 1,
+      "model": "HYB_LN",
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 3,
+        "max_hold": 15,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "466989cdfbde"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 2,
+      "model": "HYB_LN",
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 5,
+        "max_hold": 30,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "98182edf2444"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 3,
+      "model": "HYB_LN",
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 10,
+        "max_hold": 60,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "d9a4afe66b06"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 1,
+      "model": "LN4",
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 3,
+        "max_hold": 15,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "ed654339137b"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 2,
+      "model": "LN4",
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 5,
+        "max_hold": 30,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "9b40a2887e92"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 3,
+      "model": "LN4",
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 10,
+        "max_hold": 60,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "8134ec09f0d0"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 1,
+      "model": "LN4",
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 3,
+        "max_hold": 15,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "8328a534f268"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 2,
+      "model": "LN4",
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 5,
+        "max_hold": 30,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "abbf0fab093e"
+    },
+    {
+      "family": "S03",
+      "name": "Forecast-confirmed reversal",
+      "preset": 3,
+      "model": "LN4",
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "forecast_persistence": 10,
+        "max_hold": 60,
+        "training_only_edge_calibration": true
+      },
+      "requires_volume": false,
+      "id": "697c5753adbf"
+    },
+    {
+      "family": "S04",
+      "name": "Inventory-aware reversal",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "partial_step": 0.25,
+        "rebalance": 5,
+        "turnover_day_cap": 1.0,
+        "incumbent_exit_rank": 0.3
+      },
+      "requires_volume": false,
+      "id": "0f2e0814c644"
+    },
+    {
+      "family": "S04",
+      "name": "Inventory-aware reversal",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "partial_step": 0.5,
+        "rebalance": 15,
+        "turnover_day_cap": 2.0,
+        "incumbent_exit_rank": 0.3
+      },
+      "requires_volume": false,
+      "id": "69e91a69fbe8"
+    },
+    {
+      "family": "S04",
+      "name": "Inventory-aware reversal",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "partial_step": 1.0,
+        "rebalance": 30,
+        "turnover_day_cap": 4.0,
+        "incumbent_exit_rank": 0.3
+      },
+      "requires_volume": false,
+      "id": "7ca5be24bb5f"
+    },
+    {
+      "family": "S04",
+      "name": "Inventory-aware reversal",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "partial_step": 0.25,
+        "rebalance": 5,
+        "turnover_day_cap": 1.0,
+        "incumbent_exit_rank": 0.3
+      },
+      "requires_volume": false,
+      "id": "434c363719f4"
+    },
+    {
+      "family": "S04",
+      "name": "Inventory-aware reversal",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "partial_step": 0.5,
+        "rebalance": 15,
+        "turnover_day_cap": 2.0,
+        "incumbent_exit_rank": 0.3
+      },
+      "requires_volume": false,
+      "id": "8a1dfe50925b"
+    },
+    {
+      "family": "S04",
+      "name": "Inventory-aware reversal",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "partial_step": 1.0,
+        "rebalance": 30,
+        "turnover_day_cap": 4.0,
+        "incumbent_exit_rank": 0.3
+      },
+      "requires_volume": false,
+      "id": "e81027f72ce4"
+    },
+    {
+      "family": "S05",
+      "name": "PCA residual reversion",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "factors": 3,
+        "window": 15,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 30
+      },
+      "requires_volume": false,
+      "id": "cd881eded7a7"
+    },
+    {
+      "family": "S05",
+      "name": "PCA residual reversion",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "factors": 5,
+        "window": 30,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 60
+      },
+      "requires_volume": false,
+      "id": "da69c1e54959"
+    },
+    {
+      "family": "S05",
+      "name": "PCA residual reversion",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "factors": 8,
+        "window": 60,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 90
+      },
+      "requires_volume": false,
+      "id": "c91b693d412d"
+    },
+    {
+      "family": "S05",
+      "name": "PCA residual reversion",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "factors": 3,
+        "window": 15,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 30
+      },
+      "requires_volume": false,
+      "id": "6a5755225876"
+    },
+    {
+      "family": "S05",
+      "name": "PCA residual reversion",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "factors": 5,
+        "window": 30,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 60
+      },
+      "requires_volume": false,
+      "id": "1154be447906"
+    },
+    {
+      "family": "S05",
+      "name": "PCA residual reversion",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "factors": 8,
+        "window": 60,
+        "entry_z": 2.0,
+        "exit_z": 0.5,
+        "max_hold": 90
+      },
+      "requires_volume": false,
+      "id": "119676b3a86f"
+    },
+    {
+      "family": "S06",
+      "name": "Volume-climax reversal",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "relative_volume_min": 2.0,
+        "confirmation_completed_bars": 1,
+        "max_hold": 15
+      },
+      "requires_volume": true,
+      "id": "4cb0b390e667"
+    },
+    {
+      "family": "S06",
+      "name": "Volume-climax reversal",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 30,
+        "entry_z": 2.0,
+        "relative_volume_min": 2.0,
+        "confirmation_completed_bars": 1,
+        "max_hold": 30
+      },
+      "requires_volume": true,
+      "id": "44e3e7c48ef2"
+    },
+    {
+      "family": "S06",
+      "name": "Volume-climax reversal",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 60,
+        "entry_z": 2.0,
+        "relative_volume_min": 2.0,
+        "confirmation_completed_bars": 1,
+        "max_hold": 60
+      },
+      "requires_volume": true,
+      "id": "ad33e82f5f14"
+    },
+    {
+      "family": "S06",
+      "name": "Volume-climax reversal",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "entry_z": 2.0,
+        "relative_volume_min": 2.0,
+        "confirmation_completed_bars": 1,
+        "max_hold": 15
+      },
+      "requires_volume": true,
+      "id": "d91d2b003ee3"
+    },
+    {
+      "family": "S06",
+      "name": "Volume-climax reversal",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 30,
+        "entry_z": 2.0,
+        "relative_volume_min": 2.0,
+        "confirmation_completed_bars": 1,
+        "max_hold": 30
+      },
+      "requires_volume": true,
+      "id": "60f06901756c"
+    },
+    {
+      "family": "S06",
+      "name": "Volume-climax reversal",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 60,
+        "entry_z": 2.0,
+        "relative_volume_min": 2.0,
+        "confirmation_completed_bars": 1,
+        "max_hold": 60
+      },
+      "requires_volume": true,
+      "id": "29dc4538379e"
+    },
+    {
+      "family": "S07",
+      "name": "Rolling VWAP reversion",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 30,
+        "entry_z": 2.0,
+        "exit_z": 0.0,
+        "stop_z": 3.0,
+        "efficiency_window": 30,
+        "efficiency_max": 0.3,
+        "max_hold": 30
+      },
+      "requires_volume": true,
+      "id": "8c5f9034d611"
+    },
+    {
+      "family": "S07",
+      "name": "Rolling VWAP reversion",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 60,
+        "entry_z": 2.0,
+        "exit_z": 0.0,
+        "stop_z": 3.0,
+        "efficiency_window": 30,
+        "efficiency_max": 0.3,
+        "max_hold": 60
+      },
+      "requires_volume": true,
+      "id": "ea4bfe75ec73"
+    },
+    {
+      "family": "S07",
+      "name": "Rolling VWAP reversion",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 120,
+        "entry_z": 2.0,
+        "exit_z": 0.0,
+        "stop_z": 3.0,
+        "efficiency_window": 30,
+        "efficiency_max": 0.3,
+        "max_hold": 90
+      },
+      "requires_volume": true,
+      "id": "da53d87ac8f1"
+    },
+    {
+      "family": "S07",
+      "name": "Rolling VWAP reversion",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 30,
+        "entry_z": 2.0,
+        "exit_z": 0.0,
+        "stop_z": 3.0,
+        "efficiency_window": 30,
+        "efficiency_max": 0.3,
+        "max_hold": 30
+      },
+      "requires_volume": true,
+      "id": "e69cb45857e0"
+    },
+    {
+      "family": "S07",
+      "name": "Rolling VWAP reversion",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 60,
+        "entry_z": 2.0,
+        "exit_z": 0.0,
+        "stop_z": 3.0,
+        "efficiency_window": 30,
+        "efficiency_max": 0.3,
+        "max_hold": 60
+      },
+      "requires_volume": true,
+      "id": "6a4226c200b5"
+    },
+    {
+      "family": "S07",
+      "name": "Rolling VWAP reversion",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 120,
+        "entry_z": 2.0,
+        "exit_z": 0.0,
+        "stop_z": 3.0,
+        "efficiency_window": 30,
+        "efficiency_max": 0.3,
+        "max_hold": 90
+      },
+      "requires_volume": true,
+      "id": "132d1038376d"
+    },
+    {
+      "family": "S08",
+      "name": "Opening-range continuation",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "opening_window": 15,
+        "breakout_training_SD": 0.25,
+        "max_hold": 30,
+        "max_entries_stock_day": 1,
+        "range_prices": "completed_closes"
+      },
+      "requires_volume": false,
+      "id": "7a95f7411dcf"
+    },
+    {
+      "family": "S08",
+      "name": "Opening-range continuation",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "opening_window": 30,
+        "breakout_training_SD": 0.25,
+        "max_hold": 60,
+        "max_entries_stock_day": 1,
+        "range_prices": "completed_closes"
+      },
+      "requires_volume": false,
+      "id": "8d0a29afe241"
+    },
+    {
+      "family": "S08",
+      "name": "Opening-range continuation",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "opening_window": 60,
+        "breakout_training_SD": 0.25,
+        "max_hold": 90,
+        "max_entries_stock_day": 1,
+        "range_prices": "completed_closes"
+      },
+      "requires_volume": false,
+      "id": "e7382bc59dc2"
+    },
+    {
+      "family": "S08",
+      "name": "Opening-range continuation",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "opening_window": 15,
+        "breakout_training_SD": 0.25,
+        "max_hold": 30,
+        "max_entries_stock_day": 1,
+        "range_prices": "completed_closes"
+      },
+      "requires_volume": false,
+      "id": "9345c50ebb24"
+    },
+    {
+      "family": "S08",
+      "name": "Opening-range continuation",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "opening_window": 30,
+        "breakout_training_SD": 0.25,
+        "max_hold": 60,
+        "max_entries_stock_day": 1,
+        "range_prices": "completed_closes"
+      },
+      "requires_volume": false,
+      "id": "f4059e704227"
+    },
+    {
+      "family": "S08",
+      "name": "Opening-range continuation",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "opening_window": 60,
+        "breakout_training_SD": 0.25,
+        "max_hold": 90,
+        "max_entries_stock_day": 1,
+        "range_prices": "completed_closes"
+      },
+      "requires_volume": false,
+      "id": "21cc2d404373"
+    },
+    {
+      "family": "S09",
+      "name": "Slow breadth-confirmed propagation",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 15,
+        "peer_entry_z": 2.0,
+        "breadth_min": 0.7,
+        "max_hold": 30,
+        "max_events_sector_day": 2,
+        "exclude_target_from_peers": true
+      },
+      "requires_volume": false,
+      "id": "adb8bf874a45"
+    },
+    {
+      "family": "S09",
+      "name": "Slow breadth-confirmed propagation",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 30,
+        "peer_entry_z": 2.0,
+        "breadth_min": 0.75,
+        "max_hold": 60,
+        "max_events_sector_day": 2,
+        "exclude_target_from_peers": true
+      },
+      "requires_volume": false,
+      "id": "05ab932a23dc"
+    },
+    {
+      "family": "S09",
+      "name": "Slow breadth-confirmed propagation",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "window": 60,
+        "peer_entry_z": 2.0,
+        "breadth_min": 0.8,
+        "max_hold": 90,
+        "max_events_sector_day": 2,
+        "exclude_target_from_peers": true
+      },
+      "requires_volume": false,
+      "id": "5d6bc44d2897"
+    },
+    {
+      "family": "S09",
+      "name": "Slow breadth-confirmed propagation",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 15,
+        "peer_entry_z": 2.0,
+        "breadth_min": 0.7,
+        "max_hold": 30,
+        "max_events_sector_day": 2,
+        "exclude_target_from_peers": true
+      },
+      "requires_volume": false,
+      "id": "3fd89afce538"
+    },
+    {
+      "family": "S09",
+      "name": "Slow breadth-confirmed propagation",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 30,
+        "peer_entry_z": 2.0,
+        "breadth_min": 0.75,
+        "max_hold": 60,
+        "max_events_sector_day": 2,
+        "exclude_target_from_peers": true
+      },
+      "requires_volume": false,
+      "id": "688f31d61cb7"
+    },
+    {
+      "family": "S09",
+      "name": "Slow breadth-confirmed propagation",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "window": 60,
+        "peer_entry_z": 2.0,
+        "breadth_min": 0.8,
+        "max_hold": 90,
+        "max_events_sector_day": 2,
+        "exclude_target_from_peers": true
+      },
+      "requires_volume": false,
+      "id": "7e3bf4458b20"
+    },
+    {
+      "family": "S10",
+      "name": "Closing-window continuation",
+      "preset": 1,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "early_window": 30,
+        "entry_minutes_before_close": 60,
+        "max_entries_stock_day": 1,
+        "exit": "original_closing_liquidation"
+      },
+      "requires_volume": false,
+      "id": "580352097317"
+    },
+    {
+      "family": "S10",
+      "name": "Closing-window continuation",
+      "preset": 2,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "early_window": 30,
+        "entry_minutes_before_close": 45,
+        "max_entries_stock_day": 1,
+        "exit": "original_closing_liquidation"
+      },
+      "requires_volume": false,
+      "id": "1f9634d27da9"
+    },
+    {
+      "family": "S10",
+      "name": "Closing-window continuation",
+      "preset": 3,
+      "model": null,
+      "style": "long_only",
+      "parameters": {
+        "early_window": 60,
+        "entry_minutes_before_close": 30,
+        "max_entries_stock_day": 1,
+        "exit": "original_closing_liquidation"
+      },
+      "requires_volume": false,
+      "id": "ce54af8fa2d1"
+    },
+    {
+      "family": "S10",
+      "name": "Closing-window continuation",
+      "preset": 1,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "early_window": 30,
+        "entry_minutes_before_close": 60,
+        "max_entries_stock_day": 1,
+        "exit": "original_closing_liquidation"
+      },
+      "requires_volume": false,
+      "id": "f4fd2d963096"
+    },
+    {
+      "family": "S10",
+      "name": "Closing-window continuation",
+      "preset": 2,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "early_window": 30,
+        "entry_minutes_before_close": 45,
+        "max_entries_stock_day": 1,
+        "exit": "original_closing_liquidation"
+      },
+      "requires_volume": false,
+      "id": "9183f423cd90"
+    },
+    {
+      "family": "S10",
+      "name": "Closing-window continuation",
+      "preset": 3,
+      "model": null,
+      "style": "long_short",
+      "parameters": {
+        "early_window": 60,
+        "entry_minutes_before_close": 30,
+        "max_entries_stock_day": 1,
+        "exit": "original_closing_liquidation"
+      },
+      "requires_volume": false,
+      "id": "8b4e9611218f"
+    }
+  ]
+}
