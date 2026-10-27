@@ -1,0 +1,13 @@
+{
+  "view": "after_hours_premarket",
+  "year": 2022,
+  "seed": 287727767,
+  "chosen_epoch": 8,
+  "validation_mse": 21.924823760986328,
+  "parent_hashes": {},
+  "hashes": {
+    "287727767.pt": "69e380b71d2b882916df13423b99f2a5bea40763d6aa67853cc874ede07d7c55",
+    "287727767_predictions.npz": "b43288bb2cb85d3bf009172819b7065e5c8a4dd30951a9db9ea0c8b455d0484f",
+    "287727767_history.json": "2a65ef8895d3f77101fcafed7d7d7644208c7165232cdc55fd075d5b4673536d"
+  }
+}

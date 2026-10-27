@@ -1,0 +1,16 @@
+{
+  "view": "daily",
+  "year": 2022,
+  "seed": 7,
+  "chosen_epoch": 8,
+  "validation_mse": 21.90345573425293,
+  "parent_hashes": {
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\nasdaq100_historical_monthly_20261011\\2022\\think_mix_7_predictions.npz": "f43f8630d5ee8ada444fd26fd26ae12f06e5b09874992bfc2bde2d2dbe98ebd5",
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\nasdaq100_historical_monthly_20261011\\2022\\think_mix_7.pt": "7a640f2e8eeaf4930c1a9fafd84de651a62b3116265d9fd718669a6d74561c11"
+  },
+  "hashes": {
+    "7.pt": "6f1ace8de60674660b6d96e99d0d55baaf736a8eeec8120c45c55725214f4113",
+    "7_predictions.npz": "f43f8630d5ee8ada444fd26fd26ae12f06e5b09874992bfc2bde2d2dbe98ebd5",
+    "7_history.json": "b47906b5a31938d000a0913455855225b3496f140f5adae30eea5c0574951e95"
+  }
+}

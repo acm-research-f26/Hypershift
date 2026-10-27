@@ -1,0 +1,12 @@
+{
+  "ndx_reference_models.py": "1e25ed60e5d9f922f61cb2441a7a1232c1fcc033d28755a2abc00b87d8899535",
+  "ndx_reference_training.py": "8fa4b4d558ffccfcb6c84f568e5ff13f40a34b420996d3108f93a1193b9e7809",
+  "run_ndx_reference_networks.py": "afac7f432ad86b4f2a1ba019e052dd64d3a876658828c1a4c57fd1cd21214bfe",
+  "report_ndx_reference_networks.py": "04f4952cf3d2bc4dcf439d614bddd3d3e61f018c1cc584bf9227a99f2eafbbb3",
+  "test_ndx_reference_models.py": "65528ae71c85e88b6b423b4980625ed99a44285dfdaa6e197306bda62b6a4866",
+  "test_ndx_reference_evaluation.py": "38efff72da1166bc62f5c7f61042b30e5fa0829d86d0c339f9924b74c4d90dd8",
+  "fetch_ndx_reference_assets.py": "3f03ecab7c98a3cbfe589211bf97d17485aa5db0d22de5a186e15469193ac9d2",
+  "config/ndx_reference_networks_20261024.json": "1e6c4577e9bf0333f84f2da88576d74a6538c32bedeffa1b0b6e0f0b89bf5eaa",
+  "config/ndx_reference_assets_20261024.json": "190fa35bc1df7275a4715f3552f1843c225fca205e9ebbb82501dd307291b518",
+  "config/ndx_confirmation_gate_20261024.json": "a95aef76a05b84f4aadbd0f3d5f5dafd9921aa3acc78bb87f44559efe361ef1c"
+}

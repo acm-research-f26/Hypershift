@@ -1,0 +1,9 @@
+{
+    "d": 32,
+    "edges": 64,
+    "dr": 0.1,
+    "nh": 4,
+    "mode": "train",
+    "fusion": "sum",
+    "lr": 1e-4
+}

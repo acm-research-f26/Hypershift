@@ -1,0 +1,16 @@
+{
+  "view": "daily",
+  "year": 2024,
+  "seed": 97,
+  "chosen_epoch": 11,
+  "validation_mse": 22.17678451538086,
+  "parent_hashes": {
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\nasdaq100_historical_monthly_20261011\\2024\\think_mix_97_predictions.npz": "45fa71d6de07fbd44894cd560b0b6fd069362b7a645bb8c039890ecc051ec0c9",
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\nasdaq100_historical_monthly_20261011\\2024\\think_mix_97.pt": "3a6357a5069033a1d4842a7917a2aad176d17cd989b8422e434c5857bb557319"
+  },
+  "hashes": {
+    "97.pt": "bb82c68527e8bab6cc1de6e1df7241b4af202b164a84425ecc388c52b076a0ca",
+    "97_predictions.npz": "45fa71d6de07fbd44894cd560b0b6fd069362b7a645bb8c039890ecc051ec0c9",
+    "97_history.json": "7586aa01fb8fa25060f896c069840d5ae32ea36af78a53708fe5c0913b814577"
+  }
+}

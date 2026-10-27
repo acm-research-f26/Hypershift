@@ -1,0 +1,15 @@
+{
+  "kind": "dynamic_restricted",
+  "year": 2023,
+  "seed": 1828801906,
+  "chosen_epochs": {
+    "prediction": 1
+  },
+  "parameter_count": 25445,
+  "validation_mse": 39.199886322021484,
+  "hashes": {
+    "1828801906.pt": "d8b5bdf619a93c51df888d7ffae1d7a7ce50dfc83730f521a3882e04b9bcca68",
+    "1828801906_predictions.npz": "f215a0af3cbd74e40f853eab17c262b26a8b8b867e7575e4c582ea1ee204478c",
+    "1828801906_history.json": "9fcf3a7cc2480497b5fbeab31cf0811f26f1b4a95315a7c4179ec9d7ffadc748"
+  }
+}

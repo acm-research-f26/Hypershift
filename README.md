@@ -48,11 +48,14 @@ imports and actual source-hash checks, then removes unchanged copies. Edit the
 organized sources and stage changes after commands finish. Completed experiment
 sources and locks remain byte-preserved; use new declared runs for new research.
 
-Datasets, checkpoints and credentials remain local in ignored `data/`, `runs/`
-and `.env`. See [Alpaca setup](docs/ALPACA_15MIN.md),
+The [saved-artifact guide](docs/ndx_artifacts_20261027/README.md) indexes the
+committed reference-network, extended-hours and drawdown snapshots, including
+their checkpoints, forecasts and reviewed inputs. Other datasets and run outputs
+remain local in ignored `data/` and `runs/`; credentials remain in ignored `.env`.
+See [Alpaca setup](docs/ALPACA_15MIN.md),
 [dependency sets](requirements/README.md), [hardware](docs/TRAINING_HARDWARE.md)
 and [evaluation commands](research/evaluation/README.md). Cloning the repository
-does not supply the full market data, reference-source cache or trained checkpoints.
+supplies these published snapshots, but not all historical raw data or parent runs.
 
 Unrelated cohort/NYSE studies, retired-universe reports, decks and scratch work
 are preserved in [archive/](archive/README.md). Archived sources are excluded from

@@ -1,0 +1,58 @@
+[
+  {
+    "year": 2022,
+    "training_dates": 75,
+    "validation_dates": 49,
+    "test_forecasts": 51,
+    "training_first_signal": "2019-07-03",
+    "training_last_label": "2020-12-29",
+    "validation_last_label": "2021-12-27",
+    "test_first_signal": "2021-12-31",
+    "unobserved_training_labels": 1,
+    "unobserved_validation_labels": 3,
+    "min_test_eligible": 100,
+    "groups": 156
+  },
+  {
+    "year": 2023,
+    "training_dates": 125,
+    "validation_dates": 49,
+    "test_forecasts": 50,
+    "training_first_signal": "2019-07-03",
+    "training_last_label": "2021-12-27",
+    "validation_last_label": "2022-12-30",
+    "test_first_signal": "2023-01-06",
+    "unobserved_training_labels": 4,
+    "unobserved_validation_labels": 0,
+    "min_test_eligible": 100,
+    "groups": 156
+  },
+  {
+    "year": 2024,
+    "training_dates": 176,
+    "validation_dates": 49,
+    "test_forecasts": 50,
+    "training_first_signal": "2019-07-03",
+    "training_last_label": "2022-12-30",
+    "validation_last_label": "2023-12-29",
+    "test_first_signal": "2024-01-05",
+    "unobserved_training_labels": 4,
+    "unobserved_validation_labels": 0,
+    "min_test_eligible": 100,
+    "groups": 156
+  },
+  {
+    "year": 2025,
+    "training_dates": 200,
+    "validation_dates": 49,
+    "test_forecasts": 50,
+    "training_first_signal": "2020-01-08",
+    "training_last_label": "2023-12-29",
+    "validation_last_label": "2024-12-27",
+    "test_first_signal": "2025-01-03",
+    "unobserved_training_labels": 3,
+    "unobserved_validation_labels": 0,
+    "min_test_eligible": 100,
+    "groups": 156
+  }
+]

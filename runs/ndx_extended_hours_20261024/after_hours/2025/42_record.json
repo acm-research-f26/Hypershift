@@ -1,0 +1,13 @@
+{
+  "view": "after_hours",
+  "year": 2025,
+  "seed": 42,
+  "chosen_epoch": 7,
+  "validation_mse": 24.627649307250977,
+  "parent_hashes": {},
+  "hashes": {
+    "42.pt": "33af261aa29baff6373e36fd620e8e32577b0ac05fa8909a8fbd319603d96f67",
+    "42_predictions.npz": "fa60aeaa1cf374a0d0f94c6fb0fbd299baea147096137a7f59aecdcd590ed640",
+    "42_history.json": "832fadbed8f7ab74455e8f42b55fa749aa653a512ee827c6bf774047534f4eb3"
+  }
+}

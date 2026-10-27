@@ -1,0 +1,40 @@
+data:
+  history_window: 20
+  indicators:
+    close_sma:
+      medium_period: 10
+      slow_period: 20
+    macd:
+      medium_period: 10
+      slow_period: 20
+    mfi:
+      medium_period: 10
+      slow_period: 20
+    ohlcv_ratio:
+      period: 5
+    rsi:
+      medium_period: 10
+      slow_period: 20
+    trend_return: {}
+  max_slow_period: 20
+  n_step_ahead: 5
+  outlier_threshold: 20
+  start_train: '2013-01-01'
+  start_test: '2015-01-01'
+  target_col: trend_return
+  include_target: False
+model:
+  d_model: 32
+  dropout: 0.1
+  num_features: 17
+  num_heads: 4
+  num_stocks: 463
+  sequence_len: 20
+train:
+  batch_size: 1
+  epochs: 300
+  learning_rate: 0.0001
+  early_stop: 15
+  save_path: ./best_model_params/
+  seed: 42
+  confidence_threshold: 0.75

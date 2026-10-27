@@ -35,3 +35,18 @@
 /latest/** -text
 /archive/studies_20261025/** -text
 /config/study_layout_20261025.json -text
+
+# Preserve published forecast, checkpoint, input and provenance hashes.
+/runs/ndx_reference_networks_20261024/** -text
+/runs/ndx_extended_hours_20261024/** -text
+/runs/ndx_drawdown_20261026/batch1/** -text
+/data/nasdaq_monthly_pit/assembled/** -text
+/data/nasdaq_monthly_pit/alpaca_features_20261019/** -text
+/data/nasdaq_monthly_pit/extended_hours_features_20261024/** -text
+/data/nasdaq_monthly_pit/jkp_themes_20261024/** -text
+/data/nasdaq_monthly_pit/alpaca_15min/calendar_2018_2025.json -text
+/data/nasdaq_monthly_pit/alpaca_15min/calendar_provenance.json -text
+/data/nasdaq_monthly_pit/alpaca_15min/sip_raw_20180101_20260101/manifest.json -text
+/.cache/architecture_references_20261024/** -text
+/.cache/reference_dependencies_20261024/** -text
+/docs/ndx_artifacts_20261027/** -text

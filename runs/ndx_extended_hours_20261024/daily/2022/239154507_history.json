@@ -1,0 +1,102 @@
+[
+  {
+    "epoch": 1,
+    "training_loss": 33.247978363037106,
+    "validation_mse_pp2": 22.027488708496094
+  },
+  {
+    "epoch": 2,
+    "training_loss": 33.22322095235189,
+    "validation_mse_pp2": 22.01764678955078
+  },
+  {
+    "epoch": 3,
+    "training_loss": 33.19182011922201,
+    "validation_mse_pp2": 22.006855010986328
+  },
+  {
+    "epoch": 4,
+    "training_loss": 33.14672584533692,
+    "validation_mse_pp2": 21.994667053222656
+  },
+  {
+    "epoch": 5,
+    "training_loss": 33.07966283162435,
+    "validation_mse_pp2": 21.979990005493164
+  },
+  {
+    "epoch": 6,
+    "training_loss": 32.97613520304362,
+    "validation_mse_pp2": 21.961944580078125
+  },
+  {
+    "epoch": 7,
+    "training_loss": 32.80521224975586,
+    "validation_mse_pp2": 21.9395809173584
+  },
+  {
+    "epoch": 8,
+    "training_loss": 32.5484349822998,
+    "validation_mse_pp2": 21.910842895507812
+  },
+  {
+    "epoch": 9,
+    "training_loss": 32.259685363769535,
+    "validation_mse_pp2": 21.878719329833984
+  },
+  {
+    "epoch": 10,
+    "training_loss": 32.00833302815755,
+    "validation_mse_pp2": 21.852128982543945
+  },
+  {
+    "epoch": 11,
+    "training_loss": 31.87972796122233,
+    "validation_mse_pp2": 21.838165283203125
+  },
+  {
+    "epoch": 12,
+    "training_loss": 31.817306518554688,
+    "validation_mse_pp2": 21.831090927124023
+  },
+  {
+    "epoch": 13,
+    "training_loss": 31.661838836669922,
+    "validation_mse_pp2": 21.822465896606445
+  },
+  {
+    "epoch": 14,
+    "training_loss": 31.496479059855144,
+    "validation_mse_pp2": 21.821781158447266
+  },
+  {
+    "epoch": 15,
+    "training_loss": 31.289345372517904,
+    "validation_mse_pp2": 21.843088150024414
+  },
+  {
+    "epoch": 16,
+    "training_loss": 31.13290153503418,
+    "validation_mse_pp2": 21.908918380737305
+  },
+  {
+    "epoch": 17,
+    "training_loss": 31.22332265218099,
+    "validation_mse_pp2": 21.99998664855957
+  },
+  {
+    "epoch": 18,
+    "training_loss": 31.292863184611004,
+    "validation_mse_pp2": 22.1047420501709
+  },
+  {
+    "epoch": 19,
+    "training_loss": 31.19403263092041,
+    "validation_mse_pp2": 22.19072723388672
+  },
+  {
+    "epoch": 20,
+    "training_loss": 31.0192671585083,
+    "validation_mse_pp2": 22.25307846069336
+  }
+]

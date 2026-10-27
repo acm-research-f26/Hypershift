@@ -1,0 +1,15 @@
+{
+  "kind": "master",
+  "year": 2024,
+  "seed": 239154507,
+  "chosen_epochs": {
+    "prediction": 8
+  },
+  "parameter_count": 731156,
+  "validation_mse": 22.351314544677734,
+  "hashes": {
+    "239154507.pt": "07623a273dca825338707b8222cd45b6a41bd395367ee91d5cb652b9546a8185",
+    "239154507_predictions.npz": "aa330f7b56cfda6d0e1bf697140ec6bba4a8a5e4f4f663a98328c9d434460d3b",
+    "239154507_history.json": "9401b339ca77865f57c86e25b13d82d38752764fbf9803cc1671a1e346608fc4"
+  }
+}

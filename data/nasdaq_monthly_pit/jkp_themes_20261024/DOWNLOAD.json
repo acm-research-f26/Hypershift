@@ -1,0 +1,14 @@
+[
+  {
+    "file": "availability.json",
+    "url": "https://jkpfactors-data.s3.amazonaws.com/public/availability.json",
+    "sha256": "3a5647ad2c053c88410b4cdcddd0377405bb2cb30c3e3932905064d7ba322ca2",
+    "bytes": 287565
+  },
+  {
+    "file": "usa_all_themes_daily_vw_cap.zip",
+    "url": "https://jkpfactors-data.s3.amazonaws.com/public/%5Busa%5D_%5Ball_themes%5D_%5Bdaily%5D_%5Bvw_cap%5D.zip",
+    "sha256": "6d479c0ed02ec9f29827e010dafb9f2f3d606bed788ece289be2469398844051",
+    "bytes": 4438803
+  }
+]

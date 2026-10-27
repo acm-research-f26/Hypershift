@@ -1,0 +1,8 @@
+{
+  "status": "complete_pending_audit",
+  "fits": 120,
+  "accounts": 66,
+  "primary_contrasts": 9,
+  "timing": "09:15 data cutoff, 09:20 entry-day decision, entry-day regular-close fill",
+  "history": "previously inspected development"
+}

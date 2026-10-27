@@ -1,0 +1,13 @@
+{
+  "view": "after_hours",
+  "year": 2023,
+  "seed": 1868046758,
+  "chosen_epoch": 1,
+  "validation_mse": 38.763450622558594,
+  "parent_hashes": {},
+  "hashes": {
+    "1868046758.pt": "7223d39affb06ec7b477cc438cf58f3a862df8ca138d6280d82fe6bdabb8e670",
+    "1868046758_predictions.npz": "196db47a4e600f2a4ed240013d001ea043122f241eaeda59a76bc7336b0a59fe",
+    "1868046758_history.json": "f79634ba59e6c15051128e25dbcb67d400f507796df681754c402481f8efaac3"
+  }
+}

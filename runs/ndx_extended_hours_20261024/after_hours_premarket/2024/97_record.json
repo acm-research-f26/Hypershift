@@ -1,0 +1,13 @@
+{
+  "view": "after_hours_premarket",
+  "year": 2024,
+  "seed": 97,
+  "chosen_epoch": 11,
+  "validation_mse": 22.177993774414062,
+  "parent_hashes": {},
+  "hashes": {
+    "97.pt": "25a0cd5754a6ffd6fd77c0759f25be7ac7e49adf99fa49d79c85d1f5f5c88117",
+    "97_predictions.npz": "f8e4bfb9bd7c29f5b5bc896a92a3947125099a6325a057210b6f008a2600d829",
+    "97_history.json": "5be94533010a3650b5a253c645555539951245c48e0f601514833c251fb89032"
+  }
+}

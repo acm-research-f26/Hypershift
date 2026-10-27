@@ -1,0 +1,24 @@
+{
+  "comment_text": null,
+  "core-metadata": {
+    "sha256": "79529559045603ccd27713c844f2b57247c48e93135077bdb904bc53ed189403"
+  },
+  "digests": {
+    "blake2b_256": "87629773de14fe6c45c23649e98b83231fffd7b9892b6cf863251dc2afa73643",
+    "md5": "f38bb8b6b7244e8fd82572929fa30034",
+    "sha256": "919387eb55330f5757c6bea9165c5ff5cfe63a642682ea788a6d472576d81737"
+  },
+  "downloads": -1,
+  "filename": "einops-0.8.1-py3-none-any.whl",
+  "has_sig": false,
+  "md5_digest": "f38bb8b6b7244e8fd82572929fa30034",
+  "packagetype": "bdist_wheel",
+  "python_version": "py3",
+  "requires_python": ">=3.8",
+  "size": 64359,
+  "upload_time": "2025-02-09T03:17:01",
+  "upload_time_iso_8601": "2025-02-09T03:17:01.998293Z",
+  "url": "https://files.pythonhosted.org/packages/87/62/9773de14fe6c45c23649e98b83231fffd7b9892b6cf863251dc2afa73643/einops-0.8.1-py3-none-any.whl",
+  "yanked": false,
+  "yanked_reason": null
+}

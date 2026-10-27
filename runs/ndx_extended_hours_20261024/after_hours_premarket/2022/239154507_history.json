@@ -1,0 +1,97 @@
+[
+  {
+    "epoch": 1,
+    "training_loss": 33.24794296264648,
+    "validation_mse_pp2": 22.02750015258789
+  },
+  {
+    "epoch": 2,
+    "training_loss": 33.22297958374023,
+    "validation_mse_pp2": 22.017667770385742
+  },
+  {
+    "epoch": 3,
+    "training_loss": 33.19113176981608,
+    "validation_mse_pp2": 22.00690460205078
+  },
+  {
+    "epoch": 4,
+    "training_loss": 33.14518920898438,
+    "validation_mse_pp2": 21.994762420654297
+  },
+  {
+    "epoch": 5,
+    "training_loss": 33.07665364583333,
+    "validation_mse_pp2": 21.980173110961914
+  },
+  {
+    "epoch": 6,
+    "training_loss": 32.970497589111325,
+    "validation_mse_pp2": 21.9622745513916
+  },
+  {
+    "epoch": 7,
+    "training_loss": 32.79483019510905,
+    "validation_mse_pp2": 21.940143585205078
+  },
+  {
+    "epoch": 8,
+    "training_loss": 32.52877031962077,
+    "validation_mse_pp2": 21.911596298217773
+  },
+  {
+    "epoch": 9,
+    "training_loss": 32.22472831726074,
+    "validation_mse_pp2": 21.879552841186523
+  },
+  {
+    "epoch": 10,
+    "training_loss": 31.950969518025715,
+    "validation_mse_pp2": 21.853178024291992
+  },
+  {
+    "epoch": 11,
+    "training_loss": 31.793965276082357,
+    "validation_mse_pp2": 21.839561462402344
+  },
+  {
+    "epoch": 12,
+    "training_loss": 31.78510701497396,
+    "validation_mse_pp2": 21.826135635375977
+  },
+  {
+    "epoch": 13,
+    "training_loss": 31.443864720662436,
+    "validation_mse_pp2": 21.81779670715332
+  },
+  {
+    "epoch": 14,
+    "training_loss": 31.280012181599936,
+    "validation_mse_pp2": 21.829120635986328
+  },
+  {
+    "epoch": 15,
+    "training_loss": 31.09934679667155,
+    "validation_mse_pp2": 21.872661590576172
+  },
+  {
+    "epoch": 16,
+    "training_loss": 30.999351768493653,
+    "validation_mse_pp2": 21.926088333129883
+  },
+  {
+    "epoch": 17,
+    "training_loss": 31.022923342386882,
+    "validation_mse_pp2": 22.017518997192383
+  },
+  {
+    "epoch": 18,
+    "training_loss": 31.10685503641764,
+    "validation_mse_pp2": 22.14754295349121
+  },
+  {
+    "epoch": 19,
+    "training_loss": 31.07017879486084,
+    "validation_mse_pp2": 22.25429344177246
+  }
+]
