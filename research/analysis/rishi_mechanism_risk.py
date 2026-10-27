@@ -51,6 +51,13 @@ def calendar_attribution(path,dates):
         log_growth=float(np.log1p(s.net).sum())) for y,s in frame.groupby('year')])
 
 
+def write_paths(path,paths,dates):
+    with Path(path).open('xb') as stream:
+        np.savez_compressed(stream,ids=np.asarray(list(paths),dtype=str),
+            dates=np.asarray(pd.DatetimeIndex(dates).strftime('%Y-%m-%d'),dtype='U10'),
+            returns=np.column_stack(list(paths.values())))
+
+
 def qqq_data(data):
     root=Path(data['manifest']['root']);dates=data['panel'].dates
     close=pd.read_csv(root/'etf_adj_close.csv',index_col=0,parse_dates=True)['QQQ']
@@ -152,7 +159,7 @@ def main():
     pd.DataFrame(annual).to_csv(out/'CALENDAR_ATTRIBUTION.csv',index=False)
     pd.DataFrame(calibration).to_csv(out/'FIXED_CALIBRATION.csv',index=False)
     pd.DataFrame(parity).to_csv(out/'SOURCE_REPLAY.csv',index=False)
-    np.savez_compressed(large/'PATHS.npz',ids=np.array(list(paths)),dates=dates.strftime('%Y-%m-%d').to_numpy(),returns=np.column_stack(list(paths.values())))
+    write_paths(large/'PATHS.npz',paths,dates)
     covariance=[]
     for candidate in ['E','B','D','REV5','Hlabel','EW','QQQ']:
         group='benchmark' if candidate in ['EW','QQQ'] else 'ten_seed'

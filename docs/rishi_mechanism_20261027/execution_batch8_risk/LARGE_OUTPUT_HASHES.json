@@ -1,0 +1,2639 @@
+{
+  "files": [
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__fixed__flat10.csv",
+      "bytes": 141076,
+      "sha256": "d833a61d0998c8e8af0f99f43a2e612e792a6b29082f9cf3afddfa8a97a1903f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__fixed__flat20.csv",
+      "bytes": 141106,
+      "sha256": "091fbf780411c1d1c996542fca197a3508040b4c875847779e9704549e29ba6b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__fixed__flat30.csv",
+      "bytes": 141040,
+      "sha256": "d1bd77cbc2b336c3e29b4332acbfce41012d2371651d212fb93c04f996eed382"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__fixed__modeled1.csv",
+      "bytes": 141166,
+      "sha256": "967aa81bedb5f75aba8bdde6e0ea6187216afb1ab6a2c3ad1017235e9372dfa1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__fixed__modeled2.csv",
+      "bytes": 141080,
+      "sha256": "fc3f2a7d61485406243ceb8227ea075a0f87c0bfda0c10d7f5b70ff1751ce541"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__fixed__modeled4.csv",
+      "bytes": 141020,
+      "sha256": "9092142be65e27d6064895557c48c75f9a4b99e3c66d4510e5766ae5cac48e38"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__fixed__zero.csv",
+      "bytes": 138176,
+      "sha256": "0ca500115b990925d8caa4bcfcc02e39d99a29870b540d375f9ba3c8f47aa64e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__full__flat10.csv",
+      "bytes": 120946,
+      "sha256": "3fd4288809a7db833c22269a76832399f29f16436cd4c67d27f8336c3539f528"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__full__flat20.csv",
+      "bytes": 120842,
+      "sha256": "19aedb1a0bbcb961e07b46a8e1d41ef5ede1d2231f8c4ed96aad54c32b92e8da"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__full__flat30.csv",
+      "bytes": 120480,
+      "sha256": "e6b68ab6ae3452492c3486ef80ef271e7f0dfa9c4e78293d7c252d27bd447e89"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__full__modeled1.csv",
+      "bytes": 127950,
+      "sha256": "a3c82ea996ab0ff9a3aacb3c1e5025882a2b756c9fd1c7fb89ef86c0a7a168f4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__full__modeled2.csv",
+      "bytes": 127739,
+      "sha256": "c68cfe8977951aca5fcfc84b4afdc9427fdb4b2af39a9067875a60e9e9ff2cb9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__full__modeled4.csv",
+      "bytes": 127625,
+      "sha256": "0bea8987f7e556965a22d3a934d820f0eea379a894fd25acfbaa529db0581977"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__full__zero.csv",
+      "bytes": 117936,
+      "sha256": "b9a845e8207e107120f7d34a5911a5f777be7cf41a4d307ccbc536ea6adf2b21"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__vol20__flat10.csv",
+      "bytes": 137663,
+      "sha256": "818ba7c59f4fd13334d5d41fa53a9df00712447cbaff5c04a13352902a758a82"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__vol20__flat20.csv",
+      "bytes": 137573,
+      "sha256": "a13d519816622cb65233e4f7fef99307578f17db2359deb850cffc8bdd96966b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__vol20__flat30.csv",
+      "bytes": 137523,
+      "sha256": "1698a306d6a3aed5358be27a8a46c87b4b0ac0c7fb54008d0f0a48bc64b5bb40"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__vol20__modeled1.csv",
+      "bytes": 139493,
+      "sha256": "e209d4051f7df4c1e869217e4f33e7e7f44fc1b1c6091f5f279237c43cc095b1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__vol20__modeled2.csv",
+      "bytes": 139440,
+      "sha256": "48773901b4c29a85d8fb62b4a762f11b09607c0a6c8b9c5626fe521595f87519"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__vol20__modeled4.csv",
+      "bytes": 139336,
+      "sha256": "ca2a8828ba00840891d91263dc78a63a2079dde6404eff85dce5d2a3507503fe"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__new_five__equal5__vol20__zero.csv",
+      "bytes": 134735,
+      "sha256": "75292cc6238fb49ecf3e37170f45ac2e5a9a6563dc9c82be5ce6127157f753c8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__fixed__flat10.csv",
+      "bytes": 136441,
+      "sha256": "e545a5f2072e70ebc0f54cf42955bc9c7ef2d077d9bf28f8978c1d8c5005bcc9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__fixed__flat20.csv",
+      "bytes": 136191,
+      "sha256": "8a00f0d6e38181edc11c3817d4c51668fae7f66ec4773d81e42a2576b081a954"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__fixed__flat30.csv",
+      "bytes": 136236,
+      "sha256": "a3206a6d763a4f4d5f8d52fa204e551918bbe897ac788ea65a9ac5b1f84a61eb"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__fixed__modeled1.csv",
+      "bytes": 138593,
+      "sha256": "17cf1a74ca478b79cc5faea0d292c54a4d114c2c2558b3ca60374eaadc7d61f8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__fixed__modeled2.csv",
+      "bytes": 138424,
+      "sha256": "037b0651fc7214cf517a998aea182965db95f1ff523150c0796d371ef53d3e30"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__fixed__modeled4.csv",
+      "bytes": 138414,
+      "sha256": "78a83df696fc7ede5aa2486086cf471eaf7d9d0eed29753fc8806da66e1c6cda"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__fixed__zero.csv",
+      "bytes": 133597,
+      "sha256": "80fc547281cf21302be2a80556e08264921b4bf0944b99dc492a6543652c30d3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__full__flat10.csv",
+      "bytes": 121411,
+      "sha256": "e2014cc267006e5fead2ed8817cbe0f2926744f209c2ac5bfab4d844adf78342"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__full__flat20.csv",
+      "bytes": 121727,
+      "sha256": "8992291a790500c484bf2628c4bee85492a17dd4df9d844f29a4ba6d064615c8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__full__flat30.csv",
+      "bytes": 121179,
+      "sha256": "776acede51d6a698f334b11e758f3055e2f172413ef560aecf7b7ab3e6d03e9d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__full__modeled1.csv",
+      "bytes": 127848,
+      "sha256": "6138a8a4ed12920c63413449841e139a16a64ea90885af6d5301e5a435f7e77c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__full__modeled2.csv",
+      "bytes": 127748,
+      "sha256": "74a8b79a404f289e37517a9465c7434b89547150857085c847a0bec6d7ce8035"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__full__modeled4.csv",
+      "bytes": 127594,
+      "sha256": "76e075709085d923d1bbf041e655251d61156ca1e928d1289642dda40e1f2218"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__full__zero.csv",
+      "bytes": 118896,
+      "sha256": "76615c3130a4bbae5cefe713ec30e756617c82955d7b96bf28291d3739454505"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__vol20__flat10.csv",
+      "bytes": 136797,
+      "sha256": "258bc77dbb98496248c77fe5816d4bdb5547c3eb99c2b3f9c7be47064e1b689c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__vol20__flat20.csv",
+      "bytes": 136603,
+      "sha256": "85e445166517810bfe501c9c704a05352e1e60816481a6c2e8ce296dc43a33d5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__vol20__flat30.csv",
+      "bytes": 136643,
+      "sha256": "83997461bd1157b984989f21ef6cd7647143879a8e101d9a0fc9d18f4d82e2ab"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__vol20__modeled1.csv",
+      "bytes": 139031,
+      "sha256": "48f6d01e17c7f4368a7947d3ebe88c285bf96095f8ff32a8d6096ef28f544afd"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__vol20__modeled2.csv",
+      "bytes": 138946,
+      "sha256": "a7ea21c2de130e8137cc8081248a0af94419a0004f958b64a11d61f268e5f57d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__vol20__modeled4.csv",
+      "bytes": 138950,
+      "sha256": "d3650066086ba48b9e2944ebebd9bca33dea648a9b61a325e272ccca56095bb6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__original_five__equal5__vol20__zero.csv",
+      "bytes": 133871,
+      "sha256": "39e8e5326f2ddc5d7a908b77aef2fe4a60efb1293a9d076dd19ceda8ecdcff64"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__fixed__flat10.csv",
+      "bytes": 141582,
+      "sha256": "16dce91c321ff102dadbf5f3e7feeb3cf1d21dd0154f9cd7eeb243830c7e5178"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__fixed__flat20.csv",
+      "bytes": 141565,
+      "sha256": "d585ba21814e8b13da0fd339d6ed73c6b76c4a6576d5c77b5672ec2aff8c054a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__fixed__flat30.csv",
+      "bytes": 141590,
+      "sha256": "3677f0f358288bd86907e68eb9e5ef08693233790eb79a516428545b3e47c5bb"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__fixed__modeled1.csv",
+      "bytes": 141537,
+      "sha256": "00a9df2565faad8932dc24394251a668d54a4565120c6c35defe8a585b31e307"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__fixed__modeled2.csv",
+      "bytes": 141565,
+      "sha256": "ee9f97d8fde6b278d18a11ccb397414ce0df76e09cb0b8a9cf618a72e3e67c3b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__fixed__modeled4.csv",
+      "bytes": 141546,
+      "sha256": "325e1be1d79a2fba5249ebe00197632445cf2e713ef59837f7f88d668e98ca8e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__fixed__zero.csv",
+      "bytes": 138697,
+      "sha256": "c0232d3d759009fc8c473f390bcb69bbbcd7ddc649aa2a89b46405aaf8b474c6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__full__flat10.csv",
+      "bytes": 121858,
+      "sha256": "7b96c0f5e880d137e5b6cfaad76c557cf8ee0730c53b47c8bbbbd8500e275812"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__full__flat20.csv",
+      "bytes": 121889,
+      "sha256": "47d3eb0735239d5b1e3db9e343ce974c66d20c5c24407cf219d209b4108effea"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__full__flat30.csv",
+      "bytes": 120943,
+      "sha256": "079f56f8bed7855ca9c7b115afa128faadb39b88e60d63ea3b6db27cd540314c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__full__modeled1.csv",
+      "bytes": 127878,
+      "sha256": "8b2ef031a09d74ffd3c61b934a5f2843a8208ac126a667200d98f86e053ce674"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__full__modeled2.csv",
+      "bytes": 127772,
+      "sha256": "6d4cb4f911ec0fe758ee248d115cdfbd2836e1d8d24c377ece59ee18ebb8135d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__full__modeled4.csv",
+      "bytes": 127416,
+      "sha256": "9e22c5fc373a60bb31a130fed24364df79fcbce191fcb5cdfe84e273ff077024"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__full__zero.csv",
+      "bytes": 119022,
+      "sha256": "3fef17c9d0d560444eac607b0ca81399ec6d9c47db81858ab3682b47f8b20280"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__vol20__flat10.csv",
+      "bytes": 138838,
+      "sha256": "38661b25b6b536c1ca5bad49f979552d04c9a569c456c225ff9a175e5e3a287a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__vol20__flat20.csv",
+      "bytes": 138629,
+      "sha256": "af19d553c6b4e596e328b6afa4d8ca9d114782becc0daa7eb775e2c0f50b8c34"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__vol20__flat30.csv",
+      "bytes": 138662,
+      "sha256": "86d6e17a474c3ca815ea7cf4b64c2af34e7f5265e82e41db096b53abe809d871"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__vol20__modeled1.csv",
+      "bytes": 140088,
+      "sha256": "c15e85623b54b714e1b86cbad359cd4200c58f3a7801ddfe6ca81acbf76304bf"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__vol20__modeled2.csv",
+      "bytes": 140150,
+      "sha256": "e9b0816dee1d6094b1043eca36c16f43f39685d81f3de4d88bb6fc402b771c47"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__vol20__modeled4.csv",
+      "bytes": 139980,
+      "sha256": "9bb5be13c00f4a558680ec6d6ffde0d015e67774c5653a2709a47cc80549d4a2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\B__ten_seed__equal5__vol20__zero.csv",
+      "bytes": 135566,
+      "sha256": "b5db8ff94a7650c2c13e83df9e8170939a5a4f420fa462fbb339f85db646b5df"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__fixed__flat10.csv",
+      "bytes": 141892,
+      "sha256": "9d0866d42e9fe76748ae7505f01af8763b5091ae0d32f5b38ef1e219e5f4855b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__fixed__flat20.csv",
+      "bytes": 141836,
+      "sha256": "bf907dc3640f3bb8d5a95aa7a572844d7fee3c08084003009843c2962d63702f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__fixed__flat30.csv",
+      "bytes": 141639,
+      "sha256": "4a5f7f4026485284ef51a2d4ce7bfcc93cc7d167cb8add143abfb04966f0259e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__fixed__modeled1.csv",
+      "bytes": 141919,
+      "sha256": "a85ccc58078587b6de630abf04fa1cc451eaefa238f8c521db0e8a5b490ec1a5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__fixed__modeled2.csv",
+      "bytes": 141927,
+      "sha256": "25f9512e378905837aef1c1f3790104543f033872cabcaf2c6885732eb7ad6f8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__fixed__modeled4.csv",
+      "bytes": 141720,
+      "sha256": "1e119fcae22c294f8c7d1767dba172750b084ea69eaea611c65c89d29fa86e92"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__fixed__zero.csv",
+      "bytes": 139136,
+      "sha256": "ae5f7c5f8944d7ae86f4537a60a425124c039cb8340d7deb99f328a695b0d7a4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__full__flat10.csv",
+      "bytes": 123171,
+      "sha256": "e884e3a8c0a7f6539ad8bd57fdaf36a451f7ec6d3237ec3ed582189737e51d32"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__full__flat20.csv",
+      "bytes": 122201,
+      "sha256": "7bdcc919ffe0c01dde7dbdfd40a4a23edb8bb15b54b31181ec18abb681000d1f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__full__flat30.csv",
+      "bytes": 122076,
+      "sha256": "b06d419a1f95656295d9cc3ee921d478f6b64f35c1aca60026ce3df2c8bc97bf"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__full__modeled1.csv",
+      "bytes": 127816,
+      "sha256": "a600269fdc88e64eab7f315ca3e239da4877e3a4cd9e70e7ed7cbc708e4a03bf"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__full__modeled2.csv",
+      "bytes": 127665,
+      "sha256": "459cb2a3100135dcd442bcb4ddbe389eb66fbbc41f01d10b42979c2d579fd235"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__full__modeled4.csv",
+      "bytes": 127233,
+      "sha256": "c3e665c8342d17157deea202a3d99f0337e10cbd533b36c1199a2c68ddc00298"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__full__zero.csv",
+      "bytes": 120406,
+      "sha256": "aa3dd905e124c8ddf9894559434334687c3dc608acb0747fe92560151ac266d5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__vol20__flat10.csv",
+      "bytes": 138597,
+      "sha256": "4dcb338785ff0ecaaacda0d3bf0127ecf7b6bbd2a67f7f6ed6848ad6160c2edd"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__vol20__flat20.csv",
+      "bytes": 138686,
+      "sha256": "b8d1f5dd67f4a9369fcbf9ee0447942f0ac840818ef6088ac6cc7e4a28e7c059"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__vol20__flat30.csv",
+      "bytes": 138558,
+      "sha256": "a27978b31baa6213451faf87ffb4989409ce1266ef53d4dca0ad3f1b98366148"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__vol20__modeled1.csv",
+      "bytes": 139932,
+      "sha256": "17892fe5e382fda549ec6e0b1d4a52cebaad24b9c7ad74c2c59c8d789ac8ae1e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__vol20__modeled2.csv",
+      "bytes": 139798,
+      "sha256": "354b12c5098f2f0dd980a947744ce0fac6fd137321352dd5713bd4ad6c738307"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__vol20__modeled4.csv",
+      "bytes": 139618,
+      "sha256": "cb9a3e92b757a0b4130d6e45479d56f42b91b6c6e2316ac82030143e528f2d1e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__new_five__equal5__vol20__zero.csv",
+      "bytes": 134890,
+      "sha256": "20c2e0cf3c701b7236070687925f1fe92170642b6a77be318a63505c34cf1f27"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__fixed__flat10.csv",
+      "bytes": 142082,
+      "sha256": "8e261405c540b845fb47c0d187cbb905195b594a8524b00d9ab4aecb1b35f5bc"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__fixed__flat20.csv",
+      "bytes": 142001,
+      "sha256": "186526a11aad63510c88c575ee2f1c214e3278b08db74cf4639f3d932056df64"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__fixed__flat30.csv",
+      "bytes": 141975,
+      "sha256": "8ec42ac9302a398c5cb664a42d479f812d47ec56b08986ed77f53fb3bac81e74"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__fixed__modeled1.csv",
+      "bytes": 142161,
+      "sha256": "812c18882047d2f02661fd0207dc7d602b8b658b022c82e33190293ebe66edb3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__fixed__modeled2.csv",
+      "bytes": 142125,
+      "sha256": "c60647979fa9e5e7f4331892a4656152d5bff3d9fa926adae4c9e3050f10c1f2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__fixed__modeled4.csv",
+      "bytes": 142004,
+      "sha256": "7e7c695d221743ef9f89372614da70a9371706a5bde92f4b978322f63c9fa691"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__fixed__zero.csv",
+      "bytes": 139293,
+      "sha256": "4365f1a426748a66e8c80342742408b9351951e132cca7c9ea0ce4729b9857b7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__full__flat10.csv",
+      "bytes": 121503,
+      "sha256": "860a330b450d2752a2598cf8ca6a82f1cd9818e413307e8c503d7e2ee8939b9c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__full__flat20.csv",
+      "bytes": 121227,
+      "sha256": "f84ce34261bf95807d02ce408a8645bc9512d8cc9c90d122cb690a36e8eff69e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__full__flat30.csv",
+      "bytes": 120836,
+      "sha256": "8049ecb10cf3d2cdcdc02f7e8f2183b4744f512e51cb523e7249c696510ff021"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__full__modeled1.csv",
+      "bytes": 127934,
+      "sha256": "733008fb2157ec2b93e012cb5daf28a6943a1fc16f0f43e67c5b36347edcebe6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__full__modeled2.csv",
+      "bytes": 127821,
+      "sha256": "ea68fa3a51fda03df395b3230c2acc0ea62aed8f6a4ce475b086e1cba8797da7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__full__modeled4.csv",
+      "bytes": 127820,
+      "sha256": "56f8eaf1696898887c992950d11cd6acfdcb29647fa38facbebab56d761bd150"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__full__zero.csv",
+      "bytes": 119052,
+      "sha256": "62cbff76550afd8b972a0e7ddc2e67a1c7853c3db7d80ca2146eeba3cc9d61a2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__vol20__flat10.csv",
+      "bytes": 136283,
+      "sha256": "8488462f4fcfc2ecb0044ebc115e6bd60a09b868d51e92a860da991930793a28"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__vol20__flat20.csv",
+      "bytes": 136584,
+      "sha256": "5a694138dda4f152f7067f9ac65c6d2247cb2a228fc0d4d0d509ce38b0575572"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__vol20__flat30.csv",
+      "bytes": 136207,
+      "sha256": "b937e8294fa36ba3b349ced32e96b7f76fc6b5c9fa8212e0b2ec3c26c6fb17c7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__vol20__modeled1.csv",
+      "bytes": 138744,
+      "sha256": "31287700fbf1109cd298460fecb8263908a41ced520eda5719c3c7004175fd44"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__vol20__modeled2.csv",
+      "bytes": 138736,
+      "sha256": "468f332e28a53684ceddb7848068e3addb74f548ea8b31a6845375c3e2b2c3b2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__vol20__modeled4.csv",
+      "bytes": 138712,
+      "sha256": "220deff01e43da44441aef7c39289d9e16df7b8d39fdbd0ef81650aa43748ac8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__original_five__equal5__vol20__zero.csv",
+      "bytes": 133155,
+      "sha256": "eb6e68adc575dfa0d5cb096343257c91d8f4288f478224ab0497361f42fc3e6a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__fixed__flat10.csv",
+      "bytes": 142001,
+      "sha256": "4dff56d9cfe88b612809e41bd6ef6fa0a9255df1f1abc7580d01faf17266ca8a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__fixed__flat20.csv",
+      "bytes": 142118,
+      "sha256": "a7a816d78ced91da6a0f4fe770a323d0e1ca4fe3b8a4be09684563ebcf294f27"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__fixed__flat30.csv",
+      "bytes": 142197,
+      "sha256": "dbfa7a0373fe81e81fb4f60758331cc0331c198216f50dd47bfafc3efc1e962a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__fixed__modeled1.csv",
+      "bytes": 142172,
+      "sha256": "0b2e563a644edaa19075e5be4c0a7920044b0fa76903759a1e16e2e3c03ce397"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__fixed__modeled2.csv",
+      "bytes": 142244,
+      "sha256": "6919f90940d59dcca02dd214f6087829774cb77d5e005f0ded45a0356266eb15"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__fixed__modeled4.csv",
+      "bytes": 142144,
+      "sha256": "1ad30970fad7ce8b6ff8d409a9e7634994ddeb25f6ed5cc879b074330807e380"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__fixed__zero.csv",
+      "bytes": 139216,
+      "sha256": "0da76d14c4e6f4b3d820fe5f69a1c8c9ed2c38d1993ef3acba30c4c75d28945c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__full__flat10.csv",
+      "bytes": 122942,
+      "sha256": "0dad7ec8954f4cffc11a9b1b9b9b53e119f2c3301fd8d169f0d8b5935851543c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__full__flat20.csv",
+      "bytes": 121965,
+      "sha256": "fa7c0ed26a0b921e9b25e5864f7189ff3dd51b4ba340c1d283c6af0872f0d5cc"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__full__flat30.csv",
+      "bytes": 121809,
+      "sha256": "d8a462fa66b89de4accb5895300f149b284f84da3d3ac3d8aee9e74bc2d51d8e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__full__modeled1.csv",
+      "bytes": 127872,
+      "sha256": "f49c9fd38eaa17cf5000112e4942c90d86226dcee76ae2145050315b5e9c9b3a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__full__modeled2.csv",
+      "bytes": 127756,
+      "sha256": "6e1962ba1a87cc37531d6ee7ab4ec3e3da42bf82f68921045a839944bcb62fff"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__full__modeled4.csv",
+      "bytes": 127596,
+      "sha256": "0f72f20ac3ede3702d4f01e379649e8fe6a97d9b26a6567ba310f0e44e278c90"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__full__zero.csv",
+      "bytes": 119245,
+      "sha256": "33b04176d3407e1a8527bfca546e1b18e12bb016acfb708dc6591a4a76907f94"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__vol20__flat10.csv",
+      "bytes": 139210,
+      "sha256": "7b9dfa3088b1a0b4d67c8ee724f89a4906598e9b41e1bcd50dee10f95ad77cb2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__vol20__flat20.csv",
+      "bytes": 139036,
+      "sha256": "807d049b7b09e80f6db8e88849d4a062f7a3f2cbb0f5ea66a191c7acf7aa2bff"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__vol20__flat30.csv",
+      "bytes": 138701,
+      "sha256": "c967eab1e4fd6b8dec6a50ff8a8c29bab0d1be97ad88d1c7d1a48ce317c92bb0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__vol20__modeled1.csv",
+      "bytes": 140171,
+      "sha256": "132342be397245418ffc2684ed602cf55be53a1ac2b688d20f20269c79972b4e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__vol20__modeled2.csv",
+      "bytes": 140199,
+      "sha256": "180b21e282180abfebbf7b55b8c7ee50dc7a3f4f7498f103f4f3d4645d0e14bb"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__vol20__modeled4.csv",
+      "bytes": 140279,
+      "sha256": "36cc69b4bce9a20743eeaa7ecf233ca9c775d8dd8fd0201d072e23648b80e13c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\D__ten_seed__equal5__vol20__zero.csv",
+      "bytes": 136090,
+      "sha256": "6d3c8e44876743cbc07fc3c23686646ce829aa69e0c7b24a499dc81c9defe4c0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__constant75__flat10.csv",
+      "bytes": 128062,
+      "sha256": "f759e20597c7d3133318db92b57678b2d1406a47fe279d7b0434f7264e8db1a3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__constant75__flat20.csv",
+      "bytes": 128134,
+      "sha256": "dc2b85d46467887e0b53ee712c43d2f540bfd88434032e8b2ea73be2a1bae9e6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__constant75__flat30.csv",
+      "bytes": 128066,
+      "sha256": "5bef2daf173a15811a929f3b01013d63b0ec3fddf537fbdea3fb1f62d3bb741d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__constant75__modeled1.csv",
+      "bytes": 128165,
+      "sha256": "e4eefcf8593dd4072a0fbdfe768c1d6803ac4f074866e5e25186aead13c36f7a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__constant75__modeled2.csv",
+      "bytes": 128192,
+      "sha256": "9f6718fe2cecead3b51d3ac15eb482ee6e955d50ed5dce75c963c98cb1ba5cd9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__constant75__modeled4.csv",
+      "bytes": 128040,
+      "sha256": "8a3c859469fc89b68393c39e5a5e079bd8d1d071fff795c6d530eb758695a6c8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__constant75__zero.csv",
+      "bytes": 125204,
+      "sha256": "0b52e1dcd8064fc2d85d1e384f7e611bc6982a98cc91976d429675e0321c8235"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__fixed__flat10.csv",
+      "bytes": 142072,
+      "sha256": "9227609ab9987ca5f56fe4d3ab4ae17ce45578f5c7885c26b71cf47804c7e71b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__fixed__flat20.csv",
+      "bytes": 142076,
+      "sha256": "670eae521a3f41a0811733bea337e1a9dfe77a246b82e1368e6359225f5df16e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__fixed__flat30.csv",
+      "bytes": 142050,
+      "sha256": "6acb0994126d5d65013c2d3756d22ce3493be691ab0402c3cf2351f9da76e23f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__fixed__modeled1.csv",
+      "bytes": 142115,
+      "sha256": "f85125e51e294552f0cc805235150b9944e48311e46f8b8efe388c9dea000d2d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__fixed__modeled2.csv",
+      "bytes": 142060,
+      "sha256": "5ef087703aa8807862a68be530f9207d801149ceff040a2b32785d5d519f63e4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__fixed__modeled4.csv",
+      "bytes": 142104,
+      "sha256": "d927f6ba45deafb59cdbf90af0d52bf5e054ac8bd63ad01211eb1c45236968d0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__fixed__zero.csv",
+      "bytes": 139123,
+      "sha256": "6220d5577ac7b67ddab2a21d6867f5c2c04d8dd0a5731706afa8990f0856de18"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__full__flat10.csv",
+      "bytes": 122376,
+      "sha256": "f3c2242b5c1082ce905c52934666f88b8f187813b03164a80f0d74d47aefc148"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__full__flat20.csv",
+      "bytes": 122515,
+      "sha256": "a1d1e5d075be9b7e868dfdcd5035828591ede1a5f302d119cad317eba7aea4f1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__full__flat30.csv",
+      "bytes": 121467,
+      "sha256": "9c4988ebeb1d3c9ce667c27fa9996d84336abb719533386c219991e72ce4a2c2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__full__modeled1.csv",
+      "bytes": 127636,
+      "sha256": "1839a5c54416483e5c36bfe2d2bc5a86f5c273807575da170e409d89e4ffb873"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__full__modeled2.csv",
+      "bytes": 127535,
+      "sha256": "278f86cf575df05c2924317dcf66139ca0ddb63c2c057be42463bdfcaaf0bcc6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__full__modeled4.csv",
+      "bytes": 127520,
+      "sha256": "50e18dd2d490b385b361813327f63670d20bdf4218dc9d5002b6dae636a432e5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__full__zero.csv",
+      "bytes": 119632,
+      "sha256": "2acd3a2185af5150d10b0c8f7054a2bd4ab25adfa99348385ec5189d9dab4db4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__ma200__flat10.csv",
+      "bytes": 124146,
+      "sha256": "c880f55a58813fddd6ae3d27adf12bb68fbafbb8cf8820efb208bc5d941f4b69"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__ma200__flat20.csv",
+      "bytes": 123801,
+      "sha256": "60bcb06121246d0faa15d2a6b896b06a3379a412e61c051471c6b91392ea34a1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__ma200__flat30.csv",
+      "bytes": 123415,
+      "sha256": "ba8183ee732b9521e7b8ab680527503420427a29b393d1091e77af9a05fa1cc0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__ma200__modeled1.csv",
+      "bytes": 127586,
+      "sha256": "ef23bd823a88a383d900c729546c0e5d67d1a423294326bccc1865e82a9ea055"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__ma200__modeled2.csv",
+      "bytes": 127540,
+      "sha256": "9fda882f9001a1af13fa8b1bf986d2b4be8080eb87fa260f4ccb902fc79c9bbc"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__ma200__modeled4.csv",
+      "bytes": 127431,
+      "sha256": "3947988ae530da3de6a70f1d4a12e3389a3e18b32df334bf2e76dc2f9e1f2890"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__ma200__zero.csv",
+      "bytes": 121365,
+      "sha256": "60da48af41dcbeb7f6abc0926891f6c02816237dd0658e7f33d08c98881d2446"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol20__flat10.csv",
+      "bytes": 139692,
+      "sha256": "0019fab8d547447da234e2f1c2a6d02e178996c622c338a583152b74b4a4619a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol20__flat20.csv",
+      "bytes": 139495,
+      "sha256": "646a4d7501a153af02514ab979303038bff5ddae01f276bc53235587da3f9dcd"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol20__flat30.csv",
+      "bytes": 139569,
+      "sha256": "43824fa162207d2725b9753d964269100a0aaa82f2088fe15511178e89d0bcf1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol20__modeled1.csv",
+      "bytes": 140509,
+      "sha256": "5cff98afb27404d3458738312d09b31fa7d9f7f000da21f19ba5d0412867463b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol20__modeled2.csv",
+      "bytes": 140436,
+      "sha256": "dc8c85fc813b5634b07a8f26d31d53955a4d4bec171a58bb1f53ba28ea803198"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol20__modeled4.csv",
+      "bytes": 140490,
+      "sha256": "9d3b4b269ca245f182211e259d39f579e87d3f24598a925ec40734481f080063"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol20__zero.csv",
+      "bytes": 136834,
+      "sha256": "3044747373230ac7ba4634aed89ff6fbcefe43fc9f1fafa24e474a9ce0a4978a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol25trend__flat10.csv",
+      "bytes": 132459,
+      "sha256": "0f8c1bdf7d3169aaa64142a70887bdc5e4f8c74e7ae80026336d1e46daf0a487"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol25trend__flat20.csv",
+      "bytes": 132720,
+      "sha256": "a6a5793f2337ec2efe9081cec660fa4a2fe83e09e9394d9efc3d8d26033b48e3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol25trend__flat30.csv",
+      "bytes": 132090,
+      "sha256": "acd67846d95a697a0ed821f4524947805bac409cc4c90c7f45ca18b4bf83b9e7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol25trend__modeled1.csv",
+      "bytes": 134395,
+      "sha256": "1e0b720b642b31618e7a61717c8583ed3b0294d352f5a2fae4f6ae1c49cb0d60"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol25trend__modeled2.csv",
+      "bytes": 134302,
+      "sha256": "b731aee2d4e1392567f9f24cf5393a0f7345a41c5845685f8a3e6686fdd0c2d0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol25trend__modeled4.csv",
+      "bytes": 134371,
+      "sha256": "72487d2594d50843749e8d94a11269ad4a9fa0d29f055b46084385c4e707cdb4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__equal5__vol25trend__zero.csv",
+      "bytes": 128847,
+      "sha256": "27a18cf8d625c1e5534d83d7bd2eeb7976382faddcb0a5d1ad7ccf5bed8871f1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__constant75__flat10.csv",
+      "bytes": 128193,
+      "sha256": "b89f1b36277994a9bfefb4be3d34f82265c6f2e35cbdf82ee092db343e76fd76"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__constant75__flat20.csv",
+      "bytes": 128194,
+      "sha256": "447c049a9d8600dbc3e66613d907653bd31fe5d9eb8ec52fac9b50164f97e4b8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__constant75__flat30.csv",
+      "bytes": 128161,
+      "sha256": "290012816d8277923f1a7d1b12ff4165c7a3c4077bb90645a56191248b7ecbe5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__constant75__modeled1.csv",
+      "bytes": 128256,
+      "sha256": "9c64ede1c986e054b3551396a382d070491f868f79f645049d4f85b11360c063"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__constant75__modeled2.csv",
+      "bytes": 128152,
+      "sha256": "adb2202d114e174f2cecc7e0c9be91b02b708a4cae591bcb0e7398b16f14e9d5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__constant75__modeled4.csv",
+      "bytes": 128065,
+      "sha256": "881fc437184c8e9349f0c715f01d08ed23b5f082af23f6ea7c0e5a953b7b80c9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__constant75__zero.csv",
+      "bytes": 125224,
+      "sha256": "d5ad3b1cee71ecc2a4bfa2dce8e811239ff9704ee070094ac2a9ff00a03a0043"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__full__flat10.csv",
+      "bytes": 122271,
+      "sha256": "352fd45a90ec2188f39c56bb6cb575e31958a45619c72ef95099f3f28630376c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__full__flat20.csv",
+      "bytes": 122066,
+      "sha256": "c814f2809fcceb73d5da17bfaaf886f7ca8e555420b44ca0c3af60a6d06c46f6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__full__flat30.csv",
+      "bytes": 121281,
+      "sha256": "2ee9dccd739feb63a8b3f4d57be9d1c5ceffe17033b8a6e9db38432e96f4111f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__full__modeled1.csv",
+      "bytes": 127728,
+      "sha256": "e4073dfc76cca9542208eb86ff30b45af13effc54e98f6265fdcb070dec3c79c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__full__modeled2.csv",
+      "bytes": 127633,
+      "sha256": "a39ae85de4f585b1f11ff2892653d18f30511eca6d40bf7a3e498197aaa4bd5a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__full__modeled4.csv",
+      "bytes": 127465,
+      "sha256": "41213210a00f91c18a582dc594d8fa0fe7d47322c4586d053c6ed65b2dd67f98"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__full__zero.csv",
+      "bytes": 119617,
+      "sha256": "9d1658d9fa51057d313fe7eb15eff5f369a52a8023033b1542f637b89762d4a8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__ma200__flat10.csv",
+      "bytes": 124211,
+      "sha256": "cea15a7259907fc23116e615ccfec9a8bb8c1ce0ce7b87a387edb4060ecab53d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__ma200__flat20.csv",
+      "bytes": 123943,
+      "sha256": "f5a229a40d8eb907185289126aaaab9d09f901005ace5665116a8d3ff3ddd820"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__ma200__flat30.csv",
+      "bytes": 123367,
+      "sha256": "4d1d519617901ed2cbc2e83b4397b9d59525e889fb593c37745c8d374aa02e36"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__ma200__modeled1.csv",
+      "bytes": 127720,
+      "sha256": "e888f679a5922c09aac1d2e60628e8ee06b8a9c3af7c1dab8e9dcd64d0c3d1b6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__ma200__modeled2.csv",
+      "bytes": 127643,
+      "sha256": "63894728946b8d6b464a926dc274ee90dd41f21659d960a3ea2e43cc5c78d3d0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__ma200__modeled4.csv",
+      "bytes": 127473,
+      "sha256": "b56c2ee48bed775f9e618c747f4577e02e30c6143a79a0391be5780209deb664"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__ma200__zero.csv",
+      "bytes": 121364,
+      "sha256": "cf51da115b11e8600fbbcc5307f1f7abe5d7940785a223a3a1a8dae1c8002941"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol20__flat10.csv",
+      "bytes": 139673,
+      "sha256": "8c160b2a1ca24b0bdc5e393de7af80519b0a66abde4f1e2d19ca901169f316c2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol20__flat20.csv",
+      "bytes": 139596,
+      "sha256": "99376615642481ae93550686a450e9f4a46b21199884fdf7bd2d57e1de857018"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol20__flat30.csv",
+      "bytes": 139586,
+      "sha256": "08e615af5c5dcc3016ed4b86169308ed381bc6a34b111c047fbd34a4177f182c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol20__modeled1.csv",
+      "bytes": 140545,
+      "sha256": "e3c34536b84e1652472bc30d21c72ea2fa793e48d3ee2b8ea97ac4433e196c6f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol20__modeled2.csv",
+      "bytes": 140570,
+      "sha256": "2a4db81d2ae3f80429ba5a4f4474cca97f5ae485dd984e9ff38350e6606e14c9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol20__modeled4.csv",
+      "bytes": 140553,
+      "sha256": "f31dbf2c1ea33bd9706e97a2659922fb6b8c4771fa1ea7a2e6159c1ff72a41a4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol20__zero.csv",
+      "bytes": 136875,
+      "sha256": "df689ad9f1eb8d8388979a5f5b99c10000985862331f8dcf72e1184c83327c22"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol25trend__flat10.csv",
+      "bytes": 132615,
+      "sha256": "dd066fc95463ddc8b637cd2452759d7a8f17ba3018f5b4c9a7eb07551fb2740f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol25trend__flat20.csv",
+      "bytes": 132798,
+      "sha256": "f029c88ca29e94a9f859b56ea13fde2ca25fe28e3886d6615cd7e34117fd79c8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol25trend__flat30.csv",
+      "bytes": 132089,
+      "sha256": "2eb36472419922646762bef2970ea72235adfde5b6e5fa04761232a5f8fd4b1f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol25trend__modeled1.csv",
+      "bytes": 134337,
+      "sha256": "4ffedd7078be6278a174465efcb9582b3ce2e6f34d22ec9e43cc097632446822"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol25trend__modeled2.csv",
+      "bytes": 134338,
+      "sha256": "a45656f8be33fe9d988173db24b49b874699903972559c448485de9aa9e6441a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol25trend__modeled4.csv",
+      "bytes": 134450,
+      "sha256": "403beb42b906d3dd2d551df0918b0515a091a377f27cb4f9b9895a7be956ee33"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__new_five__issuer5__vol25trend__zero.csv",
+      "bytes": 129540,
+      "sha256": "e03cdfc550c81eae37de31881aab7d864dd0261f8e6ce348a7be963a6703a21d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__constant75__flat10.csv",
+      "bytes": 127969,
+      "sha256": "271e9411bf169232d3fee3453ef9ae1cb326fe81354aadf7392a21138f106012"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__constant75__flat20.csv",
+      "bytes": 127916,
+      "sha256": "760274bdbf3c18517404a4877f69b5c5fdf4b0943d542f6ff85d877c53157278"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__constant75__flat30.csv",
+      "bytes": 128095,
+      "sha256": "3355829bfbdc83e97d3a837d9106fa5a1bdab3eeb3474355045a5813416250fd"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__constant75__modeled1.csv",
+      "bytes": 127852,
+      "sha256": "aabb37dac376e765970e0cfb75579f3b1ba85750f5871f3a3071250b182696a8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__constant75__modeled2.csv",
+      "bytes": 128014,
+      "sha256": "290d4bec8217acd332a507056d114bfc926609de1e47533976d5f960691d565d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__constant75__modeled4.csv",
+      "bytes": 128065,
+      "sha256": "9026af82856d5d4e1f3c89e6c448a9a8bca8a374cfe6852f9356876cb4a68602"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__constant75__zero.csv",
+      "bytes": 124978,
+      "sha256": "a8f4d890af838c51c86c59a8e8f04c14f89f880476d657603e06297a086d9bde"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__fixed__flat10.csv",
+      "bytes": 136194,
+      "sha256": "86fa7450803f63ccca3afa67c3df239a9d89c1a3d5f0a06d7058627e7975cc2a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__fixed__flat20.csv",
+      "bytes": 136164,
+      "sha256": "987e9089d34e97ecdf01856e6b45cc6c2a289c8552a3578dab9581aa3b6bee8d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__fixed__flat30.csv",
+      "bytes": 136203,
+      "sha256": "1b973a495601b1c9f9ef863c6bd64f42f4e812e346c8ead5494346ca1737429b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__fixed__modeled1.csv",
+      "bytes": 137866,
+      "sha256": "35252bcb5e2cbdb399a8baa5e2ba4770d00c7ae3dd2fef6364ef36b82938ed45"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__fixed__modeled2.csv",
+      "bytes": 137865,
+      "sha256": "83277fd3c1df632af6204286e3b6fc88364f7220dbbf214f70d8e6a5e250fc7a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__fixed__modeled4.csv",
+      "bytes": 137921,
+      "sha256": "dd28b58e0ac66be7f7979d9c7b0f07c1301becd876c85b0f1bd3e7a1c2858821"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__fixed__zero.csv",
+      "bytes": 133387,
+      "sha256": "96868fabe96e389a4619acb23b69aa54221c0b0451351d87c55de8d452dd4106"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__full__flat10.csv",
+      "bytes": 121904,
+      "sha256": "ed79a73961aba55743d50285cc93cc05e9325e40c54f242d534aadf357415120"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__full__flat20.csv",
+      "bytes": 121559,
+      "sha256": "b179550f37c603ddae5fe0013c51e1b74079cd671d43243a9b3894f1571b3e2c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__full__flat30.csv",
+      "bytes": 121064,
+      "sha256": "6908ea97beab93d3e75bfa9772b9074b9feb0cfce376f69615782fe38cbc57dc"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__full__modeled1.csv",
+      "bytes": 127855,
+      "sha256": "7973b66a3e3efe61d5abbcd1386a2fe154dcac356af7dd28efd902b1327c8f57"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__full__modeled2.csv",
+      "bytes": 127676,
+      "sha256": "34e747da44d0382ba195f64f15da783a8c69909955580f3d68d1a0af3ecb91fb"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__full__modeled4.csv",
+      "bytes": 127642,
+      "sha256": "d89744b0066927d34dc4b8d09cfd87927b2fc11516135a04ee2cd8be896eb892"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__full__zero.csv",
+      "bytes": 118269,
+      "sha256": "ef776e9ff2c8b2fb184424608009ae00442ca92f52c18ead4fcb58d6f124ad24"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__ma200__flat10.csv",
+      "bytes": 123108,
+      "sha256": "79e73a400073936396253943af62a2f4243304b03e7bb07b0e00c0e6875eea5e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__ma200__flat20.csv",
+      "bytes": 123010,
+      "sha256": "ded5ee910d120336e0d870989a20828ba80ad6fa61823cbd2441b5c98982a562"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__ma200__flat30.csv",
+      "bytes": 122623,
+      "sha256": "2229f1f14900cfb99e290bbe8f60523b94d6912096ca73aa4867ceaa9c8eb255"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__ma200__modeled1.csv",
+      "bytes": 127754,
+      "sha256": "90903f0937f594a5511de209ff6c24189e6bc1fed818c936b4fb3c80c1517001"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__ma200__modeled2.csv",
+      "bytes": 127621,
+      "sha256": "709aa5959af8905ca63209190e0f9937078ac7711ff7fa48a8b8bd295ca7f8e2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__ma200__modeled4.csv",
+      "bytes": 127732,
+      "sha256": "644a26163cda978973d54e97b7d19dd0c950451dfec3bf7a4956bcab0834659f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__ma200__zero.csv",
+      "bytes": 119690,
+      "sha256": "b6e34005c4df8f505affd5acc0a559432eba94831dde59c85057a12390ec6eab"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol20__flat10.csv",
+      "bytes": 138536,
+      "sha256": "ee32fa809cac23d4ac49b3793678e402635e47620e6d5c61d1fffe70b8c17ed5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol20__flat20.csv",
+      "bytes": 138623,
+      "sha256": "1b38a39376424812c91fd49d06d6c2e05c5b6a4aa8af7b7f0e95b3eda6f0e0bf"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol20__flat30.csv",
+      "bytes": 138380,
+      "sha256": "383fe199a425fe196ff382b1cdae6b5166a3c8afffef1934254dd340f7ff4f13"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol20__modeled1.csv",
+      "bytes": 139869,
+      "sha256": "23fad0c83238728e7822d95c0ecab529649ade3725401a94b9aefef5b946aed3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol20__modeled2.csv",
+      "bytes": 139851,
+      "sha256": "927995e9a4dd32fe3d6fa15699a9684de1e87a719ae1bf918d559ad7394415ca"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol20__modeled4.csv",
+      "bytes": 139860,
+      "sha256": "fe2d507d62fba8e79c3bcba302c6831098df784ec3826c1f46c84c384626d2be"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol20__zero.csv",
+      "bytes": 135739,
+      "sha256": "a5dff853baf48fe48e4c56e8c7ff17adc5b8f886e803f77daca7542ba8602700"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol25trend__flat10.csv",
+      "bytes": 132368,
+      "sha256": "8599882c7865ed181273c1d009329b1943dd707da13152a55e1f63fcbc74b621"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol25trend__flat20.csv",
+      "bytes": 132462,
+      "sha256": "ea62b1ae29d6420afb1c254c2ee215c640fc90d45a48e02393a9c41135a1ef97"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol25trend__flat30.csv",
+      "bytes": 131904,
+      "sha256": "21ea39c1240c73468e0db7d855f7937d1fe3a739d2dd88707287d7f01c24d190"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol25trend__modeled1.csv",
+      "bytes": 134769,
+      "sha256": "0e02bae988ec43e03390e6700ffb32acc44bfe4aa229017643bcf5e86a2a02d7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol25trend__modeled2.csv",
+      "bytes": 134713,
+      "sha256": "1f9d94554ac21f4cad3b8bc07cb95579e6fb41944b3349291c2495acea65fe59"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol25trend__modeled4.csv",
+      "bytes": 134726,
+      "sha256": "dbd91cd6b3ebffb5c3f5823c1c7f9ed5c654371773c35c9d5af3c6224871bcce"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__equal5__vol25trend__zero.csv",
+      "bytes": 129234,
+      "sha256": "c02ced59cb0fd93869a478abb933374036a0ef684c3b55af81834c76d9ca6008"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__constant75__flat10.csv",
+      "bytes": 128134,
+      "sha256": "0f5b07eaf4f9c3853de26c79d63c009b1474ee21338d2a6e220ba821602d1965"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__constant75__flat20.csv",
+      "bytes": 127946,
+      "sha256": "cbe22fad4b2365deae864828fd84c927997af54f73caf2acf5d683d3da4a1e46"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__constant75__flat30.csv",
+      "bytes": 128224,
+      "sha256": "0e4e83134d733f3abb1384fdb8bfca2942203cdf4579d00e3265376a63ee80e7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__constant75__modeled1.csv",
+      "bytes": 128008,
+      "sha256": "32b93c83f08992c4a0bab3a5f064e55727466c07d590adc415ad4c117ac19929"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__constant75__modeled2.csv",
+      "bytes": 128087,
+      "sha256": "56a4a2c97534dde322742b7010fa7f2a3b4d06f452b8bffbdf6d9b62c573a79f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__constant75__modeled4.csv",
+      "bytes": 128169,
+      "sha256": "c264c9e790d5e463aa7d53e554bdff02dc637732642135231fab184ab9389f3c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__constant75__zero.csv",
+      "bytes": 125150,
+      "sha256": "e6d375cd2b2501a1767a013d59623dda0cd94995519135bd84da96dbe1db2129"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__full__flat10.csv",
+      "bytes": 122577,
+      "sha256": "bf58df9711f4685ce7cdb4ad59c7709746d9f68bc95fa8f02842aacfa97e5b02"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__full__flat20.csv",
+      "bytes": 122188,
+      "sha256": "83b83590db1c7721edeabcbd72c46c7386125cad8761201458291a1e9d2e6da6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__full__flat30.csv",
+      "bytes": 121471,
+      "sha256": "727603e613f61d9a0a22704ee7766fe8353c9e54db4cf4061a903bf3549b4b53"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__full__modeled1.csv",
+      "bytes": 127690,
+      "sha256": "7d4f16c875dd9c16493815b88733c170ebd1618f046690401ec57b6f0e585823"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__full__modeled2.csv",
+      "bytes": 127600,
+      "sha256": "12298b174800947e47e23a74dbd9ef0e6706bb11ef8e23c023128a1f0eed5d3c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__full__modeled4.csv",
+      "bytes": 127711,
+      "sha256": "1c7fa95dc6730cd1af83ac5bf4bc5efb758049fd5c572a574c1079e5e2464f91"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__full__zero.csv",
+      "bytes": 119701,
+      "sha256": "eb94ae1e127f8974c070ec7280c36d5e983a8a85d8ef7694bc04f6fc1ef19158"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__ma200__flat10.csv",
+      "bytes": 124237,
+      "sha256": "7c791fb2413019807a8ad787c63b050b56a5f2bf9c7400835f975a834992f1d1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__ma200__flat20.csv",
+      "bytes": 123556,
+      "sha256": "8565ce4b80cc912d1ca7bac598c8c43fc87e788de95c7ed897cca9e8deb72bf8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__ma200__flat30.csv",
+      "bytes": 123036,
+      "sha256": "100ff93800b27a39f201e99a089b9fe41a574fe8a47ece8663dad0873e4ae33f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__ma200__modeled1.csv",
+      "bytes": 127725,
+      "sha256": "7be6b6f0196d2623f2a33ae5425d0f8bf712ae21a09ceebf29ab9dd19bb05203"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__ma200__modeled2.csv",
+      "bytes": 127690,
+      "sha256": "bf1e376fa9c717b8f735b233d8f11543827aedbcf7e9394c5fbc9867cbfb3698"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__ma200__modeled4.csv",
+      "bytes": 127701,
+      "sha256": "436fbd5cec87e05f8a02cc00dca87f37e33f84af3f0497d5d122d872117d8436"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__ma200__zero.csv",
+      "bytes": 121092,
+      "sha256": "1496fd5901ef79b657cb471edd3d618acb0ca33ff0d359aea272993da00ffe84"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol20__flat10.csv",
+      "bytes": 138715,
+      "sha256": "4f70f34e1aae127db5ae220e7dbd75bc56a37dfae430940a4bd8fe46eab15060"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol20__flat20.csv",
+      "bytes": 138509,
+      "sha256": "69b95699b79ffbcce540d6866d90499a16e6a418794801015fa7a7cc1c8ae11e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol20__flat30.csv",
+      "bytes": 138639,
+      "sha256": "1cf40cac0defe4c3cae7d4ada5f86aa009f61a89dc543a079c220ea61eaf634f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol20__modeled1.csv",
+      "bytes": 139656,
+      "sha256": "83c89dd4a2845f52fe58adc99d38a516f542720a065bf495df9e7ba72725dbd0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol20__modeled2.csv",
+      "bytes": 139637,
+      "sha256": "79383a111d9e5b7d980255f94b54b48c07ab8380d04fb8afe7d9549e5f253799"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol20__modeled4.csv",
+      "bytes": 139521,
+      "sha256": "0b968897d838e8f5d26ac36c539a96ff86234cfb569e863e87c1f112f3ef06e9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol20__zero.csv",
+      "bytes": 135759,
+      "sha256": "384e028a31c01cbf9bc0a9c2b5c13dba6ec47b860a5ac481692dd0938d5c326b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol25trend__flat10.csv",
+      "bytes": 133736,
+      "sha256": "d06e4c019da079f05f01c0259764c8467d4bcba56d9396a7be8100f99e37cde9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol25trend__flat20.csv",
+      "bytes": 133165,
+      "sha256": "56588417e62e064f5f7c36452d2a2ba3cf5eb08aa3f6421e75bc858ab8250198"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol25trend__flat30.csv",
+      "bytes": 133326,
+      "sha256": "821fb13b7075d1a688e1c7a800317e24d024ed790fdfcc2e5e03c2417a1bee28"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol25trend__modeled1.csv",
+      "bytes": 134747,
+      "sha256": "d3bfe234c56fc850362622d70948006f79b18d474156b74031aa9c30d1eab58e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol25trend__modeled2.csv",
+      "bytes": 134737,
+      "sha256": "a3094f07fdbdbb4facdd0d90c20d00c06e14c90fe0771cec68694b08f52c9672"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol25trend__modeled4.csv",
+      "bytes": 134818,
+      "sha256": "61e04396e038a0743e0aa0ac2cd1f3fd7538f9012d5eb367859375ccc9e47760"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__original_five__issuer5__vol25trend__zero.csv",
+      "bytes": 130704,
+      "sha256": "93ced722f64de13af13baf8ed598439729570753485d947f4151116d6ee73538"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__constant75__flat10.csv",
+      "bytes": 127997,
+      "sha256": "bb02eab14c3e1b9ee651d53e6d3a8e1475850abbb74ee8ce477042d10f9e6a9f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__constant75__flat20.csv",
+      "bytes": 128076,
+      "sha256": "7d39638559a316c600507db62ffc026283a5938d011c85588487ab61a0ea37cb"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__constant75__flat30.csv",
+      "bytes": 128147,
+      "sha256": "4892a7855dc1c0c5b2d9356e34247a6f108471c92d5885a128b898af15881ef8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__constant75__modeled1.csv",
+      "bytes": 128030,
+      "sha256": "8464d59e5528d2d9d6960f6c35dcd31c5e17874948c83b05f2a93c6380313ca0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__constant75__modeled2.csv",
+      "bytes": 128071,
+      "sha256": "fc5103f08b7b82ba9e5a1963609d022ea0974fe83f8bc660e95adffa6579725b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__constant75__modeled4.csv",
+      "bytes": 128231,
+      "sha256": "a7f74a064e2b2a9aab9be2fc228cefbe7271da6fd82f736b3e0ed67078db9fbe"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__constant75__zero.csv",
+      "bytes": 125115,
+      "sha256": "8e89a1065e2c327aae9797217404dd38a53010f83ba04e82007871e923d45380"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__fixed__flat10.csv",
+      "bytes": 142028,
+      "sha256": "5cc8334e206e76f6e52dbe6699b901bde586bcec863a4c70b0df7081d478c286"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__fixed__flat20.csv",
+      "bytes": 142048,
+      "sha256": "5f30a7b4473c53ef7c97d21b0e05fe3f4ca8ce07bd1e4b099e49ad96e62047e8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__fixed__flat30.csv",
+      "bytes": 142070,
+      "sha256": "c07c6048a819ffd6e10e9251899ffc1ce6a44e20e957bb2700d28eb982e46633"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__fixed__modeled1.csv",
+      "bytes": 141899,
+      "sha256": "510dcdd81f469c628693ca811d68f2c0717b535e6a6328932aa4a1b643b0c80e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__fixed__modeled2.csv",
+      "bytes": 141980,
+      "sha256": "9a07fcfd83f001c4e33c5ec1c872249d052041690eb3c54dca26200926518909"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__fixed__modeled4.csv",
+      "bytes": 142002,
+      "sha256": "d606c46bb81a1d79b42df806172135408b2733959db14ffb2b40ae913b0fd98f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__fixed__zero.csv",
+      "bytes": 139078,
+      "sha256": "99aa375fe37448dc87ad27c403b9cf435b5c511500b3798fe82281d8bbeb4638"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__full__flat10.csv",
+      "bytes": 121836,
+      "sha256": "c4495e4767717ec0d76eff90c64167d1c4036a0ac77188582d36553680694611"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__full__flat20.csv",
+      "bytes": 120563,
+      "sha256": "60cf4febc716ce1bcf85095258c967e4d4ffc53a9a075dc4ea19e1d0492f6107"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__full__flat30.csv",
+      "bytes": 121199,
+      "sha256": "0c63eed1d98819eb4e6c2f285b374df1213d872a9901a656379c3a8a142ebd03"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__full__modeled1.csv",
+      "bytes": 127981,
+      "sha256": "ed9310db9ad5b8a455526c5ee75719e264996100eb8bc1195a4233599d9be440"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__full__modeled2.csv",
+      "bytes": 127740,
+      "sha256": "f5b453e90519a7a04b688f74395b12652abb2bc9455b783ee5743d91b703019a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__full__modeled4.csv",
+      "bytes": 127770,
+      "sha256": "b1cc0b083208c2bf19830fe32a2ab3b14c538700586e1613df44c94a6ec16dbb"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__full__zero.csv",
+      "bytes": 118379,
+      "sha256": "54f17ca129599708f5f05483af0a3e99dfd1c3311381a1fe293d85460f40a10d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__ma200__flat10.csv",
+      "bytes": 123662,
+      "sha256": "70b6b4ea455bb554bc99a2b66753361148d56c418096eab651eb8473c230cdef"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__ma200__flat20.csv",
+      "bytes": 123168,
+      "sha256": "fa5c475f9a2bfd7e7ada8bcaa6e42ad4eb0ae834342d940efcbe79aa8472ee5a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__ma200__flat30.csv",
+      "bytes": 123120,
+      "sha256": "8563194b271088d7c05c39ad34d0ba0980b424e988f2f221dc0af07c475f4e04"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__ma200__modeled1.csv",
+      "bytes": 127842,
+      "sha256": "e43703215450466702e29e785d76b8e951c49bcdb052704b5b6d0d736ee07b1e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__ma200__modeled2.csv",
+      "bytes": 127641,
+      "sha256": "4154e9dd8d61aaa8d8749f2c3b48e05db80e957943d89a88b5c77e1045d780f0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__ma200__modeled4.csv",
+      "bytes": 127860,
+      "sha256": "ee37546d5fae88cf2c3e3a5aca7efe705688eb5fa35051deb40ac8ae00542055"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__ma200__zero.csv",
+      "bytes": 120703,
+      "sha256": "6399a5c75531afc95ee62d174cf02b286b3e3f642f252dd1266f68a9edc3a0b5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol20__flat10.csv",
+      "bytes": 139292,
+      "sha256": "0f35c622d1b0d2e986c9516f087dc64651b640fed1ecfd87f36f81e5da251933"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol20__flat20.csv",
+      "bytes": 139524,
+      "sha256": "d5cc7c724a2cb1a208b1981b79df993afca29550518a74fd4947e0be430a1725"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol20__flat30.csv",
+      "bytes": 139283,
+      "sha256": "74a3749a9203251484bbaf9519d7e9efdf6bd7973c7b3c34db65ec2f3bc9c673"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol20__modeled1.csv",
+      "bytes": 140425,
+      "sha256": "4b46f77a6af61240feefc251e135db6a1f33c4e870bc985b83fe316a9aa6885f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol20__modeled2.csv",
+      "bytes": 140489,
+      "sha256": "ca5bb5f9e26ce1cc14303a6263aac37a63486f7537fd497513a483222fd2cc52"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol20__modeled4.csv",
+      "bytes": 140449,
+      "sha256": "8b41824e2878a5dbeb99418f8c69b2277c2dcc46a469edb5a098f10d1b072c84"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol20__zero.csv",
+      "bytes": 136322,
+      "sha256": "4f682f86c5f85a35078d61a9ed57d24f18b5744b3b13e2f441bf30e84576d623"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol25trend__flat10.csv",
+      "bytes": 132884,
+      "sha256": "5d16e9e628341564e47940f8c3b8131f148fc628f22eb8744a39cf0d2f678f21"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol25trend__flat20.csv",
+      "bytes": 132969,
+      "sha256": "f155f708f1e9b612b5bc4a15d442f79b219d13de56b0383c70a85dff17329dd2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol25trend__flat30.csv",
+      "bytes": 132615,
+      "sha256": "a64ece4526fdcf2f51c1d8112bef4867e8e334d1e0fe3a0a4d9a21ed5154c5db"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol25trend__modeled1.csv",
+      "bytes": 135095,
+      "sha256": "b5b6fd9d70a0132d086a8673449de511adccdbbc0871e69146204c01ac4732c7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol25trend__modeled2.csv",
+      "bytes": 135070,
+      "sha256": "6eb6fbaf8323b5c163152fae6eba0e4553c3ff3483b9c747f195847eaf2d7c40"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol25trend__modeled4.csv",
+      "bytes": 134970,
+      "sha256": "61b1becf5a5dd40c44a8ddf8642e2a304f7dc62aea08d4fe2ff10ecce68eb937"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__equal5__vol25trend__zero.csv",
+      "bytes": 129619,
+      "sha256": "b536ca260041ed7e0b6d281fa019cd3b1e589152397891bc5909076c7c1de60b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__constant75__flat10.csv",
+      "bytes": 128055,
+      "sha256": "8289265ab445e698f27f23947b7db1a05cf83ba6d63d9fc4c98828f0ed14da79"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__constant75__flat20.csv",
+      "bytes": 128136,
+      "sha256": "2a72ada911edfadca8e88cbb21064894f936fe536e30a45598608c2f044e1d03"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__constant75__flat30.csv",
+      "bytes": 128162,
+      "sha256": "2f8715728bc9582d97025914a25a3402bb3d6b54b69631a1db0c3948983da0d3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__constant75__modeled1.csv",
+      "bytes": 128097,
+      "sha256": "7053b17063ad7b06c8246aae8d8dc1897d762e350cc1b0b49eb0f83be4daf0da"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__constant75__modeled2.csv",
+      "bytes": 128026,
+      "sha256": "ae16091f187d461c4c3a043e2c7d1860ca29520543fb3729ac74bf3d59aa11c5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__constant75__modeled4.csv",
+      "bytes": 128276,
+      "sha256": "5a3ff413af4f3c4bb98604aa7b0cd206670aca18fa6842a9322f5caef4e09627"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__constant75__zero.csv",
+      "bytes": 125183,
+      "sha256": "d8c35839c9df6da567b69a1fd754efa8141a1fe907cc9352cbafe7147cb96093"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__full__flat10.csv",
+      "bytes": 121990,
+      "sha256": "542fdd11ea3fe7d4526e11aec3ad6fb765ef0f393236119ee4548699d8be0e8f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__full__flat20.csv",
+      "bytes": 120713,
+      "sha256": "da356dde7154070ddb4879d5c6f96da81c7e2003bcf432e62be3c670653db1bf"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__full__flat30.csv",
+      "bytes": 120924,
+      "sha256": "1388163180cd84878f212419a7711a07b576fc6c0321d2ca7b64c5d0a17f51f7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__full__modeled1.csv",
+      "bytes": 128061,
+      "sha256": "1a4132c4faea71c7eb29d59bc3a38c43b7f447245bd33702f67a96e2cd4a7804"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__full__modeled2.csv",
+      "bytes": 127856,
+      "sha256": "0c5bd9efdfa513c42f5d4b71824a40b480128cb9f4907ef6c7d6bf6b6b447a8f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__full__modeled4.csv",
+      "bytes": 127739,
+      "sha256": "c3d9abcd8b2978bffc857670ba0c8fc96a93e8ffd7de5059c48a9ef634477058"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__full__zero.csv",
+      "bytes": 118729,
+      "sha256": "30727701fbb0e3bf0c7a525ca500c536964e88d0c583cb80fe65da830bcf566b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__ma200__flat10.csv",
+      "bytes": 123589,
+      "sha256": "58dd6888074bee2fb495e82ab9dcfdb4153a265dab670a2042f663b137f02980"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__ma200__flat20.csv",
+      "bytes": 122745,
+      "sha256": "289bbde03aa664726880793002d6c6d16e41a5f52c5c5509fac16888f4736fda"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__ma200__flat30.csv",
+      "bytes": 123029,
+      "sha256": "3ed5fb8fe9fba52e87e5fca2c38f36af9a581e026ff22595a5d57cb00109e8ba"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__ma200__modeled1.csv",
+      "bytes": 127854,
+      "sha256": "5725db28524aadd0e6340735a2a50a0c5ce8e5ba472d02e2e82f02ba5649a59d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__ma200__modeled2.csv",
+      "bytes": 127798,
+      "sha256": "dd9ffb3950f7f0fdc1df2c4952fb3b129392ec927af4bdf7fc58c26d1e0a3a62"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__ma200__modeled4.csv",
+      "bytes": 127702,
+      "sha256": "d9bb13e83a738f9940f4876273e8d7c055524ca6b82ac446f072dfc3aa5b207d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__ma200__zero.csv",
+      "bytes": 119919,
+      "sha256": "6f19e86cc439a6ad3aee0ab411b3500a3d7483297d86817f5aa38f3f957ae547"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol20__flat10.csv",
+      "bytes": 139647,
+      "sha256": "e6cc3162dc61a62f8a3d75f21d6be999037548baf67f3667c203629cb422b871"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol20__flat20.csv",
+      "bytes": 139517,
+      "sha256": "b63b55eb67e2c6035a96fd964bd51b9b5c89117d2663b8ab6fc9f39fb59d439c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol20__flat30.csv",
+      "bytes": 139494,
+      "sha256": "b4c6921bc69081a8a14ef946477598e0b5f53161b99cd3f28e0089071f393648"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol20__modeled1.csv",
+      "bytes": 140556,
+      "sha256": "853aed8fee20e949df5f996e1f31ac619cfcb2994d5fe2bf4111518ce0347d85"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol20__modeled2.csv",
+      "bytes": 140528,
+      "sha256": "030aac3ba74835eac9d41c065e4b229ec2c9343ceb1166740a26b0c62bea336e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol20__modeled4.csv",
+      "bytes": 140516,
+      "sha256": "7ad97136b39d99ef1aee698a9e037bf6bbb8be605dac069aca1957e4dab880b4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol20__zero.csv",
+      "bytes": 136541,
+      "sha256": "ac582b17e55169adaa744cb0e88083ab0ea379bd650ebc0f5f0b272bdd44329d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol25trend__flat10.csv",
+      "bytes": 133231,
+      "sha256": "a7b4fb60481e688ab49b430b839bc5701a2438febc2ca5458d63ab92ee273372"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol25trend__flat20.csv",
+      "bytes": 132795,
+      "sha256": "09b4ff24ea89fbe738cf953611b75830e6231666d207521d2e9ba7b4611ac142"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol25trend__flat30.csv",
+      "bytes": 133049,
+      "sha256": "c5c1f12d8b96977561941881b465f5f0a6445796489c6aaf0c89a53a6e3d4ecc"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol25trend__modeled1.csv",
+      "bytes": 135260,
+      "sha256": "a3deb2e1f7cd014253f4cc49512d359bae25f1c06e71459ca1f4fc90acb4dc95"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol25trend__modeled2.csv",
+      "bytes": 135187,
+      "sha256": "67db24e1efa37b06b59052dad3d69fe188846a25e1b2b9d04bd25dd63438f271"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol25trend__modeled4.csv",
+      "bytes": 135107,
+      "sha256": "0e321a47544acb56c3f1961805ba3cfd89c76b487aa14474f775384727713398"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\E__ten_seed__issuer5__vol25trend__zero.csv",
+      "bytes": 130299,
+      "sha256": "7ac584008cf74a2a79d52835cd6a8686e8d58b31db109faad5fc61720b2e0db4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__fixed__flat10.csv",
+      "bytes": 143418,
+      "sha256": "7c92d2c3878ad43a18010b0ab8d8943c81e4272658bf1b69b9f233829307919a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__fixed__flat20.csv",
+      "bytes": 143464,
+      "sha256": "3aa5aafd9d421c0b7aca499cbca4e3c31d4a4f9086c8c059461b3bb6b1ba1fd4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__fixed__flat30.csv",
+      "bytes": 143387,
+      "sha256": "9f148cc74d6b4242d316e7c9fbd73ab6781e4d09cea5221903a0195e88fc14ae"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__fixed__modeled1.csv",
+      "bytes": 143474,
+      "sha256": "a6ecfb4c2c3807abeb0f8d84caaa6617228790848e758ad62cec2c78ac32f49d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__fixed__modeled2.csv",
+      "bytes": 143385,
+      "sha256": "991d165b0eae3baf59d52c268c1a30d0e88af91ae0366b59330046ada264b39c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__fixed__modeled4.csv",
+      "bytes": 143394,
+      "sha256": "47dedd9379a7d22c711fdc4e7dde1b593892becbbd3b611c78c743eb53409ad4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__fixed__zero.csv",
+      "bytes": 140487,
+      "sha256": "4ac7c4bbeaf3748f23cd99b9ddd5aea5d2163ef0148f34e1c7271bb06f0ba200"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__full__flat10.csv",
+      "bytes": 121956,
+      "sha256": "c409eb3bc0ba0778e2ebeaf2a603a2acc6f251ed06e41dce39e8f67d55520b57"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__full__flat20.csv",
+      "bytes": 121418,
+      "sha256": "9a7c53c44fbc4dca2a8b9b9646226875249cb932c954e5c5c6c890563bd594e1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__full__flat30.csv",
+      "bytes": 120988,
+      "sha256": "51f71b7e3dae801ca6fc7cac8569625c15fe0b228bdf3a48d3c87478d7970418"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__full__modeled1.csv",
+      "bytes": 130138,
+      "sha256": "f72b7b4e7ec2bc45535ffe0068f0ea253fc0b3943bf403cb08f8fba0e888425a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__full__modeled2.csv",
+      "bytes": 130234,
+      "sha256": "a41af620be45b8738f7352e5c2895229d274555dc6c99c74b573cf891d82c995"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__full__modeled4.csv",
+      "bytes": 130246,
+      "sha256": "1f8c0ff5393a2750c5c65ccb651c279211deec44c895d8e8bdec843597ee86da"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__full__zero.csv",
+      "bytes": 120077,
+      "sha256": "f33b6586acaa6f3b472852cd63d695c8041190dfa4bdd53b04adad9bf555b16d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__vol20__flat10.csv",
+      "bytes": 130358,
+      "sha256": "6ab6ad276cba389fba023a56b1fe295dc54cb3e1bb514d595ef600da38b2aeca"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__vol20__flat20.csv",
+      "bytes": 129887,
+      "sha256": "8c69e92a38a8faae86cde40aa0120f13ff22e7dae8471bc11444e7cccd50c456"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__vol20__flat30.csv",
+      "bytes": 129130,
+      "sha256": "0784882b5db45841e8a1a46248c93c6e1597f3f621ff91c88efd852374e8de7c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__vol20__modeled1.csv",
+      "bytes": 135330,
+      "sha256": "a79730ec01eaf46d4fafc9d2010456ac1d715b6c3c65066ac50f12bdda03e2dc"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__vol20__modeled2.csv",
+      "bytes": 135349,
+      "sha256": "ecc4518b2413f0b423c2e915213707761e3abd3fc729606ec02c7522d48d782b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__vol20__modeled4.csv",
+      "bytes": 135419,
+      "sha256": "9a2ccab5e00886e43e8806ba3dd901e314ff06405a0a806492aa8f59e1514703"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\EW__benchmark__eligible_weekly__vol20__zero.csv",
+      "bytes": 127909,
+      "sha256": "d0087b908bac62abf69746b81e880e56357954f22d4ed2f9353d2444c77d164d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__fixed__flat10.csv",
+      "bytes": 142115,
+      "sha256": "f9b7b1c63516bb63385df3c7fb5386e2350d44b1ce9c9169ab028c3b640735c9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__fixed__flat20.csv",
+      "bytes": 142089,
+      "sha256": "4361f0d04423b324b0566d2ec6756bf14e9921046ba26b238b1bdabf4c22a7c5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__fixed__flat30.csv",
+      "bytes": 142053,
+      "sha256": "9201b6c9b4184ee2e730adbd338c092934aa4026e2e9ce68d30ee66cd44fe6aa"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__fixed__modeled1.csv",
+      "bytes": 142191,
+      "sha256": "e8cf43e32bdae52129b14a66acb660853d648e05e47cb0081dc1fd873e2db7b4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__fixed__modeled2.csv",
+      "bytes": 142198,
+      "sha256": "d914f1709968509ed67a66d5bafdd8d60b74e1ade26478e9f40c2b9740eeb482"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__fixed__modeled4.csv",
+      "bytes": 142028,
+      "sha256": "2a78a074410d1e143cc41f07730746cc7c7c488b2dc64c74b385098eee0815b5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__fixed__zero.csv",
+      "bytes": 139183,
+      "sha256": "54c69ff2213c7fed30453d4683b700506df147b55280eeb2621246ad1c0b0e72"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__full__flat10.csv",
+      "bytes": 121693,
+      "sha256": "f24166ab6ae0b9f5b739c6554e66d4a37d0bf80a984138d45431b03f12da2bc3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__full__flat20.csv",
+      "bytes": 121569,
+      "sha256": "f86b69fe45d54a6bcf9168607b10b3de21db3d638f35e6efd2962ad5ae8bc616"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__full__flat30.csv",
+      "bytes": 121131,
+      "sha256": "51b3fa99e5cfa50fcbdf1521c52a560aba3287e0851b83e2762d055a5fa822d5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__full__modeled1.csv",
+      "bytes": 128389,
+      "sha256": "5a92625e298b0697f8b3eeaa261a75a6bdfef143afc012b487e803ee56d79ddf"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__full__modeled2.csv",
+      "bytes": 128348,
+      "sha256": "96fa5921350f9e3a9ef27e5eed8823401b25818406571aed15de729b21360b59"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__full__modeled4.csv",
+      "bytes": 128410,
+      "sha256": "29a840925341f08f746bbfe05bca2e2cc7db33955db8e27ba9960fb266df6f63"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__full__zero.csv",
+      "bytes": 118728,
+      "sha256": "9eb645410edc5d74604578bcf130f7342f6c882b974cc10c97ddf1d4def30f1f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__vol20__flat10.csv",
+      "bytes": 141254,
+      "sha256": "aadac4792ee3749bbd9bdb91783bf216063873d0767afbca041b37cbdaa2315c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__vol20__flat20.csv",
+      "bytes": 141479,
+      "sha256": "91f8d7c13c9b773498614f94b529dc6ed34418ff053c4c760fe08a404ba20bf0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__vol20__flat30.csv",
+      "bytes": 141185,
+      "sha256": "204d9a93f48037035aac4bac204a413ba4db628f3afcb114d5be66249fe47bf5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__vol20__modeled1.csv",
+      "bytes": 141741,
+      "sha256": "8c1ece61c45a4bf5f56d08f8666ba605963cd95d5b3f8829ecd231e877aca918"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__vol20__modeled2.csv",
+      "bytes": 141798,
+      "sha256": "c7992fa0e44674ed21237e43d831de6dcd2683428318c0bdf81e9befad735f24"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__vol20__modeled4.csv",
+      "bytes": 141744,
+      "sha256": "8c2cff14f5e5422bf6db40f9f0dc6632e3aa74dfadf5471fc20812bb2a4fff84"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__new_five__equal5__vol20__zero.csv",
+      "bytes": 138396,
+      "sha256": "41e9c1a1fc1760fea78cc2f43c9b3c8cb9e0eedfa67575a00ebecd538ebae9ac"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__fixed__flat10.csv",
+      "bytes": 142115,
+      "sha256": "f9b7b1c63516bb63385df3c7fb5386e2350d44b1ce9c9169ab028c3b640735c9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__fixed__flat20.csv",
+      "bytes": 142089,
+      "sha256": "4361f0d04423b324b0566d2ec6756bf14e9921046ba26b238b1bdabf4c22a7c5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__fixed__flat30.csv",
+      "bytes": 142053,
+      "sha256": "9201b6c9b4184ee2e730adbd338c092934aa4026e2e9ce68d30ee66cd44fe6aa"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__fixed__modeled1.csv",
+      "bytes": 142191,
+      "sha256": "e8cf43e32bdae52129b14a66acb660853d648e05e47cb0081dc1fd873e2db7b4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__fixed__modeled2.csv",
+      "bytes": 142198,
+      "sha256": "d914f1709968509ed67a66d5bafdd8d60b74e1ade26478e9f40c2b9740eeb482"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__fixed__modeled4.csv",
+      "bytes": 142028,
+      "sha256": "2a78a074410d1e143cc41f07730746cc7c7c488b2dc64c74b385098eee0815b5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__fixed__zero.csv",
+      "bytes": 139183,
+      "sha256": "54c69ff2213c7fed30453d4683b700506df147b55280eeb2621246ad1c0b0e72"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__full__flat10.csv",
+      "bytes": 121693,
+      "sha256": "f24166ab6ae0b9f5b739c6554e66d4a37d0bf80a984138d45431b03f12da2bc3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__full__flat20.csv",
+      "bytes": 121569,
+      "sha256": "f86b69fe45d54a6bcf9168607b10b3de21db3d638f35e6efd2962ad5ae8bc616"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__full__flat30.csv",
+      "bytes": 121131,
+      "sha256": "51b3fa99e5cfa50fcbdf1521c52a560aba3287e0851b83e2762d055a5fa822d5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__full__modeled1.csv",
+      "bytes": 128389,
+      "sha256": "5a92625e298b0697f8b3eeaa261a75a6bdfef143afc012b487e803ee56d79ddf"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__full__modeled2.csv",
+      "bytes": 128348,
+      "sha256": "96fa5921350f9e3a9ef27e5eed8823401b25818406571aed15de729b21360b59"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__full__modeled4.csv",
+      "bytes": 128410,
+      "sha256": "29a840925341f08f746bbfe05bca2e2cc7db33955db8e27ba9960fb266df6f63"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__full__zero.csv",
+      "bytes": 118728,
+      "sha256": "9eb645410edc5d74604578bcf130f7342f6c882b974cc10c97ddf1d4def30f1f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__vol20__flat10.csv",
+      "bytes": 141254,
+      "sha256": "aadac4792ee3749bbd9bdb91783bf216063873d0767afbca041b37cbdaa2315c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__vol20__flat20.csv",
+      "bytes": 141479,
+      "sha256": "91f8d7c13c9b773498614f94b529dc6ed34418ff053c4c760fe08a404ba20bf0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__vol20__flat30.csv",
+      "bytes": 141185,
+      "sha256": "204d9a93f48037035aac4bac204a413ba4db628f3afcb114d5be66249fe47bf5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__vol20__modeled1.csv",
+      "bytes": 141741,
+      "sha256": "8c1ece61c45a4bf5f56d08f8666ba605963cd95d5b3f8829ecd231e877aca918"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__vol20__modeled2.csv",
+      "bytes": 141798,
+      "sha256": "c7992fa0e44674ed21237e43d831de6dcd2683428318c0bdf81e9befad735f24"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__vol20__modeled4.csv",
+      "bytes": 141744,
+      "sha256": "8c2cff14f5e5422bf6db40f9f0dc6632e3aa74dfadf5471fc20812bb2a4fff84"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__original_five__equal5__vol20__zero.csv",
+      "bytes": 138396,
+      "sha256": "41e9c1a1fc1760fea78cc2f43c9b3c8cb9e0eedfa67575a00ebecd538ebae9ac"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__fixed__flat10.csv",
+      "bytes": 142115,
+      "sha256": "f9b7b1c63516bb63385df3c7fb5386e2350d44b1ce9c9169ab028c3b640735c9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__fixed__flat20.csv",
+      "bytes": 142089,
+      "sha256": "4361f0d04423b324b0566d2ec6756bf14e9921046ba26b238b1bdabf4c22a7c5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__fixed__flat30.csv",
+      "bytes": 142053,
+      "sha256": "9201b6c9b4184ee2e730adbd338c092934aa4026e2e9ce68d30ee66cd44fe6aa"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__fixed__modeled1.csv",
+      "bytes": 142191,
+      "sha256": "e8cf43e32bdae52129b14a66acb660853d648e05e47cb0081dc1fd873e2db7b4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__fixed__modeled2.csv",
+      "bytes": 142198,
+      "sha256": "d914f1709968509ed67a66d5bafdd8d60b74e1ade26478e9f40c2b9740eeb482"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__fixed__modeled4.csv",
+      "bytes": 142028,
+      "sha256": "2a78a074410d1e143cc41f07730746cc7c7c488b2dc64c74b385098eee0815b5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__fixed__zero.csv",
+      "bytes": 139183,
+      "sha256": "54c69ff2213c7fed30453d4683b700506df147b55280eeb2621246ad1c0b0e72"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__full__flat10.csv",
+      "bytes": 121693,
+      "sha256": "f24166ab6ae0b9f5b739c6554e66d4a37d0bf80a984138d45431b03f12da2bc3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__full__flat20.csv",
+      "bytes": 121569,
+      "sha256": "f86b69fe45d54a6bcf9168607b10b3de21db3d638f35e6efd2962ad5ae8bc616"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__full__flat30.csv",
+      "bytes": 121131,
+      "sha256": "51b3fa99e5cfa50fcbdf1521c52a560aba3287e0851b83e2762d055a5fa822d5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__full__modeled1.csv",
+      "bytes": 128389,
+      "sha256": "5a92625e298b0697f8b3eeaa261a75a6bdfef143afc012b487e803ee56d79ddf"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__full__modeled2.csv",
+      "bytes": 128348,
+      "sha256": "96fa5921350f9e3a9ef27e5eed8823401b25818406571aed15de729b21360b59"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__full__modeled4.csv",
+      "bytes": 128410,
+      "sha256": "29a840925341f08f746bbfe05bca2e2cc7db33955db8e27ba9960fb266df6f63"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__full__zero.csv",
+      "bytes": 118728,
+      "sha256": "9eb645410edc5d74604578bcf130f7342f6c882b974cc10c97ddf1d4def30f1f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__vol20__flat10.csv",
+      "bytes": 141254,
+      "sha256": "aadac4792ee3749bbd9bdb91783bf216063873d0767afbca041b37cbdaa2315c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__vol20__flat20.csv",
+      "bytes": 141479,
+      "sha256": "91f8d7c13c9b773498614f94b529dc6ed34418ff053c4c760fe08a404ba20bf0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__vol20__flat30.csv",
+      "bytes": 141185,
+      "sha256": "204d9a93f48037035aac4bac204a413ba4db628f3afcb114d5be66249fe47bf5"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__vol20__modeled1.csv",
+      "bytes": 141741,
+      "sha256": "8c1ece61c45a4bf5f56d08f8666ba605963cd95d5b3f8829ecd231e877aca918"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__vol20__modeled2.csv",
+      "bytes": 141798,
+      "sha256": "c7992fa0e44674ed21237e43d831de6dcd2683428318c0bdf81e9befad735f24"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__vol20__modeled4.csv",
+      "bytes": 141744,
+      "sha256": "8c2cff14f5e5422bf6db40f9f0dc6632e3aa74dfadf5471fc20812bb2a4fff84"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\Hlabel__ten_seed__equal5__vol20__zero.csv",
+      "bytes": 138396,
+      "sha256": "41e9c1a1fc1760fea78cc2f43c9b3c8cb9e0eedfa67575a00ebecd538ebae9ac"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\PATHS.npz",
+      "bytes": 2414806,
+      "sha256": "9dfa602c082d01568695104d18ca42d60ba70566405bd93c2231d29fb2f25ed9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\PATHS_PORTABLE.npz",
+      "bytes": 2415428,
+      "sha256": "5ae199714482a6379391aa11fded24e1046f4c7339b6071c2a4dafaffd43e01e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__fixed__flat10.csv",
+      "bytes": 125421,
+      "sha256": "73f6b4f7fd9624b0fca452f6b253032f93ae7b0d50d4f66e303805a1640fb232"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__fixed__flat20.csv",
+      "bytes": 129579,
+      "sha256": "ea27d976f0b340877b0f57b7de831288dda2ac7e6942fb639ed0f773dbbb1ab7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__fixed__flat30.csv",
+      "bytes": 129808,
+      "sha256": "560ef673633af42bc762991d4faa5561491a6b011a2883d8b98d18a6b10db2be"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__fixed__modeled1.csv",
+      "bytes": 129820,
+      "sha256": "55064543d1ad00d274ba1d6535d8be87a8961d76e4ae50271f842401158085d8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__fixed__modeled2.csv",
+      "bytes": 130046,
+      "sha256": "93ec85df5e03401ec5b29a381a39b438257356cf7ff597793c5ab4cd680bc5aa"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__fixed__modeled4.csv",
+      "bytes": 129782,
+      "sha256": "3d1b4640f56878fa3a05688b5103f703cc72cc15bc65b78fa5b5edf500c59691"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__fixed__zero.csv",
+      "bytes": 122884,
+      "sha256": "afb2da06b4206b58f9691ed080ad615e2756cdfc2bbcca5d66fa5274db78848f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__full__flat10.csv",
+      "bytes": 77355,
+      "sha256": "0622acb0a1787b5d2a02083891e461b98ec566d77f4f873ad0ee2541a5d70f6e"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__full__flat20.csv",
+      "bytes": 76513,
+      "sha256": "5bc6df8499bd294b5cf30fe9f96c38b2129c6c44ea56cb387787750ea2eee13a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__full__flat30.csv",
+      "bytes": 95799,
+      "sha256": "ef05932b74fb0d85650551ef3eefd51b76a043d2e8532e7381d07845db688b44"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__full__modeled1.csv",
+      "bytes": 94985,
+      "sha256": "b77c76d207bc9c355273c2a33d609a33e4863a35b418883094b74b7ba765b968"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__full__modeled2.csv",
+      "bytes": 95533,
+      "sha256": "111ec6690af8fc9b04f7cc392db9b33dc04e3cd8625a175a1d60c666ae6e31b4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__full__modeled4.csv",
+      "bytes": 95363,
+      "sha256": "13cbd8a19df09cce1e7f5a3b3f82e40ee058a46ca276c9c4640a8283747ba082"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__full__zero.csv",
+      "bytes": 87000,
+      "sha256": "088c2ae5a036b35dcf9f9a4a301ddc3ddfa9e7f25d634998ec196911bfdf86e6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__vol20__flat10.csv",
+      "bytes": 116161,
+      "sha256": "a272e8a0800592f0cd60d741178c4f4bcc366f6b868776754ede0c2665825e6b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__vol20__flat20.csv",
+      "bytes": 113367,
+      "sha256": "59c40456298e2161176460b4876afc2f6aaeb7480d33249384b2a4369ef4e0b9"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__vol20__flat30.csv",
+      "bytes": 109235,
+      "sha256": "cac28f2b4f7cc4e3313a45aa53c0c798959f1b87e7626c664d86e5a65c10b289"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__vol20__modeled1.csv",
+      "bytes": 121161,
+      "sha256": "98a1b986cf5af3234588df7c21070bef68cc95daf1546e2577f528327bd16a70"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__vol20__modeled2.csv",
+      "bytes": 121989,
+      "sha256": "8a3f0d585ff9376489bb82978aac9dfa0da8bf4f3aeafa4a39b049b2e82e5f20"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__vol20__modeled4.csv",
+      "bytes": 120244,
+      "sha256": "24fa29c466587ca1bc59d880f6a9329a00e25baf38310d9c416539d7b6ed1227"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\QQQ__benchmark__one_etf__vol20__zero.csv",
+      "bytes": 110973,
+      "sha256": "727542f74c79f91f56d70115e43865ce418cca108934430ec80e9814e1fe9d19"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__fixed__flat10.csv",
+      "bytes": 142012,
+      "sha256": "79c36e2bb0bb141c937b919b98851a7cab5df8ae03e4c239d4fe63f0e67750d6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__fixed__flat20.csv",
+      "bytes": 142098,
+      "sha256": "5c9f2238af9c29a8ff711fc984460555d4ca7baefd3d79536e4d7ad349c37212"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__fixed__flat30.csv",
+      "bytes": 142063,
+      "sha256": "a235a567bbfda0999e070f8d5b0d4e2707eed692efd1aaafab9fdacd509b658c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__fixed__modeled1.csv",
+      "bytes": 141992,
+      "sha256": "14fa3c0e357c69ad71d92baa31485dc8f20b1e8ecb295d8e3dad1c089ecf102a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__fixed__modeled2.csv",
+      "bytes": 142161,
+      "sha256": "9da18ab1249d0f30f3396e226b5358a075ef978d140ecc0cf82a751ede0e0772"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__fixed__modeled4.csv",
+      "bytes": 142134,
+      "sha256": "491eab4e698f29a85487a7b96a22ac5bfae8334ce1c387aa36c24002b23d2ef4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__fixed__zero.csv",
+      "bytes": 139059,
+      "sha256": "b8cb8c1cb9c04153b06aff0c5f88d463e03dbf625ff9a25d4a131ad5a6fa119f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__full__flat10.csv",
+      "bytes": 125742,
+      "sha256": "554bd84bd9f6050ebbea3801d4172b8a2e243f720c3354245df3d26a71d77a7a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__full__flat20.csv",
+      "bytes": 125231,
+      "sha256": "a057df7e9ba81b9af6966883e07530f65f43c337b1b0918d1654194cd6692fe8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__full__flat30.csv",
+      "bytes": 125068,
+      "sha256": "f0ee196c8e5dabb8fd97627fcfdb277ecced91f667f9c5611a554acad58c6b8a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__full__modeled1.csv",
+      "bytes": 127313,
+      "sha256": "85f7ff7c916505b723f05a0d128ab03dc063e898ace6da221094600992878468"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__full__modeled2.csv",
+      "bytes": 127081,
+      "sha256": "eacb88d199694baee6344cfdc48c6b9c76630ccc4b4680933bbde2fe58b9624b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__full__modeled4.csv",
+      "bytes": 127282,
+      "sha256": "f7e3a150da8f6d00f858a0b312b69a0b100b07c1014d62a34377bbbdf10b1b10"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__full__zero.csv",
+      "bytes": 121900,
+      "sha256": "01d2a85cbd0df9aed0e8030cee05c43e912c941e393769330cf97fa16090b876"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__vol20__flat10.csv",
+      "bytes": 140758,
+      "sha256": "82b81a47eab6b531ab8b2a6c51b725711b6fce33bf3598e53ab54247248a30ca"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__vol20__flat20.csv",
+      "bytes": 140524,
+      "sha256": "7392c769cfae1a13f8db6e8ea0f844c6dcbe2682b878bc4a66d9e43a12a58757"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__vol20__flat30.csv",
+      "bytes": 140543,
+      "sha256": "6ef3897295ee475f49435eeb05da639b8b360aa5a08b2f37ac52348e5e546634"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__vol20__modeled1.csv",
+      "bytes": 140887,
+      "sha256": "17c1df5ec757ea613f70b9915c5b5fe18b80c4d016dac758e83e6c517df3ec4b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__vol20__modeled2.csv",
+      "bytes": 140794,
+      "sha256": "9e1cc6a76061a12fde2f4072ed9fb73a533a0969688949681148a5e49d1b2d0b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__vol20__modeled4.csv",
+      "bytes": 140775,
+      "sha256": "09d20503d6359779ed28bf9af0cd621b088add81660ca82beebb16cd6e5ae48c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__new_five__equal5__vol20__zero.csv",
+      "bytes": 138084,
+      "sha256": "12fd114001ead0ff85f11b9fea9eb01622dc74a09122cf1d929eac585d3060d2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__fixed__flat10.csv",
+      "bytes": 142012,
+      "sha256": "79c36e2bb0bb141c937b919b98851a7cab5df8ae03e4c239d4fe63f0e67750d6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__fixed__flat20.csv",
+      "bytes": 142098,
+      "sha256": "5c9f2238af9c29a8ff711fc984460555d4ca7baefd3d79536e4d7ad349c37212"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__fixed__flat30.csv",
+      "bytes": 142063,
+      "sha256": "a235a567bbfda0999e070f8d5b0d4e2707eed692efd1aaafab9fdacd509b658c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__fixed__modeled1.csv",
+      "bytes": 141992,
+      "sha256": "14fa3c0e357c69ad71d92baa31485dc8f20b1e8ecb295d8e3dad1c089ecf102a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__fixed__modeled2.csv",
+      "bytes": 142161,
+      "sha256": "9da18ab1249d0f30f3396e226b5358a075ef978d140ecc0cf82a751ede0e0772"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__fixed__modeled4.csv",
+      "bytes": 142134,
+      "sha256": "491eab4e698f29a85487a7b96a22ac5bfae8334ce1c387aa36c24002b23d2ef4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__fixed__zero.csv",
+      "bytes": 139059,
+      "sha256": "b8cb8c1cb9c04153b06aff0c5f88d463e03dbf625ff9a25d4a131ad5a6fa119f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__full__flat10.csv",
+      "bytes": 125742,
+      "sha256": "554bd84bd9f6050ebbea3801d4172b8a2e243f720c3354245df3d26a71d77a7a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__full__flat20.csv",
+      "bytes": 125231,
+      "sha256": "a057df7e9ba81b9af6966883e07530f65f43c337b1b0918d1654194cd6692fe8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__full__flat30.csv",
+      "bytes": 125068,
+      "sha256": "f0ee196c8e5dabb8fd97627fcfdb277ecced91f667f9c5611a554acad58c6b8a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__full__modeled1.csv",
+      "bytes": 127313,
+      "sha256": "85f7ff7c916505b723f05a0d128ab03dc063e898ace6da221094600992878468"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__full__modeled2.csv",
+      "bytes": 127081,
+      "sha256": "eacb88d199694baee6344cfdc48c6b9c76630ccc4b4680933bbde2fe58b9624b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__full__modeled4.csv",
+      "bytes": 127282,
+      "sha256": "f7e3a150da8f6d00f858a0b312b69a0b100b07c1014d62a34377bbbdf10b1b10"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__full__zero.csv",
+      "bytes": 121900,
+      "sha256": "01d2a85cbd0df9aed0e8030cee05c43e912c941e393769330cf97fa16090b876"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__vol20__flat10.csv",
+      "bytes": 140758,
+      "sha256": "82b81a47eab6b531ab8b2a6c51b725711b6fce33bf3598e53ab54247248a30ca"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__vol20__flat20.csv",
+      "bytes": 140524,
+      "sha256": "7392c769cfae1a13f8db6e8ea0f844c6dcbe2682b878bc4a66d9e43a12a58757"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__vol20__flat30.csv",
+      "bytes": 140543,
+      "sha256": "6ef3897295ee475f49435eeb05da639b8b360aa5a08b2f37ac52348e5e546634"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__vol20__modeled1.csv",
+      "bytes": 140887,
+      "sha256": "17c1df5ec757ea613f70b9915c5b5fe18b80c4d016dac758e83e6c517df3ec4b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__vol20__modeled2.csv",
+      "bytes": 140794,
+      "sha256": "9e1cc6a76061a12fde2f4072ed9fb73a533a0969688949681148a5e49d1b2d0b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__vol20__modeled4.csv",
+      "bytes": 140775,
+      "sha256": "09d20503d6359779ed28bf9af0cd621b088add81660ca82beebb16cd6e5ae48c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__original_five__equal5__vol20__zero.csv",
+      "bytes": 138084,
+      "sha256": "12fd114001ead0ff85f11b9fea9eb01622dc74a09122cf1d929eac585d3060d2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__fixed__flat10.csv",
+      "bytes": 142012,
+      "sha256": "79c36e2bb0bb141c937b919b98851a7cab5df8ae03e4c239d4fe63f0e67750d6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__fixed__flat20.csv",
+      "bytes": 142098,
+      "sha256": "5c9f2238af9c29a8ff711fc984460555d4ca7baefd3d79536e4d7ad349c37212"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__fixed__flat30.csv",
+      "bytes": 142063,
+      "sha256": "a235a567bbfda0999e070f8d5b0d4e2707eed692efd1aaafab9fdacd509b658c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__fixed__modeled1.csv",
+      "bytes": 141992,
+      "sha256": "14fa3c0e357c69ad71d92baa31485dc8f20b1e8ecb295d8e3dad1c089ecf102a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__fixed__modeled2.csv",
+      "bytes": 142161,
+      "sha256": "9da18ab1249d0f30f3396e226b5358a075ef978d140ecc0cf82a751ede0e0772"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__fixed__modeled4.csv",
+      "bytes": 142134,
+      "sha256": "491eab4e698f29a85487a7b96a22ac5bfae8334ce1c387aa36c24002b23d2ef4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__fixed__zero.csv",
+      "bytes": 139059,
+      "sha256": "b8cb8c1cb9c04153b06aff0c5f88d463e03dbf625ff9a25d4a131ad5a6fa119f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__full__flat10.csv",
+      "bytes": 125742,
+      "sha256": "554bd84bd9f6050ebbea3801d4172b8a2e243f720c3354245df3d26a71d77a7a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__full__flat20.csv",
+      "bytes": 125231,
+      "sha256": "a057df7e9ba81b9af6966883e07530f65f43c337b1b0918d1654194cd6692fe8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__full__flat30.csv",
+      "bytes": 125068,
+      "sha256": "f0ee196c8e5dabb8fd97627fcfdb277ecced91f667f9c5611a554acad58c6b8a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__full__modeled1.csv",
+      "bytes": 127313,
+      "sha256": "85f7ff7c916505b723f05a0d128ab03dc063e898ace6da221094600992878468"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__full__modeled2.csv",
+      "bytes": 127081,
+      "sha256": "eacb88d199694baee6344cfdc48c6b9c76630ccc4b4680933bbde2fe58b9624b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__full__modeled4.csv",
+      "bytes": 127282,
+      "sha256": "f7e3a150da8f6d00f858a0b312b69a0b100b07c1014d62a34377bbbdf10b1b10"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__full__zero.csv",
+      "bytes": 121900,
+      "sha256": "01d2a85cbd0df9aed0e8030cee05c43e912c941e393769330cf97fa16090b876"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__vol20__flat10.csv",
+      "bytes": 140758,
+      "sha256": "82b81a47eab6b531ab8b2a6c51b725711b6fce33bf3598e53ab54247248a30ca"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__vol20__flat20.csv",
+      "bytes": 140524,
+      "sha256": "7392c769cfae1a13f8db6e8ea0f844c6dcbe2682b878bc4a66d9e43a12a58757"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__vol20__flat30.csv",
+      "bytes": 140543,
+      "sha256": "6ef3897295ee475f49435eeb05da639b8b360aa5a08b2f37ac52348e5e546634"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__vol20__modeled1.csv",
+      "bytes": 140887,
+      "sha256": "17c1df5ec757ea613f70b9915c5b5fe18b80c4d016dac758e83e6c517df3ec4b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__vol20__modeled2.csv",
+      "bytes": 140794,
+      "sha256": "9e1cc6a76061a12fde2f4072ed9fb73a533a0969688949681148a5e49d1b2d0b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__vol20__modeled4.csv",
+      "bytes": 140775,
+      "sha256": "09d20503d6359779ed28bf9af0cd621b088add81660ca82beebb16cd6e5ae48c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_RISK_20261027\\REV5__ten_seed__equal5__vol20__zero.csv",
+      "bytes": 138084,
+      "sha256": "12fd114001ead0ff85f11b9fea9eb01622dc74a09122cf1d929eac585d3060d2"
+    }
+  ]
+}

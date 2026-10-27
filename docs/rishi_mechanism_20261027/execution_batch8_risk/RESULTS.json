@@ -1,0 +1,14 @@
+{
+  "accounts": 525,
+  "source_accounts": 30,
+  "calendar_rows": 2100,
+  "calibration_rows": 68,
+  "contrasts": 42,
+  "daily_sessions": 1003,
+  "source_hashes": {
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_mechanism_risk.py": "284b876251531c4845b25960c80451b852077972a85f278cace7896b54c262c5",
+    "docs\\rishi_mechanism_20261027\\RISK_EXECUTION_PROTOCOL.md": "074f6a23a277b9507ab706dca11c7b13207e953af6b5b458334f2028a60afb2b",
+    "research\\core\\ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4"
+  },
+  "status": "completed_saved_export_risk_execution_checkpoint_gate_unchanged"
+}

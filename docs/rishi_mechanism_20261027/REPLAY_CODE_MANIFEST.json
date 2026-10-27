@@ -20,6 +20,11 @@
     "tests/test_rishi_rank_behavior.py": "b536423cf18604b39793d672705661efe4d5dedc24d3d16b82bc82b2f03cbdc1",
     "tests/test_rishi_power.py": "a431aa868e8ac2129023c5f355c962bd82d7d278b32f239ce5cf55c8b0f0f650",
     "docs/rishi_mechanism_20261027/RANK_BEHAVIOR_PROTOCOL.md": "14cc91c55ac0cfe6e5b8fbf65b83fce974044efe3937bcf1bea424136308d143",
-    "docs/rishi_mechanism_20261027/POWER_PROTOCOL.md": "04a07c1edff4916445db6b68302e9b05d4a3a5645af27b324c1442a9aa473958"
+    "docs/rishi_mechanism_20261027/POWER_PROTOCOL.md": "04a07c1edff4916445db6b68302e9b05d4a3a5645af27b324c1442a9aa473958",
+    "research/analysis/rishi_mechanism_risk.py": "c7bf8ff7607ee53733a0dcda2c17847c22e7a9ce14b3bfa8ab41149e0593f71f",
+    "research/analysis/rishi_risk_account_audit.py": "066db2258b4f51a5c52350c147eb3f63083c8178357664dc9caea0a195439b9a",
+    "research/analysis/rishi_risk_figure.py": "f147c9c40f0e9906e220b0230cf816411d0093bdfb90b4ed45e62d248eaab992",
+    "tests/test_rishi_mechanism_risk.py": "0189212d93911a4c6c0c5408423be419a3ba8f94623ba1ad6ceb6eac6925625e",
+    "docs/rishi_mechanism_20261027/RISK_EXECUTION_PROTOCOL.md": "074f6a23a277b9507ab706dca11c7b13207e953af6b5b458334f2028a60afb2b"
   }
 }

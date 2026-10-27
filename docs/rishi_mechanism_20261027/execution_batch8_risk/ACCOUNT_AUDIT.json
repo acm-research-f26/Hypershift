@@ -1,0 +1,13 @@
+{
+  "accounts": 525,
+  "observations": 526575,
+  "calendar_rows": 2100,
+  "source_accounts": 30,
+  "max_normalized_nav_error": 1.5832483768463135e-14,
+  "minimum_cash": -5.347828846424817e-10,
+  "all_terminal_equity_zero": true,
+  "portable_returns_identical": true,
+  "original_archive_preserved": true,
+  "additional_downside_view": "Actual QQQ returns below zero; original metric used QQQ return below its sample mean. Both preserved; attribution-only definition clarification.",
+  "audit_code_sha256": "066db2258b4f51a5c52350c147eb3f63083c8178357664dc9caea0a195439b9a"
+}
