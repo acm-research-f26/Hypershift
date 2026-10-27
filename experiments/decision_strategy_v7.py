@@ -99,13 +99,13 @@ def main():
     output=prepare();binding=json.loads(json.dumps(dict(script_sha256=sha(__file__),protocol_sha256=sha(output/'protocol.json'),
         queue_sha256=sha(Path(__file__).with_name('decision_strategy_queue.py')),worker_sha256=sha(Path(__file__).with_name('decision_strategy_parallel.py')),
         jobs=plan(),workers=2,later_after_development_selection=True)))
-    p=output/'v7_orchestration_receipt.json'
+    p=output/'v7_orchestration_receipt_v2.json'
     if p.exists():
         if read(p)['binding']!=binding:raise ValueError('Changed frozen orchestration')
     else:atomic(p,dict(frozen_UTC=utc(),binding=binding,missing_development_tasks=tasks(output,SCOPES[:2])))
     dev=stage(output,SCOPES[:2]);select(dev,output)
     atomic(output/'progress.json',dict(stage='development_complete_selection_frozen',updated_UTC=utc(),completed_proxy_trials=210,budget=315))
-    stage(output,SCOPES[2]);rows=receipts(output,SCOPES)
+    stage(output,(SCOPES[2],));rows=receipts(output,SCOPES)
     atomic(output/'proxy_results.json',dict(rows=rows,trials=len(rows),protocol_sha256=sha(output/'protocol.json')))
     csv_gz(output/'proxy_ledger.csv.gz',[dict(scope=r['scope'],strategy=r['config']['id'],gate=r['gate'],scenario=r['scenario'],**r['metrics']) for r in rows])
     atomic(output/'progress.json',dict(stage='proxy_complete',updated_UTC=utc(),completed_proxy_trials=len(rows),budget=315))

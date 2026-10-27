@@ -8,6 +8,9 @@ from experiments.decision_strategy.runner import select,csv_gz
 
 
 def tasks(output,scopes):
+    if isinstance(scopes,str):raise TypeError('Pass a sequence of full authorized cohort names')
+    scopes=tuple(scopes)
+    if any(scope not in SCOPES for scope in scopes):raise ValueError('Unauthorized cohort label')
     result=[]
     for scope in scopes:
         for c in CATALOG:
@@ -41,7 +44,7 @@ def main():
     else:atomic(p,dict(frozen_UTC=utc(),binding=binding,initial_missing_recipe_tasks=tasks(output,SCOPES[:2])))
     dev=stage(output,SCOPES[:2]);select(dev,output)
     atomic(output/'progress.json',dict(stage='development_complete_selection_frozen',updated_UTC=utc(),completed_proxy_trials=210,budget=315))
-    stage(output,SCOPES[2]);rows=receipts(output,SCOPES)
+    stage(output,(SCOPES[2],));rows=receipts(output,SCOPES)
     atomic(output/'proxy_results.json',dict(rows=rows,trials=len(rows),protocol_sha256=sha(output/'protocol.json')))
     csv_gz(output/'proxy_ledger.csv.gz',[dict(scope=r['scope'],strategy=r['config']['id'],gate=r['gate'],scenario=r['scenario'],**r['metrics']) for r in rows])
     atomic(output/'progress.json',dict(stage='proxy_complete',updated_UTC=utc(),completed_proxy_trials=len(rows),budget=315))

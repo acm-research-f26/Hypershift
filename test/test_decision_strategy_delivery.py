@@ -75,3 +75,11 @@ def test_cash_export_reuse_cannot_erase_a_position_or_realized_activity():
     assert cash_tape(p,held,100000)
     held[1,0]=1;assert not cash_tape(p,held,100000)
     held[:]=0;p[1,7]=100;assert not cash_tape(p,held,100000)
+
+
+def test_single_scope_cannot_be_split_into_character_paths(tmp_path):
+    from experiments.decision_strategy_queue import tasks
+    from experiments.decision_strategy.config import SCOPES
+    with pytest.raises(TypeError,match='sequence'):tasks(tmp_path,SCOPES[2])
+    with pytest.raises(ValueError,match='Unauthorized'):tasks(tmp_path,('4',))
+    assert sum(n for _,_,n in tasks(tmp_path,(SCOPES[2],)))==105

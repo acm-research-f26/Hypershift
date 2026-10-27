@@ -44,6 +44,12 @@ The two-worker orchestrator runs exactly315 jobs. Both development cohorts
 finish before selection.json freezes; only then can the later cohort open.
 The queue reuses the original parallel worker and keeps independent recipes
 balanced across two CPUs. Never run both orchestrators simultaneously.
+After development selection has frozen, the current later-only continuation is
+python -m experiments.decision_strategy_later. It repairs an operational
+single-cohort string/sequence error before any later prices were opened. The
+original controller source and failure receipt are preserved; strategy bytes,
+fits,selection and the105 later jobs are unchanged. Use runner proxies with
+--output for a full replay of a populated frozen artifact directory.
 Post-freeze reporting helpers never fit a strategy or alter a decision. Exact v7 source
 and dependency bytes, including line endings, are retained with the artifacts.
 An empty diagnostic set means zero strategy quote replays and unmeasured
