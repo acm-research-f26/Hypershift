@@ -12,4 +12,16 @@ T5 done 2026-10-27 by Codex: independent scientific/source/builder review and le
 
 T6 done 2026-10-27 by Codex: delivered RESEARCH_PLAN.md with initial findings, competing mechanisms, exact artifact/replay requirements, staged identity/blend/feature/peer/risk attribution, conditional matched retraining, statistical rules and prospective boundaries. Supporting smoke code and evidence retained. No automatic execution of proposed financial stages.
 
-Running now: none after this investigation. Next steps: user review of roadmap; obtain original artifacts or regenerate absent training exports from original checkpoints by inference, then freeze a bounded replay/attribution batch. Missing raw data remain a dependency, not a fabricated result. Open decisions: choice/resource authorization for any later financial batch or prospective activation; protected-window and paid-data decisions unchanged. No push, capital, team messaging or automation.
+T7 done 2026-10-27 by Codex: user authorized “after you finish the plan, start testing”; protocol finalized and committed 06791ad before new contrasts. Checked four local checkouts and tracked feat-rs tree; original runs/NDX inputs absent and explicitly ignored. Expanded available evidence from workbook literal return cells, retaining workbook bytes unchanged.
+
+T8 done 2026-10-27 by Codex: completed execution_batch1. Validated 12 workbook series × 1,003 sessions (metric error <5.25e-14), including 1.199 original-five leader; validated 18 model accounts × 48 months. Evaluated six fixed daily policy contrasts at block21/5/63 and four monthly model contrasts at block3/1/6 with 10,000 synchronized stationary draws and explicit Holm families. Algebraic initial-capital pooling remains distinct from executable half-AUM replay.
+
+T9 done 2026-10-27 by Codex: nine analysis tests first passed, plus three actual-code component transport/gradient tests. Independent final reviewer verified arithmetic/provenance and found one P2 output-overwrite issue. Regression test failed before adding reserve_output; final combined suite **31 passed**, logged in execution_batch1/TEST_LOG_FINAL.txt. No production model/trading source altered.
+
+T10 done 2026-10-27 by Codex: TESTING_REPORT.md and ARTIFACT_REQUEST.md delivered. User asked whether raw files are in Git and requested what to ask Rishi while continuing other work. Draft supplied; no team message sent. Completed all currently feasible frozen aggregate/structural batch tests. Learned-stock-signal, exact account replay and financial ablation stages remain artifact-dependent.
+
+Ruling: output policy guard refuses any nonempty destination, including partial evidence. Reproductions need a separately declared fresh destination; existing run evidence is preserved. This changes no saved numerical results.
+
+Ruling: monthly diagnostics do not pass the earlier daily mean/SR mechanism gates; annualized monthly effects and algebraic pooling remain explicitly different estimands. All selected-history intervals omit full prior search and refit uncertainty.
+
+Running now: none; available first batch completed. Next steps: obtain Rishi's existing artifacts using ARTIFACT_REQUEST.md, validate/replay forecasts/orders, then run trained-checkpoint/identity/blend controls under the roadmap. No new approval is needed merely to resume already-authorized testing when files arrive; conditional financial fitting still needs its preregistered data/learner/compute gates. Protected-window and paid-data decisions unchanged. No push, capital, team messaging or automation.

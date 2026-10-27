@@ -1,0 +1,11 @@
+id,max_metric_error,csv_overlap
+equal5/basketvol20_target20_weekly/original_five,5.10702591327572e-14,False
+issuer5/ma200off50_basketvol20_target25_weekly/original_five,4.574118861455645e-14,True
+issuer5/basketvol20_target20_weekly/original_five,5.062616992290714e-14,True
+equal5/ma200off50_basketvol20_target20_weekly/original_five,5.240252676230739e-14,True
+equal5/full/original_five,3.086420008457935e-14,True
+equal5/basketvol20_target20_weekly/ten_seed,5.062616992290714e-14,False
+issuer5/ma200off50_basketvol20_target25_weekly/ten_seed,4.529709940470639e-14,True
+issuer5/basketvol20_target20_weekly/ten_seed,5.062616992290714e-14,True
+equal5/ma200off50_basketvol20_target20_weekly/ten_seed,5.1958437552457326e-14,True
+equal5/full/ten_seed,3.064215547965432e-14,True

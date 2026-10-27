@@ -1,0 +1,23 @@
+{
+  "status": "completed_available_aggregate_tests_raw_mechanism_deferred",
+  "daily": {
+    "workbook_series": 12,
+    "sessions": 1003,
+    "max_metric_error": 5.240252676230739e-14,
+    "csv_overlapping_series": 8
+  },
+  "monthly": {
+    "monthly_accounts": 18,
+    "months": 48,
+    "max_cagr_error": 1.27675647831893e-15
+  },
+  "input_sha256": {
+    "docs/NASDAQ100_strategy_comparison.xlsx": "044c8b2e26a769f16722392eef3c9d87e28f8f43aafb41d0d3b182a9b309acd9",
+    "docs/ndx_drawdown_20261026/comparison_curves.csv": "178b94014d6be0702deb6c37484fa2eab7239247cc85bf50990fd3e376d2ef2f",
+    "docs/ndx_drawdown_20261026/metrics.csv": "b3b0a273a0dbd003c1adc9fb4bd4fecae7832a934f7dac2c2da3e650b6a5621d",
+    "latest/results/reference_networks/monthly.csv": "8bb57e552f062afd380e4e473deac98132479e13ccd89d15496f95ce2c9c80e0",
+    "latest/results/reference_networks/metrics.csv": "4d7f5401669dc6a0fdbb502ecc513e7c000313f687d2a9f29d8926adbe826a1d",
+    "docs/rishi_mechanism_20261027/EXECUTION_PROTOCOL.md": "f36624476580c46331271775908f5489736d2ee96edcb63e45c9a53e142b6361"
+  },
+  "scope": "Selected historical account-path diagnostics; no trained-signal or half-capital execution replay"
+}

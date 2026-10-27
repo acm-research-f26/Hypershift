@@ -1,0 +1,7 @@
+group,k,pool_cagr,blend_cagr,cagr_difference,pool_terminal_wealth,blend_terminal_wealth,scope
+original_five,5,0.12102973704780332,0.3293780597941944,0.20834832274639106,1.5757382066186914,3.1055654325154487,Algebraic initial-capital combination of full-size return paths; half-AUM costs/caps not replayed
+original_five,10,0.20418782780840186,0.27794679090269186,0.07375896309429,2.0949605814984635,2.654225017544926,Algebraic initial-capital combination of full-size return paths; half-AUM costs/caps not replayed
+new_five,5,0.07859688476086542,0.20921885615781208,0.13062197139694665,1.3514023784712623,2.130014897850813,Algebraic initial-capital combination of full-size return paths; half-AUM costs/caps not replayed
+new_five,10,0.11838334666703466,0.1326649211943892,0.014281574527354526,1.560984767979925,1.6418457788247522,Algebraic initial-capital combination of full-size return paths; half-AUM costs/caps not replayed
+ten_seed,5,0.18676239254971613,0.31868146208151754,0.1319190695318014,1.9768769155629111,3.0072939156288956,Algebraic initial-capital combination of full-size return paths; half-AUM costs/caps not replayed
+ten_seed,10,0.1533919148653462,0.2392013909958015,0.08580947613045531,1.7647285445977903,2.34811582557225,Algebraic initial-capital combination of full-size return paths; half-AUM costs/caps not replayed

@@ -1,0 +1,42 @@
+{
+  "checkouts": [
+    {
+      "root": "C:\\Users\\Hi\\Projects - Coding\\Hypershift",
+      "artifacts": {
+        "data/nasdaq_monthly_pit/assembled/manifest.json": false,
+        "runs/ndx_reference_networks_20261024": false,
+        "runs/ndx_extended_hours_20261024": false,
+        "runs/ndx_drawdown_20261026/batch1": false
+      }
+    },
+    {
+      "root": "C:\\Users\\Hi\\Projects - Coding\\Hypershift-rishi",
+      "artifacts": {
+        "data/nasdaq_monthly_pit/assembled/manifest.json": false,
+        "runs/ndx_reference_networks_20261024": false,
+        "runs/ndx_extended_hours_20261024": false,
+        "runs/ndx_drawdown_20261026/batch1": false
+      }
+    },
+    {
+      "root": "C:\\Users\\Hi\\Projects - Coding\\Hypershift-rishi-latest",
+      "artifacts": {
+        "data/nasdaq_monthly_pit/assembled/manifest.json": false,
+        "runs/ndx_reference_networks_20261024": false,
+        "runs/ndx_extended_hours_20261024": false,
+        "runs/ndx_drawdown_20261026/batch1": false
+      }
+    },
+    {
+      "root": "C:\\Users\\Hi\\Projects - Coding\\Hypershift-unify",
+      "artifacts": {
+        "data/nasdaq_monthly_pit/assembled/manifest.json": false,
+        "runs/ndx_reference_networks_20261024": false,
+        "runs/ndx_extended_hours_20261024": false,
+        "runs/ndx_drawdown_20261026/batch1": false
+      }
+    }
+  ],
+  "raw_replay_available": false,
+  "downloads_search": "Bounded NDX/Rishi/prediction/reference/drawdown filename search; no relevant raw payload found"
+}

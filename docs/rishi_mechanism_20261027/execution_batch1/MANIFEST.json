@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-27",
+  "protocol_commit": "06791ad",
+  "tests_passed": 31,
+  "prior_initial_investigation_commit": "dbadcae",
+  "scope": "First frozen available-data batch; trained signal and raw account claims deferred",
+  "files": {
+    "docs/rishi_mechanism_20261027/execution_batch1/ARTIFACT_INVENTORY.json": "205e60c13f806efbbbd4d38a3b28e47fe953e5253a492a535f659f3e932ef810",
+    "docs/rishi_mechanism_20261027/execution_batch1/BATCH_RESULTS.json": "240b36d0b86682a1a27f622d49a3fef29d6cce99c4b8b1483ac46f1912706627",
+    "docs/rishi_mechanism_20261027/execution_batch1/CAPITAL_POOL_DIAGNOSTIC.csv": "1fbb2cf43a1e3366231a571dce6e4d941d63a092972a0de6816a57e07bcfd118",
+    "docs/rishi_mechanism_20261027/execution_batch1/DAILY_CONTRASTS.csv": "e4186a75340ff660f8aa2abe49cd315a719724410ca511d61029b9e294003a33",
+    "docs/rishi_mechanism_20261027/execution_batch1/MONTHLY_MODEL_CONTRASTS.csv": "2e44bd02c518e3c00955c86f5d72198dc2f42840671358d70b83bcad84e9fd9e",
+    "docs/rishi_mechanism_20261027/execution_batch1/MONTHLY_VALIDATION.csv": "1b06bfbf09b253086c5c3487cf835f2e87183b453d010f901c008f7bc68dff7b",
+    "docs/rishi_mechanism_20261027/execution_batch1/REVIEW.md": "0a42b1296b8596b9ea89e410f779711f93986f429bf791f7b6cf0b18879506a8",
+    "docs/rishi_mechanism_20261027/execution_batch1/TESTING_REPORT.md": "50f69df85b98f2959c20dbd4168406e0a7321712edaa71bd3c4e88461d08dc86",
+    "docs/rishi_mechanism_20261027/execution_batch1/TEST_LOG.txt": "bfa94538e59f888dd212d68efa523b43244f0b3fab4aa23a9fa7cac9db151601",
+    "docs/rishi_mechanism_20261027/execution_batch1/TEST_LOG_FINAL.txt": "efe0ff5f9819b1c96fab9b8a14f42b8d7759810bd222a1c47f5303f2204dedcc",
+    "docs/rishi_mechanism_20261027/execution_batch1/WORKBOOK_ANNUAL.csv": "5c1fee499ac84b51d5c597499e986a24a7332259a670521622b86b518bb1e402",
+    "docs/rishi_mechanism_20261027/execution_batch1/WORKBOOK_METRICS.csv": "b6af6d2665df27d85fea187ca49f308f084dde53eb08dd929083fcb15f625186",
+    "docs/rishi_mechanism_20261027/execution_batch1/WORKBOOK_PATHS.csv": "0f5e672405b083e2e04c8a2b70c0b4400a422b1983f4d8b2b88bf4c9d9cc4afe",
+    "docs/rishi_mechanism_20261027/execution_batch1/WORKBOOK_VALIDATION.csv": "37a904560e5ae509df54dc416cb277bde48cf40a62ac761658b292911df9ac47",
+    "research/analysis/rishi_mechanism_batch1.py": "ca77e703da380f2621e218ec85f6f9643fecc220afee976f8db967518f19c9f8",
+    "tests/test_rishi_mechanism_batch1.py": "3df4df7e4ff2bfa49da12cc8b86010de6fefd326326af3341429014ef356f9ed",
+    "tests/test_rishi_mechanism_components.py": "e42e08a3f91ec3e9997362abccacd18e50ddfcd093eb6cc7cbd2ce4ceed386ea"
+  }
+}
