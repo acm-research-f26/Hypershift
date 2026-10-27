@@ -219,3 +219,27 @@ def test_oof_and_production_share_the_same_prespecified_direction_filter():
     relative=np.array([.01,.01,-.01,-.01]);score=np.array([-.1,.1,.1,-.1])
     np.testing.assert_array_equal(direction_mask({'design':'D03','arm':'stall'},relative,score),[True,False,True,False])
     np.testing.assert_array_equal(direction_mask({'design':'D03','arm':'momentum'},relative,score),[False,True,False,True])
+
+
+def test_unknown_round_trip_cost_cannot_admit_an_economic_gate_entry():
+    from experiments.decision_strategy.audit import fixture
+    from experiments.decision_strategy.replay import run,verify
+    m=fixture();c=[dict(origin=60,stock=0,hedges=[1],side=1,prediction=1,edge_mean=.01,edge_se=0,
+        relative=.01,horizon=30,gate='net_edge',design='D01')]
+    r=run(m,c,Execution(),np.ones(1),np.array([np.nan,2.]))
+    assert verify(m,r,Execution())['accounting_reconciled']
+    assert not r['fills'] and r['decisions'][0]['disposition']=='net_edge_abstain'
+
+
+def test_D04_stock_only_signal_cannot_consume_industry_breadth():
+    from experiments.decision_strategy.signals import frame
+    t,n=1,261
+    m=dict(sessions=np.zeros(t,int),clock=np.full(t,60),eligible_full=np.ones((t,n),bool),
+        vol=np.ones((t,n))*.001,stock_etf=np.full(250,250))
+    f=dict(own5=np.full((t,n),.01),own15=np.full((t,n),.02),ok=np.ones((t,n),bool),breadth=np.full((t,250),.8))
+    structure=dict(etf_stable=np.ones(250,bool))
+    config=dict(design='D04',arm='stock_only')
+    a=frame(m,f,structure,config,[0]);f['breadth'][:]=-.7
+    b=frame(m,f,structure,config,[0])
+    np.testing.assert_array_equal(a['x'],b['x'])
+    assert (a['x'][:,5]==0).all() and (a['x'][:,0]==.01).all()

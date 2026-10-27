@@ -37,7 +37,7 @@ def freeze(output):
     protected = read(PRIOR / 'protected_sessions.json')
     reference = read(REFERENCE / 'protocol.json')
     source = Path(__file__).parent
-    binding = dict(version='decision_v5', source={p.name: sha(p) for p in sorted(source.glob('*.py'))},
+    binding = dict(version='decision_v7', source={p.name: sha(p) for p in sorted(source.glob('*.py'))},
         dependencies={str(p.relative_to(source.parents[1])): sha(p) for folder in
             ('strategy_search', 'strategy_validation', 'closing_followup', 'longer_horizon')
             for p in sorted((source.parent / folder).glob('*.py'))},
@@ -79,6 +79,8 @@ def freeze(output):
         future='Never open reserved outcomes. Prospective test starts after source freeze and after2027-01-13; earliest currently2027-01-14. No collection scheduled.',
         prior='210 main proxies and30 closing benchmarks;0 qualified,empty shortlist,ZERO new quote replays. Empty quote receipts do not establish coverage. S10/prior graph rules price-only.')
     binding['correctness_version']='v1 NPZ writer and ineligible zero-vol quantile bugs;v2 keeps90th percentile on eligible windows,retains5 cash trials and failed active-control tape;v3 repairs1.57509613-dollar idle-mark mismatch and retains30 trials before discovering expired empty slots. V4 was frozen but never experimentally run; it releases slots,implements the50-dollar discrepancy band,proves a sequential integer net path,and sizes costs within known volume/depth. V5 pre-run conformance audit replaces log P&L labels with arithmetic dollar labels,uses actual residual half/1.5x exits for D03,corrects own/industry-control feature restrictions,and makes graph top3 positive as declared. Risk,activity,qualification and90th-percentile rules unchanged. Train-only fits refit; earlier versions retained,none selected a cross-recipe shortlist.'
+    binding['correctness_version']+=' V6 fails closed on nonfinite expected gross, uncertainty or estimated cost. V5 completed trials are reused only when the exact single execution-line delta provably cannot change any consumed decision; originals and per-trial equivalence receipts are retained. No recipe, fit, threshold, risk or activity change.'
+    binding['correctness_version']+=' V7 removes industry breadth from the D04 stock-only control before its first development trial. Only that control is refit on train60; the other11 fixed models and their consumed streams/tapes are unchanged and reused with explicit branch-equivalence receipts. No primary recipe, risk, activity or qualification change.'
     # JSON normalizes tuples before immutable equality comparison.
     import json
     binding = json.loads(json.dumps(binding))

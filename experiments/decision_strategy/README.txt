@@ -11,7 +11,7 @@ Commands:
   python -m experiments.decision_strategy.runner proxies
   python -m experiments.decision_strategy.runner quotes
 
-Runner output defaults to decision_strategy_execution_2026-10-27_v5. Metadata
+Runner output defaults to decision_strategy_execution_2026-10-27_v7. Metadata
 acquisition is preserved in the original decision_strategy_execution_2026-10-27
 input directory. V1's interrupted receipt and faulty train-threshold diagnostic
 are preserved; v2 repaired these before development comparisons. V3 repairs
@@ -24,6 +24,30 @@ V4 was superseded before execution by v5's pre-run units/control audit:
 arithmetic dollar-P&L labels, actual D03 residual exits and declared control
 feature restrictions. Coarse group construction and90th-percentile rules stay
 fixed. No version chose a cross-recipe development shortlist before these fixes.
+V6 adds a fail-closed finite-cost guard. It retains v5, reuses19 completed
+receipts only with an exact single-line execution-delta and consumed-decision
+equivalence proof, and leaves fits, recipes, activity and risk criteria fixed.
+V7 removes industry breadth from the D04 stock-only control before that control
+has any development trial. Only that model refits on train60. The other11 models
+and their verified tapes carry forward with explicit branch-equivalence proofs.
+
+Current continuation and reporting commands:
+  python -m experiments.decision_strategy_v7
+  python -m experiments.decision_strategy.runner quotes
+  python -m experiments.decision_strategy_independent --output <absolute v7 output directory>
+  python -m experiments.decision_strategy_delivery attribute
+  python -m experiments.decision_strategy_delivery dispositions
+  python -m experiments.decision_strategy_delivery report
+  python -m experiments.decision_strategy_delivery verify
+
+The two-worker orchestrator runs exactly315 jobs. Both development cohorts
+finish before selection.json freezes; only then can the later cohort open.
+The queue reuses the original parallel worker and keeps independent recipes
+balanced across two CPUs. Never run both orchestrators simultaneously.
+Post-freeze reporting helpers never fit a strategy or alter a decision. Exact v7 source
+and dependency bytes, including line endings, are retained with the artifacts.
+An empty diagnostic set means zero strategy quote replays and unmeasured
+coverage, regardless of the separate training-spread acquisition cache.
 
 Do not overwrite a frozen study after changing strategy source. Preserve the
 original directory and version correctness repairs explicitly. Classifications

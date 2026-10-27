@@ -248,7 +248,7 @@ def quote_study(output,protocol):
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('command',choices=['freeze','engineering','proxies','quotes']);p.add_argument('--output',default=str(STUDY/'decision_strategy_execution_2026-10-27_v5'))
+    p=argparse.ArgumentParser();p.add_argument('command',choices=['freeze','engineering','proxies','quotes']);p.add_argument('--output',default=str(STUDY/'decision_strategy_execution_2026-10-27_v7'))
     a=p.parse_args();output=Path(a.output)
     if a.command=='engineering':print(fixed_stream(output/'engineering'));return
     protocol=freeze(output)

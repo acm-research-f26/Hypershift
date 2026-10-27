@@ -136,7 +136,7 @@ def run(m,candidates,settings,scale,spread_bps,quotes=None,stress='normal'):
                 cost=round_trip_cost(target,marks[js],entry_spread,spread_bps[js],c['horizon'],Execution())
                 gross=float(abs(target[0]*marks[j])*c['edge_mean']);uncertainty=float(abs(target[0]*marks[j])*c['edge_se'])
                 decision.update(expected_gross_dollars=gross,uncertainty_dollars=uncertainty,estimated_cost_dollars=cost)
-                if c['gate']=='net_edge' and (not np.isfinite(uncertainty) or gross-uncertainty<=cost['total']):
+                if c['gate']=='net_edge' and (not np.isfinite([gross,uncertainty,cost['total']]).all() or gross-uncertainty<=cost['total']):
                     decision['disposition']='net_edge_abstain';decisions.append(decision);continue
                 serial+=1;identifier='basket'+str(serial);used.add(j)
                 b=dict(id=identifier,js=js,target=target,held=np.zeros(len(js),int),ever=np.zeros(len(js),bool),

@@ -97,6 +97,7 @@ def frame(m,f,structure,config,ids,with_labels=False):
     if arm=='self':x[:,[2,3,5]]=0
     if arm=='no_graph':x[:,2]=0
     if arm=='etf_only':x[:,[0,1,4,5]]=0
+    if design=='D04' and arm=='stock_only':x[:,5]=0
     if design=='D03' and arm=='own':x[:,[2,5]]=0
     if design=='D03' and arm=='momentum':
         x[:,0]=leader;x[:,1]=relative;x[:,3]=relative;x[:,4]=0
