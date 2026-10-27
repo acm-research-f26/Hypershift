@@ -110,3 +110,32 @@ and every executed quote, and saves resumable results plus a standalone report.
 The scenarios include commission-free, zero explicit fees with actual spreads,
 and a zero execution-cost minute-open diagnostic. These remain exploratory;
 the future reservation is checked before loading any requested session.
+
+`experiments/longer_horizon` tests fourteen sparse 60/120-minute policies across
+all 250 stocks: direct and pure two-hop lead–lag, industry/sector peers,
+self-momentum/reversal controls, and a fixed shuffled-network null. Training-only
+normalizers and the prior train-only graph are frozen before screening. Five
+development blocks at 1bp select two diagnostic quote candidates before later
+replay. All fourteen policies run at 0, 0.5, 1, 2 and 5bp per side. These price
+policies do not consume HYB_LN forecasts or establish a neural-model advantage.
+
+```powershell
+uv run --extra validation python -m experiments.longer_horizon.prepare `
+  --reference <frozen-strategy-search-run> --prior <previous-validation-run> `
+  --output <new-private-longer-horizon-run> --env-file .env
+uv run --extra validation python -m experiments.longer_horizon screen `
+  --reference <frozen-strategy-search-run> --prior <previous-validation-run> `
+  --graph <train-only-corrected-lead-lag-run> --output <same-run>
+```
+
+Run `quotes`, `auction`, then `finish` with the same four path arguments.
+`quotes` acquires every intended as-of request for both unscaled and scaled
+executions of the five frozen scenarios, including negative responses, until
+the requested set closes. Snapshots remain local, hashed and reusable. Primary
+quotes retain a five-second freshness limit and 99% intended-notional coverage;
+60-second quotes are a labeled sensitivity. Mandatory scheduled exits keep
+retrying beyond the three-attempt discretionary-entry limit. Cash and NAV are
+independently reconciled for both executions; risk or liquidation failures stay
+invalid. Auction analysis is a separate closing-price/full-fill benchmark with
+no imbalance feed or execution-qualification claim. Historical cohorts remain
+research-exposed and the reserved future dates remain sealed.
