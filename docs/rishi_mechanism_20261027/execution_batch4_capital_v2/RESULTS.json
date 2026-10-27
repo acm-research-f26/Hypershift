@@ -1,0 +1,7 @@
+{
+  "accounts": 6,
+  "sleeves": 12,
+  "initial_total": 1000000.0,
+  "initial_each": 500000.0,
+  "policy": "Independent initial capital split; no transfers or order netting"
+}

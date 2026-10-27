@@ -1,0 +1,1 @@
+First attempt stopped before any summary write: performance returns annualized_return, not cagr. Corrected key lookup; preserve destination, rerun same frozen comparisons in capital_v2. No policy or outcome selection change.

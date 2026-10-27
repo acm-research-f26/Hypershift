@@ -10,6 +10,9 @@
     "docs/rishi_mechanism_20261027/PORTABILITY_AMENDMENT.md": "e3dfcaaa45cd92654cacaaafd8904f408d64dfe5d4517bf43595b1343559a1ec",
     "docs/rishi_mechanism_20261027/NUMERICAL_REPLAY_AMENDMENT.md": "7618090656c36de820f5e51a5f4ae92f9adff42064aa143af70a49b584a318a8",
     "docs/rishi_mechanism_20261027/EXPORTED_FORECAST_STAGE.md": "b5b7757ab78998898db0532e21252be7074b20ad049d89024d4261c153d81248",
-    "docs/rishi_mechanism_20261027/STOCK_TRACE_PROTOCOL.md": "8adba870076d22b02b8563c14d3dd64c26ae474d46d5418366a0d2d1d648b91f"
+    "docs/rishi_mechanism_20261027/STOCK_TRACE_PROTOCOL.md": "8adba870076d22b02b8563c14d3dd64c26ae474d46d5418366a0d2d1d648b91f",
+    "research/analysis/rishi_capital_split.py": "b551c8612fa0df04a78c14f34680f5a6833cb250165d273c0a0888da7dece2e5",
+    "tests/test_rishi_capital_split.py": "3b763a55c8e392982eea9ddd96410e46391687006b706824ada5ef901437e03d",
+    "docs/rishi_mechanism_20261027/CAPITAL_SPLIT_PROTOCOL.md": "34a88a062c9e6d7cea610a13c9c636ec1cf450afd7f961ff1f92a422bd86ea0d"
   }
 }
