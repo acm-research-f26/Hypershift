@@ -1,0 +1,11 @@
+# Paired-tape planning power —2026-10-27
+
+Research_Plan §10, now that matched daily tapes exist. Fixed ten-seed/top10 E,B,E_Hlabel,1003saved-export sessions. Do not change earlier primary outcomes or activate a future test.
+
+Use10000reference-null and10000independent simulated datasets per horizon252/504/1008sessions and expected stationary block21(primary),5/63sensitivities; circular source tape, jointly sampled across arms. RNG27102031, deterministic loop order blocks21/5/63,horizons252/504/1008; process chunks500to bound memory. This is conditional planning under the inspected historical dependence, not a future market guarantee or new independent years/seeds.
+
+Mean endpoint: center both observed daily differences at zero. Simulate common annual net-mean increments0/1/2pp for E relative to both controls. Statistic252×sample mean paired difference. SR endpoint: preserve each arm's centered daily path and full-sample SD, shift all baseline means to canonical3%hurdle plus SR.5×SD/sqrt252. Simulate E−control SR increments0/.10/.20 by shifting E's mean by increment×E's fixed daily SD/sqrt252. Compute sample SD with ddof1, separately for each arm; empirical paired SR-difference null retains dependence and finite-sample behavior. The two endpoint families are separate planning views, not joint promotion tests.
+
+One-sided p=(1+#reference statistics≥simulated statistic)/(10001); Holm5%across E−B/E−E_Hlabel within each endpoint family. Report marginal/either/both rejection rates, MC standard errors and zero-effect family rejection rate. Report sample mean/SR reference intervals, not inferred power from a point estimate alone. No seed pseudo-replication or seed-bundle resampling in these market-date simulations. Separately report actual paired annual mean with Newey–West Bartlett lags5/20and normal-approximation intervals, labeled supportive.
+
+Fresh execution_batch7_power outputs and machine-readable protocol/code hashes. Verify constant-shift algebra, Holm row ordering, dependent block generation/reproducibility and preservation of paired identities. A weak504-session power result calls for a longer separately frozen endpoint or explicitly exploratory collection; it does not authorize optional stopping or a prospective launch.
