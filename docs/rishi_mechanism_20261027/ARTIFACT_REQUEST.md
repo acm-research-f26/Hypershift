@@ -12,4 +12,6 @@ Ideally include per-stock predictions for each year/seed (including training/val
 
 The reviewed `data/nasdaq_monthly_pit/assembled/` inputs and `extended_hours_features_20261024/` feature files would let us reproduce the forecasts too. Please retain their manifests and original ID/date order.
 
+There is also a machine-readable list, `ARTIFACT_CONTRACT_V2.json`, derived from your committed hash locks: 339 existing fit/input files with expected hashes. It includes the trading calendar and the shared preparation routine's factor-file dependencies. This is a request list, not a claim that it includes every account/trade tape; those are still needed separately.
+
 No new training needed—just the existing files. Leave out `.env`, API keys and credentials. If the export is too large, predictions + stock IDs/masks + daily holdings/trade records would be a useful first package. If some files weren't saved, just say which ones are available; training predictions can be regenerated from original checkpoints without refitting.

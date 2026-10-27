@@ -1,0 +1,187 @@
+{
+  "status": "complete",
+  "fits": [
+    {
+      "task": "own",
+      "seed": 7,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 20.937999999994645,
+      "mse": 0.026602448895573616,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.9746601847495899
+    },
+    {
+      "task": "own",
+      "seed": 7,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 16.062000000005355,
+      "mse": 0.03452431038022041,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.9671143190569886
+    },
+    {
+      "task": "own",
+      "seed": 19,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 19.578000000008615,
+      "mse": 0.024273596704006195,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.9768785024883622
+    },
+    {
+      "task": "own",
+      "seed": 19,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 15.765999999988708,
+      "mse": 0.017383985221385956,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.983441111923381
+    },
+    {
+      "task": "own",
+      "seed": 42,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 19.843999999997322,
+      "mse": 0.03687183931469917,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.9648782110306865
+    },
+    {
+      "task": "own",
+      "seed": 42,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 17.218999999997322,
+      "mse": 0.028804726898670197,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.9725624336009056
+    },
+    {
+      "task": "peer",
+      "seed": 7,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 21.312000000005355,
+      "mse": 0.12621895968914032,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.87977177844879
+    },
+    {
+      "task": "peer",
+      "seed": 7,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 17.140999999988708,
+      "mse": 1.090030550956726,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": -0.03829436481473669
+    },
+    {
+      "task": "peer",
+      "seed": 19,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 21.797000000005937,
+      "mse": 0.1149493008852005,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.8905065447535007
+    },
+    {
+      "task": "peer",
+      "seed": 19,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 16.889999999999418,
+      "mse": 1.092149257659912,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": -0.04031251121318613
+    },
+    {
+      "task": "peer",
+      "seed": 42,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 20.327999999994063,
+      "mse": 0.11926848441362381,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": 0.886392362894812
+    },
+    {
+      "task": "peer",
+      "seed": 42,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 15.828999999997905,
+      "mse": 1.0884791612625122,
+      "zero_mse": 1.049828052520752,
+      "r2_zero": -0.036816608823659
+    },
+    {
+      "task": "identity",
+      "seed": 7,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 19.422000000005937,
+      "mse": 0.21465718746185303,
+      "zero_mse": 0.9999998807907104,
+      "r2_zero": 0.785342786949013
+    },
+    {
+      "task": "identity",
+      "seed": 7,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 15.514999999999418,
+      "mse": 1.0025196075439453,
+      "zero_mse": 0.9999998807907104,
+      "r2_zero": -0.0025197270536096994
+    },
+    {
+      "task": "identity",
+      "seed": 19,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 18.422000000005937,
+      "mse": 0.19382838904857635,
+      "zero_mse": 0.9999998807907104,
+      "r2_zero": 0.8061715878452763
+    },
+    {
+      "task": "identity",
+      "seed": 19,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 15.312999999994645,
+      "mse": 1.043618083000183,
+      "zero_mse": 0.9999998807907104,
+      "r2_zero": -0.04361820740916822
+    },
+    {
+      "task": "identity",
+      "seed": 42,
+      "arm": "full",
+      "updates": 800,
+      "seconds": 18.85899999999674,
+      "mse": 0.23681692779064178,
+      "zero_mse": 0.9999998807907104,
+      "r2_zero": 0.7631830439785772
+    },
+    {
+      "task": "identity",
+      "seed": 42,
+      "arm": "temporal_only",
+      "updates": 800,
+      "seconds": 15.031000000002678,
+      "mse": 1.0049538612365723,
+      "zero_mse": 0.9999998807907104,
+      "r2_zero": -0.004953981036422306
+    }
+  ],
+  "seconds": 327.48399999999674,
+  "scope": "Synthetic recovery only; not financial performance or trained-checkpoint attribution"
+}

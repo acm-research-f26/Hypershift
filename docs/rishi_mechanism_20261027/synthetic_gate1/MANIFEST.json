@@ -1,0 +1,33 @@
+{
+  "scope": "Synthetic task recovery, not original financial model attribution",
+  "protocol_commit": "c1ad3b3",
+  "tests_passed": 34,
+  "files": {
+    "docs/rishi_mechanism_20261027/synthetic_gate1/identity_19_full.json": "09598885ad7787f7b0e452494ebac7a3a636f2a33f67d828df301fb1f3523360",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/identity_19_temporal_only.json": "6efdad48df5e3ef8abc3d6d92e099c07bb6364b1bda01125d9c787ccc88b0d2b",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/identity_42_full.json": "35b76e3ca787e3b7fa56288a86910ab1054de73d04e8b11ed1b4dd141661a1f8",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/identity_42_temporal_only.json": "fca1b8d86acb7dcb36b47dd9cfcb746a798d4bc6e3415e6ce01782a06abdd75c",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/identity_7_full.json": "0766eecdf38b52cb2e99a86b678fcdcccff5939138ab7acd259620e02fba4c14",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/identity_7_temporal_only.json": "c67ed47f699ce56d7e5be7c07eb760ca31e5c24e05149cd4b25f64ff85f64038",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/own_19_full.json": "d8a01410bd4e0354dca59b56ceae31c5cd9b6e7ef361e78c717adc944e1d7a8c",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/own_19_temporal_only.json": "4de96a3f6f5e0ea90a863bcc20b75c6f6abc62ce4f7ad796c988c17d04d52b3f",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/own_42_full.json": "83d58741a8dbae946f3df27dacdfcd16d06f0e981f9fd3c4eada803c1217c8a0",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/own_42_temporal_only.json": "365400876f7662f25416b375990023d36c57fda90177104bafc546f7ab0df28f",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/own_7_full.json": "952aa9ab4e28f5dff9a7307b3db5a71fd971967a118850913715d2ec0ab12fa3",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/own_7_temporal_only.json": "77ffdc22404f6c425ac6a9e24dfdcea9f8de76e708c31e903ab7964f2620b688",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/peer_19_full.json": "9a8da81e0b990eaba400f1300da6607482f8a9e87b0c654e7012c28ce3e9c160",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/peer_19_temporal_only.json": "da8c5db0f86b71b1a502d05c9dbe0207a5fdd6abb1911628c4ef66e9e8a2d250",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/peer_42_full.json": "6241ff5923bdfce9c1e7686d5aecda8a12e4359194b9fff61a24173859ad2e99",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/peer_42_temporal_only.json": "1a8fff6098db5062f07e4932ca4f0a35bcfe18259dc408b11dd59d2b9310ac99",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/peer_7_full.json": "c6f1c9851662b1193261c8349f383da3b62014df90db99df0f2c58a0f540042e",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/peer_7_temporal_only.json": "f420e1dba687f94d20736bbbba06573b2c088aad7f067bab8ea88e25e4e18c53",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/RESULTS.json": "ce4f98603eedfa4f91f29dc7f23aeae640273acdac9729475bd4a6dbfbd55fe1",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/RUNTIME_SMOKE.json": "8e620e9c0d4bdd6e2bf396b0d006986dbb3cb9eba1923d72910978add02267cc",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/REPORT.md": "aa240a4100c3b16478d601c25f3652673a10f36c0cdf3312ba7830ff22543210",
+    "docs/rishi_mechanism_20261027/synthetic_gate1/TEST_LOG.txt": "540836e27b38428f28c4fd9e774168ae3eb507c63b7943873fbaf99a1e996d30",
+    "research/analysis/rishi_synthetic_gate.py": "1f9adca3ceb238da4f9ceca49ae2dc7be9915517b7ea0ed71873a90202f31955",
+    "tests/test_rishi_synthetic_gate.py": "147f3b74c66804aa8db78945ce331bd2d33df2f9b29411b7e9a65bdc51413ba6",
+    "docs/rishi_mechanism_20261027/SYNTHETIC_PROTOCOL.md": "6870590586058c0caad9d2be778af82e402ec04ca0f6e30df156c35afd525ae3",
+    "docs/rishi_mechanism_20261027/ARTIFACT_CONTRACT_V2.json": "e239f6be96c224af897575755545a199ca6fa5f8ea9cc681fdb9a025adde570a"
+  }
+}

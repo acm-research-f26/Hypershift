@@ -1,0 +1,2856 @@
+{
+  "scope": "Hash contract for existing dynamic and parent fits and frozen data inputs, derived from committed source locks; not a raw-replay pass",
+  "source_sha256": {
+    "latest/results/reference_networks/FITS_COMPLETE_LOCK.json": "7f396b60158f0be40bb2d2cb3486788cedd66244ddd7ba09689a8357ac253ec4",
+    "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json": "94597303b9d9ef650d5d3c9e85377a1bac604b60e39add51756f1b68f5f0594f",
+    "latest/results/reference_networks/INPUT_CODE_LOCK.json": "69915e3121485db0e0d8ea2b969e65ecb4ce7025152a1e4e95fea97dc3791459"
+  },
+  "files": [
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/dollar_volume.csv",
+      "sha256": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/economic_close.csv",
+      "sha256": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/etf_adj_close.csv",
+      "sha256": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/etf_dollar_volume.csv",
+      "sha256": "f512c863e5322c57e9d6b2c4281690cacff6fcdd70a810ac0695ee9c9e20f33f",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/manifest.json",
+      "sha256": "93fbae4b143f3dd742535c25aff4d3ae7d733f1bb8e027276ed5c6b525b79abe",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/membership.csv",
+      "sha256": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/monthly_members.csv",
+      "sha256": "a04d458cb9c976cad37014733989755c38cffc034e6ee5df3b7d6d0ef0f04ecc",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/raw_close.csv",
+      "sha256": "02d2b2477564bca67f1ece58f0c55ce471678f727972fbe836f9b4b9e8b3682b",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/assembled/tradable.csv",
+      "sha256": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/extended_hours_features_20261024/REVIEW.json",
+      "sha256": "872305021227e3f45182bd4ffa4bf3c9536e4fa549f2189bcbca71d763b3ffa3",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "data/nasdaq_monthly_pit/extended_hours_features_20261024/features.npz",
+      "sha256": "441e93cd966a1bfffc9c65ca946cf1a27bcff65c24044244f4a6dcb6906e5ef4",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1828801906.pt",
+      "sha256": "7bf575c306550da75e44227e0ddd829476dc2cb77d0c92e4f75692a8a04b1484",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1828801906_history.json",
+      "sha256": "6baf338655f4612667aa9826966ff85936cd9f0b4c6564be9f4a469cd8081779",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1828801906_predictions.npz",
+      "sha256": "b097419b1094b8bcfc586b432b503a9f8d3132457d940365ab80da409c3a2abe",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1828801906_record.json",
+      "sha256": "27cb67189c8ae46c8ea433611d26c9f8e76f43a351367265b8596ae65f7fe971",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1868046758.pt",
+      "sha256": "0a7ff2f81d3f1fc145d72dc79600641200922784e25a65485287b7e5d044967a",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1868046758_history.json",
+      "sha256": "3d7a89e615604a7ebe55fd23010741d46123597d88d66c2046d92c432cd76a20",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1868046758_predictions.npz",
+      "sha256": "a568b724831829da4ccd8976c2fc41f382c09ebdde295bd1fac02901bf201984",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1868046758_record.json",
+      "sha256": "fa68a3182c501f141708787cf49c6b0266eae34728934e9ef035aee72f6f36e5",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/19.pt",
+      "sha256": "5ee70209ff0d13d30f4a7d738ab7a95886cea58e65a1078c3c93c4b3ebd1f1bf",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/19_history.json",
+      "sha256": "7c1a44d6620ef2f9c9b40a3cb25c5ba3a1c19b18411332933dbba6035fd8cc50",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/19_predictions.npz",
+      "sha256": "3403d6adaaac7f9013865ddf59fb2a5ef01c63682ff28844c2efe695598cfd15",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/19_record.json",
+      "sha256": "c2e55c7d081e79810dd28e8f85f14a50d7a18a1627f310c4b646f9f637f6e1f6",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/239154507.pt",
+      "sha256": "08c95b87c21a177ebab2d593483652c458a3a924c329fcdcbffa36d53ffe4fe2",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/239154507_history.json",
+      "sha256": "2fb26af753e728f8ec21b75381403d231c06ea7176e2b90fab6812172bf9d7bb",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/239154507_predictions.npz",
+      "sha256": "c102b6566475306b996a0acd7c9c87d4386cad6dca280be45557306b56eae562",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/239154507_record.json",
+      "sha256": "62f0b6e5197f9303ee8384efe704d6d0f84c80b20055024a8f0a2faa58d37ebc",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/287727767.pt",
+      "sha256": "69e380b71d2b882916df13423b99f2a5bea40763d6aa67853cc874ede07d7c55",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/287727767_history.json",
+      "sha256": "2a65ef8895d3f77101fcafed7d7d7644208c7165232cdc55fd075d5b4673536d",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/287727767_predictions.npz",
+      "sha256": "b43288bb2cb85d3bf009172819b7065e5c8a4dd30951a9db9ea0c8b455d0484f",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/287727767_record.json",
+      "sha256": "eba971b5c62f6d032d1f68fff9574742fecead3e352ea0e28e7961fac4a817eb",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/42.pt",
+      "sha256": "dbe742dd8eebf3a5b70885e23b1293d349645c280e9503a18a283ee4e0e89c19",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/42_history.json",
+      "sha256": "61aa5029ea36d1c668645496ffb4655209146760ffcf09066e3c7f40763aaf94",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/42_predictions.npz",
+      "sha256": "fa9fc5a0faee5b9edb1de25c0ab942489e432856c9debba5f05e2123617bd0f9",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/42_record.json",
+      "sha256": "5c566a43550067139adabb96ceceab7bbc1071f67e5b5ab8ad154a69057cc597",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/61.pt",
+      "sha256": "6e6a9530c7902bc870112066df1b999f06504b8cbc976c1920124d7133aa7307",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/61_history.json",
+      "sha256": "ca359e3c1eb42560e5247ba078735d29519d045e18eb3327bc2eb1c610c36e1d",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/61_predictions.npz",
+      "sha256": "a5503045c91c9ad4c69ae06dda4e3e680e6934d40b4ee6a112fe98f753e0b8c4",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/61_record.json",
+      "sha256": "ad895f3941b13fd1152947309a465e8f1e00f1c2b5585d96cb8b1d176c4a1361",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/7.pt",
+      "sha256": "7f4108a84cce7b6217cfe8945a18bc0810ea8641021ecd9205e98189e7fc7de8",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/7_history.json",
+      "sha256": "6e20749cd7fe2955617834d4b0888a9012a2dd1d5cd959909872f6243e036789",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/7_predictions.npz",
+      "sha256": "f39ac23618760c6a67ab22febfb3740fd6c338385ee3e44a7f54914ff3f58073",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/7_record.json",
+      "sha256": "6aa4ccfb8157c028af9ea919890444aa161f31f1a647cde5eef62f7bbbc479de",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/97.pt",
+      "sha256": "766b8a7fd65f90dd1b02e98b9263f4319939e3b2dbc1968c6b192f73eb504146",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/97_history.json",
+      "sha256": "82501d01dc9e9433f897d222299dd56d3ed2eafda6cff24ee3465e0e1e9ed59f",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/97_predictions.npz",
+      "sha256": "b1009bb2140c6c85e547200a32e819139543d3d5dbe05dee86875ea6932d1ce1",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/97_record.json",
+      "sha256": "70b10112f52fa37a04347f961eb42dfde21709b96b1bd9bf37f6f92cde3aa98a",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/981756941.pt",
+      "sha256": "a96473f4599386b213fd9dcae1b8f33639e02e8375999df2c01015a0ce605716",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/981756941_history.json",
+      "sha256": "ab28231f10f1f3f10609a81fe3bae15aece694cb5dd2e262ee5298bd65c92114",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/981756941_predictions.npz",
+      "sha256": "0080a94a3bcaa9999a4d0d20ca1436e92373b9678718979f6f32466171cb19d0",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/981756941_record.json",
+      "sha256": "07d1cb201090d460acddda6f371f14693ef6d42dfc027d1e242e2db9c64eee3c",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/preprocessing.npz",
+      "sha256": "c44f047a3a015b987d1a82d671a11e1cb086719d846b6bbd5b7a864719b3dd54",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1828801906.pt",
+      "sha256": "4e2e897080b5cccb1d5ad62a385d8dbdfbb9f17db340d4de293dddc0ee224b0a",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1828801906_history.json",
+      "sha256": "e3b569e79b0dfcec4c7dac3759af1f8d7d962f29db707c51651ce46a4321a8b3",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1828801906_predictions.npz",
+      "sha256": "c6c20d945dbb9cba01eca1211a1b4741c6c6cf6633561f380ae6f6d7a3a3f30a",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1828801906_record.json",
+      "sha256": "ec8f6ccbd9dc6e85f04cef5e19b0dd176081f5e945f2dd560b6d5a395fed526e",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1868046758.pt",
+      "sha256": "1bb9f767bebd29132e7a9b4047ee3a9cab14b922abce6415a45780dd150133e9",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1868046758_history.json",
+      "sha256": "1f820ff182e2cec17ff1cf8f3c7eb4b71e936ec1b2b5a7933708c1014a9d3293",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1868046758_predictions.npz",
+      "sha256": "157363a74b44f6d3c115bf3a92cd074ceb2bfa4fb059ebe1c78c38ef3f977b37",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1868046758_record.json",
+      "sha256": "407f4ef63d1cce64d57cff421e8963d6c5f39bcd760c12d69174bbfbe3656c65",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/19.pt",
+      "sha256": "46bbc26bbb925f19298a437802d9033a7de16e4513272d28c583c43a61496b6e",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/19_history.json",
+      "sha256": "e44ce17f0cb04a0dc688b413699c70eba48fe00d52d3d10faded7dbac2991a9b",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/19_predictions.npz",
+      "sha256": "854aee441e30590d8e2caf22644eddbbc23c4c02e80b6bf30c4798941e4b9e41",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/19_record.json",
+      "sha256": "8f29ec0a7faf421d7fb5ba0d123e801bd547a0673d766ede90e8443b352c68c1",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/239154507.pt",
+      "sha256": "7e719c70ea8408884bd704c87833e92cd4115ef2cf950e8b56703d208027832b",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/239154507_history.json",
+      "sha256": "0d6cef8c6de27a5bc93cc89eadee89e1077541e2b5bf473c9a7ce4da5638e181",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/239154507_predictions.npz",
+      "sha256": "c91a002b783e22dd8df169e9531364a1af42dbd235a07bc3b5d8593ca22958ed",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/239154507_record.json",
+      "sha256": "89ded605c6b9ae062d0fef960cba3aaebc5a3ecc2a9de85ceba601f41843575d",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/287727767.pt",
+      "sha256": "bad71a958f534c9d5f2034dcd4beb01de7a0c1c05d57010b8bb7a02b303ea651",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/287727767_history.json",
+      "sha256": "aa1e3c5b443c9e91dab4dc061cfab10a86875348c415c66187f7236c5d535156",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/287727767_predictions.npz",
+      "sha256": "efb123034dffee2efaa12d204a2b403ff830c78626199a13ccf359b058628c34",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/287727767_record.json",
+      "sha256": "9668de5ca28b81c3623116a0cc7fbefde1ead95bf8207e1c121be61c07d20e4f",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/42.pt",
+      "sha256": "83a6add884a9c0038b1b17fabd9893ef9719117576f7991451c3f382e2d9fd12",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/42_history.json",
+      "sha256": "91ecc92763312f2f2ffc38d7afa68f1a2fa6e40a5de6347dbfe57e7ff2ea0ba1",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/42_predictions.npz",
+      "sha256": "8fbfa0b357cb8e74cb7a6a492904d87c137524bd1b14142f0313faf206351ba1",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/42_record.json",
+      "sha256": "a9e918d4f059c703f95409b9130cb3ce39dd17198f3edccede0fbcdbf03932a0",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/61.pt",
+      "sha256": "d49f9bc42daff9459b119596d4846e8872aa30c186be76408148bd5c9f0a824e",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/61_history.json",
+      "sha256": "284f76a89f8806fee1503e54c441bd448ae92f185a8555a44bde6609a1b93e1c",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/61_predictions.npz",
+      "sha256": "e6b73df4eabe413967b6f1089e0f1937b92c0624344010acddc3ca7312feba11",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/61_record.json",
+      "sha256": "e11e9dbca0da6a06edf89fedbca91253066b142b4b67739314fe2deaf156030e",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/7.pt",
+      "sha256": "81ecc4e0dd2e4938867408792a931283a24512c710f9b2cc271dcc227987c050",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/7_history.json",
+      "sha256": "70c76bd22a4f5a617567f68f7c34a6751599b4c8035e096588980efba65c9816",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/7_predictions.npz",
+      "sha256": "05c046fae506f37a426e50b37071d6796836c6e861d60f281ecb856a9618c416",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/7_record.json",
+      "sha256": "119dbd65ecb2f04ef8fc35f09013704e78ed96b9cf6880167b0bba5781cfa3d9",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/97.pt",
+      "sha256": "071be375b77b0e747f9d99cbdec194e21c0eeb74d844cfafee0dc616e76dcf2f",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/97_history.json",
+      "sha256": "8b96ef2da2b5a9dd4cd44372196813c3804000a86e95c8a51ee81a185a2902a6",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/97_predictions.npz",
+      "sha256": "4081d638586fce5fffefd21485b23c5d87dc52a7b5767a0edb189cafc9dd5fc7",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/97_record.json",
+      "sha256": "b1457778a65afd9e72dbb1847f7b887fff4a9c7f03187904e1cfccab6850dbe7",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/981756941.pt",
+      "sha256": "282a717cd5dc7f3bfef15173121ac5949ce1301ab436436c9dfd916711ea9cb4",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/981756941_history.json",
+      "sha256": "7acbfa8db4e08c330b7f96e00c1173b17aaee90daf015be8c31497a8b4911a37",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/981756941_predictions.npz",
+      "sha256": "43b7062c2293e4fbccb28b37f4a784a500190fe1cab042c571ba228f1d86880d",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/981756941_record.json",
+      "sha256": "af579af85df4ef7f2a3ac47269dea5fce1a9d250ee33baaaae90af986d8c29a9",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/preprocessing.npz",
+      "sha256": "4026b98654c44bb8bd8ab90ae468e3c353289e9e6e1fdd278c5dcbfe3b717512",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1828801906.pt",
+      "sha256": "f1694f53dd5c6169d548ee46757aff59ed0b4830dd3a1452878186dcaed1f1c4",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1828801906_history.json",
+      "sha256": "78d76971125012f780e00fc5a446eb10a69dd2fcfc09dd7e8374e92e67f2a172",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1828801906_predictions.npz",
+      "sha256": "dd1556e4b4ef45a447403efc6df313d429564dd20ad11348850993d08d24c5a4",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1828801906_record.json",
+      "sha256": "dfbc45c309099249036489fa8524f67c1c9b64224db39fa9a934967c0269d62b",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1868046758.pt",
+      "sha256": "5167e6c3fbee324d26bfc22a19cb71b9f05e655d9ae2993fe563e3c99ee50bb5",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1868046758_history.json",
+      "sha256": "7e938d8fd25724893a6831abf848608c20b938db8883d404309fe2b3092ace0b",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1868046758_predictions.npz",
+      "sha256": "145604cf1628251261db2765896fc937a4bd21fff2130e2c482dfa7646e06586",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1868046758_record.json",
+      "sha256": "0b108508c973bf69954e293867fc2f5fd178e75b763bcafd20b1b2142e034a8e",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/19.pt",
+      "sha256": "433efb17d440a71ebcc21be89485dee2c7fe3bf7ee97d56fbefc494e7fb9df31",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/19_history.json",
+      "sha256": "8f15a06814fb659cb24dda4d4261a5920625a2c4b6891bdd81f7ceb5c801ef91",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/19_predictions.npz",
+      "sha256": "5f4be55430b04d1dce26aa7975b2f0f54a9b940f75bf589697a87b493da796b4",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/19_record.json",
+      "sha256": "268db5f174de2c8386337a09a13929b170fc53bfd8895357d5cec0fb1a3f9194",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/239154507.pt",
+      "sha256": "da6cbca347e1fccebb28ecc61c6db2df032b4f097b7a20f1ee6de0ccd1260fb5",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/239154507_history.json",
+      "sha256": "23e21481537b0a26a296b7922f1b7590dbb3ad66890d05eb26732296110405cc",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/239154507_predictions.npz",
+      "sha256": "76263e81b56683c2fce878bd156e9d66879f76856c931f8e55db354627fcc158",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/239154507_record.json",
+      "sha256": "04acab035a8789fb226c994f61a43abc237c54a0433141bf93d2695058af6a5e",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/287727767.pt",
+      "sha256": "d3330c27c38c71427465bf3aac79cba46f078d7c09f3dd454596740cbcf9beb2",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/287727767_history.json",
+      "sha256": "0cd88d37e14330283ecd391c87d6977ccfbd55fd30df7883c871e7f1a10b1889",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/287727767_predictions.npz",
+      "sha256": "d3235ec356711ef4f3610c5714112556be19277b47469bacb0805d0cb10dce9c",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/287727767_record.json",
+      "sha256": "e269402173257ec0a1fd9d189a8d63b376b7ff3556b566fb71b46394e6efa7fc",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/42.pt",
+      "sha256": "ffca78f58549947dd4eda65be83d8f422ada629eb28074f18d079b8d2cde2619",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/42_history.json",
+      "sha256": "1fc3a6deb797eb28d445d49115a8d088b553a3eef8a10770413e63051de015a8",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/42_predictions.npz",
+      "sha256": "095ddb86e8f6593bbda9a68a835f57dfd77e00c9f6c07006efda3f43ee4d8295",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/42_record.json",
+      "sha256": "58c733ba81937d3e19d61e4af8826ee2696a9f6154ebd0702bea98902516f3ac",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/61.pt",
+      "sha256": "31532961ed98683ad36b1e14bbab725ba3a1908619c8f6174181841045f0af03",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/61_history.json",
+      "sha256": "c5f338fb96fc402fc329fbb1dcd037131505b07090b04e27a48b7dc687bfb427",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/61_predictions.npz",
+      "sha256": "d45f297df5d2873de35e82aac0fb9d588f9d45531aaec738a442d12a8d71f266",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/61_record.json",
+      "sha256": "dc9c81454d7b583d2f8ca9c620def3132cf09bf23b582947f77a8c0c270a2c5a",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/7.pt",
+      "sha256": "ec89e238dcfd9b77c594c147287e1694497c3593ccda074065fffe554716b1d1",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/7_history.json",
+      "sha256": "26855ef98ab5b8f50def2bcdd8f9b8f64d9a1d7f8e2cc0df356f4f553fe8fa70",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/7_predictions.npz",
+      "sha256": "f1331dbde34880c8730047dac6f19084b5f1ebdda4a966c69d361c76d40b0a9b",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/7_record.json",
+      "sha256": "0ac8ddb46e9a582e3675bdf29fe7d8ca39d9bf1b3f09b9ef6f97a65bd4e1a8bb",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/97.pt",
+      "sha256": "25a0cd5754a6ffd6fd77c0759f25be7ac7e49adf99fa49d79c85d1f5f5c88117",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/97_history.json",
+      "sha256": "5be94533010a3650b5a253c645555539951245c48e0f601514833c251fb89032",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/97_predictions.npz",
+      "sha256": "f8e4bfb9bd7c29f5b5bc896a92a3947125099a6325a057210b6f008a2600d829",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/97_record.json",
+      "sha256": "41aab8411d5a5433ed44678de7ba8076cbe6975703f15b3bba9ef60494b842e4",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/981756941.pt",
+      "sha256": "3e7391909d9b7ca311fb971ce462dba9025bb82521f60bef6f07a8bbbc5b7509",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/981756941_history.json",
+      "sha256": "d041db2fc022ebd946fb23d52c4e8cae6cae880f063602a2c168f701d330ee36",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/981756941_predictions.npz",
+      "sha256": "0f7a6cb0bf1197487f8ae2c55279a739e82e8d0f4772df9cd1bf9f66786e0cdc",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/981756941_record.json",
+      "sha256": "37c53ee76b4699d4e38d85aac725cbb104f0dc86b84d718f870d082c6ec7510d",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/preprocessing.npz",
+      "sha256": "aec39cedbbeb783359448674b72891b30402da63f4c654a8172884acfe29ef3c",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1828801906.pt",
+      "sha256": "ad1d7d462f5cdc09a0791fe8c105cceba81b3490467cad0a4cfb6fda7f268dc1",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1828801906_history.json",
+      "sha256": "5665fad5847c534ff381b2c25cac7220e494983801786d36bf4d353aa8ad4128",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1828801906_predictions.npz",
+      "sha256": "4f95d0d94f67c11a68624229fc26d3f4e59a1c98ca81e3d02ab487aaf407a0f0",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1828801906_record.json",
+      "sha256": "c34aa046b6d55b5aadd6199d83cf60661eab015309d27de815da182ace937c46",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1868046758.pt",
+      "sha256": "5693f0fc5871ffb1c5fb24be93782ad7f546475d7a07ed1805fbd38de9ddbbda",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1868046758_history.json",
+      "sha256": "ccf9db4d13b20279576a0c4aadd59b3d56ba9913095d981129aa4190655d3f7b",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1868046758_predictions.npz",
+      "sha256": "820b1250c8978c5931e40b296dac2c1b47899797a628c37a10c350db17e04a89",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1868046758_record.json",
+      "sha256": "861217df5d4245e9d99f8182f31c87110893a18cacf8350d9af13c5635137257",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/19.pt",
+      "sha256": "de943bfecb88b7f481d5746d49917c6d564c397f226790872f06b192c1eb793e",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/19_history.json",
+      "sha256": "1a686d252f9435f8959110c360529207130a6df42a7230bafb3aef0f287daef7",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/19_predictions.npz",
+      "sha256": "3aa2779dc50c8d39ab1d5ba1feb45789c14f1dcb844df69f9767433ce95ffb9f",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/19_record.json",
+      "sha256": "55be59e5f35d2f62c73a6fe957169215df318a0387f8665cabdaf30ed25688b4",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/239154507.pt",
+      "sha256": "5c7bb867dd9f03e5e5e5f0222c0feda4e27f6017ca512bab1995aa38e8e336d0",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/239154507_history.json",
+      "sha256": "ec0dff1082e71769bfcb1d90ad5534faf320f178f5fb6af3f98945fc10abf856",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/239154507_predictions.npz",
+      "sha256": "bac34d7fc2cab299edc8adbe17e4e09117f1be37bb54c8c187c0de5d0e9ea885",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/239154507_record.json",
+      "sha256": "2efef8a5c110cb33529fabdcab928e481d3e8bf86441b6c4a56fd18946074d46",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/287727767.pt",
+      "sha256": "cc5717a7c2f12ca7fb056b49ff1ecf61b673d19712cda9984b354029c1fd3857",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/287727767_history.json",
+      "sha256": "77b830ad173744ffd086d0d0e652186f5d0fa284d1222d02937761ca4d729c8a",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/287727767_predictions.npz",
+      "sha256": "f0077f0285a5e131672d4501a2d53056a0704174c2855b0735557448bddfbecf",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/287727767_record.json",
+      "sha256": "3909116aa4c84016f46082852dea7612b2c96a74c38fef239722a2448a53c416",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/42.pt",
+      "sha256": "deb51a3a834b4443ba135e3b0d2078f474b51c723d3a988297dfd2e641abec1c",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/42_history.json",
+      "sha256": "58527cff5f5b22e2c2cdd6e42e7bbe692704dc3ed0e87849b7be92b4ae7b0bd9",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/42_predictions.npz",
+      "sha256": "ad1562f796d24b085a8a8116ab73c57cb7609b210978ecf998ab100d0b7a7a83",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/42_record.json",
+      "sha256": "3565b7c906a389b60fef0e7c34f92cd5efb16f78308ba5b2375d04bcd4438329",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/61.pt",
+      "sha256": "41907b1e77749bffa533daf673e3dd594067b4f411d2ca651071e1d143648957",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/61_history.json",
+      "sha256": "e3de60d9c37120055337576c3e68e46ebc2ffd1a6939b8a8a4ca53c028301812",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/61_predictions.npz",
+      "sha256": "2092f4a2f91891d9e07885712e966463265a16b99951bed8cd27d30881081add",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/61_record.json",
+      "sha256": "62f79a234ce19848144ea7f9ee8b63a69d1038fc515737fbfbac41006051e0da",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/7.pt",
+      "sha256": "d60959da51c444fd8f7b7d3107ed52f1fa54b0f3237c9b34dd72b536a203e8e4",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/7_history.json",
+      "sha256": "8d5618049673559cc530a479cf48a9be1c7c8608775f49a5d5696ebf0185a02e",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/7_predictions.npz",
+      "sha256": "5cc9389f5c66b918a30ebc7313aced470ab2b56fb220ba870c86da3a4eb65cf7",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/7_record.json",
+      "sha256": "07dbdf563eced8024dd10f436fcaa5e45979e8fb80b8f9ca93ef920061a69b59",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/97.pt",
+      "sha256": "66d48fe06b28fe14e656dd3877f16a03f37ae3be151c50845247ce9d651c5ab5",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/97_history.json",
+      "sha256": "d88c6120ddb92956a753048beef13f6c852f182108c00f720567b731f4a9d745",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/97_predictions.npz",
+      "sha256": "7ad65963c2a942d40c028e908c15a15f5d4f93e49ef8c0f7816aae05a407d996",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/97_record.json",
+      "sha256": "f45c82f47edf16a92a2df0f74cb8e164430f7e916de0ee76861e09723ae6ad05",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/981756941.pt",
+      "sha256": "d31aa975b197c0ae4d7a24a9f6ce4a8a6a4b1a23e2187ae58ee8b6d18919dbfa",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/981756941_history.json",
+      "sha256": "5a022f061c4ff1e4f2a6e8a46cb4b99d33971faaa9e4492674c1365099fec0b8",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/981756941_predictions.npz",
+      "sha256": "70169c05efb256f0cc3e8ddf51f080d2c8752396d9572b6c18b651037252fb61",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/981756941_record.json",
+      "sha256": "9df40204b2de939485f1f5970620406eefbaca17c197a7b2068493e83d4cf99f",
+      "source_locks": [
+        "latest/results/loss_optimizer/FITS_COMPLETE_LOCK.json",
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/preprocessing.npz",
+      "sha256": "ca8b19d2a0d53e26fefd69c740aff4c11e49a9a0aa6045bfde01430a4828c1d3",
+      "source_locks": [
+        "latest/results/reference_networks/INPUT_CODE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/1828801906.pt",
+      "sha256": "9dd2b613442e2ce7a267f0fb471e9f739a4cd55c0455050dad73426f57fdae65",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/1828801906_history.json",
+      "sha256": "7d1195c7a15e89a96c33d5d33f5b7262e5b16ad0d5e244919ec23fbaa0096d51",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/1828801906_predictions.npz",
+      "sha256": "573e888d524b04cc29a7e00df57cfd1bace11b5e1e838e7f88264158811f0a69",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/1828801906_record.json",
+      "sha256": "e7f44b4cdad1d22c5768fbe7e4f0b9eaa0685f6aadc80f20a353f5b427542971",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/1868046758.pt",
+      "sha256": "63e5cd13657a02fd29e7d397fa73969057e715e59c3964c504e9a332be1d6f0e",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/1868046758_history.json",
+      "sha256": "084bec2d630672b3e334561b17dd0bdd7f7345cdb2db5f287cfe4ca3c9d29710",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/1868046758_predictions.npz",
+      "sha256": "66ed937f3320a3cc537006ab83cb24cb4d48d1f5e1640a8be5548dbead500d82",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/1868046758_record.json",
+      "sha256": "7124478d3eb597e74cd0ee32daf6c4c685cf618c34caea88955cc977a2ea7bb9",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/19.pt",
+      "sha256": "30378fb270e2d6e47a636a2c8144ed204128532581f9ceef2f123f93b0a8cc54",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/19_history.json",
+      "sha256": "479cee6a71c24c7fb4c9a6a71624b7dc6ee1572204fab0fa92f224c8779e1da6",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/19_predictions.npz",
+      "sha256": "b555707db0e52f46cc67b0414e3089bcea52bade1bf7b1fc92320f0008010747",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/19_record.json",
+      "sha256": "c8eff424433d699d15c76d6178e0f207ce51cc679e062f800c658884e22e1833",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/239154507.pt",
+      "sha256": "50635a48cc90b85a7ca973cc6148246ddd2af1f1ebd3f7604f33b0b728b08836",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/239154507_history.json",
+      "sha256": "1d43c1649627aa59bf8831446ab2f42b70ac21ef73c7fc903062685effe1fa48",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/239154507_predictions.npz",
+      "sha256": "bde62abedebd1793fb5fff1bdf3d77da37a75b93e2c33a97e453818bf15143ce",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/239154507_record.json",
+      "sha256": "a1f267d2b0058f2402f7ad72b7c5986a2288ac8d4c861193f843479a30195720",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/287727767.pt",
+      "sha256": "9736bc747a4023e05e0a19b36052ebec88d303493aa561f703c052b7cc121719",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/287727767_history.json",
+      "sha256": "98af35f7a212365862bc3058aabebec57acb1be21045503173b80aba881fa716",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/287727767_predictions.npz",
+      "sha256": "c3d5737d8d716a7c1963b3712cff9f35b9fb42bf06cebe6a2322156adad61dd2",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/287727767_record.json",
+      "sha256": "80c2b161c9b70db3116943ff33bc9cbf1a8b0778f8beeb7b1d99dc8ca047ee46",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/42.pt",
+      "sha256": "883bc50b3a9ea3b1e2bf72880af1f8c8403ad73066ed996b32c13fa768e097c4",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/42_history.json",
+      "sha256": "d831a76d6e437f40a882f3b743cb1625485b50ef5d69205663a2d7742b500773",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/42_predictions.npz",
+      "sha256": "c19fd4a50dce7f9e74f0b720922d4377cf23bb9c2adb3e7453cd0656d427afb8",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/42_record.json",
+      "sha256": "8e1596d3369910d8c76f3e0dfde79b9c39f7fd0325bc668ba7d0d55fd8df2619",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/61.pt",
+      "sha256": "71ac6ebd883140d46276fd6d44c10ec6d4c5b9337034414e50ac02dd47583f57",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/61_history.json",
+      "sha256": "c3b884eac16bc0bc86c98c3c387dcc1a6aa52d9ce1cfdc88d4475009b4e99be3",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/61_predictions.npz",
+      "sha256": "24c1979f6bb4451a7d3cc06db214901342e02c44a885f0413fba772337894542",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/61_record.json",
+      "sha256": "15b426785b06bf98867c0471c0a5ae716ca0b9eee91caaa7b019187f33ede480",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/7.pt",
+      "sha256": "f639c114f7d008d8541037d22ebfef1b9d7cf70e263bf9a65bffcf16ae231c14",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/7_history.json",
+      "sha256": "18774915a51c965d787e1496010a35664c2180f292b743cdd6f2dcf9edb79203",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/7_predictions.npz",
+      "sha256": "312454f66ff7d58ba9da2e0ae287bda372161d3b84a1b13fc132f6ac74300f54",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/7_record.json",
+      "sha256": "8608634ac17b84d62c9a99184db918bcb2d48c9b39ee1008270b0c8ea2d71765",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/97.pt",
+      "sha256": "0f96ca78512b98df2b99855a8e96822eaf2eec7e29bc35d9f0cdceb7e8b08642",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/97_history.json",
+      "sha256": "f671b9e85e6eec3474b81634a0b72aacdd49b81ed3648b08ad5d9faa84f59bdd",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/97_predictions.npz",
+      "sha256": "f4c92be9117febbfbad314e7521b24dfd4898d4e307b1cd676a77494859b6b1c",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/97_record.json",
+      "sha256": "4cf515be88a4aaac6d2524774184ab42c9d82493abb85750b248a48918925fe7",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/981756941.pt",
+      "sha256": "a61580ee0cec7031acee6af44cd73d716d75ee3aab6a9a2ff4613118c5143e1c",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/981756941_history.json",
+      "sha256": "d0ef2ae3517638baa792ec46637cee5e3a8835d157e60e7f89a4aa5bf48b8a8f",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/981756941_predictions.npz",
+      "sha256": "381d1424f5ef21bd76df59849593994aaf7b389ce83dfd10c2652404c829cebc",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2022/981756941_record.json",
+      "sha256": "6b00e30e5209f8ee02d5df969179858ec7fed321feabe171a23a7f28b2ffd54d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/1828801906.pt",
+      "sha256": "d8b5bdf619a93c51df888d7ffae1d7a7ce50dfc83730f521a3882e04b9bcca68",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/1828801906_history.json",
+      "sha256": "9fcf3a7cc2480497b5fbeab31cf0811f26f1b4a95315a7c4179ec9d7ffadc748",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/1828801906_predictions.npz",
+      "sha256": "f215a0af3cbd74e40f853eab17c262b26a8b8b867e7575e4c582ea1ee204478c",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/1828801906_record.json",
+      "sha256": "8ce52e7e9bc6ff3e334fa1cedc25786a0b49d52e72ac4880ddafa887bdd5e2cc",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/1868046758.pt",
+      "sha256": "06c9738bf8c4b6506a6f30c46cf6a15709a9d69d84469d72fa729adf1241d039",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/1868046758_history.json",
+      "sha256": "25c170508d8b34615454ca8b3ae5accad2cc49a56badb94de45259f591a9a7ca",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/1868046758_predictions.npz",
+      "sha256": "43b5ef25161b37b182774b2e170bc96d1bcdfdb6c9c8f547898e3c6609456cdb",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/1868046758_record.json",
+      "sha256": "3fe5d55c0fc0b250d3511f26b71538fe6a2f5956709654e8d6280ea10bc3f5ee",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/19.pt",
+      "sha256": "50bdb2659d0772f548634ca7a3b702c7b03ffa6ac294baa722fc5a13e67a1195",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/19_history.json",
+      "sha256": "23306c2e5cd0e593f6c7bb463e1ae1feb6694ed0fec3f876e1605385c111576d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/19_predictions.npz",
+      "sha256": "7ebbd73ff94cf9ee179786188fb33943a58f953657b936e263a2e1aa0f9fa2f1",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/19_record.json",
+      "sha256": "3364a98c7c18f3940709d17ba54f1b7b9e7032fefb685703ee55f6672127d2c3",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/239154507.pt",
+      "sha256": "7b385caa77c2597bb4ae171dd0632da181a3daa640e2a6be0bbdd35b709fffdc",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/239154507_history.json",
+      "sha256": "d651e2a5c80bd5531871c4a1fb7e45276bfc34829f43aaf439dfb06585107b9a",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/239154507_predictions.npz",
+      "sha256": "8e5e6ba737b9ff47c660a32d76b7c3b9e9726c07a950b47e543dd6bf5a885519",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/239154507_record.json",
+      "sha256": "843dd8a4c57e7d36abc919635a424d442e36c7820b10c83527c304ec72177c10",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/287727767.pt",
+      "sha256": "f1f7b8dd6f8c443fef79f779c9e870ed3a03bc670cf8c979464913c6e88e308b",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/287727767_history.json",
+      "sha256": "c493f3e89517154ad885cc95ebd45f5d8119e1392c53d4fcde58ce837c93375f",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/287727767_predictions.npz",
+      "sha256": "e1f1deec307506a6c33bd48935eccb667bc19034d2f26581fb1d2918b3424c7e",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/287727767_record.json",
+      "sha256": "05c35a8ad4bd89ddb5460b5a75cd5e44dda58c3d32cfb7faddd2100150621221",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/42.pt",
+      "sha256": "9e970fd552ea8795ddaf8162fc407b7480775c7a506ca66aa0815cb7166337d8",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/42_history.json",
+      "sha256": "fed565746e8b22ea961201d41c313f0605a5750cfe99799184796011241129b8",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/42_predictions.npz",
+      "sha256": "c660dae97493139ed5379e83b5f87ec4a6881fbb8666d0e840ba9feb2127d55a",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/42_record.json",
+      "sha256": "8ce60bb93764d59cd3db40aeedabf21628169ab9275b65f391b4df1f407b5ea9",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/61.pt",
+      "sha256": "fac38fe2de736740ddd5bd5d0a33fcf5a39cd637d4ecd86184b5c3aaa112742c",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/61_history.json",
+      "sha256": "6e0ce6fc1473d21796489d2fbae940bdbdb7f8c467b372421cdfe8d56ca28412",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/61_predictions.npz",
+      "sha256": "ede83a006a4e71128f07a2222056df72283d734265129a4f4f5a5fc7c58b9c04",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/61_record.json",
+      "sha256": "e7b6049879932a5e50075aa39795651fabf57ce4214e00c55cc1dbb00089f852",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/7.pt",
+      "sha256": "78e1fb27c25fbd17d6cc827cb091f88b12a43a0807e8e97b24c679c73b021437",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/7_history.json",
+      "sha256": "f8a487195178dce5cdefb466a2877e6bac08ce7909de11c0177c017b85e996be",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/7_predictions.npz",
+      "sha256": "d6274d7f85781bf8d85851436fac344615fcef67857e32e325baca89bc3bc226",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/7_record.json",
+      "sha256": "4f7e00d61575eaa56c23a33f272676a58b5898e55b7cdea9d27313bbaf1cf98d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/97.pt",
+      "sha256": "2302f35faa01220f9bb5a5ec6cf78c5bc2b4894aa6409308a7ac7a83e58cd8f5",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/97_history.json",
+      "sha256": "c8a6266961247a50be644dbbc3145c5ebcbbe772ac91a842853c9887d9817cbb",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/97_predictions.npz",
+      "sha256": "ca6747a15c9222c6d07096eea5b4bc1e2eb814d79006870b75017126968aef5f",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/97_record.json",
+      "sha256": "9ff9adc534fc32087f057800e8fd7138f44d3a4a799807398b1fdc4b5011b13a",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/981756941.pt",
+      "sha256": "49e6822db0ba38424d4a80fa66a43a78082f887a1fc025b5d618d3e5382aac43",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/981756941_history.json",
+      "sha256": "9e66d4abfbc16064ed1725d7facd7d24002198cafa14ccef86811cb56162d973",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/981756941_predictions.npz",
+      "sha256": "a428fb40c62bf0da6e5c0e12da9c9f800acc9c8a48d79fa80e8c4aaf8ec9b2d9",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2023/981756941_record.json",
+      "sha256": "75f63521909efe7bf501fb6e63cb99de5f7d52a72cd93127211b750ec24005b7",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/1828801906.pt",
+      "sha256": "8f9605ad66fac9203d904027d8e3a98a2138e801fadb95e8f572a54e52b54001",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/1828801906_history.json",
+      "sha256": "60730b5948582d80baa00921443bf8c33a1b83890692c66a7377ed319e79047a",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/1828801906_predictions.npz",
+      "sha256": "d4bf61a3d940d557567ac63eafcb816adb2526cc1ba01148b5f1e36018876102",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/1828801906_record.json",
+      "sha256": "4a76b30023527119778d02c05e1ab56730129ec406189dd086a2cfcabf2d21b2",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/1868046758.pt",
+      "sha256": "ce872ae8be0a2e73369431b400f52f825dd23bd0eb3806cf8dd8dea356172ee3",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/1868046758_history.json",
+      "sha256": "998dbb57693f7b69d2a4436c546dbf1a41bac9a19939e8877311543eb3cc4af1",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/1868046758_predictions.npz",
+      "sha256": "7b5bc972b8d9ef4abadad3c2d6277c8b1a3b6b5bb40cf0dc6007cb6715c7edd0",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/1868046758_record.json",
+      "sha256": "1383c0036ba58a9c1b7aa14623f1ccc000a767e1d30e279160d68faa8776d09b",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/19.pt",
+      "sha256": "beb3d4de08f87eb1f763e872ad7c0b9e5be2c475f15945c0e17b8090b7fc4597",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/19_history.json",
+      "sha256": "3500054a60159d11b28a1f587bec70e0fd5fceb09c93837e4a101ad3b67d7d53",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/19_predictions.npz",
+      "sha256": "06a056bf9920a2230d15f181c7863baef87925a618877560c687d00fed8355a9",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/19_record.json",
+      "sha256": "744f033f522dead8d2d95467c5d9f0da2179639a60420a6fa24d5955397b356d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/239154507.pt",
+      "sha256": "d5903dad1dff71ec3ab286088b79ec628b377f5c708629462286072d2a7f44b3",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/239154507_history.json",
+      "sha256": "4bf8046eb175d36685c4a21a6d301adc7a53d4c7067921cd347e83d708ba819c",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/239154507_predictions.npz",
+      "sha256": "f664c1b57c4cefd4297a709841dcd32856ce9fc83b3ac262f6f53e95b25b4716",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/239154507_record.json",
+      "sha256": "ea6145b187a7ad3bcb2bcb153bf5fa6330eab660df0310caf25ed8378d83d149",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/287727767.pt",
+      "sha256": "255e8c6e71fc94215044eaeb005958cdf8159ef24d98dbf835f10bb155b7ff5e",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/287727767_history.json",
+      "sha256": "cc479e5462a734fcc76dcb1220f8c98da691147fc75023989034ab350a7a90c3",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/287727767_predictions.npz",
+      "sha256": "898073f0143aad058b05ec1660dd58484420d1da1520f71ca26c0105b303823d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/287727767_record.json",
+      "sha256": "d11d5d093674c86f277e96ffe11869b95e9103521a0e50ffcbc7ae28440b788e",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/42.pt",
+      "sha256": "3e610b79a7823c4b6de05e102ae9a39ee8f0328a789a2549e9e3f18b031ddd77",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/42_history.json",
+      "sha256": "2884030ccff30a2364e92f92b45fc4ddf0ae76a1444d98743d8ae42408a4b818",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/42_predictions.npz",
+      "sha256": "95d02c0c33cb72d939bff31920e0961ac5665de78019a2727d15a746171d0e85",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/42_record.json",
+      "sha256": "85b33b092d3839e4e20dc7cfbcc58cdea9c44e560f38c201a84ff1e49b826914",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/61.pt",
+      "sha256": "a3e642b8e44f9f9259d32d91bd77445fd8799428c2e77de22b6af986115c8195",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/61_history.json",
+      "sha256": "e7ac32e712abb8c96f115d56a596e0f9bd63138ea927f02411e567a114557bf4",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/61_predictions.npz",
+      "sha256": "f1bf75f3d9377672dfec016648493d925cb25a6d0b9849f14684a254dfd75fc0",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/61_record.json",
+      "sha256": "b5cd72e4d43632549c3bbc96647e31ef939a2141e3dde2624539af88ae83d753",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/7.pt",
+      "sha256": "259d49d3cc176993c1a48b8d34345da026b532da8b104a2672085abf5be0dac6",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/7_history.json",
+      "sha256": "6be0fcc0a59632c103534c86549fe2eadfeb2dab6259b9a6186ca1a94ec52f8b",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/7_predictions.npz",
+      "sha256": "dbafe0b7b140f2c672bccb828a348ffeaf0c77bc9e8be66f42e10399b1bb91bd",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/7_record.json",
+      "sha256": "c1437d8253f8a0e72a411226899b27c0bc5e866a4e764927e0211a0f38488129",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/97.pt",
+      "sha256": "a36811e2fc376edb8a9381dfe5ecb5a900f9ae9193e46957b63ea210cdfb1081",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/97_history.json",
+      "sha256": "3d0f5209c2455b923ac79b13c59d58dc5e80c9d159d592ecf07dee26eb3cc9be",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/97_predictions.npz",
+      "sha256": "174bba44ace2c0b0bc2094c7bcf5b9db6595e09670ff6344876287a42f40e5a2",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/97_record.json",
+      "sha256": "844ac1312b01d179d228ca839abd60171e6ab0522e16cb5d06d4cfde76d18adb",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/981756941.pt",
+      "sha256": "95ff68c1326f65ad675bdbb40d944106a2859ec8f927123ebad6f9e0a063f67d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/981756941_history.json",
+      "sha256": "10dca1b13cb06e36db32f699c675b13907f216c5bd6873a1a3153fa3d13168c9",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/981756941_predictions.npz",
+      "sha256": "807d2f3e799ce67937c3234f6f48b65d4a35379122d0b858ec0cbf087730f628",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2024/981756941_record.json",
+      "sha256": "df6a5384389db82bb574fe62ca894377acf708f1817d8ceaa66fc3014505d379",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/1828801906.pt",
+      "sha256": "8fb1999da9d1d5b782ccd65dc90ced03f365891bd3f811bca7935df411816a6e",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/1828801906_history.json",
+      "sha256": "55c9b44d4a45f7c7d00274836c27ea5bb84b2bb50c6fc103ad6efe50def833f9",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/1828801906_predictions.npz",
+      "sha256": "ed22b5ea1f8253e5bf3cd79a99243813195f8c1550b979dab2732a5d50ecda80",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/1828801906_record.json",
+      "sha256": "be0542b542d0c4f254bddb6f7e8b5ef547c8b0d4abebbe249b9b96a75dc8f22b",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/1868046758.pt",
+      "sha256": "e902dc6695f57e9067a5c87c5237baccf0416a4744103c299b477d59ca8ac229",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/1868046758_history.json",
+      "sha256": "96c84e47b9aa7d28f9fe248eb7b32ec358333ced947ffe0037b0ab42e3971334",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/1868046758_predictions.npz",
+      "sha256": "c884b50c34b35da1d8c0d9380e4a1a2aee5d3720c4af2866d69025c37f2e5e63",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/1868046758_record.json",
+      "sha256": "466a386e3dd50f3a4d2c274616fc6f2272f07496573d5fcf9450c9a96bf5cae5",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/19.pt",
+      "sha256": "0cc50449c9f5de3a8294427f594a8cc8b65bba2b6ccc747f49cedeca25a9e204",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/19_history.json",
+      "sha256": "f622dc250d127b0d70c670bba6087fd03e4819a3fbc9b9bd1bd357e7ec70a331",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/19_predictions.npz",
+      "sha256": "6dce740ac779be64c85c43d75c9103fd3970e8178f56140c4253feb4a94b7b96",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/19_record.json",
+      "sha256": "bddcec1303cf5d71d82a6add13fa64a299b0436715803c7b85e4a2f1b528e9a8",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/239154507.pt",
+      "sha256": "4ed98d31039b0a02bcdb0376b6ed9f71ceaf7478e5752ea8cf4acb1fc059613a",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/239154507_history.json",
+      "sha256": "ddc1e1f26baade78f8934291e7208b90caacbf0dfff3569ce9a187a4c4855bb3",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/239154507_predictions.npz",
+      "sha256": "148d1af2026b6dd22ed8cae97347de5144d3dc5697c83b99475c26ac311213ee",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/239154507_record.json",
+      "sha256": "392b3fe0ca945858cab90d2094f7e5438a6c1ef6f422b0957adf582cdc4553c2",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/287727767.pt",
+      "sha256": "d5deba65f932e0a925e8160f569e98957099c399cbd37f8ea29c449e82753d15",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/287727767_history.json",
+      "sha256": "957e71da9526bca33e0a85ff7afd5a1c2269d3400fe6c193e0871fbcf7091006",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/287727767_predictions.npz",
+      "sha256": "ccca737818012a67a96268fa7f9820de05a3a64e3e25df9e5e7cb80ca5f7e023",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/287727767_record.json",
+      "sha256": "194c9baa07c3953a7fc4f58e619fa3d00fc9ca18adddbb65b1fb0810c167710c",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/42.pt",
+      "sha256": "b2e89210db77797d90c97c3cc6d5902f992d1c913070bb0b05147d11bc72c303",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/42_history.json",
+      "sha256": "62dc0a66e34a9937be97f5c0d4c6533b207a14dc3ccfbe6cf2f35b9de3c6bb4d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/42_predictions.npz",
+      "sha256": "6b7b4e762f9658bc74a395377067dd159efb5dbaf819356ebf6ba01912e19c95",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/42_record.json",
+      "sha256": "ae38e36eba614f8335b63d35970fa09f50defada335ce9c9d4f02eb1c7e98e48",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/61.pt",
+      "sha256": "d0fd7b083fbe5f6db5a12b7d66888a35879d30cf28fa3b5a656132423b5a60f9",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/61_history.json",
+      "sha256": "679161236f7a56d3e8dae71763c0ce629ca6f5582d95b67ab361c96a7dd0cfb5",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/61_predictions.npz",
+      "sha256": "0cc25a7892d65160b0f9febce2c491d990fa5428dc6f1984e1ba1a96d1d9da62",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/61_record.json",
+      "sha256": "0c905cd9fafbb08fc3195810273c1dfd81ff8d1a021a6d742be6fa0cca3aef95",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/7.pt",
+      "sha256": "87a33dd742b2473e2220ef3876d5fcbe891ecc835e4357bb3df7f4a09bea51df",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/7_history.json",
+      "sha256": "f4ff278744284e25e92bb2088faedbfd39df01fa3379557a42e4d3ee19c84e83",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/7_predictions.npz",
+      "sha256": "8fcec841344fa411f68198d3b71519123cfc76b6270434e54fd842918b8fe8db",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/7_record.json",
+      "sha256": "f29b28b775a13e07659e1c2b453003d33b7c7cfb17af6739640a855b113f3e5a",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/97.pt",
+      "sha256": "9dd111a38e3f836f3e6641667c0a8ffe6f5bc8dc536a4699b4d297e668e29df5",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/97_history.json",
+      "sha256": "50534e9a1ef2b4e66b513cc79235d0a9f23133005238af0a5a014ff6b7061df6",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/97_predictions.npz",
+      "sha256": "2800a781863898dbde92bb5086918aa26cca7caa7c176201ba177d3ab6f796a7",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/97_record.json",
+      "sha256": "a6074104bbb1b9938d8b1abaa20bfc8e1a714dd59139210245d693df6df1a08c",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/981756941.pt",
+      "sha256": "22f4ca4f4313a8a400aed6c9c22b19bc62efa8e02bb10e47da3eea308db0525d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/981756941_history.json",
+      "sha256": "a29b6d2d7709880f7e02017e2caf655d9aee0531e5d82892d4c639b28242367d",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/981756941_predictions.npz",
+      "sha256": "ae96a00b9cddaeb96c4d241abeced038e685205c6fbccfba6f2650c54f4a6d51",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    },
+    {
+      "path": "runs/ndx_reference_networks_20261024/dynamic_restricted/2025/981756941_record.json",
+      "sha256": "fe558cdcd18d9359c7a79db533809f1a89dd58d488ab587ca5e3025dfbd6253a",
+      "source_locks": [
+        "latest/results/reference_networks/FITS_COMPLETE_LOCK.json"
+      ],
+      "present_locally": false
+    }
+  ],
+  "required_files": 335,
+  "present_files": 0,
+  "unhashed_additional_requirements": [
+    "daily account/trade/order tapes and full selected risk paths; originals requested separately",
+    "training predictions if absent may be regenerated from frozen checkpoints and exact inputs; not a new fit"
+  ]
+}
