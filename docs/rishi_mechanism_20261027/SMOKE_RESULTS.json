@@ -1,0 +1,55 @@
+{
+  "scope": "Exploratory context smoke tests requested by user; no financial training or protected-window scoring",
+  "source_hashes": {
+    "layer.py": {
+      "saved_sha256": "f3b4f1301a0069f6476e65340781f76a8ae5773369ff18695516926df4266ab9",
+      "frozen_sha256": "73460cbfd0200b59e1a24ca7a837fa164871216f902506c612c144ff4c31cf8d",
+      "matches_ignoring_terminal_newlines": true,
+      "commit": "9477001ad9b85beb3455234675535e26c3d33e44"
+    },
+    "model.py": {
+      "saved_sha256": "5d52ca18f4098792c87f436c38e4dfbf198ab1dc627bd0a47424009cf1fb2788",
+      "frozen_sha256": "fe69159b7e0faf5027881014461788c9107783b86e030dc6aab84ff5e15e01ca",
+      "matches_ignoring_terminal_newlines": true,
+      "commit": "9477001ad9b85beb3455234675535e26c3d33e44"
+    }
+  },
+  "synthetic": {
+    "parent_identical_input_core_sd": 4.529648789158622e-19,
+    "parent_identical_input_with_mixer_sd": 0.20353923738002777,
+    "parent_auxiliary_zero_initialization_exact": true,
+    "dynamic_all_active_author_parity": true,
+    "dynamic_inactive_nan_invariance": true,
+    "dynamic_parameter_count": 25157,
+    "dynamic_identical_input_score_sd": 0.0005384936812333763,
+    "dynamic_identical_input_uniform_filters_score_sd": 1.815030117313654e-07,
+    "dynamic_edge_sum_doubles_when_population_duplicated": true,
+    "wavelet_times_inverse_max_identity_error": 0.2744579017162323,
+    "rmse_to_mse_gradient_ratio": 0.22360679507255554,
+    "scope": "Random initialization and synthetic inputs only; representational capacity is not a learned financial mechanism"
+  },
+  "curves": {
+    "recomputed_paths": 12,
+    "sessions_per_path": 1003,
+    "max_metric_error": 5.540012892879531e-14,
+    "benchmarks": [
+      "SPY",
+      "QQQ"
+    ],
+    "raw_inputs_available": false
+  },
+  "availability": {
+    "runs/ndx_reference_networks_20261024": false,
+    "runs/ndx_extended_hours_20261024": false,
+    "runs/ndx_drawdown_20261026/batch1": false,
+    "data/nasdaq_monthly_pit/assembled/manifest.json": false,
+    ".cache/architecture_references_20261024": false
+  },
+  "input_sha256": {
+    "docs/ndx_drawdown_20261026/comparison_curves.csv": "178b94014d6be0702deb6c37484fa2eab7239247cc85bf50990fd3e376d2ef2f",
+    "docs/ndx_drawdown_20261026/metrics.csv": "b3b0a273a0dbd003c1adc9fb4bd4fecae7832a934f7dac2c2da3e650b6a5621d",
+    "docs/ndx_extended_hours_20261024/curves.csv": "790aefe476c2f3c46797e88dcb818398593eaa699fda400b22a4339b6ea0d07c",
+    "latest/results/reference_networks/ranking.csv": "01b47abaf017d0442403d66b212b125b3f865ccdd43d183eae3caead48f844d8",
+    "latest/results/reference_networks/complementarity.csv": "6f50e9c1b50bba1b9c49f0933d2e58071e21a081b6b17bc76607afd4a37a8159"
+  }
+}

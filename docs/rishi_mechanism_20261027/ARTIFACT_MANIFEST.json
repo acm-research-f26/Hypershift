@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-27",
+  "scope": "Research roadmap and completed bounded context diagnostics; no raw newest forecast/account replay",
+  "checks": {
+    "required_artifacts": true,
+    "input_hashes_unchanged": true,
+    "focused_tests_passed": 18,
+    "recomputed_paths": 12,
+    "maximum_metric_error": 5.540012892879531e-14,
+    "independent_review": "approve with scope"
+  },
+  "files": {
+    "docs/rishi_mechanism_20261027/RESEARCH_PLAN.md": "268c7644e783b26de276ead7f57c1e54e5404dd5e4578faedde633ba5efcadf3",
+    "docs/rishi_mechanism_20261027/REVIEW.md": "a8e7b70ada14a36cc08e5fdf758cfe43bcf786d5c943b4c068f067d55f1dea8e",
+    "docs/rishi_mechanism_20261027/PROGRESS.md": "6a54acc6e180577ca6e86d6a83bbe2bc4e8a6d3dadf540909aa576ac29aac431",
+    "docs/rishi_mechanism_20261027/SMOKE_RESULTS.json": "68bb2eac834bd69861150e6d860667a29c2724237d23af67adbc5b77853f3be3",
+    "docs/rishi_mechanism_20261027/RECOMPUTED_PATH_METRICS.csv": "4398174af485048589e036a5ff46e6ee90bb6f01ae2fb2be2b29648ca30fb294",
+    "docs/rishi_mechanism_20261027/DESCRIPTIVE_SPANNING.csv": "f7d6ebafac3dc728ff9254107ca646edfcffba6b807bf96b5e9fd73e196136be",
+    "docs/rishi_mechanism_20261027/ANNUAL_PATH_DIAGNOSTICS.csv": "8da87419ef787c59006f1a8a250cf4533b5b90a8f756ba1211c3405b205e348c",
+    "docs/rishi_mechanism_20261027/source_snapshot/layer.py": "f3b4f1301a0069f6476e65340781f76a8ae5773369ff18695516926df4266ab9",
+    "docs/rishi_mechanism_20261027/source_snapshot/model.py": "5d52ca18f4098792c87f436c38e4dfbf198ab1dc627bd0a47424009cf1fb2788",
+    "research/analysis/rishi_mechanism_smoke_20261027.py": "c44c472f7de2e1601bdea9587bfa51b760c8feccb95c6ada2234a4c749d18ee2"
+  }
+}
