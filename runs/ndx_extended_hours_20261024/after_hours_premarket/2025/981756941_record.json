@@ -1,0 +1,13 @@
+{
+  "view": "after_hours_premarket",
+  "year": 2025,
+  "seed": 981756941,
+  "chosen_epoch": 6,
+  "validation_mse": 24.661306381225586,
+  "parent_hashes": {},
+  "hashes": {
+    "981756941.pt": "d31aa975b197c0ae4d7a24a9f6ce4a8a6a4b1a23e2187ae58ee8b6d18919dbfa",
+    "981756941_predictions.npz": "70169c05efb256f0cc3e8ddf51f080d2c8752396d9572b6c18b651037252fb61",
+    "981756941_history.json": "5a022f061c4ff1e4f2a6e8a46cb4b99d33971faaa9e4492674c1365099fec0b8"
+  }
+}

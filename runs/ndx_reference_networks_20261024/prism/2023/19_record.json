@@ -1,0 +1,16 @@
+{
+  "kind": "prism",
+  "year": 2023,
+  "seed": 19,
+  "chosen_epochs": {
+    "representation": 3,
+    "prediction": 24
+  },
+  "parameter_count": 1331157,
+  "validation_mse": 38.91643524169922,
+  "hashes": {
+    "19.pt": "428625b9b8d228ee53cdb7ff08480e2fc5c4d4e55427b86b548e230a845acdfb",
+    "19_predictions.npz": "f0cc608f3ae0e81c1d586c36c9581ae20eea4d3afdf1046a17204cb193bf5df1",
+    "19_history.json": "d60fe1fa92f379856d51c2fa9453db7781bd281b78e98764b22df5f2fbdadcd1"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "view": "after_hours_premarket",
+  "year": 2025,
+  "seed": 1868046758,
+  "chosen_epoch": 5,
+  "validation_mse": 24.597015380859375,
+  "parent_hashes": {},
+  "hashes": {
+    "1868046758.pt": "5693f0fc5871ffb1c5fb24be93782ad7f546475d7a07ed1805fbd38de9ddbbda",
+    "1868046758_predictions.npz": "820b1250c8978c5931e40b296dac2c1b47899797a628c37a10c350db17e04a89",
+    "1868046758_history.json": "ccf9db4d13b20279576a0c4aadd59b3d56ba9913095d981129aa4190655d3f7b"
+  }
+}

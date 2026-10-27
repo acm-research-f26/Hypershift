@@ -1,0 +1,64 @@
+{
+  "created_date": "2026-10-27",
+  "operation": "Publish existing artifacts only; no training, inference or account replay",
+  "files": 1184,
+  "bytes": 739361294,
+  "checkpoints": 240,
+  "forecast_files": 240,
+  "historical_hash_checks": 2313,
+  "credential_scan": {
+    "status": "passed",
+    "scope": "All selected bytes, decompressed gzip and archive members; local .env credential-value matches plus common token/private-key patterns",
+    "excluded": [
+      ".env and credential files",
+      "Git metadata",
+      "Python bytecode",
+      "unrelated runs/data",
+      "raw 15-minute bar chunks"
+    ]
+  },
+  "roots": {
+    "runs/ndx_reference_networks_20261024": {
+      "files": 518,
+      "bytes": 618959522
+    },
+    "runs/ndx_extended_hours_20261024": {
+      "files": 539,
+      "bytes": 23246819
+    },
+    "runs/ndx_drawdown_20261026/batch1": {
+      "files": 13,
+      "bytes": 11902931
+    },
+    "data/nasdaq_monthly_pit/assembled": {
+      "files": 10,
+      "bytes": 19422743
+    },
+    "data/nasdaq_monthly_pit/alpaca_features_20261019": {
+      "files": 5,
+      "bytes": 29246409
+    },
+    "data/nasdaq_monthly_pit/extended_hours_features_20261024": {
+      "files": 5,
+      "bytes": 29969477
+    },
+    "data/nasdaq_monthly_pit/jkp_themes_20261024": {
+      "files": 3,
+      "bytes": 4726884
+    },
+    ".cache/architecture_references_20261024": {
+      "files": 86,
+      "bytes": 608423
+    },
+    ".cache/reference_dependencies_20261024": {
+      "files": 2,
+      "bytes": 65284
+    }
+  },
+  "known_gaps": [
+    "No persisted per-stock position/holdings snapshots or order/fill blotters in the three requested run directories",
+    "Drawdown batch saves selected daily ledgers, not full daily ledgers for all 915 accounts",
+    "Reference-network standalone preprocessing/scaler and graph exports were not saved; source reconstructs them from the reviewed inputs; learned state remains in checkpoints",
+    "Raw 15-minute chunks and older parent-run artifacts referenced by legacy provenance locks are not included"
+  ]
+}

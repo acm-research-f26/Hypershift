@@ -1,0 +1,16 @@
+{
+  "kind": "prism",
+  "year": 2025,
+  "seed": 61,
+  "chosen_epochs": {
+    "representation": 24,
+    "prediction": 1
+  },
+  "parameter_count": 1331157,
+  "validation_mse": 24.675504684448242,
+  "hashes": {
+    "61.pt": "b8124cd733b36bce72161b04f6f6a1846d8c6968f06a1da8f1069d91abee45c7",
+    "61_predictions.npz": "69ce163192ddd9eb8fd8414b07b5e7af693e875862b6a06ba76d6160e1225fb3",
+    "61_history.json": "f5b58c863ac126426428654864f427ebd27ddbbb2ff5fed4f6a20c0674da2f9e"
+  }
+}

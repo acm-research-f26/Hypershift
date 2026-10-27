@@ -1,0 +1,15 @@
+{
+  "kind": "master",
+  "year": 2023,
+  "seed": 42,
+  "chosen_epochs": {
+    "prediction": 1
+  },
+  "parameter_count": 731156,
+  "validation_mse": 39.399776458740234,
+  "hashes": {
+    "42.pt": "bbbda64177b3a63d48db237b0539794b17063f68a34cc226697972574c864058",
+    "42_predictions.npz": "5e76d162b807107f782dd563b6306e45e0763b6b13022a67edcb3697e8dcc1af",
+    "42_history.json": "c5b756efe8132826e96b270532a324250c9722eb8cd27bc5c0438cafa3fc0f0f"
+  }
+}

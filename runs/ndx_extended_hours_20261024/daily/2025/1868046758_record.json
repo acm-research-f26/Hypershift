@@ -1,0 +1,16 @@
+{
+  "view": "daily",
+  "year": 2025,
+  "seed": 1868046758,
+  "chosen_epoch": 5,
+  "validation_mse": 24.598987579345703,
+  "parent_hashes": {
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\ndx_seed_expansion_20261020\\2025\\1868046758_predictions.npz": "e97c83f76e3249ac44fbe92298e9e6916e5542b5fc1fe6aaa07cc73d2b2968f6",
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\runs\\ndx_seed_expansion_20261020\\2025\\think_mix_1868046758.pt": "ef23ae7575d4b5194a94d2951c9e2ee377671e4c6135bbb70a905e010ddb98ea"
+  },
+  "hashes": {
+    "1868046758.pt": "a67ba573c20cbedbd28318a9fc304dc7662de6cd826f20514c8ff65fb33f7314",
+    "1868046758_predictions.npz": "e97c83f76e3249ac44fbe92298e9e6916e5542b5fc1fe6aaa07cc73d2b2968f6",
+    "1868046758_history.json": "2ab014e7412a56ba81b55e5804efd44ffafa5acd1b0cf784e8bdb940feed17d4"
+  }
+}

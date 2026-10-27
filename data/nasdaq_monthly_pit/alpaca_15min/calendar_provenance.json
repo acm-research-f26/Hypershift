@@ -1,0 +1,12 @@
+{
+  "provider": "Alpaca",
+  "endpoint": "https://paper-api.alpaca.markets/v2/calendar",
+  "query": {
+    "start": "2018-01-01",
+    "end": "2025-12-31"
+  },
+  "sessions": 2011,
+  "sha256": "c79f57706b0524b0f916b3e41165d8987befea62ce712004e68d4967effae2dd",
+  "file_modified_at_utc": "2026-10-20T02:52:20.228114+00:00",
+  "credential_values_saved": false
+}

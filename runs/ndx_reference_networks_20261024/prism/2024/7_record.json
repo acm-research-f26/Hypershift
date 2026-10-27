@@ -1,0 +1,16 @@
+{
+  "kind": "prism",
+  "year": 2024,
+  "seed": 7,
+  "chosen_epochs": {
+    "representation": 3,
+    "prediction": 1
+  },
+  "parameter_count": 1331157,
+  "validation_mse": 22.89457893371582,
+  "hashes": {
+    "7.pt": "330932c996f8840d0048b0e33a623fab8e188f6f30329c328628757dbec459d1",
+    "7_predictions.npz": "20728c3fca85948631f92e713c634d3afa502085c3b1a7dc0668ac2f7f922e11",
+    "7_history.json": "2f967fdae9b0899852b2c3cc70609e66262a7f7ef95a94618d716bcf9007ff79"
+  }
+}

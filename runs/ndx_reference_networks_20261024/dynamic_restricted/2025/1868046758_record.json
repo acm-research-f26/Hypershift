@@ -1,0 +1,15 @@
+{
+  "kind": "dynamic_restricted",
+  "year": 2025,
+  "seed": 1868046758,
+  "chosen_epochs": {
+    "prediction": 4
+  },
+  "parameter_count": 25445,
+  "validation_mse": 24.636869430541992,
+  "hashes": {
+    "1868046758.pt": "e902dc6695f57e9067a5c87c5237baccf0416a4744103c299b477d59ca8ac229",
+    "1868046758_predictions.npz": "c884b50c34b35da1d8c0d9380e4a1a2aee5d3720c4af2866d69025c37f2e5e63",
+    "1868046758_history.json": "96c84e47b9aa7d28f9fe248eb7b32ec358333ced947ffe0037b0ab42e3971334"
+  }
+}

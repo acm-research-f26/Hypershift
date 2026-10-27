@@ -1,0 +1,16 @@
+{
+  "kind": "prism",
+  "year": 2023,
+  "seed": 287727767,
+  "chosen_epochs": {
+    "representation": 4,
+    "prediction": 4
+  },
+  "parameter_count": 1331157,
+  "validation_mse": 38.7500114440918,
+  "hashes": {
+    "287727767.pt": "0829396fa767b69d53f42e92f8a1e6cb89ce6488e47b61492ef4f74fbfa4a537",
+    "287727767_predictions.npz": "697e72344261eb79e9792ba0ca675133e8101f62d265e225aea933c8630963b3",
+    "287727767_history.json": "06daca49d425f2749b98d21c11e60e5790e6a396d76d5089ecd63cdaf393b13c"
+  }
+}

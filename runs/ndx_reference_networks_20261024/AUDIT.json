@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "reference_checkpoint_exports_reproduced": 120,
+  "selected_stages_checked": 160,
+  "independent_portfolio_replays": 172,
+  "prior_accounts_reproduced": 34,
+  "largest_nav_difference_dollars": 6.984919309616089e-08
+}

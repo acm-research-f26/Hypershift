@@ -1,0 +1,39 @@
+{
+  "prediction": [
+    {
+      "epoch": 1,
+      "training_loss": 33.2723401705424,
+      "validation_loss": 21.921321868896484
+    },
+    {
+      "epoch": 2,
+      "training_loss": 32.89465044657389,
+      "validation_loss": 22.194242477416992
+    },
+    {
+      "epoch": 3,
+      "training_loss": 32.94100631078084,
+      "validation_loss": 22.249481201171875
+    },
+    {
+      "epoch": 4,
+      "training_loss": 32.991024080912275,
+      "validation_loss": 22.307464599609375
+    },
+    {
+      "epoch": 5,
+      "training_loss": 32.99497184117635,
+      "validation_loss": 22.34415054321289
+    },
+    {
+      "epoch": 6,
+      "training_loss": 32.953686173756914,
+      "validation_loss": 22.330495834350586
+    },
+    {
+      "epoch": 7,
+      "training_loss": 32.92279415766398,
+      "validation_loss": 22.314979553222656
+    }
+  ]
+}

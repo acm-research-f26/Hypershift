@@ -1,0 +1,22 @@
+{
+  "status": "not_activated_no_confirmed_candidate",
+  "purpose": "Prevent development winners, seed replications and previously inspected dates being presented as untouched confirmation",
+  "development_period": "2022-2025; repeatedly inspected across many studies",
+  "candidate_artifact": null,
+  "candidate_freeze_timestamp_utc": null,
+  "confirmation_first_entry": null,
+  "prior_reservation": "Existing research status reserves no earlier than 2026-10-21, with first formal read after252sessions. A newly chosen policy cannot retroactively claim earlier reserved observations as a prespecified live test.",
+  "activation_requirements": [
+    "Choose and hash one complete policy, including architecture, input data definitions, seed ensemble, validation-only selection/refit rule, holding count, rank blend if any, costs and execution time",
+    "Record candidate freeze timestamp before the first confirmation signal and start at a later eligible exchange session",
+    "Review point-in-time membership, share-class/issuer identities, delistings and corporate actions for the new period",
+    "Resolve new/untrained stock-ID support and cold-start behavior before evaluating any new-period forecasts; no random append of mixer weights",
+    "Review feature availability, historical publication timestamps and revisions; a lagged JKP observation alone is not proof it was published at that time",
+    "Use a separately sealed confirmation dataset and append-only saved predictions; do not inspect performance to decide when to stop"
+  ],
+  "first_formal_read": "After252completedtrading sessions following activation; one year can remain underpowered. There is no mature confirmation sample now.",
+  "comparators": "Matched SPY, QQQ and the frozen parent AH+PM ten-seed recipe under identical execution, costs and dates",
+  "development_screen": "Report the primary ten-seed ensemble, both prespecified five-seed halves, all individual seeds, prior-year validation forecast quality, cost stresses, paired active/SR/CAGR intervals and error complementarity. No architecture is promoted solely for highest historical CAGR.",
+  "uncertainty": "Time-block confidence intervals conditional on fitted forecasts do not capture all training, prior search, universe or data-vintage uncertainty. Seed dispersion is a separate diagnostic, not independent market history. Simultaneous contrasts within a new batch do not correct all prior research.",
+  "activity": "No 2026 returns opened by these experiments, no model deployed, no orders and no recurring automation created"
+}

@@ -1,0 +1,15 @@
+{
+  "kind": "master",
+  "year": 2025,
+  "seed": 61,
+  "chosen_epochs": {
+    "prediction": 25
+  },
+  "parameter_count": 731156,
+  "validation_mse": 24.575481414794922,
+  "hashes": {
+    "61.pt": "1a07fb6f773d038edee7cb20ac48ae38ac3b308fc468dd69187ba0b3d7ff8f21",
+    "61_predictions.npz": "1fecde5deabd52e2eb82cc33d920819e0064e7cc8e73721570591b2c97236eea",
+    "61_history.json": "86e75a5017eb884fb4aef9236eda5fc191cfa807d08f8d20e53273843182168a"
+  }
+}

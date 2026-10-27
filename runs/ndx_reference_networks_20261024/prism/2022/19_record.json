@@ -1,0 +1,16 @@
+{
+  "kind": "prism",
+  "year": 2022,
+  "seed": 19,
+  "chosen_epochs": {
+    "representation": 5,
+    "prediction": 1
+  },
+  "parameter_count": 1331157,
+  "validation_mse": 22.09548568725586,
+  "hashes": {
+    "19.pt": "6221e87bd59857e5864d5f477265791b2544bb31240e4dd9a5de690045f640ed",
+    "19_predictions.npz": "37b253609b4151428927efdcebdf6d045cd1a82adc04bea431689ddea117f4ad",
+    "19_history.json": "0b50e99e4c0eb8d5f027e8182cd80c977734b3990d5f026629e768cf2376ec09"
+  }
+}

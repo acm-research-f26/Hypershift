@@ -1,0 +1,977 @@
+{
+  "status": "reviewed_research_inputs",
+  "root": "data\\nasdaq_monthly_pit\\assembled",
+  "training_start": "2019-07-01",
+  "monthly_snapshots": 78,
+  "securities": 156,
+  "source_membership": {
+    "status": "provisional_membership_only; training_not_started",
+    "source": "https://github.com/jmccarrell/n100tickers",
+    "source_git_tree": "cf7c89419941316ff8523726ccba136125f2c11c",
+    "monthly_snapshots": 108,
+    "distinct_historical_symbols": 180,
+    "test_symbols": 131,
+    "securities_per_month": {
+      "min": 101,
+      "max": 104
+    },
+    "annual_closure_checks": 10,
+    "source_hashes": {
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2016.yaml": "e8309fe62689c05525b0c60986ad962ee564977997b37707a67d72358e8688f5",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2017.yaml": "1dc113f0dd2c2bfb98e3ba5eedfff9d0e459f92aaa22748ba9d0a242b4ea3216",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2018.yaml": "fa558a923558de887ba37681356c5a8fff0bf07d16e6a93eb5b91ff5f7fc460e",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2019.yaml": "4d3beb972bd844641b1b100fadf16626888d656f4454a759a4a4acc47e3d6a0b",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2020.yaml": "fc471f590e44a0f791f79baf9bd3a040343cfbcf421c2853294dbe1af6af845d",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2021.yaml": "e810a7f3e67c702d044e73df3af4014b0d90b1abc2f04018afe04d1518b7f573",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2022.yaml": "6313b84f4d178b8d37300a18109ad4f9551268b19e2b7b4383b7a5f742e18392",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2023.yaml": "7d545922ec54325c9fc97eef738750d502ef4fd0bce3a58232741319febc7a3e",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2024.yaml": "12bec472989760c3915e32582d42772f73241f4ef0067633ff57cb22cb3ae693",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2025.yaml": "e20a547ed1bb5d6fde305e91560ed74aa9b74d6cadd7aee78dab8867b19366ee",
+      "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2026.yaml": "a8d8d58165a654c5a2c4ab8006d56c4d6efd7edf41154cf838be8693b87c1bf6"
+    },
+    "notes": [
+      "Index has 100 companies but can have more than 100 securities owing to share classes and spin-offs.",
+      "Monthly snapshots use only events effective by the month start; publication dates still require verification.",
+      "Contemporaneous ticker names are retained; no implicit current-symbol substitution.",
+      "Sources disagree on 2025 SOLS effective dates; this conflict remains open.",
+      "Membership continuity checks do not certify historical accuracy or price identity.",
+      "Do not discard missing former members, substitute acquirers, or carry disappeared prices indefinitely."
+    ]
+  },
+  "sources": [
+    {
+      "security_id": "AAL",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "AAPL",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ABNB",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ADBE",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ADI",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ADP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ADSK",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "AEP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ALGN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ALXN",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\ALXN_prices.json",
+      "sha256": "732c3974516173c31031aa03a740e9ab98f7700d8030f5016e6026404de3059c"
+    },
+    {
+      "security_id": "AMAT",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "AMD",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "AMGN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "AMZN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ANSS",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\ANSS_prices.json",
+      "sha256": "a36fb144ae5daa8ab5e056b6e18502a6032a5edfaf19eb3e5c1477888e96817c"
+    },
+    {
+      "security_id": "APP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ARM",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ASML",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ATVI",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\ATVI_prices.json",
+      "sha256": "8ee8ef1bde65ba8a91a981f2246e4fac2fbc1a46793522b50ff224337f5fd75a"
+    },
+    {
+      "security_id": "AVGO",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "AXON",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "AZN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "BIDU",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "BIIB",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "BKNG",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "BKR",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "BMRN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CCEP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CDNS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CDW",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CEG",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CELG",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\CELG_prices.json",
+      "sha256": "7f8608c552d7bab2e40842b5ef2457455404f865f91742efc5f1b777cc84ac0a"
+    },
+    {
+      "security_id": "CERN",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\CERN_prices.json",
+      "sha256": "928498fa305d135185d858faccedbd6fcc2bfc0c9fa73c06659058598508eda2"
+    },
+    {
+      "security_id": "CHKP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CHTR",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CMCSA",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "COST",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CPRT",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CRWD",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CSCO",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CSGP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CSX",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CTAS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CTSH",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "CTXS",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\CTXS_prices.json",
+      "sha256": "868b3745a9c7bd4657e49db14f3c3e027b77aa637bcd69c0b832ed98064d9715"
+    },
+    {
+      "security_id": "DASH",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "DDOG",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "DLTR",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "DOCU",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "DXCM",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "EA",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\EA_prices.json",
+      "sha256": "bbb6a8f794eead694b47f61c0d7a231ac866d89db7bd285ec85063c35fa1b287"
+    },
+    {
+      "security_id": "EBAY",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ENPH",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "EXC",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "EXPE",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "FANG",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "FAST",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "FISV",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "FOX",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "FOXA",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "FTNT",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "GEHC",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "GEN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "GFS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "GILD",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "GOOG",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "GOOGL",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "HAS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "HON",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "HSIC",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "IDXX",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ILMN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "INCY",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "INTC",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "INTU",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ISRG",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "JBHT",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "JD",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "KDP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "KHC",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "KLAC",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "LBTYA",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "LBTYK",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "LCID",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "LIN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "LRCX",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "LULU",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MAR",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MCHP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MDB",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MDLZ",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MELI",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "META",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MNST",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MRNA",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MRVL",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MSFT",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MSTR",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MTCH",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MU",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "MXIM",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\MXIM_prices.json",
+      "sha256": "21aa338cdc26e5f4ff9048db4e2ac42d309fd06be92ed352a1e345120e46194f"
+    },
+    {
+      "security_id": "MYL",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\MYL_prices.json",
+      "sha256": "72862f16c820d37cd3be6f034c13be15b8a195b8921041aeb49753689cd6fa72"
+    },
+    {
+      "security_id": "NFLX",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "NTAP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "NTES",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "NVDA",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "NXPI",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ODFL",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "OKTA",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ON",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ORLY",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "PANW",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "PAYX",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "PCAR",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "PDD",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "PEP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "PLTR",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "PTON",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "PYPL",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "QCOM",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "REGN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "RIVN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ROP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ROST",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "SBUX",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "SGEN",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\SGEN_prices.json",
+      "sha256": "c57f74bb6b106e6ad6c7c801129f619ad76b0c96212322c8a32bfad3af02006e"
+    },
+    {
+      "security_id": "SHOP",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "SIRI",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "SMCI",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "SNPS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "SOLS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "SPLK",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\SPLK_prices.json",
+      "sha256": "5d0ed71902a682ade0152aafd6e0e28afb00f8b449bb5d8648045870826fd8c9"
+    },
+    {
+      "security_id": "SWKS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "TCOM",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "TEAM",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "TMUS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "TRI",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "TSLA",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "TTD",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "TTWO",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "TXN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "UAL",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ULTA",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "VRSK",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "VRSN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "VRTX",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "WBA",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\WBA_prices.json",
+      "sha256": "1342a71d59a19e5cac1dd85cab89bfbf964d387f1bcfe94d7d40fe953be0d61c"
+    },
+    {
+      "security_id": "WBD",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\WBD_prices.json",
+      "sha256": "91cf94c1b7eb35bd3955c2f846c4c3fcf438bffe6198f87e6c13f2d2608c2268"
+    },
+    {
+      "security_id": "WDAY",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "WDC",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "WTW",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "WYNN",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "XEL",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "XLNX",
+      "provider": "Tiingo",
+      "path": "data\\nasdaq_monthly_pit\\tiingo_raw\\XLNX_prices.json",
+      "sha256": "0ea3f4b7fc0f2b893c1f1b399197eb4c6a449fea7ba8daa3ecccb706fbd3c5d7"
+    },
+    {
+      "security_id": "ZM",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    },
+    {
+      "security_id": "ZS",
+      "provider": "Yahoo Finance",
+      "path": "data\\nasdaq_monthly_pit\\yahoo_raw\\adj_close.csv"
+    }
+  ],
+  "test_settlements": [
+    {
+      "security_id": "XLNX",
+      "date": "2022-02-14",
+      "cash_per_raw_share": 0.0,
+      "stock_ratio": 1.7234,
+      "acquirer": "AMD",
+      "source": "https://ir.amd.com/financial-information/sec-filings/content/0000002488-22-000031/amd-20220214.htm",
+      "last_pre_completion_price_date": "2022-02-11",
+      "payout_raw_dollars_at_completion": 196.93291221466066,
+      "adjusted_unit_factor": 1.0,
+      "stock_fraction_at_completion": 1.0
+    },
+    {
+      "security_id": "SGEN",
+      "date": "2023-12-14",
+      "cash_per_raw_share": 229.0,
+      "stock_ratio": 0.0,
+      "acquirer": null,
+      "source": "https://www.pfizer.com/news/press-release/press-release-detail/pfizer-completes-acquisition-seagen",
+      "last_pre_completion_price_date": "2023-12-13",
+      "payout_raw_dollars_at_completion": 229.0,
+      "adjusted_unit_factor": 1.0,
+      "stock_fraction_at_completion": 0.0
+    },
+    {
+      "security_id": "SPLK",
+      "date": "2024-03-18",
+      "cash_per_raw_share": 157.0,
+      "stock_ratio": 0.0,
+      "acquirer": null,
+      "source": "https://newsroom.cisco.com/c/r/newsroom/en/us/a/y2024/m03/cisco-completes-acquisition-of-splunk.html",
+      "last_pre_completion_price_date": "2024-03-15",
+      "payout_raw_dollars_at_completion": 157.0,
+      "adjusted_unit_factor": 1.0,
+      "stock_fraction_at_completion": 0.0
+    },
+    {
+      "security_id": "ANSS",
+      "date": "2025-07-17",
+      "cash_per_raw_share": 199.91,
+      "stock_ratio": 0.3399,
+      "acquirer": "SNPS",
+      "source": "https://www.sec.gov/Archives/edgar/data/883241/000114036125026139/ef20051970_8k.htm",
+      "last_pre_completion_price_date": "2025-07-16",
+      "payout_raw_dollars_at_completion": 400.1145023193359,
+      "adjusted_unit_factor": 1.0,
+      "stock_fraction_at_completion": 0.5003680225505809
+    }
+  ],
+  "earlier_unpriced_mergers": {
+    "ALXN": "2021-07-21",
+    "CELG": "2019-11-20",
+    "CERN": "2022-06-08",
+    "CTXS": "2022-09-30",
+    "MXIM": "2021-08-26",
+    "MYL": "2020-11-16"
+  },
+  "missing_active_prices": [
+    {
+      "security_id": "ALXN",
+      "first_missing": "2021-07-21",
+      "last_missing": "2021-07-30",
+      "cells": 8
+    },
+    {
+      "security_id": "ANSS",
+      "first_missing": "2025-07-17",
+      "last_missing": "2025-07-31",
+      "cells": 11
+    },
+    {
+      "security_id": "CELG",
+      "first_missing": "2019-11-20",
+      "last_missing": "2019-11-29",
+      "cells": 7
+    },
+    {
+      "security_id": "MXIM",
+      "first_missing": "2021-08-26",
+      "last_missing": "2021-08-31",
+      "cells": 4
+    },
+    {
+      "security_id": "SGEN",
+      "first_missing": "2023-12-14",
+      "last_missing": "2023-12-29",
+      "cells": 11
+    },
+    {
+      "security_id": "SPLK",
+      "first_missing": "2024-03-18",
+      "last_missing": "2024-03-28",
+      "cells": 9
+    },
+    {
+      "security_id": "XLNX",
+      "first_missing": "2022-02-14",
+      "last_missing": "2022-02-28",
+      "cells": 10
+    }
+  ],
+  "alias_map": {
+    "CTRP": "TCOM",
+    "FB": "META",
+    "SYMC": "GEN",
+    "NLOK": "GEN",
+    "WLTW": "WTW"
+  },
+  "limitations": [
+    "Research-grade reconstructed historical index snapshots, not licensed as-published index data.",
+    "Training begins July 2019; first 2022 fold has 1.5 training years and one prior validation year.",
+    "Monthly snapshots retain official share classes, so security counts can exceed 100.",
+    "Adjusted closes approximate reinvested total returns; raw close times volume supplies liquidity.",
+    "Cash acquisition proceeds are available at completion close; stock consideration is liquidated at that close with fees. Actual broker settlement can be delayed.",
+    "Earlier unpriced merger outcomes are omitted only from supervised targets, with counts reported; signal-time members are retained.",
+    "2025 SOLS sources disagree on off-cycle dates but agree on the monthly November snapshot; it lacks the neural/momentum warmup. No off-cycle additions enter the monthly universe.",
+    "2022-2025 was examined previously; results remain exploratory. No outperforming model is promised."
+  ],
+  "hashes": {
+    "dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "etf_dollar_volume.csv": "f512c863e5322c57e9d6b2c4281690cacff6fcdd70a810ac0695ee9c9e20f33f",
+    "membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "monthly_members.csv": "a04d458cb9c976cad37014733989755c38cffc034e6ee5df3b7d6d0ef0f04ecc",
+    "raw_close.csv": "02d2b2477564bca67f1ece58f0c55ce471678f727972fbe836f9b4b9e8b3682b",
+    "tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648"
+  },
+  "review": {
+    "level": "research_grade_with_disclosed_limitations; not licensed point-in-time certification",
+    "structural_input_checks": "passed",
+    "unexplained_active_price_gaps": 0,
+    "test_acquisition_sources": "four primary company/SEC releases, terms checked before training",
+    "training_missing_labels": "retained and counted, not replaced by future observations",
+    "membership": "third-party dated event files with ten annual closure checks; annual Nasdaq announcements cross-checked; SOLS date conflict immaterial to monthly snapshots",
+    "identity": "recycled CA history rejected; earlier FOX reorganization excluded by declared training-start amendment; five same-issuer symbol aliases explicitly mapped",
+    "engine": "monthly masks, training-only correlations, next-close orders, continuous cash/NAV and mandatory acquisition settlement tested",
+    "settlement_assumption": "completion-close liquidity, with explicit limitation rather than an invented actual broker payout date"
+  }
+}

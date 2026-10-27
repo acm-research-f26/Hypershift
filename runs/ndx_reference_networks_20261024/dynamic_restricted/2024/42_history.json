@@ -1,0 +1,89 @@
+{
+  "prediction": [
+    {
+      "epoch": 1,
+      "training_loss": 5.200633983720433,
+      "validation_loss": 23.030845642089844
+    },
+    {
+      "epoch": 2,
+      "training_loss": 5.210808797316118,
+      "validation_loss": 22.467342376708984
+    },
+    {
+      "epoch": 3,
+      "training_loss": 5.204195889559659,
+      "validation_loss": 22.439653396606445
+    },
+    {
+      "epoch": 4,
+      "training_loss": 5.205593348904089,
+      "validation_loss": 22.328222274780273
+    },
+    {
+      "epoch": 5,
+      "training_loss": 5.201711704785174,
+      "validation_loss": 22.465295791625977
+    },
+    {
+      "epoch": 6,
+      "training_loss": 5.203779029575261,
+      "validation_loss": 22.378664016723633
+    },
+    {
+      "epoch": 7,
+      "training_loss": 5.204561784863472,
+      "validation_loss": 22.307960510253906
+    },
+    {
+      "epoch": 8,
+      "training_loss": 5.203165930780497,
+      "validation_loss": 22.32622718811035
+    },
+    {
+      "epoch": 9,
+      "training_loss": 5.203008814291521,
+      "validation_loss": 22.2989559173584
+    },
+    {
+      "epoch": 10,
+      "training_loss": 5.202530291947451,
+      "validation_loss": 22.27861976623535
+    },
+    {
+      "epoch": 11,
+      "training_loss": 5.202845238826492,
+      "validation_loss": 22.27092742919922
+    },
+    {
+      "epoch": 12,
+      "training_loss": 5.201728789643808,
+      "validation_loss": 22.283811569213867
+    },
+    {
+      "epoch": 13,
+      "training_loss": 5.201041553508151,
+      "validation_loss": 22.288705825805664
+    },
+    {
+      "epoch": 14,
+      "training_loss": 5.201690354130485,
+      "validation_loss": 22.308120727539062
+    },
+    {
+      "epoch": 15,
+      "training_loss": 5.200879175554622,
+      "validation_loss": 22.307435989379883
+    },
+    {
+      "epoch": 16,
+      "training_loss": 5.200542849573222,
+      "validation_loss": 22.29960060119629
+    },
+    {
+      "epoch": 17,
+      "training_loss": 5.20044441792098,
+      "validation_loss": 22.30575942993164
+    }
+  ]
+}

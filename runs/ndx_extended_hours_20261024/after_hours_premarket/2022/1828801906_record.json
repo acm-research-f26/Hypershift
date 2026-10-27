@@ -1,0 +1,13 @@
+{
+  "view": "after_hours_premarket",
+  "year": 2022,
+  "seed": 1828801906,
+  "chosen_epoch": 9,
+  "validation_mse": 21.9039306640625,
+  "parent_hashes": {},
+  "hashes": {
+    "1828801906.pt": "7bf575c306550da75e44227e0ddd829476dc2cb77d0c92e4f75692a8a04b1484",
+    "1828801906_predictions.npz": "b097419b1094b8bcfc586b432b503a9f8d3132457d940365ab80da409c3a2abe",
+    "1828801906_history.json": "6baf338655f4612667aa9826966ff85936cd9f0b4c6564be9f4a469cd8081779"
+  }
+}
