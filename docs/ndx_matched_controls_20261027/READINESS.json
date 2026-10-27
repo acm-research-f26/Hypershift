@@ -1,0 +1,38 @@
+{
+  "status": "policy_frozen_activation_prerequisites_pending",
+  "activated": false,
+  "frozen_timestamp_utc": "2026-10-27T05:48:31.889867+00:00",
+  "policy_sha256": "98366b0a184adee44a2e1309327b7f526ba820009a6ce80c488c66b17d841e57",
+  "candidate": "neural/ten_seed/issuer5/vol20",
+  "candidate_changed_after_controls": false,
+  "historical_daily_data_last_date": "2025-12-31",
+  "prospective_predictions": 0,
+  "prerequisites": [
+    {
+      "requirement": "Fresh reviewed point-in-time membership, issuer identities, actions and daily/AH/PM feeds",
+      "verified": false
+    },
+    {
+      "requirement": "Audit feature publication latency, revisions and complete pre-decision timestamps",
+      "verified": false
+    },
+    {
+      "requirement": "Refit/verify all 20 current-year models with purged validation and supported stock IDs",
+      "verified": false
+    },
+    {
+      "requirement": "Replay and smoke-test future-date inference/execution plumbing before outcomes",
+      "verified": false
+    },
+    {
+      "requirement": "Separate append-only prediction store and independent pre-outcome timestamp anchor",
+      "verified": false
+    },
+    {
+      "requirement": "Record activation timestamp and verified exchange-session calendar before first signal",
+      "verified": false
+    }
+  ],
+  "old_confirmation_gate_unchanged": true,
+  "explanation": "Local reviewed inputs and trained exports used here stop in 2025. A future-date data/inference/timestamp review and actual activation must precede a genuinely prospective signal. No 2026 observations were inspected by this study."
+}

@@ -1,0 +1,371 @@
+{
+  "status": "frozen_before_matched_control_metrics",
+  "created_local_date": "2026-10-27",
+  "historical_period": "2022-2025; already inspected exploratory development",
+  "primary_candidate": "neural/ten_seed/issuer5/vol20",
+  "secondary_candidate": "neural/ten_seed/issuer5/vol25trend",
+  "candidate_remains_fixed": true,
+  "prospective_policy_sha256": "98366b0a184adee44a2e1309327b7f526ba820009a6ce80c488c66b17d841e57",
+  "prospective_frozen_timestamp_utc": "2026-10-27T05:48:31.889867+00:00",
+  "specs": [
+    {
+      "id": "neural/original_five/equal5/full",
+      "kind": "neural",
+      "group": "original_five",
+      "recipe": "equal5/full",
+      "allocation": "equal5",
+      "rule": "full"
+    },
+    {
+      "id": "neural/original_five/equal5/vol20",
+      "kind": "neural",
+      "group": "original_five",
+      "recipe": "equal5/basketvol20_target20_weekly",
+      "allocation": "equal5",
+      "rule": "vol20"
+    },
+    {
+      "id": "qqq_replay/original_five/equal5/vol20",
+      "kind": "qqq_replay",
+      "group": "original_five",
+      "recipe": "equal5/basketvol20_target20_weekly",
+      "allocation": "equal5",
+      "rule": "vol20"
+    },
+    {
+      "id": "neural/original_five/issuer5/vol20",
+      "kind": "neural",
+      "group": "original_five",
+      "recipe": "issuer5/basketvol20_target20_weekly",
+      "allocation": "issuer5",
+      "rule": "vol20"
+    },
+    {
+      "id": "qqq_replay/original_five/issuer5/vol20",
+      "kind": "qqq_replay",
+      "group": "original_five",
+      "recipe": "issuer5/basketvol20_target20_weekly",
+      "allocation": "issuer5",
+      "rule": "vol20"
+    },
+    {
+      "id": "neural/original_five/issuer5/vol25trend",
+      "kind": "neural",
+      "group": "original_five",
+      "recipe": "issuer5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer5",
+      "rule": "vol25trend"
+    },
+    {
+      "id": "qqq_replay/original_five/issuer5/vol25trend",
+      "kind": "qqq_replay",
+      "group": "original_five",
+      "recipe": "issuer5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer5",
+      "rule": "vol25trend"
+    },
+    {
+      "id": "neural/new_five/equal5/full",
+      "kind": "neural",
+      "group": "new_five",
+      "recipe": "equal5/full",
+      "allocation": "equal5",
+      "rule": "full"
+    },
+    {
+      "id": "neural/new_five/equal5/vol20",
+      "kind": "neural",
+      "group": "new_five",
+      "recipe": "equal5/basketvol20_target20_weekly",
+      "allocation": "equal5",
+      "rule": "vol20"
+    },
+    {
+      "id": "qqq_replay/new_five/equal5/vol20",
+      "kind": "qqq_replay",
+      "group": "new_five",
+      "recipe": "equal5/basketvol20_target20_weekly",
+      "allocation": "equal5",
+      "rule": "vol20"
+    },
+    {
+      "id": "neural/new_five/issuer5/vol20",
+      "kind": "neural",
+      "group": "new_five",
+      "recipe": "issuer5/basketvol20_target20_weekly",
+      "allocation": "issuer5",
+      "rule": "vol20"
+    },
+    {
+      "id": "qqq_replay/new_five/issuer5/vol20",
+      "kind": "qqq_replay",
+      "group": "new_five",
+      "recipe": "issuer5/basketvol20_target20_weekly",
+      "allocation": "issuer5",
+      "rule": "vol20"
+    },
+    {
+      "id": "neural/new_five/issuer5/vol25trend",
+      "kind": "neural",
+      "group": "new_five",
+      "recipe": "issuer5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer5",
+      "rule": "vol25trend"
+    },
+    {
+      "id": "qqq_replay/new_five/issuer5/vol25trend",
+      "kind": "qqq_replay",
+      "group": "new_five",
+      "recipe": "issuer5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer5",
+      "rule": "vol25trend"
+    },
+    {
+      "id": "neural/ten_seed/equal5/full",
+      "kind": "neural",
+      "group": "ten_seed",
+      "recipe": "equal5/full",
+      "allocation": "equal5",
+      "rule": "full"
+    },
+    {
+      "id": "neural/ten_seed/equal5/vol20",
+      "kind": "neural",
+      "group": "ten_seed",
+      "recipe": "equal5/basketvol20_target20_weekly",
+      "allocation": "equal5",
+      "rule": "vol20"
+    },
+    {
+      "id": "qqq_replay/ten_seed/equal5/vol20",
+      "kind": "qqq_replay",
+      "group": "ten_seed",
+      "recipe": "equal5/basketvol20_target20_weekly",
+      "allocation": "equal5",
+      "rule": "vol20"
+    },
+    {
+      "id": "neural/ten_seed/issuer5/vol20",
+      "kind": "neural",
+      "group": "ten_seed",
+      "recipe": "issuer5/basketvol20_target20_weekly",
+      "allocation": "issuer5",
+      "rule": "vol20"
+    },
+    {
+      "id": "qqq_replay/ten_seed/issuer5/vol20",
+      "kind": "qqq_replay",
+      "group": "ten_seed",
+      "recipe": "issuer5/basketvol20_target20_weekly",
+      "allocation": "issuer5",
+      "rule": "vol20"
+    },
+    {
+      "id": "neural/ten_seed/issuer5/vol25trend",
+      "kind": "neural",
+      "group": "ten_seed",
+      "recipe": "issuer5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer5",
+      "rule": "vol25trend"
+    },
+    {
+      "id": "qqq_replay/ten_seed/issuer5/vol25trend",
+      "kind": "qqq_replay",
+      "group": "ten_seed",
+      "recipe": "issuer5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer5",
+      "rule": "vol25trend"
+    },
+    {
+      "id": "momentum/issuer5/full",
+      "kind": "momentum",
+      "rule": "full"
+    },
+    {
+      "id": "qqq_own/full",
+      "kind": "qqq_own",
+      "rule": "full"
+    },
+    {
+      "id": "momentum/issuer5/vol20",
+      "kind": "momentum",
+      "rule": "vol20"
+    },
+    {
+      "id": "qqq_own/vol20",
+      "kind": "qqq_own",
+      "rule": "vol20"
+    },
+    {
+      "id": "momentum/issuer5/vol25trend",
+      "kind": "momentum",
+      "rule": "vol25trend"
+    },
+    {
+      "id": "qqq_own/vol25trend",
+      "kind": "qqq_own",
+      "rule": "vol25trend"
+    },
+    {
+      "id": "buy_hold/SPY",
+      "kind": "buy_hold",
+      "ticker": "SPY"
+    },
+    {
+      "id": "buy_hold/QQQ",
+      "kind": "buy_hold",
+      "ticker": "QQQ"
+    }
+  ],
+  "rules": {
+    "full": {
+      "cadence": "weekly"
+    },
+    "vol20": {
+      "cadence": "weekly",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2
+    },
+    "vol25trend": {
+      "cadence": "weekly",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "ma": 200,
+      "off": 0.5
+    }
+  },
+  "neural_recipes": [
+    [
+      "equal5/full",
+      "equal5",
+      "full"
+    ],
+    [
+      "equal5/basketvol20_target20_weekly",
+      "equal5",
+      "vol20"
+    ],
+    [
+      "issuer5/basketvol20_target20_weekly",
+      "issuer5",
+      "vol20"
+    ],
+    [
+      "issuer5/ma200off50_basketvol20_target25_weekly",
+      "issuer5",
+      "vol25trend"
+    ]
+  ],
+  "costs": [
+    1,
+    2,
+    4
+  ],
+  "accounts": 87,
+  "contrasts": [
+    [
+      "neural/ten_seed/issuer5/vol20",
+      "buy_hold/SPY"
+    ],
+    [
+      "neural/ten_seed/issuer5/vol20",
+      "buy_hold/QQQ"
+    ],
+    [
+      "neural/ten_seed/issuer5/vol20",
+      "qqq_own/vol20"
+    ],
+    [
+      "neural/ten_seed/issuer5/vol20",
+      "qqq_replay/ten_seed/issuer5/vol20"
+    ],
+    [
+      "neural/ten_seed/issuer5/vol20",
+      "momentum/issuer5/vol20"
+    ],
+    [
+      "neural/ten_seed/issuer5/vol25trend",
+      "qqq_own/vol25trend"
+    ],
+    [
+      "neural/ten_seed/issuer5/vol25trend",
+      "qqq_replay/ten_seed/issuer5/vol25trend"
+    ],
+    [
+      "neural/ten_seed/issuer5/vol25trend",
+      "momentum/issuer5/vol25trend"
+    ]
+  ],
+  "primary_family_size": 8,
+  "momentum": "No tuning: close[t-21]/close[t-252]-1, using prior-close t. Five issuers, same issuer/tie method and historical eligibility; missing endpoint history excluded only from momentum and disclosed by date.",
+  "qqq_own": "Same weekly rules and dates, but compute basket volatility on QQQ itself. Full-exposure weekly control included separately from buy-and-hold.",
+  "qqq_replay": "Use the neural basket-derived target exposure verbatim on QQQ. Conditional attribution control; realized drift, beta and risk are not thereby equal.",
+  "execution": "Unchanged frozen stock engine; one-asset QQQ adapter uses same lagged quantities, ADV caps, fees, cash scaling and regular-close fills. Buy-and-hold anchors use sealed parent etf_backtest, which invests available dollars at first fill close; disclose this sizing difference.",
+  "statistics": "10,000 joint circular-block draws at 5/20/60 sessions; primary20. Eight-contrast max-absolute standardized bootstrap simultaneous intervals for annualized active means. SR/CAGR difference intervals are pointwise. Neither adjusts all prior research or refitting uncertainty.",
+  "stop": "Exactly these 29 strategies x 3 costs. Publish all failures and controls. No tuning, new training, 2026 data or prospective activation.",
+  "source_sha256": {
+    "research/analysis/run_ndx_matched_controls.py": "8ab7ba0e4ef4698d06f673cc35a6a6f3ea1a43684244a7ef2ef80e2f132add2c",
+    "research/core/long_short_pit.py": "c6770319e7648921d9639962103b26cdc19fb7e110365c0201d7adaf8911cc9b",
+    "research/core/ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research/core/ndx_matched_controls.py": "a34d256933b502ca35093f5057d57b459a84e4f4c6d6d615f3acb5de39fdb467",
+    "research/core/ndx_policy_engine.py": "4eb656afd17344acad928a0e9edd5d6af7bbd246fab23f9c9235d3588b2bcc78",
+    "research/core/pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+    "research/core/research_engine.py": "82406389f66ae2e6b2c541a58517d5a1dba3308aba3397e3e02f44923ae95c80",
+    "research/core/robust_engine.py": "33d44fa9bdbf3b703654ca7d0e39ed25317cb9176bb749351e09f14c78f9b10d",
+    "research/core/training_device.py": "e07899eacf6fec4f563f35ae3f671410ffa6015983e5c83a4e5299278d1e7fe8",
+    "research/evaluation/audit_ndx_matched_controls.py": "6964b8b4b7c9533312a8d67d0ea421a77ec3904ac8ce1006917da537b851f391",
+    "research/models/ndx_alpaca_models.py": "bc3f114dbbaf68a610b76bc71c1087029223355f2bc79472695234c1d0368bda",
+    "research/models/ndx_broad_models.py": "234c486d7e85a1aaadda11fe5bdd11eed1c9f81c33628eb02d1935c3c98b54ca",
+    "research/models/ndx_corrections.py": "8e95290e5a77bded4ba45b21b439cf08bf2f010a6069aa21002afa4ad321c586",
+    "research/models/ndx_extended_hours.py": "a1e1c9d23fa80c54c19f6dc3f061327a25183b2f6f15c23fdd96aae4d98d2ef9",
+    "research/models/ndx_ranking_objectives.py": "57c410b6baa6b20cb2ab0d1967b09f2040c7dc9ef325cf5cd114d091f3946f38",
+    "research/models/pseudohuber_think_mixer.py": "e8e810054af938fb1a0bfd6b30070311c33c921d8c5f0f30e170a4c25899018f",
+    "research/models/research_models.py": "437d9f6deaeb6241ec079a17400c12ec35fc19bba74a6bfdfa310ae8c6262e72",
+    "research/models/robust_models.py": "06086a7b6433db5c38977ed5060cab869c2185bddc9b26a52371a0207e462513",
+    "research/models/think_model.py": "ee05058dba2be85fc6bde6d768a5f6397e078108037717dc5512c5dac7da85bb",
+    "research/reporting/publish_ndx_matched_controls.py": "c580cfdff2ad3455280cbf96c9e7935eea71f7165e032d237bae2da4ad239572",
+    "research/training/prefit_historical_ndx_workers.py": "20e41c3f4bb24e3e3ce858076332c6a165d59c5a971ca40d665d394983e14d97",
+    "research/training/run_architecture_research.py": "01c83a4da334e676e5733a25f5d7aba7c7801cc67b9686c1f8f75b3ab6c41730",
+    "research/training/run_historical_ndx.py": "a9f1dac3f48ecfd97a4580618be71889788854b1b252a3d5d2b18be6f050ef4d",
+    "research/training/run_ndx_alpaca_pipeline.py": "558099f3ee36e0cc9a23e9b2ba630e8555e337543920b75224a8841da6df6c4a",
+    "research/training/run_ndx_alpaca_training.py": "141e2b9885e5fdec28ac8d18802db350a5863720bb742a347bb8b4f5af9954b9",
+    "research/training/run_ndx_broad.py": "c79edd14c35c3fd621532ad7ca73ef3183f4ad7cd70b3e02b28424774600b2ea",
+    "research/training/run_ndx_corrections.py": "d7a033ef9d2c3f989ad2ee12e671050022f5d0ae5bd9df19215e826c48b1ad13",
+    "research/training/run_ndx_extended_hours.py": "044aa13e5fb0e69aa4143af5dae23925f5e43b40c08dbf2870e4d692bdb4f8d2",
+    "research/training/run_ndx_extended_hours_top5.py": "b711266673bf508eec7c8a630270f6c5cd586242ac4166eed6e50123590ff8f4",
+    "research/training/run_ndx_long_short.py": "6b738267ffe1ad06a9ec580f39d28d350b9d4f06793b32f815681e9d97e49231",
+    "research/training/run_ndx_ranking.py": "1346b1ba05ccf80ac99521b5079942c4fe28335cc58614b41aad829117961ddd",
+    "research/training/run_ndx_seed_expansion.py": "b1ffe8afcf469c0d5d57a3f56e237772ee17e6f835bf46c9b33d874a2ae93a90",
+    "research/training/run_ndx_topk_pseudohuber.py": "c3e767f2eb7bcd00e09c089dac49100ebfd423f59cbf5568ac4d3dd8a70c7dbf",
+    "research/training/run_robust_research.py": "68701ba0fe89ceba2050230f379b19649105916a463bc6c67896d4342b6f743b",
+    "tests/test_ndx_matched_controls.py": "b6fb189fe96db2def8f3b7bd2ca3122773f30f5ee2a7a53206e07b910e26ef43"
+  },
+  "input_sha256": {
+    "research/core/ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research/analysis/run_ndx_drawdown_research.py": "f0d8c7bfcdaeedf67c406d73123bc68ecd18477f885c424035a2e899aa1329a4",
+    "tests/test_ndx_drawdown_engine.py": "8472ef46ad34e4aa096d7e0d13a2e6ab72b52f6db686c8d36342971462fb5dd0",
+    "data/nasdaq_monthly_pit/assembled/dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data/nasdaq_monthly_pit/assembled/economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data/nasdaq_monthly_pit/assembled/etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "data/nasdaq_monthly_pit/assembled/etf_dollar_volume.csv": "f512c863e5322c57e9d6b2c4281690cacff6fcdd70a810ac0695ee9c9e20f33f",
+    "data/nasdaq_monthly_pit/assembled/membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data/nasdaq_monthly_pit/assembled/monthly_members.csv": "a04d458cb9c976cad37014733989755c38cffc034e6ee5df3b7d6d0ef0f04ecc",
+    "data/nasdaq_monthly_pit/assembled/raw_close.csv": "02d2b2477564bca67f1ece58f0c55ce471678f727972fbe836f9b4b9e8b3682b",
+    "data/nasdaq_monthly_pit/assembled/tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "runs/ndx_extended_hours_20261024/curves.csv": "790aefe476c2f3c46797e88dcb818398593eaa699fda400b22a4339b6ea0d07c",
+    "runs/ndx_extended_hours_20261024/FINAL_PUBLICATION.json": "4356d9d1e86287b05c8232cfb895bad2f88c17dda8e7f67eaa10020202355d29",
+    "runs/ndx_extended_hours_20261024/metrics.csv": "2a1ce5f1f23097acd8b8236e8a26aa3f9232f435e99e5f91b42de66eae5c0e03",
+    "runs/ndx_reference_networks_20261024/curves.csv": "22a79818b1cbaae8b3b2c7f6633c8900dc9ba96bad113d34f3e8ca89cfa8a564",
+    "runs/ndx_reference_networks_20261024/FINAL_PUBLICATION.json": "a1c8c8aab1fad6a9681bef168e69f1b3d0646f0ef87d594795a0043a718b9f16",
+    "runs/ndx_reference_networks_20261024/metrics.csv": "4d7f5401669dc6a0fdbb502ecc513e7c000313f687d2a9f29d8926adbe826a1d",
+    "runs/ndx_drawdown_20261026/batch1/PROTOCOL.json": "4ed0662c3d5925d8a7d0873d489a22871f1c13421c3c8b1ecf9a0d9e2303b64c",
+    "runs/ndx_drawdown_20261026/batch1/FREEZE.json": "8d377a6e7fc23d4576a277b8145f43de67ffcab5784af519781972838b650c09",
+    "runs/ndx_drawdown_20261026/batch1/COMPLETE.json": "8996ab53c27293e777c01fd913c38812cbda53a5e779b90aa6333fb038513ef9",
+    "runs/ndx_drawdown_20261026/batch1/AUDIT.json": "8423d510c5e0cd8f1cbfbaaacc10f92df9cbc742ba04fce4d1445e4dd9e9eaa0",
+    "runs/ndx_drawdown_20261026/batch1/paths.npz": "7d97f1eb39bae4d3eaf9ba3c9f16674ee61c284fe78493d4a73bad808b2becdb",
+    "runs/ndx_drawdown_20261026/batch1/metrics.csv": "b3b0a273a0dbd003c1adc9fb4bd4fecae7832a934f7dac2c2da3e650b6a5621d",
+    "runs/ndx_drawdown_20261026/batch1/cost_stress.csv": "8dac7cccbd22687a3cd8ae91c6914d16bf67df47e1d37be6ea8427facefd00f4"
+  }
+}

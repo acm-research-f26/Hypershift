@@ -2131,30 +2131,6 @@
       "previously_tracked": true
     },
     {
-      "original": "output/resume_hypershift/main.log",
-      "path": "archive/studies_20261025/output/resume_hypershift/main.log",
-      "role": "archive",
-      "sha256": "ec9154f9b774db5e0c35da7bd8681654b5e09833eea9e9e5be7205917de09de1",
-      "runtime_alias": null,
-      "previously_tracked": false
-    },
-    {
-      "original": "output/resume_hypershift/main.pdf",
-      "path": "archive/studies_20261025/output/resume_hypershift/main.pdf",
-      "role": "archive",
-      "sha256": "4bc922624ffdb464a70f8f6e0f21941e1289ca8d0a7662a3ac0c01c46d3fbb75",
-      "runtime_alias": null,
-      "previously_tracked": true
-    },
-    {
-      "original": "output/resume_hypershift/main.tex",
-      "path": "archive/studies_20261025/output/resume_hypershift/main.tex",
-      "role": "archive",
-      "sha256": "d6a13feec24e67164e2e4d885432153e4a494a209b40250088e472ae4fd26acb",
-      "runtime_alias": null,
-      "previously_tracked": true
-    },
-    {
       "original": "output/pdf/exchange_geometry_20261010/artifact_manifest.json",
       "path": "archive/studies_20261025/output/pdf/exchange_geometry_20261010/artifact_manifest.json",
       "role": "archive",
@@ -4287,54 +4263,6 @@
       "path": "archive/studies_20261025/tmp/render_largecap_report.ps1",
       "role": "archive",
       "sha256": "7e32dd88346cfc209a612d866a4110f1b5402866cb8e7ce5d8871a53ecf1a0f9",
-      "runtime_alias": null,
-      "previously_tracked": true
-    },
-    {
-      "original": "tmp/resume-final.png",
-      "path": "archive/studies_20261025/tmp/resume-final.png",
-      "role": "archive",
-      "sha256": "14d216d875b6b8862bb6aac6b4af4d6501d3496a57146eae3af343d161ffb67e",
-      "runtime_alias": null,
-      "previously_tracked": true
-    },
-    {
-      "original": "tmp/resume-page-1.png",
-      "path": "archive/studies_20261025/tmp/resume-page-1.png",
-      "role": "archive",
-      "sha256": "c1995682b72fba760d6b3f207b63c96ba23c766f54183bf2506219e1aebfed05",
-      "runtime_alias": null,
-      "previously_tracked": true
-    },
-    {
-      "original": "tmp/resume-page-2.png",
-      "path": "archive/studies_20261025/tmp/resume-page-2.png",
-      "role": "archive",
-      "sha256": "40883e3e836050626526063aa4d47d53e96f5a2ad5719c815d1aa4dc6e2728c8",
-      "runtime_alias": null,
-      "previously_tracked": true
-    },
-    {
-      "original": "tmp/resume_tectonic/bundles/hashes/https,58,,47,,47,relay.fullyjustified.net,47,default_bundle_v33.lock",
-      "path": "archive/studies_20261025/tmp/resume_tectonic/bundles/hashes/https,58,,47,,47,relay.fullyjustified.net,47,default_bundle_v33.lock",
-      "role": "archive",
-      "sha256": "fb9f88d8820828b36b974f10b2a87edb873b4dcfc903e3bcd62302d3cce3062e",
-      "runtime_alias": null,
-      "previously_tracked": true
-    },
-    {
-      "original": "tmp/resume_tectonic/bundles/hashes/https,58,,47,,47,relay.fullyjustified.net,47,default_bundle_v33.tar",
-      "path": "archive/studies_20261025/tmp/resume_tectonic/bundles/hashes/https,58,,47,,47,relay.fullyjustified.net,47,default_bundle_v33.tar",
-      "role": "archive",
-      "sha256": "1f94cb6e6893fb09037585fdde65d436f90e2d726175e06363723529f52c880e",
-      "runtime_alias": null,
-      "previously_tracked": true
-    },
-    {
-      "original": "tmp/resume_tectonic/formats/6ffe055852f8faf66c0acbe1a7fb27f87b869a90bad1204f3bf4d9683f597c7c-latex-33.fmt",
-      "path": "archive/studies_20261025/tmp/resume_tectonic/formats/6ffe055852f8faf66c0acbe1a7fb27f87b869a90bad1204f3bf4d9683f597c7c-latex-33.fmt",
-      "role": "archive",
-      "sha256": "a86ffcac335474fb9fae47cd9986b929719dc3ddf29bfb31123ecc1790ef6bbb",
       "runtime_alias": null,
       "previously_tracked": true
     },

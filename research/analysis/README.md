@@ -3,6 +3,11 @@
 These sources analyze saved NASDAQ-100 forecasts and portfolio paths. They cover
 strategy comparison, rank depth and loss similarity.
 
+- [run_ndx_matched_controls.py](run_ndx_matched_controls.py): frozen 29-strategy
+  comparison of neural selections, QQQ risk controls and issuer momentum; also
+  freezes the prospective candidate before new control metrics. Results and
+  activation prerequisites are in the [matched-control report](../../docs/ndx_matched_controls_20261027/REPORT.md).
+
 - [compare_ndx_strategies_20261020.py](compare_ndx_strategies_20261020.py): base
   cross-study comparison and paired/block-bootstrap Sharpe analysis.
 - [analyze_ndx_rank_depth.py](analyze_ndx_rank_depth.py): holding-count and

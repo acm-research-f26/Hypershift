@@ -1,0 +1,23 @@
+{
+  "status": "published_audited_exploratory_controls",
+  "strategies": 29,
+  "accounts": 87,
+  "prospective_activated": false,
+  "policy_sha256": "98366b0a184adee44a2e1309327b7f526ba820009a6ce80c488c66b17d841e57",
+  "artifact_sha256": {
+    "annual.csv": "a4bba827ac9ebc0e6e87d179a02fa78a101b98130de9b118fb96cc0db81ad977",
+    "AUDIT.json": "213d119a056bbe234f3ddbb2ccf85a04420ad17b0d53268505481b36da793515",
+    "comparison_curves.csv": "5853ce71e21cfc41a75055c4d6f7e515f0d373e57be31775828f3aaf276d8acb",
+    "COMPLETE.json": "c6d1d411b3c2fa341153583318fb65f490911e932ab955501eb45da2ccadce3f",
+    "FREEZE.json": "2c84ea5c22266df2ed389fb0046e5381bc7bcac805f4633819ebd0a765e2abb9",
+    "matched_controls.png": "fe56368b90143f1efdc1edd9ddae72b6521d02eb3ed347058ebdaf83fa6f5641",
+    "metrics.csv": "e1bcb5afc8133eb0ab9fc564dbb0fee828de3c07b1828a6bdfd8305dc09c6975",
+    "momentum_support.csv": "d026761eda82f2905f20629ea089a7cf65636042fc8518d0f3ecc59f97deecda",
+    "PROSPECTIVE_POLICY.json": "98366b0a184adee44a2e1309327b7f526ba820009a6ce80c488c66b17d841e57",
+    "PROTOCOL.json": "6c612c8d9f9d1c6b764b83372b3fdf3aea6998723ed4ec2ac37d5814c307cf58",
+    "READINESS.json": "f665d0e54ca6ffa22cbd53ef02a94bc9ebe4625e16849eacfcde1cf2c73dbe2c",
+    "REPORT.md": "1d1278289f03150620a62b4e42323305ed7611f890fefa11b8ed3ee79143c16a",
+    "target_exposures.csv": "38d10eb06c125a74e5c771e71be94344e660ec887b315db2676bdfae975962f2",
+    "uncertainty.csv": "d05db07820b119ea4bb5528c3da77239125fbf1ad534267e03dc3e3fc568802e"
+  }
+}

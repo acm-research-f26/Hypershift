@@ -9,6 +9,7 @@ is the current cross-study visual record.
 
 | Document | Scope |
 | --- | --- |
+| [Matched controls and candidate freeze, October 27](ndx_matched_controls_20261027/REPORT.md) | 29 predeclared neural, QQQ and momentum strategies at three costs; frozen prospective policy and activation prerequisites |
 | [Drawdown-control study, October 26](ndx_drawdown_20261026/REPORT.md) | 305 risk-control recipes on saved blend forecasts; audited return, Sharpe, drawdown, seed and cost comparisons |
 | [Latest dynamic-hypergraph study](../latest/README.md) | Direct sources, frozen protocols, tests and portable results for the newest study |
 | [Master charts](../charts.md) | Chart-first comparison of the new Sharpe leaders with SPY/QQQ, 364 main strategies and 652 chart panels |
