@@ -1,0 +1,2409 @@
+{
+  "study": "drawdown controls on frozen THINK+mixer AH+PM + dynamic rank blend",
+  "status": "frozen_before_new_metrics",
+  "history": "2022-2025 repeatedly inspected exploratory development",
+  "authorization": "User requested creative testing for Sharpe on par with the historical leader and lower drawdown.",
+  "variants": 305,
+  "seed_groups": {
+    "original_five": [
+      7,
+      19,
+      42,
+      61,
+      97
+    ],
+    "new_five": [
+      1828801906,
+      1868046758,
+      239154507,
+      287727767,
+      981756941
+    ],
+    "ten_seed": [
+      7,
+      19,
+      42,
+      61,
+      97,
+      1828801906,
+      1868046758,
+      239154507,
+      287727767,
+      981756941
+    ]
+  },
+  "base_cost_accounts": 915,
+  "recipes": [
+    {
+      "id": "equal5/full",
+      "allocation": "equal5",
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/constant_60",
+      "allocation": "equal5",
+      "constant": 0.6,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/constant_75",
+      "allocation": "equal5",
+      "constant": 0.75,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/constant_90",
+      "allocation": "equal5",
+      "constant": 0.9,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma100_off0_weekly",
+      "allocation": "equal5",
+      "ma": 100,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma100_off25_weekly",
+      "allocation": "equal5",
+      "ma": 100,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma100_off50_weekly",
+      "allocation": "equal5",
+      "ma": 100,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma150_off0_weekly",
+      "allocation": "equal5",
+      "ma": 150,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma150_off25_weekly",
+      "allocation": "equal5",
+      "ma": 150,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma150_off50_weekly",
+      "allocation": "equal5",
+      "ma": 150,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma200_off0_weekly",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma200_off25_weekly",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma200_off50_weekly",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma250_off0_weekly",
+      "allocation": "equal5",
+      "ma": 250,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma250_off25_weekly",
+      "allocation": "equal5",
+      "ma": 250,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma250_off50_weekly",
+      "allocation": "equal5",
+      "ma": 250,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/multitrend_weekly",
+      "allocation": "equal5",
+      "multitrend": true,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/basketvol20_target15_weekly",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/basketvol20_target20_weekly",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/basketvol20_target25_weekly",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/basketvol20_target30_weekly",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqvol20_target15_weekly",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqvol20_target20_weekly",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqvol20_target25_weekly",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/basketvol60_target15_weekly",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/basketvol60_target20_weekly",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/basketvol60_target25_weekly",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/basketvol60_target30_weekly",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqvol60_target15_weekly",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqvol60_target20_weekly",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqvol60_target25_weekly",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma200off50_basketvol20_target20_weekly",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma200off50_basketvol20_target30_weekly",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma200off25_basketvol60_target20_weekly",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma200off25_basketvol60_target25_weekly",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqdd10_off25_weekly",
+      "allocation": "equal5",
+      "market_dd": 0.1,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqdd10_off50_weekly",
+      "allocation": "equal5",
+      "market_dd": 0.1,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqdd15_off25_weekly",
+      "allocation": "equal5",
+      "market_dd": 0.15,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/qqqdd15_off50_weekly",
+      "allocation": "equal5",
+      "market_dd": 0.15,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "equal5/ma100_off0_daily",
+      "allocation": "equal5",
+      "ma": 100,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma100_off25_daily",
+      "allocation": "equal5",
+      "ma": 100,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma100_off50_daily",
+      "allocation": "equal5",
+      "ma": 100,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma150_off0_daily",
+      "allocation": "equal5",
+      "ma": 150,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma150_off25_daily",
+      "allocation": "equal5",
+      "ma": 150,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma150_off50_daily",
+      "allocation": "equal5",
+      "ma": 150,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma200_off0_daily",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma200_off25_daily",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma200_off50_daily",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma250_off0_daily",
+      "allocation": "equal5",
+      "ma": 250,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma250_off25_daily",
+      "allocation": "equal5",
+      "ma": 250,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma250_off50_daily",
+      "allocation": "equal5",
+      "ma": 250,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/multitrend_daily",
+      "allocation": "equal5",
+      "multitrend": true,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/basketvol20_target15_daily",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/basketvol20_target20_daily",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/basketvol20_target25_daily",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/basketvol20_target30_daily",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqvol20_target15_daily",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqvol20_target20_daily",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqvol20_target25_daily",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/basketvol60_target15_daily",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/basketvol60_target20_daily",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/basketvol60_target25_daily",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/basketvol60_target30_daily",
+      "allocation": "equal5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqvol60_target15_daily",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqvol60_target20_daily",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqvol60_target25_daily",
+      "allocation": "equal5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma200off50_basketvol20_target20_daily",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma200off50_basketvol20_target25_daily",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma200off50_basketvol20_target30_daily",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma200off25_basketvol60_target20_daily",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/ma200off25_basketvol60_target25_daily",
+      "allocation": "equal5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqdd10_off25_daily",
+      "allocation": "equal5",
+      "market_dd": 0.1,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqdd10_off50_daily",
+      "allocation": "equal5",
+      "market_dd": 0.1,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqdd15_off25_daily",
+      "allocation": "equal5",
+      "market_dd": 0.15,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal5/qqqdd15_off50_daily",
+      "allocation": "equal5",
+      "market_dd": 0.15,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/full",
+      "allocation": "issuer5",
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/constant_60",
+      "allocation": "issuer5",
+      "constant": 0.6,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/constant_75",
+      "allocation": "issuer5",
+      "constant": 0.75,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/constant_90",
+      "allocation": "issuer5",
+      "constant": 0.9,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma100_off0_weekly",
+      "allocation": "issuer5",
+      "ma": 100,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma100_off25_weekly",
+      "allocation": "issuer5",
+      "ma": 100,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma100_off50_weekly",
+      "allocation": "issuer5",
+      "ma": 100,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma150_off0_weekly",
+      "allocation": "issuer5",
+      "ma": 150,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma150_off25_weekly",
+      "allocation": "issuer5",
+      "ma": 150,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma150_off50_weekly",
+      "allocation": "issuer5",
+      "ma": 150,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma200_off0_weekly",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma200_off25_weekly",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma200_off50_weekly",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma250_off0_weekly",
+      "allocation": "issuer5",
+      "ma": 250,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma250_off25_weekly",
+      "allocation": "issuer5",
+      "ma": 250,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma250_off50_weekly",
+      "allocation": "issuer5",
+      "ma": 250,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/multitrend_weekly",
+      "allocation": "issuer5",
+      "multitrend": true,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/basketvol20_target15_weekly",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/basketvol20_target20_weekly",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/basketvol20_target25_weekly",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/basketvol20_target30_weekly",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqvol20_target15_weekly",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqvol20_target20_weekly",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqvol20_target25_weekly",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/basketvol60_target15_weekly",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/basketvol60_target20_weekly",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/basketvol60_target25_weekly",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/basketvol60_target30_weekly",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqvol60_target15_weekly",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqvol60_target20_weekly",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqvol60_target25_weekly",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma200off50_basketvol20_target20_weekly",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma200off50_basketvol20_target30_weekly",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma200off25_basketvol60_target20_weekly",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma200off25_basketvol60_target25_weekly",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqdd10_off25_weekly",
+      "allocation": "issuer5",
+      "market_dd": 0.1,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqdd10_off50_weekly",
+      "allocation": "issuer5",
+      "market_dd": 0.1,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqdd15_off25_weekly",
+      "allocation": "issuer5",
+      "market_dd": 0.15,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/qqqdd15_off50_weekly",
+      "allocation": "issuer5",
+      "market_dd": 0.15,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer5/ma100_off0_daily",
+      "allocation": "issuer5",
+      "ma": 100,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma100_off25_daily",
+      "allocation": "issuer5",
+      "ma": 100,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma100_off50_daily",
+      "allocation": "issuer5",
+      "ma": 100,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma150_off0_daily",
+      "allocation": "issuer5",
+      "ma": 150,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma150_off25_daily",
+      "allocation": "issuer5",
+      "ma": 150,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma150_off50_daily",
+      "allocation": "issuer5",
+      "ma": 150,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma200_off0_daily",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma200_off25_daily",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma200_off50_daily",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma250_off0_daily",
+      "allocation": "issuer5",
+      "ma": 250,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma250_off25_daily",
+      "allocation": "issuer5",
+      "ma": 250,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma250_off50_daily",
+      "allocation": "issuer5",
+      "ma": 250,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/multitrend_daily",
+      "allocation": "issuer5",
+      "multitrend": true,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/basketvol20_target15_daily",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/basketvol20_target20_daily",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/basketvol20_target25_daily",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/basketvol20_target30_daily",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqvol20_target15_daily",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqvol20_target20_daily",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqvol20_target25_daily",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/basketvol60_target15_daily",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/basketvol60_target20_daily",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/basketvol60_target25_daily",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/basketvol60_target30_daily",
+      "allocation": "issuer5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqvol60_target15_daily",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqvol60_target20_daily",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqvol60_target25_daily",
+      "allocation": "issuer5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma200off50_basketvol20_target20_daily",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma200off50_basketvol20_target25_daily",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma200off50_basketvol20_target30_daily",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma200off25_basketvol60_target20_daily",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/ma200off25_basketvol60_target25_daily",
+      "allocation": "issuer5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqdd10_off25_daily",
+      "allocation": "issuer5",
+      "market_dd": 0.1,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqdd10_off50_daily",
+      "allocation": "issuer5",
+      "market_dd": 0.1,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqdd15_off25_daily",
+      "allocation": "issuer5",
+      "market_dd": 0.15,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer5/qqqdd15_off50_daily",
+      "allocation": "issuer5",
+      "market_dd": 0.15,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/full",
+      "allocation": "issuer_invvol5",
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/constant_60",
+      "allocation": "issuer_invvol5",
+      "constant": 0.6,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/constant_75",
+      "allocation": "issuer_invvol5",
+      "constant": 0.75,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/constant_90",
+      "allocation": "issuer_invvol5",
+      "constant": 0.9,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma100_off0_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 100,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma100_off25_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 100,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma100_off50_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 100,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma150_off0_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 150,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma150_off25_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 150,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma150_off50_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 150,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma200_off0_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma200_off25_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma200_off50_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma250_off0_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 250,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma250_off25_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 250,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma250_off50_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 250,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/multitrend_weekly",
+      "allocation": "issuer_invvol5",
+      "multitrend": true,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/basketvol20_target15_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/basketvol20_target20_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/basketvol20_target25_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/basketvol20_target30_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol20_target15_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol20_target20_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol20_target25_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/basketvol60_target15_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/basketvol60_target20_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/basketvol60_target25_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/basketvol60_target30_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol60_target15_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol60_target20_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol60_target25_weekly",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma200off50_basketvol20_target20_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma200off50_basketvol20_target30_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma200off25_basketvol60_target20_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma200off25_basketvol60_target25_weekly",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqdd10_off25_weekly",
+      "allocation": "issuer_invvol5",
+      "market_dd": 0.1,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqdd10_off50_weekly",
+      "allocation": "issuer_invvol5",
+      "market_dd": 0.1,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqdd15_off25_weekly",
+      "allocation": "issuer_invvol5",
+      "market_dd": 0.15,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/qqqdd15_off50_weekly",
+      "allocation": "issuer_invvol5",
+      "market_dd": 0.15,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer_invvol5/ma100_off0_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 100,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma100_off25_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 100,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma100_off50_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 100,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma150_off0_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 150,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma150_off25_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 150,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma150_off50_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 150,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma200_off0_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma200_off25_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma200_off50_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma250_off0_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 250,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma250_off25_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 250,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma250_off50_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 250,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/multitrend_daily",
+      "allocation": "issuer_invvol5",
+      "multitrend": true,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/basketvol20_target15_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/basketvol20_target20_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/basketvol20_target25_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/basketvol20_target30_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol20_target15_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol20_target20_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol20_target25_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/basketvol60_target15_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/basketvol60_target20_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/basketvol60_target25_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/basketvol60_target30_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol60_target15_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol60_target20_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqvol60_target25_daily",
+      "allocation": "issuer_invvol5",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma200off50_basketvol20_target20_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma200off50_basketvol20_target25_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma200off50_basketvol20_target30_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma200off25_basketvol60_target20_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/ma200off25_basketvol60_target25_daily",
+      "allocation": "issuer_invvol5",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqdd10_off25_daily",
+      "allocation": "issuer_invvol5",
+      "market_dd": 0.1,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqdd10_off50_daily",
+      "allocation": "issuer_invvol5",
+      "market_dd": 0.1,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqdd15_off25_daily",
+      "allocation": "issuer_invvol5",
+      "market_dd": 0.15,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer_invvol5/qqqdd15_off50_daily",
+      "allocation": "issuer_invvol5",
+      "market_dd": 0.15,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/full",
+      "allocation": "issuer8_soft",
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/constant_60",
+      "allocation": "issuer8_soft",
+      "constant": 0.6,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/constant_75",
+      "allocation": "issuer8_soft",
+      "constant": 0.75,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/constant_90",
+      "allocation": "issuer8_soft",
+      "constant": 0.9,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma100_off0_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 100,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma100_off25_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 100,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma100_off50_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 100,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma150_off0_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 150,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma150_off25_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 150,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma150_off50_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 150,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma200_off0_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma200_off25_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma200_off50_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma250_off0_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 250,
+      "off": 0.0,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma250_off25_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 250,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma250_off50_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 250,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/multitrend_weekly",
+      "allocation": "issuer8_soft",
+      "multitrend": true,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/basketvol20_target15_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/basketvol20_target20_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/basketvol20_target25_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/basketvol20_target30_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqvol20_target15_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqvol20_target20_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqvol20_target25_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/basketvol60_target15_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/basketvol60_target20_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/basketvol60_target25_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/basketvol60_target30_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqvol60_target15_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqvol60_target20_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqvol60_target25_weekly",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma200off50_basketvol20_target20_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma200off50_basketvol20_target25_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma200off50_basketvol20_target30_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma200off25_basketvol60_target20_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma200off25_basketvol60_target25_weekly",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqdd10_off25_weekly",
+      "allocation": "issuer8_soft",
+      "market_dd": 0.1,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqdd10_off50_weekly",
+      "allocation": "issuer8_soft",
+      "market_dd": 0.1,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqdd15_off25_weekly",
+      "allocation": "issuer8_soft",
+      "market_dd": 0.15,
+      "off": 0.25,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/qqqdd15_off50_weekly",
+      "allocation": "issuer8_soft",
+      "market_dd": 0.15,
+      "off": 0.5,
+      "cadence": "weekly"
+    },
+    {
+      "id": "issuer8_soft/ma100_off0_daily",
+      "allocation": "issuer8_soft",
+      "ma": 100,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma100_off25_daily",
+      "allocation": "issuer8_soft",
+      "ma": 100,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma100_off50_daily",
+      "allocation": "issuer8_soft",
+      "ma": 100,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma150_off0_daily",
+      "allocation": "issuer8_soft",
+      "ma": 150,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma150_off25_daily",
+      "allocation": "issuer8_soft",
+      "ma": 150,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma150_off50_daily",
+      "allocation": "issuer8_soft",
+      "ma": 150,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma200_off0_daily",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma200_off25_daily",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma200_off50_daily",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma250_off0_daily",
+      "allocation": "issuer8_soft",
+      "ma": 250,
+      "off": 0.0,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma250_off25_daily",
+      "allocation": "issuer8_soft",
+      "ma": 250,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma250_off50_daily",
+      "allocation": "issuer8_soft",
+      "ma": 250,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/multitrend_daily",
+      "allocation": "issuer8_soft",
+      "multitrend": true,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/basketvol20_target15_daily",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/basketvol20_target20_daily",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/basketvol20_target25_daily",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/basketvol20_target30_daily",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqvol20_target15_daily",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqvol20_target20_daily",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqvol20_target25_daily",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/basketvol60_target15_daily",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/basketvol60_target20_daily",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/basketvol60_target25_daily",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/basketvol60_target30_daily",
+      "allocation": "issuer8_soft",
+      "vol": "basket",
+      "window": 60,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqvol60_target15_daily",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.15,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqvol60_target20_daily",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqvol60_target25_daily",
+      "allocation": "issuer8_soft",
+      "vol": "qqq",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma200off50_basketvol20_target20_daily",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma200off50_basketvol20_target25_daily",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma200off50_basketvol20_target30_daily",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.5,
+      "vol": "basket",
+      "window": 20,
+      "target": 0.3,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma200off25_basketvol60_target20_daily",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.2,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/ma200off25_basketvol60_target25_daily",
+      "allocation": "issuer8_soft",
+      "ma": 200,
+      "off": 0.25,
+      "vol": "basket",
+      "window": 60,
+      "target": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqdd10_off25_daily",
+      "allocation": "issuer8_soft",
+      "market_dd": 0.1,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqdd10_off50_daily",
+      "allocation": "issuer8_soft",
+      "market_dd": 0.1,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqdd15_off25_daily",
+      "allocation": "issuer8_soft",
+      "market_dd": 0.15,
+      "off": 0.25,
+      "cadence": "daily"
+    },
+    {
+      "id": "issuer8_soft/qqqdd15_off50_daily",
+      "allocation": "issuer8_soft",
+      "market_dd": 0.15,
+      "off": 0.5,
+      "cadence": "daily"
+    },
+    {
+      "id": "equal10/full",
+      "allocation": "equal10",
+      "cadence": "weekly"
+    }
+  ],
+  "targets": {
+    "sharpe": 0.9194653069771791,
+    "max_drawdown": -0.25,
+    "minimum_ten_seed_cagr": 0.239
+  },
+  "screening": "Require original-five and ten-seed Sharpe >=0.9194653, all three groups drawdown >=-25%, new-five Sharpe >= its 0.6330 baseline, and ten-seed CAGR >=23.9%. Report failures and all variants.",
+  "execution": "Same 09:20 weekly AH+PM decision and regular-close fill; share sizing from known preceding close NAV/marks. Daily overlay uses only preceding close risk inputs and fills next regular close; no intraday stops.",
+  "exposure": "Long-only, no leverage, idle cash earns zero as in parent. Weekly rankings fixed between dates. Daily risk orders trigger at >=10 percentage-point change from last target; weekly rebalance always updates.",
+  "timing": "Rolling market/risk windows include only signal-close and earlier data; basket volatility uses current target basket applied to past constituent returns, not subsequent portfolio returns.",
+  "allocation": "Issuer aliases: GOOG/GOOGL, FOX/FOXA, LBTYA/LBTYK. Best share class per issuer, tied best classes split issuer budget. Inverse volatility has 30% cap. Soft top-eight weights exp(4*rank-score), 25% cap.",
+  "stress": "Evaluate at most 12 shortlisted variants plus baseline across all three seed groups at 2x/4x modeled trading costs.",
+  "uncertainty": "Pointwise paired 20-session circular blocks, 10000 draws for selected variants; conditional on fitted paths and post-search selection, not adjusted for the full search.",
+  "stop": "One finite initial grid. Any expansion requires a new disclosed batch, preserving this protocol and every result. No 2026 returns, deployment, trades, or automation.",
+  "source_sha256": {
+    "research/core/ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research/analysis/run_ndx_drawdown_research.py": "f0d8c7bfcdaeedf67c406d73123bc68ecd18477f885c424035a2e899aa1329a4",
+    "tests/test_ndx_drawdown_engine.py": "8472ef46ad34e4aa096d7e0d13a2e6ab72b52f6db686c8d36342971462fb5dd0"
+  },
+  "input_sha256": {
+    "data/nasdaq_monthly_pit/assembled/dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data/nasdaq_monthly_pit/assembled/economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data/nasdaq_monthly_pit/assembled/etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "data/nasdaq_monthly_pit/assembled/etf_dollar_volume.csv": "f512c863e5322c57e9d6b2c4281690cacff6fcdd70a810ac0695ee9c9e20f33f",
+    "data/nasdaq_monthly_pit/assembled/membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data/nasdaq_monthly_pit/assembled/monthly_members.csv": "a04d458cb9c976cad37014733989755c38cffc034e6ee5df3b7d6d0ef0f04ecc",
+    "data/nasdaq_monthly_pit/assembled/raw_close.csv": "02d2b2477564bca67f1ece58f0c55ce471678f727972fbe836f9b4b9e8b3682b",
+    "data/nasdaq_monthly_pit/assembled/tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "runs/ndx_extended_hours_20261024/curves.csv": "790aefe476c2f3c46797e88dcb818398593eaa699fda400b22a4339b6ea0d07c",
+    "runs/ndx_extended_hours_20261024/FINAL_PUBLICATION.json": "4356d9d1e86287b05c8232cfb895bad2f88c17dda8e7f67eaa10020202355d29",
+    "runs/ndx_extended_hours_20261024/metrics.csv": "2a1ce5f1f23097acd8b8236e8a26aa3f9232f435e99e5f91b42de66eae5c0e03",
+    "runs/ndx_reference_networks_20261024/curves.csv": "22a79818b1cbaae8b3b2c7f6633c8900dc9ba96bad113d34f3e8ca89cfa8a564",
+    "runs/ndx_reference_networks_20261024/FINAL_PUBLICATION.json": "a1c8c8aab1fad6a9681bef168e69f1b3d0646f0ef87d594795a0043a718b9f16",
+    "runs/ndx_reference_networks_20261024/metrics.csv": "4d7f5401669dc6a0fdbb502ecc513e7c000313f687d2a9f29d8926adbe826a1d"
+  }
+}

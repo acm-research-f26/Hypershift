@@ -1,0 +1,27 @@
+{
+  "status": "published_audited_master_update",
+  "timestamp_utc": "2026-10-27T05:16:56.366028+00:00",
+  "historical_period": "2022-2025",
+  "main_strategies": 364,
+  "new_qualified_accounts": 18,
+  "study_variants": 305,
+  "study_base_accounts": 915,
+  "higher_cost_accounts": 54,
+  "source_sha256": "12914e5914019b01c3be47a7a0d2f9b7b099165df1e3c93eae7e5d8c085f37c6",
+  "builder_sha256": "eaf5c82ddb95d94959790fd8274b83d389c632d8c69cd4cf01242b2de57f0ea0",
+  "prior_snapshot_sha256": "4807bcc525ab9ab6f434e03ffd0ac6cb71ef0f0d28f62535b6a62671cfa77c48",
+  "artifact_sha256": {
+    "docs/NASDAQ100_strategy_comparison.xlsx": "044c8b2e26a769f16722392eef3c9d87e28f8f43aafb41d0d3b182a9b309acd9",
+    "charts.md": "4a3b09500f9f2bc1896de2263fb4d65cf6aa89dfb0f96906f0cda48ebac4489b",
+    "outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/all_strategies.csv": "ab4313d0745a6ebb02b08accdd80bc8df1ac9ce473438eedde56189ea1f7b0bf",
+    "outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/analysis_paths.npz": "7554773c9c9e287464a25c8753b85d717574a4651f0647c9eebba878f9a067be",
+    "docs/strategy_comparison_20261024/chart_catalog.csv": "55eb4c7be662225aafce89509db9e372bd81123a203739c37348274b005c28d0"
+  },
+  "overview_sha256": {
+    "drawdown_leaders_01.png": "47a9a7d385115040ceb1e7b0cc34d965ea75f8210847963faf8a6ac439e72820",
+    "drawdown_leaders_02.png": "5c89f3dc278729946bcf52174471e8cd89c4c31baae28cd5d8699e8e5e370f16",
+    "high_sharpe_comparison.png": "6c88ddb08a6573ee3eb891cbae16d93bb6ef347efae58c77bcad37929311ed9d",
+    "master_all_strategies.png": "88d6339f8ec6d8684cca6856a248951f50c44350e75f21b1a3d274b67d4ed379"
+  },
+  "note": "Supersedes prior master-workbook/charts snapshots; original study publications remain unchanged."
+}

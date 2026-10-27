@@ -5,7 +5,7 @@ audit. The narrative gallery is the repository-root [charts.md](../../charts.md)
 the companion [workbook](../NASDAQ100_strategy_comparison.xlsx) stays directly in
 `docs/`.
 
-- [chart_catalog.csv](chart_catalog.csv): 634 panel entries covering 346 main
+- [chart_catalog.csv](chart_catalog.csv): 652 panel entries covering 364 main
   strategies and 288 additional diagnostic accounts.
 - [FIGURE_MANIFEST.json](FIGURE_MANIFEST.json): figure identities and hashes.
 - [AUDIT.json](AUDIT.json): workbook, source-study and chart verification.
@@ -18,6 +18,14 @@ the companion [workbook](../NASDAQ100_strategy_comparison.xlsx) stays directly i
   paths against reported CAGR, Sharpe and drawdown, preserves the original figure
   hashes, and records the revised `charts.md` hash. The original audit remains
   the October 24 publication snapshot.
+- [Current chart-first comparison](../ndx_drawdown_20261026/master_update/high_sharpe_comparison.png)
+  compares the new high-Sharpe models with SPY/QQQ, with separate seed panels.
+  The [expanded master graph](../ndx_drawdown_20261026/master_update/master_all_strategies.png)
+  covers 364 main accounts. Two additional gallery figures show the 18 qualifiers.
+- [Current integration audit](../ndx_drawdown_20261026/master_update/AUDIT.json)
+  and [publication record](../ndx_drawdown_20261026/master_update/PUBLICATION.json)
+  supersede earlier master workbook and narrative hashes. The original studies
+  and dated audits remain unchanged.
 
 The comparison covers the same 1,003 sessions in 2022–2025. It preserves weaker
 strategies, individual-seed diagnostics and fee stresses; the best observed

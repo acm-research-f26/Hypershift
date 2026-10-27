@@ -1,0 +1,7 @@
+{
+  "status": "prepared",
+  "prior_snapshot_sha256": "4807bcc525ab9ab6f434e03ffd0ac6cb71ef0f0d28f62535b6a62671cfa77c48",
+  "new_main_accounts": 18,
+  "master_accounts": 364,
+  "all_drawdown_accounts": 969
+}

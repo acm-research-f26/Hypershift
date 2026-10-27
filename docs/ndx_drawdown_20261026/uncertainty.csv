@@ -1,0 +1,10 @@
+recipe,group,block_sessions,replicates,sr_low,sr_high,paired_sr_difference_low,paired_sr_difference_high,scope
+issuer5/basketvol20_target20_weekly,ten_seed,20,10000,0.20891627349562636,2.0453379693826452,-0.13012438077250874,0.5423784816177933,"Pointwise conditional post-search diagnostic, not full-search adjusted"
+issuer5/ma200off50_basketvol20_target20_weekly,ten_seed,20,10000,0.20598739953066622,2.0363823444992426,-0.1424478791820892,0.5526787320661574,"Pointwise conditional post-search diagnostic, not full-search adjusted"
+issuer5/ma200off50_basketvol20_target25_weekly,ten_seed,20,10000,0.19077575299130944,1.997951909467814,-0.14556189434121805,0.5179657383368649,"Pointwise conditional post-search diagnostic, not full-search adjusted"
+equal5/ma200off50_basketvol20_target20_weekly,ten_seed,20,10000,0.16190441247951853,2.021002829418567,-0.15998098650188028,0.5214638138543946,"Pointwise conditional post-search diagnostic, not full-search adjusted"
+equal5/basketvol20_target20_weekly,ten_seed,20,10000,0.16162531355228288,2.0245513144930176,-0.14873787841178526,0.5041615727497415,"Pointwise conditional post-search diagnostic, not full-search adjusted"
+equal5/ma200off50_basketvol20_target25_weekly,ten_seed,20,10000,0.16158902237183612,1.9720270550993315,-0.1633286846648782,0.4777706154973859,"Pointwise conditional post-search diagnostic, not full-search adjusted"
+issuer5/basketvol20_target25_weekly,ten_seed,20,10000,0.1582465250481781,1.973955955498699,-0.13599523474115052,0.43021499949767383,"Pointwise conditional post-search diagnostic, not full-search adjusted"
+equal5/basketvol20_target25_weekly,ten_seed,20,10000,0.10921492150466322,1.9432883553797884,-0.15607422698460757,0.3784866727133556,"Pointwise conditional post-search diagnostic, not full-search adjusted"
+equal5/full,ten_seed,20,10000,-0.0025206041038002124,1.8230039382361996,0.0,0.0,"Pointwise conditional post-search diagnostic, not full-search adjusted"
