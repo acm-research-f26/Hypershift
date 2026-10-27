@@ -3,7 +3,7 @@
 This directory holds exported comparison tables, workbook inputs, the native
 workbook builder and consolidation audit records. Its date identifies the first
 consolidation; it now includes the October 24 AH/PM, loss/optimizer and reference
-network additions.
+network additions and the October 26 drawdown-control qualifiers.
 
 The user-facing workbook is
 [docs/NASDAQ100_strategy_comparison.xlsx](../../../docs/NASDAQ100_strategy_comparison.xlsx).
@@ -12,7 +12,7 @@ The old workbook path in this output directory has been retired.
 
 | File | Scope |
 | --- | --- |
-| [all_strategies.csv](all_strategies.csv) | 346 distinct main base-cost strategies, including SPY and QQQ |
+| [all_strategies.csv](all_strategies.csv) | 364 main base-cost strategies, including SPY, QQQ and 18 qualifying risk-control seed accounts |
 | [new_experiment_all_accounts.csv](new_experiment_all_accounts.csv) | 346 accounts from the new loss/optimizer and reference batches, including seeds and fee stresses |
 | [new_findings_seed_summary.csv](new_findings_seed_summary.csv) | 26 fixed seed-group comparison rows |
 | [sharpe_block_sensitivity.csv](sharpe_block_sensitivity.csv) | Absolute Sharpe intervals at 5/20/60-session block lengths |
@@ -27,11 +27,14 @@ Other original tables retain their named study scope. The older
 [COMPARISON.md](COMPARISON.md) describes its original consolidation snapshot;
 use the root master charts for the complete latest interpretation.
 
-The Models sheet has 105 main rows including benchmarks. Defensive adds 31
+The Models sheet has 105 main rows including benchmarks. Defensive adds 49
 strategies and Portfolio variants adds 210; benchmarks repeat in those sheets.
-The five other tabs explain methods and retain extended-hours, holding-count,
-seed-group and individual-account diagnostics. They are not additional distinct
-main strategies to add to the 346 count.
+Seven other tabs explain methods and retain extended-hours, holding-count,
+seed-group and individual-account diagnostics. Drawdown accounts retains all
+969 base/stressed accounts; Leader paths drives the four native wealth and drawdown charts at
+the top of New findings. These are not additional main strategies to add to the
+364 count. The [latest integration receipt](../../../docs/ndx_drawdown_20261026/master_update/PUBLICATION.json)
+supersedes the dated consolidation audit hashes for the updated master files.
 
 Use [reporting sources](../../../research/reporting/README.md) and
 [evaluation commands](../../../research/evaluation/README.md). Older build

@@ -9,9 +9,10 @@ is the current cross-study visual record.
 
 | Document | Scope |
 | --- | --- |
+| [Drawdown-control study, October 26](ndx_drawdown_20261026/REPORT.md) | 305 risk-control recipes on saved blend forecasts; audited return, Sharpe, drawdown, seed and cost comparisons |
 | [Latest dynamic-hypergraph study](../latest/README.md) | Direct sources, frozen protocols, tests and portable results for the newest study |
-| [Master charts](../charts.md) | 346 main strategies, seed sensitivity, current historical leaders and 634 chart panels |
-| [NASDAQ100_strategy_comparison.xlsx](NASDAQ100_strategy_comparison.xlsx) | Models, Defensive, Portfolio variants, Method, Extended-hours, AH PM holding counts, New findings and New accounts |
+| [Master charts](../charts.md) | Chart-first comparison of the new Sharpe leaders with SPY/QQQ, 364 main strategies and 652 chart panels |
+| [NASDAQ100_strategy_comparison.xlsx](NASDAQ100_strategy_comparison.xlsx) | Ten tabs. New findings opens with comparison line charts; Drawdown accounts retains the full search and Leader paths drives the charts. |
 | [Comparison gallery](strategy_comparison_20261024/README.md) | Figure catalog, audit and chart coverage |
 | [Project layout and commands](PROJECT_LAYOUT.md) | Grouped sources, launcher and reproducibility |
 | [Alpaca data guide](ALPACA_15MIN.md) | Credentials, historical 15-minute acquisition and feature locations |

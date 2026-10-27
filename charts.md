@@ -1,10 +1,48 @@
 # NASDAQ-100 master charts
 
-Presentation updated October 26, 2026; research results through October 24, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. All paths use the same 1,003 sessions.
+Updated October 26, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. Every path uses the same 1,003 sessions.
 
-## Best model first: THINK+mixer AH+PM + dynamic hypergraph
+## Highest-Sharpe models versus SPY and QQQ
 
-**Our best observed historical model is the 50:50 rank blend of THINK+mixer AH+PM and a restricted dynamic hypergraph network, using the original five seeds and five holdings: 0.919 Sharpe / 32.94% CAGR.** The same recipe across all ten seeds returned **0.896 / 31.87%**. The table keeps these seed ensembles separate and emphasizes the leader and matched SPY/QQQ benchmarks.
+![New high-Sharpe models compared with SPY and QQQ, separated by seed ensemble](docs/ndx_drawdown_20261026/master_update/high_sharpe_comparison.png)
+
+**The highest observed Sharpe is now 1.199** for the original-five blend with a 20% basket-volatility target: **28.96% CAGR and -17.78% drawdown**. The **highest ten-seed Sharpe is 1.112**, using five-issuer selection plus a 20% volatility target: **26.81% CAGR and -21.69% drawdown**. The 25% target plus issuer/trend control retains more ten-seed return at **28.70% CAGR / 1.085 Sharpe / -22.98% drawdown**.
+
+| Strategy | Seed ensemble | Sharpe | CAGR | Max drawdown | 95% SR interval |
+| --- | --- | ---: | ---: | ---: | --- |
+| **20% basket volatility target** | **Original five** | **1.199** | **28.96%** | **-17.78%** | **[0.264, 2.146]** |
+| 25% volatility target + trend cap | Original five | 1.190 | 31.50% | -18.99% | [0.273, 2.118] |
+| 20% volatility target + trend cap | Original five | 1.190 | 28.08% | -17.16% | [0.254, 2.130] |
+| Five issuers + 25% volatility target + trend cap | Original five | 1.169 | 31.20% | -21.68% | [0.232, 2.110] |
+| Five issuers + 20% volatility target | Original five | 1.178 | 28.57% | -20.56% | [0.234, 2.147] |
+| **Five issuers + 20% volatility target** | **Ten seeds** | **1.112** | **26.81%** | **-21.69%** | **[0.209, 2.045]** |
+| Five issuers + 25% volatility target + trend cap | Ten seeds | 1.085 | 28.70% | -22.98% | [0.191, 1.998] |
+| Full-exposure blend | Original five | 0.919 | 32.94% | -34.89% | [0.041, 1.833] |
+| Full-exposure blend | Ten seeds | 0.896 | 31.87% | -40.94% | [0.001, 1.829] |
+| **SPY** | **Benchmark** | **0.498** | **10.85%** | **-24.55%** | **[-0.367, 1.419]** |
+| **QQQ** | **Benchmark** | **0.469** | **11.93%** | **-34.87%** | **[-0.408, 1.394]** |
+
+The figure compares four new risk-control recipes, the corresponding full-exposure blend, and SPY/QQQ. Left: original five seeds; right: all ten seeds. Each panel has its own legend with full-period SR and CAGR for every line. Drawdown panels below the wealth charts show the percentage decline from each account's previous peak; 0% means a new or matched high. The original-five leader is a diagnostic ensemble; the ten-seed comparison remains the broader seed check.
+
+**Historical development findings:** six of 305 frozen recipes passed the screen. All 915 base-cost accounts and 54 additional cost stresses are retained in the workbook's Drawdown accounts sheet and the study report. The new-five half remains weaker, and paired SR-improvement intervals include zero. These results are selected from repeatedly inspected 2022-2025 history.
+
+The new rules keep the THINK/dynamic forecasts and 50:50 rank blend. They change issuer selection and/or stock exposure using prior-close basket volatility and an optional QQQ/200-session-average cap. Five-session decisions remain at 09:20 ET with regular-close fills. No leverage; idle cash earns zero. A volatility target is not a guaranteed drawdown limit. [Complete drawdown study and audit](docs/ndx_drawdown_20261026/REPORT.md).
+
+## Master graph: all 364 main strategies
+
+![All 364 main strategies with the newest Sharpe leaders, SPY and QQQ emphasized](docs/ndx_drawdown_20261026/master_update/master_all_strategies.png)
+
+The thick blue and teal lines identify the original-five and ten-seed Sharpe leaders. SPY and QQQ are emphasized in red and purple. The other 360 paths are thin gray lines. This combines the previous 346 main strategies with 18 seed-group accounts from the six qualifying risk-control recipes. The complete 305-recipe search remains separately disclosed, including failures.
+
+## New drawdown-control gallery
+
+![Drawdown-control qualifiers, first three recipes](docs/ndx_drawdown_20261026/master_update/drawdown_leaders_01.png)
+
+![Drawdown-control qualifiers, next three recipes](docs/ndx_drawdown_20261026/master_update/drawdown_leaders_02.png)
+
+## October 24 full-exposure snapshot: THINK+mixer AH+PM + dynamic hypergraph
+
+**The highest-Sharpe full-exposure model in the October 24 comparison was the 50:50 rank blend of THINK+mixer AH+PM and a restricted dynamic hypergraph network, using the original five seeds and five holdings: 0.919 Sharpe / 32.94% CAGR.** The same recipe across all ten seeds returned **0.896 / 31.87%**. The table keeps these seed ensembles separate and emphasizes the leader and matched SPY/QQQ benchmarks.
 
 | Strategy / seed ensemble                                                           |      Holdings |          Sharpe |             CAGR |           RankIC |      Max drawdown | 95% SR interval           |
 | ---------------------------------------------------------------------------------- | ------------: | --------------: | ---------------: | ---------------: | ----------------: | ------------------------- |
@@ -19,11 +57,12 @@ Presentation updated October 26, 2026; research results through October 24, 2026
 
 The leader has both the highest Sharpe and highest CAGR across the 346 base-cost strategies. This is a retrospective development ranking, including diagnostic seed halves and portfolio variants. Top ten was primary; top five was a declared secondary test. The repeatedly inspected history does not supply an untouched confirmation result.
 
-## Master graph: every strategy, with the leader and SPY/QQQ emphasized
+## Earlier master graph: October 24 models
 
 ![All 346 strategy paths, with the best historical model, SPY and QQQ shown as thick labeled lines](docs/strategy_comparison_20261024/overview_20261026/master_all_strategies.png)
 
 All 346 main base-cost strategies are included. The **best model is the thick blue line**, **SPY is the thick dashed red line**, and **QQQ is the thick purple line**; the other 343 paths are thin gray lines. Each starts with $100 before the common evaluation period and compounds its saved daily returns after modeled costs. Additional individual-seed and cost-stress diagnostics remain in the complete gallery below. [Figure provenance and verification](docs/strategy_comparison_20261024/overview_20261026/MANIFEST.json).
+
 
 ## What the dynamic hypergraph does, in plain language
 
@@ -144,9 +183,9 @@ Before the new optimizer/network tests, the original-five unblended AH+PM ensemb
 
 ## Files and scope
 
-- [Updated comparison workbook](docs/NASDAQ100_strategy_comparison.xlsx): 346 distinct base-cost strategies; 105 Models, 31 Defensive and 210 Portfolio variants. Benchmarks repeat in the latter tabs for convenience.
+- [Updated comparison workbook](docs/NASDAQ100_strategy_comparison.xlsx): 364 distinct base-cost strategies; 105 Models, 49 Defensive and 210 Portfolio variants. Benchmarks repeat in the latter tabs for convenience.
 - [Every extended-hours account](outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/extended_hours_all_accounts.csv): all 66 accounts, including individual seeds and 2x/4x fees, also in Extended-hours.
-- [Chart catalog](docs/strategy_comparison_20261024/chart_catalog.csv): 634 chart-panel entries covering 346 main strategies and 288 additional diagnostic accounts. Repeated reference accounts are represented once.
+- [Chart catalog](docs/strategy_comparison_20261024/chart_catalog.csv): 652 chart-panel entries covering 364 main strategies and 288 additional diagnostic accounts. Repeated reference accounts are represented once.
 - [All strategy metrics](outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/all_strategies.csv) and [5/20/60-session SR sensitivity](outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/sharpe_block_sensitivity.csv).
 
 Defensive uses the fixed QQQ/MA200 half-exposure rule. Portfolio variants change holding count or long/cash/short allocation. All main rows are ensemble or declared selection procedures; individual extended-hours seeds are diagnostics. Failed and negative strategies are retained.

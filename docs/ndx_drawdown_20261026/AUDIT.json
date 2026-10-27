@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "audited_account_metrics": 915,
+  "allocation_seed_group_combinations": 15,
+  "independent_replays": 82,
+  "maximum_nav_difference_dollars": 1.7229467630386353e-08,
+  "extra_daily_recipe": "equal5/ma200off25_basketvol60_target25_daily",
+  "source_input_and_output_locks_verified": true,
+  "seconds": 104.76600000000326,
+  "audit_source_sha256": "b1f2cedcd335bd00b66ac5314b24c62e0fee09bf0eb58a47ef1070b426212c17",
+  "scope": "Accounting and causal implementation checks; no independent future-performance confirmation"
+}

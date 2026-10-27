@@ -1,0 +1,23 @@
+{
+  "status": "passed_staged_master",
+  "prior_cells_preserved": 9122,
+  "prior_styles_preserved": true,
+  "prior_tables_and_panes_preserved": true,
+  "prior_findings_shift_rows": 80,
+  "prior_return_paths_preserved": 346,
+  "main_strategies": 364,
+  "qualified_accounts_added": 18,
+  "full_drawdown_accounts": 969,
+  "chart_catalog_entries": 652,
+  "native_charts": 4,
+  "native_chart_series_each": 7,
+  "formula_mutation_verified": true,
+  "all_native_chart_points_verified": 28112,
+  "opening_sheet": "New findings",
+  "chart_legends_include_sr_cagr": true,
+  "drawdown_formula": "wealth / running maximum wealth - 1",
+  "prior_published_cells_preserved": 49232,
+  "input_workbook_sha256": "5ed08fea99e98566881361b3386200d244f19c8da92adee02714386f1f2b3445",
+  "staged_workbook_sha256": "044c8b2e26a769f16722392eef3c9d87e28f8f43aafb41d0d3b182a9b309acd9",
+  "scope": "Presentation integration and preservation audit. Study evidence remains exploratory."
+}

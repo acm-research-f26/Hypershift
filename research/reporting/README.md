@@ -6,6 +6,8 @@ builder live in `outputs/`. The repository-root `charts.md` is the master galler
 
 | Sources | Responsibility |
 | --- | --- |
+| [update_ndx_drawdown_master.py](update_ndx_drawdown_master.py) | Prepare, audit and publish the chart-first master workbook/narrative integration and preserve existing comparison content. |
+| [publish_ndx_drawdown_research.py](publish_ndx_drawdown_research.py) | Publish all 305 audited drawdown-control recipes, matched paths, cost stresses and uncertainty. |
 | `report_ndx_*`, `report_*` | Study metrics, uncertainty and reports from saved artifacts |
 | `publish_ndx_*`, `publish_historical_ndx` | NASDAQ study-specific publication |
 | `chart_performance_labels` | Shared chart labeling |
@@ -18,7 +20,7 @@ Current user-facing artifacts:
 
 - [Master charts](../../charts.md): every compared strategy and diagnostic gallery.
 - [NASDAQ100_strategy_comparison.xlsx](../../docs/NASDAQ100_strategy_comparison.xlsx):
-  eight tabs, 346 distinct main strategies, with benchmarks repeated where useful.
+  ten tabs, 364 distinct main strategies, with benchmarks repeated where useful.
 - [Chart catalog and figures](../../docs/strategy_comparison_20261024/README.md).
 - [Comparison tables and workbook builder](../../outputs/01a15702-86c3-7463-ae6c-24606895c7cf/strategy_comparison_20261020/README.md).
 

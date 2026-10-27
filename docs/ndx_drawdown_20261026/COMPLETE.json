@@ -1,0 +1,32 @@
+{
+  "status": "completed_exploratory_pending_independent_audit",
+  "variants": 305,
+  "base_accounts": 915,
+  "shortlist": [
+    "issuer5/basketvol20_target20_weekly",
+    "issuer5/ma200off50_basketvol20_target20_weekly",
+    "issuer5/ma200off50_basketvol20_target25_weekly",
+    "equal5/ma200off50_basketvol20_target20_weekly",
+    "equal5/basketvol20_target20_weekly",
+    "equal5/ma200off50_basketvol20_target25_weekly",
+    "issuer5/basketvol20_target25_weekly",
+    "equal5/basketvol20_target25_weekly",
+    "equal5/full"
+  ],
+  "target_met": 6,
+  "seconds": 81.32900000002701,
+  "protocol_sha256": "4ed0662c3d5925d8a7d0873d489a22871f1c13421c3c8b1ecf9a0d9e2303b64c",
+  "output_sha256": {
+    "annual.csv": "7065e7c047ba417af2e3295f49825e78d802e2722378fd40ea157edcdaebe53d",
+    "cost_stress.csv": "8dac7cccbd22687a3cd8ae91c6914d16bf67df47e1d37be6ea8427facefd00f4",
+    "FREEZE.json": "8d377a6e7fc23d4576a277b8145f43de67ffcab5784af519781972838b650c09",
+    "metrics.csv": "b3b0a273a0dbd003c1adc9fb4bd4fecae7832a934f7dac2c2da3e650b6a5621d",
+    "metrics_partial.csv": "3ca841285f0e132f81e4cd2946cbd4dcd5edef838a6ae97805dde89ce84518e6",
+    "paths.npz": "7d97f1eb39bae4d3eaf9ba3c9f16674ee61c284fe78493d4a73bad808b2becdb",
+    "PROTOCOL.json": "4ed0662c3d5925d8a7d0873d489a22871f1c13421c3c8b1ecf9a0d9e2303b64c",
+    "selected_curves.csv": "6d1e091eeedc67347bdeb8bbc680777d12120b00be74228bdc1e938b6725aa14",
+    "selected_ledgers.csv": "9a14446cf8a695d25c276d776f91699783123b8cd4958076c5f4f03c2d19f1ef",
+    "summary.csv": "cda75b4477b95195fc60dcea8e72f4803f428e867f4c30976d89e8ac16c8bac3",
+    "uncertainty.csv": "e8bcc5c1cc30d0ec433e33d05f89087a1c7053cd94b7f4f3b62e13972b0f01c6"
+  }
+}
