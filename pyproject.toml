@@ -38,6 +38,7 @@ notebooks = [
 [project.optional-dependencies]
 cuda = ["torch==2.14.0"]
 strategies = ["numpy>=2.4", "numba>=0.68"]
+validation = ["numpy>=2.4", "numba>=0.68", "matplotlib>=3.10"]
 
 [[tool.uv.index]]
 name = "pytorch-cu132"
