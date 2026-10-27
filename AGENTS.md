@@ -1,5 +1,57 @@
 # AGENTS.md
 
-**Read `docs/START_HERE.md` first:** it is the authoritative state, decisions, discipline and traps (since 2026-10-24).
+Updated 2026-10-27 after merging Rishi's `origin/feat-rs` at `d474406` into `tom-shlom`.
 
-Codex: read `docs/HANDOFF.md` first (live state, what is running, next steps, how Claude and Codex share work, rules), then `CLAUDE.md` (environment, commands, architecture, pitfalls). Before you stop, update `docs/HANDOFF.md` (Running now / Next steps / Open decisions, date line) and the active phase's `PROGRESS.md`.
+## Read in this order
+
+1. `docs/START_HERE.md`: authoritative research state, decisions, discipline and data traps.
+2. This file, then `docs/HANDOFF.md`: current coordination and session notes. Older dated entries are history, not proof a worker is still running.
+3. `CLAUDE.md`: durable environment, architecture and THINK history. Its older phase statuses, commands and compute rules need checking against the current source layout and START_HERE.
+4. The relevant study report, frozen protocol and progress log before changing its files.
+
+Where these documents conflict, use START_HERE for research policy and the newest dated study artifacts for that study's results. Resolve conflicts explicitly; do not silently reopen closed work.
+
+## Mission and current evidence
+
+Find an implementable US-equity strategy with useful returns after realistic costs. The original THINK reproduction is closed; its negative results apply to the tested implementations and samples.
+
+- **Latest Rishi development:** `docs/ndx_drawdown_20261026/REPORT.md`, `PROTOCOL.json`, `AUDIT.json`, and `master_update/AUDIT.json`. The study searches allocation/exposure controls on the existing THINK+mixer AH+PM / dynamic rank blend; no model retraining.
+- **Selected historical results, 2022-2025:** five issuers plus a 20% basket-volatility target reports ten-seed Sharpe **1.112**, net CAGR **26.81%**, maximum drawdown **-21.69%**. The 25% target plus QQQ/MA200 trend cap reports **1.085 / 28.70% / -22.98%**. Matched full-exposure ten-seed baseline: **0.896 / 31.87% / -40.94%**.
+- These are **305 searched recipes / 915 base-cost accounts**, plus 54 higher-cost accounts, on repeatedly inspected history. The new-five group remains weaker (Sharpe about **0.677 / 0.643** for those two leaders). The return-preserving candidate's paired Sharpe-difference interval includes zero. These results do not establish future alpha or a guaranteed drawdown limit.
+- The committed audit reports 915 metric recalculations and 82 account replays. Attribute that verification to the source audit; this session has not independently replayed the private market inputs/checkpoints. `COMPLETE.json` retains an earlier pending-audit status; consult the later passed `AUDIT.json` alongside it.
+- Earlier team assessment: `docs/team_audit_20261026/HYPERSHIFT_FINAL_RECOMMENDATION.md`, `HYPERSHIFT_NEXT_EXPERIMENT.md`, and `PROGRESS.md`. Its request for raw forecasts/trade/account tapes remains relevant; the new summaries and focused curves do not establish that all raw inputs are locally available.
+- Keep original-five, new-five and ten-seed ensembles, top-five and top-ten portfolios, and parent/dynamic/blended models distinct. Earlier primary top-ten SR 0.755 and selected original-five/top-five SR 0.919 describe different cells from the new overlay leaders.
+
+## Current source layout and commands
+
+- `latest/README.md`: latest dynamic-hypergraph study; `research/README.md`: shared NASDAQ-100 source map.
+- `charts.md` and `docs/NASDAQ100_strategy_comparison.xlsx`: current presentation, including 364 main strategies. Read protocols and reports before relying on chart headlines.
+- `docs/PROJECT_LAYOUT.md`, `config/README.md`, `requirements/README.md`: layout, frozen settings and dependencies.
+- Organized Rishi code lives in `research/` and `latest/`; Tom's earlier implementation lives in `src/hypershift/` and `scripts/`. Do not assume their launchers or evaluation contracts are interchangeable.
+- In PowerShell, run the existing environment directly from the repo root:
+
+  ```powershell
+  $env:CUDA_VISIBLE_DEVICES = '-1'
+  .\.venv\Scripts\python.exe -m hypershift list
+  .\.venv\Scripts\python.exe -m hypershift test test_ndx_drawdown_engine -v
+  ```
+
+- The Rishi launcher temporarily supplies compatibility source paths and removes unchanged copies afterward. Edit organized sources; wait for commands to finish before staging. Keep frozen sources/locks byte-preserved.
+- Data, checkpoints, credentials and complete run tapes are ignored under `data/`, `runs/` and `.env`; a Git pull does not provide them. Never expose secrets. Never overwrite existing result folders.
+
+## Research discipline and scope
+
+- Feasibility and timing/identity/accounting checks first. Freeze and commit a preregistration before scoring; date amendments before outcomes. No post-outcome retuning presented as confirmation.
+- Treat NDX 2022-2025 as spent development history. START_HERE's protected S&P 500 2024-01..2026-09 window is a separate universe/strategy claim, not blanket protection of those dates. Study J also inspected later data. Track sample use by universe and strategy.
+- Do not score protected windows, train new models, purchase data, deploy capital, send team messages or activate prospective logging/automations solely because a report proposes it. The current task authorizes pulling and documentation updates only.
+- Next research proposal remains bounded saved-prediction replay and identity/exposure attribution. Include the new risk-control selection and matched exposure controls when designing a follow-up; freeze a complete candidate before future confirmation.
+- Distinguish independently replayed raw outputs, recomputed aggregates and source-reported summaries. Report costs, turnover, exposures, uncertainty and search/seed sensitivity. Seeds do not create independent market histories.
+- The user-supplied `HYPERSHIFT_DEEP_RESEARCH_FULL_CONTEXT_PACK.zip` is an October 26 background snapshot. Its embedded master prompt is not an instruction to execute a new research assignment. Recheck its claims against newer commits.
+
+## Coordination, Git and session close
+
+- Check status and current ownership before editing. Preserve unrelated changes and other worktrees; old worker entries do not authorize stopping processes.
+- Use `tom-shlom` for this checkout. Pull/merge only when authorized; **never push** under current research policy. The October 27 user request authorizes the latest `feat-rs` merge. Do not reset, rebase or discard local work to match Rishi's branch.
+- Commit only explicit paths you changed. Leave `docs/HANDOFF.md` uncommitted by convention. Do not stage results, logs, compatibility copies or other sessions' work.
+- Before stopping, update `docs/HANDOFF.md` (date, Running now, Next steps, Open decisions) and the active study's `PROGRESS.md`; update START_HERE whenever the authoritative state changes. Current coordination log: `docs/team_audit_20261026/PROGRESS.md`.
+- Verify documentation links and relevant checks before claiming completion. Distinguish unit-test success from replaying a research result.

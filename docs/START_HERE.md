@@ -1,4 +1,4 @@
-# START HERE: HyperShift session handoff (authoritative; updated 2026-10-26)
+# START HERE: HyperShift session handoff (authoritative; updated 2026-10-27)
 
 Read this file first in every new session. It holds the current state, the decisions already taken, how the work
 is done, and the traps already found. `CLAUDE.md` holds durable environment and code rules. `docs/HANDOFF.md` is
@@ -18,6 +18,7 @@ goals.
 | Item | Status |
 |---|---|
 | Running processes | None |
+| Latest imported Rishi development | **2026-10-27:** merged `origin/feat-rs` at `d474406` into `tom-shlom`. `docs/ndx_drawdown_20261026/REPORT.md`: 305 risk/allocation recipes, 915 base accounts, 54 higher-cost accounts on spent NDX 2022-2025 history. Selected ten-seed issuer5/20% basket-vol target: SR **1.112**, net CAGR **26.81%**, MDD **-21.69%**; issuer5/25% target + MA200 cap: **1.085 / 28.70% / -22.98%**; matched full exposure **0.896 / 31.87% / -40.94%**. New-five SR only .677/.643; paired SR-difference interval includes zero. Committed audit reports 82 replays; this import ran five engine unit tests, not private-data replay. **Exploratory selected risk-control improvement; no future confirmation or new alpha claim.** See `AGENTS.md` for updated layout and commands. |
 | Latest research audit | **Full-team GitHub audit (2026-10-26)**: `docs/team_audit_20261026/HYPERSHIFT_FINAL_RECOMMENDATION.md`. Six remote branches checked; latest Rishi `0b06f26`, Ethan `def988d`, Kavin still Cora-only. **GO bounded saved-prediction replay and identity/exposure attribution** of the fixed ten-seed/top10 parent–dynamic blend; no new training or alpha claim. Published primary SR .755; .919 is original-five/top5. New forecasts/ledgers remain missing. Older 204 paths independently recomputed; seed counts 3/5/0 above reversal RankIC versus 1/6/4 above gross EW CAGR. Seven reports, two static figures, evidence and branch inventory in that folder. |
 | Last completed model round | **Independent dynamic-hypergraph and StockMixer evaluation** (2026-10-25): **STOP tested correlation-hypergraph implementation**.
   - Branch `dynhg-20261025`, `docs/dynhg_20261025/FINAL_DECISION.md`.
@@ -57,6 +58,8 @@ goals.
 - **The binding constraint is data** (history length, universe), not models or ideas.
 
 ## 4. Next step options (choose with the user)
+
+**October 27 import:** the new drawdown controls extend the development candidate set; they do not activate a prospective protocol or release protected data. Follow-up design should account for all 305 searched recipes and compare matched parent, constant-exposure and risk-controlled accounts. Full forecasts/checkpoints/tapes remain subject to local availability. The October 26 ZIP context pack is background; its embedded research assignment was not executed by this documentation task.
 
 **Latest audit refinement (2026-10-26):** obtain the existing latest Rishi parent/dynamic per-stock forecasts and trade/account tapes, independently replay, then compare the frozen ten-seed/top10 blend with its parent and a training-only persistent-stock substitute. Exact gated protocol and coordinated Rishi/Kavin/Ethan/Tom tasks: `docs/team_audit_20261026/HYPERSHIFT_NEXT_EXPERIMENT.md` and `HYPERSHIFT_TEAM_PLAN.md`. The newer SPF-based transfer is not refuted by the simpler S&P correlation-HG null. Prospective observation is only proposed after a freeze, no earlier than November 2, 2026; do not backfill or activate an automation. This refines Stage 0, does not reopen a historical model search, and does not release the protected window. The earlier 272-independent-trial expected-maximum claim is withdrawn; see `gate-20261025`.
 
