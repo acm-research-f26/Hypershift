@@ -6,16 +6,16 @@ Presentation updated October 26, 2026; research results through October 24, 2026
 
 **Our best observed historical model is the 50:50 rank blend of THINK+mixer AH+PM and a restricted dynamic hypergraph network, using the original five seeds and five holdings: 0.919 Sharpe / 32.94% CAGR.** The same recipe across all ten seeds returned **0.896 / 31.87%**. The table keeps these seed ensembles separate and emphasizes the leader and matched SPY/QQQ benchmarks.
 
-| Strategy / seed ensemble | Holdings | Sharpe | CAGR | RankIC | Max drawdown | 95% SR interval |
-| --- | ---: | ---: | ---: | ---: | ---: | --- |
-| **Best model: THINK+mixer AH+PM + dynamic HG / original five / 50:50 ranks** | **5** | **0.919** | **32.94%** | **0.0180** | **-34.89%** | **[0.041, 1.833]** |
-| Same blend / ten seeds | 5 | 0.896 | 31.87% | 0.0189 | -40.94% | [0.001, 1.829] |
-| Same blend / original five | 10 | 0.848 | 27.79% | 0.0180 | -35.04% | [-0.006, 1.739] |
-| Same blend / ten seeds / primary portfolio | 10 | 0.755 | 23.92% | 0.0189 | -34.88% | [-0.095, 1.649] |
-| THINK+mixer AH+PM / tuned momentum SGD / ten seeds | 5 | 0.719 | 25.05% | 0.0238 | -45.29% | [-0.227, 1.715] |
-| Original daily THINK+mixer / original five | 10 | 0.629 | 19.60% | 0.0074 | -39.44% | [-0.186, 1.505] |
-| **SPY / buy and hold** | **ETF** | **0.498** | **10.85%** | — | **-24.55%** | **[-0.367, 1.419]** |
-| **QQQ / buy and hold** | **ETF** | **0.469** | **11.93%** | — | **-34.87%** | **[-0.408, 1.394]** |
+| Strategy / seed ensemble                                                           |      Holdings |          Sharpe |             CAGR |           RankIC |      Max drawdown | 95% SR interval           |
+| ---------------------------------------------------------------------------------- | ------------: | --------------: | ---------------: | ---------------: | ----------------: | ------------------------- |
+| **Best model: THINK+mixer AH+PM + dynamic HG / original five / 50:50 ranks** |   **5** | **0.919** | **32.94%** | **0.0180** | **-34.89%** | **[0.041, 1.833]**  |
+| Same blend / ten seeds                                                             |             5 |           0.896 |           31.87% |           0.0189 |           -40.94% | [0.001, 1.829]            |
+| Same blend / original five                                                         |            10 |           0.848 |           27.79% |           0.0180 |           -35.04% | [-0.006, 1.739]           |
+| Same blend / ten seeds / primary portfolio                                         |            10 |           0.755 |           23.92% |           0.0189 |           -34.88% | [-0.095, 1.649]           |
+| THINK+mixer AH+PM / tuned momentum SGD / ten seeds                                 |             5 |           0.719 |           25.05% |           0.0238 |           -45.29% | [-0.227, 1.715]           |
+| Original daily THINK+mixer / original five                                         |            10 |           0.629 |           19.60% |           0.0074 |           -39.44% | [-0.186, 1.505]           |
+| **SPY / buy and hold**                                                       | **ETF** | **0.498** | **10.85%** |               — | **-24.55%** | **[-0.367, 1.419]** |
+| **QQQ / buy and hold**                                                       | **ETF** | **0.469** | **11.93%** |               — | **-34.87%** | **[-0.408, 1.394]** |
 
 The leader has both the highest Sharpe and highest CAGR across the 346 base-cost strategies. This is a retrospective development ranking, including diagnostic seed halves and portfolio variants. Top ten was primary; top five was a declared secondary test. The repeatedly inspected history does not supply an untouched confirmation result.
 
@@ -50,10 +50,10 @@ Alongside those changing groups, a fixed relationship map is built from **traini
 For example, suppose the family averages for three hypothetical stocks are:
 
 | Stock | THINK+mixer average percentile | Dynamic average percentile | Final 50:50 score |
-| --- | ---: | ---: | ---: |
-| A | 0.96 | 0.90 | **0.93** |
-| B | 1.00 | 0.50 | **0.75** |
-| C | 0.72 | 0.94 | **0.83** |
+| ----- | -----------------------------: | -------------------------: | ----------------: |
+| A     |                           0.96 |                       0.90 |    **0.93** |
+| B     |                           1.00 |                       0.50 |    **0.75** |
+| C     |                           0.72 |                       0.94 |    **0.83** |
 
 The combined order is A, C, B. Agreement near the top helps A outrank B even though THINK alone prefers B. Converting forecasts to ranks gives both families comparable influence regardless of the numerical scale of their predicted returns. **The average combines stock rankings into one portfolio.** Its 50:50 weights are fixed in advance; they are not fitted to test returns. [Seed averaging](research/training/run_robust_research.py), [family blending](latest/reporting/report_ndx_reference_networks.py).
 
@@ -79,19 +79,19 @@ The **AH+PM correction branch** flattens each stock's 16 × 20 extended-hours ch
 
 The **dynamic network** embeds 25 inputs into 32 dimensions, uses four-head causal attention plus a learned intensity/decay function and temporal attention, and combines two wavelet graph-convolution layers with 64 learned dynamic hyperedges. Learned softmax weights fuse the three representations before a 32-to-32-to-1 prediction head. It has 25,445 parameters in the saved fits.
 
-| Training setting | THINK+mixer AH+PM | Restricted dynamic hypergraph |
-| --- | --- | --- |
-| Target | Five-session economic stock return, in percentage points | Same target |
-| Optimizer | AdamW | Adam |
-| Learning rate | 0.001 | 0.0001 |
-| Weight decay | 0.001 | 0 |
-| Training loss | Masked mean squared error | Per-date sqrt(masked MSE + 1e-8) |
-| Update batch | Eight chronological forecast dates | One forecast date, across stocks |
-| Hidden width | 16; auxiliary width 16 | 32; four attention heads; 64 learned hyperedges |
-| Dropout | No explicit dropout in this branch | 0.1 |
-| Maximum epochs / early-stopping patience | 30 / 6 | 30 / 6 |
-| Gradient norm cap | 1.0 | 1.0 |
-| Checkpoint selection | Earliest prior-year validation MSE improvement greater than 1e-7 | Same rule |
+| Training setting                         | THINK+mixer AH+PM                                                | Restricted dynamic hypergraph                   |
+| ---------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------- |
+| Target                                   | Five-session economic stock return, in percentage points         | Same target                                     |
+| Optimizer                                | AdamW                                                            | Adam                                            |
+| Learning rate                            | 0.001                                                            | 0.0001                                          |
+| Weight decay                             | 0.001                                                            | 0                                               |
+| Training loss                            | Masked mean squared error                                        | Per-date sqrt(masked MSE + 1e-8)                |
+| Update batch                             | Eight chronological forecast dates                               | One forecast date, across stocks                |
+| Hidden width                             | 16; auxiliary width 16                                           | 32; four attention heads; 64 learned hyperedges |
+| Dropout                                  | No explicit dropout in this branch                               | 0.1                                             |
+| Maximum epochs / early-stopping patience | 30 / 6                                                           | 30 / 6                                          |
+| Gradient norm cap                        | 1.0                                                              | 1.0                                             |
+| Checkpoint selection                     | Earliest prior-year validation MSE improvement greater than 1e-7 | Same rule                                       |
 
 Each test year receives fresh annual fits. Training/validation/test periods advance chronologically: July 2019–2020 / 2021 / 2022; July 2019–2021 / 2022 / 2023; July 2019–2022 / 2023 / 2024; and 2020–2023 / 2024 / 2025. Outcomes crossing fold boundaries are purged. Normalization and correlation maps use training data only. The leader's original seeds are **7, 19, 42, 61 and 97** in each family. Neither winning branch directly optimizes Sharpe or a pairwise ranking loss; validation MSE selects checkpoints, and the fixed ranking rule converts forecasts into holdings. [Parent protocol](config/ndx_extended_hours_20261024.json), [reference protocol](latest/config/ndx_reference_networks_20261024.json).
 
@@ -107,14 +107,14 @@ These diagnostics support complementarity as an explanation, without establishin
 
 The fixed THINK+mixer AH+PM + restricted dynamic-hypergraph rank blend is the strongest new historical candidate. Its ten-seed portfolio returned **31.87% CAGR / 0.896 Sharpe at five holdings**, or **23.92% / 0.755 at ten**. Five-holding momentum SGD returned **25.05% / 0.719**, with 0.759 and 0.799 Sharpe in its two fixed seed halves. Top ten was primary; top five was a predeclared secondary portfolio test. No genuinely untouched-period result exists yet.
 
-| Strategy | Holdings | Ten-seed CAGR | Ten-seed SR | Original-five SR | New-five SR | Max drawdown | 95% SR interval |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| THINK+mixer AH+PM / MSE / fixed AdamW | 10 | 15.36% | 0.519 | 0.700 | 0.480 | -38.32% | [-0.345, 1.425] |
-| THINK+mixer AH+PM + dynamic HG / 50:50 ranks | 10 | 23.92% | 0.755 | 0.848 | 0.467 | -34.88% | [-0.095, 1.649] |
-| THINK+mixer AH+PM / MSE / tuned momentum SGD | 10 | 19.22% | 0.626 | 0.634 | 0.466 | -33.81% | [-0.277, 1.553] |
-| THINK+mixer AH+PM / MSE / fixed AdamW | 5 | 16.73% | 0.531 | 0.485 | 0.106 | -44.05% | [-0.360, 1.467] |
-| THINK+mixer AH+PM + dynamic HG / 50:50 ranks | 5 | 31.87% | 0.896 | 0.919 | 0.633 | -40.94% | [0.001, 1.829] |
-| THINK+mixer AH+PM / MSE / tuned momentum SGD | 5 | 25.05% | 0.719 | 0.759 | 0.799 | -45.29% | [-0.227, 1.715] |
+| Strategy                                     | Holdings | Ten-seed CAGR | Ten-seed SR | Original-five SR | New-five SR | Max drawdown | 95% SR interval |
+| -------------------------------------------- | -------: | ------------: | ----------: | ---------------: | ----------: | -----------: | --------------- |
+| THINK+mixer AH+PM / MSE / fixed AdamW        |       10 |        15.36% |       0.519 |            0.700 |       0.480 |      -38.32% | [-0.345, 1.425] |
+| THINK+mixer AH+PM + dynamic HG / 50:50 ranks |       10 |        23.92% |       0.755 |            0.848 |       0.467 |      -34.88% | [-0.095, 1.649] |
+| THINK+mixer AH+PM / MSE / tuned momentum SGD |       10 |        19.22% |       0.626 |            0.634 |       0.466 |      -33.81% | [-0.277, 1.553] |
+| THINK+mixer AH+PM / MSE / fixed AdamW        |        5 |        16.73% |       0.531 |            0.485 |       0.106 |      -44.05% | [-0.360, 1.467] |
+| THINK+mixer AH+PM + dynamic HG / 50:50 ranks |        5 |        31.87% |       0.896 |            0.919 |       0.633 |      -40.94% | [0.001, 1.829]  |
+| THINK+mixer AH+PM / MSE / tuned momentum SGD |        5 |        25.05% |       0.719 |            0.759 |       0.799 |      -45.29% | [-0.227, 1.715] |
 
 SPY: 10.85% CAGR / 0.498 Sharpe. QQQ: 11.93% / 0.469. Huber and pseudo-Huber weakened this AH+PM recipe. Standalone MASTER and PRISM-VQ transfers also underperformed. The restricted dynamic network alone returned 15.32% / 0.530, showing why a complementary blend can be more useful than choosing the strongest standalone CAGR. All negative cells remain in the workbook and gallery.
 
