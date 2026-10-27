@@ -1,0 +1,3 @@
+# Required only for acquiring public research snapshots; training runs offline.
+yfinance>=0.2.54,<2
+requests>=2.32,<3

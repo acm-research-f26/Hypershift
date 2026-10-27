@@ -1,0 +1,12 @@
+{
+  "status": "verified",
+  "series": 76,
+  "procedures": 6,
+  "huber_comparisons": 8,
+  "replicates": 1000,
+  "block_sessions": 20,
+  "seed": 20261005,
+  "confidence_level": 0.95,
+  "all_existing_paired_intervals_reproduced": true,
+  "source_sha256": "5eccb65fd5f79cdb41714ddca899371b13a07aa934b179d64ee783e8234c4d29"
+}

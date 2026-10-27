@@ -1,0 +1,55 @@
+{
+  "timestamp_utc": "2026-10-25T01:41:56.830306+00:00",
+  "type": "compute_scheduling_only",
+  "reason": "Final annual PRISM job serializes remaining seeds and leaves GPU capacity unused; parallelize independent seeds without changing frozen model math.",
+  "preserved_completed_fits": 112,
+  "missing_fits": [
+    [
+      "prism",
+      2025,
+      42
+    ],
+    [
+      "prism",
+      2025,
+      61
+    ],
+    [
+      "prism",
+      2025,
+      97
+    ],
+    [
+      "prism",
+      2025,
+      1828801906
+    ],
+    [
+      "prism",
+      2025,
+      1868046758
+    ],
+    [
+      "prism",
+      2025,
+      239154507
+    ],
+    [
+      "prism",
+      2025,
+      287727767
+    ],
+    [
+      "prism",
+      2025,
+      981756941
+    ]
+  ],
+  "max_workers": 4,
+  "interrupted_incomplete_fit_restarted": true,
+  "financial_results_inspected": false,
+  "original_training_source_unchanged": true,
+  "execution_source_sha256": "d7f87668b848ddc7bd1de032ccae0345fe2a6d2d736d9fd39de6b19053e50754",
+  "frozen_protocol_sha256": "1e6c4577e9bf0333f84f2da88576d74a6538c32bedeffa1b0b6e0f0b89bf5eaa",
+  "fit_budget": 120
+}

@@ -1,0 +1,13 @@
+model,seed_runs,distinct_test_forecast_arrays
+daily__raw__ridge,1,1
+daily__raw__boosted_trees,5,1
+daily__raw__shared_network,5,5
+daily__residual__ridge,1,1
+daily__residual__boosted_trees,5,1
+daily__residual__shared_network,5,5
+intraday__raw__ridge,1,1
+intraday__raw__boosted_trees,5,1
+intraday__raw__shared_network,5,5
+intraday__residual__ridge,1,1
+intraday__residual__boosted_trees,5,1
+intraday__residual__shared_network,5,5

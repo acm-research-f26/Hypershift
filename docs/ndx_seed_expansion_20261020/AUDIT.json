@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "new_checkpoints_reproduced": 80,
+  "original_seed_forecast_exports_verified": 20,
+  "independent_accounts": 330,
+  "prior_reference_paths_verified": 106,
+  "largest_nav_difference_dollars": 6.100162863731384e-08,
+  "prior_reference_validation": "Exact saved bytes, dates and independent metrics checked; previous full account/checkpoint audits retained"
+}

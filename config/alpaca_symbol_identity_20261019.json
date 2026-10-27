@@ -1,0 +1,17 @@
+{
+  "purpose": "Date-bounded issuer identity for literal Alpaca ticker queries; applied before augmented fitting, with no financial test metrics inspected",
+  "rule": "Inclusive first_valid_date, exclusive end_valid_date. Never join an old/new ticker outside its verified issuer period. Raw responses remain unchanged.",
+  "symbols": {
+    "FB": {"security_id": "META", "end_valid_date": "2022-06-09", "source": "https://www.sec.gov/Archives/edgar/data/1326801/000132680122000070/may312022-exhibit991.htm"},
+    "META": {"security_id": "META", "first_valid_date": "2022-06-09", "source": "https://www.nasdaqtrader.com/TraderNews.aspx?id=ECA2022-125", "excluded_previous_issuer_source": "https://www.roundhillinvestments.com/etf/metv/"},
+    "CTRP": {"security_id": "TCOM", "end_valid_date": "2019-11-05", "source": "https://www.sec.gov/Archives/edgar/data/1269238/000119312519274119/d814130dex991.htm"},
+    "TCOM": {"security_id": "TCOM", "first_valid_date": "2019-11-05", "source": "https://www.sec.gov/Archives/edgar/data/1269238/000119312519274119/d814130dex991.htm"},
+    "SYMC": {"security_id": "GEN", "end_valid_date": "2019-11-05", "source": "https://www.nasdaq.com/press-release/symantec-completes-sale-of-enterprise-security-assets-to-broadcom-2019-11-04"},
+    "NLOK": {"security_id": "GEN", "first_valid_date": "2019-11-05", "end_valid_date": "2022-11-08", "source": "https://infomemo.theocc.com/infomemos?number=51308", "start_source": "https://www.nasdaq.com/press-release/symantec-completes-sale-of-enterprise-security-assets-to-broadcom-2019-11-04"},
+    "GEN": {"security_id": "GEN", "first_valid_date": "2022-11-08", "source": "https://infomemo.theocc.com/infomemos?number=51308"},
+    "WLTW": {"security_id": "WTW", "end_valid_date": "2022-01-10", "source": "https://investors.wtwco.com/news-releases/news-release-details/willis-towers-watson-announces-nasdaq-ticker-symbol-change-wltw"},
+    "WTW": {"security_id": "WTW", "first_valid_date": "2022-01-10", "source": "https://www.sec.gov/Archives/edgar/data/1140536/000095017022001932/wtw-20211231.htm"},
+    "FOX": {"security_id": "FOX", "first_valid_date": "2019-03-19", "source": "https://investor.foxcorporation.com/establishment-of-fox/"},
+    "FOXA": {"security_id": "FOXA", "first_valid_date": "2019-03-19", "source": "https://investor.foxcorporation.com/establishment-of-fox/"}
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "python": "3.12.6 (tags/v3.12.6:a4a2d2b, Sep  6 2024, 20:11:23) [MSC v.1940 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "numpy": "2.5.3",
+  "torch": "2.14.0+cu130",
+  "cuda": "13.0",
+  "workers": 2,
+  "precision": "FP32; deterministic; no AMP/TF32"
+}

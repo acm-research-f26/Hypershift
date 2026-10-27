@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "timestamp_utc": "2026-10-25T06:25:19.662243+00:00",
+  "move_manifest": "config/study_layout_20261025.json",
+  "move_manifest_sha256": "bb35028ff76d4af70b998a58ffc7e8fdf8c281d0cdd1f58381b780b9abdda324",
+  "moved_files": 554,
+  "all_moved_files_byte_identical": true,
+  "latest_source_modules": 15,
+  "unrelated_source_modules_archived": 44,
+  "unrelated_local_directories_archived": 21,
+  "previously_tracked_scratch_artifacts_preserved_in_versioned_archive": 165,
+  "portable_sealed_summary_exports": 45,
+  "active_tests_passed": 171,
+  "including_archive_tests_passed": 177,
+  "frozen_study_seals_verified": [
+    "ndx_loss_optimizer_20261024",
+    "ndx_reference_networks_20261024"
+  ],
+  "master_comparison_read_only_audit": "passed; 346 main strategies, 8 sheets, 634 chart entries",
+  "master_charts_sha256": "3efa62b8501bbf05624ad4f75109fa2168fb4896ec7af510851506fc0066588a",
+  "comparison_workbook_sha256": "5826cbadbe38fa40745d512311c8f5279402cce046803e96ec4b828a1f813981",
+  "trained_models_or_scores_changed": false,
+  "root_python_files_after_cleanup": 0,
+  "navigation_redirects": [
+    "docs/random_trials_20261010/CHARTS.md"
+  ],
+  "active_and_maintained_documents_checked": 46,
+  "local_links_verified": 614
+}

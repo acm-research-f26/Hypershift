@@ -1,1 +1,39 @@
 *.sh text eol=lf
+
+# Preserve generated artifact bytes across Windows checkouts.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.docx binary
+*.pptx binary
+*.xlsx binary
+*.zip binary
+*.npz binary
+*.npy binary
+*.pt binary
+
+# Frozen research hashes require exact source and published artifact bytes.
+*.py -text
+*.mjs -text
+/config/*20261019*.json -text
+/config/*20261020*.json -text
+/config/*20261024*.json -text
+/docs/nasdaq_alpaca_20261019/** -text
+/docs/ndx_*_20261020/** -text
+/docs/ndx_*_20261024/** -text
+/docs/audit/nasdaq100_model_audit_20261019/** -text
+/docs/audit/research_status_20261020.json -text
+/docs/NASDAQ_RESEARCH_STATUS_20261020.md -text
+/outputs/** -text
+/requirements/*.txt -text
+/charts.md -text
+/docs/strategy_comparison_20261024/** -text
+/docs/CHARTS.md -text
+/docs/audit/backtests_20261010/EXPLANATION.md -text
+/docs/largecap_retraining_20261010/ARCHIVED_NYSE_CHARTS.md -text
+/docs/nasdaq_monthly_pit/CHARTS.md -text
+/docs/random_trials_20261010/CHARTS.md -text
+/latest/** -text
+/archive/studies_20261025/** -text
+/config/study_layout_20261025.json -text

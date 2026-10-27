@@ -1,0 +1,84 @@
+{
+  "created": "2026-10-11",
+  "status": "input_and_engine_review_in_progress; no test metrics inspected",
+  "purpose": "User-authorized NASDAQ-only replacement for the retired 2026-selected cohort",
+  "dataset": "NASDAQ100_historical_monthly",
+  "universe_definition": "Official historical Nasdaq-100 company index, sampled at each historical month start; retain every included share class, which can exceed 100 securities. This is the user-authorized fallback and excludes financial companies.",
+  "formation": "Constituents effective at each month start, conservatively usable only after that membership is known. No within-month addition based on later events. Corporate actions independently disable trading and settle holdings.",
+  "security_rule": "Retain official share classes; join verified same-security ticker renames to stable study IDs. Never attach a reused ticker to a different company.",
+  "history_required": "Monthly membership July 2019 through December 2025; prices January 2018 through December 2025; earlier data only warms up features.",
+  "test_years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "folds": "Train from max(July 2019, January 1 of test_year minus five years) through the year before validation; prior calendar year validation; next year test. Purge all training/validation labels crossing boundaries. The 2022 fold has 1.5 training years, 2023 has 2.5, 2024 has 3.5, 2025 has four.",
+  "horizon": 5,
+  "models": [
+    "think",
+    "think_mix",
+    "think_huber",
+    "think_mix_huber",
+    "mlp",
+    "stockmixer"
+  ],
+  "training_seeds": [
+    7,
+    19,
+    42,
+    61,
+    97
+  ],
+  "planned_neural_fits": 120,
+  "epochs": 30,
+  "patience": 6,
+  "lr": 0.001,
+  "early_stopping": "Prior validation MSE, same criterion across losses; no test-based epoch or seed selection",
+  "primary_portfolio": "Equal top 10, long only, no leverage; all five training seeds individually and equal-rank ensemble",
+  "secondary_portfolios": "Fixed equal top 5 and top 20 sensitivity; no best-K choice from test performance",
+  "controls": [
+    "ridge",
+    "momentum126",
+    "reversal5",
+    "monthly historical index equal-weight basket",
+    "SPY",
+    "QQQ"
+  ],
+  "consistency_outputs": [
+    "Monthly and annual net returns and benchmark-relative returns",
+    "Every seed",
+    "Worst test year",
+    "Maximum drawdown",
+    "Monthly excess-return spread",
+    "Fraction of months and years outperforming each ETF",
+    "Turnover and cost stress at 1x, 2x and 4x",
+    "Paired block-bootstrap intervals preserving same-date dependence"
+  ],
+  "selection": "Fixed architecture comparisons primary. Any candidate recommendation uses only prior validation excess returns with a declared median-minus-spread score; positive net return and risk constraints required. Predictable losses do not constitute success.",
+  "required_engine_work_after_data_review": [
+    "Dynamic monthly membership applied to training, validation, inference, scaling and correlation groups",
+    "Stable issuer/security IDs rather than recycled ticker keys",
+    "Inactive/future member padding cannot affect active scores; masked hypergraph edges must be tested",
+    "Verified corporate-action and delisting settlement accounting instead of indefinite forward fill",
+    "Continuous dated account and matched ETF holding periods across annual fold boundaries"
+  ],
+  "data_gate": [
+    "Reconciled monthly historical index membership, not historical company-cap ranking",
+    "No silently dropped old companies or substituted acquirers",
+    "Verified issuer continuity across symbol renames",
+    "Complete daily prices while a selected security trades; reviewed IPO warmup exceptions",
+    "Verified terminal cash/share consideration for test-period acquisitions",
+    "No price rows treated as trades after corporate-action completion"
+  ],
+  "stop_rule": "No training until data and engine gates pass. Freeze input hashes, code and protocol before test metrics. Report every declared outcome; no adaptive search for favorable 2022-2025 results.",
+  "limitation": "2022-2025 has already been repeatedly examined. Correct historical selection removes one hindsight source but does not make these years fresh confirmation data. Future paper trading/unseen dates remain necessary.",
+  "amendment": {
+    "date": "2026-10-11",
+    "authority": "User explicitly permitted historical official Nasdaq-100 monthly fallback if largest-company market-cap ranking was unavailable.",
+    "reason": "Alpha Vantage listing probe works, but quarterly shares have no publication dates and full/adjusted daily prices are premium. Free Tiingo recovers unrecycled delisted histories, but CA resolves to an unrelated ETF; earlier FOX security reuse also needs unrecovered pre-reorganization data.",
+    "training_window_reason": "Start July 2019 before inspecting replacement test metrics, to avoid silently dropping inaccessible earlier securities. Evaluation remains 2022-2025.",
+    "data_quality": "Research-grade reconstructed index events checked against primary announcements; remaining conflicts must be disclosed and resolved or tested. Retrospectively adjusted public prices are not a licensed as-published database.",
+    "unknown_training_outcomes": "Labels spanning unpriced pre-2022 mergers may remain unobserved and excluded from the loss only; signal-time membership and features cannot be deleted because a later target is unavailable. Report counts."
+  }
+}

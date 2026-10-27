@@ -1,0 +1,21 @@
+{
+  "MSE_minus_PH_CAGR": {
+    "observed": 0.2563734040227886,
+    "low": 0.05279689863670036,
+    "high": 0.4995460005584143,
+    "bootstrap_fraction_positive": 0.993
+  },
+  "MSE_minus_PH_Sharpe": {
+    "observed": 0.7245345261694899,
+    "low": 0.12909543067434984,
+    "high": 1.340571732865728,
+    "probability_positive": 0.991,
+    "block_sessions": 20,
+    "bootstrap_replicates": 1000,
+    "warning": "Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+  },
+  "conditional_on_fixed_selected_ensemble": true,
+  "accounts_for_training_seed_variation": false,
+  "multiple_comparisons_adjusted": false,
+  "random_chance_share_estimated": false
+}

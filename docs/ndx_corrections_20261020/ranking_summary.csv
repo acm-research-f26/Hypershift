@@ -1,0 +1,11 @@
+model,raw_rankic
+intraday_window__net_utility,0.007749471902067098
+intraday_window__top_rank,0.0036217914732913858
+paired_core,0.007749471902067098
+primary,0.004512822604168961
+rich_features__net_utility,0.004512822604168961
+rich_features__top_rank,0.006394519687573483
+ungated__intraday_window__net_utility,0.005969219737602603
+ungated__intraday_window__top_rank,0.003970777701922398
+ungated__rich_features__net_utility,0.005976523049069494
+ungated__rich_features__top_rank,0.006394519687573483

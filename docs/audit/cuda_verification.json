@@ -1,0 +1,186 @@
+{
+  "status": "passed",
+  "checked_on": "2026-10-08",
+  "hardware": {
+    "device": "cuda",
+    "torch": "2.14.0+cu130",
+    "cuda_build": "13.0",
+    "deterministic_algorithms": true,
+    "precision": "float32, no AMP; TF32 disabled for CUDA",
+    "cublas_workspace_config": ":4096:8",
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "gpu_memory_bytes": 8585216000,
+    "compute_capability": "8.9",
+    "cudnn_version": 92400
+  },
+  "synthetic_architecture_checks": [
+    {
+      "model": "think",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 1.3480586999939987,
+      "cpu_gpu_max_abs_prediction_difference": 9.313225746154785e-10
+    },
+    {
+      "model": "think_rank",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.16847439999401104,
+      "cpu_gpu_max_abs_prediction_difference": 9.313225746154785e-10
+    },
+    {
+      "model": "think_gate",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.24147910000465345,
+      "cpu_gpu_max_abs_prediction_difference": 9.313225746154785e-10
+    },
+    {
+      "model": "think_mix",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.22217380000802223,
+      "cpu_gpu_max_abs_prediction_difference": 2.9802322387695312e-08
+    },
+    {
+      "model": "think_risk",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.24563869999838062,
+      "cpu_gpu_max_abs_prediction_difference": 9.313225746154785e-10
+    },
+    {
+      "model": "mlp",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.01660190000256989,
+      "cpu_gpu_max_abs_prediction_difference": 1.4901161193847656e-08
+    },
+    {
+      "model": "lstm",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.08239759999560192,
+      "cpu_gpu_max_abs_prediction_difference": 5.21540641784668e-07
+    },
+    {
+      "model": "stockmixer",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.044138599987491034,
+      "cpu_gpu_max_abs_prediction_difference": 7.450580596923828e-08
+    },
+    {
+      "model": "market_transformer",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.1185552000097232,
+      "cpu_gpu_max_abs_prediction_difference": 2.384185791015625e-07
+    },
+    {
+      "model": "think_huber",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.22447319999628235,
+      "cpu_gpu_max_abs_prediction_difference": 1.3969838619232178e-09
+    },
+    {
+      "model": "think_mix_huber",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.19192659998952877,
+      "cpu_gpu_max_abs_prediction_difference": 2.9802322387695312e-08
+    },
+    {
+      "model": "stockmixer_huber",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.03405940000084229,
+      "cpu_gpu_max_abs_prediction_difference": 8.940696716308594e-08
+    },
+    {
+      "model": "think_mix_shrink",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.21445739999762736,
+      "cpu_gpu_max_abs_prediction_difference": 3.725290298461914e-09
+    },
+    {
+      "model": "think_mix_shrink_huber",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.2178693000023486,
+      "cpu_gpu_max_abs_prediction_difference": 3.725290298461914e-09
+    },
+    {
+      "model": "multiscale_mse",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.10119989998929668,
+      "cpu_gpu_max_abs_prediction_difference": 1.1920928955078125e-07
+    },
+    {
+      "model": "multiscale_huber",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.08133060000545811,
+      "cpu_gpu_max_abs_prediction_difference": 9.685754776000977e-08
+    },
+    {
+      "model": "think_mix_huber_rank_01",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.26565659999323543,
+      "cpu_gpu_max_abs_prediction_difference": 2.9802322387695312e-08
+    },
+    {
+      "model": "think_mix_huber_rank_03",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.2127699999982724,
+      "cpu_gpu_max_abs_prediction_difference": 2.9802322387695312e-08
+    },
+    {
+      "model": "think_mix_huber_rank_10",
+      "device": "cuda",
+      "optimizer_steps": 3,
+      "finite_outputs_and_gradients": true,
+      "elapsed_seconds": 0.21374720000312664,
+      "cpu_gpu_max_abs_prediction_difference": 2.9802322387695312e-08
+    }
+  ],
+  "training_runner_checks": [
+    {
+      "runner": "robust",
+      "synthetic_epoch_completed": true,
+      "numpy_predictions_verified": true,
+      "portable_cpu_checkpoint_verified": true
+    },
+    {
+      "runner": "original",
+      "synthetic_epoch_completed": true,
+      "numpy_predictions_verified": true,
+      "portable_cpu_checkpoint_verified": true
+    }
+  ],
+  "peak_cuda_memory_bytes": 104296448,
+  "scope": "Synthetic GPU smoke verification only. No historical models retrained and no backtest results changed."
+}

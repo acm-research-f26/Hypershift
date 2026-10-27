@@ -1,0 +1,71 @@
+{
+  "purpose": "User-authorized continued search: preserve the strongest architecture and require new feature corrections to earn acceptance on chronological validation",
+  "created_local_date": "2026-10-20",
+  "test_years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "seeds": [
+    7,
+    19,
+    42,
+    61,
+    97
+  ],
+  "feature_families": [
+    "intraday_window",
+    "rich_features"
+  ],
+  "objectives": [
+    "top_rank",
+    "net_utility"
+  ],
+  "planned_core_fits": 20,
+  "planned_adapter_fits": 80,
+  "core": "Original five-feature THINK+mixer architecture and train-only correlation graph; same original five-session training origins and normalization; raw-return MSE, 30-epoch cap, patience six; earliest best FIRST-HALF validation MSE checkpoint. Freeze every core parameter before adapter fitting.",
+  "validation": "Split the prior-year validation origins by signal month: January-June H1 and July-December H2. Purge H1 targets maturing at/after the first H2 signal. H2 is not used for core checkpoint selection, adapter training or correction choice. These partitions are chronological within this run; globally these years remain previously inspected.",
+  "adapter": {
+    "hidden": 16,
+    "epochs": 20,
+    "checkpoint_epochs": [
+      5,
+      10,
+      20
+    ],
+    "batch_origins": 8,
+    "lr": 0.001,
+    "weight_decay": 0.01,
+    "gradient_norm_cap": 1
+  },
+  "features": "Intraday_window: 16 regular sessions x eight reviewed intraday summaries. Rich_features: existing 65 causal multi-horizon channels. Training-only normalization; zero corrections preserve the paired core's predictions exactly.",
+  "correction": "Shared per-stock MLP with a zero-initialized final linear layer, masked/centered across eligible stocks; score delta = 0.5 times signal-time cross-sectional core-score SD times centered tanh(adapter). Core-score SD floor 1e-4 percentage points. No ticker parameters in the adapter. Neither core weights nor original checkpoints are modified.",
+  "top_rank_loss": "Pairwise logistic on normalized corrected scores, weighted by the absolute NDCG@10 gain/discount change, using observed unequal target-return pairs only; 0.01 mean squared normalized correction anchor. This is a local LambdaRank-inspired objective, not a certified reproduction.",
+  "utility_loss": "Softmax of corrected scores divided by core SD and temperature 0.5; minimize negative mean five-session SPY-active return in percentage points + 0.1 active-return variance + concentration penalty above sum(weights^2)=0.1 + 0.1 times consecutive target-weight L1 turnover + 0.01 squared normalized correction. Utility returns use fully observed origins only; no invented missing outcomes. The surrogate is not actual portfolio accounting.",
+  "shrink_factors": [
+    0,
+    0.25,
+    0.5,
+    1
+  ],
+  "H1_selection": "After all fits, compare 5/10/20-epoch checkpoints and nonzero shrink factors for each of four adapters. Zero correction is always available. Use five-seed eligible-rank ensembles, hard top-10 label-return deltas versus the paired core, minus a 0.1-percentage-point L1 target-turnover proxy. Choose maximum mean delta minus 0.1 times its variance. Only improvements >1e-7 displace zero. Primary chooses one adapter on H1 only; per-adapter choices are controls. Lock every H1 choice before H2 scoring.",
+  "H2_acceptance": "For the single H1-selected candidate, require at least twelve fully observed comparable H2 origins, positive mean net-proxy improvement over the core, and improvements on at least half comparable origins. If it fails, retain the core. Never try another primary candidate after H2 rejection. Evaluate the four adapter-specific gates as disclosed controls; do not choose the primary from H2 or test results.",
+  "missing_validation_labels": "An origin is comparable only if BOTH paired hard-top-10 baskets have all selected five-session labels observed. Report omitted counts; do not silently remove a member or invent a return. H1/H2 gate proxies omit actual drift, ADV caps and settlement; final accounts include the original reviewed execution/accounting rules.",
+  "portfolio": "Five-seed rank ensemble, fixed equal top ten, same $1m continuous accounts, frozen orders filled next close, same transaction costs and 1% ADV caps",
+  "risk_policies": [
+    "full",
+    "trend_half"
+  ],
+  "risk_rule": "Same fixed rule as preceding broad batch: full stock exposure above/equal signal-time QQQ MA200, half plus cash below. No risk parameter search.",
+  "cost_multipliers": [
+    1,
+    2,
+    4
+  ],
+  "inference": "10000 whole-day paired circular-block samples, blocks 5/20/60 sessions, primary 20. Fourteen simultaneous active-mean contrasts: for each primary risk policy compare with SPY, QQQ, its paired H1-stopped core and the four adapter-specific gated controls. Prior strongest full-validation THINK+mixer is an additional descriptive reference outside this family.",
+  "historical_reliability_screen": "Primary must exceed SPY CAGR at base and double costs, beat SPY in at least 3/4 years and 28/48 months, and have maximum drawdown no more than five percentage points worse than SPY. Disclose matched seed blends and all competing policies. A screen pass is historical development evidence, not guaranteed future skill.",
+  "stop_rule": "Freeze source/data/protocol before all 100 fits; lock H1 choices before H2 gates and both before any new test metric. Publish every adapter, rejection, zero-correction fallback, seed and cost sensitivity. Do not alter earlier negative studies or select winners from test returns.",
+  "history_status": "2022-2025 remains exploratory after multiple prior research batches. Future confirmation from the separately reserved dates has not happened.",
+  "source": "https://www.microsoft.com/en-us/research/publication/from-ranknet-to-lambdarank-to-lambdamart-an-overview/"
+}

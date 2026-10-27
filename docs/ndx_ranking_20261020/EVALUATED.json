@@ -1,0 +1,11 @@
+{
+  "status": "completed_pending_independent_audit",
+  "neural_fits": 120,
+  "ridge_fits": 8,
+  "continuous_accounts": 69,
+  "complete_ranking_origins": 200,
+  "beta_supported_test_labels": 20228,
+  "beta_test_labels": 20232,
+  "history_status": "exploratory, already inspected",
+  "future_confirmation": "reserved, not observed"
+}

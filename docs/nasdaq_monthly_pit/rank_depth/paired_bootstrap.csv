@@ -1,0 +1,4 @@
+model,comparison,observed,low,high,probability_positive,block_sessions,bootstrap_replicates,warning
+stockmixer,top5 minus top10 Sharpe,0.3335876447159503,-0.04183167180082331,0.7000904046019764,0.959,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix,top5 minus top10 Sharpe,-0.21419421846426134,-0.5468697358619982,0.11317038510147122,0.085,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."
+think_mix_pseudohuber,top5 minus top10 Sharpe,0.27734308070564595,-0.022913988550712316,0.5948973935198921,0.965,20,1000,"Exploratory paired interval, not multiplicity-adjusted or proof of an edge."

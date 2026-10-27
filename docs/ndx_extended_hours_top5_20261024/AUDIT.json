@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "independent_accounts": 62,
+  "matching_prior_accounts": 37,
+  "rank_ensembles_independently_reconstructed": 6,
+  "independent_materialized_bootstrap_accounts": 3,
+  "bootstrap_replicates": 10000,
+  "largest_nav_difference_dollars": 6.752088665962219e-08,
+  "source_hashes_verified": 567,
+  "new_training_fits": 0
+}

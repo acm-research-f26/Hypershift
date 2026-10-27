@@ -1,0 +1,9 @@
+{
+  "status": "completed_exploratory_research",
+  "neural_fits": 120,
+  "continuous_portfolio_paths": 120,
+  "first_date": "2022-01-03",
+  "last_date": "2025-12-31",
+  "initial_nav": 1000000,
+  "annual_account_resets": 0
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "checkpoints_reproduced": 280,
+  "independent_accounts": 241,
+  "ridge_models_reproduced": 8,
+  "largest_nav_difference_dollars": 5.657784640789032e-08,
+  "raw_chunk_hashes_verified": 1288,
+  "independent_intraday_session_samples": 40,
+  "symbol_identity_windows_verified": true,
+  "rank_ensembles_and_metrics_recomputed": 18,
+  "annual_resets": 0,
+  "maximum_ranking_metric_difference": 6.00622723431754e-10,
+  "pearson_ic_absolute_tolerance": 1e-08,
+  "pearson_precision_note": "Production centers float32 targets; independent NumPy correlation uses float64. Rank/NDCG tolerance remains 1e-10.",
+  "limitation": "Exploratory inspected years; conditional inference; raw provider identities not independently certified for every row."
+}

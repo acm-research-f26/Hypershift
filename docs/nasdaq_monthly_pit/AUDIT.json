@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "neural_checkpoints_reproduced": 120,
+  "independent_share_cash_paths": 120,
+  "recomputed_metrics": 120,
+  "largest_nav_difference_dollars": 6.100162863731384e-08,
+  "annual_resets": 0,
+  "held_missing_prices_without_actions": 0,
+  "future_input_perturbation_past_forecasts_unchanged": 149,
+  "note": "Arithmetic/timing reproduction does not certify vendor or reconstructed-index data; limitations remain disclosed."
+}

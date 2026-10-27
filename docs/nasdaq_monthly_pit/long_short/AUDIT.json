@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "independent_signed_cash_paths": 570,
+  "parent_long_only_paths_unchanged": 30,
+  "largest_ledger_difference_dollars": 3.958120942115784e-09,
+  "future_perturbation_unchanged_daily_marks": 500,
+  "new_model_fits": 0,
+  "annual_resets": 0,
+  "price_type": "adjusted economic-price proxy",
+  "historical_short_availability_verified": false
+}

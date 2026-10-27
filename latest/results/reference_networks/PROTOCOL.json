@@ -1,0 +1,41 @@
+{
+  "purpose": "Commit-pinned author neural networks transferred to reviewed NASDAQ monthly membership and identical execution rules; no claim to reproduce paper benchmarks",
+  "years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "seeds": [
+    7,
+    19,
+    42,
+    61,
+    97,
+    1828801906,
+    1868046758,
+    239154507,
+    287727767,
+    981756941
+  ],
+  "networks": [
+    "master",
+    "dynamic_restricted",
+    "prism"
+  ],
+  "fit_budget": "120 annual seed fits; PRISM has two separately checkpointed training stages. No expansion or hyperparameter selection from test outcomes.",
+  "epochs": 30,
+  "patience": 6,
+  "checkpoint_rule": "Earliest prior-year validation raw-return MSE improvement >1e-7; PRISM representation stage uses author's reconstruction+VQ+0.0001*future prediction objective. Maximum 30 epochs and patience six for each stage, explicitly different from paper training budgets.",
+  "common_inputs": "Same 25 stock channels as parent: five daily and twenty AH+PM channels, same sixteen-session window, train-only normalization and imputation, same 09:15 cutoff / 09:20 decision / next regular-close fill, same five-session target in percentage points. Labels never determine the inference cross-section. This replaces Alpha158 or each paper's original features and horizon conventions.",
+  "master": "Author MASTER classes unchanged: width256, temporal heads4, spatial heads2, dropout0.5, gate temperature5. Additional ten market channels are the same five daily features for SPY/QQQ through preceding regular close. Adam LR1e-5, no weight decay, per-date updates. Market indices/features differ from the China paper.",
+  "dynamic_restricted": "Author layers and architecture unchanged at width32, heads4, learned hyperedges64, dropout0.1, weighted-sum fusion; Adam LR1e-4, RMSE training objective. Explicitly restricted static input: one correlation-group wavelet snapshot from training-only historical member returns, replacing the author's five sector/lead-lag snapshots. No reviewed point-in-time NASDAQ sector history is available. All-active adapter must match author forward; inference masks inactive nodes and static propagation. This is NOT a full faithful SPF pipeline reproduction.",
+  "prism": "Author 128-dimensional VQ encoder, 512 codes, two-stage VQVAE then factor-loading predictor, eight experts/topfour and 13 authentic JKP USA daily vw_cap themes. JKP lag-one twenty-session cumulative features follow author construction. Author optimizer AdamW LR1e-4 wd1e-5 and five-percent linear warmup/cosine schedule, per-date updates. Sequence16 requires decoder initial_T4 and predictor length16. Future stage-one targets are entry to entry+h, h1..10; purge ten-session outcomes separately at both fold boundaries. Retain all current eligible nodes with missing supervision masked by author loss. Stage-two representation forced to eval across outer train calls to honor author freeze intent and prevent codebook mutation. Disable Transformer fastpath because author RMSNorm is not LayerNorm. No author checkpoints loaded.",
+  "factor_limitations": "Downloaded current JKP vintage covers through 2025-12-31; time-lagged data are not verified historical publication vintages. Factor revisions and publication delay remain limitations, and no 2026 factor feed is available from this snapshot. No fresh-period validity claim.",
+  "ensemble_methods": "Parent AH+PM fixed AdamW/MSE plus three reference adapters; additionally predeclare one equal-weight rank blend between each reference and parent. Each annual seed model is combined by eligible cross-sectional percentile ranks. Primary ten-seed; original/new five diagnostic. Blends average the two ensemble rank scores exactly 50/50, never choose weights from test returns.",
+  "accounts": "Seven methods x three seed groups x K5/K10 x base/double/quadruple costs =126; four pure networks including parent x ten individual seeds at K10/base =40; SPY/QQQ x three costs =6; total172 accounts. No individual blend-seed account. Same parent NAV, corporate actions, liquidity caps and cash constraints.",
+  "inference": "10000 paired circular-block resamples at 5/20/60 sessions, primary20. Fixed ten-seed family: seven methods vs SPY/QQQ (14), six new methods vs parent (6), three blends vs respective standalone reference (3), total23. Report paired SR/CAGR and simultaneous-family uncertainty. Repeatedly inspected 2022-2025 exploratory history.",
+  "complementarity": "Raw forecast residual correlation in common percentage-point units for pure networks, mean per-date score/rank correlation, net and QQQ-active return correlations, top-ten holding overlap; no test-fitted blend.",
+  "confirmation_gate": "No deployment from development ranking. Require consistency across both fixed seed halves and ten-seed ensemble; cost stress; paired comparisons; a separately frozen candidate, refit/execution/membership/cold-start policy and genuinely untouched prospective period. Existing reservation no earlier than 2026-10-21 with first formal read after252sessions has not matured and is not claimed as confirmation. Do not inspect 2026 returns here.",
+  "scope": "Chat results only; no new documents, spreadsheet changes, trades or automations. Imported author sources pinned and hashed before any candidate training. Neural smoke tests may use synthetic data but no financial test metrics before all120fits locked. Stop and disclose failures instead of changing frozen recipes."
+}

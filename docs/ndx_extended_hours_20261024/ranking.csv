@@ -1,0 +1,10 @@
+view,group,rankic,observed_origins
+daily,ten_seed,0.004849357826347103,200
+daily,original_five,0.007405916214952991,200
+daily,new_five,0.008176558318537936,200
+after_hours,ten_seed,0.0035727536866006636,200
+after_hours,original_five,0.006340870731297754,200
+after_hours,new_five,0.006093332247273423,200
+after_hours_premarket,ten_seed,0.0037740295593641504,200
+after_hours_premarket,original_five,0.006055027629925361,200
+after_hours_premarket,new_five,0.006741141000318141,200

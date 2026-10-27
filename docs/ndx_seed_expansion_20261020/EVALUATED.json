@@ -1,0 +1,10 @@
+{
+  "status": "complete_pending_audit",
+  "new_fits": 80,
+  "total_seeds": 25,
+  "accounts": 330,
+  "bootstrap_accounts": 256,
+  "reference_paths": 106,
+  "family_comparisons": 220,
+  "history": "exploratory"
+}

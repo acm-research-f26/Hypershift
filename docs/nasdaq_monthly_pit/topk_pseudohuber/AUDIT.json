@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "new_checkpoints_reproduced": 20,
+  "independent_share_cash_paths": 204,
+  "parent_paths_unchanged": 120,
+  "new_paths": 84,
+  "ranking_models_independently_checked": 10,
+  "largest_nav_difference_dollars": 6.100162863731384e-08,
+  "annual_resets": 0,
+  "future_input_perturbation_past_forecasts_unchanged": 149,
+  "validation_export_correction": "VALIDATION_EXPORT_CORRECTION.json; original caches preserved; selected-checkpoint validation and unchanged test forecasts verified",
+  "limitation": "Exploratory follow-up on already-inspected years; original public-data and corporate-action limitations remain"
+}

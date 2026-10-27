@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "new_model_fits": 0,
+  "matched_checkpoint_pairs": 20,
+  "same_architecture_groups_preprocessing_seeds_optimizer_and_runtime": true,
+  "recreated_initial_parameters_identical": true,
+  "final_parameters_identical_pairs": 0,
+  "different_selected_epochs": 13,
+  "independent_marginal_seed_accounts": 12,
+  "validation_exports": "Selected-checkpoint sidecars for pseudo-Huber; stale final-epoch exports not used",
+  "limitations": [
+    "No retraining; loss comparison includes the intended resulting changes in fitted weights and validation-selected epochs",
+    "Initialization recreation verifies the code/seed rule, not a stored initial-state artifact",
+    "Gradient examples concern unnormalized per-observation loss derivatives; AdamW, batching and global norm clipping affect actual updates",
+    "Validation-error summaries describe selected checkpoints, not every training-step residual",
+    "Observed performance gaps do not establish persistent loss superiority"
+  ]
+}

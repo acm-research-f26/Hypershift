@@ -1,0 +1,8 @@
+{
+  "status": "complete_pending_audit",
+  "fits": 100,
+  "checkpoints": 260,
+  "accounts": 144,
+  "contrasts": 14,
+  "validation_locked_before_test_metrics": true
+}
