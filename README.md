@@ -55,7 +55,7 @@ taker-route assumption. Historical locates and live market impact remain unknown
 ```powershell
 uv run --extra validation python -m experiments.strategy_validation audit `
   --reference <frozen-strategy-search-run> --output <new-private-validation-run> `
-  --archive <existing-Alpaca-1min-archive>
+  --archive <existing-Alpaca-1min-archive> --reservation-manifest <reserved-session-audit.json>
 uv run --extra validation python -m experiments.strategy_validation replay `
   --reference <frozen-strategy-search-run> --output <same-validation-run> --download-quotes
 uv run --extra validation python -m experiments.strategy_validation report `
@@ -77,3 +77,10 @@ followed by 60 evaluation sessions. This is delayed-SIP forward replay, not a
 live execution or broker paper-fill test. Corporate-action days are recorded and
 affected symbols excluded. Use `--env-file` to locate credentials without putting
 keys on the command line. No scheduler is installed by these commands.
+
+Before the first validation freeze, supply `--reservation-manifest <audit.json>`
+with `reserved_session_dates` (ISO date strings) and supporting metadata hashes.
+Forward collection starts after both the source freeze and the last protected
+session. An empty list requires `verified_no_existing_reservation: true` after
+an actual reservation audit. Changing the reservation requires a new run; old
+sealed price/label outcomes must never be opened to construct this metadata.

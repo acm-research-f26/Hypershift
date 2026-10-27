@@ -61,6 +61,7 @@ def freeze(reference, output):
     immutable = dict(config=config, reference=str(reference),
                      reference_files={n: sha(reference / n) for n in ('protocol.json', 'selection.json', 'fit.npz')},
                      validation_source=binding, assumptions=asdict(Execution()), fee_sources=SOURCES,
+                     protected_sessions_sha256=sha(output / 'protected_sessions.json') if (output / 'protected_sessions.json').exists() else None,
                      strategy_dependencies={p.name: sha(p) for p in sorted((source.parent / 'strategy_search').glob('*.py'))},
                      accounts=[25_000., 100_000., 1_000_000.], delays=[2, 3, 5], stresses_bps=[0., .5, 1.],
                      warmup_sessions=20, forward_evaluation_sessions=60,

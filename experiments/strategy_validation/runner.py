@@ -5,6 +5,7 @@ from pathlib import Path
 import csv
 import json
 import hashlib
+import shutil
 import time
 import numpy as np
 
@@ -180,7 +181,15 @@ def main():
     parser.add_argument('--download-quotes', action='store_true')
     parser.add_argument('--workers', type=int, choices=range(1, 17), default=12)
     parser.add_argument('--session', help='Prospective YYYY-MM-DD exchange session, after close +20 minutes')
+    parser.add_argument('--reservation-manifest', type=Path, help='Audited reserved_session_dates JSON; required before forward initialization')
     args = parser.parse_args()
+    if args.reservation_manifest:
+        target = args.output / 'protected_sessions.json'
+        if (args.output / 'protocol.json').exists() and (not target.exists() or sha(target) != sha(args.reservation_manifest)):
+            raise ValueError('Cannot change protected sessions after freeze; use a new output directory')
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if args.reservation_manifest.resolve() != target.resolve():
+            shutil.copy2(args.reservation_manifest, target)
     protocol = freeze(args.reference, args.output)
     if args.command == 'audit':
         if args.archive:

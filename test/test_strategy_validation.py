@@ -173,8 +173,10 @@ def test_quote_assembly_detects_tampering(tmp_path):
 
 def test_prospective_freeze_rejects_backdating(tmp_path):
     from experiments.strategy_validation.shadow import initialize, collect
-    from experiments.strategy_search.storage import atomic
+    from experiments.strategy_search.storage import atomic, sha
     protocol = {'frozen_UTC': '2026-10-26T23:00:00+00:00', 'binding': {'config': {'family': 'S10'}}}
+    atomic(tmp_path / 'protected_sessions.json', {'reserved_session_dates': [], 'verified_no_existing_reservation': True})
+    protocol['binding']['protected_sessions_sha256'] = sha(tmp_path / 'protected_sessions.json')
     atomic(tmp_path / 'protocol.json', protocol)
     p = initialize(tmp_path / 'reference', tmp_path, protocol)
     assert p['earliest_session'] == '2026-10-27'
@@ -185,7 +187,7 @@ def test_prospective_freeze_rejects_backdating(tmp_path):
 def test_forward_collection_caches_bars_and_prior_announced_actions(tmp_path, monkeypatch):
     from datetime import datetime, timezone
     import experiments.strategy_validation.shadow as shadow
-    from experiments.strategy_search.storage import atomic, read
+    from experiments.strategy_search.storage import atomic, read, sha
     class Clock(datetime):
         @classmethod
         def now(cls, tz=None):
@@ -205,6 +207,8 @@ def test_forward_collection_caches_bars_and_prior_announced_actions(tmp_path, mo
     atomic(reference / 'protocol.json', {'market_root': str(market)})
     output = tmp_path / 'output'
     protocol = {'frozen_UTC': '2026-10-26T23:00:00+00:00', 'binding': {'config': {'family': 'S10'}}}
+    atomic(output / 'protected_sessions.json', {'reserved_session_dates': [], 'verified_no_existing_reservation': True})
+    protocol['binding']['protected_sessions_sha256'] = sha(output / 'protected_sessions.json')
     atomic(output / 'protocol.json', protocol)
     result = shadow.collect(reference, output, protocol, None, '2026-10-27')
     assert result['sessions'] == 1
@@ -214,3 +218,22 @@ def test_forward_collection_caches_bars_and_prior_announced_actions(tmp_path, mo
     count = len(calls)
     assert shadow.collect(reference, output, protocol, None, '2026-10-27')['status'] == 'already_collected'
     assert len(calls) == count
+
+
+def test_forward_collection_respects_sealed_sessions_and_requires_audit(tmp_path):
+    from experiments.strategy_validation.shadow import initialize, collect
+    from experiments.strategy_search.storage import atomic, sha
+    protocol = {'frozen_UTC': '2026-10-26T23:00:00+00:00', 'binding': {'config': {'family': 'S10'}}}
+    atomic(tmp_path / 'protocol.json', protocol)
+    with pytest.raises(ValueError, match='reservation-manifest'):
+        initialize(tmp_path / 'reference', tmp_path, protocol)
+    atomic(tmp_path / 'protected_sessions.json', {'reserved_session_dates': ['2026-10-27', '2027-01-13']})
+    protocol['binding']['protected_sessions_sha256'] = sha(tmp_path / 'protected_sessions.json')
+    atomic(tmp_path / 'protocol.json', protocol)
+    p = initialize(tmp_path / 'reference', tmp_path, protocol)
+    assert p['earliest_session'] == '2027-01-14'
+    with pytest.raises(ValueError, match='precedes prospective'):
+        collect(tmp_path / 'reference', tmp_path, protocol, None, '2026-10-27')
+    atomic(tmp_path / 'protected_sessions.json', {'reserved_session_dates': []})
+    with pytest.raises(ValueError, match='reservation-manifest'):
+        initialize(tmp_path / 'reference', tmp_path, protocol)

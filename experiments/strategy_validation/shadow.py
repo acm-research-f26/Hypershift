@@ -11,6 +11,16 @@ from .quotes import credentials, request, download
 
 
 def initialize(reference, output, protocol):
+    reservation_path = Path(output) / 'protected_sessions.json'
+    expected = protocol['binding'].get('protected_sessions_sha256')
+    if not reservation_path.exists() or expected is None or sha(reservation_path) != expected:
+        raise ValueError('Forward collection requires a frozen --reservation-manifest audit, including explicit confirmation when no reservations exist')
+    reservation = read(reservation_path)
+    protected = sorted(set(reservation.get('reserved_session_dates', [])))
+    if not protected and not reservation.get('verified_no_existing_reservation', False):
+        raise ValueError('Reservation audit must list protected dates or explicitly confirm none exist')
+    for day in protected:
+        datetime.strptime(day, '%Y-%m-%d')
     path = Path(output) / 'shadow' / 'protocol.json'
     if path.exists():
         saved = read(path)
@@ -21,8 +31,11 @@ def initialize(reference, output, protocol):
     # Start after the local trading date at freeze; never backdate a forward run.
     from zoneinfo import ZoneInfo
     first = frozen.astimezone(ZoneInfo('America/New_York')).date() + timedelta(days=1)
+    if protected:
+        first = max(first, datetime.strptime(protected[-1], '%Y-%m-%d').date() + timedelta(days=1))
     saved = dict(parent_protocol_sha256=sha(Path(output) / 'protocol.json'),
                  earliest_session=str(first), warmup_sessions=20, evaluation_sessions=60,
+                 protected_sessions_sha256=expected, latest_protected_session=protected[-1] if protected else None,
                  execution='After-close delayed-SIP forward replay; no live or paper orders',
                  data_feed='sip', corporate_action_status='must verify separately for advancement',
                  frozen_strategy=protocol['binding']['config'], published_summary_checkpoints=[20, 40, 60])
