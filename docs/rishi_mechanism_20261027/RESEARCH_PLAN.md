@@ -12,6 +12,8 @@
 
 **Scope:** Rishi source snapshot `d474406`, merged into `tom-shlom`; source/summary inspection and the bounded diagnostics below. No financial model training, 2026 strategy scoring, prospective activation or trading was performed. This is a research plan, not a preregistered performance claim or permission to run every proposed experiment.
 
+**Execution update:** the user's subsequent “after you finish the plan, start testing” authorizes beginning available tests. `EXECUTION_PROTOCOL.md` freezes the first bounded batch and prioritizes artifact replay plus blend/identity/risk attribution before conditional retraining. Different blend weights are omitted. The original analysis/evidence statements below describe the completed initial investigation; execution results are versioned separately in `execution_batch1/`.
+
 ## 1. Working answer
 
 Rishi's progress has two distinct parts. First, a fixed blend of a THINK+mixer parent and a restricted dynamic-hypergraph network changes the upper-tail stock selection and produces stronger historical portfolios than either alone. Second, hand-coded volatility/exposure rules reduce the risk of those portfolios without changing the trained forecasts. The reported Sharpe above 1 is therefore not evidence that a new neural network suddenly became a better predictor.
