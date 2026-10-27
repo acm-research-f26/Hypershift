@@ -7,7 +7,8 @@ Updated 2026-10-27 after merging Rishi's `origin/feat-rs` at `d474406` into `tom
 1. `docs/START_HERE.md`: authoritative research state, decisions, discipline and data traps.
 2. This file, then `docs/HANDOFF.md`: current coordination and session notes. Older dated entries are history, not proof a worker is still running.
 3. `CLAUDE.md`: durable environment, architecture and THINK history. Its older phase statuses, commands and compute rules need checking against the current source layout and START_HERE.
-4. The relevant study report, frozen protocol and progress log before changing its files.
+4. `charts.md`: essential results overview for Rishi's current work. Read its leader comparisons, SPY/QQQ benchmarks, seed ensembles, drawdowns, model explanation and full strategy gallery before assessing the latest results or proposing follow-up work.
+5. Follow the links from `charts.md` to the relevant study report, frozen protocol, audit and progress log before changing its files or making a research claim.
 
 Where these documents conflict, use START_HERE for research policy and the newest dated study artifacts for that study's results. Resolve conflicts explicitly; do not silently reopen closed work.
 
@@ -25,7 +26,7 @@ Find an implementable US-equity strategy with useful returns after realistic cos
 ## Current source layout and commands
 
 - `latest/README.md`: latest dynamic-hypergraph study; `research/README.md`: shared NASDAQ-100 source map.
-- `charts.md` and `docs/NASDAQ100_strategy_comparison.xlsx`: current presentation, including 364 main strategies. Read protocols and reports before relying on chart headlines.
+- `charts.md`: primary visual entry point to the current results, including 364 main strategies, matched benchmarks, seed/cost diagnostics and links to provenance. Use it together with the underlying reports and audits; preserve the distinction between selected historical leaders and confirmation. `docs/NASDAQ100_strategy_comparison.xlsx` supplies the companion detailed comparison.
 - `docs/PROJECT_LAYOUT.md`, `config/README.md`, `requirements/README.md`: layout, frozen settings and dependencies.
 - Organized Rishi code lives in `research/` and `latest/`; Tom's earlier implementation lives in `src/hypershift/` and `scripts/`. Do not assume their launchers or evaluation contracts are interchangeable.
 - In PowerShell, run the existing environment directly from the repo root:
