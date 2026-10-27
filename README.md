@@ -84,3 +84,29 @@ Forward collection starts after both the source freeze and the last protected
 session. An empty list requires `verified_no_existing_reservation: true` after
 an actual reservation audit. Changing the reservation requires a new run; old
 sealed price/label outcomes must never be opened to construct this metadata.
+
+The bounded follow-up is in `experiments/closing_followup`. It compares the S10
+control, three/five-name concentration with and without a training-only cost
+hurdle, volume/peer-persistence filters, and SPY/QQQ or sector-ETF pairs. All
+signals return explicit instrument weights. A separate execution engine trims
+asymmetric fills to respect the net band during liquidation and cancels pending
+entries after three attempts. The original validation engine remains unchanged.
+
+```powershell
+uv run --extra validation python -m experiments.closing_followup.prepare `
+  --reference <frozen-strategy-search-run> --prior <previous-validation-run> `
+  --output <new-private-followup-run> --env-file .env
+uv run --extra validation python -m experiments.closing_followup run `
+  --reference <frozen-strategy-search-run> --prior <previous-validation-run> `
+  --output <same-followup-run>
+```
+
+The preparation command caches SIP ETF bars and bid/ask snapshots locally for
+the exact previously exposed session dates. Existing stock quote snapshots are
+hash-verified and reused. `run` freezes a nine-policy, five-scenario, three-cohort
+comparison, fits only the first 60 earlier sessions, freezes development
+selection before later replay, independently verifies every minute's cash/NAV
+and every executed quote, and saves resumable results plus a standalone report.
+The scenarios include commission-free, zero explicit fees with actual spreads,
+and a zero execution-cost minute-open diagnostic. These remain exploratory;
+the future reservation is checked before loading any requested session.
