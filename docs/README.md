@@ -9,11 +9,13 @@ is the current cross-study visual record.
 
 | Document | Scope |
 | --- | --- |
+| [Own-model hedge signals, October 27](ndx_model_hedge_20261027/REPORT.md) | 495 accounts testing raw and prior-year-calibrated model triggers; model timing fails this grid, while continuous hedging has the highest observed Sharpe |
+| [Weak-market shorting, October 27](ndx_weak_market_short_20261027/REPORT.md) | 39 rules / 531 cost, seed and borrow accounts; partial QQQ hedges improve selected historical risk metrics while switching short reduces returns |
 | [Matched controls and candidate freeze, October 27](ndx_matched_controls_20261027/REPORT.md) | 29 predeclared neural, QQQ and momentum strategies at three costs; frozen prospective policy and activation prerequisites |
 | [Drawdown-control study, October 26](ndx_drawdown_20261026/REPORT.md) | 305 risk-control recipes on saved blend forecasts; audited return, Sharpe, drawdown, seed and cost comparisons |
 | [Latest dynamic-hypergraph study](../latest/README.md) | Direct sources, frozen protocols, tests and portable results for the newest study |
-| [Master charts](../charts.md) | Chart-first comparison of the new Sharpe leaders with SPY/QQQ, 364 main strategies and 652 chart panels |
-| [NASDAQ100_strategy_comparison.xlsx](NASDAQ100_strategy_comparison.xlsx) | Ten tabs. New findings opens with comparison line charts; Drawdown accounts retains the full search and Leader paths drives the charts. |
+| [Master charts](../charts.md) | Latest hedge comparison and 472 main strategy accounts with SPY/QQQ; earlier 652-panel gallery preserved |
+| [NASDAQ100_strategy_comparison.xlsx](NASDAQ100_strategy_comparison.xlsx) | Thirteen tabs. Model hedges opens with the latest comparison; Hedge accounts retains all 495 cases and Hedge paths drives its editable charts. Prior ten tabs remain. |
 | [Comparison gallery](strategy_comparison_20261024/README.md) | Figure catalog, audit and chart coverage |
 | [Project layout and commands](PROJECT_LAYOUT.md) | Grouped sources, launcher and reproducibility |
 | [Alpaca data guide](ALPACA_15MIN.md) | Credentials, historical 15-minute acquisition and feature locations |

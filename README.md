@@ -14,15 +14,23 @@ outperformance result on a genuinely untouched period.
 | --- | --- |
 | [Latest dynamic-hypergraph study](latest/README.md) | Direct model code, training, protocols, tests and sealed summary results |
 | [Master charts](charts.md) | Current historical leaders, uncertainty and the complete strategy gallery |
-| [Comparison workbook](docs/NASDAQ100_strategy_comparison.xlsx) | Ten tabs, 364 main strategies, comparison line charts and seed/cost diagnostics |
+| [Comparison workbook](docs/NASDAQ100_strategy_comparison.xlsx) | Thirteen tabs, 472 main strategy accounts, comparison charts and seed/cost/borrow diagnostics |
 | [Documentation index](docs/README.md) | Current guides, dated study reports and historical material |
 | [Source map](research/README.md) | Data, models, training, accounting, analysis, audits and publication code |
 | [Project layout](docs/PROJECT_LAYOUT.md) | Commands, compatibility handling and frozen-source provenance |
 | [Protocol index](config/README.md) | Dataset identities, experiment settings and the unactivated confirmation gate |
 
-The latest [drawdown-control study](docs/ndx_drawdown_20261026/REPORT.md) keeps the
+The [own-model hedge study](docs/ndx_model_hedge_20261027/REPORT.md) tests 495 accounts
+using raw and prior-year-calibrated return forecasts. Raw hedge triggers never fire;
+calibrated signals hedge during 2023 and underperform their unhedged baselines.
+A continuous partial-QQQ-hedge control has the highest observed Sharpe: 1.454 for
+the original five seeds (27.79% CAGR / -14.56% drawdown), and 1.325 for ten seeds
+(24.83% / -14.78%). These controls do not establish successful model timing or
+prospective superiority. The latest charts and workbook preserve the weaker cases.
+
+The October 26 [drawdown-control study](docs/ndx_drawdown_20261026/REPORT.md) keeps the
 THINK+mixer AH+PM / dynamic-hypergraph rank blend and adjusts allocation/exposure.
-The highest observed original-five Sharpe is 1.199 with a 20% volatility target
+Within that earlier grid, the highest original-five Sharpe is 1.199 with a 20% volatility target
 (28.96% CAGR / -17.78% drawdown). The highest ten-seed Sharpe is 1.112 with
 five-issuer selection and a 20% target (26.81% / -21.69%). A 25% target plus
 issuer/trend control retains 28.70% ten-seed CAGR with 1.085 Sharpe and -22.98%

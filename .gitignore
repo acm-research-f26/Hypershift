@@ -241,3 +241,4 @@ outputs/**/analysis_paths.npz
 outputs/**/*_preview.png
 outputs/**/*.inspect.ndjson
 outputs/**/workbook_inspection.json
+/outputs/model_hedge_20261027/comparison_staged.xlsx

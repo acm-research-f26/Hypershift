@@ -50,3 +50,5 @@
 /.cache/architecture_references_20261024/** -text
 /.cache/reference_dependencies_20261024/** -text
 /docs/ndx_artifacts_20261027/** -text
+/docs/ndx_model_hedge_20261027/** -text
+/docs/ndx_weak_market_short_20261027/** -text

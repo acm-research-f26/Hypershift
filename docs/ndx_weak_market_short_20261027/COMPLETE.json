@@ -1,0 +1,32 @@
+{
+  "status": "complete",
+  "timestamp_utc": "2026-10-27T18:49:23.741753+00:00",
+  "accounts": 531,
+  "output_sha256": {
+    "annual.csv": "5bbe10862a12f9125d73f809a4d00c4ec53d227c198afa6c37a41ec8311da10a",
+    "AUDIT.json": "cab423111fce61b911f78bf670905a35c0158e22c485e33740a8b7f1461db0c6",
+    "FREEZE.json": "a702303ebc121563d1e53eb80d75f0438b6111ac29668c09a15b2ac5f1c2e0bd",
+    "full_baseline_ledger.csv": "6dee83de29a54b9b70cf5716af83ec35275b0324560e8378b88319d1ecb4d572",
+    "metrics.csv": "ee64139072c44d4ea380ef3675c344044b0206819600e7523aaf956d2d3310b2",
+    "paths.npz": "f6fb851dec64aeca0c0fe163b3484a6aed27570a0bd40fde7d7a6b0451daf776",
+    "PROTOCOL.json": "e4818706fe84e2757f69a221cc2e1412a55d6e674aa09026f15133fae0108376",
+    "regime_diagnostics.csv": "7f7167613e9053ca8883a4f6f5799bde38b8d52ed5e8199e1b135ff351101356",
+    "summary.csv": "3e5831772b3f21593fba137d70353c8dd20f457432048c687fe2380125fd76ac",
+    "targets.csv": "e5410aaecf30ca450f8ad2af32adc6569b1950fab8c510a203082d201040bd3e",
+    "uncertainty.csv": "b58f63c1086ce98553d50c24296a15a3bb4a2e08b8fb141bc0316f3d28b67084",
+    "vol20_baseline_ledger.csv": "db2bc3f19043c8cec0dd83e5c21a055088eb01685b4c7a13d3fe06bdb799c3a4",
+    "vol20_ma200_cash_ledger.csv": "f360650f23b1048c03f3f191a669965d4502b5dd189bf3a30869defd545f3532",
+    "vol20_ma200_hedge25_ledger.csv": "1684f42b5e309a35333cd25fb26cc38a8a8ecd9b4d813625e6fe52f83fa1587b",
+    "vol20_ma200_hedge50_ledger.csv": "6869664c4539221968172fe6ad2f09e6986874dc79b9a7835e42c91ed3f0be27",
+    "vol20_ma200_switch100_ledger.csv": "5e83fa6a86b31b4cd41938aeb9a053f8dfdea4f3f68a2fecbe7027fd304f6e49",
+    "vol20_ma200_switch25_ledger.csv": "65a2444b6c51376c32ac3666dfbd703671da9464a790808cc9a6021c1eede3ed",
+    "vol20_ma200_switch50_ledger.csv": "8d8c7ec6a3c5dd2ca97185fa3d5336f4aae6c32ebd1aa24d93b18cb3adcff808",
+    "vol25trend_baseline_ledger.csv": "333695e51fd446a4725caa7619ba351611e99c14decb8d5cbd92ddff88b28eb6",
+    "vol25trend_ma200_cash_ledger.csv": "12dd3dbe6a69ab2ef48e854e3852a1f2b4738d9c8d8232263eb37540560706e9",
+    "vol25trend_ma200_hedge25_ledger.csv": "6fcc4c1e1b3521c13704d5c3da35fa55ec2d0ff8f8782b75bfd0266baa6eddde",
+    "vol25trend_ma200_hedge50_ledger.csv": "25aaf21c4392b299efbb0ffcd003cb3282dd8c037cec16bd0d40e0cc4d99c8e5",
+    "vol25trend_ma200_switch100_ledger.csv": "f2746b7855a379f2d94086fab50a99756a8988cc5dc6994c56cdbabfc460db52",
+    "vol25trend_ma200_switch25_ledger.csv": "223f7888d04840c1c497f0f05515accafba5c8e1ef3bbf06044ffd60a889e739",
+    "vol25trend_ma200_switch50_ledger.csv": "8ce83013a6b0682f17ad8f940497c4d33b9f4cebad99893687834b1443516ada"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "status": "passed",
+  "signal_flags_rebuilt": 4824,
+  "calibrations": 24,
+  "max_calibration_error": 2.220446049250313e-16,
+  "all_111_target_schedules_rebuilt": true,
+  "replayed_accounts": 42,
+  "max_nav_error": 1.0710209608078003e-08,
+  "accounts": [
+    {
+      "id": "raw_mean/cash/original_five/c1/b0.03",
+      "max_nav_error": 1.0710209608078003e-08
+    },
+    {
+      "id": "raw_mean/cash/new_five/c1/b0.03",
+      "max_nav_error": 2.3283064365386963e-09
+    },
+    {
+      "id": "raw_mean/cash/ten_seed/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "raw_mean/cash/ten_seed/c4/b0.03",
+      "max_nav_error": 7.916241884231567e-09
+    },
+    {
+      "id": "raw_mean/hedge25/original_five/c1/b0.03",
+      "max_nav_error": 1.0710209608078003e-08
+    },
+    {
+      "id": "raw_mean/hedge25/new_five/c1/b0.03",
+      "max_nav_error": 2.3283064365386963e-09
+    },
+    {
+      "id": "raw_mean/hedge25/ten_seed/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "raw_mean/hedge25/ten_seed/c4/b0.03",
+      "max_nav_error": 7.916241884231567e-09
+    },
+    {
+      "id": "raw_mean/hedge25/ten_seed/c1/b0.1",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "raw_mean/hedge50/original_five/c1/b0.03",
+      "max_nav_error": 1.0710209608078003e-08
+    },
+    {
+      "id": "raw_mean/hedge50/new_five/c1/b0.03",
+      "max_nav_error": 2.3283064365386963e-09
+    },
+    {
+      "id": "raw_mean/hedge50/ten_seed/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "raw_mean/hedge50/ten_seed/c4/b0.03",
+      "max_nav_error": 7.916241884231567e-09
+    },
+    {
+      "id": "raw_mean/hedge50/ten_seed/c1/b0.1",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "raw_agreement/cash/original_five/c1/b0.03",
+      "max_nav_error": 1.0710209608078003e-08
+    },
+    {
+      "id": "raw_agreement/cash/new_five/c1/b0.03",
+      "max_nav_error": 2.3283064365386963e-09
+    },
+    {
+      "id": "raw_agreement/cash/ten_seed/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "raw_agreement/cash/ten_seed/c4/b0.03",
+      "max_nav_error": 7.916241884231567e-09
+    },
+    {
+      "id": "cal_mean/hedge50/original_five/c1/b0.03",
+      "max_nav_error": 6.752088665962219e-09
+    },
+    {
+      "id": "cal_mean/hedge50/new_five/c1/b0.03",
+      "max_nav_error": 2.0954757928848267e-09
+    },
+    {
+      "id": "cal_mean/hedge50/ten_seed/c1/b0.03",
+      "max_nav_error": 2.7939677238464355e-09
+    },
+    {
+      "id": "cal_mean/hedge50/ten_seed/c4/b0.03",
+      "max_nav_error": 2.7939677238464355e-09
+    },
+    {
+      "id": "cal_mean/hedge50/ten_seed/c1/b0.1",
+      "max_nav_error": 6.752088665962219e-09
+    },
+    {
+      "id": "cal_basket/switch50/original_five/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "cal_basket/switch50/new_five/c1/b0.03",
+      "max_nav_error": 5.587935447692871e-09
+    },
+    {
+      "id": "cal_basket/switch50/ten_seed/c1/b0.03",
+      "max_nav_error": 6.752088665962219e-09
+    },
+    {
+      "id": "cal_basket/switch50/ten_seed/c4/b0.03",
+      "max_nav_error": 2.0954757928848267e-09
+    },
+    {
+      "id": "cal_basket/switch50/ten_seed/c1/b0.1",
+      "max_nav_error": 2.561137080192566e-09
+    },
+    {
+      "id": "baseline/original_five/c1/b0.03",
+      "max_nav_error": 1.0710209608078003e-08
+    },
+    {
+      "id": "baseline/new_five/c1/b0.03",
+      "max_nav_error": 2.3283064365386963e-09
+    },
+    {
+      "id": "baseline/ten_seed/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "baseline/ten_seed/c4/b0.03",
+      "max_nav_error": 7.916241884231567e-09
+    },
+    {
+      "id": "qqq_ma200/hedge50/original_five/c1/b0.03",
+      "max_nav_error": 6.984919309616089e-09
+    },
+    {
+      "id": "qqq_ma200/hedge50/new_five/c1/b0.03",
+      "max_nav_error": 4.889443516731262e-09
+    },
+    {
+      "id": "qqq_ma200/hedge50/ten_seed/c1/b0.03",
+      "max_nav_error": 7.450580596923828e-09
+    },
+    {
+      "id": "qqq_ma200/hedge50/ten_seed/c4/b0.03",
+      "max_nav_error": 2.0954757928848267e-09
+    },
+    {
+      "id": "qqq_ma200/hedge50/ten_seed/c1/b0.1",
+      "max_nav_error": 3.259629011154175e-09
+    },
+    {
+      "id": "always/hedge50/original_five/c1/b0.03",
+      "max_nav_error": 3.4924596548080444e-09
+    },
+    {
+      "id": "always/hedge50/new_five/c1/b0.03",
+      "max_nav_error": 7.683411240577698e-09
+    },
+    {
+      "id": "always/hedge50/ten_seed/c1/b0.03",
+      "max_nav_error": 2.3283064365386963e-09
+    },
+    {
+      "id": "always/hedge50/ten_seed/c4/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "always/hedge50/ten_seed/c1/b0.1",
+      "max_nav_error": 3.259629011154175e-09
+    }
+  ],
+  "source_sha256": "f35249a904d68f59c7e2ff0874c322f695754cf94dfe394f0edb7617c5eb47e8",
+  "limitation": "Independent signal/calibration arithmetic and value-position account replay. Same vendor inputs and forecasts; no broker or prospective validation."
+}

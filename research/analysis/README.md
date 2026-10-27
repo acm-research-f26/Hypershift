@@ -3,6 +3,16 @@
 These sources analyze saved NASDAQ-100 forecasts and portfolio paths. They cover
 strategy comparison, rank depth and loss similarity.
 
+- [run_ndx_model_hedge.py](run_ndx_model_hedge.py): eight own-model hedge signals,
+  three seed groups and 495 cost/borrow accounts. The preserved runner's no-op
+  inference is completed by [finalize_ndx_model_hedge.py](finalize_ndx_model_hedge.py).
+  See the [signal study and audit](../../docs/ndx_model_hedge_20261027/REPORT.md).
+
+- [run_ndx_weak_market_short.py](run_ndx_weak_market_short.py): frozen 39-rule
+  comparison of weak-trend cash exits, QQQ short switches and QQQ hedges; 531
+  seed/cost/borrow accounts, with a separate signed accounting engine and
+  independent dollar-position replay. See the [shorting report](../../docs/ndx_weak_market_short_20261027/REPORT.md).
+
 - [run_ndx_matched_controls.py](run_ndx_matched_controls.py): frozen 29-strategy
   comparison of neural selections, QQQ risk controls and issuer momentum; also
   freezes the prospective candidate before new control metrics. Results and

@@ -1,0 +1,142 @@
+{
+  "status": "passed",
+  "all_117_target_schedules_independently_reconstructed": true,
+  "replayed_accounts": 33,
+  "max_nav_error": 1.816079020500183e-08,
+  "accounts": [
+    {
+      "id": "full/baseline/original_five/c1/b0.03",
+      "max_nav_error": 3.259629011154175e-09
+    },
+    {
+      "id": "full/baseline/new_five/c1/b0.03",
+      "max_nav_error": 1.816079020500183e-08
+    },
+    {
+      "id": "full/baseline/ten_seed/c1/b0.03",
+      "max_nav_error": 6.05359673500061e-09
+    },
+    {
+      "id": "vol20/baseline/original_five/c1/b0.03",
+      "max_nav_error": 1.0710209608078003e-08
+    },
+    {
+      "id": "vol20/baseline/new_five/c1/b0.03",
+      "max_nav_error": 2.3283064365386963e-09
+    },
+    {
+      "id": "vol20/baseline/ten_seed/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "vol20/ma200/cash/original_five/c1/b0.03",
+      "max_nav_error": 9.778887033462524e-09
+    },
+    {
+      "id": "vol20/ma200/cash/new_five/c1/b0.03",
+      "max_nav_error": 2.7939677238464355e-09
+    },
+    {
+      "id": "vol20/ma200/cash/ten_seed/c1/b0.03",
+      "max_nav_error": 4.6566128730773926e-09
+    },
+    {
+      "id": "vol20/ma200/switch50/original_five/c1/b0.03",
+      "max_nav_error": 4.6566128730773926e-09
+    },
+    {
+      "id": "vol20/ma200/switch50/new_five/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "vol20/ma200/switch50/ten_seed/c1/b0.03",
+      "max_nav_error": 8.381903171539307e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/original_five/c1/b0.03",
+      "max_nav_error": 7.2177499532699585e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/new_five/c1/b0.03",
+      "max_nav_error": 3.725290298461914e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/ten_seed/c1/b0.03",
+      "max_nav_error": 6.28642737865448e-09
+    },
+    {
+      "id": "vol20/ma200/hedge25/original_five/c1/b0.03",
+      "max_nav_error": 6.984919309616089e-09
+    },
+    {
+      "id": "vol20/ma200/hedge25/new_five/c1/b0.03",
+      "max_nav_error": 3.259629011154175e-09
+    },
+    {
+      "id": "vol20/ma200/hedge25/ten_seed/c1/b0.03",
+      "max_nav_error": 2.3283064365386963e-09
+    },
+    {
+      "id": "vol25trend/ma100/switch50/original_five/c1/b0.03",
+      "max_nav_error": 1.1175870895385742e-08
+    },
+    {
+      "id": "vol25trend/ma100/switch50/new_five/c1/b0.03",
+      "max_nav_error": 4.190951585769653e-09
+    },
+    {
+      "id": "vol25trend/ma100/switch50/ten_seed/c1/b0.03",
+      "max_nav_error": 4.6566128730773926e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/original_five/c4/b0.03",
+      "max_nav_error": 5.820766091346741e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/original_five/c1/b0.1",
+      "max_nav_error": 8.614733815193176e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/new_five/c4/b0.03",
+      "max_nav_error": 2.0954757928848267e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/new_five/c1/b0.1",
+      "max_nav_error": 2.7939677238464355e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/ten_seed/c4/b0.03",
+      "max_nav_error": 3.259629011154175e-09
+    },
+    {
+      "id": "vol20/ma200/switch100/ten_seed/c1/b0.1",
+      "max_nav_error": 6.28642737865448e-09
+    },
+    {
+      "id": "vol20/ma200/hedge50/original_five/c4/b0.03",
+      "max_nav_error": 1.30385160446167e-08
+    },
+    {
+      "id": "vol20/ma200/hedge50/original_five/c1/b0.1",
+      "max_nav_error": 4.6566128730773926e-09
+    },
+    {
+      "id": "vol20/ma200/hedge50/new_five/c4/b0.03",
+      "max_nav_error": 2.561137080192566e-09
+    },
+    {
+      "id": "vol20/ma200/hedge50/new_five/c1/b0.1",
+      "max_nav_error": 4.423782229423523e-09
+    },
+    {
+      "id": "vol20/ma200/hedge50/ten_seed/c4/b0.03",
+      "max_nav_error": 2.0954757928848267e-09
+    },
+    {
+      "id": "vol20/ma200/hedge50/ten_seed/c1/b0.1",
+      "max_nav_error": 3.259629011154175e-09
+    }
+  ],
+  "source_sha256": "8a7e3d51be71385e2f9e24d6f105a45fb93e2ca64772dfd510c69abd023f2e0d",
+  "limitations": "Independent dollar-position accounting replay; same reviewed prices, parent forecasts/allocations and cost formula. No independent vendor or broker validation."
+}

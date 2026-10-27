@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "accounts": 531,
+  "tests": "6 synthetic tests; all531 daily paths independently remeasured; selected ledgers reconcile NAV and daily P&L",
+  "baseline_parity": [
+    {
+      "id": "full/baseline/original_five/c1/b0.03",
+      "daily_path_max_error": 0.0
+    },
+    {
+      "id": "full/baseline/new_five/c1/b0.03",
+      "daily_path_max_error": 0.0
+    },
+    {
+      "id": "full/baseline/ten_seed/c1/b0.03",
+      "daily_path_max_error": 0.0
+    },
+    {
+      "id": "vol20/baseline/original_five/c1/b0.03",
+      "daily_path_max_error": 0.0
+    },
+    {
+      "id": "vol20/baseline/new_five/c1/b0.03",
+      "daily_path_max_error": 0.0
+    },
+    {
+      "id": "vol20/baseline/ten_seed/c1/b0.03",
+      "daily_path_max_error": 0.0
+    },
+    {
+      "id": "vol25trend/baseline/original_five/c1/b0.03",
+      "daily_path_max_error": 0.0
+    },
+    {
+      "id": "vol25trend/baseline/new_five/c1/b0.03",
+      "daily_path_max_error": 0.0
+    },
+    {
+      "id": "vol25trend/baseline/ten_seed/c1/b0.03",
+      "daily_path_max_error": 0.0
+    }
+  ],
+  "max_self_financing_error": 1.1059455573558807e-09,
+  "limitation": "This is accounting/parent-parity verification, not an independent vendor-data or broker-execution audit."
+}

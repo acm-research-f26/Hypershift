@@ -1,5 +1,44 @@
 # NASDAQ-100 master charts
 
+Updated October 27, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. Every path uses the same 1,003 sessions.
+
+## Highest observed Sharpe: model hedge experiment
+
+![Original-five and ten-seed model hedge comparisons with SPY and QQQ](docs/ndx_model_hedge_20261027/high_sharpe_comparison.png)
+
+**The new highest observed Sharpe is 1.454 for the original-five stock blend with a continuous partial QQQ hedge: 27.79% CAGR / −14.56% maximum drawdown. The ten-seed version reaches 1.325 Sharpe: 24.83% CAGR / −14.78% drawdown.** This is an always-on hedge control. Its timing does not come from the trained models.
+
+**Our own models did not supply a useful hedge trigger in this test.** All four raw-forecast signals stayed off at all 201 rebalances in every seed group. Their account paths exactly match the unhedged baseline. All four bias-corrected signals fired at the same 50 rebalances in 2023 and stayed off in 2022/2024/2025. They missed 2022's weakness and hedged during 2023's rebound. The best active model-signal results were 1.111 Sharpe for original-five and 1.045 for ten seeds, below their unhedged 1.178/1.112 baselines. Equal-Sharpe calibrated variants are ties, not distinct replications.
+
+|Strategy|Seeds|Sharpe|CAGR|Max drawdown|95% SR interval|
+|---|---|---:|---:|---:|---|
+|Continuous / hedge up to 50%|Original five|1.454|27.79%|-14.56%|[0.463, 2.441]|
+|QQQ MA200 / hedge up to 50%|Original five|1.315|28.10%|-17.05%|[0.325, 2.309]|
+|Calibrated family agreement / hedge up to 50%|Original five|1.111|26.27%|-20.56%|[0.154, 2.078]|
+|Five issuers + 20% volatility target|Original five|1.178|28.57%|-20.56%|[0.223, 2.137]|
+|SPY|Benchmark|0.498|10.85%|-24.55%|[-0.367, 1.419]|
+|QQQ|Benchmark|0.469|11.93%|-34.87%|[-0.408, 1.394]|
+|Continuous / hedge up to 50%|Ten seeds|1.325|24.83%|-14.78%|[0.388, 2.238]|
+|QQQ MA200 / hedge up to 50%|Ten seeds|1.234|26.24%|-14.82%|[0.300, 2.178]|
+|Calibrated family agreement / hedge up to 25%|Ten seeds|1.045|24.64%|-21.69%|[0.130, 1.984]|
+|Five issuers + 20% volatility target|Ten seeds|1.112|26.81%|-21.69%|[0.190, 2.047]|
+
+All neural rows select **five stock issuers**, regardless of seed count. Hedge rows add a short QQQ position capped at 25% or 50% NAV, available cash budget and a 20% QQQ volatility target. The highest-SR control keeps the 50% cap on continuously; the model rules use only their predictions to turn hedging on. QQQ's trailing volatility still sizes the short. Gross target exposure is capped at 100%; positions can drift between regular-close fills. Cash earns zero. Base modeled trading costs and assumed 3% annual borrow are included.
+
+**495 accounts / 37 recipes:** eight own-model signals crossed with cash exit, 25% hedge, 50% hedge and 50% short switch, plus unhedged, QQQ-MA200 and continuous-hedge controls, across original-five/new-five/ten-seed groups and cost/borrow assumptions. The strongest Sharpe control is selected from inspected historical results. Confidence intervals condition on fitted paths and do not adjust prior model searches. The newer five-seed half remains materially weaker. No claim of prospective superiority follows.
+
+[Complete signal definitions, seed/cost results and audit](docs/ndx_model_hedge_20261027/REPORT.md) · [All 495 accounts](docs/ndx_model_hedge_20261027/metrics.csv) · [All signal decisions](docs/ndx_model_hedge_20261027/signals.csv) · [Comparison workbook](docs/NASDAQ100_strategy_comparison.xlsx)
+
+## Updated master graph: all 472 main strategy accounts
+
+![All 472 main strategy accounts with continuous-hedge leaders and benchmarks emphasized](docs/ndx_model_hedge_20261027/master_all_strategies.png)
+
+The previous 364 accounts are preserved, with 108 new nonbaseline hedge-study accounts added. Different rules can produce identical paths; 472 counts declared accounts, not 472 independent strategies. Full cost/borrow cases remain in the workbook's Hedge accounts sheet. Open Model hedges for the new comparison charts.
+
+## Previous published comparison: October 26 snapshot
+
+The sections below preserve the preceding dated comparison. The October 27 results above supersede its headline leader claims.
+
 Updated October 26, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. Every path uses the same 1,003 sessions.
 
 ## Highest-Sharpe models versus SPY and QQQ

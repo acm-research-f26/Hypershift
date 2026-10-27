@@ -1,0 +1,326 @@
+{
+  "study": "Own-model hedge signals from frozen raw five-session stock return forecasts",
+  "date": "2026-10-27",
+  "history": "2022-2025 repeatedly inspected development; no unseen confirmation",
+  "recipes": [
+    {
+      "id": "raw_mean/cash",
+      "signal": "raw_mean",
+      "mode": "cash",
+      "kind": "model"
+    },
+    {
+      "id": "raw_mean/hedge25",
+      "signal": "raw_mean",
+      "mode": "hedge25",
+      "kind": "model"
+    },
+    {
+      "id": "raw_mean/hedge50",
+      "signal": "raw_mean",
+      "mode": "hedge50",
+      "kind": "model"
+    },
+    {
+      "id": "raw_mean/switch50",
+      "signal": "raw_mean",
+      "mode": "switch50",
+      "kind": "model"
+    },
+    {
+      "id": "raw_basket/cash",
+      "signal": "raw_basket",
+      "mode": "cash",
+      "kind": "model"
+    },
+    {
+      "id": "raw_basket/hedge25",
+      "signal": "raw_basket",
+      "mode": "hedge25",
+      "kind": "model"
+    },
+    {
+      "id": "raw_basket/hedge50",
+      "signal": "raw_basket",
+      "mode": "hedge50",
+      "kind": "model"
+    },
+    {
+      "id": "raw_basket/switch50",
+      "signal": "raw_basket",
+      "mode": "switch50",
+      "kind": "model"
+    },
+    {
+      "id": "raw_breadth60/cash",
+      "signal": "raw_breadth60",
+      "mode": "cash",
+      "kind": "model"
+    },
+    {
+      "id": "raw_breadth60/hedge25",
+      "signal": "raw_breadth60",
+      "mode": "hedge25",
+      "kind": "model"
+    },
+    {
+      "id": "raw_breadth60/hedge50",
+      "signal": "raw_breadth60",
+      "mode": "hedge50",
+      "kind": "model"
+    },
+    {
+      "id": "raw_breadth60/switch50",
+      "signal": "raw_breadth60",
+      "mode": "switch50",
+      "kind": "model"
+    },
+    {
+      "id": "raw_agreement/cash",
+      "signal": "raw_agreement",
+      "mode": "cash",
+      "kind": "model"
+    },
+    {
+      "id": "raw_agreement/hedge25",
+      "signal": "raw_agreement",
+      "mode": "hedge25",
+      "kind": "model"
+    },
+    {
+      "id": "raw_agreement/hedge50",
+      "signal": "raw_agreement",
+      "mode": "hedge50",
+      "kind": "model"
+    },
+    {
+      "id": "raw_agreement/switch50",
+      "signal": "raw_agreement",
+      "mode": "switch50",
+      "kind": "model"
+    },
+    {
+      "id": "cal_mean/cash",
+      "signal": "cal_mean",
+      "mode": "cash",
+      "kind": "model"
+    },
+    {
+      "id": "cal_mean/hedge25",
+      "signal": "cal_mean",
+      "mode": "hedge25",
+      "kind": "model"
+    },
+    {
+      "id": "cal_mean/hedge50",
+      "signal": "cal_mean",
+      "mode": "hedge50",
+      "kind": "model"
+    },
+    {
+      "id": "cal_mean/switch50",
+      "signal": "cal_mean",
+      "mode": "switch50",
+      "kind": "model"
+    },
+    {
+      "id": "cal_basket/cash",
+      "signal": "cal_basket",
+      "mode": "cash",
+      "kind": "model"
+    },
+    {
+      "id": "cal_basket/hedge25",
+      "signal": "cal_basket",
+      "mode": "hedge25",
+      "kind": "model"
+    },
+    {
+      "id": "cal_basket/hedge50",
+      "signal": "cal_basket",
+      "mode": "hedge50",
+      "kind": "model"
+    },
+    {
+      "id": "cal_basket/switch50",
+      "signal": "cal_basket",
+      "mode": "switch50",
+      "kind": "model"
+    },
+    {
+      "id": "cal_breadth60/cash",
+      "signal": "cal_breadth60",
+      "mode": "cash",
+      "kind": "model"
+    },
+    {
+      "id": "cal_breadth60/hedge25",
+      "signal": "cal_breadth60",
+      "mode": "hedge25",
+      "kind": "model"
+    },
+    {
+      "id": "cal_breadth60/hedge50",
+      "signal": "cal_breadth60",
+      "mode": "hedge50",
+      "kind": "model"
+    },
+    {
+      "id": "cal_breadth60/switch50",
+      "signal": "cal_breadth60",
+      "mode": "switch50",
+      "kind": "model"
+    },
+    {
+      "id": "cal_agreement/cash",
+      "signal": "cal_agreement",
+      "mode": "cash",
+      "kind": "model"
+    },
+    {
+      "id": "cal_agreement/hedge25",
+      "signal": "cal_agreement",
+      "mode": "hedge25",
+      "kind": "model"
+    },
+    {
+      "id": "cal_agreement/hedge50",
+      "signal": "cal_agreement",
+      "mode": "hedge50",
+      "kind": "model"
+    },
+    {
+      "id": "cal_agreement/switch50",
+      "signal": "cal_agreement",
+      "mode": "switch50",
+      "kind": "model"
+    },
+    {
+      "id": "baseline",
+      "signal": "none",
+      "mode": "baseline",
+      "kind": "control"
+    },
+    {
+      "id": "qqq_ma200/cash",
+      "signal": "qqq_ma200",
+      "mode": "cash",
+      "kind": "control"
+    },
+    {
+      "id": "qqq_ma200/hedge50",
+      "signal": "qqq_ma200",
+      "mode": "hedge50",
+      "kind": "control"
+    },
+    {
+      "id": "qqq_ma200/switch50",
+      "signal": "qqq_ma200",
+      "mode": "switch50",
+      "kind": "control"
+    },
+    {
+      "id": "always/hedge50",
+      "signal": "always",
+      "mode": "hedge50",
+      "kind": "control"
+    }
+  ],
+  "groups": {
+    "original_five": [
+      7,
+      19,
+      42,
+      61,
+      97
+    ],
+    "new_five": [
+      1828801906,
+      1868046758,
+      239154507,
+      287727767,
+      981756941
+    ],
+    "ten_seed": [
+      7,
+      19,
+      42,
+      61,
+      97,
+      1828801906,
+      1868046758,
+      239154507,
+      287727767,
+      981756941
+    ]
+  },
+  "accounts": 495,
+  "forecasts": "Per family/year average raw percentage-point predictions over fixed seeds. Equal50:50 raw family average for mean, selected-basket and negative-breadth signals. Stock selection still uses the unchanged50:50 percentile-rank blend and five issuers.",
+  "signals": {
+    "raw_mean": "Eligible-stock average predicted return <0",
+    "raw_basket": "Proposed equal-weight five-issuer basket predicted return <0",
+    "raw_breadth60": "At least60% of eligible stocks have negative blended predictions",
+    "raw_agreement": "Both family eligible-stock mean forecasts <0",
+    "cal_*": "Same four rules after subtracting prior-year validation mean forecast error independently per family/group/year. Bias averages eligible labeled errors within each date, then equally across dates. Fixed intercept only; no return-fitted thresholds/slopes."
+  },
+  "calibration": "Only each annual fit own saved validation predictions, actual y*100 and labelmask; assert all validation outcomes precede first test signal. No test outcome, realized QQQ direction, test-return threshold optimization or new fitting. Calibration is a postprocessing estimate; checkpoints were selected on the same prior-year validation fold.",
+  "baseline": "Five issuers, weekly20-session basket volatility target20%, exposure<=1; unused zero-interest cash. Same baseline for every signal and seed group. No QQQ trend cap in model strategy.",
+  "hedges": "Keep baseline longs for hedge25/50, short QQQ up to min(cap,unused capital,20%/QQQ20-session vol). cash/switch50 exit basket when signal weak; switch50 shorts QQQ with cap50% and20% vol target. QQQ volatility sizes the hedge, but model predictions alone trigger model rules.",
+  "timing": "All model predictions available09:20ET using AH/PM bars ending<=09:15, entry regular-close fill. Quantities use prior-close NAV/marks/ADV. Fixed inherited five-session dates. Validation data strictly pre-test. No same-close forecast execution.",
+  "costs": [
+    1,
+    2,
+    4
+  ],
+  "borrow_base": 0.03,
+  "borrow_stress": [
+    0.01,
+    0.1
+  ],
+  "account_count": "37recipes x3groups x3costs=333;27short recipes x3groups x2additional borrow assumptions=162;total495. All rules and failures disclosed.",
+  "controls": "Unhedged baseline, MA200cash/hedge50/switch50, always-on hedge50 to distinguish signal timing from generic exposure reduction. Prior study paths must reproduce exactly for shared controls.",
+  "funding": "Use sealed corrected signed engine: gross target<=1,1%ADV caps, calendar-day borrow,28-day short-fee reserve before buys, signed total-return/dividend approximation, no cash interest/rebate. Realized drift possible. Actual locates/recalls/margin/tax/auction conditions absent.",
+  "inference": "All32model variants vs baseline and8switches vs matching modelcash, across all3groups:120 simultaneous active-mean contrasts.10000joint circular-block samples at5/20/60sessions;20primary. SR/CAGR difference intervals and selected absoluteSR intervals pointwise, conditional on fits; no adjustment for earlier research or retrospective leader selection.",
+  "publication": "Report highest observed model-signalSR separately for original-five/ten-seed, compare QQQ/always/baseline, retain new-five diagnostic and all failures. Update charts.md top and existing xlsx using reviewable audited results, preserving prior findings. Prospective policy unchanged.",
+  "stop": "One finite eight-signal/four-mode grid. No expansion from outcomes,2026 returns,new training,trades,automation or prospective activation.",
+  "source_sha256": {
+    "research/core/ndx_model_hedge.py": "ffb50543cd3725b8928ba18732df599a68d710006fce46843781a895b8b539f5",
+    "research/analysis/run_ndx_model_hedge.py": "74b3f642897821ba4eded96fdc7b13faa848a2771fc7408e1abe180b95bab266",
+    "research/evaluation/audit_ndx_model_hedge.py": "f35249a904d68f59c7e2ff0874c322f695754cf94dfe394f0edb7617c5eb47e8",
+    "tests/test_ndx_model_hedge.py": "b2a832466b0c5d36a3aa6d17cdf02de1d44978de99d75757c43496b755d5126e",
+    "research/core/ndx_weak_market_short.py": "6181f78270203e613fcbb0614d8fbfe4d33b5ec478860b234a0d73e8ce98be82",
+    "research/core/ndx_matched_controls.py": "a34d256933b502ca35093f5057d57b459a84e4f4c6d6d615f3acb5de39fdb467",
+    "research/evaluation/audit_ndx_weak_market_short.py": "8a7e3d51be71385e2f9e24d6f105a45fb93e2ca64772dfd510c69abd023f2e0d"
+  },
+  "input_sha256": {
+    "research/core/ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research/analysis/run_ndx_drawdown_research.py": "f0d8c7bfcdaeedf67c406d73123bc68ecd18477f885c424035a2e899aa1329a4",
+    "tests/test_ndx_drawdown_engine.py": "8472ef46ad34e4aa096d7e0d13a2e6ab72b52f6db686c8d36342971462fb5dd0",
+    "data/nasdaq_monthly_pit/assembled/dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data/nasdaq_monthly_pit/assembled/economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data/nasdaq_monthly_pit/assembled/etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "data/nasdaq_monthly_pit/assembled/etf_dollar_volume.csv": "f512c863e5322c57e9d6b2c4281690cacff6fcdd70a810ac0695ee9c9e20f33f",
+    "data/nasdaq_monthly_pit/assembled/membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data/nasdaq_monthly_pit/assembled/monthly_members.csv": "a04d458cb9c976cad37014733989755c38cffc034e6ee5df3b7d6d0ef0f04ecc",
+    "data/nasdaq_monthly_pit/assembled/raw_close.csv": "02d2b2477564bca67f1ece58f0c55ce471678f727972fbe836f9b4b9e8b3682b",
+    "data/nasdaq_monthly_pit/assembled/tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "runs/ndx_extended_hours_20261024/curves.csv": "790aefe476c2f3c46797e88dcb818398593eaa699fda400b22a4339b6ea0d07c",
+    "runs/ndx_extended_hours_20261024/FINAL_PUBLICATION.json": "4356d9d1e86287b05c8232cfb895bad2f88c17dda8e7f67eaa10020202355d29",
+    "runs/ndx_extended_hours_20261024/metrics.csv": "2a1ce5f1f23097acd8b8236e8a26aa3f9232f435e99e5f91b42de66eae5c0e03",
+    "runs/ndx_reference_networks_20261024/curves.csv": "22a79818b1cbaae8b3b2c7f6633c8900dc9ba96bad113d34f3e8ca89cfa8a564",
+    "runs/ndx_reference_networks_20261024/FINAL_PUBLICATION.json": "a1c8c8aab1fad6a9681bef168e69f1b3d0646f0ef87d594795a0043a718b9f16",
+    "runs/ndx_reference_networks_20261024/metrics.csv": "4d7f5401669dc6a0fdbb502ecc513e7c000313f687d2a9f29d8926adbe826a1d",
+    "runs/ndx_drawdown_20261026/batch1/PROTOCOL.json": "4ed0662c3d5925d8a7d0873d489a22871f1c13421c3c8b1ecf9a0d9e2303b64c",
+    "runs/ndx_drawdown_20261026/batch1/FREEZE.json": "8d377a6e7fc23d4576a277b8145f43de67ffcab5784af519781972838b650c09",
+    "runs/ndx_drawdown_20261026/batch1/COMPLETE.json": "8996ab53c27293e777c01fd913c38812cbda53a5e779b90aa6333fb038513ef9",
+    "runs/ndx_drawdown_20261026/batch1/AUDIT.json": "8423d510c5e0cd8f1cbfbaaacc10f92df9cbc742ba04fce4d1445e4dd9e9eaa0",
+    "runs/ndx_drawdown_20261026/batch1/paths.npz": "7d97f1eb39bae4d3eaf9ba3c9f16674ee61c284fe78493d4a73bad808b2becdb",
+    "runs/ndx_drawdown_20261026/batch1/metrics.csv": "b3b0a273a0dbd003c1adc9fb4bd4fecae7832a934f7dac2c2da3e650b6a5621d",
+    "runs/ndx_drawdown_20261026/batch1/cost_stress.csv": "8dac7cccbd22687a3cd8ae91c6914d16bf67df47e1d37be6ea8427facefd00f4",
+    "config/ndx_prospective_candidate_20261027.json": "98366b0a184adee44a2e1309327b7f526ba820009a6ce80c488c66b17d841e57",
+    "runs/ndx_weak_market_short_20261027/batch2/PROTOCOL.json": "e4818706fe84e2757f69a221cc2e1412a55d6e674aa09026f15133fae0108376",
+    "runs/ndx_weak_market_short_20261027/batch2/COMPLETE.json": "4c17eab878a12a78abc591a1987f4d029b0c6022da5724c1031832639261d327",
+    "runs/ndx_weak_market_short_20261027/batch2/paths.npz": "f6fb851dec64aeca0c0fe163b3484a6aed27570a0bd40fde7d7a6b0451daf776",
+    "runs/ndx_weak_market_short_20261027/batch2/metrics.csv": "ee64139072c44d4ea380ef3675c344044b0206819600e7523aaf956d2d3310b2"
+  }
+}
