@@ -53,11 +53,10 @@ def index(output):
     evidence_names=('acquisition.json','schwab_us_2024.html','sap_business_2024.html','sanofi_2023.html','gsk_2023.pdf')
     evidence=[]
     for name in evidence_names:
-        p=evidence_root/name;dest=output/'classification_source_evidence'/name;dest.parent.mkdir(exist_ok=True)
-        if dest.exists() and sha(dest)!=sha(p):raise ValueError('Changed public classification source')
-        if not dest.exists():shutil.copyfile(p,dest)
-        evidence.append(dict(name=name,sha256=sha(dest),size=dest.stat().st_size,original=str(p)))
+        p=evidence_root/name
+        evidence.append(dict(name=name,sha256=sha(p),size=p.stat().st_size,original=str(p),local_reference_only=True))
     atomic(output/'classification_source_evidence/manifest.json',dict(files=evidence,
+        packaged_evidence='Matched classification facts and primary-source links are in causal_classifications.json; complete third-party filings remain hash-bound local references.',
         other_primary_disclosure_links_and_read_limitations='causal_classifications.json rows;9 manual business judgments are explicitly distinguished',
         rejected_sources_preserved_at=str(evidence_root),later_classification_values_used=False))
     atomic(output/'input_data_references.json',dict(created_UTC=utc(),cohorts=records,
