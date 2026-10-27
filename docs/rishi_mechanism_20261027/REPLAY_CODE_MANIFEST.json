@@ -13,6 +13,13 @@
     "docs/rishi_mechanism_20261027/STOCK_TRACE_PROTOCOL.md": "8adba870076d22b02b8563c14d3dd64c26ae474d46d5418366a0d2d1d648b91f",
     "research/analysis/rishi_capital_split.py": "b551c8612fa0df04a78c14f34680f5a6833cb250165d273c0a0888da7dece2e5",
     "tests/test_rishi_capital_split.py": "3b763a55c8e392982eea9ddd96410e46391687006b706824ada5ef901437e03d",
-    "docs/rishi_mechanism_20261027/CAPITAL_SPLIT_PROTOCOL.md": "34a88a062c9e6d7cea610a13c9c636ec1cf450afd7f961ff1f92a422bd86ea0d"
+    "docs/rishi_mechanism_20261027/CAPITAL_SPLIT_PROTOCOL.md": "34a88a062c9e6d7cea610a13c9c636ec1cf450afd7f961ff1f92a422bd86ea0d",
+    "research/analysis/rishi_rank_behavior.py": "be2281b1128bb6f3ef99f13effa8b49dd4d0764def97d10c623150d78df43d16",
+    "research/analysis/rishi_numerical_diagnostic.py": "ddfcd6ac10a182840de1ad44679f3484e9abf133287951a6a7efa5b8099f4560",
+    "research/analysis/rishi_mechanism_power.py": "867f58e50d5c31473630f1ead8fd7b3a58330a959d8a59438ba174e6dd82b545",
+    "tests/test_rishi_rank_behavior.py": "b536423cf18604b39793d672705661efe4d5dedc24d3d16b82bc82b2f03cbdc1",
+    "tests/test_rishi_power.py": "a431aa868e8ac2129023c5f355c962bd82d7d278b32f239ce5cf55c8b0f0f650",
+    "docs/rishi_mechanism_20261027/RANK_BEHAVIOR_PROTOCOL.md": "14cc91c55ac0cfe6e5b8fbf65b83fce974044efe3937bcf1bea424136308d143",
+    "docs/rishi_mechanism_20261027/POWER_PROTOCOL.md": "04a07c1edff4916445db6b68302e9b05d4a3a5645af27b324c1442a9aa473958"
   }
 }

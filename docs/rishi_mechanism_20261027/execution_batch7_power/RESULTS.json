@@ -1,0 +1,14 @@
+{
+  "rows": 216,
+  "null_intervals": 36,
+  "seed": 27102031,
+  "reference_reps": 10000,
+  "simulated_reps": 10000,
+  "source_days": 1003,
+  "hashes": {
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\ACCOUNT_CURVES.csv": "4412eb1db2b988807a8b3dadabba14c8dd7a8debcd992c82bab6b229517f1097",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_mechanism_power.py": "867f58e50d5c31473630f1ead8fd7b3a58330a959d8a59438ba174e6dd82b545",
+    "docs\\rishi_mechanism_20261027\\POWER_PROTOCOL.md": "04a07c1edff4916445db6b68302e9b05d4a3a5645af27b324c1442a9aa473958"
+  },
+  "limits": "Conditional empirical planning; no prospective activation; same market history, not independent years/seeds"
+}

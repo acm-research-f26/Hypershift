@@ -1,0 +1,221 @@
+{
+  "environment": {
+    "device": "cuda",
+    "torch": "2.14.0+cu130",
+    "cuda_build": "13.0",
+    "deterministic_algorithms": true,
+    "precision": "float32, no AMP; TF32 disabled for CUDA",
+    "cublas_workspace_config": ":4096:8",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "gpu_memory_bytes": 4294443008,
+    "compute_capability": "8.6",
+    "cudnn_version": 92400
+  },
+  "checkpoint": "B/2022/7",
+  "diagnostic_only": true,
+  "batch_origin_ids": [
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185
+  ],
+  "summary": [
+    {
+      "path": "cpu32",
+      "max_saved_error": 0.0030808448791503906,
+      "worst_origin_id": 185,
+      "worst_stock": "ADBE",
+      "at_original_worst": 5.07071590423584
+    },
+    {
+      "path": "cuda32",
+      "max_saved_error": 2.384185791015625e-07,
+      "worst_origin_id": 185,
+      "worst_stock": "ADBE",
+      "at_original_worst": 5.0676350593566895
+    },
+    {
+      "path": "cuda32_repeat",
+      "max_saved_error": 2.384185791015625e-07,
+      "worst_origin_id": 185,
+      "worst_stock": "ADBE",
+      "at_original_worst": 5.0676350593566895
+    },
+    {
+      "path": "cpu64",
+      "max_saved_error": 0.000730155555883627,
+      "worst_origin_id": 185,
+      "worst_stock": "ADBE",
+      "at_original_worst": 5.068365214912573
+    }
+  ],
+  "cuda_repeat_max_error": 0.0,
+  "cpu_batch_vs_prior_max_error": 0.0,
+  "layers": [
+    {
+      "module": "core.base.first.fc",
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 4.172325134277344e-07,
+      "cpu32_cpu64_max_error": 3.557560413480765e-07,
+      "max_last_axis_norm": 0.8986454465916037,
+      "fraction_norm_gt_0999": 0.0
+    },
+    {
+      "module": "core.base.first",
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 4.172325134277344e-07,
+      "cpu32_cpu64_max_error": 3.557560413480765e-07,
+      "max_last_axis_norm": 0.8986454465916037,
+      "fraction_norm_gt_0999": 0.0
+    },
+    {
+      "module": "core.base.spatial.fc",
+      "shape": [
+        28,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 3.427267074584961e-07,
+      "cpu32_cpu64_max_error": 3.0263297645660714e-07,
+      "max_last_axis_norm": 0.7978319878863744,
+      "fraction_norm_gt_0999": 0.0
+    },
+    {
+      "module": "core.base.spatial",
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 6.7378177845967e-06,
+      "cpu32_cpu64_max_error": 1.2236479043855901e-05,
+      "max_last_axis_norm": 0.999990062464445,
+      "fraction_norm_gt_0999": 0.00022893772893772894
+    },
+    {
+      "module": "core.base.last.fc",
+      "shape": [
+        7,
+        1,
+        156,
+        1
+      ],
+      "cpu_cuda_max_error": 2.5033950805664062e-06,
+      "cpu32_cpu64_max_error": 5.713977489482658e-06
+    },
+    {
+      "module": "core.base.last",
+      "shape": [
+        7,
+        1,
+        156,
+        1
+      ],
+      "cpu_cuda_max_error": 2.5033950805664062e-06,
+      "cpu32_cpu64_max_error": 5.713977489482658e-06
+    },
+    {
+      "module": "core.base",
+      "shape": [
+        7,
+        156
+      ],
+      "cpu_cuda_max_error": 0.002796173095703125,
+      "cpu32_cpu64_max_error": 0.0021336578006199147,
+      "max_last_axis_norm": 4.649478831042535,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core.market.0",
+      "shape": [
+        7,
+        16
+      ],
+      "cpu_cuda_max_error": 0.00035500526428222656,
+      "cpu32_cpu64_max_error": 0.00027100436275362405,
+      "max_last_axis_norm": 3.0060305994703667,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core.market.1",
+      "shape": [
+        7,
+        16
+      ],
+      "cpu_cuda_max_error": 0.0004006624221801758,
+      "cpu32_cpu64_max_error": 0.00030579043061873534,
+      "max_last_axis_norm": 2.2524946391236567,
+      "fraction_norm_gt_0999": 0.7142857142857143
+    },
+    {
+      "module": "core.market.2",
+      "shape": [
+        7,
+        156
+      ],
+      "cpu_cuda_max_error": 0.0003260374069213867,
+      "cpu32_cpu64_max_error": 0.00024874423785281596,
+      "max_last_axis_norm": 5.497828806844287,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core.market",
+      "shape": [
+        7,
+        156
+      ],
+      "cpu_cuda_max_error": 0.0003260374069213867,
+      "cpu32_cpu64_max_error": 0.00024874423785281596,
+      "max_last_axis_norm": 5.497828806844287,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core",
+      "shape": [
+        7,
+        156
+      ],
+      "cpu_cuda_max_error": 0.003062725067138672,
+      "cpu32_cpu64_max_error": 0.0023370177840327244,
+      "max_last_axis_norm": 7.84913078891172,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "first",
+      "shape": [
+        7,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 7.152557373046875e-07,
+      "cpu32_cpu64_max_error": 6.321093222183549e-07,
+      "max_last_axis_norm": 6.190746802366178,
+      "fraction_norm_gt_0999": 0.445970695970696
+    },
+    {
+      "module": "last",
+      "shape": [
+        7,
+        156,
+        1
+      ],
+      "cpu_cuda_max_error": 1.1920928955078125e-07,
+      "cpu32_cpu64_max_error": 1.2473009447511174e-07
+    }
+  ],
+  "limit": "FP64 is a diagnostic, not source replay. No acceptance tolerance or source implementation changed."
+}

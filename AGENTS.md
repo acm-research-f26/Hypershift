@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Updated 2026-10-27 after merging Rishi's `origin/feat-rs` at `d474406` into `tom-shlom`.
+Updated 2026-10-27 after merging Rishi's artifact publication `origin/feat-rs` at `865dbb3` into `tom-shlom`.
 
 ## Read in this order
 
@@ -19,8 +19,9 @@ Find an implementable US-equity strategy with useful returns after realistic cos
 - **Latest Rishi development:** `docs/ndx_drawdown_20261026/REPORT.md`, `PROTOCOL.json`, `AUDIT.json`, and `master_update/AUDIT.json`. The study searches allocation/exposure controls on the existing THINK+mixer AH+PM / dynamic rank blend; no model retraining.
 - **Selected historical results, 2022-2025:** five issuers plus a 20% basket-volatility target reports ten-seed Sharpe **1.112**, net CAGR **26.81%**, maximum drawdown **-21.69%**. The 25% target plus QQQ/MA200 trend cap reports **1.085 / 28.70% / -22.98%**. Matched full-exposure ten-seed baseline: **0.896 / 31.87% / -40.94%**.
 - These are **305 searched recipes / 915 base-cost accounts**, plus 54 higher-cost accounts, on repeatedly inspected history. The new-five group remains weaker (Sharpe about **0.677 / 0.643** for those two leaders). The return-preserving candidate's paired Sharpe-difference interval includes zero. These results do not establish future alpha or a guaranteed drawdown limit.
-- The committed audit reports 915 metric recalculations and 82 account replays. Attribute that verification to the source audit; this session has not independently replayed the private market inputs/checkpoints. `COMPLETE.json` retains an earlier pending-audit status; consult the later passed `AUDIT.json` alongside it.
-- Earlier team assessment: `docs/team_audit_20261026/HYPERSHIFT_FINAL_RECOMMENDATION.md`, `HYPERSHIFT_NEXT_EXPERIMENT.md`, and `PROGRESS.md`. Its request for raw forecasts/trade/account tapes remains relevant; the new summaries and focused curves do not establish that all raw inputs are locally available.
+- The committed risk-study audit reports915metric recalculations and82account replays; attribute those counts to the source audit. Current independent mechanism work verifies all339contract and1184published artifacts, reproduces18original saved-forecast account paths/NAV/metrics/aggregate ledgers, reconstructs10stock-level accounting traces and executes12half-capital sleeves. See `docs/rishi_mechanism_20261027/COMPLETION_AUDIT.md` and the batch reports. These are distinct scopes. `COMPLETE.json` retains an earlier pending-audit status; consult the later passed `AUDIT.json` alongside it.
+- Earlier team assessment: `docs/team_audit_20261026/HYPERSHIFT_FINAL_RECOMMENDATION.md`, `HYPERSHIFT_NEXT_EXPERIMENT.md`, and `PROGRESS.md`. The missing saved-artifact blocker is resolved by865dbb3. Per-stock broker/order tapes were never saved; reconstructed economic fill traces now supply canonical accounting attribution. Original raw15minute chunks and first-provider-publication timestamps remain unavailable.
+- Strict selected-checkpoint numerical regeneration remains unresolved: parent CPU/CUDA values fail1e-6pp despite exact inputs;20dynamic CUDA checkpoints pass before a validation failure. Keep saved-export reproduction separate from checkpoint reproduction. Hpred/changing-score and trained-component interpretations remain gated; do not widen tolerance after seeing outcomes. Primary ten-seed/top10 E-minus-parent and E-minus-training-label-identity contrasts do not pass the declared Holm5%family. Conditional financial retraining is not triggered.
 - Keep original-five, new-five and ten-seed ensembles, top-five and top-ten portfolios, and parent/dynamic/blended models distinct. Earlier primary top-ten SR 0.755 and selected original-five/top-five SR 0.919 describe different cells from the new overlay leaders.
 
 ## Current source layout and commands
@@ -38,7 +39,7 @@ Find an implementable US-equity strategy with useful returns after realistic cos
   ```
 
 - The Rishi launcher temporarily supplies compatibility source paths and removes unchanged copies afterward. Edit organized sources; wait for commands to finish before staging. Keep frozen sources/locks byte-preserved.
-- Data, checkpoints, credentials and complete run tapes are ignored under `data/`, `runs/` and `.env`; a Git pull does not provide them. Never expose secrets. Never overwrite existing result folders.
+- Most generated data/runs remain ignored;865dbb3 explicitly publishes selected reviewed inputs/checkpoints/forecasts under `data/` and `runs/`. Verify `docs/ndx_artifacts_20261027/manifest.csv` and the active study's contract rather than assuming either all outputs or no outputs are in Git. `.env` and credentials are private. Never expose secrets or overwrite existing result folders; preserve failed attempts and use fresh destinations.
 
 ## Research discipline and scope
 

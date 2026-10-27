@@ -1,0 +1,10 @@
+{
+  "original_receipt_preserved": true,
+  "summary_field_meaning": {
+    "worst_origin_id": "reference_cpu_worst_origin_id",
+    "worst_stock": "reference_cpu_worst_stock",
+    "at_original_worst": "at_reference_cpu_worst"
+  },
+  "full_cuda_fields": "Correct per-split maximum locations; unchanged",
+  "numerical_values_changed": false
+}
