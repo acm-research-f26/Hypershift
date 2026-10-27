@@ -1,0 +1,7 @@
+# Replay verification and independent review —2026-10-27
+
+CPU command: `.venv/Scripts/python.exe -m hypershift test test_rishi_account_trace test_rishi_artifact_verify test_rishi_mechanism_batch1 test_rishi_mechanism_components test_rishi_raw_replay test_rishi_synthetic_gate test_rishi_synthetic_robustness -v`.
+
+Observed exit0,36tests pass in5.647seconds. After metadata-only trace edits, the two account-trace tests rerun and pass in.121seconds. The36is this focused command, not a claim to have run the entire repository suite. Earlier18original-model unit tests are separately recorded; prior45-test total is a historical different selection.
+
+Independent raw-replay review prompted explicit NAV/metric/ledger checks, eligible-rank/top-k diagnostics on failed forecasts, and all-missing-comparator-origin flags; covered by tests. Trace review found no accounting error; narrowed persistent-identity inference to persistent exposure, preserved array date/ID axes and issuer postprocessing. All reviewed corrections applied. No original model/engine or artifact was modified. New tests observed failing before implementation/fixes. Full plan remains incomplete.

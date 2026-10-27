@@ -1,0 +1,25 @@
+{
+  "year": 2023,
+  "seed": 42,
+  "family": "D",
+  "inference_device": "cuda",
+  "checkpoint_sha256": "9e970fd552ea8795ddaf8162fc407b7480775c7a506ca66aa0815cb7166337d8",
+  "max_validation_error": 3.8743019104003906e-07,
+  "max_test_error": 4.172325134277344e-07,
+  "passed": true,
+  "selected_epoch": {
+    "prediction": 2
+  },
+  "diagnostics": {
+    "validation": {
+      "mean_rank_correlation": 0.9999998828713694,
+      "top5_changed_origins": 0,
+      "top10_changed_origins": 0
+    },
+    "test": {
+      "mean_rank_correlation": 0.9999999999999999,
+      "top5_changed_origins": 0,
+      "top10_changed_origins": 0
+    }
+  }
+}

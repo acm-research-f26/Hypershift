@@ -1,0 +1,10 @@
+{
+  "year": 2022,
+  "seed": 7,
+  "family": "B",
+  "checkpoint_sha256": "7f4108a84cce7b6217cfe8945a18bc0810ea8641021ecd9205e98189e7fc7de8",
+  "max_validation_error": 0.0027184486389160156,
+  "max_test_error": 0.0030808448791503906,
+  "passed": false,
+  "selected_epoch": 8
+}

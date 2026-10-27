@@ -1,0 +1,14 @@
+{
+  "status": "completed_saved_export_accounts_checkpoint_gate_unresolved",
+  "publication_files": 1184,
+  "checkpoints": 0,
+  "accounts": 54,
+  "original_accounts": 18,
+  "max_forecast_error": null,
+  "max_daily_replay_error": 9.985502008591496e-17,
+  "seconds": 32.71899999999732,
+  "limits": [
+    "No original per-stock order/position snapshots were saved; instrumented replay still needed",
+    "Current control accounts are full-exposure five-session original execution, not overlay or future confirmation"
+  ]
+}

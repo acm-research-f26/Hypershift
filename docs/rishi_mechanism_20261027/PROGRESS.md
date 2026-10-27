@@ -37,3 +37,14 @@ Ruling: output policy guard refuses any nonempty destination, including partial 
 Ruling: monthly diagnostics do not pass the earlier daily mean/SR mechanism gates; annualized monthly effects and algebraic pooling remain explicitly different estimands. All selected-history intervals omit full prior search and refit uncertainty.
 
 Running now: none. Remaining work is blocked on original forecasts/checkpoints/inputs/holdings, not on compute. Next: receive existing package/location, run hash gate into a fresh receipt, then resume original forecast/order replay and trained identity/blend/component tests. No extra permission needed merely to resume authorized testing when artifacts arrive; conditional financial fitting retains its frozen data/learner/compute gates. Full goal incomplete; blocked audit reached. Protected-window and paid-data decisions unchanged. No push, capital, team messaging or automation.
+
+
+T17 done2026-10-27: user supplied Rishi push; merged865dbb3 locally preserving unrelated edits.339/339contract and1184/1184publication files hash match; earlier missing-artifact blocker resolved. Protocol0a70456; metadata portabilityc6bf85d; numerical diagnostic65d38b2; separate saved-export stagefd9796e.
+
+T18 done2026-10-27: strict parent CPU/CUDA forecast-value reproduction fails despite exact prepared arrays/scalers. First CPUparent eligible ranks and top5/top10 unchanged. Dynamic source-config CUDA20fits pass, then2024/7validation1.54972e-6pp fails1e-6; preserved21receipts, no Hpred derivative accounts or widened tolerance. No training.
+
+T19 done2026-10-27: saved-export replay54accounts/27score cells,18original account paths/NAV/metrics/aggregate ledgers reproduced(maxdailyerror9.99e-17). Ten-seed top10 E CAGR23.92% versus22.71% parent+training-label identity. Primary annual mean contrasts E−B+7.04pp, E−identity−.42pp; Holm p.0604/.5362, no equivalence or financial-fitting gate pass. execution_batch2_exports/REPORT.md.
+
+T20 done2026-10-27: stock-trace protocole4af428 committed before stock scoring. Test observed missing module then failing snapshot-duplication identity before fix; final36-test focused suite passes including settlement and unavailable-fill cancellation. Ten unchanged-canonical-engine traces reconcile cash≤9.10e-12 dollars, shares exactly0 and daily returns≤1e-16 versus preceding accounts. Top3issuers NVIDIA/Alphabet/Broadcom contribute64.74%of net annual arithmetic return in top5 and56.62%in top10. Reconstructed fills are not broker records. execution_batch3_trace/REPORT.md.
+
+Current running: none. Next: checkpoint numerical diagnosis; independent remaining saved-account boundary/persistence, exact half-capital and matched exposure/cost/power analyses. Full plan remains incomplete, former missing-file blocker resolved. Hpred/trained-component interpretation and new financial fitting retain gates. No push/protected scoring/capital/automation/team messaging.

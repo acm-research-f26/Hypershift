@@ -1,52 +1,31 @@
 # Full-plan completion audit — October 27, 2026
 
-Objective: finish the established RESEARCH_PLAN.md, including its authorized testing. The document's existence is not completion of its research program. Prior goal turn classification: **progress** (committed protocol and first batch, produced new account-path evidence and tested code). This continuation also makes progress through the separately frozen actual-network synthetic learning gate.
+The full research program remains incomplete. The former missing-artifact blocker is **resolved**: publication865dbb3 was merged and all339contract files and1184publication files match. Earlier missing-file receipts and T1–T16 are historical. Current evidence is reported in execution_batch2_exports/REPORT.md and execution_batch3_trace/REPORT.md.
 
-## Requirements and authoritative evidence
+| Requirement | Current disposition |
+|---|---|
+| HOW/WHY source investigation, smoke tests and full research plan | Complete as documents and initial evidence; not completion of the research program |
+| Original artifacts, masks, scalers, graphs and stable axes | Published inputs/forecasts/checkpoints hash verified; canonical preparation agrees |
+| Independent selected-checkpoint forecasts | Unresolved strict numerical gate: first parent fails CPU/CUDA;20dynamic CUDA fits pass then2024/7fails validation1.54972e-6pp versus1e-6. No tolerance widening |
+| Original saved-forecast rank ensembles and18account paths | Complete: daily return/NAV/metrics/aggregate ledger parity |
+| Share/holdings/fee/cash/settlement attribution | Ten fixed ten-seed account traces reconcile; reconstructed economic fills, not original broker records or independent execution model |
+| Timing and vintage provenance | Manifest ordering verified; raw15minute chunks and first-provider-publication timestamps unavailable; latency certification incomplete |
+| Training-only Hlabel control | Complete across original/new-five/ten seed groups, top5/top10 |
+| Hpred and within-ID changing predictions | Not produced; dependent on strict checkpoint regeneration |
+| Security/issuer net contribution | Complete for ten trace cells; concentration quantified |
+| Simple signals | REV5,MOM126,fixed ridge5,coverage6 complete in54-account saved-export batch; causal style matching remains open |
+| Seed/family rank reconstruction and boundary attribution | Original ensemble/account reconstruction complete; full seed bundle, surrogate and boundary-change attribution incomplete |
+| Exact executable half-capital comparator | Open; earlier algebraic pool remains distinct |
+| Actual-code structural and synthetic learnability screens | Complete within frozen scope:42synthetic fits; no claim that real learned relations add signal |
+| Financial checkpoint feature/component interventions | Not achieved; checkpoint gate unresolved |
+| Conditional financial retraining D1/D2/D3 | Not started; primary saved-export increment gate does not pass. Do not fit models merely to fill plan rows |
+| Exposure and risk-policy attribution | Prior selected saved-path increments complete; overlays on matched parent/dynamic/simple/identity books, training-calibrated risk and cost/capacity/membership reruns remain open |
+| Primary daily statistics | Complete for E−B and E−E_Hlabel,ten-seed/top10: block21 Holm p.0604/.5362. Neither passes5%; equivalence not established. Power analysis remains open |
+| Prospective readiness and collection | Unactivated, separate candidate/readiness decision; no protected-window release or backfill |
+| Verification/review/logging |36focused tests pass for new replay/trace plus prior suites; independent raw replay and trace reviews completed; scoped corrections verified |
 
-| Plan requirement | Current status | Evidence / next dependency |
-|---|---|---|
-| Initial HOW/WHY investigation and reusable plan | Complete | RESEARCH_PLAN.md; source inspection, smoke outputs, independent REVIEW.md |
-| Phase A: original per-stock inputs/forecasts/checkpoints/tapes | Incomplete, external dependency | ARTIFACT_CONTRACT_V2.json identifies339 hash-locked files; zero located across four checkouts. Original335-file subset retained. Request drafted; live feat-rs results README rechecked through GitHub connector still says large outputs are ignored. Account/trade tapes additionally required |
-| Phase A: independent selected-checkpoint forecast reproduction | Not achieved | Original weights/preprocessing/data missing; published aggregate agreement cannot substitute |
-| Phase A: share-order, holdings, corporate-action and NAV replay | Not achieved | Original inputs, fills and holdings missing; engine synthetic tests are narrower |
-| Phase A: timing/vintage/identity provenance on original inputs | Not achieved | Original manifests/bars/membership records missing; existing source audits only source-reported |
-| Phase A: contract edge cases and hashes | Integrity-check implementation complete; original-data validation incomplete | rishi_artifact_verify.py and five tests cover every-hash readiness, missing/mutated originals, normalized/case path aliases, path containment, empty contract and exclusive receipt preservation. Current receipt339missing/0matched; original forecast/ID checks still need payload |
-| Phase B: H-label/H-pred training-only stock controls | Not achieved | Requires training labels/masks or original checkpoint inference and IDs |
-| Phase B: within/between-ID decomposition and rank persistence | Not achieved | Per-stock predictions absent |
-| Phase B: security/issuer dollar P&L and fees | Not achieved | Position/order/settlement tapes absent |
-| Phase B: simple signals and causal style controls | Not achieved | Original stock-level panel and common eligible mask absent |
-| Phase C: exact seed/family rank reconstruction and boundary attribution | Not achieved | Per-seed predictions, masks and labels absent; blending unit tests narrower |
-| Phase C: exact 50:50 half-capital execution comparator | Not achieved | Raw inputs/trades absent; CAPITAL_POOL_DIAGNOSTIC.csv explicitly algebraic only |
-| Phase C: monthly standalone/blend account comparison | Complete within aggregate scope | 18 accounts validated; MONTHLY_MODEL_CONTRASTS.csv, block sensitivities; no daily-SR claim |
-| Phase C: new seed bundles and surrogate | Not achieved | Training/test per-seed outputs absent; no substitute with summary rows |
-| Phase D: actual-code reindexing, inactive gradient and synthetic forward tests | Complete within structural scope | test_rishi_mechanism_components.py plus initial smoke; 31-test batch log |
-| Phase D: trained financial checkpoint feature/component interventions | Not achieved | Original trained checkpoints/preprocessing absent |
-| Phase D: synthetic own/peer/identity learned-recovery screen | Complete within its frozen scope | All18fits ×800updates finished in327.48seconds. Full model ownR².965–.977, peer.880–.891, identity.763–.806; temporal-only recovers own only. synthetic_gate1/RESULTS.json and REPORT.md. Static versus learned graph not isolated |
-| Phase D: missingness-only and changing-membership learned recovery | Complete within frozen synthetic scope | bc9d646; synthetic_robustness1/RESULTS.json:24fits, own recovery under nuisance shift, coverage-only null, own/peer recovery under changing eligibility. All screens pass. Fixed existing IDs and supplied pair graph; not unseen-ID or learned-incidence attribution |
-| Phase D1: matched financial learned-relation × indexed-filter retraining | Conditional, not started | Only if artifact/replay, incremental-behavior, synthetic learner-power and measured-budget gates pass |
-| Phase D2: matched financial AH/PM/activity retraining | Conditional, not started | Only if prior attribution leaves that uncertainty material; freeze exact batch first |
-| Phase D3: financial MSE/RMSE experiment | Conditional, not started | Only if loss remains a relevant confound after earlier gates |
-| Phase E: source leader metrics and selected policy increments | Complete within saved-path scope | Workbook literals, six contrasts, exact annual returns and 1.199 reproduction |
-| Phase E: all specified selection × exposure share accounts | Partial | Exports lack needed issuer5/full and raw share accounting |
-| Phase E: same overlay on parent/dynamic/REV5/H/EW/QQQ | Not achieved | Requires original panels and basket returns/cost-aware execution |
-| Phase E: training-calibrated fixed-risk controls and cost/cash decomposition | Not achieved | Original training panel and holdings/exposure/fee tapes missing |
-| Phase E: 10/20/30bp re-execution and capacity/gap/membership tests | Not achieved on real data | Original ADV, trade quantities and marks missing; source cost summaries and unit tests narrower |
-| Statistics: frozen first aggregate batch, paired resampling and family tests | Complete for that batch | EXECUTION_PROTOCOL.md commit06791ad; saved contrasts and reviewer arithmetic checks |
-| Statistics: full daily E−B and E−E-H gates, equivalence and power | Not achieved | Daily matched accounts and identity control missing; monthly contrast not same estimand |
-| Prospective freeze/collection/endpoint | Conditional, not activated | Separate readiness/candidate decision, power and future observations; no backfill or protected data release |
-| Supporting reproducibility, code tests, independent review and logs | Complete for initial/batch1 work; ongoing for new gate | Original and batch1 manifests/logs/review; synthetic gate requires result review when finished |
+## Next work
 
-## Completion ruling
+Diagnose selected-checkpoint numerical mismatch without changing the frozen acceptance criterion. Preserve all failed attempts and distinguish saved-export reproduction from regenerated-checkpoint reproduction. Complete independent remaining saved-account decomposition (exact half-capital comparator, rank persistence/boundary attribution, matched overlays/cost sensitivity and paired power). Revisit conditional fitting only if the declared scientific and compute gates justify it. No need to ask Rishi again for positions he never saved; the reconstructed traces now supply accounting attribution under the original assumptions.
 
-The full goal is **not complete**. The original forecasts/checkpoints/stock-account inputs are still absent. The available specified aggregate analyses, structural checks, synthetic own/peer/identity/missingness/membership learning screens and original-file integrity interface are complete within their declared scopes. Do not replace the remaining financial attribution with further unrelated toys or unvalidated scaffolding. Conditional financial stages cannot be skipped as if their gates passed or failed; those gates remain unobservable without the originals.
-
-## Blocking audit after the robustness batch
-
-The same external missing-originals condition was present in the original authorized testing turn, the first goal continuation (own/peer/identity fits) and this second continuation (missingness/membership fits). Each turn made concrete independent progress; those available portions are now finished. No process remains running, so this is not a verified wait for compute.
-
-Current remote recheck: `git ls-remote origin refs/heads/feat-rs` confirms `d474406f7f475984fa57dce4a0750ef96335e858`, the already inspected snapshot. It has no tracked original runs/checkpoints. The explicit339-file receipt remains0matched/339missing, and the four related local checkouts were already checked. No export path/link was supplied after the user's request for a draft message; that draft is delivered and has not been sent automatically.
-
-At this point completing Phases A/B/C, trained-model Phase D, real-account Phase E, full daily mechanism statistics/power and any gated next stage requires an external artifact change. Advancing into financial fitting without those gates would violate the established plan. The blocked-goal threshold of the same genuine condition across at least three consecutive goal turns is met; request `blocked` status after preserving this completed work. Resume when the original package/location becomes available. This is not a completion claim or a pause request.
-
-The paid-data, prospective and protected-window decisions remain distinct from authorization to continue this research. No capital, automation or team messaging is implied.
+No job remains running after the recorded batches. The former three-turn missing-file blocked audit must not be reused as a present blocker or completion claim. No push, capital, automation, external message or prospective activation occurred. The paid-data/protected-window decisions are unchanged.

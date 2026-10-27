@@ -1,0 +1,15 @@
+{
+  "publication_commit": "865dbb3ec9f0cf330622e2077609bf6645d7aa0d",
+  "sha256": {
+    "research/analysis/rishi_raw_replay.py": "99c3808f734dd85a38003ee29463daae062ef415773d73ac4af20b910e6f6920",
+    "research/analysis/rishi_dynamic_replay.py": "6bdf009cd7e9b6e922a0d3b6d02ad113492aeb03b8fa0d164e9b2cd8a3bd67cc",
+    "research/analysis/rishi_account_trace.py": "6949b52a41591fe330052390ea740af219779b425af352cad6f481f0faf87cb6",
+    "tests/test_rishi_raw_replay.py": "b221fbb1db1f672cc27870f9a5357aa009ac814de4bee14ff3963027a07920fd",
+    "tests/test_rishi_account_trace.py": "c7168ea50c7cd2eab575f1f62a3b5ac58d4951058fb8007d127db7c2a63d0a66",
+    "docs/rishi_mechanism_20261027/RAW_REPLAY_PROTOCOL.md": "8a773c4dc54a70dd1d4f0825f10f8a7ff941be6a207f9e7fb4210f97f26bb058",
+    "docs/rishi_mechanism_20261027/PORTABILITY_AMENDMENT.md": "e3dfcaaa45cd92654cacaaafd8904f408d64dfe5d4517bf43595b1343559a1ec",
+    "docs/rishi_mechanism_20261027/NUMERICAL_REPLAY_AMENDMENT.md": "7618090656c36de820f5e51a5f4ae92f9adff42064aa143af70a49b584a318a8",
+    "docs/rishi_mechanism_20261027/EXPORTED_FORECAST_STAGE.md": "b5b7757ab78998898db0532e21252be7074b20ad049d89024d4261c153d81248",
+    "docs/rishi_mechanism_20261027/STOCK_TRACE_PROTOCOL.md": "8adba870076d22b02b8563c14d3dd64c26ae474d46d5418366a0d2d1d648b91f"
+  }
+}

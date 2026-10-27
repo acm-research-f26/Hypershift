@@ -1,0 +1,12 @@
+{
+  "device": "cuda",
+  "torch": "2.14.0+cu130",
+  "cuda_build": "13.0",
+  "deterministic_algorithms": true,
+  "precision": "float32, no AMP; TF32 disabled for CUDA",
+  "cublas_workspace_config": ":4096:8",
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "gpu_memory_bytes": 4294443008,
+  "compute_capability": "8.6",
+  "cudnn_version": 92400
+}

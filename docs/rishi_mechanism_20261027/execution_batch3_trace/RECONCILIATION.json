@@ -1,0 +1,72 @@
+[
+  {
+    "account": "B_ten_seed_k5",
+    "daily_error": 9.985502008591496e-17,
+    "cash_error": 2.277289468111121e-12,
+    "share_error": 0.0,
+    "fills": 1285
+  },
+  {
+    "account": "B_ten_seed_k10",
+    "daily_error": 9.974659986866641e-17,
+    "cash_error": 1.8189894035458565e-12,
+    "share_error": 0.0,
+    "fills": 2371
+  },
+  {
+    "account": "D_ten_seed_k5",
+    "daily_error": 9.974659986866641e-17,
+    "cash_error": 9.094947017729282e-12,
+    "share_error": 0.0,
+    "fills": 1406
+  },
+  {
+    "account": "D_ten_seed_k10",
+    "daily_error": 9.8879238130678e-17,
+    "cash_error": 1.4210854715202004e-12,
+    "share_error": 0.0,
+    "fills": 2615
+  },
+  {
+    "account": "E_ten_seed_k5",
+    "daily_error": 9.93129189996722e-17,
+    "cash_error": 9.094947017729282e-13,
+    "share_error": 0.0,
+    "fills": 1300
+  },
+  {
+    "account": "E_ten_seed_k10",
+    "daily_error": 9.974659986866641e-17,
+    "cash_error": 3.637978807091713e-12,
+    "share_error": 0.0,
+    "fills": 2490
+  },
+  {
+    "account": "Hlabel_ten_seed_k5",
+    "daily_error": 9.974659986866641e-17,
+    "cash_error": 1.1368683772161603e-13,
+    "share_error": 0.0,
+    "fills": 1016
+  },
+  {
+    "account": "Hlabel_ten_seed_k10",
+    "daily_error": 9.974659986866641e-17,
+    "cash_error": 2.3092638912203256e-13,
+    "share_error": 0.0,
+    "fills": 2032
+  },
+  {
+    "account": "E_Hlabel_ten_seed_k5",
+    "daily_error": 9.996344030316351e-17,
+    "cash_error": 7.275957614183426e-12,
+    "share_error": 0.0,
+    "fills": 1136
+  },
+  {
+    "account": "E_Hlabel_ten_seed_k10",
+    "daily_error": 9.974659986866641e-17,
+    "cash_error": 9.379164112033322e-13,
+    "share_error": 0.0,
+    "fills": 2259
+  }
+]

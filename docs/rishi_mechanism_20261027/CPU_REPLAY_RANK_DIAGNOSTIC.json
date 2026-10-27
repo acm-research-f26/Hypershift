@@ -1,0 +1,12 @@
+{
+  "validation": {
+    "mean_rank_correlation": 1.0,
+    "top5_changed_origins": 0,
+    "top10_changed_origins": 0
+  },
+  "test": {
+    "mean_rank_correlation": 1.0,
+    "top5_changed_origins": 0,
+    "top10_changed_origins": 0
+  }
+}
