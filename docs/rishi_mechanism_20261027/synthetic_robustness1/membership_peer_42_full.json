@@ -1,0 +1,16 @@
+{
+  "case": "membership_peer",
+  "seed": 42,
+  "arm": "full",
+  "updates": 800,
+  "seconds": 6.421999999991385,
+  "train_active_mean": 6.8984375,
+  "test_active_mean": 4.96875,
+  "train_missing_rate": 0.0,
+  "test_missing_rate": 0.0,
+  "inactive_nan_garbage_invariance": true,
+  "mse": 0.33841827511787415,
+  "zero_mse": 0.9119409322738647,
+  "r2_zero": 0.6289032950039315,
+  "observations": 212
+}

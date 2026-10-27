@@ -1,0 +1,16 @@
+{
+  "case": "membership_own",
+  "seed": 19,
+  "arm": "full",
+  "updates": 800,
+  "seconds": 6.5,
+  "train_active_mean": 6.9765625,
+  "test_active_mean": 5.0,
+  "train_missing_rate": 0.0,
+  "test_missing_rate": 0.0,
+  "inactive_nan_garbage_invariance": true,
+  "mse": 0.024180537089705467,
+  "zero_mse": 0.9873456954956055,
+  "r2_zero": 0.9755095533408207,
+  "observations": 320
+}

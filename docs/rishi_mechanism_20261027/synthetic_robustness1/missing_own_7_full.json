@@ -1,0 +1,16 @@
+{
+  "case": "missing_own",
+  "seed": 7,
+  "arm": "full",
+  "updates": 800,
+  "seconds": 6.5789999999979045,
+  "train_active_mean": 8.0,
+  "test_active_mean": 8.0,
+  "train_missing_rate": 0.2587890625,
+  "test_missing_rate": 0.55859375,
+  "inactive_nan_garbage_invariance": true,
+  "mse": 0.023249171674251556,
+  "zero_mse": 0.9504909515380859,
+  "r2_zero": 0.9755398285100666,
+  "observations": 512
+}

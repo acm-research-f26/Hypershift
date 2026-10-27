@@ -1,0 +1,90 @@
+[
+  {
+    "case": "missing_own",
+    "split": "train",
+    "dates": 128,
+    "supervised": 1024,
+    "eligible": 1024,
+    "active_min": 8,
+    "active_max": 8,
+    "missing_rate": 0.2587890625,
+    "inactive_invariance_applicable": false
+  },
+  {
+    "case": "missing_own",
+    "split": "test",
+    "dates": 64,
+    "supervised": 512,
+    "eligible": 512,
+    "active_min": 8,
+    "active_max": 8,
+    "missing_rate": 0.55859375,
+    "inactive_invariance_applicable": false
+  },
+  {
+    "case": "coverage_null",
+    "split": "train",
+    "dates": 128,
+    "supervised": 1024,
+    "eligible": 1024,
+    "active_min": 8,
+    "active_max": 8,
+    "missing_rate": 0.2431640625,
+    "inactive_invariance_applicable": false
+  },
+  {
+    "case": "coverage_null",
+    "split": "test",
+    "dates": 64,
+    "supervised": 512,
+    "eligible": 512,
+    "active_min": 8,
+    "active_max": 8,
+    "missing_rate": 0.576171875,
+    "inactive_invariance_applicable": false
+  },
+  {
+    "case": "membership_own",
+    "split": "train",
+    "dates": 128,
+    "supervised": 893,
+    "eligible": 893,
+    "active_min": 6,
+    "active_max": 8,
+    "missing_rate": 0.0,
+    "inactive_invariance_applicable": true
+  },
+  {
+    "case": "membership_own",
+    "split": "test",
+    "dates": 64,
+    "supervised": 320,
+    "eligible": 320,
+    "active_min": 4,
+    "active_max": 6,
+    "missing_rate": 0.0,
+    "inactive_invariance_applicable": true
+  },
+  {
+    "case": "membership_peer",
+    "split": "train",
+    "dates": 128,
+    "supervised": 764,
+    "eligible": 883,
+    "active_min": 6,
+    "active_max": 8,
+    "missing_rate": 0.0,
+    "inactive_invariance_applicable": true
+  },
+  {
+    "case": "membership_peer",
+    "split": "test",
+    "dates": 64,
+    "supervised": 212,
+    "eligible": 318,
+    "active_min": 4,
+    "active_max": 6,
+    "missing_rate": 0.0,
+    "inactive_invariance_applicable": true
+  }
+]

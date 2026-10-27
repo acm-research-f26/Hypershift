@@ -1,0 +1,16 @@
+{
+  "case": "coverage_null",
+  "seed": 7,
+  "arm": "full",
+  "updates": 800,
+  "seconds": 6.5310000000026776,
+  "train_active_mean": 8.0,
+  "test_active_mean": 8.0,
+  "train_missing_rate": 0.2431640625,
+  "test_missing_rate": 0.576171875,
+  "inactive_nan_garbage_invariance": true,
+  "mse": 0.9863945245742798,
+  "zero_mse": 0.9840298891067505,
+  "r2_zero": -0.002403011832979862,
+  "observations": 512
+}
