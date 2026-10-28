@@ -1,5 +1,5 @@
 """Transferable no-training original parent checkpoint GPU trace."""
-import argparse,hashlib,json
+import argparse,hashlib,json,sys
 from pathlib import Path
 import numpy as np
 import torch
@@ -60,9 +60,12 @@ def main():
     np.savez_compressed(args.out/'FORECASTS.npz',validation=outputs['validation'],test=outputs['test'],batch=batch,
         validation_ids=p['validation'],test_ids=p['test'],batch_ids=ids,security_ids=np.asarray(data['panel'].tickers,dtype='U'))
     files=[cp_path,export_path,Path(__file__)]
+    modules=['ndx_reference_training','ndx_extended_hours','training_device','robust_models','research_models','think_model',
+        'pit_research_engine','ndx_loss_optimizer','run_robust_research','prepare_ndx_extended_hours']
+    code_hashes={name:hashlib.sha256(Path(sys.modules[name].__file__).read_bytes()).hexdigest() for name in modules}
     report=dict(environment=env,year=2022,seed=7,family='B',reference_origin=186,reference_ticker='ADBE',
         batch_ids=ids.tolist(),layers=metadata,all_input_hashes={k:array_digest(v) for k,v in dict(x=x,extra=extra,mask=mask,validation_ids=p['validation'],test_ids=p['test'],stock_ids=np.asarray(data['panel'].tickers,dtype='U')).items()},
-        file_sha256={str(q):hashlib.sha256(q.read_bytes()).hexdigest() for q in files},forecast_max_error_pp=errors,batch_vs_full_max_error=difference,
+        file_sha256={str(q):hashlib.sha256(q.read_bytes()).hexdigest() for q in files},code_modules_sha256=code_hashes,forecast_max_error_pp=errors,batch_vs_full_max_error=difference,
         limits='One checkpoint; trace only, no training or gate amendment; source machine verification remains separate.')
     (args.out/'TRACE.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps({'layers':len(metadata),'batch_ids':ids.tolist(),'max_error_pp':errors,'batch_vs_full_max_error':difference},indent=2))

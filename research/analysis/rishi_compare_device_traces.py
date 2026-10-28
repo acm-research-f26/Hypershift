@@ -11,6 +11,7 @@ def compare(local,remote):
         raise ValueError('Input/axis hashes or canonical batch differ')
     def names(d):return {Path(k.replace('\\','/')).name:v for k,v in d.items()}
     if names(left['file_sha256'])!=names(right['file_sha256']):raise ValueError('Checkpoint, export or trace-code hash differs')
+    if not left.get('code_modules_sha256') or left['code_modules_sha256']!=right.get('code_modules_sha256'):raise ValueError('Model or preparation code hashes differ or are missing')
     if left['layers']!=right['layers']:raise ValueError('Layer names, call order, shapes or dtypes differ')
     result={'local_environment':left['environment'],'candidate_environment':right['environment'],
         'local_saved_errors_pp':left['forecast_max_error_pp'],'candidate_saved_errors_pp':right['forecast_max_error_pp'],

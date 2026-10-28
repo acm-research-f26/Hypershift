@@ -9,7 +9,7 @@ class CompareDeviceTracesTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);a=root/'a';b=root/'b';a.mkdir();b.mkdir()
             meta={'all_input_hashes':{'x':'hash'},'batch_ids':[1],'file_sha256':{'7.pt':'abc'},
-                'layers':[{'key':'layer_0000','module':'x','call':0,'shape':[1],'dtype':'float32'}],
+                'code_modules_sha256':{'model':'def'},'layers':[{'key':'layer_0000','module':'x','call':0,'shape':[1],'dtype':'float32'}],
                 'environment':{},'forecast_max_error_pp':{},'batch_vs_full_max_error':0}
             for path in (a,b):
                 (path/'TRACE.json').write_text(json.dumps(meta))
