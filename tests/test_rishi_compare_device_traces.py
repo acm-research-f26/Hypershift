@@ -19,3 +19,5 @@ class CompareDeviceTracesTests(unittest.TestCase):
             self.assertEqual(compare(a,b)['forecasts']['test'],0)
             meta['all_input_hashes']['x']='other';(b/'TRACE.json').write_text(json.dumps(meta))
             with self.assertRaises(ValueError):compare(a,b)
+            meta['all_input_hashes']['x']='hash';meta['code_modules_sha256']['model']='changed';(b/'TRACE.json').write_text(json.dumps(meta))
+            with self.assertRaises(ValueError):compare(a,b)
