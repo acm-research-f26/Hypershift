@@ -1,0 +1,11 @@
+# Traded blend-category accounting — 2026-10-27
+
+Research_Plan Phase C; fixed ten-seed E full-exposure top5/top10 accounts, original frozen B/D/E rankings and reconciled stock traces. No strategy changes, neural inference, label filtering or new hypotheses. Fresh execution_batch12_boundary and results/RISHI_MECHANISM_BOUNDARY_20261027.
+
+At each scheduled entry close, classify E targets by whether B/D independently select that stock at the same k: both, parent-only, dynamic-only, neither. A held position outside the latest E target is residual. Mark-to-market gross P&L through a fill close belongs to the prior end-of-day classification because those are the units held over the price move. After the fill, new target classification applies to subsequent holding P&L and end-of-day equity exposure. Categories describe decision membership, not tax lots or marginal causal model effects.
+
+Ordinary fill fees use the new decision category if E selects that name, otherwise a separate exit-cost category. Settlement and terminal-liquidation fees use the prior holding classification. Keep residual/exit categories even when zero. All six category gross returns minus fee returns must sum daily to the original account; operation-level fees must match the earlier per-stock fee vector. End-of-day category dollar holdings/NAV must sum to source actual equity exposure. Aggregate security/issuer contribution and average exposure by category; report all categories and calendars. No per-stock/category CAGRs.
+
+Names selected by B/D but excluded by E remain identifiable in the prior complete boundary table. E has no earned holding return on an unowned displaced name; do not manufacture one. The already executed standalone/pool accounts supply real counterfactual portfolio comparisons. No category deletion or selected-return strategy follows.
+
+Tests fix the fill-day timing: prior-class price P&L, new-class purchase fees, exit fees and prior-class settlement/terminal fees. Compare all daily/annual totals and existing frozen path/stock/issuer axes. This is an exact additive convention under source execution, not proof that promoted names contain unique changing information. Original primary financial-fitting gate remains unchanged.
