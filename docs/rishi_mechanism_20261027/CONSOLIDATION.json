@@ -1,0 +1,16 @@
+{
+  "stock_rows": 2966,
+  "unique_accounts": 21,
+  "control_accounts": 79,
+  "score_variation_rows": 36,
+  "input_sha256": {
+    "execution_batch3_trace/STOCK_CONTRIBUTIONS.csv": "f7aaad580ec19631a8ec7183d6dc989260a26eb7e550794f85e9bd018069ade1",
+    "execution_batch5_behavior/FOLD_VARIATION.csv": "477135f7161cdd87608a118613990378486b0c62834cf4f48d37747c67b32816",
+    "execution_batch9_leader_trace/STOCK_ATTRIBUTION.csv": "0afa1b25d78e68ad760e3bb7eeba4edbd0a52468a7913d6f9b9228c4a3aa680a",
+    "execution_batch9_leader_trace/ISSUER_ATTRIBUTION.csv": "7873dc546645562fdd4890cc067c76e9cb08088163fe6e5f29c55699d249f764",
+    "execution_batch2_exports/ACCOUNT_METRICS.csv": "566e2ceddb62c26d361223077f670cd4e83e1a4350e2637d0ab25b658a228c7e",
+    "execution_batch4_capital_v2/CAPITAL_SPLIT_METRICS.csv": "043696422bebe4a3422b02d80a3edba067505a9f5bbf70ee2978ec4fb22c0f9b",
+    "execution_batch11_availability/ACCOUNT_METRICS.csv": "0db2ef6fb252cfa8b22e5e0053a03ff977dce15e03bb07347457397478264fd6"
+  },
+  "scope": "Consolidates existing audited outputs; no new numerical strategy or inference"
+}

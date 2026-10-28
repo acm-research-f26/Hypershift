@@ -1,0 +1,109 @@
+{
+  "files": [
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\B_10.csv",
+      "bytes": 54986,
+      "sha256": "79f8d724de3c5802fd5b19f6df05a0f058052b202d549bb471879d7609069aec"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\B_5.csv",
+      "bytes": 54860,
+      "sha256": "212ac95146be213ceb23dada50e67ba87f58c96173027892ffb57680e35faebe"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\COMMON_MASK_AXES.npz",
+      "bytes": 8218,
+      "sha256": "df5d88f07cbecdde38745c5f48569269d5d9a655fef82eaa9eda75b0539dad2b"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\coverage6_10.csv",
+      "bytes": 55153,
+      "sha256": "cc8246c131a83b3c430c98330b58a83092ff86b4d59f23c2bd0f1cae7d2a528c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\coverage6_5.csv",
+      "bytes": 55200,
+      "sha256": "fa5edb536f7b175881f21a7f1921860b11dad3c690da36d9ac3279e26c580d62"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\D_10.csv",
+      "bytes": 55018,
+      "sha256": "39583d01c82debdf7687b7cab712d4ac6931d3a81d75a0160fd93343659b98c4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\D_5.csv",
+      "bytes": 54931,
+      "sha256": "e308488a9d225347166ac1dd24fb5f3a5968eef5c1968cbc9f87d81852e5bb8d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\E_10.csv",
+      "bytes": 55001,
+      "sha256": "726aef7657a83a8d3f5c226f2c83e51efcb8d0d91ba049a6234f904602f2f223"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\E_5.csv",
+      "bytes": 54857,
+      "sha256": "5e0ccc178f8f77ed3c6b174a9e30aa133ef0eda3855931ffdd373146c7241590"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\E_Hlabel_10.csv",
+      "bytes": 54811,
+      "sha256": "4e1d23aa5b349a475b953c67bc13970f64eabb7166b6c17324c99ea1ba60a192"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\E_Hlabel_5.csv",
+      "bytes": 54737,
+      "sha256": "9f71ecf6325b9d54cff54fafea0c053abb5040898e3ece257c8fd44663c92e02"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\EW_0.csv",
+      "bytes": 55392,
+      "sha256": "9b3342d3974270f3c0bcf7a7a98c8ba2f77d5c65530e49c5151590fc39eeeb67"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\Hlabel_10.csv",
+      "bytes": 54872,
+      "sha256": "6034b64eeb90975bbf918e840a4380000e9cdf219151721d59ccd838722491e4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\Hlabel_5.csv",
+      "bytes": 54746,
+      "sha256": "baf6d37f5a8dd1052f24eb9933e98b23c3578d4a67cdca3313a11bef656671b3"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\MOM126_10.csv",
+      "bytes": 55146,
+      "sha256": "e29c16242c24b0d86076a087decf8ba4d3270271b449757f8df36a5505a1879c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\MOM126_5.csv",
+      "bytes": 55010,
+      "sha256": "dbbb3404fc01895162a112134dbf6c3764089770f912405d0652d35d2b300ef4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\PATHS.npz",
+      "bytes": 143442,
+      "sha256": "35f5e734f59d21660f31de6bc1e49b8efb0eb31435b7b0bbf9310c2505b1fff7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\REV5_10.csv",
+      "bytes": 55106,
+      "sha256": "f8accd09934913a370e1ec73a7e1a586d7643ce6b2084c979ae2dd721d1cd4c1"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\REV5_5.csv",
+      "bytes": 55041,
+      "sha256": "72d6408d2a6af7d75cfbbdac77c3c838b5d291145d125ba60d5cd418a61dfe00"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\ridge5_10.csv",
+      "bytes": 55002,
+      "sha256": "ec1660274f6cdb0a16bf1d2f45779102300811c4b3c04a001f1c639056ce39c0"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_AVAILABILITY_20261027\\ridge5_5.csv",
+      "bytes": 54924,
+      "sha256": "3fa3ce7344121aeea03cf72cadaadef84c82ee77c5414b035932f5657cfb456c"
+    }
+  ]
+}

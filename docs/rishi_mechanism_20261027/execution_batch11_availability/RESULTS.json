@@ -1,0 +1,13 @@
+{
+  "common_accounts": 19,
+  "contrasts": 6,
+  "common_eligible_min": 81,
+  "common_eligible_max": 90,
+  "cohort_accounts": 19,
+  "cohort_rows": 57,
+  "source_hashes": {
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_availability.py": "140f24876dea6789572a8fa13fc7d6270cadad8c283d8fded2ad6e5f0e25028e",
+    "docs\\rishi_mechanism_20261027\\AVAILABILITY_ENTRY_PROTOCOL.md": "3d3e9da00cf5e29ba95a5cd8d366134f3aae10801a2e4368ba028c03778edeb6"
+  },
+  "scope": "Post-score ex-ante common screen and descriptive source-membership cohorts; original primary masks unchanged"
+}

@@ -1,0 +1,13 @@
+id,order_contract,max_daily_error,cash_error,share_error,relative_nav_error,submitted,fills,binding_caps,missing_fills,cash_scaled,terminal_canceled
+equal5/basketvol20_target20_weekly/original_five,frozen_shares_next_close,9.985502008591496e-17,9.89530235528946e-10,0.0,1.3969838619232178e-15,1293,1298,0,0,64,0
+issuer5/ma200off50_basketvol20_target25_weekly/original_five,frozen_shares_next_close,9.974659986866641e-17,6.984919309616089e-10,0.0,6.984919309616089e-16,1365,1370,0,0,84,0
+issuer5/basketvol20_target20_weekly/original_five,frozen_shares_next_close,9.985502008591496e-17,9.313225746154785e-10,0.0,9.313225746154785e-16,1365,1370,0,0,58,0
+equal5/ma200off50_basketvol20_target20_weekly/original_five,frozen_shares_next_close,9.974659986866641e-17,6.984919309616089e-10,0.0,9.313225746154785e-16,1293,1298,0,0,64,0
+equal5/full/original_five,frozen_shares_next_close,9.8879238130678e-17,4.656612873077393e-10,0.0,4.656612873077392e-16,1293,1298,0,0,393,0
+equal5/basketvol20_target20_weekly/ten_seed,frozen_shares_next_close,9.974659986866641e-17,1.0477378964424133e-09,0.0,1.3969838619232178e-15,1295,1300,0,0,63,0
+issuer5/ma200off50_basketvol20_target25_weekly/ten_seed,frozen_shares_next_close,9.8879238130678e-17,6.402842700481415e-10,0.0,9.313225746154785e-16,1302,1307,0,0,109,0
+issuer5/basketvol20_target20_weekly/ten_seed,frozen_shares_next_close,9.974659986866641e-17,1.3969838619232178e-09,0.0,1.3969838619232178e-15,1302,1307,0,0,57,0
+equal5/ma200off50_basketvol20_target20_weekly/ten_seed,frozen_shares_next_close,9.974659986866641e-17,6.402842700481415e-10,0.0,6.984919309616089e-16,1295,1300,0,0,63,0
+equal5/full/ten_seed,frozen_shares_next_close,9.93129189996722e-17,9.313225746154785e-10,0.0,9.313225746154785e-16,1295,1300,0,0,404,0
+SPY,first_close_dollar_budget,9.996344030316351e-17,0.0,0.0,0.0,0,2,0,0,0,0
+QQQ,first_close_dollar_budget,9.952975943416931e-17,1.1641532182693481e-10,0.0,2.328306436538696e-16,0,2,0,0,0,0

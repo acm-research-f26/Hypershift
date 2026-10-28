@@ -25,6 +25,18 @@
     "research/analysis/rishi_risk_account_audit.py": "066db2258b4f51a5c52350c147eb3f63083c8178357664dc9caea0a195439b9a",
     "research/analysis/rishi_risk_figure.py": "f147c9c40f0e9906e220b0230cf816411d0093bdfb90b4ed45e62d248eaab992",
     "tests/test_rishi_mechanism_risk.py": "0189212d93911a4c6c0c5408423be419a3ba8f94623ba1ad6ceb6eac6925625e",
-    "docs/rishi_mechanism_20261027/RISK_EXECUTION_PROTOCOL.md": "074f6a23a277b9507ab706dca11c7b13207e953af6b5b458334f2028a60afb2b"
+    "docs/rishi_mechanism_20261027/RISK_EXECUTION_PROTOCOL.md": "074f6a23a277b9507ab706dca11c7b13207e953af6b5b458334f2028a60afb2b",
+    "research/analysis/rishi_leader_trace.py": "8f3f4e554aabe4980369ed83998c9cbf17bc5f8dff5ff5c911a25fca5de8530e",
+    "research/analysis/rishi_mechanism_selection.py": "377967ccd5c8d7e6f5bcdef77829b1bbae0e42508d9f42921a3d19e9bf07c683",
+    "research/analysis/rishi_selection_audit.py": "6452e56d4af0af5c67fa98f61e4dc91303ae5fe49dce2743475fe8d7aa3296db",
+    "research/analysis/rishi_availability.py": "140f24876dea6789572a8fa13fc7d6270cadad8c283d8fded2ad6e5f0e25028e",
+    "research/analysis/rishi_availability_audit.py": "707d22065149de9091f47429b2427755aa2e2c975b992352fe2561f65111e56c",
+    "tests/test_rishi_leader_trace.py": "ae60719394226ff817d6d48db354bce9b0442baeb348f5f783a2cd308cc9b0ce",
+    "tests/test_rishi_selection.py": "854cdfa4d18643b722234e4ab28d7989184f144dc7b2b83a3fd7c3cc45f24534",
+    "tests/test_rishi_availability.py": "1a2edd62a54aa2ab17ac15ce0ed4f5fbf93740be25ee5a1a572f9b58c4f69412",
+    "docs/rishi_mechanism_20261027/LEADER_TRACE_PROTOCOL.md": "6bb2640f4516b372cefcd5f389fb1560422409291e92c9a9d3f94bd3f4f87146",
+    "docs/rishi_mechanism_20261027/SELECTION_EXECUTION_PROTOCOL.md": "bebb76195c55fa4e9f698a515e8005546bfe23e52fe04af55fe498ce3f30816a",
+    "docs/rishi_mechanism_20261027/SEED_BUNDLES.json": "2c674c261cbe324309133c6fcde0916ce3602a00a6ac7a1ffacd717fcbb51329",
+    "docs/rishi_mechanism_20261027/AVAILABILITY_ENTRY_PROTOCOL.md": "3d3e9da00cf5e29ba95a5cd8d366134f3aae10801a2e4368ba028c03778edeb6"
   }
 }

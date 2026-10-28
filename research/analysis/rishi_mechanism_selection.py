@@ -68,8 +68,9 @@ def asof_style(data,day,qqq_returns):
     for j in range(n):
         r=data['returns'][start:day+1,j];valid=np.isfinite(r)&np.isfinite(q)&data['tradable'][start:day+1,j]
         if valid.sum()>=126 and q[valid].var()>0:result[j,0]=np.cov(r[valid],q[valid],ddof=1)[0,1]/q[valid].var(ddof=1)
-        if day>=126 and data['tradable'][day,j] and data['tradable'][day-126,j] and data['marks'][day-126,j]>0:
-            result[j,1]=data['marks'][day,j]/data['marks'][day-126,j]-1
+        if day>=126 and data['tradable'][day,j] and data['tradable'][day-126,j]:
+            before,now=data['marks'][day-126,j],data['marks'][day,j]
+            if np.isfinite(before) and np.isfinite(now) and before>0 and now>0:result[j,1]=now/before-1
         r=data['returns'][max(0,day-19):day+1,j];valid=np.isfinite(r)&data['tradable'][max(0,day-19):day+1,j]
         if valid.sum()>=15:result[j,2]=r[valid].std(ddof=1)*np.sqrt(252)
         adv=data['adv'][day,j]

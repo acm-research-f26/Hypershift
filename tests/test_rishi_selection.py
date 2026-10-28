@@ -39,5 +39,11 @@ class SelectionTests(unittest.TestCase):
         altered=q.copy();altered[221:]=999.
         np.testing.assert_array_equal(first,asof_style(changed,220,altered))
 
+    def test_momentum_requires_positive_finite_endpoints(self):
+        rng=np.random.default_rng(3);r=rng.normal(0,.01,(150,2));marks=np.full((150,2),100.)
+        marks[149]=[0.,np.inf]
+        data=dict(returns=r,marks=marks,adv=np.full_like(r,1e8),tradable=np.ones_like(r,bool))
+        self.assertTrue(np.isnan(asof_style(data,149,r[:,0])[:,1]).all())
+
 
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,15 @@
+{
+  "origins": 201,
+  "per_origin_rows": 1809,
+  "selection_contrasts": 60,
+  "daily_active_rows": 54,
+  "raw_covariance_rows": 15,
+  "seed_bundle_accounts": 120,
+  "style_rows": 804,
+  "source_hashes": {
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_mechanism_selection.py": "4b2d32e6186cd5d9caa8cc84d082dccdf5c750b3f586ed6bff7c98c5c12fc897",
+    "docs\\rishi_mechanism_20261027\\SELECTION_EXECUTION_PROTOCOL.md": "bebb76195c55fa4e9f698a515e8005546bfe23e52fe04af55fe498ce3f30816a",
+    "docs\\rishi_mechanism_20261027\\SEED_BUNDLES.json": "2c674c261cbe324309133c6fcde0916ce3602a00a6ac7a1ffacd717fcbb51329"
+  },
+  "limits": "Exploratory saved exports; date versus initialization uncertainty separate; no dated sectors or neural training predictions supplied"
+}

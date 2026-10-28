@@ -1,0 +1,184 @@
+{
+  "files": [
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__basketvol20_target20_weekly__original_five.npz",
+      "bytes": 870352,
+      "sha256": "1490c46ddd3f995fb094194fb55a7213adf11a53be7cb026a464499a09fbbf9c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__basketvol20_target20_weekly__original_five_fills.csv",
+      "bytes": 112236,
+      "sha256": "581ad31646eed65dd9aba51128d6d6522816a2152d15e471411f2c7cf4861ee8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__basketvol20_target20_weekly__original_five_orders.csv",
+      "bytes": 220418,
+      "sha256": "c44c80e905426ac9f02752dfeabde19af9212b5e358661dda5294f690e41f86f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__basketvol20_target20_weekly__ten_seed.npz",
+      "bytes": 871197,
+      "sha256": "0f121523659493edbfd60815146342259aa4abeae6d9515154ce0bd0a483ecc8"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__basketvol20_target20_weekly__ten_seed_fills.csv",
+      "bytes": 112433,
+      "sha256": "2ea8d048fa80b0a3cf9242109ba062fc0daebff96988fafe52b030cee2fa92f7"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__basketvol20_target20_weekly__ten_seed_orders.csv",
+      "bytes": 221273,
+      "sha256": "79108d35bc2dd40d01945318220d08937831c1fcc283c80240a3d7c9a5f21637"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__full__original_five.npz",
+      "bytes": 869740,
+      "sha256": "0ed97905859b4fec075b04d4809318564e2aeb3afc2ef572142b572b73aeb131"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__full__original_five_fills.csv",
+      "bytes": 114127,
+      "sha256": "fec7d43a5705be4c02ff014b21d0cf6dbf04e7013c087355f41bba17c10ad30a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__full__original_five_orders.csv",
+      "bytes": 207210,
+      "sha256": "64f3af030d919ec7e82cfe78c35dae0868f3308120d1f68b13bcf125aec7cdb2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__full__ten_seed.npz",
+      "bytes": 870487,
+      "sha256": "1fd9f860a414afe080e2fc3464ce2ad698c943b749e0a550fd1fb43c6d861f99"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__full__ten_seed_fills.csv",
+      "bytes": 114253,
+      "sha256": "6437a7e7afdb67bf566193c78ee246e637d95c15a3b8b12fd0b69e847ebfe2b2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__full__ten_seed_orders.csv",
+      "bytes": 207461,
+      "sha256": "7d100ebd74de9dd08792b3558656a3ae89957f0230e6c9ba5536323c1ab9243a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__ma200off50_basketvol20_target20_weekly__original_five.npz",
+      "bytes": 870244,
+      "sha256": "df84aec056deaaea2a47fcd31c36759b6cf6a985865726511c0347ee3c61dc16"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__ma200off50_basketvol20_target20_weekly__original_five_fills.csv",
+      "bytes": 112192,
+      "sha256": "7d9ac48591afaed83754a9b1ba61eb0806efe9c116273cc794c3cebedfd22819"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__ma200off50_basketvol20_target20_weekly__original_five_orders.csv",
+      "bytes": 218472,
+      "sha256": "db24f38c2b148222427d5e563a01ef660f401e7887b0e45386c0ee9be8e97657"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__ma200off50_basketvol20_target20_weekly__ten_seed.npz",
+      "bytes": 871063,
+      "sha256": "cd1fd60f1533954f3cca59cffc4b95928229a5a62dd66c7b281c8618ad06ea9d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__ma200off50_basketvol20_target20_weekly__ten_seed_fills.csv",
+      "bytes": 112384,
+      "sha256": "d1ef7e4a262b1fca311e322981e1d4f52f8238a2c034df046f21f5cdf49ec392"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\equal5__ma200off50_basketvol20_target20_weekly__ten_seed_orders.csv",
+      "bytes": 219210,
+      "sha256": "1104eaf400db60c2e21f138509aa4d2a534eaed1e6169d42cfff7147cd660a0c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__basketvol20_target20_weekly__original_five.npz",
+      "bytes": 873523,
+      "sha256": "4fc94f12cfc53803eb734ce7e32c19242aa877f8af889e6d539d88a92e494073"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__basketvol20_target20_weekly__original_five_fills.csv",
+      "bytes": 118413,
+      "sha256": "36f7fb325fa3459ca612c72325b85493c77b962bd879e7c90b56f9cc50c0f07d"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__basketvol20_target20_weekly__original_five_orders.csv",
+      "bytes": 231617,
+      "sha256": "a88842244ce0064ad523928d9471f08a48f4de0b0e5cfbdba55b5a23772430af"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__basketvol20_target20_weekly__ten_seed.npz",
+      "bytes": 871962,
+      "sha256": "82c7c5118584d6a62d662a570e568953c8b69afa29ab91902184697bec8475da"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__basketvol20_target20_weekly__ten_seed_fills.csv",
+      "bytes": 112930,
+      "sha256": "627b7c70b85dacc7456a5cfdaa6cbed9410532b90ca0cf5ae115895e455d021f"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__basketvol20_target20_weekly__ten_seed_orders.csv",
+      "bytes": 222408,
+      "sha256": "be4e207bfe158d51dd2737e56d6a32543ba1bbf84a86377cc8ca4a5863ad969c"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__ma200off50_basketvol20_target25_weekly__original_five.npz",
+      "bytes": 873425,
+      "sha256": "8148e5dfb85ca578b836ce6438490d7ae2b29b525fb6ab80e4baca5b90cde5da"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__ma200off50_basketvol20_target25_weekly__original_five_fills.csv",
+      "bytes": 118427,
+      "sha256": "c299e50a44b6080d3063f74d5f4b2307e63987a23491ec0e57778fb020134c25"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__ma200off50_basketvol20_target25_weekly__original_five_orders.csv",
+      "bytes": 226473,
+      "sha256": "0e730ffdece4331e50a1373ff798210f452be66c4fc666407fe2a55600130c90"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__ma200off50_basketvol20_target25_weekly__ten_seed.npz",
+      "bytes": 871689,
+      "sha256": "4f2ebcd0667b5ac626482a12b1240e2dc28b293a972ada0e4d56cb2058bbfb59"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__ma200off50_basketvol20_target25_weekly__ten_seed_fills.csv",
+      "bytes": 113272,
+      "sha256": "30c68a794126c81b606c14ce8f3d4b8925129d27fbd15502ef1854b2ee02481a"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\issuer5__ma200off50_basketvol20_target25_weekly__ten_seed_orders.csv",
+      "bytes": 216705,
+      "sha256": "fecf53695ccd8c78d787fcdafd1680de3e339d078b915747538473e23c64d139"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\QQQ.npz",
+      "bytes": 31515,
+      "sha256": "ed0825b92362b7dbaa3d86c33368a1e7563bb43c3e3f783979059d717632fdc2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\QQQ_fills.csv",
+      "bytes": 233,
+      "sha256": "5f2596dc2e70eea06cbf29bd5086c575434709a31b5b83df379f1df5906abae2"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\QQQ_orders.csv",
+      "bytes": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\SPY.npz",
+      "bytes": 31360,
+      "sha256": "d17aa8eba78c1e1d9cac297aa820e048ccfa0346c5de05d2a2b64b7ee8f705f4"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\SPY_fills.csv",
+      "bytes": 232,
+      "sha256": "dd153121e7360fa30acf36a01f0906c15d597e0f2855af03df210fe99d8fae69"
+    },
+    {
+      "path": "results\\RISHI_MECHANISM_LEADER_TRACE_20261027\\SPY_orders.csv",
+      "bytes": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    }
+  ]
+}

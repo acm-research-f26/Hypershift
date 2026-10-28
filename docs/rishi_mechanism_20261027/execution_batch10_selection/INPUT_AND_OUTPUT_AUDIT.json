@@ -1,0 +1,27 @@
+{
+  "publication_matched": 1184,
+  "publication_bytes": 739361294,
+  "consumed_generated_input_sha256": {
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_B_ten_seed.npz": "568dd8af251b262ee5af6d93b740dffe5ee2b07765d2ce6bb053aed8ffba8f5f",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_D_ten_seed.npz": "7303a593295720f6ad84f2ea6e2e2e00863200febc5487f82e944fc1decc9acb",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_Hlabel_ten_seed.npz": "f44e06a174cdd90639c25f89f7de2cba9ac9f24a42953392fee75e0c2beac0ea",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_Hlabel_ten_seed.npz": "783183f6ac1d32d871383e8961476fa52291404d101480d26497a5e4694fc004",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_REV5_ten_seed.npz": "fbd0a0a57303b4befe67596c0d36abd9005e55e4f3dcca4d538a974e208b3088",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_MOM126_ten_seed.npz": "6e7b6611501f08d691dac1600509b1af1ed098b2ccdc0e995eaa60ef690ac448",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_ridge5_ten_seed.npz": "01b5e0930c98d3d4517d2bcf2d8ac8b4a6c27484bfa6bc02fbdfb6526b8dc180",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_coverage6_ten_seed.npz": "74ccf063fb57f1fa969bc6cf0c13ad580bd6e8b6cefafb7db946ad6754c3cb27",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\ACCOUNT_CURVES.csv": "4412eb1db2b988807a8b3dadabba14c8dd7a8debcd992c82bab6b229517f1097",
+    "results\\RISHI_MECHANISM_RISK_20261027\\PATHS_PORTABLE.npz": "5ae199714482a6379391aa11fded24e1046f4c7339b6071c2a4dafaffd43e01e",
+    "docs\\rishi_mechanism_20261027\\execution_batch1\\WORKBOOK_METRICS.csv": "b6af6d2665df27d85fea187ca49f308f084dde53eb08dd929083fcb15f625186",
+    "docs\\rishi_mechanism_20261027\\execution_batch1\\WORKBOOK_PATHS.csv": "0f5e672405b083e2e04c8a2b70c0b4400a422b1983f4d8b2b88bf4c9d9cc4afe",
+    "docs\\ndx_drawdown_20261026\\PROTOCOL.json": "4ed0662c3d5925d8a7d0873d489a22871f1c13421c3c8b1ecf9a0d9e2303b64c",
+    "docs\\ndx_artifacts_20261027\\manifest.csv": "12f368445015996cd2817cb0ca1f22f7c579d952bbae3f35180cf2bb2f7bb930"
+  },
+  "fixed_seed_accounts": 120,
+  "style_recomputed_rows": 804,
+  "max_style_guard_difference": 9.80118763926896e-17,
+  "leader_accounts": 12,
+  "leader_max_daily_error": 9.996344030316351e-17,
+  "scope": "Post-outcome provenance/identity audit; finite-positive momentum guard changes no current result; no account rescoring"
+}
