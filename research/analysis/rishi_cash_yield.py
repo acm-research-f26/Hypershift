@@ -43,12 +43,12 @@ def rf_series():
 
 
 def main():
-    out=DOC/'execution_batch29_cash_yield'
+    out=DOC/'execution_batch29_cash_yield_v2'
     out.mkdir(parents=True,exist_ok=False)
     rates=rf_series();inputs=[FACTOR,Path(__file__),Path('research/analysis/rishi_mechanism_batch1.py'),DOC/'CASH_YIELD_PROTOCOL.md']
     rows=[];ledgers=[];dates=None;max_zero_error=0.
     for book in BOOKS:
-        for policy in ('full','vol20','fixed'):
+        for policy in ('full','vol20','constant75' if book[2]=='issuer5' else 'fixed'):
             key='/'.join((*book,policy,'modeled1'));path=ROOT/(key.replace('/','__')+'.csv');inputs.append(path)
             df=pd.read_csv(path,parse_dates=['date'])
             index=pd.DatetimeIndex(df.date)
