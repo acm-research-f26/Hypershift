@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AMAT",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 11163,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T11:00:00+00:00",
+  "last_bar": "2019-01-01T00:30:00+00:00",
+  "file": "bars\\AMAT\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "bbb67c66bd6e426fee6de8b09ed351e16f97b05c244f5e6d6f14953763c7baf2",
+  "retrieved_at_utc": "2026-10-20T02:53:59.673646+00:00"
+}

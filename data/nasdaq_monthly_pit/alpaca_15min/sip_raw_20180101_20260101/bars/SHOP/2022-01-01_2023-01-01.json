@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SHOP",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 13413,
+  "pages": 14,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T12:15:00+00:00",
+  "last_bar": "2022-12-30T22:45:00+00:00",
+  "file": "bars\\SHOP\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "560b2681dbf3d8de4665b7498c68013bae22dc2e43772347a789a0b977e2e840",
+  "retrieved_at_utc": "2026-10-20T04:27:17.076345+00:00"
+}

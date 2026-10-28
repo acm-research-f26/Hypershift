@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "LBTYA",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7059,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T14:15:00+00:00",
+  "last_bar": "2024-12-31T22:00:00+00:00",
+  "file": "bars\\LBTYA\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "cc1099a96dd627dfd004cfbb85cf312ec74cc394a1e42b804bb48fb0fc3c7b24",
+  "retrieved_at_utc": "2026-10-20T04:06:20.014311+00:00"
+}

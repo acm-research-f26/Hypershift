@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ARM",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15350,
+  "pages": 16,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:00:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\ARM\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "2b0342d9c620588f460ca3c8a5098ede8f3015f9d5a1422358f70fb7302ea4af",
+  "retrieved_at_utc": "2026-10-20T02:57:10.134263+00:00"
+}

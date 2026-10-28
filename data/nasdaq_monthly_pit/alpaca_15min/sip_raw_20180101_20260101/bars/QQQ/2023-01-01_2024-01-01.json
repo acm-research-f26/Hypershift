@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "QQQ",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15813,
+  "pages": 21,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\QQQ\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "a1f7ec1ae54d795f34e7a529d32f44542e60fe36af0660c384dd8cd7ad54f0cd",
+  "retrieved_at_utc": "2026-10-20T04:24:34.208373+00:00"
+}

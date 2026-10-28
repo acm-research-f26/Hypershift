@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "INTC",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 12384,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T09:15:00+00:00",
+  "last_bar": "2020-01-01T00:45:00+00:00",
+  "file": "bars\\INTC\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "df3ee3135913f348dc0e101c72a8f04d7e4bed1b29f760cea1eed4c7f9549df6",
+  "retrieved_at_utc": "2026-10-20T04:02:35.434452+00:00"
+}

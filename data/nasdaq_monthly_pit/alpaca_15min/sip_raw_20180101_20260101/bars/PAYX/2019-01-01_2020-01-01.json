@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PAYX",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7208,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T12:30:00+00:00",
+  "last_bar": "2019-12-31T21:00:00+00:00",
+  "file": "bars\\PAYX\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "12d951706840a7851b4c992a11e3d689691f261ceb7ef46d21071579c7b99b91",
+  "retrieved_at_utc": "2026-10-20T04:19:56.167342+00:00"
+}

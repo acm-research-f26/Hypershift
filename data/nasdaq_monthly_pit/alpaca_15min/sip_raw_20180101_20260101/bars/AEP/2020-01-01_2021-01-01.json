@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AEP",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7679,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T14:30:00+00:00",
+  "last_bar": "2020-12-31T21:15:00+00:00",
+  "file": "bars\\AEP\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "951251c11dc8e6536e957bf7668f36214455a358c10d571860f2758454589f01",
+  "retrieved_at_utc": "2026-10-20T02:52:53.647305+00:00"
+}

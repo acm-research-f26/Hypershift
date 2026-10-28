@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "FANG",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10106,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T12:15:00+00:00",
+  "last_bar": "2021-01-01T00:30:00+00:00",
+  "file": "bars\\FANG\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "dbbaec85966037f1385887a0502fd19ff676d2e8aec0ed6e97445d84c0af4176",
+  "retrieved_at_utc": "2026-10-20T03:55:17.106898+00:00"
+}

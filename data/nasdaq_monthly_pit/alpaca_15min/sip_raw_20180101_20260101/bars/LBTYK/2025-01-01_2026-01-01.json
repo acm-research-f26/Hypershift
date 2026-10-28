@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "LBTYK",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6882,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T14:30:00+00:00",
+  "last_bar": "2025-12-31T21:00:00+00:00",
+  "file": "bars\\LBTYK\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "2e5a175436ce07b86e722466455dfbcc76f92da842a58b0590464d9fd64a2d12",
+  "retrieved_at_utc": "2026-10-20T04:06:49.439500+00:00"
+}

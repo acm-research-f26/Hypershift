@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "BKNG",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7293,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T13:45:00+00:00",
+  "last_bar": "2019-12-31T21:45:00+00:00",
+  "file": "bars\\BKNG\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "41d5d975e3289fd970b8d991e798f36a820561f72a33664734d49921761fdccc",
+  "retrieved_at_utc": "2026-10-20T03:42:59.359815+00:00"
+}

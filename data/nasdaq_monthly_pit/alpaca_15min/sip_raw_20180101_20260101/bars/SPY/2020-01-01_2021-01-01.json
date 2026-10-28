@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SPY",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15780,
+  "pages": 22,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T09:00:00+00:00",
+  "last_bar": "2021-01-01T00:45:00+00:00",
+  "file": "bars\\SPY\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "f47ac07b09a155473aa82dfe36af8a373b915b787aa835c886bbcf557faf0e3d",
+  "retrieved_at_utc": "2026-10-20T04:29:49.396118+00:00"
+}

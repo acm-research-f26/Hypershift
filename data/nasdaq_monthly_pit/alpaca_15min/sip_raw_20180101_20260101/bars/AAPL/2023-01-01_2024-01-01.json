@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AAPL",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15762,
+  "pages": 19,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\AAPL\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "b88970145056013157a1f5f2f4a699322282529ad5062e7d4898a3880932108f",
+  "retrieved_at_utc": "2026-10-20T02:50:13.097531+00:00"
+}

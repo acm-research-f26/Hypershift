@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AVGO",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9379,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T12:00:00+00:00",
+  "last_bar": "2020-12-31T23:00:00+00:00",
+  "file": "bars\\AVGO\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "82f6e17cb2ce534212cd15528c8aad2af7bea98a10752c9876478ea66e8ce148",
+  "retrieved_at_utc": "2026-10-20T02:57:58.772962+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "WBD",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 11693,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\WBD\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "7f17dedf4643ecfdcb76320ba9b8df19c6ead52735bccf9a0deb74e02d543245",
+  "retrieved_at_utc": "2026-10-20T04:37:05.097677+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AMAT",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 11928,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T11:45:00+00:00",
+  "last_bar": "2021-12-31T21:15:00+00:00",
+  "file": "bars\\AMAT\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "b8659cb215d45db7c3f2142cb98bc2a6fd1d2c695f7e0a63ab7cd69aa55ecd9a",
+  "retrieved_at_utc": "2026-10-20T02:54:07.983782+00:00"
+}

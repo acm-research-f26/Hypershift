@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AMZN",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 14131,
+  "pages": 17,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T09:00:00+00:00",
+  "last_bar": "2022-12-30T22:45:00+00:00",
+  "file": "bars\\AMZN\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "f2e8717bf7a6fd234a86f90b37893a317f5634673510d31645429418b1b0de26",
+  "retrieved_at_utc": "2026-10-20T02:56:06.993521+00:00"
+}

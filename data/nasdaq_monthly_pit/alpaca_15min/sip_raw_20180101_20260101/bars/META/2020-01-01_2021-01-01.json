@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "META",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\META\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "dcf34c231d9891528b7a14918237465f163d39978e587e3a2fc2e67733b99b80",
+  "retrieved_at_utc": "2026-10-20T04:10:26.670655+00:00"
+}

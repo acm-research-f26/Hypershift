@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "COST",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9181,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T11:45:00+00:00",
+  "last_bar": "2021-12-31T21:45:00+00:00",
+  "file": "bars\\COST\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "280b113eece9e1823eb827555947cc9a15d7b4d769385665386b9e6f02b061c1",
+  "retrieved_at_utc": "2026-10-20T03:47:16.229866+00:00"
+}

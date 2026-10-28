@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TXN",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8837,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T12:00:00+00:00",
+  "last_bar": "2020-12-31T21:45:00+00:00",
+  "file": "bars\\TXN\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "33306cf0cada8a5e14c83856b06098667f7a5b6274177f3767e38bb8fd0558ce",
+  "retrieved_at_utc": "2026-10-20T04:34:07.038407+00:00"
+}

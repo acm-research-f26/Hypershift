@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "REGN",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7690,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T14:30:00+00:00",
+  "last_bar": "2025-12-31T23:30:00+00:00",
+  "file": "bars\\REGN\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "5246b89abcc7eac16ec56ac51fb34a7fa522b2e127ebd14327ab27021feb9d29",
+  "retrieved_at_utc": "2026-10-20T04:24:56.673625+00:00"
+}

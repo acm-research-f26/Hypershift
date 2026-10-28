@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "NFLX",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10918,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T09:00:00+00:00",
+  "last_bar": "2021-12-31T22:00:00+00:00",
+  "file": "bars\\NFLX\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "da77ee524cd73d3093e08f83da8162cf97996aa9fe00443fded2c839c44f5433",
+  "retrieved_at_utc": "2026-10-20T04:15:13.477734+00:00"
+}

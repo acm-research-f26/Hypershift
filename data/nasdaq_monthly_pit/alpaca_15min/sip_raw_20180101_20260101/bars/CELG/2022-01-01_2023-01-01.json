@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CELG",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\CELG\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "62c1d5590ccda58f478aeba9497e082b0f76d3a121161471548597ccfdb1a8b6",
+  "retrieved_at_utc": "2026-10-20T03:45:06.157698+00:00"
+}

@@ -58,12 +58,16 @@ sources and locks remain byte-preserved; use new declared runs for new research.
 
 The [saved-artifact guide](docs/ndx_artifacts_20261027/README.md) indexes the
 committed reference-network, extended-hours and drawdown snapshots, including
-their checkpoints, forecasts and reviewed inputs. Other datasets and run outputs
-remain local in ignored `data/` and `runs/`; credentials remain in ignored `.env`.
+their checkpoints, forecasts and reviewed inputs. The full 2018–2025 raw Alpaca
+SIP snapshot, daily Yahoo/Tiingo source histories and historical membership
+sources are also committed, with a separate raw-data checksum inventory in that
+guide. Other datasets and run outputs remain local in ignored `data/` and `runs/`;
+credentials remain in ignored `.env`.
 See [Alpaca setup](docs/ALPACA_15MIN.md),
 [dependency sets](requirements/README.md), [hardware](docs/TRAINING_HARDWARE.md)
 and [evaluation commands](research/evaluation/README.md). Cloning the repository
-supplies these published snapshots, but not all historical raw data or parent runs.
+supplies these published snapshots, but not all historical parent runs or unrelated
+datasets.
 
 Unrelated cohort/NYSE studies, retired-universe reports, decks and scratch work
 are preserved in [archive/](archive/README.md). Archived sources are excluded from

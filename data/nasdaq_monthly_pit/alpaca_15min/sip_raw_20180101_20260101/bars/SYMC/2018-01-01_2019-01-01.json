@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SYMC",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8022,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T13:30:00+00:00",
+  "last_bar": "2018-12-31T23:15:00+00:00",
+  "file": "bars\\SYMC\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "7eafb702b836f7dc71f1c8a0a5a0934ecd2b067481574a8d1ec2fe5b28002e5b",
+  "retrieved_at_utc": "2026-10-20T04:30:23.350797+00:00"
+}

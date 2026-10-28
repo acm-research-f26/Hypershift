@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MSFT",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15571,
+  "pages": 16,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:00:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\MSFT\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "495e6dd0013898295886bac030be840910aea740447523a880cd8addd2fe3816",
+  "retrieved_at_utc": "2026-10-20T04:13:05.821670+00:00"
+}

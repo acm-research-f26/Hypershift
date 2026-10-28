@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CPRT",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7147,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T14:15:00+00:00",
+  "last_bar": "2019-12-31T23:00:00+00:00",
+  "file": "bars\\CPRT\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "d00816685f4bff3f57adf05d3967426ae72a02355abd3548497077b55cde6ee4",
+  "retrieved_at_utc": "2026-10-20T03:47:39.877267+00:00"
+}

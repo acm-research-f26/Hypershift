@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "BMRN",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7530,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T13:15:00+00:00",
+  "last_bar": "2025-12-31T21:00:00+00:00",
+  "file": "bars\\BMRN\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "b4d9c0b1b1f667f237dd38ba68f99e648b0f7ca5b550fa3fb1dc1933dd4c9d99",
+  "retrieved_at_utc": "2026-10-20T03:43:50.486423+00:00"
+}

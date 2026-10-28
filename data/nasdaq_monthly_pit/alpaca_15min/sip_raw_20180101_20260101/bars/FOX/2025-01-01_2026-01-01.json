@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "FOX",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7251,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T14:30:00+00:00",
+  "last_bar": "2025-12-31T22:00:00+00:00",
+  "file": "bars\\FOX\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "4f6bfb24de4c4584775c66e23377ea951dbfb9dd2e5809ccd9ec49fb6df50b23",
+  "retrieved_at_utc": "2026-10-20T03:56:56.687862+00:00"
+}

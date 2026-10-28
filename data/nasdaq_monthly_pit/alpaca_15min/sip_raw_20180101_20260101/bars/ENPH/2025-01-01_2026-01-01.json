@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ENPH",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 13176,
+  "pages": 13,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T12:15:00+00:00",
+  "last_bar": "2026-01-01T00:45:00+00:00",
+  "file": "bars\\ENPH\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "3871cdc6ab76c91102f2b6bca96c6d7dfa561cde01a7517d3913914dc7151f4e",
+  "retrieved_at_utc": "2026-10-20T03:54:11.831588+00:00"
+}

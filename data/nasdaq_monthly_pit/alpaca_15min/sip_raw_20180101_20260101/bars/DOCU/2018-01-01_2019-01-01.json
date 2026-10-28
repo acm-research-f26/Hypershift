@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "DOCU",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 5757,
+  "pages": 7,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-04-27T15:15:00+00:00",
+  "last_bar": "2018-12-31T21:45:00+00:00",
+  "file": "bars\\DOCU\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "008292aa6b3b6f608c96bffd00469078e3e28dbb98a84cd8e3bae6fbe4e9f96a",
+  "retrieved_at_utc": "2026-10-20T03:51:45.363368+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ATVI",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10260,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T09:45:00+00:00",
+  "last_bar": "2021-12-31T22:45:00+00:00",
+  "file": "bars\\ATVI\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "caeee50928c4ad1373fca8661ae7093184c70167bb8391d89836a3514317bb3c",
+  "retrieved_at_utc": "2026-10-20T02:57:37.932458+00:00"
+}

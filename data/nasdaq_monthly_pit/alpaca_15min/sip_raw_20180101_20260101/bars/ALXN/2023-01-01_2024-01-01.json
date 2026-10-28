@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ALXN",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\ALXN\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "eeff81c7f664c0f8aff298749e506b9c20eaa741fecb5cda383ad5767bffa67f",
+  "retrieved_at_utc": "2026-10-20T02:53:24.003943+00:00"
+}

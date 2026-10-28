@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TMUS",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7828,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T13:30:00+00:00",
+  "last_bar": "2018-12-31T21:00:00+00:00",
+  "file": "bars\\TMUS\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "cc40c8d7181d140e835b4f85447b2ccf80ad2e82f3ae22c82bdc3e1b4aa02993",
+  "retrieved_at_utc": "2026-10-20T04:31:19.755162+00:00"
+}

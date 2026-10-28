@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "UAL",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8031,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T12:45:00+00:00",
+  "last_bar": "2018-12-31T22:00:00+00:00",
+  "file": "bars\\UAL\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "7a1ace37b19d3a11d94536241c9fbde504d1ef57f2e6060bf23134b9144144d1",
+  "retrieved_at_utc": "2026-10-20T04:34:22.868590+00:00"
+}

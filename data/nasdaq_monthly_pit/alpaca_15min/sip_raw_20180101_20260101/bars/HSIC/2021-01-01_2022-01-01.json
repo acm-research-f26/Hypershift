@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "HSIC",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6946,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T12:00:00+00:00",
+  "last_bar": "2021-12-31T21:00:00+00:00",
+  "file": "bars\\HSIC\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "9059b55219dee715608a333979bdc10aae10a6bc2bb0722b1ed6e223ac629915",
+  "retrieved_at_utc": "2026-10-20T04:00:57.962783+00:00"
+}

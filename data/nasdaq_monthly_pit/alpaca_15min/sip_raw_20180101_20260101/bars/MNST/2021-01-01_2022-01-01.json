@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MNST",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7597,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T12:30:00+00:00",
+  "last_bar": "2021-12-31T21:45:00+00:00",
+  "file": "bars\\MNST\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "e9bd94b8b61f4d69359edcd9e0438ec137c5d2e135827a0c90e35d5d26f24ffd",
+  "retrieved_at_utc": "2026-10-20T04:11:04.604725+00:00"
+}

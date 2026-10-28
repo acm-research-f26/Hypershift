@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MTCH",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8779,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-30T00:30:00+00:00",
+  "file": "bars\\MTCH\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "d110fdf47b822a39ac0af44467f485713e77a21d145b11a5cf5156b0f0a62984",
+  "retrieved_at_utc": "2026-10-20T04:13:49.195444+00:00"
+}

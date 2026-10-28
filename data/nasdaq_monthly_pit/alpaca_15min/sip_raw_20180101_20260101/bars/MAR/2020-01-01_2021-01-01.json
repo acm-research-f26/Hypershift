@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MAR",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10119,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T14:30:00+00:00",
+  "last_bar": "2020-12-31T21:45:00+00:00",
+  "file": "bars\\MAR\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "52038f666cedbb9801db2093a6e7f39402a06fdb8619cedbc937653e557c6a5c",
+  "retrieved_at_utc": "2026-10-20T04:08:49.023198+00:00"
+}

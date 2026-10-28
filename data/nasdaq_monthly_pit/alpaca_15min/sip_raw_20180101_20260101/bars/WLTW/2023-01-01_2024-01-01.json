@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "WLTW",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\WLTW\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "90cd3ce31f90676fa5c084411b2ce26b332f822ba55295f8bf39d46d0634e0c4",
+  "retrieved_at_utc": "2026-10-20T04:37:57.249069+00:00"
+}

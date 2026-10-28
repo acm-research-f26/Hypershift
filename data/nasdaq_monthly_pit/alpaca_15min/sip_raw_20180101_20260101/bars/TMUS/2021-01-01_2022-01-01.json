@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TMUS",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8757,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T11:30:00+00:00",
+  "last_bar": "2021-12-31T22:30:00+00:00",
+  "file": "bars\\TMUS\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "fda04fb0eb708738b0246ac5c6d27fde8b3e06bee34b1d836d4d5cb8f99dc34a",
+  "retrieved_at_utc": "2026-10-20T04:31:39.589759+00:00"
+}

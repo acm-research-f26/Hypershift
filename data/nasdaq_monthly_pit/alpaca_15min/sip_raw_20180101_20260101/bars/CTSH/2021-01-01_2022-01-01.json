@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CTSH",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7471,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T13:00:00+00:00",
+  "last_bar": "2021-12-31T21:00:00+00:00",
+  "file": "bars\\CTSH\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "932e97752d5f03fb2988a06d9df34e42c3da7db3c820aea127781ffe5a434486",
+  "retrieved_at_utc": "2026-10-20T03:50:16.096166+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CTRP",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\CTRP\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "49c7b4c5ef235bd1bdc0d6b9a9b4b0190611358087057843118b1e0ea4db77cc",
+  "retrieved_at_utc": "2026-10-20T03:49:40.578599+00:00"
+}

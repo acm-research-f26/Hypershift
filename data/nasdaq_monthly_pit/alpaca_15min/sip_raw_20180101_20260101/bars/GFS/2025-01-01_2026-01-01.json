@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "GFS",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9126,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T11:15:00+00:00",
+  "last_bar": "2025-12-31T21:00:00+00:00",
+  "file": "bars\\GFS\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "8cb3b04c0c3068895778eb65bbd824e1e249d3df946e78788c0eb162e44a8c6d",
+  "retrieved_at_utc": "2026-10-20T03:58:13.497549+00:00"
+}

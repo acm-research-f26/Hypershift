@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "WDC",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8330,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T12:00:00+00:00",
+  "last_bar": "2023-12-29T22:45:00+00:00",
+  "file": "bars\\WDC\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "9e0939f1a06b7c47f00df2aa033d5dc4817e1007b04e190ee624bc1cfde1bcb4",
+  "retrieved_at_utc": "2026-10-20T04:37:59.490858+00:00"
+}

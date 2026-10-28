@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SHOP",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9061,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T12:45:00+00:00",
+  "last_bar": "2018-12-31T21:30:00+00:00",
+  "file": "bars\\SHOP\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "771d0099de759b303110337d0e9f855782cb61f64131e7be92ecab91e4ab20da",
+  "retrieved_at_utc": "2026-10-20T04:26:57.663808+00:00"
+}

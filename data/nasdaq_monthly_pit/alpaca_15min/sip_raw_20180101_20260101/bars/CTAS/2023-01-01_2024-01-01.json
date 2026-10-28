@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CTAS",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6909,
+  "pages": 6,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T14:30:00+00:00",
+  "last_bar": "2023-12-29T21:00:00+00:00",
+  "file": "bars\\CTAS\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "ae33378a7c7f1d9531b1bb173892ebb9a1fd2fa77c48eb61ef80d1769c1b5cbc",
+  "retrieved_at_utc": "2026-10-20T03:49:48.950260+00:00"
+}

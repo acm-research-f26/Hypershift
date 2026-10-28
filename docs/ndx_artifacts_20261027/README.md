@@ -5,6 +5,10 @@ This publication adds existing local research outputs and reviewed inputs to the
 The original run files are preserved byte for byte. The accompanying inventory,
 forecast index and this guide were created on October 27, 2026.
 
+The later raw-data supplement below adds the original daily histories, full
+Alpaca bar snapshot and membership sources. It has a separate inventory so the
+original publication manifest and saved experiment locks remain unchanged.
+
 ## Where to look
 
 | Path | Saved contents |
@@ -16,7 +20,7 @@ forecast index and this guide were created on October 27, 2026.
 | [`data/nasdaq_monthly_pit/alpaca_features_20261019/`](../../data/nasdaq_monthly_pit/alpaca_features_20261019/) | Reviewed regular-session feature arrays, daily session summaries, coverage and rejected-session records |
 | [`data/nasdaq_monthly_pit/extended_hours_features_20261024/`](../../data/nasdaq_monthly_pit/extended_hours_features_20261024/) | Reviewed AH/PM feature arrays, session summaries, coverage and rejected sessions |
 | [`data/nasdaq_monthly_pit/jkp_themes_20261024/`](../../data/nasdaq_monthly_pit/jkp_themes_20261024/) | Existing PRISM factor input archive and provenance |
-| [`data/nasdaq_monthly_pit/alpaca_15min/`](../../data/nasdaq_monthly_pit/alpaca_15min/) | Saved exchange calendar, calendar provenance and original full-period raw-data manifest; raw bar chunks are not included |
+| [`data/nasdaq_monthly_pit/alpaca_15min/`](../../data/nasdaq_monthly_pit/alpaca_15min/) | Saved exchange calendar, calendar provenance, and full-period raw SIP snapshot, including all bar chunks and request/coverage metadata |
 | [`.cache/architecture_references_20261024/`](../../.cache/architecture_references_20261024/) | Cached upstream architecture sources and revision receipts used by the reference adapters, with original licenses where present |
 | [`.cache/reference_dependencies_20261024/`](../../.cache/reference_dependencies_20261024/) | Existing einops wheel and provenance receipt |
 
@@ -99,9 +103,9 @@ completion hashes were checked before staging.
 
 Historical locks retain their original absolute Windows paths and original flat
 source names. Use the relative paths in the new manifest to check bytes on another
-machine. Older parent-run artifacts named in provenance locks and the raw
-15-minute bar chunks are outside this publication; audit entry points that
-require those ancestors/raw chunks will still require them. This is not a claim
+machine. Older parent-run artifacts named in provenance locks remain outside this
+publication; audit entry points that require those ancestors will still require
+them. The raw 15-minute chunks are now included in the supplement below. This is not a claim
 that every historical end-to-end audit can run from these three folders alone.
 
 `.env`, credential files, Git metadata, Python bytecode and unrelated datasets
@@ -113,3 +117,42 @@ local directories; other local outputs remain ignored.
 
 The 2022–2025 results remain repeatedly inspected historical development results.
 This artifact publication does not add prospective validation or new experiments.
+
+## Raw-data supplement
+
+The branch also preserves the following original local source directories:
+
+| Path under `data/nasdaq_monthly_pit/` | Contents |
+| --- | --- |
+| `alpaca_15min/sip_raw_20180101_20260101/` | Full 2018–2025 SIP download: 1,288 symbol/year chunks, 10,839,262 bars, sidecars, original manifest, request, coverage and progress records |
+| `yahoo_raw/` | Daily adjusted/raw closes, volume, dividends, splits, coverage, original manifest and download artifact |
+| `tiingo_raw/` | Original daily price and issuer metadata responses, including former-member histories used by the assembled input manifest |
+| `ndx_source/` | Pinned historical membership sources, source tree receipt and upstream license |
+| `ndx_preflight/` | Original provisional membership table, event/identity review and source manifest |
+
+[`raw_data_manifest.csv`](raw_data_manifest.csv) records repository-relative
+paths, byte sizes and SHA-256 checksums for this supplement.
+[`raw_data_inventory.json`](raw_data_inventory.json) records counts, historical
+hash checks, credential-scan scope and remaining limits. Existing reviewed daily
+and feature snapshots stay at the paths listed above. The small January 2025
+Alpaca sample download and unrelated local datasets remain excluded.
+
+From any checkout of this branch, verify the supplement without API credentials
+or third-party Python packages:
+
+```powershell
+python docs/ndx_artifacts_20261027/verify_raw_data.py
+```
+
+The check reads files and compares hashes without executing cached source or
+loading the original Yahoo pickle artifact. Use the CSVs to inspect daily data.
+Git attributes preserve exact data bytes across Windows and Unix checkouts.
+Historical manifests retain their original Windows path strings; use the new
+relative-path manifest to verify files on another machine.
+
+No data were downloaded again, transformed, re-reviewed or used for new training
+in this supplement. Original raw-data status labels, identity/coverage limits and
+missing bars remain as recorded. Historical audits that require omitted parent
+runs still need those runs. Newly added files and decompressed gzip members were
+checked for local credential values and common token/private-key patterns;
+credentials remain excluded.

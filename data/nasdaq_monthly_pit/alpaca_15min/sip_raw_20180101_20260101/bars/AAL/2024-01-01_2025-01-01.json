@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AAL",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 14913,
+  "pages": 15,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:00:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\AAL\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "161d715fcdb30b5dd1be7436e8a0a6df75f07754f2b15bd3fd9299ecaeb229bf",
+  "retrieved_at_utc": "2026-10-20T02:49:18.593752+00:00"
+}

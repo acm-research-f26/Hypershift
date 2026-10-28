@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CTXS",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\CTXS\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "7a41edcdfd3c23cc37cb8946a3d876b5c95cdaceb1adba1611cf0810efd548a9",
+  "retrieved_at_utc": "2026-10-20T03:50:27.696971+00:00"
+}

@@ -1,0 +1,34 @@
+{
+  "status": "provisional_membership_only; training_not_started",
+  "source": "https://github.com/jmccarrell/n100tickers",
+  "source_git_tree": "cf7c89419941316ff8523726ccba136125f2c11c",
+  "monthly_snapshots": 108,
+  "distinct_historical_symbols": 180,
+  "test_symbols": 131,
+  "securities_per_month": {
+    "min": 101,
+    "max": 104
+  },
+  "annual_closure_checks": 10,
+  "source_hashes": {
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2016.yaml": "e8309fe62689c05525b0c60986ad962ee564977997b37707a67d72358e8688f5",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2017.yaml": "1dc113f0dd2c2bfb98e3ba5eedfff9d0e459f92aaa22748ba9d0a242b4ea3216",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2018.yaml": "fa558a923558de887ba37681356c5a8fff0bf07d16e6a93eb5b91ff5f7fc460e",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2019.yaml": "4d3beb972bd844641b1b100fadf16626888d656f4454a759a4a4acc47e3d6a0b",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2020.yaml": "fc471f590e44a0f791f79baf9bd3a040343cfbcf421c2853294dbe1af6af845d",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2021.yaml": "e810a7f3e67c702d044e73df3af4014b0d90b1abc2f04018afe04d1518b7f573",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2022.yaml": "6313b84f4d178b8d37300a18109ad4f9551268b19e2b7b4383b7a5f742e18392",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2023.yaml": "7d545922ec54325c9fc97eef738750d502ef4fd0bce3a58232741319febc7a3e",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2024.yaml": "12bec472989760c3915e32582d42772f73241f4ef0067633ff57cb22cb3ae693",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2025.yaml": "e20a547ed1bb5d6fde305e91560ed74aa9b74d6cadd7aee78dab8867b19366ee",
+    "src\\nasdaq_100_ticker_history\\n100-ticker-changes-2026.yaml": "a8d8d58165a654c5a2c4ab8006d56c4d6efd7edf41154cf838be8693b87c1bf6"
+  },
+  "notes": [
+    "Index has 100 companies but can have more than 100 securities owing to share classes and spin-offs.",
+    "Monthly snapshots use only events effective by the month start; publication dates still require verification.",
+    "Contemporaneous ticker names are retained; no implicit current-symbol substitution.",
+    "Sources disagree on 2025 SOLS effective dates; this conflict remains open.",
+    "Membership continuity checks do not certify historical accuracy or price identity.",
+    "Do not discard missing former members, substitute acquirers, or carry disappeared prices indefinitely."
+  ]
+}

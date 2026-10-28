@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SOLS",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\SOLS\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "013ad905c6219252f98663508ef60909e193b1175682c2f65cc149f16fe86dbd",
+  "retrieved_at_utc": "2026-10-20T04:28:27.760566+00:00"
+}

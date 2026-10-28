@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CSGP",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6840,
+  "pages": 6,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T14:30:00+00:00",
+  "last_bar": "2019-12-31T21:45:00+00:00",
+  "file": "bars\\CSGP\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "409e979038ee0aa70b1c17d1ab994052fdf0511009e1330fafba472b28d47768",
+  "retrieved_at_utc": "2026-10-20T03:48:42.559683+00:00"
+}

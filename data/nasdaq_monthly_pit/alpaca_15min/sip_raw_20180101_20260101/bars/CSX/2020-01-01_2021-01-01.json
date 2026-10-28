@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CSX",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8052,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T13:00:00+00:00",
+  "last_bar": "2020-12-31T21:30:00+00:00",
+  "file": "bars\\CSX\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "a43c768598bc987d685ae0cbe4c84531a721b79a6d2aeeb51bf07a6f6d3d6089",
+  "retrieved_at_utc": "2026-10-20T03:49:14.465094+00:00"
+}

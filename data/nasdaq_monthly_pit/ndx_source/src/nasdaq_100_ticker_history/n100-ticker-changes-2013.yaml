@@ -1,0 +1,183 @@
+---
+year: 2013
+tickers_on_Jan_1:
+  - AAPL
+  - ADBE
+  - ADI
+  - ADP
+  - ADSK
+  - AKAM
+  - ALTR
+  - ALXN
+  - AMAT
+  - AMGN
+  - AMZN
+  - ATVI
+  - AVGO
+  - BBBY
+  - BIDU
+  - BIIB
+  - BMC
+  - BRCM
+  - CA
+  - CELG
+  - CERN
+  - CHKP
+  - CHRW
+  - CMCSA
+  - COST
+  - CSCO
+  - CTRX
+  - CTSH
+  - CTXS
+  - DELL
+  - DISCA
+  - DLTR
+  - DTV
+  - EBAY
+  - EQIX
+  - ESRX
+  - EXPD
+  - EXPE
+  - FAST
+  - FB
+  - FFIV
+  - FISV
+  - FOSL
+  - GILD
+  - GOLD
+  - GOOG
+  - GRMN
+  - HSIC
+  - INTC
+  - INTU
+  - ISRG
+  - KLAC
+  - LBTYA
+  - LIFE
+  - LINTA
+  - LLTC
+  - LMCA
+  - MAT
+  - MCHP
+  - MDLZ
+  - MNST
+  - MSFT
+  - MU
+  - MXIM
+  - MYL
+  - NTAP
+  - NUAN
+  - NVDA
+  - NWSA
+  - ORCL
+  - ORLY
+  - PAYX
+  - PCAR
+  - PCLN
+  - PRGO
+  - QCOM
+  - REGN
+  - ROST
+  - SBAC
+  - SBUX
+  - SHLD
+  - SIAL
+  - SIRI
+  - SNDK
+  - SPLS
+  - SRCL
+  - STX
+  - SYMC
+  - TXN
+  - VIAB
+  - VMED
+  - VOD
+  - VRSK
+  - VRTX
+  - WDC
+  - WFM
+  - WYNN
+  - XLNX
+  - XRAY
+  - YHOO
+
+changes:
+  # the main source of these changes is the wikipedia page:
+  #  https://en.wikipedia.org/wiki/Historical_components_of_the_Nasdaq-100
+
+  '2013-01-15':
+    difference:
+      - LMCA
+    union:
+      - STRZA
+
+  '2013-03-18':
+    difference:
+      - STRZA
+    union:
+      - KRFT
+
+  '2013-06-05':
+    difference:
+      - VMED
+    union:
+      - LMCA
+
+  '2013-06-06':
+    difference:
+      - PRGO
+    union:
+      - NFLX
+
+  # News Corporation became Twenty-First Century Fox. The new News Corp kept NWSA but did not enter
+  # the index.
+  '2013-07-01':
+    difference:
+      - NWSA
+    union:
+      - FOXA
+
+  '2013-07-15':
+    difference:
+      - ORCL
+    union:
+      - TSLA
+
+  '2013-07-25':
+    difference:
+      - BMC
+    union:
+      - CHTR
+
+  '2013-08-22':
+    difference:
+      - LIFE
+    union:
+      - GMCR
+
+  '2013-10-29':
+    difference:
+      - DELL
+    union:
+      - VIP
+
+  '2013-11-18':
+    difference:
+      - GOLD
+    union:
+      - MAR
+
+  '2013-12-23':
+    difference:
+      - FOSL
+      - MCHP
+      - NUAN
+      - SHLD
+      - XRAY
+    union:
+      - DISH
+      - ILMN
+      - NXPI
+      - TRIP
+      - TSCO

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TSLA",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15964,
+  "pages": 24,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T09:00:00+00:00",
+  "last_bar": "2026-01-01T00:45:00+00:00",
+  "file": "bars\\TSLA\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "200ea2ba999d33ab41aaa3bc0ff777be8fef6bc28599b722e8b6829df577810b",
+  "retrieved_at_utc": "2026-10-20T04:33:03.038485+00:00"
+}

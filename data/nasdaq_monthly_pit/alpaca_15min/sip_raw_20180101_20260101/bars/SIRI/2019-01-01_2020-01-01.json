@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SIRI",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9745,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T11:00:00+00:00",
+  "last_bar": "2019-12-31T22:45:00+00:00",
+  "file": "bars\\SIRI\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "bba526ebcf6505a1182c4cede636ec63bed5af8878aee6de439d1771eab45c53",
+  "retrieved_at_utc": "2026-10-20T04:27:35.110825+00:00"
+}

@@ -1,0 +1,144 @@
+---
+year: 2014
+tickers_on_Jan_1:
+  - AAPL
+  - ADBE
+  - ADI
+  - ADP
+  - ADSK
+  - AKAM
+  - ALTR
+  - ALXN
+  - AMAT
+  - AMGN
+  - AMZN
+  - ATVI
+  - AVGO
+  - BBBY
+  - BIDU
+  - BIIB
+  - BRCM
+  - CA
+  - CELG
+  - CERN
+  - CHKP
+  - CHRW
+  - CHTR
+  - CMCSA
+  - COST
+  - CSCO
+  - CTRX
+  - CTSH
+  - CTXS
+  - DISCA
+  - DISH
+  - DLTR
+  - DTV
+  - EBAY
+  - EQIX
+  - ESRX
+  - EXPD
+  - EXPE
+  - FAST
+  - FB
+  - FFIV
+  - FISV
+  - FOXA
+  - GILD
+  - GMCR
+  - GOOG
+  - GRMN
+  - HSIC
+  - ILMN
+  - INTC
+  - INTU
+  - ISRG
+  - KLAC
+  - KRFT
+  - LBTYA
+  - LINTA
+  - LLTC
+  - LMCA
+  - MAR
+  - MAT
+  - MDLZ
+  - MNST
+  - MSFT
+  - MU
+  - MXIM
+  - MYL
+  - NFLX
+  - NTAP
+  - NVDA
+  - NXPI
+  - ORLY
+  - PAYX
+  - PCAR
+  - PCLN
+  - QCOM
+  - REGN
+  - ROST
+  - SBAC
+  - SBUX
+  - SIAL
+  - SIRI
+  - SNDK
+  - SPLS
+  - SRCL
+  - STX
+  - SYMC
+  - TRIP
+  - TSCO
+  - TSLA
+  - TXN
+  - VIAB
+  - VIP
+  - VOD
+  - VRSK
+  - VRTX
+  - WDC
+  - WFM
+  - WYNN
+  - XLNX
+  - YHOO
+
+changes:
+  # the main source of these changes is the wikipedia page:
+  #  https://en.wikipedia.org/wiki/Historical_components_of_the_Nasdaq-100
+
+  # Google's Class C distribution renamed the Class A line to GOOGL and gave the new Class C the
+  # vacated GOOG, so the only net change is GOOGL arriving.
+  '2014-04-03':
+    union:
+      - GOOGL
+
+  # Missing from the source table; Series C began regular-way trading.
+  '2014-07-24':
+    union:
+      - LMCK
+
+  # Missing from the source table; Series C began regular-way trading.
+  '2014-08-07':
+    union:
+      - DISCK
+
+  # The Interactive Group tracking stock became the QVC Group tracking stock.
+  '2014-10-07':
+    difference:
+      - LINTA
+    union:
+      - QVCA
+
+  # The source table also lists CMCSA as an addition here. It was already a member; the security that
+  # joined was Comcast's Class A Special (CMCSK), which this package does not carry.
+  '2014-12-22':
+    difference:
+      - EXPE
+      - FFIV
+      - MXIM
+    union:
+      - AAL
+      - EA
+      - FOX
+      - LBTYK
+      - LRCX

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ASML",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9414,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T12:00:00+00:00",
+  "last_bar": "2018-12-31T21:00:00+00:00",
+  "file": "bars\\ASML\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "dc585e3d321b0813dd91f4c4b90469a89b2e892e285b83a710478afa43b86d7b",
+  "retrieved_at_utc": "2026-10-20T02:56:57.222320+00:00"
+}

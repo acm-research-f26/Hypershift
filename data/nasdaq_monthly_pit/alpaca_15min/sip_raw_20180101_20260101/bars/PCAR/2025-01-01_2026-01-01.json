@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PCAR",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7644,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T13:00:00+00:00",
+  "last_bar": "2026-01-01T00:30:00+00:00",
+  "file": "bars\\PCAR\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "47c8168e28a731e778391db86d7621ab02fdda743398dda9a59504e59a00d9c5",
+  "retrieved_at_utc": "2026-10-20T04:20:45.321518+00:00"
+}

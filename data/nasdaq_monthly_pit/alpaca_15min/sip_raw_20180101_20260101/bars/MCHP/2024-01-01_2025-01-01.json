@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MCHP",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9182,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T13:45:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\MCHP\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "e95c63564cd59209467d260648deaf1a3da94572c58b2b7c25e4daac3fc556eb",
+  "retrieved_at_utc": "2026-10-20T04:09:26.079648+00:00"
+}

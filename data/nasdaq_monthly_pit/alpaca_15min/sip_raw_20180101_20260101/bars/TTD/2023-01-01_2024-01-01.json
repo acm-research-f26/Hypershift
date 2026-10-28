@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TTD",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10550,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:15:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\TTD\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "635ee3937cfaaf255d23aa1cbca8715b1790cc6139aa5d5b7078807be18cd065",
+  "retrieved_at_utc": "2026-10-20T04:33:16.817425+00:00"
+}

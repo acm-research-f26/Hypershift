@@ -14,6 +14,13 @@ complete. See the [audited report, charts, all metrics and confidence intervals]
 Raw responses retain their price-only source status; the separate feature
 snapshot passed the documented input gate before training.
 
+The full `sip_raw_20180101_20260101` snapshot is committed on `feat-rs`, including
+all 1,288 symbol/year chunks, sidecar metadata, coverage and request records.
+Cloning this branch supplies those saved bars without another API download.
+See the [raw-data inventory and verification command](ndx_artifacts_20261027/README.md#raw-data-supplement)
+before reproducing preprocessing. The commands below are for acquiring a separate
+snapshot or restoring missing data; they are not required to inspect the saved one.
+
 The downloader is [fetch_alpaca_15min.py](../research/data/fetch_alpaca_15min.py).
 Run it through the [workspace launcher](PROJECT_LAYOUT.md). It uses the existing `requests`,
 `numpy`, and `pandas` dependencies. It only sends market-data GET requests.

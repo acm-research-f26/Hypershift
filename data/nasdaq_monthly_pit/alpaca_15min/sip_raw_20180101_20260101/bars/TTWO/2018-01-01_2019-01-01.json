@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TTWO",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7980,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T14:30:00+00:00",
+  "last_bar": "2018-12-31T21:30:00+00:00",
+  "file": "bars\\TTWO\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "9cb85244ae77de5a675bc1ea58380bebf03d0c3bd95484bea94b4b67d89051d6",
+  "retrieved_at_utc": "2026-10-20T04:33:25.006283+00:00"
+}

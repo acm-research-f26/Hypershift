@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PANW",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8889,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T13:00:00+00:00",
+  "last_bar": "2022-12-30T22:00:00+00:00",
+  "file": "bars\\PANW\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "2f9919d0446ecc8797534c0687722e72091076043788ef531446c637433c1a32",
+  "retrieved_at_utc": "2026-10-20T04:19:43.111961+00:00"
+}

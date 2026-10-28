@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "LULU",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8126,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T12:15:00+00:00",
+  "last_bar": "2021-12-31T22:30:00+00:00",
+  "file": "bars\\LULU\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "cdf72fa83c736e6c98a65b6c7e5d5ba31a6c964184d85dfb57b9c1a6dc21967b",
+  "retrieved_at_utc": "2026-10-20T04:08:20.056466+00:00"
+}

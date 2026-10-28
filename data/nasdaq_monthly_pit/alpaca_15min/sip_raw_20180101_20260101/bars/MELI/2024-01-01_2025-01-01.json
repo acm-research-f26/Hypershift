@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MELI",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7324,
+  "pages": 6,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T14:30:00+00:00",
+  "last_bar": "2024-12-31T21:00:00+00:00",
+  "file": "bars\\MELI\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "b63abb74a3ba113b7dbce4409bd2f5ec7b478f589d84837f9e43b7c411164678",
+  "retrieved_at_utc": "2026-10-20T04:10:34.987467+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "LIN",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8704,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T11:45:00+00:00",
+  "last_bar": "2021-12-31T21:00:00+00:00",
+  "file": "bars\\LIN\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "9d9c16458debecafb0aa70a7a03c8ce82c24baf4a5861e0ff4a54933826e411c",
+  "retrieved_at_utc": "2026-10-20T04:07:15.385076+00:00"
+}

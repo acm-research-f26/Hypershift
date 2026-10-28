@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SWKS",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9077,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T11:30:00+00:00",
+  "last_bar": "2021-12-31T22:45:00+00:00",
+  "file": "bars\\SWKS\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "dc429aa209280bce70152725351898a87fc30d8b33b5d0197ad3ff0fbc26e09a",
+  "retrieved_at_utc": "2026-10-20T04:30:16.751483+00:00"
+}

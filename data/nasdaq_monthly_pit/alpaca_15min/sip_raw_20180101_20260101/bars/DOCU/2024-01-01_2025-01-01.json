@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "DOCU",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9402,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T11:30:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\DOCU\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "910e282ebc51e1b9014890c0c5cdec6fbd2d39ea641d20e523b3cb406bced2b9",
+  "retrieved_at_utc": "2026-10-20T03:52:18.293061+00:00"
+}

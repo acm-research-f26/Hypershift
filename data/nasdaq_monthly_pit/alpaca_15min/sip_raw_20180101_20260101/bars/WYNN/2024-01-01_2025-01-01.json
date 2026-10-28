@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "WYNN",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9188,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:30:00+00:00",
+  "last_bar": "2025-01-01T00:00:00+00:00",
+  "file": "bars\\WYNN\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "bdbddc30c3ae0e610967c4e0b213cbdcbc5d054de3b59f0c2d53fb871d04f706",
+  "retrieved_at_utc": "2026-10-20T04:38:32.538315+00:00"
+}

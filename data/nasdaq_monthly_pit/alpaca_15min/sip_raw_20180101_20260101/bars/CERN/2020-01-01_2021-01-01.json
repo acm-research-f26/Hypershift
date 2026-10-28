@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CERN",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7495,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T12:00:00+00:00",
+  "last_bar": "2020-12-31T21:00:00+00:00",
+  "file": "bars\\CERN\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "a66aadc399c5fd279da6d42c0dcfd1aec4287acd5dd89ad9b32314f89aac1b2c",
+  "retrieved_at_utc": "2026-10-20T03:45:36.260760+00:00"
+}

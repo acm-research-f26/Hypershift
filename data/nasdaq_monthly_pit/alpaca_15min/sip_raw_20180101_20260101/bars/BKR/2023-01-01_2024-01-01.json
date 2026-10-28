@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "BKR",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8241,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-29T21:00:00+00:00",
+  "file": "bars\\BKR\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "1e30f13099217863adaa235153e9028ee9f8a1db0a5474b7e2f3adb62ce5ee21",
+  "retrieved_at_utc": "2026-10-20T03:43:25.787660+00:00"
+}

@@ -1,0 +1,6 @@
+{
+  "source": "fetch_alpaca_batch.py",
+  "sha256": "5183896322b066dca556cb2c345bda5e1ab02d582caeb0bc2b565565b09886a5",
+  "workers": 8,
+  "requests_per_minute": 190
+}

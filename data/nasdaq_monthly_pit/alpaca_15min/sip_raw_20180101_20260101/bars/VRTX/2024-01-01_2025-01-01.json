@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "VRTX",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7552,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T12:00:00+00:00",
+  "last_bar": "2024-12-31T21:30:00+00:00",
+  "file": "bars\\VRTX\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "e7ebc2ba407494b8440bb4f879d42263aecd5ee4a6b4bb2fbe46fbb5972b5e2f",
+  "retrieved_at_utc": "2026-10-20T04:36:17.808725+00:00"
+}

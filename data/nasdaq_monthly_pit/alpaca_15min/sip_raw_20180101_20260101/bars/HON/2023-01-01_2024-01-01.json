@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "HON",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7917,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T12:00:00+00:00",
+  "last_bar": "2023-12-29T21:00:00+00:00",
+  "file": "bars\\HON\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "e9be9a6b61d018701a456eebbaccce9892aa5c49944c8252731e32e3bfbd5ebc",
+  "retrieved_at_utc": "2026-10-20T04:00:42.293919+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ANSS",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6921,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T13:45:00+00:00",
+  "last_bar": "2018-12-31T21:00:00+00:00",
+  "file": "bars\\ANSS\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "19adccb8e47abe6b6a6d3cd51e29bb7435d5d9ebe92b5bc64ec70f6aa4e815b7",
+  "retrieved_at_utc": "2026-10-20T02:56:05.289346+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "LCID",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\LCID\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "b3eb3efac79ba7ca125d5f6b2468305c58c529261c92a33ca60a8aabae01c28a",
+  "retrieved_at_utc": "2026-10-20T04:06:39.313980+00:00"
+}

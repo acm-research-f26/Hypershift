@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "FOXA",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7103,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:45:00+00:00",
+  "last_bar": "2023-12-29T21:15:00+00:00",
+  "file": "bars\\FOXA\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "355ea5f999a24b8ec49cedd0ef6113284a77ff1f469f680f9b88d66c6544421f",
+  "retrieved_at_utc": "2026-10-20T03:57:15.431649+00:00"
+}

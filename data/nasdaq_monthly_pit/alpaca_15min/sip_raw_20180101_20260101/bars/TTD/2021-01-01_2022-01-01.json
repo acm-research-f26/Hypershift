@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TTD",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10730,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T09:15:00+00:00",
+  "last_bar": "2021-12-31T22:45:00+00:00",
+  "file": "bars\\TTD\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "56ccb202e17ea5ffacb82b6a13ba6ea2435c451d401a3ec0c3182312c944b59c",
+  "retrieved_at_utc": "2026-10-20T04:33:15.598349+00:00"
+}

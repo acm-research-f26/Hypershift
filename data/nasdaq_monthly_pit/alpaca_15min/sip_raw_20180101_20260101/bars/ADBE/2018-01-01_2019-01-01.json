@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ADBE",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9365,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T13:30:00+00:00",
+  "last_bar": "2019-01-01T00:45:00+00:00",
+  "file": "bars\\ADBE\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "d33fcfad177a240eaa163dd90fb0aa9be2ec9717a2199fc57aee1a31dc552431",
+  "retrieved_at_utc": "2026-10-20T02:51:10.761071+00:00"
+}

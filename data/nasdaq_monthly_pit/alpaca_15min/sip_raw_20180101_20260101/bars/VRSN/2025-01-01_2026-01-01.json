@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "VRSN",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7284,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T09:00:00+00:00",
+  "last_bar": "2025-12-31T21:00:00+00:00",
+  "file": "bars\\VRSN\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "c1218f91d08014a7e0f65cf4244eab9e30b710a14245e75255c3f9a02ed23d3c",
+  "retrieved_at_utc": "2026-10-20T04:35:56.304934+00:00"
+}

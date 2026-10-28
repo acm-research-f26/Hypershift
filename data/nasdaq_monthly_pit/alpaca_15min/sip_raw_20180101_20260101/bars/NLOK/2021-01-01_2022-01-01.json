@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "NLOK",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8373,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T09:30:00+00:00",
+  "last_bar": "2021-12-31T21:30:00+00:00",
+  "file": "bars\\NLOK\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "284d7d921753c61347b84f0718f91a90acf99ffe34c4160876109a68b96078a7",
+  "retrieved_at_utc": "2026-10-20T04:15:43.445844+00:00"
+}

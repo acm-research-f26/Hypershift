@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AXON",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\AXON\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "01fcc72e1e141bc48cff4ffb7da792191a38a101ad4f81fa5b3a6e441b3db7b4",
+  "retrieved_at_utc": "2026-10-20T02:58:00.956541+00:00"
+}

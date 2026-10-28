@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AZN",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10798,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-29T22:30:00+00:00",
+  "file": "bars\\AZN\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "980b62727469510bae7b8132491303d39f191d9ae028b5d29841e3126c8c6e2c",
+  "retrieved_at_utc": "2026-10-20T02:58:50.577143+00:00"
+}

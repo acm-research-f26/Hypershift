@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "HAS",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7399,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T11:00:00+00:00",
+  "last_bar": "2024-12-31T23:30:00+00:00",
+  "file": "bars\\HAS\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "50b64db09497b19b3ab553213971547c311ab99ed603c48eb917d855a756fdf9",
+  "retrieved_at_utc": "2026-10-20T04:00:18.169784+00:00"
+}

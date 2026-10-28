@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PTON",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 12311,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:30:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\PTON\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "ed65c6cd018c08caf0fe223184c877021d0801c672f1fd7fbb6102399efecbf2",
+  "retrieved_at_utc": "2026-10-20T04:22:36.498928+00:00"
+}

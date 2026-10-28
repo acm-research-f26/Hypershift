@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "DDOG",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10712,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T11:15:00+00:00",
+  "last_bar": "2023-12-29T23:30:00+00:00",
+  "file": "bars\\DDOG\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "b171029f736520ab95f25bc3f0302cc5ff881d27bc0be3621dedd5482d11318d",
+  "retrieved_at_utc": "2026-10-20T03:51:25.756893+00:00"
+}

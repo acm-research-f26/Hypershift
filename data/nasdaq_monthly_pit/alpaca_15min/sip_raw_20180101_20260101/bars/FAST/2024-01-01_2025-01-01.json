@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "FAST",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7667,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T13:30:00+00:00",
+  "last_bar": "2024-12-31T21:00:00+00:00",
+  "file": "bars\\FAST\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "1c64073b6a9457b6f2c3a98502839abc597da0d53dc1abe305346e0d1b61ac35",
+  "retrieved_at_utc": "2026-10-20T03:55:47.917369+00:00"
+}

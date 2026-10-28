@@ -1,0 +1,51 @@
+{
+  "created_date": "2026-10-27",
+  "operation": "Publish existing raw data and membership source files; preserve original bytes",
+  "files": 2660,
+  "bytes": 309586531,
+  "roots": {
+    "data/nasdaq_monthly_pit/alpaca_15min/sip_raw_20180101_20260101": {
+      "files": 2581,
+      "bytes": 265187015
+    },
+    "data/nasdaq_monthly_pit/yahoo_raw": {
+      "files": 8,
+      "bytes": 33629640
+    },
+    "data/nasdaq_monthly_pit/tiingo_raw": {
+      "files": 42,
+      "bytes": 10034273
+    },
+    "data/nasdaq_monthly_pit/ndx_source": {
+      "files": 25,
+      "bytes": 73488
+    },
+    "data/nasdaq_monthly_pit/ndx_preflight": {
+      "files": 4,
+      "bytes": 662115
+    }
+  },
+  "alpaca": {
+    "chunks": 1288,
+    "rows": 10839262,
+    "empty_chunks": 109,
+    "symbols": 161,
+    "download_status": "completed_with_review_required"
+  },
+  "historical_hash_checks": 1327,
+  "credential_scan": {
+    "status": "passed",
+    "scope": "All selected bytes, decompressed gzip members, local environment/.env credential values and common token/private-key patterns"
+  },
+  "excluded": [
+    ".env and credential files",
+    "Alpaca sample download sip_raw_20250102_20250109",
+    "Unrelated datasets and parent runs"
+  ],
+  "known_limits": [
+    "Raw source status and historical review limitations remain unchanged",
+    "Historical manifests retain original Windows paths; use raw_data_manifest.csv for portable checks",
+    "Historical audits can still require omitted parent runs",
+    "Yahoo download.pkl is preserved as an original artifact; CSV files supply readable inputs"
+  ]
+}

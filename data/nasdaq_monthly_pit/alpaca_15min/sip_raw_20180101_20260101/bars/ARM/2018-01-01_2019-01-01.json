@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ARM",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\ARM\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "34837c716b92bafb12f1d7211478f2c2c736f1c5f5a88eec5aa44aa8287e1421",
+  "retrieved_at_utc": "2026-10-20T02:56:25.901313+00:00"
+}

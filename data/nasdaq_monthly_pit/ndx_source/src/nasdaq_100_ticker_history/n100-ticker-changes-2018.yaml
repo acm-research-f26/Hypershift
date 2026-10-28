@@ -1,0 +1,155 @@
+---
+year: 2018
+tickers_on_Jan_1:
+  - AAL
+  - AAPL
+  - ADBE
+  - ADI
+  - ADP
+  - ADSK
+  - ALGN
+  - ALXN
+  - AMAT
+  - AMGN
+  - AMZN
+  - ASML
+  - ATVI
+  - AVGO
+  - BIDU
+  - BIIB
+  - BMRN
+  - CA
+  - CDNS
+  - CELG
+  - CERN
+  - CHKP
+  - CHTR
+  - CMCSA
+  - COST
+  - CSCO
+  - CSX
+  - CTAS
+  - CTRP
+  - CTSH
+  - CTXS
+  - DISH
+  - DLTR
+  - EA
+  - EBAY
+  - ESRX
+  - EXPE
+  - FAST
+  - FB
+  - FISV
+  - FOX
+  - FOXA
+  - GILD
+  - GOOG
+  - GOOGL
+  - HAS
+  - HOLX
+  - HSIC
+  - IDXX
+  - ILMN
+  - INCY
+  - INTC
+  - INTU
+  - ISRG
+  - JBHT
+  - JD
+  - KHC
+  - KLAC
+  - LBTYA
+  - LBTYK
+  - LRCX
+  - MAR
+  - MCHP
+  - MDLZ
+  - MELI
+  - MNST
+  - MSFT
+  - MU
+  - MXIM
+  - MYL
+  - NFLX
+  - NTES
+  - NVDA
+  - ORLY
+  - PAYX
+  - PCAR
+  - PCLN
+  - PYPL
+  - QCOM
+  - QVCA
+  - REGN
+  - ROST
+  - SBUX
+  - SHPG
+  - SIRI
+  - SNPS
+  - STX
+  - SWKS
+  - SYMC
+  - TMUS
+  - TSLA
+  - TTWO
+  - TXN
+  - ULTA
+  - VOD
+  - VRSK
+  - VRTX
+  - WBA
+  - WDAY
+  - WDC
+  - WYNN
+  - XLNX
+  - XRAY
+
+changes:
+  # ticker change: The Priceline Group became Booking Holdings.
+  '2018-02-27':
+    difference:
+      - PCLN
+    union:
+      - BKNG
+
+  # ticker change: Liberty Interactive became Qurate Retail.
+  '2018-04-09':
+    difference:
+      - QVCA
+    union:
+      - QRTEA
+
+  '2018-07-23':
+    difference:
+      - DISH
+    union:
+      - PEP
+
+  '2018-11-05':
+    difference:
+      - CA
+    union:
+      - NXPI
+
+  '2018-11-19':
+    difference:
+      - XRAY
+    union:
+      - XEL
+
+  '2018-12-24':
+    difference:
+      - ESRX
+      - HOLX
+      - QRTEA
+      - SHPG
+      - STX
+      - VOD
+    union:
+      - AMD
+      - LULU
+      - NTAP
+      - UAL
+      - VRSN
+      - WLTW

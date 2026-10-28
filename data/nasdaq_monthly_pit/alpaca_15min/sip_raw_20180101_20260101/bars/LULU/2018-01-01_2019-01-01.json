@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "LULU",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8158,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T11:45:00+00:00",
+  "last_bar": "2018-12-31T21:15:00+00:00",
+  "file": "bars\\LULU\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "b9a88b7459e250b2da48f706d8d3ce648c9557990f6547f2a0c6c42e53060a84",
+  "retrieved_at_utc": "2026-10-20T04:08:17.252391+00:00"
+}

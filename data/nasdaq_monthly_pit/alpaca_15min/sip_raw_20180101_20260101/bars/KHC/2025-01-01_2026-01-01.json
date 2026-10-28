@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "KHC",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 12397,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T09:30:00+00:00",
+  "last_bar": "2026-01-01T00:45:00+00:00",
+  "file": "bars\\KHC\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "d49f44c7d24a0b21e1bc16442b93d4fd232f9380ae825e840392c6159e4cd0d0",
+  "retrieved_at_utc": "2026-10-20T04:05:43.588162+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TCOM",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9874,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:00:00+00:00",
+  "last_bar": "2024-12-31T21:45:00+00:00",
+  "file": "bars\\TCOM\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "44230e6e3c9e2fde652da2eef958a6713f3f91803bc8725773dde21db2ec21ee",
+  "retrieved_at_utc": "2026-10-20T04:30:47.511414+00:00"
+}

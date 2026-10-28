@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ALGN",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7632,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T12:30:00+00:00",
+  "last_bar": "2019-12-31T21:45:00+00:00",
+  "file": "bars\\ALGN\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "3579ff1df24ff09e578a820576bf1c0a4884ef45a2d88ab3dbfee2ce8a9576b9",
+  "retrieved_at_utc": "2026-10-20T02:53:18.835586+00:00"
+}

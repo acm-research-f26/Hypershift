@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AMD",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 14795,
+  "pages": 17,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T09:00:00+00:00",
+  "last_bar": "2019-01-01T00:45:00+00:00",
+  "file": "bars\\AMD\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "79d838c60d76b2a17ee5e380dfe028f8a981185f07fefaf0b6903c43968b56c6",
+  "retrieved_at_utc": "2026-10-20T02:54:42.468553+00:00"
+}

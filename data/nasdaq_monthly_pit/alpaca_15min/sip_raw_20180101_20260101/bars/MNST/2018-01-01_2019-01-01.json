@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MNST",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7570,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T13:45:00+00:00",
+  "last_bar": "2018-12-31T21:00:00+00:00",
+  "file": "bars\\MNST\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "c62ed46dfafa2ce6ed786dc38dc42230e34c1cee3c322b02a7d5ac4b47381038",
+  "retrieved_at_utc": "2026-10-20T04:10:58.606322+00:00"
+}

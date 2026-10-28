@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "HAS",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7157,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T14:30:00+00:00",
+  "last_bar": "2021-12-31T21:00:00+00:00",
+  "file": "bars\\HAS\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "d8ccc13e40c27105bf2134d7709caef4eb8d68a82653b4b3fc9d8c09fd32e224",
+  "retrieved_at_utc": "2026-10-20T03:59:51.715970+00:00"
+}

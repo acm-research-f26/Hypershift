@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ROP",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6905,
+  "pages": 7,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T14:30:00+00:00",
+  "last_bar": "2023-12-29T21:00:00+00:00",
+  "file": "bars\\ROP\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "e00e5d55842db398bebd77d978d13eea3ddf4001f8a1fdf593d67df3794bf414",
+  "retrieved_at_utc": "2026-10-20T04:25:27.957007+00:00"
+}

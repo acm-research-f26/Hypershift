@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PYPL",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 14851,
+  "pages": 14,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T09:00:00+00:00",
+  "last_bar": "2026-01-01T00:45:00+00:00",
+  "file": "bars\\PYPL\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "a9b16bdd3a8b403466f49ba9aaf8551cf815950d00588d48242535ff038fb5f1",
+  "retrieved_at_utc": "2026-10-20T04:23:18.091815+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SNPS",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7811,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T11:30:00+00:00",
+  "last_bar": "2024-12-31T21:00:00+00:00",
+  "file": "bars\\SNPS\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "135a56f8e5a86bb4d8472f476f92e9cc9afce43c543764d51208feef82994fee",
+  "retrieved_at_utc": "2026-10-20T04:28:35.259685+00:00"
+}

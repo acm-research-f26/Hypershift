@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AMGN",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8237,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T13:45:00+00:00",
+  "last_bar": "2019-01-01T00:45:00+00:00",
+  "file": "bars\\AMGN\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "01eb51767e8b9a72a51873834f19d26f1de64e9ae1cf5509d202fe9a48980156",
+  "retrieved_at_utc": "2026-10-20T02:55:09.697641+00:00"
+}

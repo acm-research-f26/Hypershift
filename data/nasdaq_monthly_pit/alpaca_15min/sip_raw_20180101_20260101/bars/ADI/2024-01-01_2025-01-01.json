@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ADI",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8243,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T11:30:00+00:00",
+  "last_bar": "2024-12-31T21:15:00+00:00",
+  "file": "bars\\ADI\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "05a2b96fe3ed0f14ed133c26b78e125c6056dff569ad3388d76441bded886838",
+  "retrieved_at_utc": "2026-10-20T02:52:01.244944+00:00"
+}

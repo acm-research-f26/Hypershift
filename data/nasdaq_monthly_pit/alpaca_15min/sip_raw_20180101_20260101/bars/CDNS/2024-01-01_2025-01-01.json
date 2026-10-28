@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CDNS",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8089,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T12:45:00+00:00",
+  "last_bar": "2024-12-31T21:00:00+00:00",
+  "file": "bars\\CDNS\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "55d9a53023e3a5352d23c3d8936abd9de1fcb1e26e2f90b69558ab35c024be57",
+  "retrieved_at_utc": "2026-10-20T03:44:39.889776+00:00"
+}
