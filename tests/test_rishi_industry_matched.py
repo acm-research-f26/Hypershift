@@ -13,3 +13,4 @@ class IndustryMatchedTests(unittest.TestCase):
     def test_rejects_ineligible_holdings_or_bad_weights(self):
         with self.assertRaises(ValueError):matched_control(np.array([.5,.5]),np.array([1,0],bool),np.array([6.,np.nan]))
         with self.assertRaises(ValueError):matched_control(np.array([.4,.4]),np.array([1,1],bool),np.array([6.,6.]))
+        with self.assertRaises(ValueError):matched_control(np.array([1.000009]),np.array([1],bool),np.array([6.]))

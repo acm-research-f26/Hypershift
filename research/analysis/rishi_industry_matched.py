@@ -10,12 +10,12 @@ from rishi_mechanism_batch1 import stationary_indices,paired_contrast
 
 def matched_control(original,eligible,industry):
     w=np.asarray(original,float);eligible=np.asarray(eligible,bool);industry=np.asarray(industry,float)
-    if w.shape!=eligible.shape or w.shape!=industry.shape or not np.isfinite(w).all() or np.any(w<0) or np.any(w[~eligible]!=0) or not np.isclose(w.sum(),1,atol=1e-12):raise ValueError('Invalid original eligible weights')
+    if w.shape!=eligible.shape or w.shape!=industry.shape or not np.isfinite(w).all() or np.any(w<0) or np.any(w[~eligible]!=0) or not np.isclose(w.sum(),1,rtol=0,atol=1e-12):raise ValueError('Invalid original eligible weights')
     groups=np.where(np.isfinite(industry),industry,-1);result=np.zeros_like(w)
     for group in np.unique(groups[eligible]):
         members=eligible&(groups==group);mass=w[members].sum();result[members]=mass/members.sum()
-        if not np.isclose(result[members].sum(),mass,atol=1e-12):raise ValueError('Group mismatch')
-    if not np.isclose(result.sum(),1,atol=1e-12) or np.any(result[~eligible]!=0):raise ValueError('Invalid matched weights')
+        if not np.isclose(result[members].sum(),mass,rtol=0,atol=1e-12):raise ValueError('Group mismatch')
+    if not np.isclose(result.sum(),1,rtol=0,atol=1e-12) or np.any(result[~eligible]!=0):raise ValueError('Invalid matched weights')
     return result
 
 
