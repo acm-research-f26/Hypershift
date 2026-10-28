@@ -14,6 +14,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--out',type=Path,default=Path('docs/rishi_mechanism_20261027/execution_batch6_numerical'))
     parser.add_argument('--full-cuda',action='store_true')
+    parser.add_argument('--reference-cuda-worst',action='store_true',help='Use the previously observed full-CUDA test maximum instead of the CPU maximum')
     args=parser.parse_args();out=args.out
     if out.exists():raise FileExistsError(out)
     out.mkdir(parents=True)
@@ -22,6 +23,10 @@ def main():
     previous=np.load('results/RISHI_MECHANISM_REPLAY_20261027_PORTABLE/B_2022_7.npz')['test']
     saved=np.load(PARENT/'2022/7_predictions.npz')['test']
     r,j=np.unravel_index(np.abs(previous-saved).argmax(),saved.shape)
+    if args.reference_cuda_worst:
+        prior=json.loads(Path('docs/rishi_mechanism_20261027/execution_batch6_numerical_full_v2/DIAGNOSTIC.json').read_text())['full_cuda']['test']
+        r=int(np.flatnonzero(p['test']==prior['max_origin'])[0])
+        j=int(np.flatnonzero(np.asarray(p['data']['panel'].tickers)==prior['max_security_id'])[0])
     batches=np.array_split(np.arange(len(p['test'])),max(1,int(np.ceil(len(p['test'])/8))))
     locations=next(x for x in batches if r in x);ids=p['test'][locations]
     x=p['features'][...,:5].transpose(0,2,1,3).copy()
@@ -44,8 +49,9 @@ def main():
         del model
     expected=saved[locations];summary=[]
     for key,value in outputs.items():summary.append(dict(path=key,max_saved_error=float(np.max(np.abs(value-expected))),
-        reference_cpu_worst_origin_id=int(p['test'][r]),reference_cpu_worst_stock=p['data']['panel'].tickers[j],
-        at_reference_cpu_worst=float(value[np.flatnonzero(locations==r)[0],j])))
+        reference_kind='prior_full_cuda_maximum' if args.reference_cuda_worst else 'prior_cpu_maximum',
+        reference_origin_id=int(p['test'][r]),reference_stock=p['data']['panel'].tickers[j],
+        at_reference=float(value[np.flatnonzero(locations==r)[0],j])))
     rows=[]
     for key,a in captures['cpu32'].items():
         b=captures['cuda32'][key];double=captures['cpu64'][key]
