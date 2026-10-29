@@ -9,7 +9,7 @@ from rishi_factor_nw import fit_hac
 
 
 def main():
-    out=Path('docs/rishi_mechanism_20261027/execution_batch53_validation_factor');out.mkdir(parents=True,exist_ok=False)
+    out=Path('docs/rishi_mechanism_20261027/execution_batch53_validation_factor_v2');out.mkdir(parents=True,exist_ok=False)
     root=Path('data/factors');files=[root/'F-F_Research_Data_5_Factors_2x3_daily.csv',root/'F-F_Momentum_Factor_daily.csv',root/'F-F_ST_Reversal_Factor_daily.csv']
     source=Path('results/RISHI_VALIDATION_FIXED_ACCOUNT_20261029/PATHS.npz');qqq_path=Path('data/nasdaq_monthly_pit/assembled/etf_adj_close.csv')
     z=np.load(source,allow_pickle=False);dates=pd.DatetimeIndex(z['dates']);assert len(dates)==1003 and not dates.has_duplicates and dates.is_monotonic_increasing
@@ -28,7 +28,7 @@ def main():
                     for j,term in enumerate(terms):
                         scale=252 if j==0 else 1;beta=float(fit['beta'][j]*scale);sigma=float(se[j]*scale)
                         rows.append(dict(group=group,design=design,response=response,lag=lag,term=term,n=fit['n'],coefficient=beta,se=sigma,low=beta-1.95996398454*sigma,high=beta+1.95996398454*sigma,r2=fit['r2']))
-    assert len(rows)==3*3*2*2*8+3*3*2*2 # FF7 8 terms, FF7_QQQ 9 terms
+    assert len(rows)==3*3*2*(8+9) # FF7 8 terms, FF7_QQQ 9 terms
     frame=pd.DataFrame(rows);frame.to_csv(out/'COEFFICIENTS.csv',index=False)
     inputs=files+[source,qqq_path,Path(__file__),Path('research/analysis/rishi_factor_nw.py'),Path('research/analysis/rishi_multifactor.py'),Path('docs/rishi_mechanism_20261027/VALIDATION_FIXED_FACTOR_PROTOCOL_20261029.md')]
     (out/'INPUT_HASHES.json').write_text(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},indent=2),encoding='utf-8')
