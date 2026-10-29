@@ -1,0 +1,214 @@
+{
+  "environment": {
+    "device": "cuda",
+    "torch": "2.14.0+cu130",
+    "cuda_build": "13.0",
+    "deterministic_algorithms": true,
+    "precision": "float32, no AMP; TF32 disabled for CUDA",
+    "cublas_workspace_config": ":4096:8",
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "gpu_memory_bytes": 8585216000,
+    "compute_capability": "8.9",
+    "cudnn_version": 92400
+  },
+  "year": 2022,
+  "seed": 7,
+  "family": "B",
+  "reference_origin": 186,
+  "reference_ticker": "ADBE",
+  "batch_ids": [
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192
+  ],
+  "layers": [
+    {
+      "key": "layer_0000",
+      "module": "core.base.first.fc",
+      "call": 0,
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0001",
+      "module": "core.base.first",
+      "call": 0,
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0002",
+      "module": "core.base.spatial.fc",
+      "call": 0,
+      "shape": [
+        28,
+        156,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0003",
+      "module": "core.base.spatial",
+      "call": 0,
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0004",
+      "module": "core.base.last.fc",
+      "call": 0,
+      "shape": [
+        7,
+        1,
+        156,
+        1
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0005",
+      "module": "core.base.last",
+      "call": 0,
+      "shape": [
+        7,
+        1,
+        156,
+        1
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0006",
+      "module": "core.base",
+      "call": 0,
+      "shape": [
+        7,
+        156
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0007",
+      "module": "core.market.0",
+      "call": 0,
+      "shape": [
+        7,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0008",
+      "module": "core.market.1",
+      "call": 0,
+      "shape": [
+        7,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0009",
+      "module": "core.market.2",
+      "call": 0,
+      "shape": [
+        7,
+        156
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0010",
+      "module": "core.market",
+      "call": 0,
+      "shape": [
+        7,
+        156
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0011",
+      "module": "core",
+      "call": 0,
+      "shape": [
+        7,
+        156
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0012",
+      "module": "first",
+      "call": 0,
+      "shape": [
+        7,
+        156,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "key": "layer_0013",
+      "module": "last",
+      "call": 0,
+      "shape": [
+        7,
+        156,
+        1
+      ],
+      "dtype": "float32"
+    }
+  ],
+  "all_input_hashes": {
+    "x": "06fc12d10f8f7eafb9f8a2b22ba4707b0964c36d01ef760616ba255e8d7f105e",
+    "extra": "551b5b4a8256beb25c470f33eb40cf7ee8ee563192eac8b53c2a8f5289a06317",
+    "mask": "b0791eaaa50c886c5a81faefb23d7ecb55c7e80ad352cd93cf331034383eb342",
+    "validation_ids": "cd271621541ad5fe1e71d0425bc61e552efdad0cbec37b771404d6d59033782f",
+    "test_ids": "c5bc7c320138b34a1b94c2d7d0073f98a097144afb81c2f38bfe986673679852",
+    "stock_ids": "0fc6325e5e2189349d6c42083e3263537c446ffdc6a8667b4adb4157337505ec"
+  },
+  "file_sha256": {
+    "runs\\ndx_extended_hours_20261024\\after_hours_premarket\\2022\\7.pt": "7f4108a84cce7b6217cfe8945a18bc0810ea8641021ecd9205e98189e7fc7de8",
+    "runs\\ndx_extended_hours_20261024\\after_hours_premarket\\2022\\7_predictions.npz": "f39ac23618760c6a67ab22febfb3740fd6c338385ee3e44a7f54914ff3f58073",
+    "C:\\Users\\rsand\\OneDrive\\Documents\\Hypershift\\rishi_source_device_trace.py": "1a58e396711c52c27dd5172b5ec8979adb829db0054024480bf07d65fde596a5"
+  },
+  "code_modules_sha256": {
+    "ndx_reference_training": "8fa4b4d558ffccfcb6c84f568e5ff13f40a34b420996d3108f93a1193b9e7809",
+    "ndx_extended_hours": "a1e1c9d23fa80c54c19f6dc3f061327a25183b2f6f15c23fdd96aae4d98d2ef9",
+    "training_device": "e07899eacf6fec4f563f35ae3f671410ffa6015983e5c83a4e5299278d1e7fe8",
+    "robust_models": "06086a7b6433db5c38977ed5060cab869c2185bddc9b26a52371a0207e462513",
+    "research_models": "437d9f6deaeb6241ec079a17400c12ec35fc19bba74a6bfdfa310ae8c6262e72",
+    "think_model": "ee05058dba2be85fc6bde6d768a5f6397e078108037717dc5512c5dac7da85bb",
+    "pit_research_engine": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+    "ndx_loss_optimizer": "0e00580813633f1e2c342b2de50befa157e7b5df183c7f2fd0714760070b4e54",
+    "run_robust_research": "68701ba0fe89ceba2050230f379b19649105916a463bc6c67896d4342b6f743b",
+    "prepare_ndx_extended_hours": "027336b719cd2db09ea02839f7de471b0ae28945abe525462b9c649f2f1e3315"
+  },
+  "forecast_max_error_pp": {
+    "validation": 0.005422115325927734,
+    "test": 0.0030808448791503906
+  },
+  "batch_vs_full_max_error": 0.0,
+  "limits": "One checkpoint; trace only, no training or gate amendment; source machine verification remains separate."
+}
