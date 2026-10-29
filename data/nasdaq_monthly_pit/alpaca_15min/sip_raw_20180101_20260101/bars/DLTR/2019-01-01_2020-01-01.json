@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "DLTR",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7720,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T14:15:00+00:00",
+  "last_bar": "2019-12-31T22:45:00+00:00",
+  "file": "bars\\DLTR\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "d4e7da92da6609658e379ecbf7239faf6f5a74d7d8de5cabaf1416fc8848e44b",
+  "retrieved_at_utc": "2026-10-20T03:51:31.345747+00:00"
+}

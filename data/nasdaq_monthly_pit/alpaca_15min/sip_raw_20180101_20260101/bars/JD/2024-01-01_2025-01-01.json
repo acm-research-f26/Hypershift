@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "JD",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15271,
+  "pages": 15,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:00:00+00:00",
+  "last_bar": "2025-01-01T00:15:00+00:00",
+  "file": "bars\\JD\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "2ce8171a75c19f9dc1c7db0f6c8cdcf5c4087bbe54f2074e9ca60e1022a41a0f",
+  "retrieved_at_utc": "2026-10-20T04:04:46.309824+00:00"
+}

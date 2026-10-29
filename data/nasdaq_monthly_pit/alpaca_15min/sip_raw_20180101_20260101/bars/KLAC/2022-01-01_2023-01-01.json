@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "KLAC",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7729,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T10:15:00+00:00",
+  "last_bar": "2022-12-30T21:45:00+00:00",
+  "file": "bars\\KLAC\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "844ebba387b80879188ee834745818059b1bb8954dfc83b23904360cd8bcf7ac",
+  "retrieved_at_utc": "2026-10-20T04:05:54.551839+00:00"
+}

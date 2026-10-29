@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MDLZ",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8343,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T14:15:00+00:00",
+  "last_bar": "2021-12-31T21:30:00+00:00",
+  "file": "bars\\MDLZ\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "0ec82604808e1f759da0833a4eb69d57736998b6b82a5b8a9723883f6c821b00",
+  "retrieved_at_utc": "2026-10-20T04:10:07.469305+00:00"
+}

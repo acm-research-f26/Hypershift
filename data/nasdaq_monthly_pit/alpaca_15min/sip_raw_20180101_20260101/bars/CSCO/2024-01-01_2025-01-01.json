@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CSCO",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 12008,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T11:00:00+00:00",
+  "last_bar": "2025-01-01T00:00:00+00:00",
+  "file": "bars\\CSCO\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "03b8419024a6ef55192aeb86fabd665071d859fc66b40f17e9d8a42114cfda41",
+  "retrieved_at_utc": "2026-10-20T03:48:43.994057+00:00"
+}

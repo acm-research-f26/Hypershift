@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "LRCX",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8601,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T09:00:00+00:00",
+  "last_bar": "2019-12-31T21:00:00+00:00",
+  "file": "bars\\LRCX\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "974e7cbc311a28f9f058111467da1f187f440afa535f2222b762c3e93be24c66",
+  "retrieved_at_utc": "2026-10-20T04:07:55.094795+00:00"
+}

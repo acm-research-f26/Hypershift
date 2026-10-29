@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CHTR",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7305,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T14:30:00+00:00",
+  "last_bar": "2020-12-31T21:00:00+00:00",
+  "file": "bars\\CHTR\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "945bc61b90958a44bbbc6f50840a4b4197e21649ec7633da0bd49ab2aa356fd7",
+  "retrieved_at_utc": "2026-10-20T03:46:20.422028+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CHKP",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7036,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T14:30:00+00:00",
+  "last_bar": "2024-12-31T23:30:00+00:00",
+  "file": "bars\\CHKP\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "1f4a8e77931ad8cd6ecb8a2ba384e2bd6303ae31d99db9f5a9b8b0de1936f369",
+  "retrieved_at_utc": "2026-10-20T03:45:56.331991+00:00"
+}

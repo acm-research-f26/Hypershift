@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "WDAY",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7799,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T14:15:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\WDAY\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "21816d33933cfbf5e40b7aa74ba1f8d55807232183a71b7f5810e075ad05268e",
+  "retrieved_at_utc": "2026-10-20T04:37:30.530857+00:00"
+}

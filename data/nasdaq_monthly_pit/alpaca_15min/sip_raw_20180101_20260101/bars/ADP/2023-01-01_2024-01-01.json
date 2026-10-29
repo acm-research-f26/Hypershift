@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ADP",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7275,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T14:15:00+00:00",
+  "last_bar": "2023-12-29T21:00:00+00:00",
+  "file": "bars\\ADP\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "3b3118eb27d5f9f3d2a9b9c9d5aa703d53e810edaebd628fd31db55fdef424de",
+  "retrieved_at_utc": "2026-10-20T02:52:26.174193+00:00"
+}

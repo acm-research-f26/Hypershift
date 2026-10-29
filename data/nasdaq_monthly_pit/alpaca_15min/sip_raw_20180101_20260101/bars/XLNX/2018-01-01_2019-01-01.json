@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "XLNX",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7757,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T14:15:00+00:00",
+  "last_bar": "2018-12-31T23:45:00+00:00",
+  "file": "bars\\XLNX\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "72125e9158628da54b29179ad65d67646b97897094d1669d5927eebfc9f973a3",
+  "retrieved_at_utc": "2026-10-20T04:39:14.709295+00:00"
+}

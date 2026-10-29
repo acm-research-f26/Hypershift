@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ALXN",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7453,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T14:15:00+00:00",
+  "last_bar": "2018-12-31T21:45:00+00:00",
+  "file": "bars\\ALXN\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "a995cbf524b2c347460b281df84b3e68ff1a7f6f2ec51104d556c32eb9db17c8",
+  "retrieved_at_utc": "2026-10-20T02:53:43.216520+00:00"
+}

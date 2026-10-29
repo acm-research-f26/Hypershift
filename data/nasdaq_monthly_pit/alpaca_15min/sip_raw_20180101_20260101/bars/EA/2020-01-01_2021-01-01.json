@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "EA",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8653,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T12:45:00+00:00",
+  "last_bar": "2021-01-01T00:45:00+00:00",
+  "file": "bars\\EA\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "36c2b6d275e4ffd5c43a84a5cfd92d1ab66033e3e1346b7a832820a372d57b64",
+  "retrieved_at_utc": "2026-10-20T03:52:58.264928+00:00"
+}

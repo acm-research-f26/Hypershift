@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "INCY",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7415,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T09:00:00+00:00",
+  "last_bar": "2018-12-31T21:15:00+00:00",
+  "file": "bars\\INCY\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "4277fb1b0ab32287d9ef084463e9561830ee58310b0330b0c81a085997d19bb2",
+  "retrieved_at_utc": "2026-10-20T04:01:54.512284+00:00"
+}

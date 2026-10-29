@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "KDP",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 3463,
+  "pages": 5,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-07-10T08:45:00+00:00",
+  "last_bar": "2018-12-31T21:00:00+00:00",
+  "file": "bars\\KDP\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "49c2c694802635021e712373d9f03eaa17e3ab777a5c6180ed9fcb3ac89ed703",
+  "retrieved_at_utc": "2026-10-20T04:04:36.361924+00:00"
+}

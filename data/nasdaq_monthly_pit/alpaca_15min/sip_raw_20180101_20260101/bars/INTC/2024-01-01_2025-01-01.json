@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "INTC",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 16028,
+  "pages": 20,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:00:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\INTC\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "6d64e1679abc60326f2b3076e3fb1bb0751db0af551431c5ea20324005839a26",
+  "retrieved_at_utc": "2026-10-20T04:03:00.449576+00:00"
+}

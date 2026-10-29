@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "NVDA",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 13930,
+  "pages": 15,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T09:30:00+00:00",
+  "last_bar": "2019-01-01T00:45:00+00:00",
+  "file": "bars\\NVDA\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "517162a94a9cafa91838a483600066b9678129cb5b6f2db74910015a17b0307a",
+  "retrieved_at_utc": "2026-10-20T04:16:49.460522+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "complete",
+  "timestamp_utc": "2026-10-27T19:04:38.624856+00:00",
+  "output_sha256": {
+    "ACCOUNT_CHECKS.json": "516df2f27235facc062a919605ce497bb033a6e5abe4d80f754dd3381c023f91",
+    "annual.csv": "1460de94aec3d1608dea5d9ae6776bd75f2ed14ad83d2b0e71226ea4855ec1d1",
+    "base_rankings.csv": "4aaeceb4f452068b3a1ac3f54164da889fe276edfeb22e98b1b0c5614cf907d4",
+    "calibration.csv": "c4b207972ad49f20b11cc4d353ff80902be0f56b89638fc4716277debe258be2",
+    "FREEZE.json": "90dd09846b71d29b4f4cc46000de0cc45a416ca2b5b1b8c9b20d4b8079b96d87",
+    "metrics.csv": "47fcfa0b4a8ea66c3786991349a9943cb9819289c1657f3451125dc03891d9fa",
+    "paths.npz": "7e124856486e0445de76f5bd6be5df75cf11af27fd75588a767ac5a246c14ad6",
+    "PROTOCOL.json": "f8719d45bfbbd7d5f016aad580e0edc6ef7c52c1415dfe0689ad1cd614145e24",
+    "signals.csv": "e0f34d38f8f2e4ad469e98ac6d0abc759146f6237d2a49c23223346b6b62ac37",
+    "STATISTICAL_AMENDMENT.json": "88c1578cb05601f5fcfe22b722d948deb5326dd9758e540e3c2f8a556b8dd912",
+    "targets.csv": "282f16f8c7de4a4bf594336b9affe5720e5373891d7e26acfb8a2ae8a7cda55c",
+    "uncertainty.csv": "c286877e0fc0a242a35c61fea1aac2257d45fe2d1540af8f0f6cfa03f072ad2e"
+  }
+}

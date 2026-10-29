@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PLTR",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 3955,
+  "pages": 6,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-09-30T17:30:00+00:00",
+  "last_bar": "2021-01-01T00:45:00+00:00",
+  "file": "bars\\PLTR\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "942701a7e0abcf7ff0ac9153320703d81a6f562fcd134e1c73c3f9e131a4391d",
+  "retrieved_at_utc": "2026-10-20T04:21:33.763439+00:00"
+}

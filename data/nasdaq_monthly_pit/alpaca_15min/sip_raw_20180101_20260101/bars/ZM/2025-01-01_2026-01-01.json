@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ZM",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8991,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T13:00:00+00:00",
+  "last_bar": "2025-12-31T22:45:00+00:00",
+  "file": "bars\\ZM\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "0639dcdc0720ecb33c9aaf6ec1eed0a506bd68093e081be37509b8766ec242b0",
+  "retrieved_at_utc": "2026-10-20T04:39:48.095595+00:00"
+}

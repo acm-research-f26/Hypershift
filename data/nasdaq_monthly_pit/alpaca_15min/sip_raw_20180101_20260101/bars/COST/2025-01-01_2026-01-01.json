@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "COST",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9966,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T09:00:00+00:00",
+  "last_bar": "2026-01-01T00:45:00+00:00",
+  "file": "bars\\COST\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "50bf0f1a1af83198a42bb3c7761d7dda61504742924dddaa1606576cbc8ccc43",
+  "retrieved_at_utc": "2026-10-20T03:47:20.544860+00:00"
+}

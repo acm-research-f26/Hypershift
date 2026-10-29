@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PEP",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8297,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T14:00:00+00:00",
+  "last_bar": "2018-12-31T22:00:00+00:00",
+  "file": "bars\\PEP\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "0152448380b0633517b6c2a24f5f29a87955e882e91dd87f25497d831c3bee11",
+  "retrieved_at_utc": "2026-10-20T04:21:12.818352+00:00"
+}

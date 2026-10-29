@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "KDP",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7475,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T14:15:00+00:00",
+  "last_bar": "2020-12-31T21:00:00+00:00",
+  "file": "bars\\KDP\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "d4117ec15ea90392746c108f977dcc7f4635dd332f63dbe23625105f7da21488",
+  "retrieved_at_utc": "2026-10-20T04:04:53.004252+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ODFL",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6945,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T13:45:00+00:00",
+  "last_bar": "2018-12-31T22:00:00+00:00",
+  "file": "bars\\ODFL\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "f6deb281f0577bf110447338be624a72971c7643c0e19150a25ec5b437ecce3f",
+  "retrieved_at_utc": "2026-10-20T04:17:40.270123+00:00"
+}

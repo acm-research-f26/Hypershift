@@ -1,0 +1,661 @@
+{
+  "sha": "cf7c89419941316ff8523726ccba136125f2c11c",
+  "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/cf7c89419941316ff8523726ccba136125f2c11c",
+  "tree": [
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "06aa40ab428dd3d0f8de0526b030f78eb5272d7d",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/06aa40ab428dd3d0f8de0526b030f78eb5272d7d"
+    },
+    {
+      "path": ".github/workflows",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d9becc21238a4fe655b826431371c2f76f8c7162",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/d9becc21238a4fe655b826431371c2f76f8c7162"
+    },
+    {
+      "path": ".github/workflows/release-please.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "472d6a9e10a4e3ab6f0f1e717681ca959ae0f41e",
+      "size": 2452,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/472d6a9e10a4e3ab6f0f1e717681ca959ae0f41e"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad3b124a74d4f1c0baa7e7426c62f56f664f59f1",
+      "size": 628,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/ad3b124a74d4f1c0baa7e7426c62f56f664f59f1"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e702aef0314fac1fd6b7cf9fb11e79519b45e5c0",
+      "size": 2046,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/e702aef0314fac1fd6b7cf9fb11e79519b45e5c0"
+    },
+    {
+      "path": ".release-please-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fae029094f75fd1afba24dfe091173ea42a0a1a6",
+      "size": 18,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/fae029094f75fd1afba24dfe091173ea42a0a1a6"
+    },
+    {
+      "path": ".vscode",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "472d0fe9762ac1ef96d577fd41349e583bc9e676",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/472d0fe9762ac1ef96d577fd41349e583bc9e676"
+    },
+    {
+      "path": ".vscode/settings.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7ec279a0756feebd3319efdd1b3aa0294b9e2fe",
+      "size": 445,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/e7ec279a0756feebd3319efdd1b3aa0294b9e2fe"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e288c3bc9c7a617705b54eedb3cdadc39afb247",
+      "size": 1938,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/7e288c3bc9c7a617705b54eedb3cdadc39afb247"
+    },
+    {
+      "path": "CLAUDE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a91ddf68e60ced1b6d2715b4bff5b639c263dd55",
+      "size": 8693,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/a91ddf68e60ced1b6d2715b4bff5b639c263dd55"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a319014fc829ef24614b7b49ff84c7ea75f8d35",
+      "size": 1078,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/9a319014fc829ef24614b7b49ff84c7ea75f8d35"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a4a58b059b611f0f85fa464bf5ca03b3f83ccfdc",
+      "size": 2586,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/a4a58b059b611f0f85fa464bf5ca03b3f83ccfdc"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8058f4a07086f6ed61c6f76f3831b2dc65778cdd",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/8058f4a07086f6ed61c6f76f3831b2dc65778cdd"
+    },
+    {
+      "path": "docs/GEMINI.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "538f47781b405c87184ae3cb2aa546b7abf3145f",
+      "size": 174,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/538f47781b405c87184ae3cb2aa546b7abf3145f"
+    },
+    {
+      "path": "docs/adr",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5dffbf838eccce55532f4ab0f22a1009ad9d71d0",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/5dffbf838eccce55532f4ab0f22a1009ad9d71d0"
+    },
+    {
+      "path": "docs/adr/0001-bidirectional-membership-changes-api.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b2c318de61d14b0dc41831407cb8473eb374df9",
+      "size": 2367,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/4b2c318de61d14b0dc41831407cb8473eb374df9"
+    },
+    {
+      "path": "docs/agents",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "bfe4f63a88d30e56f3ca1c2a23403ae3b0784f80",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/bfe4f63a88d30e56f3ca1c2a23403ae3b0784f80"
+    },
+    {
+      "path": "docs/agents/domain.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c97d6a6db64bfe09b14345d69fdddea3f47cdc27",
+      "size": 1986,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/c97d6a6db64bfe09b14345d69fdddea3f47cdc27"
+    },
+    {
+      "path": "docs/agents/issue-tracker.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cce77ecbb26ae9cdd15b2a07a97f86528bb8bcc1",
+      "size": 1065,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/cce77ecbb26ae9cdd15b2a07a97f86528bb8bcc1"
+    },
+    {
+      "path": "docs/agents/triage-labels.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b716855d485f3865f9dfde2a82141721f065b2e7",
+      "size": 1045,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/b716855d485f3865f9dfde2a82141721f065b2e7"
+    },
+    {
+      "path": "docs/changelog.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff67bd9761a944d82c8e9064f8c1231056bbef03",
+      "size": 15795,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/ff67bd9761a944d82c8e9064f8c1231056bbef03"
+    },
+    {
+      "path": "justfile",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "caf6e8f4d408d6061730584b1fbacbc8c8297a00",
+      "size": 1183,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/caf6e8f4d408d6061730584b1fbacbc8c8297a00"
+    },
+    {
+      "path": "prompts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c8a81ef1cf424147e09cc0a4cb1f94837d4a4ecf",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/c8a81ef1cf424147e09cc0a4cb1f94837d4a4ecf"
+    },
+    {
+      "path": "prompts/2015-prompt.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "32630d9f3be0dad516808be239cf6f9e708aedce",
+      "size": 546,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/32630d9f3be0dad516808be239cf6f9e708aedce"
+    },
+    {
+      "path": "prompts/2025-dec-year-end-changes.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "27e78f6dac932439625ecd0f1486cd9a04eff9e3",
+      "size": 345,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/27e78f6dac932439625ecd0f1486cd9a04eff9e3"
+    },
+    {
+      "path": "prompts/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a16c4a758e81c7f062da99a5309fef45bc3588f",
+      "size": 64,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/5a16c4a758e81c7f062da99a5309fef45bc3588f"
+    },
+    {
+      "path": "prompts/fix-CTRP-TCOM-2019.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d86c7679ec93d1aa979c1ea2bb3e3641636200f8",
+      "size": 427,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/d86c7679ec93d1aa979c1ea2bb3e3641636200f8"
+    },
+    {
+      "path": "prompts/new-release.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a89d95371cddcfd8637fba7b9fba8c0a22c2f5dd",
+      "size": 523,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/a89d95371cddcfd8637fba7b9fba8c0a22c2f5dd"
+    },
+    {
+      "path": "pyproject.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a78d888d146d19de424568687379a73d93c8f4d",
+      "size": 757,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/9a78d888d146d19de424568687379a73d93c8f4d"
+    },
+    {
+      "path": "release-please-config.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58d38c3fe6be8480f601b17f7391a11ea1f210bf",
+      "size": 846,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/58d38c3fe6be8480f601b17f7391a11ea1f210bf"
+    },
+    {
+      "path": "ruff.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ca12e0e2b70c0bbb7fdf8ddbdd786d1ff9caf9a3",
+      "size": 838,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/ca12e0e2b70c0bbb7fdf8ddbdd786d1ff9caf9a3"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "681727ed8ecaf4270ac940518b6a8212c72a11e4",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/681727ed8ecaf4270ac940518b6a8212c72a11e4"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b87c55711c53d38122273a3e78fea83b8a4d38e0",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/b87c55711c53d38122273a3e78fea83b8a4d38e0"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4dcd41c0e253be723dfb15bc9caf2e4dcefde8e4",
+      "size": 68,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/4dcd41c0e253be723dfb15bc9caf2e4dcefde8e4"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/changes.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79f3bf8eb7ba11fc319fa59ce10e8f485ad8dd85",
+      "size": 6862,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/79f3bf8eb7ba11fc319fa59ce10e8f485ad8dd85"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2007.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41e8e66fa8d71058872ca9828b47fbb46e609bb9",
+      "size": 2433,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/41e8e66fa8d71058872ca9828b47fbb46e609bb9"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2008.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ed4d671b3f6ceef63e00430d398267811b899e2",
+      "size": 1689,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/1ed4d671b3f6ceef63e00430d398267811b899e2"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2009.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "76dc830d8ab83d5cdb570ecd41d5ca2d9a08d28d",
+      "size": 1511,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/76dc830d8ab83d5cdb570ecd41d5ca2d9a08d28d"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2010.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ae3cbba06a746ae27b7f48af93a214b98d563e9",
+      "size": 1295,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/8ae3cbba06a746ae27b7f48af93a214b98d563e9"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2011.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "63f4f5695017c44a92d2f574ce0a7c066ba04fc1",
+      "size": 1698,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/63f4f5695017c44a92d2f574ce0a7c066ba04fc1"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2012.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4083b2992d2a14628137916d83864157f3a55be5",
+      "size": 1939,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/4083b2992d2a14628137916d83864157f3a55be5"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2013.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cfed9e424bb7e3f7b1b37907f9ec96b501bdb4d2",
+      "size": 2053,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/cfed9e424bb7e3f7b1b37907f9ec96b501bdb4d2"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2014.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8fd01b40082f40badca31050ceaff295889cb16",
+      "size": 1969,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/a8fd01b40082f40badca31050ceaff295889cb16"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2015.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ced75e473608095f427f0156e9b409bc24069fb6",
+      "size": 1982,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/ced75e473608095f427f0156e9b409bc24069fb6"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2016.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28824b05df68d7ea41c4fc0f62858f20d20dd620",
+      "size": 1808,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/28824b05df68d7ea41c4fc0f62858f20d20dd620"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2017.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a470525a6533755fa5304a837eaa6c57a2713b30",
+      "size": 1839,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/a470525a6533755fa5304a837eaa6c57a2713b30"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2018.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71a67e2831b9432812db49e07400577db6504fcd",
+      "size": 1618,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/71a67e2831b9432812db49e07400577db6504fcd"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2019.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f8eeb2953c859c62570f9b5d748d18953458821",
+      "size": 1423,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/8f8eeb2953c859c62570f9b5d748d18953458821"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2020.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b9b733839c0045123a87383a64238a8f47fd59b",
+      "size": 1576,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/2b9b733839c0045123a87383a64238a8f47fd59b"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2021.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28d767dd3ee1bcf24435037a2278da773b625d66",
+      "size": 1284,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/28d767dd3ee1bcf24435037a2278da773b625d66"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2022.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "227123a78643c48483a7607e8cb93cf60aa8e7df",
+      "size": 1453,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/227123a78643c48483a7607e8cb93cf60aa8e7df"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2023.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "34aac838b61b06c691c8bfcfa3ced18ac8070333",
+      "size": 1393,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/34aac838b61b06c691c8bfcfa3ced18ac8070333"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2024.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "290b502723bb6254ed59e07f9c60406914f87ba3",
+      "size": 1322,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/290b502723bb6254ed59e07f9c60406914f87ba3"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2025.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "928cd47dc91ee7b4927f14d1dc47071027ce8e28",
+      "size": 1336,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/928cd47dc91ee7b4927f14d1dc47071027ce8e28"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100-ticker-changes-2026.yaml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f7cb9d8253a479870d3ddb2a2f7c4b817f6f55a6",
+      "size": 1549,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/f7cb9d8253a479870d3ddb2a2f7c4b817f6f55a6"
+    },
+    {
+      "path": "src/nasdaq_100_ticker_history/n100tickers.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ae0a9a37acaecf4559b24a3db0c3d16c0153b96",
+      "size": 2817,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/2ae0a9a37acaecf4559b24a3db0c3d16c0153b96"
+    },
+    {
+      "path": "tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1af7ad576af5499ac539737e2cdfe5584ba0a0cc",
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/trees/1af7ad576af5499ac539737e2cdfe5584ba0a0cc"
+    },
+    {
+      "path": "tests/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "tests/helpers.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc5344ada2dabddcfd998d712b59ae8fc1cabcd6",
+      "size": 1490,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/bc5344ada2dabddcfd998d712b59ae8fc1cabcd6"
+    },
+    {
+      "path": "tests/test_basics.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45c7443d1575eafdd7f131e2fcc3a0794df298d0",
+      "size": 177,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/45c7443d1575eafdd7f131e2fcc3a0794df298d0"
+    },
+    {
+      "path": "tests/test_changes.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28333aa0a3ddbe7764e43bbb0b0186f3b636c8c6",
+      "size": 3855,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/28333aa0a3ddbe7764e43bbb0b0186f3b636c8c6"
+    },
+    {
+      "path": "tests/test_n100_2007.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31fa9338d2f5f77620b1192a0b5e0b0be377696d",
+      "size": 3243,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/31fa9338d2f5f77620b1192a0b5e0b0be377696d"
+    },
+    {
+      "path": "tests/test_n100_2008.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81520b015ddb7988f20481bdf5c093fe24a7f8c8",
+      "size": 1434,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/81520b015ddb7988f20481bdf5c093fe24a7f8c8"
+    },
+    {
+      "path": "tests/test_n100_2009.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6691294dc5c32bd46a8faaa6b3cb932933dd404f",
+      "size": 1242,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/6691294dc5c32bd46a8faaa6b3cb932933dd404f"
+    },
+    {
+      "path": "tests/test_n100_2010.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f940f86c6735a687885cef260cdd87dd4ff22be6",
+      "size": 941,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/f940f86c6735a687885cef260cdd87dd4ff22be6"
+    },
+    {
+      "path": "tests/test_n100_2011.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "38537c7f09a4e9fc9fad090e8c6b1bbcc7345530",
+      "size": 1550,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/38537c7f09a4e9fc9fad090e8c6b1bbcc7345530"
+    },
+    {
+      "path": "tests/test_n100_2012.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c55a2828de357e093d8eb261cffe30c9d2eb9f7a",
+      "size": 1685,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/c55a2828de357e093d8eb261cffe30c9d2eb9f7a"
+    },
+    {
+      "path": "tests/test_n100_2013.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8a8cf9107cacf868e32afd86e1d3626437fc3aa",
+      "size": 1966,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/d8a8cf9107cacf868e32afd86e1d3626437fc3aa"
+    },
+    {
+      "path": "tests/test_n100_2014.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab6eb3afdefb45265128260d91fcc52d931ab101",
+      "size": 1950,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/ab6eb3afdefb45265128260d91fcc52d931ab101"
+    },
+    {
+      "path": "tests/test_n100_2015.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac210a8ac58c29f7be2f12f452e6cf8f953bb279",
+      "size": 2306,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/ac210a8ac58c29f7be2f12f452e6cf8f953bb279"
+    },
+    {
+      "path": "tests/test_n100_2016.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5fb23d9fbe0f1dcfcac08b2ee4db4bc5b3d842f",
+      "size": 3000,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/a5fb23d9fbe0f1dcfcac08b2ee4db4bc5b3d842f"
+    },
+    {
+      "path": "tests/test_n100_2017.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c79ccb34153fc9cce0a6d3845d518c5210632322",
+      "size": 1750,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/c79ccb34153fc9cce0a6d3845d518c5210632322"
+    },
+    {
+      "path": "tests/test_n100_2018.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b35c345bff1f178c53af0cdd42abab782951034e",
+      "size": 2169,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/b35c345bff1f178c53af0cdd42abab782951034e"
+    },
+    {
+      "path": "tests/test_n100_2019.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "461385b5247d6edfe9528c182184841a467db5f5",
+      "size": 1914,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/461385b5247d6edfe9528c182184841a467db5f5"
+    },
+    {
+      "path": "tests/test_n100_2020.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8125b616ff2bea03d6fd9c91a4669421ae8d67bb",
+      "size": 2624,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/8125b616ff2bea03d6fd9c91a4669421ae8d67bb"
+    },
+    {
+      "path": "tests/test_n100_2021.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ff52f3c098917d40202bac521f9989424c90147",
+      "size": 2041,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/4ff52f3c098917d40202bac521f9989424c90147"
+    },
+    {
+      "path": "tests/test_n100_2022.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a00f1b0a70e3426a107892f3ae88b5a46306b14",
+      "size": 2698,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/8a00f1b0a70e3426a107892f3ae88b5a46306b14"
+    },
+    {
+      "path": "tests/test_n100_2023.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "40878e83ea6841abb4b069c3744d1213dfb633a1",
+      "size": 2148,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/40878e83ea6841abb4b069c3744d1213dfb633a1"
+    },
+    {
+      "path": "tests/test_n100_2024.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "222e57713c9ca161f92d53472cc3ccd80e4c9b22",
+      "size": 2040,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/222e57713c9ca161f92d53472cc3ccd80e4c9b22"
+    },
+    {
+      "path": "tests/test_n100_2025.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc3d4e21fa7ca4a7732af8d2f244280e06d4019b",
+      "size": 2407,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/cc3d4e21fa7ca4a7732af8d2f244280e06d4019b"
+    },
+    {
+      "path": "tests/test_n100_2026.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8760380c143822212ccd3467ba10081c056853e4",
+      "size": 4560,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/8760380c143822212ccd3467ba10081c056853e4"
+    },
+    {
+      "path": "tests/test_non_existent_year.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07a0dee8b6f458326bd9f1a80aa8e9d95e0a90d8",
+      "size": 355,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/07a0dee8b6f458326bd9f1a80aa8e9d95e0a90d8"
+    },
+    {
+      "path": "uv.lock",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae3d4f708bc6914e205ec381de6e6b925a9af663",
+      "size": 74484,
+      "url": "https://api.github.com/repos/jmccarrell/n100tickers/git/blobs/ae3d4f708bc6914e205ec381de6e6b925a9af663"
+    }
+  ],
+  "truncated": false
+}

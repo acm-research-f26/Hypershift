@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ZM",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7071,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-04-18T15:15:00+00:00",
+  "last_bar": "2019-12-31T23:45:00+00:00",
+  "file": "bars\\ZM\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "ec1efc88988200d45e6dc04b09ef9d686b7c75f7c32be252805693c267802af5",
+  "retrieved_at_utc": "2026-10-20T04:39:20.317354+00:00"
+}

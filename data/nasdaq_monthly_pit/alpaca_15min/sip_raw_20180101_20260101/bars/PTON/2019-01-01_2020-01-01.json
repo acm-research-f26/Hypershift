@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PTON",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 2541,
+  "pages": 3,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-09-26T15:45:00+00:00",
+  "last_bar": "2020-01-01T00:45:00+00:00",
+  "file": "bars\\PTON\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "333a8d93a55fbb160511037f9392db75de411e5a671dedbe16c3cacd175f5751",
+  "retrieved_at_utc": "2026-10-20T04:21:47.358364+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SGEN",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\SGEN\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "84e206e234282bbbe998cb32f5751ad8b5c41965cdf83f89e8bfdfd90966492b",
+  "retrieved_at_utc": "2026-10-20T04:26:30.778057+00:00"
+}

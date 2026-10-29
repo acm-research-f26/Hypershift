@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SYMC",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\SYMC\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "bc7b2da2e59020c4e2fc4fc5008c42e442b0806a214a9e4afdccc0678cca228e",
+  "retrieved_at_utc": "2026-10-20T04:30:19.551883+00:00"
+}

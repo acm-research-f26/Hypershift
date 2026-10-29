@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "DASH",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 691,
+  "pages": 1,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-12-09T17:30:00+00:00",
+  "last_bar": "2021-01-01T00:45:00+00:00",
+  "file": "bars\\DASH\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "390a9d684f2f1720358e833f169fcaf13827a73a53f4b1c0b5ede7da4734f8a8",
+  "retrieved_at_utc": "2026-10-20T03:50:30.576094+00:00"
+}

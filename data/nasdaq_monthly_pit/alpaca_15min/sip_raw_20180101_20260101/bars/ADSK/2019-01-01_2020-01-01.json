@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ADSK",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7569,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T13:00:00+00:00",
+  "last_bar": "2019-12-31T22:45:00+00:00",
+  "file": "bars\\ADSK\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "f32a084f7cbc7cf3fbf5439eff9b0f0c9873f964109575dd35b524825c51c591",
+  "retrieved_at_utc": "2026-10-20T02:52:28.385143+00:00"
+}

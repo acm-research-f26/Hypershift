@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ADSK",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7607,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T14:00:00+00:00",
+  "last_bar": "2022-12-30T21:30:00+00:00",
+  "file": "bars\\ADSK\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "da798573971cafedd6eb9b9553d5ce9c8a0fdf557f781474396e7cabdb681239",
+  "retrieved_at_utc": "2026-10-20T02:52:30.292402+00:00"
+}

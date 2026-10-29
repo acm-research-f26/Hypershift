@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MDB",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9163,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T11:00:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\MDB\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "ac9bfb510818a4d6fdaad7531350f004aa225d172ec301ed689115742db99a37",
+  "retrieved_at_utc": "2026-10-20T04:09:51.414956+00:00"
+}

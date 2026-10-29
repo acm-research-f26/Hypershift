@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CRWD",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 11408,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T12:00:00+00:00",
+  "last_bar": "2022-12-30T22:15:00+00:00",
+  "file": "bars\\CRWD\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "8286cdfb6a9a10643ce62af3495448b6daae6a5313529f62201ffe5eb3407825",
+  "retrieved_at_utc": "2026-10-20T03:48:11.533426+00:00"
+}

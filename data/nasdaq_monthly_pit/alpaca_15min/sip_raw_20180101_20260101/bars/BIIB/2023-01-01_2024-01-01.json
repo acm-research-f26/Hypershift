@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "BIIB",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7340,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T14:15:00+00:00",
+  "last_bar": "2023-12-30T00:30:00+00:00",
+  "file": "bars\\BIIB\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "f3490ead49fdb73f1a5b5a446c18c52085dfd9655d185396eb84b8458adab440",
+  "retrieved_at_utc": "2026-10-20T02:59:49.205632+00:00"
+}

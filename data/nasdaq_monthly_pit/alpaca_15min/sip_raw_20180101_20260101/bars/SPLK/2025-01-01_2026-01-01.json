@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SPLK",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\SPLK\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "8b9b270364f49e6f17424577b8121339e8eaba45eff0807c51533ae7b8a605fa",
+  "retrieved_at_utc": "2026-10-20T04:28:40.448688+00:00"
+}

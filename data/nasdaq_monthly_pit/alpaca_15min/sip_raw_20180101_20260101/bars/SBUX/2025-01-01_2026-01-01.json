@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SBUX",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 12278,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T11:15:00+00:00",
+  "last_bar": "2026-01-01T00:45:00+00:00",
+  "file": "bars\\SBUX\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "49880146528983f4c8839523eb235a53c769a9c42a02d0ac8ecef1e1f02ab4ee",
+  "retrieved_at_utc": "2026-10-20T04:26:28.403719+00:00"
+}

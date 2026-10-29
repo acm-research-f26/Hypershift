@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "FB",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\FB\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "252f58393c29626b6d054d60efd0425f32b21e2f5e94515416ea5aff4de559f3",
+  "retrieved_at_utc": "2026-10-20T03:55:50.058523+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MU",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15535,
+  "pages": 17,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:00:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\MU\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "4cd71baf37e2aee762e77d0943514fe54ccb76ed51df4970aeb4b83e248ac8a0",
+  "retrieved_at_utc": "2026-10-20T04:14:33.109990+00:00"
+}

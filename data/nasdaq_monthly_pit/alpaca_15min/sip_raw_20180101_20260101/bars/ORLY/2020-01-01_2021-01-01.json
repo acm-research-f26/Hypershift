@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ORLY",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7086,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T14:30:00+00:00",
+  "last_bar": "2020-12-31T22:15:00+00:00",
+  "file": "bars\\ORLY\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "a9402f4d22500372651ec47172583846f98c43898688dc21bbb3b4ef5b24398c",
+  "retrieved_at_utc": "2026-10-20T04:19:08.662809+00:00"
+}

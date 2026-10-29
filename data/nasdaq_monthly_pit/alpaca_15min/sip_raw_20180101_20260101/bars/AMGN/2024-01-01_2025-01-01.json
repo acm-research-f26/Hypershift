@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "AMGN",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8400,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T11:15:00+00:00",
+  "last_bar": "2024-12-31T22:45:00+00:00",
+  "file": "bars\\AMGN\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "ea4429bd79be7ba6512f01bb36c0272183d741febb05ee689be050d5e82973ce",
+  "retrieved_at_utc": "2026-10-20T02:55:29.975395+00:00"
+}

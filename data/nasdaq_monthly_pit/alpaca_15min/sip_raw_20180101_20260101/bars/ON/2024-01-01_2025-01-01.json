@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ON",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10735,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:15:00+00:00",
+  "last_bar": "2025-01-01T00:30:00+00:00",
+  "file": "bars\\ON\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "f357b0bd384dc0599a0a100b505bd178859e97798d798a6b726f42bb569cb6f5",
+  "retrieved_at_utc": "2026-10-20T04:19:04.058802+00:00"
+}

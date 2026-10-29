@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "META",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15116,
+  "pages": 15,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T09:00:00+00:00",
+  "last_bar": "2025-01-01T00:45:00+00:00",
+  "file": "bars\\META\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "01fbbcfeac38c78c4a3fc8ffaf257b26b5645dd56eff9609e9cdbb96a0029bcc",
+  "retrieved_at_utc": "2026-10-20T04:11:05.493973+00:00"
+}

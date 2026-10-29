@@ -13,6 +13,9 @@ not be interpreted as an independent replication on fresh dates.
 - [audit_ndx_drawdown_research.py](audit_ndx_drawdown_research.py) independently
   verifies all 915 drawdown-study metrics and replays 82 selected seed/cost
   accounts. Run with `python -m hypershift run audit_ndx_drawdown_research`.
+- [audit_ndx_matched_controls.py](audit_ndx_matched_controls.py) independently
+  rebuilds momentum and exposure controls, replays all 87 cost accounts and
+  verifies parent-path preservation and the inactive prospective policy.
 - [seal_ndx_comparison.py](../../latest/evaluation/seal_ndx_comparison.py) verifies frozen sources,
   fit artifacts and publication hashes for the loss/optimizer and reference studies.
 

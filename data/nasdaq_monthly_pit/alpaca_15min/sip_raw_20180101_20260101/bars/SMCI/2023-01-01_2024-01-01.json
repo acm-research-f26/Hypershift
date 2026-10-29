@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SMCI",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 11003,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T12:00:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\SMCI\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "34f5d08c926ed602d8f2af88ada8f57c4b7e2b56fc13a0342a158e15ede83112",
+  "retrieved_at_utc": "2026-10-20T04:28:12.102199+00:00"
+}

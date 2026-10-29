@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TEAM",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7513,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T14:00:00+00:00",
+  "last_bar": "2021-12-31T21:00:00+00:00",
+  "file": "bars\\TEAM\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "b30670492f3d4e3d397ae212e8056b9fc12637b42fb04f25067275e6533fde4d",
+  "retrieved_at_utc": "2026-10-20T04:31:11.404868+00:00"
+}

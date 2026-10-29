@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "WBA",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7556,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T09:00:00+00:00",
+  "last_bar": "2025-08-27T23:45:00+00:00",
+  "file": "bars\\WBA\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "1fdef52c27f2eff09a4cefe723bf20aea29063d0842cd26406efddbb1cef7bd6",
+  "retrieved_at_utc": "2026-10-20T04:36:41.790533+00:00"
+}

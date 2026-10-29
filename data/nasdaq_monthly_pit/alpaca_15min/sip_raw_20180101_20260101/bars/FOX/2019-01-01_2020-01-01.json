@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "FOX",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7169,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T12:00:00+00:00",
+  "last_bar": "2019-12-31T22:45:00+00:00",
+  "file": "bars\\FOX\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "1b74688946591800d6d54e4fe8d484ac26711324879ce83f28010620b277a7a1",
+  "retrieved_at_utc": "2026-10-20T03:56:44.511330+00:00"
+}

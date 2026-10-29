@@ -1,0 +1,20 @@
+{
+  "status": "completed_exploratory_pending_audit",
+  "strategies": 29,
+  "accounts": 87,
+  "observations": 1003,
+  "seconds": 27.76500000001397,
+  "protocol_sha256": "6c612c8d9f9d1c6b764b83372b3fdf3aea6998723ed4ec2ac37d5814c307cf58",
+  "output_sha256": {
+    "annual.csv": "a4bba827ac9ebc0e6e87d179a02fa78a101b98130de9b118fb96cc0db81ad977",
+    "comparison_curves.csv": "5853ce71e21cfc41a75055c4d6f7e515f0d373e57be31775828f3aaf276d8acb",
+    "FREEZE.json": "2c84ea5c22266df2ed389fb0046e5381bc7bcac805f4633819ebd0a765e2abb9",
+    "ledgers.csv": "4088d948233ecb1e830e2ad1165f59a6082d816e6780b4cdec86c09b0bc6e5da",
+    "metrics.csv": "e1bcb5afc8133eb0ab9fc564dbb0fee828de3c07b1828a6bdfd8305dc09c6975",
+    "momentum_support.csv": "d026761eda82f2905f20629ea089a7cf65636042fc8518d0f3ecc59f97deecda",
+    "paths.npz": "98400288c900685ed4760270e28a8cc0517dc2685dd45ee90a02c9202cbefc1c",
+    "PROTOCOL.json": "6c612c8d9f9d1c6b764b83372b3fdf3aea6998723ed4ec2ac37d5814c307cf58",
+    "target_exposures.csv": "38d10eb06c125a74e5c771e71be94344e660ec887b315db2676bdfae975962f2",
+    "uncertainty.csv": "d05db07820b119ea4bb5528c3da77239125fbf1ad534267e03dc3e3fc568802e"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "GOOGL",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9203,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T12:15:00+00:00",
+  "last_bar": "2019-12-31T23:30:00+00:00",
+  "file": "bars\\GOOGL\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "38c01e80ca136cf7d17ed84fcedaee89dcf32ba833538541efa99679f466eef2",
+  "retrieved_at_utc": "2026-10-20T03:59:26.415474+00:00"
+}

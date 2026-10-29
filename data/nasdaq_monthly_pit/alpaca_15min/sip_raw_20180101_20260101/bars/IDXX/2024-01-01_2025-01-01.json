@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "IDXX",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6994,
+  "pages": 7,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T13:00:00+00:00",
+  "last_bar": "2024-12-31T21:00:00+00:00",
+  "file": "bars\\IDXX\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "c0037a27bf82bc56a82e52907bffe02197af95d82a7783028f934b6b861be4f3",
+  "retrieved_at_utc": "2026-10-20T04:01:23.490615+00:00"
+}

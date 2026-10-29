@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "EA",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8077,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T13:00:00+00:00",
+  "last_bar": "2018-12-31T23:15:00+00:00",
+  "file": "bars\\EA\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "efe84a57643bfa8c0e62dda2514ce8653ba4cf9aa133090bd27ce4c3f53ec4aa",
+  "retrieved_at_utc": "2026-10-20T03:52:46.470062+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ISRG",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7409,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T13:00:00+00:00",
+  "last_bar": "2019-12-31T21:00:00+00:00",
+  "file": "bars\\ISRG\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "167ae05a67d6ea2b181ef70f72b014e5163cd8a6e7bf1070360bd470f47a35da",
+  "retrieved_at_utc": "2026-10-20T04:03:26.994455+00:00"
+}

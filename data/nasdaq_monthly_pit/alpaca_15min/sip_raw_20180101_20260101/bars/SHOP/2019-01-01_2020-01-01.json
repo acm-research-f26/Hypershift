@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SHOP",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10009,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T09:15:00+00:00",
+  "last_bar": "2020-01-01T00:45:00+00:00",
+  "file": "bars\\SHOP\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "17cae932ec2fa38521babe45401140d244dc42a3318d9bf223a459b15be2cebf",
+  "retrieved_at_utc": "2026-10-20T04:26:59.035320+00:00"
+}

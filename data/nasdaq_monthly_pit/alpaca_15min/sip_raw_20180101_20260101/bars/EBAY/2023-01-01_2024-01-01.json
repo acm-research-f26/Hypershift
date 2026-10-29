@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "EBAY",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8399,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-29T22:00:00+00:00",
+  "file": "bars\\EBAY\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "c59ee4f37d48619364f9791010495cc1d37e8bc69b1c5c5a3f48f9620eb3fbcb",
+  "retrieved_at_utc": "2026-10-20T03:53:31.933193+00:00"
+}

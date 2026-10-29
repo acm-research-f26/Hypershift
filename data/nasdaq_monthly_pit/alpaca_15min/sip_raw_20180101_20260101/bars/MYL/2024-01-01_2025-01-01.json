@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MYL",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\MYL\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "127ac6107b540237291a41b488c2aadc6b339264e0b1dfdeb40e88282ba219dc",
+  "retrieved_at_utc": "2026-10-20T04:14:42.782849+00:00"
+}

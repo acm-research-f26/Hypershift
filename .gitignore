@@ -268,3 +268,4 @@ outputs/**/*.inspect.ndjson
 outputs/**/workbook_inspection.json
 # Package source named data/ must stay tracked.
 !/src/hypershift/data/
+/outputs/model_hedge_20261027/comparison_staged.xlsx

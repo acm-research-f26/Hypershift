@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "NXPI",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8195,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T09:00:00+00:00",
+  "last_bar": "2025-12-31T21:30:00+00:00",
+  "file": "bars\\NXPI\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "deed87a47fe56f3da812e930e2f772abb57fdf06047c557ae5a97e2d5801a87f",
+  "retrieved_at_utc": "2026-10-20T04:17:50.471691+00:00"
+}

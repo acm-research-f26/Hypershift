@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ATVI",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9340,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T12:45:00+00:00",
+  "last_bar": "2019-01-01T00:45:00+00:00",
+  "file": "bars\\ATVI\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "53f5d82664baf02d63f94b0fb08d44b1d05cb7c651a3e0c6d9f00883295b7dfc",
+  "retrieved_at_utc": "2026-10-20T02:57:30.917552+00:00"
+}

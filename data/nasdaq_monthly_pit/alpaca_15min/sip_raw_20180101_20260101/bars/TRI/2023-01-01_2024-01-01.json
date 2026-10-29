@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "TRI",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6779,
+  "pages": 8,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T14:30:00+00:00",
+  "last_bar": "2023-12-29T21:00:00+00:00",
+  "file": "bars\\TRI\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "f4d642df40cb12c521b13cf50771e61c8c01e2395fc847f877e24576eaf75142",
+  "retrieved_at_utc": "2026-10-20T04:32:01.229717+00:00"
+}

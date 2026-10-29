@@ -52,3 +52,12 @@
 /.cache/architecture_references_20261024/** -text
 /.cache/reference_dependencies_20261024/** -text
 /docs/ndx_artifacts_20261027/** -text
+/docs/ndx_model_hedge_20261027/** -text
+/docs/ndx_weak_market_short_20261027/** -text
+
+# Raw snapshot publication preserves historical checksums on every platform.
+/data/nasdaq_monthly_pit/alpaca_15min/sip_raw_20180101_20260101/** -text
+/data/nasdaq_monthly_pit/yahoo_raw/** -text
+/data/nasdaq_monthly_pit/tiingo_raw/** -text
+/data/nasdaq_monthly_pit/ndx_source/** -text
+/data/nasdaq_monthly_pit/ndx_preflight/** -text

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ULTA",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7466,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T12:30:00+00:00",
+  "last_bar": "2021-12-31T21:00:00+00:00",
+  "file": "bars\\ULTA\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "20f3e3f14ab08d64eecb5bc439a08a06c9a0cc6a7667e3015924ef7431a2bd9b",
+  "retrieved_at_utc": "2026-10-20T04:35:09.018426+00:00"
+}

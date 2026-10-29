@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PDD",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 14072,
+  "pages": 13,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T09:00:00+00:00",
+  "last_bar": "2021-12-31T21:15:00+00:00",
+  "file": "bars\\PDD\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "ac59ea5908f5e3e8230e8e9d1b366d015bfef1c02ddc234b38d5e4afb168fe7b",
+  "retrieved_at_utc": "2026-10-20T04:20:56.979573+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ROST",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7817,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T14:30:00+00:00",
+  "last_bar": "2020-12-31T21:15:00+00:00",
+  "file": "bars\\ROST\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "1f3ccb69c87ef3286406af8de086bb7cc714586ce1d761bb20e031e1a0eb89e7",
+  "retrieved_at_utc": "2026-10-20T04:25:52.945512+00:00"
+}

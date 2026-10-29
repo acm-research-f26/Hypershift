@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "XEL",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7349,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T14:15:00+00:00",
+  "last_bar": "2023-12-29T21:00:00+00:00",
+  "file": "bars\\XEL\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "e6f70178d0e614897695705f69665c479957a8e603dedfb2a17529a79a77ca36",
+  "retrieved_at_utc": "2026-10-20T04:38:57.249873+00:00"
+}

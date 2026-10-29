@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ABNB",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 10206,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T11:15:00+00:00",
+  "last_bar": "2026-01-01T00:15:00+00:00",
+  "file": "bars\\ABNB\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "f000d8f863f3992a0109a6503fa3c0a04cc568d539943df1adcb5730e24890b5",
+  "retrieved_at_utc": "2026-10-20T02:51:10.578060+00:00"
+}

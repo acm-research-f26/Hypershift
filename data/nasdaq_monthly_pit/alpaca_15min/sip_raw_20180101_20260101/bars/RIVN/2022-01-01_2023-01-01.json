@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "RIVN",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 15071,
+  "pages": 16,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T09:00:00+00:00",
+  "last_bar": "2022-12-30T22:45:00+00:00",
+  "file": "bars\\RIVN\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "1a040bb2a1e0cffa2ee1fea6a666e797c4aaed6f2b6a5e76afd32fc43ba48996",
+  "retrieved_at_utc": "2026-10-20T04:25:23.093770+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "SGEN",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7128,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T12:00:00+00:00",
+  "last_bar": "2021-12-31T22:15:00+00:00",
+  "file": "bars\\SGEN\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "365d51004d9fd65ec1bee695f8a23c339d64ea7f72fbe7d837e972a446357bc8",
+  "retrieved_at_utc": "2026-10-20T04:26:45.711657+00:00"
+}

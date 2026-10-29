@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MXIM",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\MXIM\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "1b4a94510be0a2061818778ec5955922b11351c4d3be92c711b9845cc72a392b",
+  "retrieved_at_utc": "2026-10-20T04:14:29.514318+00:00"
+}

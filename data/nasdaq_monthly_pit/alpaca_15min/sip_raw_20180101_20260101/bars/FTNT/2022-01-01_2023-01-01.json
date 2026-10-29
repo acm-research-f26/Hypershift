@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "FTNT",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8586,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T13:00:00+00:00",
+  "last_bar": "2022-12-30T22:00:00+00:00",
+  "file": "bars\\FTNT\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "6c318118785f9883b27e906098fe034ed8859eebb87b713ffa5a09012d15d7d3",
+  "retrieved_at_utc": "2026-10-20T03:57:41.295894+00:00"
+}

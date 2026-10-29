@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "NLOK",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 1170,
+  "pages": 2,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-11-05T12:00:00+00:00",
+  "last_bar": "2019-12-31T22:45:00+00:00",
+  "file": "bars\\NLOK\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "192021072b21dd128ad290e0e8bd10821d2554aa9af72801d8c66488bd7e23c7",
+  "retrieved_at_utc": "2026-10-20T04:15:19.543512+00:00"
+}

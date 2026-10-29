@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "independent_account_replays": 87,
+  "independently_recomputed_metrics": 87,
+  "parent_neural_base_paths_reproduced": 12,
+  "parent_etf_paths_reproduced": 2,
+  "maximum_nav_difference_dollars": 1.7229467630386353e-08,
+  "momentum_and_exposure_independently_rebuilt": true,
+  "causal_momentum_check": true,
+  "matched_exposure_targets_verified": true,
+  "prospective_policy_unchanged_and_inactive": true,
+  "inference_contrasts_verified": 24,
+  "source_input_output_locks_verified": true,
+  "seconds": 56.10899999999674,
+  "audit_source_sha256": "6964b8b4b7c9533312a8d67d0ea421a77ec3904ac8ce1006917da537b851f391",
+  "scope": "Accounting, timing, controls and preservation audit; not independent market-data validation or prospective performance evidence"
+}

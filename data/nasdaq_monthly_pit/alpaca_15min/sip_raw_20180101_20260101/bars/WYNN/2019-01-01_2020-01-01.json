@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "WYNN",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8740,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T09:00:00+00:00",
+  "last_bar": "2019-12-31T22:45:00+00:00",
+  "file": "bars\\WYNN\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "6d687c0ad69fbb15f6f794f4e1acf062f609c6cd75cdf34c0ea6ff2d9bdb2fb3",
+  "retrieved_at_utc": "2026-10-20T04:38:24.535547+00:00"
+}

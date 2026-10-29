@@ -1,0 +1,29 @@
+{
+  "status": "complete",
+  "output_sha256": {
+    "ACCOUNT_CHECKS.json": "516df2f27235facc062a919605ce497bb033a6e5abe4d80f754dd3381c023f91",
+    "annual.csv": "1460de94aec3d1608dea5d9ae6776bd75f2ed14ad83d2b0e71226ea4855ec1d1",
+    "AUDIT.json": "81f1fa2ad3069e6e7d051ad66976f895e3ae3689ca0e58e5fa92a65e01c3c7a7",
+    "base_metrics_with_intervals.csv": "7b395212c1c9245fb409a78f9cea1c97491e893ae3f5bdcbd10928a674d832e3",
+    "base_rankings.csv": "4aaeceb4f452068b3a1ac3f54164da889fe276edfeb22e98b1b0c5614cf907d4",
+    "calibration.csv": "c4b207972ad49f20b11cc4d353ff80902be0f56b89638fc4716277debe258be2",
+    "COMPLETE.json": "1474fda6ded3c0de02b887d22e3be64551ed418508afcc133bfa7b74f979f216",
+    "control_uncertainty.csv": "808e7702a9b55f84bde5abee77398208f7a3dae2df5256b4b5775b5fce86f259",
+    "focused_base_metrics.csv": "d2a0ac4f2556550038b95be454afc6d173ac62e0b64ced842879a82f5e13dd16",
+    "FREEZE.json": "90dd09846b71d29b4f4cc46000de0cc45a416ca2b5b1b8c9b20d4b8079b96d87",
+    "high_sharpe_comparison.png": "881cec533a9d7af9381c5322075685d7e7380e018186e095d2d182a9fbd55b81",
+    "master_all_strategies.png": "6b51e9d74d57c0b6402af4a961e8a57fc2078e3a0b043bc010cc742e218a8647",
+    "MASTER_UPDATE_AUDIT.json": "60194ccf0cc21c94df334e197debbdcfef7e404a963b2be312227c30274d0cfd",
+    "metrics.csv": "47fcfa0b4a8ea66c3786991349a9943cb9819289c1657f3451125dc03891d9fa",
+    "PROTOCOL.json": "f8719d45bfbbd7d5f016aad580e0edc6ef7c52c1415dfe0689ad1cd614145e24",
+    "REPORT.md": "cf1fc01031f2140d57463e08d1582c2ef21db8639110528bd81d7c59362d04df",
+    "signals.csv": "e0f34d38f8f2e4ad469e98ac6d0abc759146f6237d2a49c23223346b6b62ac37",
+    "STATISTICAL_AMENDMENT.json": "88c1578cb05601f5fcfe22b722d948deb5326dd9758e540e3c2f8a556b8dd912",
+    "targets.csv": "282f16f8c7de4a4bf594336b9affe5720e5373891d7e26acfb8a2ae8a7cda55c",
+    "uncertainty.csv": "c286877e0fc0a242a35c61fea1aac2257d45fe2d1540af8f0f6cfa03f072ad2e"
+  },
+  "authoring_source_sha256": {
+    "research/reporting/publish_ndx_model_hedge.py": "6e15f8f455e38dd2d8f74cdc9ee6c044e84a63577aa44e42814ea231c2ebb940",
+    "outputs/model_hedge_20261027/update_comparison.mjs": "82f833f4c136560134c38b457b749c03500d730ec51d6927093939bc4770930b"
+  }
+}

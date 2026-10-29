@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "EXC",
+    "start": "2024-01-01 00:00:00-05:00",
+    "end_exclusive": "2025-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8293,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2024-01-02T11:00:00+00:00",
+  "last_bar": "2024-12-31T22:30:00+00:00",
+  "file": "bars\\EXC\\2024-01-01_2025-01-01.csv.gz",
+  "sha256": "77a07e5d756bc74d5e9eb524ee91e239dce43898875fe5bb3360325b7315fbd0",
+  "retrieved_at_utc": "2026-10-20T03:54:32.582968+00:00"
+}

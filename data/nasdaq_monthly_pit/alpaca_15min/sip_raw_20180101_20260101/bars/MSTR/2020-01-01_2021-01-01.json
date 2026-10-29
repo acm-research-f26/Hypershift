@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "MSTR",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 6893,
+  "pages": 4,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T14:30:00+00:00",
+  "last_bar": "2020-12-31T22:30:00+00:00",
+  "file": "bars\\MSTR\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "06e7d9994d5b9c94e0a3e297f0dbf6b953ef4aab63ad05abab5468e5160d9a78",
+  "retrieved_at_utc": "2026-10-20T04:12:56.181722+00:00"
+}

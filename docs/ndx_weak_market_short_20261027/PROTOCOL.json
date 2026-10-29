@@ -1,0 +1,331 @@
+{
+  "study": "QQQ shorts during lagged weak-market signals",
+  "historical_period": "2022-2025 repeatedly inspected exploratory development",
+  "frozen_before_new_metrics": true,
+  "recipes": [
+    {
+      "id": "full/baseline",
+      "base": "full",
+      "gate": "none",
+      "mode": "baseline"
+    },
+    {
+      "id": "vol20/baseline",
+      "base": "vol20",
+      "gate": "none",
+      "mode": "baseline"
+    },
+    {
+      "id": "vol20/ma200/cash",
+      "base": "vol20",
+      "gate": "ma200",
+      "mode": "cash"
+    },
+    {
+      "id": "vol20/ma200/switch25",
+      "base": "vol20",
+      "gate": "ma200",
+      "mode": "switch25"
+    },
+    {
+      "id": "vol20/ma200/switch50",
+      "base": "vol20",
+      "gate": "ma200",
+      "mode": "switch50"
+    },
+    {
+      "id": "vol20/ma200/switch100",
+      "base": "vol20",
+      "gate": "ma200",
+      "mode": "switch100"
+    },
+    {
+      "id": "vol20/ma200/hedge25",
+      "base": "vol20",
+      "gate": "ma200",
+      "mode": "hedge25"
+    },
+    {
+      "id": "vol20/ma200/hedge50",
+      "base": "vol20",
+      "gate": "ma200",
+      "mode": "hedge50"
+    },
+    {
+      "id": "vol20/ma100/cash",
+      "base": "vol20",
+      "gate": "ma100",
+      "mode": "cash"
+    },
+    {
+      "id": "vol20/ma100/switch25",
+      "base": "vol20",
+      "gate": "ma100",
+      "mode": "switch25"
+    },
+    {
+      "id": "vol20/ma100/switch50",
+      "base": "vol20",
+      "gate": "ma100",
+      "mode": "switch50"
+    },
+    {
+      "id": "vol20/ma100/switch100",
+      "base": "vol20",
+      "gate": "ma100",
+      "mode": "switch100"
+    },
+    {
+      "id": "vol20/ma100/hedge25",
+      "base": "vol20",
+      "gate": "ma100",
+      "mode": "hedge25"
+    },
+    {
+      "id": "vol20/ma100/hedge50",
+      "base": "vol20",
+      "gate": "ma100",
+      "mode": "hedge50"
+    },
+    {
+      "id": "vol20/ma200_mom63/cash",
+      "base": "vol20",
+      "gate": "ma200_mom63",
+      "mode": "cash"
+    },
+    {
+      "id": "vol20/ma200_mom63/switch25",
+      "base": "vol20",
+      "gate": "ma200_mom63",
+      "mode": "switch25"
+    },
+    {
+      "id": "vol20/ma200_mom63/switch50",
+      "base": "vol20",
+      "gate": "ma200_mom63",
+      "mode": "switch50"
+    },
+    {
+      "id": "vol20/ma200_mom63/switch100",
+      "base": "vol20",
+      "gate": "ma200_mom63",
+      "mode": "switch100"
+    },
+    {
+      "id": "vol20/ma200_mom63/hedge25",
+      "base": "vol20",
+      "gate": "ma200_mom63",
+      "mode": "hedge25"
+    },
+    {
+      "id": "vol20/ma200_mom63/hedge50",
+      "base": "vol20",
+      "gate": "ma200_mom63",
+      "mode": "hedge50"
+    },
+    {
+      "id": "vol25trend/baseline",
+      "base": "vol25trend",
+      "gate": "none",
+      "mode": "baseline"
+    },
+    {
+      "id": "vol25trend/ma200/cash",
+      "base": "vol25trend",
+      "gate": "ma200",
+      "mode": "cash"
+    },
+    {
+      "id": "vol25trend/ma200/switch25",
+      "base": "vol25trend",
+      "gate": "ma200",
+      "mode": "switch25"
+    },
+    {
+      "id": "vol25trend/ma200/switch50",
+      "base": "vol25trend",
+      "gate": "ma200",
+      "mode": "switch50"
+    },
+    {
+      "id": "vol25trend/ma200/switch100",
+      "base": "vol25trend",
+      "gate": "ma200",
+      "mode": "switch100"
+    },
+    {
+      "id": "vol25trend/ma200/hedge25",
+      "base": "vol25trend",
+      "gate": "ma200",
+      "mode": "hedge25"
+    },
+    {
+      "id": "vol25trend/ma200/hedge50",
+      "base": "vol25trend",
+      "gate": "ma200",
+      "mode": "hedge50"
+    },
+    {
+      "id": "vol25trend/ma100/cash",
+      "base": "vol25trend",
+      "gate": "ma100",
+      "mode": "cash"
+    },
+    {
+      "id": "vol25trend/ma100/switch25",
+      "base": "vol25trend",
+      "gate": "ma100",
+      "mode": "switch25"
+    },
+    {
+      "id": "vol25trend/ma100/switch50",
+      "base": "vol25trend",
+      "gate": "ma100",
+      "mode": "switch50"
+    },
+    {
+      "id": "vol25trend/ma100/switch100",
+      "base": "vol25trend",
+      "gate": "ma100",
+      "mode": "switch100"
+    },
+    {
+      "id": "vol25trend/ma100/hedge25",
+      "base": "vol25trend",
+      "gate": "ma100",
+      "mode": "hedge25"
+    },
+    {
+      "id": "vol25trend/ma100/hedge50",
+      "base": "vol25trend",
+      "gate": "ma100",
+      "mode": "hedge50"
+    },
+    {
+      "id": "vol25trend/ma200_mom63/cash",
+      "base": "vol25trend",
+      "gate": "ma200_mom63",
+      "mode": "cash"
+    },
+    {
+      "id": "vol25trend/ma200_mom63/switch25",
+      "base": "vol25trend",
+      "gate": "ma200_mom63",
+      "mode": "switch25"
+    },
+    {
+      "id": "vol25trend/ma200_mom63/switch50",
+      "base": "vol25trend",
+      "gate": "ma200_mom63",
+      "mode": "switch50"
+    },
+    {
+      "id": "vol25trend/ma200_mom63/switch100",
+      "base": "vol25trend",
+      "gate": "ma200_mom63",
+      "mode": "switch100"
+    },
+    {
+      "id": "vol25trend/ma200_mom63/hedge25",
+      "base": "vol25trend",
+      "gate": "ma200_mom63",
+      "mode": "hedge25"
+    },
+    {
+      "id": "vol25trend/ma200_mom63/hedge50",
+      "base": "vol25trend",
+      "gate": "ma200_mom63",
+      "mode": "hedge50"
+    }
+  ],
+  "groups": {
+    "original_five": [
+      7,
+      19,
+      42,
+      61,
+      97
+    ],
+    "new_five": [
+      1828801906,
+      1868046758,
+      239154507,
+      287727767,
+      981756941
+    ],
+    "ten_seed": [
+      7,
+      19,
+      42,
+      61,
+      97,
+      1828801906,
+      1868046758,
+      239154507,
+      287727767,
+      981756941
+    ]
+  },
+  "repair": "Original attempt stopped on account80: cash-scaled covers left a tiny short with zero cash, then accrued $0.118 borrow against $0.054 cash. Preserve original protocol/sources. Same39 recipes; corrected account reserves 28days borrow on current short value before positive trades. No grid or score change; partial original account results were seen during diagnostics.",
+  "source_sha256": {
+    "research/core/ndx_weak_market_short.py": "6181f78270203e613fcbb0614d8fbfe4d33b5ec478860b234a0d73e8ce98be82",
+    "research/analysis/run_ndx_weak_market_short.py": "02ca6ea26207678387e45fb5e62d6c642310e76bd3fad0261fe13b5ce62917eb",
+    "tests/test_ndx_weak_market_short.py": "a7906687d9c2ce69ff116337cc520a13249bd3089542c1b925a1ddd42ca7753a",
+    "research/core/ndx_matched_controls.py": "a34d256933b502ca35093f5057d57b459a84e4f4c6d6d615f3acb5de39fdb467",
+    "research/analysis/run_ndx_matched_controls.py": "8ab7ba0e4ef4698d06f673cc35a6a6f3ea1a43684244a7ef2ef80e2f132add2c"
+  },
+  "input_sha256": {
+    "research/core/ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research/analysis/run_ndx_drawdown_research.py": "f0d8c7bfcdaeedf67c406d73123bc68ecd18477f885c424035a2e899aa1329a4",
+    "tests/test_ndx_drawdown_engine.py": "8472ef46ad34e4aa096d7e0d13a2e6ab72b52f6db686c8d36342971462fb5dd0",
+    "data/nasdaq_monthly_pit/assembled/dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data/nasdaq_monthly_pit/assembled/economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data/nasdaq_monthly_pit/assembled/etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "data/nasdaq_monthly_pit/assembled/etf_dollar_volume.csv": "f512c863e5322c57e9d6b2c4281690cacff6fcdd70a810ac0695ee9c9e20f33f",
+    "data/nasdaq_monthly_pit/assembled/membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data/nasdaq_monthly_pit/assembled/monthly_members.csv": "a04d458cb9c976cad37014733989755c38cffc034e6ee5df3b7d6d0ef0f04ecc",
+    "data/nasdaq_monthly_pit/assembled/raw_close.csv": "02d2b2477564bca67f1ece58f0c55ce471678f727972fbe836f9b4b9e8b3682b",
+    "data/nasdaq_monthly_pit/assembled/tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "runs/ndx_extended_hours_20261024/curves.csv": "790aefe476c2f3c46797e88dcb818398593eaa699fda400b22a4339b6ea0d07c",
+    "runs/ndx_extended_hours_20261024/FINAL_PUBLICATION.json": "4356d9d1e86287b05c8232cfb895bad2f88c17dda8e7f67eaa10020202355d29",
+    "runs/ndx_extended_hours_20261024/metrics.csv": "2a1ce5f1f23097acd8b8236e8a26aa3f9232f435e99e5f91b42de66eae5c0e03",
+    "runs/ndx_reference_networks_20261024/curves.csv": "22a79818b1cbaae8b3b2c7f6633c8900dc9ba96bad113d34f3e8ca89cfa8a564",
+    "runs/ndx_reference_networks_20261024/FINAL_PUBLICATION.json": "a1c8c8aab1fad6a9681bef168e69f1b3d0646f0ef87d594795a0043a718b9f16",
+    "runs/ndx_reference_networks_20261024/metrics.csv": "4d7f5401669dc6a0fdbb502ecc513e7c000313f687d2a9f29d8926adbe826a1d",
+    "runs/ndx_drawdown_20261026/batch1/PROTOCOL.json": "4ed0662c3d5925d8a7d0873d489a22871f1c13421c3c8b1ecf9a0d9e2303b64c",
+    "runs/ndx_drawdown_20261026/batch1/FREEZE.json": "8d377a6e7fc23d4576a277b8145f43de67ffcab5784af519781972838b650c09",
+    "runs/ndx_drawdown_20261026/batch1/COMPLETE.json": "8996ab53c27293e777c01fd913c38812cbda53a5e779b90aa6333fb038513ef9",
+    "runs/ndx_drawdown_20261026/batch1/AUDIT.json": "8423d510c5e0cd8f1cbfbaaacc10f92df9cbc742ba04fce4d1445e4dd9e9eaa0",
+    "runs/ndx_drawdown_20261026/batch1/paths.npz": "7d97f1eb39bae4d3eaf9ba3c9f16674ee61c284fe78493d4a73bad808b2becdb",
+    "runs/ndx_drawdown_20261026/batch1/metrics.csv": "b3b0a273a0dbd003c1adc9fb4bd4fecae7832a934f7dac2c2da3e650b6a5621d",
+    "runs/ndx_drawdown_20261026/batch1/cost_stress.csv": "8dac7cccbd22687a3cd8ae91c6914d16bf67df47e1d37be6ea8427facefd00f4",
+    "config/ndx_prospective_candidate_20261027.json": "98366b0a184adee44a2e1309327b7f526ba820009a6ce80c488c66b17d841e57"
+  },
+  "gates": {
+    "ma200": "QQQ prior close below trailing 200-session mean",
+    "ma100": "QQQ prior close below trailing 100-session mean",
+    "ma200_mom63": "MA200 weakness AND prior close below 63 sessions earlier"
+  },
+  "modes": {
+    "cash": "Exit entire stock sleeve while weak; hold zero-interest cash",
+    "switch25/50/100": "While weak replace stock sleeve with short QQQ at min(25/50/100% NAV,20%/QQQ20-session volatility)",
+    "hedge25/50": "Keep baseline longs; short QQQ at min(25/50% NAV,unused baseline budget,20%/QQQ20-session volatility)"
+  },
+  "bases": "Fixed five-issuer 20% basket-vol target (primary) and 25% target/half-exposure MA200 cap (secondary); unchanged full exposure control",
+  "execution": "Parent five-session schedule; prior-close NAV/marks/ADV and risk; AH+PM ranking cutoff09:15/decision09:20; same-session regular-close fills. No same-close signal fills. 1% ADV caps, cancellations, signed corporate actions, cash scaling, final close liquidation.",
+  "costs": [
+    1,
+    2,
+    4
+  ],
+  "primary_borrow_rate": 0.03,
+  "borrow_stress": [
+    0.01,
+    0.1
+  ],
+  "accounts": "39 recipes x3groups x3costs=351, plus30short recipes x3groups x2borrow stresses at base costs=180; total531",
+  "funding": "Gross target <=100% NAV. Short proceeds not reinvested, cash interest and short rebate zero. Calendar-day borrow on prior-close short value. Economic adjusted-price short embeds dividend obligation; no additional dividend debit. Gross positions drift between fills; no intraday margin enforcement.",
+  "missing_short_evidence": "No historical locates, recalls, actual borrow fee series, short execution restrictions or broker margin replay. 1/3/10% are assumptions, not observed QQQ quotes.",
+  "inference": "10000 joint circular-block draws, blocks5/20/60;54 ten-seed contrasts:36 conditional rules vs matching baseline plus18 switch-vs-cash contrasts. Simultaneous active-mean intervals adjust only this family; SR/CAGR CIs pointwise. No adjustment for earlier repeated history or refitting.",
+  "stop": "One finite grid; all failures/seed groups/costs/borrow cases disclosed. No expansion from outcomes, new training, 2026 returns, trades, automation or prospective policy changes."
+}

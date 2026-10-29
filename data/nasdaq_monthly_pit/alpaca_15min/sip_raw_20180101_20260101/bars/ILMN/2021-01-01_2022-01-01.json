@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ILMN",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7289,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T14:30:00+00:00",
+  "last_bar": "2021-12-31T21:15:00+00:00",
+  "file": "bars\\ILMN\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "f1445e61b4a111d02ab82d0eb0166d1870a7900d23efb34ed8b5d462990e8e20",
+  "retrieved_at_utc": "2026-10-20T04:01:38.378004+00:00"
+}

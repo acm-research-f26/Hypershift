@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "ISRG",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7953,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T09:45:00+00:00",
+  "last_bar": "2022-12-30T21:15:00+00:00",
+  "file": "bars\\ISRG\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "0a8fde2424cedb03621e960022f081f3c850f74d7c988ac982952d4371cd23dd",
+  "retrieved_at_utc": "2026-10-20T04:03:37.523149+00:00"
+}

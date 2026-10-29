@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "PANW",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7940,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T12:30:00+00:00",
+  "last_bar": "2019-12-31T21:45:00+00:00",
+  "file": "bars\\PANW\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "0833a7a69db4a264e7be2a7ac7be6aa39cc047729bfc6cfc2be5cdd540ee603f",
+  "retrieved_at_utc": "2026-10-20T04:19:31.200645+00:00"
+}

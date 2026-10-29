@@ -6,6 +6,7 @@ builder live in `outputs/`. The repository-root `charts.md` is the master galler
 
 | Sources | Responsibility |
 | --- | --- |
+| [publish_ndx_matched_controls.py](publish_ndx_matched_controls.py) | Publish audited QQQ/momentum controls, wealth and drawdown comparisons, and prospective-policy readiness. |
 | [update_ndx_drawdown_master.py](update_ndx_drawdown_master.py) | Prepare, audit and publish the chart-first master workbook/narrative integration and preserve existing comparison content. |
 | [publish_ndx_drawdown_research.py](publish_ndx_drawdown_research.py) | Publish all 305 audited drawdown-control recipes, matched paths, cost stresses and uncertainty. |
 | `report_ndx_*`, `report_*` | Study metrics, uncertainty and reports from saved artifacts |

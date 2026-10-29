@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Erasca Inc",
+    "ticker": "ERAS",
+    "permaTicker": "US000000096367",
+    "openFIGIComposite": "BBG00MTSR883",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "Celestica Inc",
+    "ticker": "CLS",
+    "permaTicker": "US000000005199",
+    "openFIGIComposite": "BBG000BPS2C3",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "Primerica Inc",
+    "ticker": "PRI",
+    "permaTicker": "US000000002363",
+    "openFIGIComposite": "BBG000T8ZF80",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "Biomerica Inc",
+    "ticker": "BMRA",
+    "permaTicker": "US000000039725",
+    "openFIGIComposite": "BBG000BDH8F6",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "Atlantica Inc",
+    "ticker": "ALDA",
+    "permaTicker": "US000000051008",
+    "openFIGIComposite": "BBG000BBF8V4",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "Ceo America Inc",
+    "ticker": "CEOA",
+    "permaTicker": "US000000066086",
+    "openFIGIComposite": "BBG000P3FTC2",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "CalciMedica Inc",
+    "ticker": "CALC",
+    "permaTicker": "US000000088030",
+    "openFIGIComposite": "BBG0088HHJ97",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "Comerica Incorpo",
+    "ticker": "CMABL",
+    "permaTicker": "US000000132004",
+    "openFIGIComposite": null,
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "Motos America Inc",
+    "ticker": "MTAM",
+    "permaTicker": "US000000064380",
+    "openFIGIComposite": "BBG000V1DZM6",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  },
+  {
+    "name": "Parks America Inc",
+    "ticker": "PRKA",
+    "permaTicker": "US000000045255",
+    "openFIGIComposite": "BBG000C28XY3",
+    "assetType": "Stock",
+    "isActive": true,
+    "countryCode": "US"
+  }
+]

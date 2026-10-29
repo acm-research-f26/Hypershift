@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "DXCM",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7788,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T14:30:00+00:00",
+  "last_bar": "2020-12-31T23:45:00+00:00",
+  "file": "bars\\DXCM\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "229b2cac47c562b67b7e112e56b622fd99a3fd63cf00d95d16930f851c55620f",
+  "retrieved_at_utc": "2026-10-20T03:52:29.985443+00:00"
+}

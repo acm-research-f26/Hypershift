@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CTXS",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 5499,
+  "pages": 7,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T14:30:00+00:00",
+  "last_bar": "2022-09-29T22:15:00+00:00",
+  "file": "bars\\CTXS\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "5b32f3b0bca473a81ac6f72e354bc0f4d74bff4f32e11a8a1ccf217007aea15c",
+  "retrieved_at_utc": "2026-10-20T03:50:34.667068+00:00"
+}

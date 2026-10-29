@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CCEP",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7575,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T09:00:00+00:00",
+  "last_bar": "2021-12-31T21:00:00+00:00",
+  "file": "bars\\CCEP\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "9c20386909ad7fa03b7f06029efba0ba8c2701a886d4d1721992aaf249aaf434",
+  "retrieved_at_utc": "2026-10-20T03:44:09.807798+00:00"
+}

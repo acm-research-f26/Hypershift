@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "GILD",
+    "start": "2022-01-01 00:00:00-05:00",
+    "end_exclusive": "2023-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 9426,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2022-01-03T09:45:00+00:00",
+  "last_bar": "2022-12-30T22:30:00+00:00",
+  "file": "bars\\GILD\\2022-01-01_2023-01-01.csv.gz",
+  "sha256": "8e3202777f81248f3230312522321f94728120d1b517753b59a09d59e695562a",
+  "retrieved_at_utc": "2026-10-20T03:58:37.217241+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "status": "complete",
+  "reporter_sha256": "dd254757f4e53bc3e30938ddd9fde49d4cd0f4a2abca669f21f044f78a0e65a4",
+  "output_sha256": {
+    "annual.csv": "5bbe10862a12f9125d73f809a4d00c4ec53d227c198afa6c37a41ec8311da10a",
+    "AUDIT.json": "cab423111fce61b911f78bf670905a35c0158e22c485e33740a8b7f1461db0c6",
+    "comparison.png": "1f6b1b33cc8b39c1585d4320f8079ff13250dd30642ebaa7e1aa9be79d25e198",
+    "comparison_curves.csv": "394108bb7fd0b1f83f6b117f391f0463f2c1570fb5b319a792c5c6999b40c2ea",
+    "COMPLETE.json": "4c17eab878a12a78abc591a1987f4d029b0c6022da5724c1031832639261d327",
+    "FREEZE.json": "a702303ebc121563d1e53eb80d75f0438b6111ac29668c09a15b2ac5f1c2e0bd",
+    "INDEPENDENT_AUDIT.json": "8157ee6ca0fae381bda29e341cfd276df8a9355b28e35a3c6a04f6d9b1817344",
+    "metrics.csv": "ee64139072c44d4ea380ef3675c344044b0206819600e7523aaf956d2d3310b2",
+    "paired_point_estimates.csv": "9179af1e899e0ccaf268a9051ce7965dd3c03dab8fa44a583521f128694c59f3",
+    "PROTOCOL.json": "e4818706fe84e2757f69a221cc2e1412a55d6e674aa09026f15133fae0108376",
+    "regime_diagnostics.csv": "7f7167613e9053ca8883a4f6f5799bde38b8d52ed5e8199e1b135ff351101356",
+    "REPORT.md": "1f817c053259ff78aaf289fe4f20f927ae965d2aecd0f96983ac06872c67fa68",
+    "signal_summary.csv": "aa15bdaabb11864210af7c7c8f7b9585dcb36976fe27fdf0bb888993377091a8",
+    "summary.csv": "3e5831772b3f21593fba137d70353c8dd20f457432048c687fe2380125fd76ac",
+    "targets.csv": "e5410aaecf30ca450f8ad2af32adc6569b1950fab8c510a203082d201040bd3e",
+    "uncertainty.csv": "b58f63c1086ce98553d50c24296a15a3bb4a2e08b8fb141bc0316f3d28b67084"
+  }
+}

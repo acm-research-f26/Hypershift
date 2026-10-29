@@ -1,0 +1,42 @@
+[
+  {
+    "symbol": "EA",
+    "expected_name": "Electronic Arts",
+    "start": "2016-01-01",
+    "end": "2025-12-31",
+    "provider_name": "Electronic Arts Inc",
+    "provider_start": "1990-03-26",
+    "provider_end": "2026-08-04",
+    "status": "downloaded_not_corporate_action_certified",
+    "rows": 2514,
+    "first_date": "2016-01-04",
+    "last_date": "2025-12-31",
+    "last_close": 204.33,
+    "dividend_events": 21,
+    "split_events": 0,
+    "hashes": {
+      "EA_metadata.json": "dca21acb88b4a3d2cb9fecde701d69ec1c3f24d3bf69867e34bf8db7bd158f57",
+      "EA_prices.json": "bbb6a8f794eead694b47f61c0d7a231ac866d89db7bd285ec85063c35fa1b287"
+    }
+  },
+  {
+    "symbol": "WBD",
+    "expected_name": "Warner",
+    "start": "2016-01-01",
+    "end": "2025-12-31",
+    "provider_name": "Warner Bros. Discovery Inc - Class A",
+    "provider_start": "2005-07-08",
+    "provider_end": "2026-10-07",
+    "status": "downloaded_not_corporate_action_certified",
+    "rows": 2514,
+    "first_date": "2016-01-04",
+    "last_date": "2025-12-31",
+    "last_close": 28.82,
+    "dividend_events": 0,
+    "split_events": 0,
+    "hashes": {
+      "WBD_metadata.json": "31486642e3a77e4d843926fabeaf244ff4fc3a52380e138ecb1a8784720af1c7",
+      "WBD_prices.json": "91cf94c1b7eb35bd3955c2f846c4c3fcf438bffe6198f87e6c13f2d2608c2268"
+    }
+  }
+]

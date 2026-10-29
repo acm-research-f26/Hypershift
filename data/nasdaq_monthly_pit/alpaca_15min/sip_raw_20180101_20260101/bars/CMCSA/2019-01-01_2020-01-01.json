@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CMCSA",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8708,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T12:00:00+00:00",
+  "last_bar": "2019-12-31T23:00:00+00:00",
+  "file": "bars\\CMCSA\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "543a6af87cfcdaa2cd7c2401f865f1c6f089ec95988624d0cfd6554324e4e1f0",
+  "retrieved_at_utc": "2026-10-20T03:46:47.452208+00:00"
+}

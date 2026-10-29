@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "BIDU",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 12083,
+  "pages": 12,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\BIDU\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "9bffc3c97fe3332a18325a2c468fb5bcc5a5f749b19776d352ba83a6f30919da",
+  "retrieved_at_utc": "2026-10-20T02:59:23.079353+00:00"
+}

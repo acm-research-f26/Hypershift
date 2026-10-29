@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "KLAC",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7644,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T12:00:00+00:00",
+  "last_bar": "2019-12-31T21:00:00+00:00",
+  "file": "bars\\KLAC\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "675ac270b74efa52737ca593fae6656d59999e263bb4a8455b8942d3e4b27670",
+  "retrieved_at_utc": "2026-10-20T04:05:45.989691+00:00"
+}

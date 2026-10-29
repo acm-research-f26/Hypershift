@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "NTES",
+    "start": "2023-01-01 00:00:00-05:00",
+    "end_exclusive": "2024-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8601,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2023-01-03T09:00:00+00:00",
+  "last_bar": "2023-12-30T00:45:00+00:00",
+  "file": "bars\\NTES\\2023-01-01_2024-01-01.csv.gz",
+  "sha256": "e636b5bd52673dc9c0d13f420ad60a528a3448f43dd3abaf3066d3b78063b0a2",
+  "retrieved_at_utc": "2026-10-20T04:16:29.784134+00:00"
+}

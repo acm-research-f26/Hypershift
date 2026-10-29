@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "NVDA",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 14406,
+  "pages": 15,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T09:00:00+00:00",
+  "last_bar": "2021-01-01T00:45:00+00:00",
+  "file": "bars\\NVDA\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "16262a296568f105b4be174f61c74806f3fe215b998d1a70e5b67ed8d6204295",
+  "retrieved_at_utc": "2026-10-20T04:16:55.527452+00:00"
+}

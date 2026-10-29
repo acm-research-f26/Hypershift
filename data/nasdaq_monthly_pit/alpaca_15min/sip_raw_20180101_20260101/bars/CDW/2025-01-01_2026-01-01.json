@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "CDW",
+    "start": "2025-01-01 00:00:00-05:00",
+    "end_exclusive": "2026-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7125,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2025-01-02T10:30:00+00:00",
+  "last_bar": "2025-12-31T21:00:00+00:00",
+  "file": "bars\\CDW\\2025-01-01_2026-01-01.csv.gz",
+  "sha256": "4831376f7a92bd4c97d64bc5c02865901b9dff86ab8f33d8faee4c76fd2ea192",
+  "retrieved_at_utc": "2026-10-20T03:45:02.494785+00:00"
+}

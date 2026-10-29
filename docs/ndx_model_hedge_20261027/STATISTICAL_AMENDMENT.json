@@ -1,0 +1,10 @@
+{
+  "timestamp_utc": "2026-10-27T19:04:08.055643+00:00",
+  "reason": "Inherited bootstrap rejects deterministic zero differences. Raw forecasts never triggered shorting;60of120contrasts have exactly identical daily paths.",
+  "change": "Use mathematically exact zero differences/intervals for identical paths; joint bootstrap other60contrasts with identical-path columns deduplicated. Family remains120contrasts. No resampling epsilon, trading rule, calibration, account path or forecast changes.",
+  "deterministic_contrasts": 60,
+  "source_sha256": "9eccaeca5407caf12ea54a64388f69723c7f8bba9df041c62e6b5b3c8eddd6de",
+  "protocol_sha256": "f8719d45bfbbd7d5f016aad580e0edc6ef7c52c1415dfe0689ad1cd614145e24",
+  "evaluated_metrics_sha256": "47fcfa0b4a8ea66c3786991349a9943cb9819289c1657f3451125dc03891d9fa",
+  "evaluated_paths_sha256": "7e124856486e0445de76f5bd6be5df75cf11af27fd75588a767ac5a246c14ad6"
+}

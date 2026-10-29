@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "VRSK",
+    "start": "2019-01-01 00:00:00-05:00",
+    "end_exclusive": "2020-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7028,
+  "pages": 9,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2019-01-02T14:15:00+00:00",
+  "last_bar": "2019-12-31T21:00:00+00:00",
+  "file": "bars\\VRSK\\2019-01-01_2020-01-01.csv.gz",
+  "sha256": "7d7de9aa5e9c76883e7f99ecf5edd651f99739177ac91a7e2bf4db25bfb5ab21",
+  "retrieved_at_utc": "2026-10-20T04:35:13.613133+00:00"
+}

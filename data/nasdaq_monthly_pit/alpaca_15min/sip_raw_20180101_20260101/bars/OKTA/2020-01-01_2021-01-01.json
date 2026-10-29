@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "OKTA",
+    "start": "2020-01-01 00:00:00-05:00",
+    "end_exclusive": "2021-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 8995,
+  "pages": 11,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2020-01-02T13:00:00+00:00",
+  "last_bar": "2021-01-01T00:15:00+00:00",
+  "file": "bars\\OKTA\\2020-01-01_2021-01-01.csv.gz",
+  "sha256": "1a18ff16ca6e5de1b9aa5386236397d300a3084251a375903786814be72ecda4",
+  "retrieved_at_utc": "2026-10-20T04:18:18.501681+00:00"
+}

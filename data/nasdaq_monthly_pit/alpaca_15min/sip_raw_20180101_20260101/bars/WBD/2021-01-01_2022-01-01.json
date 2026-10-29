@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "WBD",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\WBD\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "16a79fe16ee9996418018409047a03bc8d8b8128342c78308c2baa6dda508602",
+  "retrieved_at_utc": "2026-10-20T04:36:34.819169+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "INTU",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7390,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2018-01-02T14:15:00+00:00",
+  "last_bar": "2018-12-31T21:15:00+00:00",
+  "file": "bars\\INTU\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "b3334432865505d3ed2a449f17bf1df95098e2b70c350b50de152ee57ecf1df1",
+  "retrieved_at_utc": "2026-10-20T04:03:01.130557+00:00"
+}

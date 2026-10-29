@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "DASH",
+    "start": "2018-01-01 00:00:00-05:00",
+    "end_exclusive": "2019-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 0,
+  "pages": 1,
+  "status": "empty_requires_review",
+  "first_bar": null,
+  "last_bar": null,
+  "file": "bars\\DASH\\2018-01-01_2019-01-01.csv.gz",
+  "sha256": "5a58fc4e7b5b97686ecad957626f129ec7ff4d4a28b8710e0dcb6b71eb4226d6",
+  "retrieved_at_utc": "2026-10-20T03:50:29.843886+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "query": {
+    "symbol": "NTAP",
+    "start": "2021-01-01 00:00:00-05:00",
+    "end_exclusive": "2022-01-01 00:00:00-05:00",
+    "feed": "sip",
+    "adjustment": "raw",
+    "timeframe": "15Min",
+    "asof": "-"
+  },
+  "rows": 7514,
+  "pages": 10,
+  "status": "downloaded_unreviewed",
+  "first_bar": "2021-01-04T14:00:00+00:00",
+  "last_bar": "2021-12-31T21:00:00+00:00",
+  "file": "bars\\NTAP\\2021-01-01_2022-01-01.csv.gz",
+  "sha256": "e7444282d33d51f26a0c4acebcceb852f2ca01fdf2995ceb95f952db853cdb69",
+  "retrieved_at_utc": "2026-10-20T04:15:52.894744+00:00"
+}
