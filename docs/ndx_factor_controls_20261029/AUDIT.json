@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "accounts": 198,
+  "max_independent_daily_error": 8.881784197001252e-16,
+  "passing_hybrid_recipes": 0,
+  "source_fit_lock_sha256": "45534a930c2a536f7a6c34cdc9dc2f2aa8e434b26a0b5099943282d3d8033816",
+  "aggregation_repair": "Explicit style-column access; all198metrics/ledgers byte-preserved; paths recovered from ledger NAV and checked against independent target/account replay",
+  "warning": "Shared deterministic factors are not independent seed evidence; compare pure-factor controls; spent historical data"
+}

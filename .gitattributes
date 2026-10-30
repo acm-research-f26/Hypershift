@@ -59,3 +59,43 @@
 /data/nasdaq_monthly_pit/tiingo_raw/** -text
 /data/nasdaq_monthly_pit/ndx_source/** -text
 /data/nasdaq_monthly_pit/ndx_preflight/** -text
+
+# Retention replication protocol and checked summaries retain their exact hashes.
+/config/ndx_retention_replication_20261029.json -text
+/docs/ndx_retention_replication_20261029/** -text
+/runs/ndx_retention_replication_20261029/** -text
+
+# Validation-ranking study hashes include protocols, code and account summaries.
+/config/ndx_rank_stability_20261029.json -text
+/docs/ndx_rank_stability_20261029_v2/** -text
+/runs/ndx_rank_stability_20261029*/** -text
+
+# Seed attribution and rank-retraining evidence preserve locked artifact bytes.
+/config/ndx_rank_retraining_20261029.json -text
+/docs/ndx_seed_attribution_20261029/** -text
+/docs/ndx_rank_retraining_20261029/** -text
+/runs/ndx_rank_retraining_20261029/** -text
+/config/ndx_factor_controls_20261029.json -text
+/docs/ndx_factor_controls_20261029/** -text
+/runs/ndx_factor_controls_20261029/** -text
+
+# Dated comparison publication records source and figure checksums.
+/docs/ndx_model_comparison_20261030/** -text
+/config/ndx_portfolio_robustness_20261030.json -text
+/runs/ndx_portfolio_robustness_20261030/** -text
+/docs/ndx_portfolio_robustness_20261030/** -text
+/config/ndx_portfolio_robustness_20261030_v2.json -text
+/runs/ndx_portfolio_robustness_20261030_v2/** -text
+/docs/ndx_portfolio_robustness_20261030_v2/** -text
+/runs/ndx_family_robustness_20261030/** -text
+/docs/ndx_family_robustness_20261030/** -text
+/config/ndx_tabular_alpha_20261030.json -text
+/runs/ndx_tabular_alpha_20261030/** -text
+/docs/ndx_tabular_alpha_20261030/** -text
+/runs/ndx_prior_robustness_20261030/** -text
+/docs/ndx_prior_robustness_20261030/** -text
+/runs/ndx_beta_robustness_20261030/** -text
+/docs/ndx_beta_robustness_20261030/** -text
+/docs/ndx_seed_robustness_20261030/** -text
+/docs/ndx_model_guide_20261030/** -text
+/outputs/seed_robustness_20261030/** -text

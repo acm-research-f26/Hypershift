@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "base_issuer_deltas": {
+    "unused_five": -0.023232015084236113,
+    "expanded_twenty": -0.00840262024455507
+  },
+  "stress_issuer_deltas": {
+    "unused_five": 0.002055092533138292,
+    "expanded_twenty": 0.022091790854356752
+  },
+  "four_disjoint_sharpes": [
+    1.168494819025813,
+    1.269342955974229,
+    1.3450354953760812,
+    0.8537917947499137
+  ],
+  "disjoint_gap": 0.4912437006261675,
+  "limits": "Confirmation of initialization robustness on repeatedly inspected history only; not market generalization"
+}

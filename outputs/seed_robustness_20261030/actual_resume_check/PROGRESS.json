@@ -1,0 +1,11 @@
+{
+  "stage": "training",
+  "year": 2024,
+  "family": "think",
+  "seed": 1868046758,
+  "epoch": 8,
+  "total_epochs": 8,
+  "completed_fits": 0,
+  "current_fit_seconds": 3.375,
+  "test_accounts_scored": 0
+}

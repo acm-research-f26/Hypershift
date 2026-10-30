@@ -1,0 +1,23 @@
+{
+  "study": "Validation ranking stability and portfolio robustness on saved forecasts",
+  "history": "2022-2025 repeatedly inspected development; no confirmation claim",
+  "groups": ["original_five", "new_five", "ten_seed"],
+  "methods": ["equal", "validation_ic", "validation_stable", "stable_consensus"],
+  "allocations": ["retain5", "retain10", "soft10"],
+  "hedge_caps": [0.5, 0.75],
+  "cost_regimes": [{"cost": 1, "borrow": 0.03}, {"cost": 2, "borrow": 0.03}, {"cost": 2, "borrow": 0.06}],
+  "base_accounts": 72,
+  "total_accounts": 216,
+  "forecast_sources": "Unchanged saved THINK+mixer AH+PM and restricted dynamic hypergraph final-checkpoint validation/test forecasts; all ten original seeds; no new neural fits or checkpoint changes",
+  "validation": "Annual prior-year purged fold; assert last validation outcome precedes first test decision. Seed quality is mean per-date validation RankIC. Stable quality subtracts sample SD of four chronological quarter mean RankICs. NDCG@5/@10 and original/new group rank/top-five agreement are diagnostics.",
+  "weighting": "Within each model family and fixed seed group: logits=clip((quality-mean(quality))/max(population_sd(quality),0.01),-2,2); weights=75% equal +25% softmax(logits). No seed exclusion. Family weights fixed 50:50. Equal method retains equal seed weights.",
+  "consensus": "stable_consensus uses validation_stable seed weights, then subtracts 0.25 times weighted cross-model percentile-rank SD from the mean test score. No test outcomes used.",
+  "allocation": "retain5/retain10 add fixed 0.02 to previous target's score before tie-aware equal selection. soft10 uses tie-aware top ten, weighted by exp(4*(score-max selected score)), normalized; no retention. Securities are not issuer-consolidated.",
+  "risk": "Inherited 20-session basket volatility target20%; continuous short QQQ min(cap,1-long,20%/max(QQQ20-session annualized volatility,5%)); regular-close fills every five sessions using causal sizing and inherited costs",
+  "primary_goal": "All three ensembles achieve base-cost Sharpe>=1.70. This tests comparable headline Sharpe with consistency, not merely a smaller gap from lower returns.",
+  "secondary_goal": "Base-cost original-five SR>=1.50, new-five SR>=1.00, ten-seed SR>=1.3813185726078634, original/new absolute SR gap<=0.50",
+  "ranking": "Report every recipe; order descriptive candidates by minimum original/new Sharpe, then ten-seed Sharpe. Disclose goals separately and never relabel a failed primary goal as success.",
+  "validation_reuse_limit": "Saved checkpoints were chosen on MSE using this validation fold; postprocessing validation is not an independent checkpoint-selection sample. Test history is already spent. No validation-based epoch selection can be evaluated without new fits/per-epoch exports.",
+  "verification": "Reproduce all18 matching equal/retain5 references, compare all216 signed-account daily paths with independent value-position replay, verify chronology and zero unavailable allocations, retain complete scores/weights/targets/paths/ledgers/calendar results; assess cross-group selection overlap and cost sensitivity",
+  "stop": "One fixed216-account grid; no outcome-driven expansion, no2026returns, retraining, deployment or prospective-policy changes"
+}

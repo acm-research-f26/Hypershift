@@ -1,0 +1,21 @@
+{
+  "timestamp_utc": "2026-10-30T08:40:19.458159+00:00",
+  "script_sha256": "c3feccdf83ff185a6fc3b46aecdb149a4ad3e41762fece9805984f8b726a1de3",
+  "source_sha256": {
+    "runs/ndx_tabular_alpha_20261030/tree/COMPLETE.json": "d3ca545340029b3b74221c07c1729c7a03422dd8fb679dd29f150f4e835e0601",
+    "runs/ndx_tabular_alpha_20261030/tree_neural50/COMPLETE.json": "b71104e4368e13d6f6f177b7153e3a79a64929a24fc43938367e599212da5d9e"
+  },
+  "output_sha256": {
+    "ACCOUNT_AUDIT.json": "f3961c3e0d9b0fa669fd8ef2e57676fbb7b075fa98910a0f92024f14eb836811",
+    "ALL_METRICS.csv": "bad0d0fede586f7c1eb0435d63775928844911f62cae72392c12da951eb608ea",
+    "CONSISTENCY.csv": "6e7caaae167b299571d5267ad35ce35f5fb6b306dcea692adff06f4f6676325c",
+    "CONTROLS.csv": "7a774be7d67cfecc43ada78e3a6956c3580023715f9176e9a051c99474d2592a",
+    "ENVIRONMENT.json": "a538eff6fd71acaa9c395173b76f3ff379b55b8c202fe63afd587b19254f7432",
+    "FREEZE.json": "30dadc3f6399647a063eedcfec6832ec9f65d3b8cfb07f366f6bb3ce9d413065",
+    "METRICS.csv": "121afa8bf654d1fde9f13c6553e8c41585fe7993ac2a2508dead6dc1fee301a1",
+    "model_comparison.png": "3916edbdeb16d13a619623378fb4cf3fd0e70f4f881433fd8a67385a53048031",
+    "PROTOCOL.json": "cdbec4abac30a3c4a70173a356c01f62ae1c942181e81a8cb990faba3318aa21",
+    "REPORT.md": "a64813338418ef4279e947d4292e8b204c173bb5926d9b94011f50776a6323b1",
+    "SELECTION.json": "f9f3648c6b38c25d287869e95bbda6eb992c599734f26c41b6791dbf81ce75e6"
+  }
+}

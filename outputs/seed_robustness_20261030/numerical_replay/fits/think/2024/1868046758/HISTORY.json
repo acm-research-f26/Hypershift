@@ -1,0 +1,82 @@
+[
+  {
+    "epoch": 1,
+    "training_loss": 0.4929304624145681,
+    "selection_loss": 0.5005540251731873,
+    "selection_criterion": -0.09495278145808753,
+    "selection_rankic": -0.059878959021854986,
+    "selection_ndcg10": 0.5044385592925548,
+    "audit_rankic": -0.03553632983006537,
+    "audit_ndcg10": 0.5291841729891824
+  },
+  {
+    "epoch": 2,
+    "training_loss": 0.4927548441019925,
+    "selection_loss": 0.500595211982727,
+    "selection_criterion": -0.049535878780357784,
+    "selection_rankic": -0.02227494810611698,
+    "selection_ndcg10": 0.5342347941146832,
+    "audit_rankic": -0.011604411099106073,
+    "audit_ndcg10": 0.5565985469593782
+  },
+  {
+    "epoch": 3,
+    "training_loss": 0.49231437796896155,
+    "selection_loss": 0.5007699131965637,
+    "selection_criterion": -0.04908222779933894,
+    "selection_rankic": -0.015133573876126953,
+    "selection_ndcg10": 0.5284684893336972,
+    "audit_rankic": 0.009702122919261456,
+    "audit_ndcg10": 0.5675957058638617
+  },
+  {
+    "epoch": 4,
+    "training_loss": 0.49172103811394086,
+    "selection_loss": 0.5009418725967407,
+    "selection_criterion": -0.06161263408606471,
+    "selection_rankic": -0.02074244772286519,
+    "selection_ndcg10": 0.5066675551355843,
+    "audit_rankic": 0.030106944888830187,
+    "audit_ndcg10": 0.5650903984029035
+  },
+  {
+    "epoch": 5,
+    "training_loss": 0.4914920275861567,
+    "selection_loss": 0.5011307001113892,
+    "selection_criterion": -0.06383459225502772,
+    "selection_rankic": -0.0275500755271186,
+    "selection_ndcg10": 0.5218561549597694,
+    "audit_rankic": -0.002455446943640709,
+    "audit_ndcg10": 0.5544280506862257
+  },
+  {
+    "epoch": 6,
+    "training_loss": 0.4914210113612088,
+    "selection_loss": 0.50096195936203,
+    "selection_criterion": -0.056339456134388635,
+    "selection_rankic": -0.01962117810288201,
+    "selection_ndcg10": 0.5252830568493705,
+    "audit_rankic": 0.012061333255842329,
+    "audit_ndcg10": 0.5655959483899552
+  },
+  {
+    "epoch": 7,
+    "training_loss": 0.49138022417371924,
+    "selection_loss": 0.5008943676948547,
+    "selection_criterion": -0.04248049520411079,
+    "selection_rankic": -0.015726619724022305,
+    "selection_ndcg10": 0.5213271175515014,
+    "audit_rankic": 0.039536087568849326,
+    "audit_ndcg10": 0.573923623583374
+  },
+  {
+    "epoch": 8,
+    "training_loss": 0.49102362854914233,
+    "selection_loss": 0.5010067224502563,
+    "selection_criterion": -0.05741796707964704,
+    "selection_rankic": -0.028398369965345963,
+    "selection_ndcg10": 0.5340069793902641,
+    "audit_rankic": 0.020743690636008977,
+    "audit_ndcg10": 0.5545891984982644
+  }
+]

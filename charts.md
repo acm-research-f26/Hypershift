@@ -1,6 +1,244 @@
 # NASDAQ-100 master charts
 
-Updated October 27, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. Every path uses the same 1,003 sessions.
+Updated October 30, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. Every path uses the same 1,003 sessions.
+
+## Best current models, with SPY and QQQ
+
+- **Current neural strategy to focus on: the prior-regularized issuer ensemble.** Twenty-seed SR **1.367**, CAGR **24.60%**, worst drawdown **−11.20%**. Four separate five-seed groups score **1.272 / 1.184 / 1.409 / 1.322**. The last group was evaluated after the candidate was fixed, making this the best-supported current neural strategy for consistency across training starts.
+- **Strong simple alternative: the historical-prior model alone.** SR **1.306**, CAGR **25.39%**, worst drawdown **−11.27%**, using five-security retention. It has no neural initialization randomness. The five-issuer version scores **1.251**. These are deterministic controls, not multiple independent seed replications.
+- **The old 1.7 recipe remains a selected peak.** Its original-five SR is **1.731**, but the second five score **0.648** and the combined ten **1.381**. It still wins some individual historical comparisons; it is much less consistent across training starts.
+
+**No tested strategy has achieved SR>1.5 in every predefined ensemble.** The newer strategy offers stronger cross-seed evidence at a lower selected peak. The simple control is competitive enough that it should remain a serious baseline; a statistically significant advantage for the more complex ensemble has not been established.
+
+![Current twenty-seed models and the simple control versus SPY and QQQ](docs/ndx_model_guide_20261030/current_models_vs_benchmarks.png)
+
+| Strategy / reference | Sharpe | CAGR | Annual volatility | Worst drawdown |
+|---|---:|---:|---:|---:|
+| **Prior mixture / twenty seeds** | **1.367** | **24.60%** | **14.72%** | **−11.20%** |
+| Previous neural issuer / twenty seeds | 1.245 | 22.77% | 15.01% | −13.55% |
+| Neural retention / cohort targets / twenty seeds | 1.237 | 21.92% | 14.49% | −12.78% |
+| Historical prior alone / five securities | 1.306 | 25.39% | 16.04% | −11.27% |
+| Historical prior alone / five issuers | 1.251 | 24.19% | 15.97% | −11.35% |
+| Old selected retention / original five | 1.731 | 33.11% | 15.52% | −13.36% |
+| Old selected retention / second five | 0.648 | 12.31% | 15.14% | −17.11% |
+| **SPY buy and hold** | **0.498** | **10.85%** | **18.01%** | **−24.55%** |
+| **QQQ buy and hold** | **0.469** | **11.93%** | **23.67%** | **−34.87%** |
+
+Sharpe measures return above a 3% annual hurdle relative to how bumpy the daily path is. CAGR measures compounded growth per year. Worst drawdown is the largest decline from an earlier account peak. The simple model's slightly higher CAGR comes with greater volatility, explaining its lower Sharpe than the twenty-seed prior mixture.
+
+### How the models work in plain English
+
+The preferred strategy combines a **historical report card** with **two neural stock-ranking models**. The report card asks how well each stock's returns ranked against other stocks during the training period. Recent training observations count more: a 26-decision-week half-life gives an observation half the weight of one 26 decision-weeks newer. Short histories are pulled toward a neutral score. This report card is fixed for the annual fold; for the 2025 evaluation, its training data end in 2023, before 2024 validation.
+
+THINK and the dynamic-hypergraph model look at daily, after-hours and premarket inputs and produce their own stock orderings. A seed is another starting point for training each network. A five-seed committee contains five versions of each neural model. **Half the final score comes from the historical report card, one quarter from mean THINK rank, and one quarter from mean dynamic-model rank.** A report card of 85, THINK rank of 90 and dynamic rank of 70 produce an overall score of 82.5. That is an ordering score, not a predicted 82.5% return.
+
+About every five trading sessions, each committee selects five **companies**. Counting issuers prevents GOOG and GOOGL from occupying two company slots. The strategy reduces its stock allocation when the selected basket has been more volatile and uses a partial QQQ short within its risk limits. If 70% of the target gross budget is long stocks, at most 30% can be short QQQ. The 75% short ceiling is not a permanent short position, and the 20% stock-volatility target does not guarantee 20% account volatility.
+
+For twenty seeds, four five-seed committees build their own portfolios. We average those signed portfolio targets and execute the net order, paying trading fees and short borrowing. The combined account can own more than five companies. This preserves different reasonable buy lists instead of forcing all models into one fragile top-five vote. Every predefined seed keeps equal weight.
+
+The simple historical-prior model skips the neural votes. Its preference list is mostly fixed within an annual fold, while eligibility, retention and risk sizing can still change positions. Its 13-week half-life differs from the preferred mixture's 26-week half-life. The five-security version can count share classes separately; the five-issuer version consolidates them.
+
+### Every seed ensemble against the same benchmarks
+
+| Ensemble | New prior mixture SR | Previous neural SR | Old selected recipe SR | SPY SR | QQQ SR |
+|---|---:|---:|---:|---:|---:|
+| Original five | 1.272 | 1.171 | 1.731 | 0.498 | 0.469 |
+| Second five | 1.184 | 1.147 | 0.648 | 0.498 | 0.469 |
+| Third five | 1.409 | 1.200 | — | 0.498 | 0.469 |
+| Reserved five | 1.322 | 0.877 | — | 0.498 | 0.469 |
+| Combined ten | 1.264 | 1.023 | 1.381 | 0.498 | 0.469 |
+| Combined fifteen | 1.338 | 1.235 | — | 0.498 | 0.469 |
+| Combined twenty | 1.367 | 1.245 | — | 0.498 | 0.469 |
+
+SPY and QQQ have no training seeds. Their repeated columns and curves are the same two references, not extra experiments. Dashes mean the old model was not fitted for that group. All paths use the same dates, fee formula, economic-price convention and 3% Sharpe hurdle. Both benchmark paths reproduce their previously published daily returns within 1e-12.
+
+![Separate seed cohorts compared with SPY, QQQ and the available old-model paths](docs/ndx_model_guide_20261030/separate_cohorts_vs_benchmarks.png)
+
+![Ten-, fifteen- and twenty-seed models compared with SPY and QQQ](docs/ndx_model_guide_20261030/pooled_models_vs_benchmarks.png)
+
+**These are comparisons of complete strategies.** SPY/QQQ stay fully invested; the active strategies select stocks, adjust exposure and partially short QQQ. Their market exposure and volatility differ. The higher historical Sharpe cannot be attributed entirely to neural prediction skill, and does not establish future superiority.
+
+### Why the newer strategy is more consistent than the old 1.7 result
+
+The old retention rule gave previously selected stocks a small score bonus, encouraging the strategy to keep near-tied names. That does not fix a model whose stock preferences depend heavily on its random start. In the inspected 2023 fold, THINK's stock ordering correlated about **0.995** with its stock-specific output biases, and those biases retained about **0.999** rank correlation with their random starting values. Some stocks effectively received arbitrary head starts that training barely changed. The original group happened to favor profitable names and also held substantial combined GOOG/GOOGL exposure. This is evidence for one specific initialization problem, not proof that every year or the whole network was untrained.
+
+The newer approach addresses that problem in several ways:
+
+1. **Neutral starting preferences:** stock-specific output weights/biases start neutrally and dynamic stock filters start alike, while remaining trainable.
+2. **Train for the actual task:** the objective emphasizes relative stock rankings, and chronological validation separates checkpoint selection from diagnostics. These training changes were bundled, so their separate contributions are not isolated.
+3. **Add a common anchor:** half the current score comes from the same training-history report card in every seed group, reducing the direct weight on seed-dependent neural outputs.
+4. **Preserve committee portfolios:** average the portfolios of five-seed groups, limiting the effect of borderline top-five changes when more seeds are pooled.
+5. **Check new initializations:** choose the candidate using development results, fix it before scoring the reserved cohort, and retain every seed's results.
+
+The reserved group's **0.877 → 1.322** improvement is particularly informative: it has only one five-seed committee, so portfolio averaging cannot explain the gain. The training prior changes the stock ranking within the same issuer/risk/execution framework. Across all four disjoint groups, the newer baseline's SR spread falls **0.323 → 0.225**. The old selected recipe's two reported groups differed by **1.084** under a different model/training generation.
+
+**The remaining limit:** all cohorts share repeatedly inspected 2022–2025 outcomes. The preferred candidate passes its separately frozen secondary seed-confirmation check; the original stricter spread gate and the all-ensemble 1.5 target remain failed. This supports improved initialization robustness, while performance on unseen market periods remains unverified. Failed shared-scorer, forest, family-weight and hedge experiments remain in the dated sections below.
+
+[Full plain-language guide](docs/ndx_model_guide_20261030/GUIDE.md) · [Headline metrics](docs/ndx_model_guide_20261030/HEADLINE_METRICS.csv) · [Seed comparison](docs/ndx_model_guide_20261030/SEED_COMPARISON.csv) · [Benchmark replay and provenance](docs/ndx_model_guide_20261030/MANIFEST.json).
+
+## Earlier study details and full experiment history
+
+## Confirmed improvement across seed cohorts; SR>1.5 remains unmet
+
+**The training-prior mixture improves all seven current reference groups, including a reserved five-seed cohort scored after the candidate was frozen.** This is initialization confirmation on the same market history, not an untouched-market result. The full follow-up retained **164 additional fits and 1,578 account records**, including the failed models, controls and cost stresses.
+
+![Four separate seed cohorts: net wealth and drawdown](docs/ndx_seed_robustness_20261030/disjoint_ensembles.png)
+
+| Ensemble | Previous stable issuer SR | Prior mixture SR | Change | Prior CAGR | Prior max DD |
+|---|---:|---:|---:|---:|---:|
+| Original five | 1.171 | 1.272 | +0.101 | 24.13% | -11.58% |
+| Second five | 1.147 | 1.184 | +0.037 | 22.11% | -12.80% |
+| Third five | 1.200 | 1.409 | +0.210 | 27.04% | -11.45% |
+| Reserved five | 0.877 | 1.322 | +0.445 | 23.70% | -10.34% |
+| Combined ten | 1.023 | 1.264 | +0.240 | 23.31% | -12.16% |
+| Combined fifteen | 1.235 | 1.338 | +0.104 | 24.68% | -11.54% |
+| Combined twenty | 1.245 | 1.367 | +0.122 | 24.60% | -11.20% |
+
+![Ten-, fifteen- and twenty-seed portfolios compared](docs/ndx_seed_robustness_20261030/pooled_ensembles.png)
+
+The candidate combines **50% training-history prior ranks + 25% THINK ranks + 25% dynamic-hypergraph ranks**. The prior uses observed training-return ranks with a **26-decision-week half-life** and 20 neutral pseudo-observations per stock. It ends before each fold's validation year; it is not a current six-month momentum signal. Every seed retains equal weight. Five-issuer portfolios are constructed within consecutive five-seed cohorts, then their signed targets are averaged and executed as one account. The combined book can hold more than five issuers.
+
+The reserved five improve **0.877 → 1.322**, and the four disjoint groups' SR spread falls **0.323 → 0.225**. A single five-seed cohort has no aggregation change, so its gain comes from prior regularization within the same issuer/risk/execution framework. At **2× fees and 6% borrowing**, reserved-five SR improves **0.700 → 1.166**, and combined-twenty **1.067 → 1.236**. The existing 20% stock-volatility target, QQQ short cap of 75%, gross budget and fee model remain unchanged.
+
+The original stricter source gate failed. This was a separately labeled, development-selected candidate frozen before reserved-seed financial outcomes; it passed its secondary confirmation test. **No strategy reached SR>1.5 across every predefined ensemble.** The source-selected old 1.731 result remains a historical best case, rather than representative seed performance. The reserved cohort is now spent for future model selection.
+
+All 1,578 accounts pass independent dollar-position replay (maximum daily discrepancy **8.88e-16**); 14 new focused tests pass, and all 164 new-fit locks verify. All 63 displayed account/cost metrics reconstruct from saved daily returns. Subsequent beta-hedge and lower-volatility controls also fail; they are not adopted.
+
+[Full findings, failed proposals and limits](docs/ndx_seed_robustness_20261030/REPORT.md) · [All comparison metrics and cost stresses](docs/ndx_seed_robustness_20261030/COMPARISON_METRICS.csv) · [Exact pre-score candidate](docs/ndx_seed_robustness_20261030/PRIOR_CONFIRMATION_PROTOCOL.json) · [Verification](docs/ndx_seed_robustness_20261030/AUDIT.json).
+
+The dated gallery below preserves the experiment sequence; the confirmed comparison above supersedes earlier seed-consistency interpretations.
+
+## Portfolio aggregation and shared-scorer experiments — October 30
+
+![Portfolio target averaging versus the prior stable model and shared-scorer ablation](docs/ndx_portfolio_robustness_20261030_v2/pooled_comparison.png)
+
+The fixed **60-fit / 540-account** study found a useful aggregation improvement: average five-seed cohorts' signed portfolio targets and execute the combined account. With the original retrained models, retention five and no trading band, combined-ten SR rises **0.837 → 1.267**, and combined-fifteen rises **1.057 → 1.330**. The separate five-seed groups remain **1.168 / 1.269 / 1.345**. Portfolio averaging preserves different selections; averaging individual-seed portfolios performed worse. These are development-history improvements, not untouched-market confirmation.
+
+A 1% NAV trading band yields **1.170 / 1.283 / 1.358 / 1.281 / 1.336** across original/second/third/ten/fifteen groups. This row has the highest minimum SR in this fixed study, but **no recipe passes the stricter predefined improvement gate**, and none reaches SR>1.5 in every group. The original cohort is essentially unchanged and the disjoint-cohort gap exceeds the preset 0.15 limit. Bands do not provide a consistent improvement by themselves.
+
+Removing THINK's stock-ID dense mixer while preserving all other initialized tensors, training settings, seeds and the unchanged dynamic family **substantially hurts performance**. The zero-band five-issuer blend's original/second/third/ten/fifteen SR is **0.304 / −0.054 / 0.179 / 0.266 / 0.205**. Removing stock-specific parameters therefore did not establish better generalization. All failed variants remain in the report. The later no-band pooling confirmation fails with reserved-five SR 0.854; the prior mixture above passes its separately frozen confirmation.
+
+[Complete fixed study and separate-cohort plots](docs/ndx_portfolio_robustness_20261030_v2/REPORT.md) · [All 540 accounts](docs/ndx_portfolio_robustness_20261030_v2/METRICS.csv) · [Source/publication hashes](docs/ndx_portfolio_robustness_20261030_v2/MANIFEST.json).
+
+### Family isolation and validation-only blend weights
+
+![Model-family and validation-blend comparison](docs/ndx_family_robustness_20261030/family_comparison.png)
+
+The conditional **300-account** follow-up also yields **zero** improvement-gate passes and no recipe above SR1.5 in every group. With retention/cohort-target averaging/no band, the fixed original 50:50 blend reaches original/second/third/ten/fifteen SR **1.168 / 1.269 / 1.345 / 1.267 / 1.330**. THINK+mixer alone reaches **0.814 / 0.938 / 0.877 / 0.882 / 0.883**; dynamic alone **0.735 / 0.584 / 0.854 / 0.696 / 0.779**. First-half-prior-year validation weights produce **1.148 / 1.103 / 1.270 / 1.154 / 1.219**. Both original families contribute to this nonlinear ranking/portfolio blend; separating them did not recover strong SR. Here "original" means the October 29 neutral-initialization/rank-trained source, not the older selected 1.731 model.
+
+[Every family/control/cost result](docs/ndx_family_robustness_20261030/REPORT.md) · [All 300 accounts](docs/ndx_family_robustness_20261030/METRICS.csv) · [Validation-only weight choices](docs/ndx_family_robustness_20261030/VALIDATION.csv).
+
+### Longer shared features and training-prior controls
+
+![Long-history feature models compared with the existing neural portfolio](docs/ndx_tabular_alpha_20261030/model_comparison.png)
+
+The 64-fit / 282-account shared ExtraTrees/Ridge arm fails. Standalone forest retention/cohort portfolios have original/second/third/ten/fifteen SR **0.425 / 0.272 / 0.412 / 0.356 / 0.380**; the 50:50 tree/neural blend reaches **0.561 / 0.532 / 0.821 / 0.557 / 0.656**. More randomized trees and longer causal price/volatility/liquidity histories did not provide a stronger financial predictor in this fixed test. [All feature-model results and deterministic controls](docs/ndx_tabular_alpha_20261030/REPORT.md).
+
+![All fixed training-prior mixtures compared](docs/ndx_prior_robustness_20261030/model_comparison.png)
+
+The separate 264-account prior arm retains all 13/26/52-week and full-history controls/blends. Its third-five 13-week issuer mixture reaches **1.652**, but the other two disjoint groups reach only **1.136 / 1.179**; that single favorable cohort was not selected as representative. The 26-week mixture's all-group improvement motivated the separately labeled confirmation above. [Every prior and control](docs/ndx_prior_robustness_20261030/REPORT.md).
+
+## New models plotted together: daily wealth and drawdown
+
+These comparisons compound the saved **net daily account returns**, including modeled transaction fees and 3% short borrowing. Each starts at $100. Model families are compared within the same seed cohort; the old selected strategy remains visible where matched forecasts exist. The eight named representatives include failed approaches and a deterministic control, rather than only the best retrained curve. Full grids remain linked below.
+
+### Combined ten seeds
+
+![Ten-seed models compared on net wealth and drawdown](docs/ndx_model_comparison_20261030/ten_seed_paths.png)
+
+The old selected retention account still leads this ten-seed comparison at SR **1.381**. The loss-selected five-issuer model reaches **1.023**, versus **1.250** for the earlier stable-consensus postprocessing recipe and **1.123** for the seed-free training-mean-rank control. Retraining improved cohort consistency, but did not dominate the earlier models or the simple control.
+
+### Three separate five-seed cohorts
+
+![Original, second and third five-seed cohorts plotted separately](docs/ndx_model_comparison_20261030/disjoint_seed_paths.png)
+
+| Model / portfolio representative | Original five SR | Second five SR | Third five SR | Combined ten SR | Combined fifteen SR |
+|---|---:|---:|---:|---:|---:|
+| Old selected retention | 1.731 | 0.648 | — | 1.381 | — |
+| Old forecasts: stable consensus / soft ten | 1.230 | 0.958 | — | 1.250 | — |
+| Retrained: loss checkpoint / five issuers | 1.171 | 1.147 | 1.200 | 1.023 | 1.235 |
+| Retrained: loss checkpoint / retention five | 1.168 | 1.269 | 1.345 | 0.837 | 1.057 |
+| Retrained: rank checkpoint / retention five | 0.902 | 0.690 | 0.827 | 0.863 | 0.872 |
+| Retrained: three snapshots / five issuers | 1.005 | 0.977 | 0.991 | 0.894 | 1.057 |
+| Rank checkpoint + liquid-consensus factor, 50:50 | 0.751 | 0.837 | 0.911 | 0.762 | 0.891 |
+
+The training-mean-rank retention control is seed-free and has SR **1.123**, not five independent results. Dashes mean the old study did not fit those seeds. All displayed accounts use the 20% stock-volatility target and continuous QQQ short ceiling of 75%, except stable consensus / soft ten, which uses 50%. Issuer selection, retention, weighting and hedge ceilings differ between representatives; these are strategy comparisons, not isolated architecture effects. Several representatives were selected after inspecting their study outcomes; [selection details and full-grid links](docs/ndx_model_comparison_20261030/README.md) disclose those choices.
+
+### Combined fifteen seeds
+
+![Fifteen-seed retrained models, factor hybrid and deterministic control](docs/ndx_model_comparison_20261030/fifteen_seed_paths.png)
+
+The loss-selected five-issuer recipe reaches SR **1.235** here. Pooling seed rankings does not average the individual portfolio returns: it changes top-five selections, retention state and volatility sizing. More seeds can therefore worsen a strategy, as the retention-five row illustrates.
+
+### What improved, and the next experiments
+
+The retraining neutralized random stock-ID offsets at initialization, replaced raw-return fitting with date-centered Huber plus pairwise ranking loss, split prior-year validation into checkpoint-selection and diagnostic halves, and retained all 15 predefined seeds. The five-issuer rule also consolidates share classes. The observed disjoint-cohort SR spread falls from **1.084** in the old retention comparison to **0.053** for the new issuer recipe. Initialization, objective, duration and validation changed together, so this does not isolate the cause of that improvement.
+
+**This establishes better observed seed stability, not unseen-market generalization.** Every cohort shares the repeatedly inspected 2022–2025 market history. No trained recipe achieved SR>1.5 across every predefined ensemble; no untouched confirmation is added by these plots.
+
+The next experiments I would prioritize are:
+
+1. **Average portfolio targets instead of seed rankings.** Construct fixed equal-weight subportfolios for the predefined five-seed cohorts, combine their targets, and replay one account with actual net trades, risk limits and fees. Compare against rank pooling at the same risk budget. The strong disjoint retention accounts and weaker pooled accounts motivate this test; averaging their historical return series is not an executable backtest.
+2. **Use actual-holdings no-trade bands.** Test a small predefined set of thresholds that keep a position when its new target is close to its drifted current weight, instead of relying only on the previous target's 0.02 score bonus. Evaluate net return, turnover and stressed costs together. The balanced issuer strategy falls to roughly SR 0.85–1.06 under 2× fees and 6% borrowing. Transaction-cost research motivates no-trade regions, but does not establish that they will help this strategy ([primary paper](https://www.nber.org/papers/w18709.pdf)).
+3. **Ablate stock-identity shortcuts.** Compare the current trainable stock-specific output parameters with a shared stock-scoring head under the same initialization, objective, epoch budget and seeds. Require incremental validation performance over the training-mean-rank control. Neutral initialization removes the starting lottery; it does not prevent learning persistent stock preferences. This is a proposed test, not a demonstrated improvement.
+
+Freeze a small experiment budget and compare across earlier chronological validation folds before evaluating reserved market data. Repeatedly selecting the best 2022–2025 result would add selection bias rather than prove a higher transferable SR ([Deflated Sharpe Ratio paper](https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf)).
+
+[Comparison notes and reproduction](docs/ndx_model_comparison_20261030/README.md) · [32 compared accounts](docs/ndx_model_comparison_20261030/COMPARISON_METRICS.csv) · [Source hashes and verification](docs/ndx_model_comparison_20261030/MANIFEST.json). Every source path and metrics file matches its completed-run hash; every compared account's performance metrics reconstruct from daily returns. No models were retrained and no new accounts were simulated for this chart update. Earlier dated galleries follow unchanged.
+
+## Rank-aligned retraining: more stable, below the SR>1.5 target
+
+![Old and retrained ensemble comparisons](docs/ndx_rank_retraining_20261029/balanced_ensembles.png)
+
+The fixed 120-fit/15-seed study and separate factor-control arm retained **774 accounts**. **No recipe reaches SR>1.5 in every predefined ensemble.** The retrained loss-selected five-issuer recipe has original/new/third-five SR **1.171 / 1.147 / 1.200**, with ten/fifteen SR **1.023 / 1.235**. The three disjoint groups are much closer, but the original-five and ten-seed historical results decline. Under 2× fees plus 6% borrow, those five Sharpes are 0.983 / 0.969 / 1.013 / 0.848 / 1.062.
+
+The experiment neutralizes random stock-ID initialization, uses centered ranking-aligned training, separates epoch-selection validation from diagnostic validation, and reports all seeds/checkpoints. These are bundled changes, not an isolated estimate of each intervention. Momentum/risk/liquidity controls and blends also fail the target. All account paths pass independent accounting replay. The original selected 1.731 result below is preserved with its initialization and concentration caveats; no fresh-market confirmation is claimed.
+
+[Findings and limitations](docs/ndx_rank_retraining_20261029/FINDINGS.md) · [All retraining accounts](docs/ndx_rank_retraining_20261029/METRICS.csv) · [Factor-control results](docs/ndx_factor_controls_20261029/REPORT.md).
+
+## Seed-attribution concern in the historical leader
+
+The 1.731 original-five Sharpe below is a selected historical account, with 0.648 in the new-five group and 1.381 across ten seeds. Stock-level attribution and parameter inspection identify a specific robustness concern: in 2023, THINK's daily stock ordering correlates about 0.995 with its stock-specific mixer biases, which retain about 0.999 rank correlation with reconstructed random initial values. The original account also averaged 32.6% NAV in combined GOOG/GOOGL positions in that year. This does not establish transferable learned stock-ranking ability. [Attribution and caveats](docs/ndx_seed_attribution_20261029/REPORT.md) · [Paper-reporting guidance](docs/ndx_seed_attribution_20261029/PAPER_REPORTING.md).
+
+## Validation ranking stability: consistency improved with a return tradeoff
+
+![All fixed recipes compared across original and new seed ensembles](docs/ndx_rank_stability_20261029_v2/seed_consistency.png)
+
+The fixed 24-recipe / 216-account study tested validation RankIC weights, quarter-stability penalties, cross-model disagreement penalties, and broader allocations. **No recipe preserved approximately 1.7 Sharpe across all three seed ensembles, and none met the secondary performance-preserving consistency goal.** These are historical development results; the current headline leader below is preserved.
+
+| Recipe | Original-five SR | New-five SR | Ten-seed SR | Original/new SR gap |
+|---|---:|---:|---:|---:|
+| Prior retention-five / 75% hedge cap | 1.731 | 0.648 | 1.381 | 1.084 |
+| Validation RankIC weights / retention-five / 75% cap | 1.377 | 0.841 | 1.349 | 0.537 |
+| Stable weights + consensus penalty / smoothly weighted ten / 50% cap | 1.230 | 0.958 | 1.250 | 0.272 |
+
+The highest weaker-half result narrows the gap by about 75%, but reduces original-five and ten-seed Sharpe. With 2× costs and 6% borrow, its original/new/ten Sharpes are 1.067 / 0.778 / 1.087. Higher validation ranking quality did not consistently translate into better subsequent financial performance. These tests use the existing final checkpoints; ranking-based checkpoint selection requires a separate fit experiment. All 18 matching baselines reproduce exactly and all 216 accounts pass independent accounting replay.
+
+[Interpretation and limitations](docs/ndx_rank_stability_20261029_v2/FINDINGS.md) · [All recipes and reproduction](docs/ndx_rank_stability_20261029_v2/REPORT.md) · [Validation diagnostics](docs/ndx_rank_stability_20261029_v2/VALIDATION_METRICS.csv) · [All216accounts](docs/ndx_rank_stability_20261029_v2/METRICS.csv).
+
+## Retention strategy reproduced in feat-rs
+
+![Retention and continuous QQQ hedge comparisons across all seed groups](docs/ndx_retention_replication_20261029/retention_comparison.png)
+
+The pinned `tom-shlom` retention strategy reproduces **1.731 Sharpe / 33.11% CAGR / -13.36% maximum drawdown** in the original-five ensemble. The ten-seed version returns **1.381 / 26.35% / -13.79%**; the new-five half returns **0.648 / 12.31% / -17.11%**. These are selected historical development results, with substantial seed sensitivity.
+
+| Original-five account | Sharpe | CAGR | Max drawdown |
+|---|---:|---:|---:|
+| Previous issuer-five / 50% hedge cap | 1.454 | 27.79% | -14.56% |
+| Retention-five / unhedged | 1.383 | 33.71% | -18.99% |
+| Retention-five / 50% hedge cap | 1.724 | 32.97% | -12.24% |
+| Retention-five / 75% hedge cap | **1.731** | **33.11%** | **-13.36%** |
+| Retention-five / 75% cap / 2× costs and 6% borrow | 1.570 | 29.85% | -15.15% |
+
+Retention adds 0.02 to each previous target's score before selecting five securities. Current eligibility still applies, and state continues across years. The unchanged trained forecasts and 20% basket-volatility target supply the long book. QQQ is hedged continuously up to the cap, remaining gross budget and volatility limit; 75% is a ceiling. Securities are separate from issuers, so share classes can occupy separate slots. This comparison changes selection and risk inputs as well as turnover; it does not isolate transaction-cost savings as the cause of improvement.
+
+All **96 accounts** match the published source daily paths and target schedules exactly. Twelve existing `feat-rs` baselines also reproduce; all accounts pass independent dollar-position replay, and all source ledgers and 384 calendar returns match within declared numerical tolerances. No models were retrained or additional parameters searched. [Report and reproduction commands](docs/ndx_retention_replication_20261029/REPORT.md) · [All metrics](docs/ndx_retention_replication_20261029/METRICS.csv) · [Audit](docs/ndx_retention_replication_20261029/AUDIT.json).
+
+The workbook and 472-account gallery below retain the October 27 snapshot. The new 96-account replication and matched comparisons are supplied separately above.
+
+## Previous October 27 comparison
+
+The following dated results are preserved; the retention reproduction above supersedes their headline leader claim.
 
 ## Highest observed Sharpe: model hedge experiment
 

@@ -5,6 +5,7 @@ does not select winners, execute portfolios or publish performance tables.
 
 | Sources | Model family |
 | --- | --- |
+| [ndx_shared_think.py](ndx_shared_think.py) | Controlled removal of THINK's stock-ID dense residual mixer; unchanged tensors retain their exact matched seed initialization |
 | [think_model.py](think_model.py), [research_models.py](research_models.py), [robust_models.py](robust_models.py) | THINK, mixers and earlier architecture/loss comparisons |
 | [ndx_extended_hours.py](ndx_extended_hours.py) | Daily core with bounded after-hours and premarket corrections |
 | [ndx_loss_optimizer.py](../../latest/models/ndx_loss_optimizer.py), [pseudohuber_think_mixer.py](pseudohuber_think_mixer.py), [ndx_ranking_objectives.py](ndx_ranking_objectives.py) | Robust losses, optimizer recipes and ranking objectives |

@@ -1,0 +1,20 @@
+{
+  "study": "Causal style-factor controls and fixed factor/neural blends",
+  "source_study": "ndx_rank_retraining_20261029",
+  "timing": "Specified during fixed neural fitting before any new financial account results; motivated by old-portfolio attribution and established momentum/volatility literature",
+  "history": "Same repeatedly inspected2022-2025 development period; no confirmation claim",
+  "factors": ["momentum63_risk", "momentum252_21_risk", "liquid_consensus"],
+  "definitions": "momentum63_risk=eligible percentile of(price[t]/price[t-63]-1)/annualized20-sessionvol; momentum252_21_risk=percentile of(price[t-21]/price[t-252]-1)/annualized60-sessionvol(min40); volfloor5%; liquid_consensus=equal average of both scores and logADV percentile; missing trailing history neutral0.5; current eligibility unchanged",
+  "checkpoint": "rank only, fixed before financial results; same50:50 family blend and all predefined seed groups; no selector search in this arm",
+  "neural_weights": [0.0, 0.25, 0.5],
+  "allocations": ["retain5", "issuer5"],
+  "hedge_cap": 0.75,
+  "cost_regimes": [{"cost":1,"borrow":0.03},{"cost":2,"borrow":0.03},{"cost":2,"borrow":0.06}],
+  "accounts": 198,
+  "count": "180 hybrid accounts(3styles*2nonzeroNNweights*2allocations*5groups*3costregimes)+18pure-factor controls(3styles*2allocations*3costregimes); seed-free controls reported once, not duplicated into artificial seed ensembles",
+  "risk_execution": "Inherited20-session basket-volatility target20%, continuous QQQ cap75 constrained by unused gross budget/QQQvol, prior-close sizing and regular-close weekly execution; unchanged fees/borrow/liquidity assumptions",
+  "goals": "Report whether any hybrid has SR>1.5 across all5predefined ensembles; separately report pure-factor performance and each group's incremental SR relative to its matching pure factor. A style-dominated or pure-factor result is not evidence that neural training improved.",
+  "stop": "Exactly198additionalaccounts, no further style/weight/parameter expansion after outcomes; no extra training, seed filtering, retrospective winner tickers,2026market returns, live trading or prospective changes",
+  "references": ["https://www.nber.org/papers/w22208", "https://doi.org/10.1111/j.1540-6261.1993.tb04702.x"],
+  "limits": "These papers motivate controls; our specific features, holding horizon and hedged portfolios are adaptations, not replications of published factor results. Same spent history and search disclosure remain necessary."
+}

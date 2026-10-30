@@ -7,6 +7,11 @@ run-local locks are written under the ignored root `runs/`.
 
 | Entry points | Experiment |
 | --- | --- |
+| [run_ndx_tabular_alpha.py](run_ndx_tabular_alpha.py) | Fixed64fit/282account shared-feature forest/Ridge comparison; all fits lock before financial scoring |
+| [confirm_ndx_cohort_averaging.py](confirm_ndx_cohort_averaging.py), [confirm_ndx_portfolio_robustness.py](confirm_ndx_portfolio_robustness.py) | Frozen reserved-five source-model fitting and pooling confirmation; the pooling consistency goal fails and all seeds remain reported |
+| [resume_ndx_portfolio_robustness.py](resume_ndx_portfolio_robustness.py) | Execution-only atomic-file retry, complete-prefix preservation and exact resumed-epoch verification |
+| [run_ndx_rank_retraining.py](run_ndx_rank_retraining.py) | Declared 120-fit rank-aligned/neutral-initialization experiment; `freeze` then `train`; every epoch and all seeds retained |
+| [resume_ndx_rank_retraining.py](resume_ndx_rank_retraining.py) | Scheduling-only continuation; two isolated workers, frozen model math and exact resumed-epoch checks |
 | [run_historical_ndx.py](run_historical_ndx.py) | Historical monthly NASDAQ-100 baseline |
 | [run_ndx_alpaca_pipeline.py](run_ndx_alpaca_pipeline.py), [run_ndx_alpaca_training.py](run_ndx_alpaca_training.py) | Matched daily and regular-session Alpaca inputs |
 | [run_ndx_extended_hours.py](run_ndx_extended_hours.py), [run_ndx_extended_hours_top5.py](run_ndx_extended_hours_top5.py) | Daily/AH/PM information and saved-forecast holding-count tests |

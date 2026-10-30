@@ -1,0 +1,10 @@
+{
+  "numpy": "2.5.3",
+  "sklearn": "1.9.1",
+  "joblib": "1.6.0",
+  "device": "CPU",
+  "fit_jobs": 2,
+  "prediction_jobs": 1,
+  "workers": 2,
+  "blas_threads": 1
+}

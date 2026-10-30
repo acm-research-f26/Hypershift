@@ -1,0 +1,10 @@
+{
+  "think": {
+    "status": "passed",
+    "loss": 0.5598841905593872
+  },
+  "dynamic": {
+    "status": "passed",
+    "loss": 0.5559535026550293
+  }
+}

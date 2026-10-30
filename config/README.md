@@ -8,6 +8,12 @@ input, checkpoint and publication locks live under ignored `runs/` directories.
 
 | File | Scope |
 | --- | --- |
+| [ndx_tabular_alpha_20261030.json](ndx_tabular_alpha_20261030.json) | Fixed64fit/282account causal shared-feature forest/Ridge experiment; all seeds,controls and costs retained |
+| [ndx_portfolio_robustness_20261030_v2.json](ndx_portfolio_robustness_20261030_v2.json) | Fixed 60-fit / 540-account target-averaging, trading-band and shared-scorer study; first attempt preserved, with exact family-first rank aggregation restored |
+| [ndx_factor_controls_20261029.json](ndx_factor_controls_20261029.json) | Separate 198-account causal style-factor and fixed neural-blend arm, frozen before new financial results |
+| [ndx_rank_retraining_20261029.json](ndx_rank_retraining_20261029.json) | 120 fixed fits, neutral stock-ID initialization, ranking objective, split validation, 15 predefined seeds and 576 accounts |
+| [ndx_rank_stability_20261029.json](ndx_rank_stability_20261029.json) | Fixed validation-ranking and allocation grid: 24 recipes / 216 accounts, frozen performance and consistency goals |
+| [ndx_retention_replication_20261029.json](ndx_retention_replication_20261029.json) | Pinned tom-shlom retention/QQQ-hedge replication: exact 96-account grid and comparison tolerances |
 | [nasdaq100_historical_monthly.json](nasdaq100_historical_monthly.json) | Active historical official monthly membership fallback |
 | [nasdaq_monthly_pit.json](nasdaq_monthly_pit.json) | Deferred custom historical 100-largest-company universe |
 | [nasdaq100_alpaca_20261019.json](nasdaq100_alpaca_20261019.json) | Matched daily/15-minute regular-session comparison |

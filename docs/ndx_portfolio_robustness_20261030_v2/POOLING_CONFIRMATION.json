@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "goal": "Separately predefined pooling/seed-consistency confirmation",
+  "four_disjoint_sharpes": [
+    1.168494819025813,
+    1.269342955974229,
+    1.3450354953760812,
+    0.8537917947499137
+  ],
+  "disjoint_gap": 0.4912437006261675,
+  "expanded_twenty_candidate_sharpe": 1.236685889530181,
+  "expanded_twenty_rank_pool_sharpe": 1.0153991576987704,
+  "expanded_twenty_sharpe_improvement": 0.22128673183141068,
+  "stress_sharpe_improvement": 0.21926872116081386,
+  "all_above_1_5": false,
+  "original_strict_primary_goal_passed": false,
+  "limits": "Independent seeds, same spent market outcomes; no out-of-time confirmation"
+}

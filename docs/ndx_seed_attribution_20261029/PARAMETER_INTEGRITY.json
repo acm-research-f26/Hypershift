@@ -1,0 +1,167 @@
+{
+  "status": "passed",
+  "checkpoints": 40,
+  "scope": "Existing checkpoint bytes match their original fit-completion lock; not a numerical forward-regeneration claim",
+  "files": [
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1828801906.pt",
+      "sha256": "7bf575c306550da75e44227e0ddd829476dc2cb77d0c92e4f75692a8a04b1484"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/1868046758.pt",
+      "sha256": "0a7ff2f81d3f1fc145d72dc79600641200922784e25a65485287b7e5d044967a"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/19.pt",
+      "sha256": "5ee70209ff0d13d30f4a7d738ab7a95886cea58e65a1078c3c93c4b3ebd1f1bf"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/239154507.pt",
+      "sha256": "08c95b87c21a177ebab2d593483652c458a3a924c329fcdcbffa36d53ffe4fe2"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/287727767.pt",
+      "sha256": "69e380b71d2b882916df13423b99f2a5bea40763d6aa67853cc874ede07d7c55"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/42.pt",
+      "sha256": "dbe742dd8eebf3a5b70885e23b1293d349645c280e9503a18a283ee4e0e89c19"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/61.pt",
+      "sha256": "6e6a9530c7902bc870112066df1b999f06504b8cbc976c1920124d7133aa7307"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/7.pt",
+      "sha256": "7f4108a84cce7b6217cfe8945a18bc0810ea8641021ecd9205e98189e7fc7de8"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/97.pt",
+      "sha256": "766b8a7fd65f90dd1b02e98b9263f4319939e3b2dbc1968c6b192f73eb504146"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2022/981756941.pt",
+      "sha256": "a96473f4599386b213fd9dcae1b8f33639e02e8375999df2c01015a0ce605716"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1828801906.pt",
+      "sha256": "4e2e897080b5cccb1d5ad62a385d8dbdfbb9f17db340d4de293dddc0ee224b0a"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/1868046758.pt",
+      "sha256": "1bb9f767bebd29132e7a9b4047ee3a9cab14b922abce6415a45780dd150133e9"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/19.pt",
+      "sha256": "46bbc26bbb925f19298a437802d9033a7de16e4513272d28c583c43a61496b6e"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/239154507.pt",
+      "sha256": "7e719c70ea8408884bd704c87833e92cd4115ef2cf950e8b56703d208027832b"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/287727767.pt",
+      "sha256": "bad71a958f534c9d5f2034dcd4beb01de7a0c1c05d57010b8bb7a02b303ea651"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/42.pt",
+      "sha256": "83a6add884a9c0038b1b17fabd9893ef9719117576f7991451c3f382e2d9fd12"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/61.pt",
+      "sha256": "d49f9bc42daff9459b119596d4846e8872aa30c186be76408148bd5c9f0a824e"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/7.pt",
+      "sha256": "81ecc4e0dd2e4938867408792a931283a24512c710f9b2cc271dcc227987c050"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/97.pt",
+      "sha256": "071be375b77b0e747f9d99cbdec194e21c0eeb74d844cfafee0dc616e76dcf2f"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2023/981756941.pt",
+      "sha256": "282a717cd5dc7f3bfef15173121ac5949ce1301ab436436c9dfd916711ea9cb4"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1828801906.pt",
+      "sha256": "f1694f53dd5c6169d548ee46757aff59ed0b4830dd3a1452878186dcaed1f1c4"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/1868046758.pt",
+      "sha256": "5167e6c3fbee324d26bfc22a19cb71b9f05e655d9ae2993fe563e3c99ee50bb5"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/19.pt",
+      "sha256": "433efb17d440a71ebcc21be89485dee2c7fe3bf7ee97d56fbefc494e7fb9df31"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/239154507.pt",
+      "sha256": "da6cbca347e1fccebb28ecc61c6db2df032b4f097b7a20f1ee6de0ccd1260fb5"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/287727767.pt",
+      "sha256": "d3330c27c38c71427465bf3aac79cba46f078d7c09f3dd454596740cbcf9beb2"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/42.pt",
+      "sha256": "ffca78f58549947dd4eda65be83d8f422ada629eb28074f18d079b8d2cde2619"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/61.pt",
+      "sha256": "31532961ed98683ad36b1e14bbab725ba3a1908619c8f6174181841045f0af03"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/7.pt",
+      "sha256": "ec89e238dcfd9b77c594c147287e1694497c3593ccda074065fffe554716b1d1"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/97.pt",
+      "sha256": "25a0cd5754a6ffd6fd77c0759f25be7ac7e49adf99fa49d79c85d1f5f5c88117"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2024/981756941.pt",
+      "sha256": "3e7391909d9b7ca311fb971ce462dba9025bb82521f60bef6f07a8bbbc5b7509"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1828801906.pt",
+      "sha256": "ad1d7d462f5cdc09a0791fe8c105cceba81b3490467cad0a4cfb6fda7f268dc1"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/1868046758.pt",
+      "sha256": "5693f0fc5871ffb1c5fb24be93782ad7f546475d7a07ed1805fbd38de9ddbbda"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/19.pt",
+      "sha256": "de943bfecb88b7f481d5746d49917c6d564c397f226790872f06b192c1eb793e"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/239154507.pt",
+      "sha256": "5c7bb867dd9f03e5e5e5f0222c0feda4e27f6017ca512bab1995aa38e8e336d0"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/287727767.pt",
+      "sha256": "cc5717a7c2f12ca7fb056b49ff1ecf61b673d19712cda9984b354029c1fd3857"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/42.pt",
+      "sha256": "deb51a3a834b4443ba135e3b0d2078f474b51c723d3a988297dfd2e641abec1c"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/61.pt",
+      "sha256": "41907b1e77749bffa533daf673e3dd594067b4f411d2ca651071e1d143648957"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/7.pt",
+      "sha256": "d60959da51c444fd8f7b7d3107ed52f1fa54b0f3237c9b34dd72b536a203e8e4"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/97.pt",
+      "sha256": "66d48fe06b28fe14e656dd3877f16a03f37ae3be151c50845247ce9d651c5ab5"
+    },
+    {
+      "path": "runs/ndx_extended_hours_20261024/after_hours_premarket/2025/981756941.pt",
+      "sha256": "d31aa975b197c0ae4d7a24a9f6ce4a8a6a4b1a23e2187ae58ee8b6d18919dbfa"
+    }
+  ]
+}

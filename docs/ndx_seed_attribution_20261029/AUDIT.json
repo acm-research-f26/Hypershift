@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "accounts": [
+    {
+      "group": "original_five",
+      "max_daily_error": 6.661338147750939e-16
+    },
+    {
+      "group": "new_five",
+      "max_daily_error": 6.661338147750939e-16
+    },
+    {
+      "group": "ten_seed",
+      "max_daily_error": 6.661338147750939e-16
+    }
+  ],
+  "scope": "Dollar-position replay and additive net arithmetic-return contribution; same saved targets/prices; attribution is descriptive and uses inspected test outcomes, not a causal forecast"
+}

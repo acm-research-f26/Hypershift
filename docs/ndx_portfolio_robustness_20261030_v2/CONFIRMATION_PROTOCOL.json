@@ -1,0 +1,84 @@
+{
+  "timestamp_utc": "2026-10-30T07:41:11.810838+00:00",
+  "candidate": {
+    "arm": "original",
+    "allocation": "retain5",
+    "aggregation": "cohort_targets",
+    "band": 0.0,
+    "original_five_sharpe": 1.168494819025813,
+    "new_five_sharpe": 1.269342955974229,
+    "fresh_five_sharpe": 1.3450354953760812,
+    "ten_seed_sharpe": 1.267170487438091,
+    "fifteen_seed_sharpe": 1.3299210660517382
+  },
+  "seeds": [
+    1062654956,
+    1924761289,
+    861712994,
+    194507142,
+    1364609292
+  ],
+  "expanded_seeds": [
+    7,
+    19,
+    42,
+    61,
+    97,
+    1828801906,
+    1868046758,
+    239154507,
+    287727767,
+    981756941,
+    1847760412,
+    1561637969,
+    800300753,
+    353601183,
+    1532402804,
+    1062654956,
+    1924761289,
+    861712994,
+    194507142,
+    1364609292
+  ],
+  "years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "epochs": 12,
+  "fits": 40,
+  "strategies": [
+    "baseline_issuer",
+    "baseline_matched",
+    "candidate"
+  ],
+  "groups": [
+    "unused_five",
+    "expanded_twenty"
+  ],
+  "cost_regimes": [
+    {
+      "cost": 1,
+      "borrow": 0.03
+    },
+    {
+      "cost": 2,
+      "borrow": 0.03
+    },
+    {
+      "cost": 2,
+      "borrow": 0.06
+    }
+  ],
+  "selection_relative": "runs/ndx_portfolio_robustness_20261030_v2/COHORT_CONFIRMATION_CANDIDATE.json",
+  "selection_sha256": "0452bfef7c4d92a1532a5f188f508a13269c45ac0ba55649000b8c330e074075",
+  "script_sha256": "4c2dc05641985a288ce0904d790a620cacd7a1ce7089a3a7ecbad5af382691d3",
+  "wrapper_sha256": "c612860bb38780f7cd282b8ab236684e3afcd18ae0f4147ca8bda9c5fe9d4b78",
+  "study_protocol_sha256": "13b267cacacaf402b6e4f9af305ba8cb41c800245517a560b7563b4e87bf756f",
+  "original_strict_goal": "Not passed in the540accountsource study; confirmation below does not retroactively change that result",
+  "goal": "New unused-five retention SR>=1.10; all four disjoint five-seed cohortSR>=1.10 and spread<=0.25; expanded20cohort-target averaging improvesSR over matched rank pooling by>=0.10 at base costs and is no worse under2xfees/6%borrow. Report every case and no reselection.",
+  "aspirational_goal": "Separately report all four disjoint cohorts and expanded20SR>1.5; do not hide failure",
+  "mathematical_control": "With exactly5seeds, cohort averaging and rank pooling use the same single cohort and must reproduce each other exactly. New-five checks initialization robustness; expanded20 checks aggregation.",
+  "limits": "Same repeatedly inspected market years. This is unused-initialization confirmation, not a market holdout or prospectivealpha evidence."
+}

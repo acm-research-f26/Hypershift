@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "model_max_abs_error": 0.0,
+  "validation_max_abs_error": 0.0,
+  "resumed_epoch": 8,
+  "source_checkpoint_epoch": 7
+}

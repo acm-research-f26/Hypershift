@@ -1,0 +1,32 @@
+{
+  "timestamp_utc": "2026-10-30T06:26:58.514284+00:00",
+  "script": "research/reporting/plot_ndx_model_comparison_20261030.py",
+  "script_sha256": "9a2216652f39df456341773d99467e3143747b0bfc58041ef459dc35d1a71267",
+  "source_sha256": {
+    "runs/ndx_retention_replication_20261029/COMPLETE.json": "b69b71b0b394b9af95d863807ddaaa3da0f7b16906fd059d601740702d2293d4",
+    "runs/ndx_retention_replication_20261029/PATHS.npz": "9a3873494bd9c7a1f3a862902d2b03427d8e8c9983b02233affe2a2c5f3c4b3f",
+    "runs/ndx_retention_replication_20261029/METRICS.csv": "7a91b05db0e36d85939e99b7d888ae171db8fecc71df67f5ecaa9cf17ca38cc7",
+    "runs/ndx_rank_stability_20261029_v2/COMPLETE.json": "418989402433ce8116c86047ee4856b49a139f0a8d7d3db3679c92afaace49df",
+    "runs/ndx_rank_stability_20261029_v2/PATHS.npz": "f082491b3cadde2b42964b911d4f211e9728409bbb206f263f59e792a9f7b651",
+    "runs/ndx_rank_stability_20261029_v2/METRICS.csv": "65e5c9138cd99daa1d736a868500e6ea402375f42f11505f4f3a74ac49297c36",
+    "runs/ndx_rank_retraining_20261029/COMPLETE.json": "8049417109b91f85562b3806fb49ba18b4c9c6aa49306cce6fda5fc046756dbe",
+    "runs/ndx_rank_retraining_20261029/accounts/PATHS.npz": "dffa3d8efb99ca95262adb5aae2428a252d1ddb3338b4ab6ebb920072b782fb6",
+    "runs/ndx_rank_retraining_20261029/METRICS.csv": "b063e65d6eef1ec4be8b92f01a93f3e5b6503aa4c5d6bb18bfa404acd022dfad",
+    "runs/ndx_factor_controls_20261029/COMPLETE.json": "e3114be7ccc98c129b091893fcf0a3481b0c0f3bc5879df8c48586bcee89712f",
+    "runs/ndx_factor_controls_20261029/PATHS.npz": "db0a148f12c2a7f49e30f35c0b9d3dd5291897bc4fce2641a22c8f58201e9acc",
+    "runs/ndx_factor_controls_20261029/METRICS.csv": "e4f1a0d229e699f9501ac5a61b32c040d86b27da3091e0284505fab0633a758e"
+  },
+  "output_sha256": {
+    "COMPARISON_METRICS.csv": "25a8bfd5848876ca305a68f13e8080ec9b3e8a471a4992dcbd1d8fd74e51e96d",
+    "disjoint_seed_paths.png": "2710196c52f036a36898b611b70629df21e8306a68791b209f3157d0da0b8c32",
+    "fifteen_seed_paths.png": "c63a7339cb8f2f85c0b890b60abc8c84f52a4a7290fc66b24ac6df079cf2bd83",
+    "README.md": "c29e74b48ff711624496f3a03f9398d94e46ca97ff156443cb369db0616bf721",
+    "ten_seed_paths.png": "c56ceaa97450aa5c7ad1c914d93f3c3d66f20b0f51085b50c81172d57a4d41da"
+  },
+  "days": 1003,
+  "accounts": 32,
+  "metrics_reconstruction": "passed",
+  "source_hash_checks": "passed",
+  "new_training": false,
+  "new_account_evaluation": false
+}

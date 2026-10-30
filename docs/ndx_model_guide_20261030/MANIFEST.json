@@ -1,0 +1,43 @@
+{
+  "timestamp_utc": "2026-10-30T16:55:56.358454+00:00",
+  "script_sha256": "113dfe78c6d386213ade6908492955063e0145bbc5b53ac0ae4407b44daf32fb",
+  "source_sha256": {
+    "runs/ndx_rank_retraining_20261029/accounts/PATHS.npz": "dffa3d8efb99ca95262adb5aae2428a252d1ddb3338b4ab6ebb920072b782fb6",
+    "runs/ndx_rank_retraining_20261029/METRICS.csv": "b063e65d6eef1ec4be8b92f01a93f3e5b6503aa4c5d6bb18bfa404acd022dfad",
+    "runs/ndx_rank_retraining_20261029/COMPLETE.json": "8049417109b91f85562b3806fb49ba18b4c9c6aa49306cce6fda5fc046756dbe",
+    "runs/ndx_portfolio_robustness_20261030_v2/original/PATHS.npz": "77907740380ff053dcf07f9031b451d3f38c4ee89e06c2906ab9d9414e6f3181",
+    "runs/ndx_portfolio_robustness_20261030_v2/original/METRICS.csv": "f5737ff4abbad337e770d5e53433a5ede4af29e442d05dc908f21e0e49859541",
+    "runs/ndx_portfolio_robustness_20261030_v2/original/COMPLETE.json": "084ef83dba3878fda15e555cfc00d38cd23c2c283ae6d29acaf456750709564b",
+    "runs/ndx_prior_robustness_20261030/prior26/PATHS.npz": "26b32d813d6a9957ee20bd532fb205553f37514607ab5c17ec25c86f45e516ab",
+    "runs/ndx_prior_robustness_20261030/prior26/METRICS.csv": "12940eb9e1d84d3ca1ead8adaa7d4090994a789642fc454233ef5225a34fd859",
+    "runs/ndx_prior_robustness_20261030/prior26/COMPLETE.json": "d70593b72e9a36ab77b60902faa5e20592845972f0ede3f751f46829034a4cae",
+    "runs/ndx_portfolio_robustness_20261030_v2/confirmation/PATHS.npz": "bb71c1daec5e74638f630fe7b411d179c8de4b3906c86efd9753f903b2bf1b41",
+    "runs/ndx_portfolio_robustness_20261030_v2/confirmation/METRICS.csv": "e70306d23600c3110f00cc48ff18cb7270060d9008c0524b93cdfc0fbcd9963d",
+    "runs/ndx_portfolio_robustness_20261030_v2/confirmation/COMPLETE.json": "623c9fc012f23571c16df60d31f6de3d21a8ecf936811e5af192977f1e8690cb",
+    "runs/ndx_prior_robustness_20261030/confirmation/PATHS.npz": "e2c9d9dbd3de8d2c0a1ad5cce70656261892751445c7a0988b3b849dd44ca7fc",
+    "runs/ndx_prior_robustness_20261030/confirmation/METRICS.csv": "f919a3acec38b8d4b0a86273cc77073cc49298b4dc46ecb79913561fa796feba",
+    "runs/ndx_prior_robustness_20261030/confirmation/COMPLETE.json": "dbf0c8d382983d7fec6d2e591302cba5cb18600b616c2b745e6526b709cf85b5",
+    "runs/ndx_prior_robustness_20261030/controls/prior13__retain5__seed_free__c1__b03.csv": "148883521b21eee22432ab7e574f3e1f212109f2c0c1819f4415160617019fbc",
+    "runs/ndx_prior_robustness_20261030/controls/prior13__issuer5__seed_free__c1__b03.csv": "f39cce9e0597b55e6fc9716fd246bad475035299184c396eeb43f6f2aa47a266",
+    "runs/ndx_prior_robustness_20261030/CONTROL_METRICS.csv": "45e34ba00b80c1a0d35c248bffe7c3f25ee2558a19b46691d3a654dbde0d2140",
+    "runs/ndx_retention_replication_20261029/PATHS.npz": "9a3873494bd9c7a1f3a862902d2b03427d8e8c9983b02233affe2a2c5f3c4b3f",
+    "runs/ndx_retention_replication_20261029/METRICS.csv": "7a91b05db0e36d85939e99b7d888ae171db8fecc71df67f5ecaa9cf17ca38cc7",
+    "outputs/model_hedge_20261027/before_paths.npz": "7554773c9c9e287464a25c8753b85d717574a4651f0647c9eebba878f9a067be",
+    "outputs/model_hedge_20261027/before_all_strategies.csv": "ab4313d0745a6ebb02b08accdd80bc8df1ac9ce473438eedde56189ea1f7b0bf",
+    "research/core/pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b"
+  },
+  "benchmark_replay_max_daily_error": 9.996344030316351e-17,
+  "new_training": false,
+  "new_strategy_selection": false,
+  "output_sha256": {
+    "BENCHMARK_REPLAY.csv": "f52c4c2ee9c629b04ae5868868b9f72ee04482026549873a6e26475b8471fedd",
+    "current_models_vs_benchmarks.png": "96cf4629d39209f398e297f06a0203765d68dd3704533457defeafcf921da465",
+    "GUIDE.md": "23adc85b764a18e448bcac066a8e0a54be68ba99d37f922fe0ba76d6f689db07",
+    "HEADLINE_METRICS.csv": "39c241f94caee1a963d473b6f1c441eb25bf7ce831686fe40de0ea63b5ce82c8",
+    "HEADLINE_TABLE.md": "d46988350d6aa61fef233f56cade183956ae34105590242e63510254d032a867",
+    "pooled_models_vs_benchmarks.png": "1b536af5408bcd79d70bb54a25f5bdbe520369d36731dcf2190e840ba33d0381",
+    "SEED_COMPARISON.csv": "ec9a7750389172e02d2bff19c2172ea758b36e4e3c31e5987ea9c7c1b4b6c903",
+    "SEED_TABLE.md": "c9fefc0827b4e960b753794d4e62ae4020031519c315021131cb9a65dda3fbd3",
+    "separate_cohorts_vs_benchmarks.png": "5f23475e02a7ddd4727abca93fd15d4a1971f7d421876f6fa73f3f920eaaa554"
+  }
+}

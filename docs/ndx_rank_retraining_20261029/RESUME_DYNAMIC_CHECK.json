@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "model_max_abs_error": 0.0,
+  "validation_max_abs_error": 0.0,
+  "scope": "Additional dynamic/Adam resume check; scientific model code unchanged"
+}

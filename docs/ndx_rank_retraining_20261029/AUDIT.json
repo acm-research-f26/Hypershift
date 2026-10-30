@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "fits": 120,
+  "accounts": 576,
+  "neural_ensemble_accounts": 360,
+  "individual_seed_accounts": 180,
+  "deterministic_control_accounts": 36,
+  "passing_trained_recipes": 0,
+  "max_independent_daily_error": 8.881784197001252e-16,
+  "selection": "First-half purged validation only; second half diagnostic, no test/seed selection",
+  "limits": "Bundled initialization/objective adaptation; same spent test history; no confirmation of future alpha"
+}

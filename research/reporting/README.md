@@ -6,6 +6,11 @@ builder live in `outputs/`. The repository-root `charts.md` is the master galler
 
 | Sources | Responsibility |
 | --- | --- |
+| [publish_ndx_model_guide.py](publish_ndx_model_guide.py) | Current model shortlist, plain-language explanations, and matched SPY/QQQ wealth/drawdown comparisons with benchmark replay |
+| [publish_ndx_seed_robustness.py](publish_ndx_seed_robustness.py) | Current confirmed-seed overview,63checked daily paths,all1,578account replays and164fit-lock verification |
+| [report_ndx_feature_prior_studies.py](report_ndx_feature_prior_studies.py) | Publish every shared-feature and training-prior comparison, including deterministic controls and failed candidates |
+| [report_ndx_portfolio_robustness.py](report_ndx_portfolio_robustness.py), [report_ndx_family_robustness.py](report_ndx_family_robustness.py) | Publish all fixed portfolio/shared-scorer and conditional family experiments, with matched saved wealth/drawdown paths and full failure disclosure. |
+| [plot_ndx_model_comparison_20261030.py](plot_ndx_model_comparison_20261030.py) | Replot 32 locked account paths by matched seed cohort, reconstruct metrics, and publish wealth/drawdown figures with provenance; does not retrain or change completed experiments. |
 | [publish_ndx_matched_controls.py](publish_ndx_matched_controls.py) | Publish audited QQQ/momentum controls, wealth and drawdown comparisons, and prospective-policy readiness. |
 | [update_ndx_drawdown_master.py](update_ndx_drawdown_master.py) | Prepare, audit and publish the chart-first master workbook/narrative integration and preserve existing comparison content. |
 | [publish_ndx_drawdown_research.py](publish_ndx_drawdown_research.py) | Publish all 305 audited drawdown-control recipes, matched paths, cost stresses and uncertainty. |

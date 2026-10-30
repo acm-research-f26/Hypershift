@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "accounts": 216,
+  "matching_baselines": 18,
+  "max_independent_daily_error": 8.881784197001252e-16,
+  "max_baseline_daily_error": 0.0,
+  "chronology": "Each validation outcome strictly precedes first annual test decision",
+  "primary_goal_recipes": 0,
+  "secondary_goal_recipes": 0,
+  "limitations": "Historical postprocessing of MSE-selected checkpoints; reused validation and repeatedly inspected tests; no epoch-selection experiment, new training, independent vendor or live-execution validation"
+}

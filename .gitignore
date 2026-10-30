@@ -242,3 +242,6 @@ outputs/**/*_preview.png
 outputs/**/*.inspect.ndjson
 outputs/**/workbook_inspection.json
 /outputs/model_hedge_20261027/comparison_staged.xlsx
+
+# Recreated from the pinned tom-shlom commit by the retention source stage.
+/outputs/retention_source_20261029/

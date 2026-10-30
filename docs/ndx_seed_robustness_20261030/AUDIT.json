@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "fits": 164,
+  "fit_locks": [
+    {
+      "run": "runs/ndx_portfolio_robustness_20261030_v2",
+      "fits": 60,
+      "files_checked": 1860,
+      "lock_sha256": "d2afdbec4d8010d676f75592a40ffa27cc5f83400f71568fd49e3a086332bae2"
+    },
+    {
+      "run": "runs/ndx_tabular_alpha_20261030",
+      "fits": 64,
+      "files_checked": 260,
+      "lock_sha256": "6cd80abc5fe35d4c961cacc4bfcc3425d0b290c9c250820e263a6dfacb736279"
+    },
+    {
+      "run": "runs/ndx_portfolio_robustness_20261030_v2/confirmation",
+      "fits": 40,
+      "files_checked": 1240,
+      "lock_sha256": "8feea795f6f85ee2aa02bb51885968697699d15c7ec08289280c622bb9b8166a"
+    }
+  ],
+  "accounts": 1578,
+  "completed_output_locks": 16,
+  "output_files_checked": 3905,
+  "max_independent_daily_error": 8.881784197001252e-16,
+  "displayed_accounts": 63,
+  "new_core_unit_tests_passed": 14,
+  "limits": "Accounting and saved-fit integrity; no independent vendor, live broker or untouched-market validation"
+}

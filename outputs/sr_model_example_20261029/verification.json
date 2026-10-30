@@ -1,0 +1,16 @@
+{
+  "account": "always/hedge50/original_five/c1/b0.03",
+  "date": "2022-01-03",
+  "next_rebalance": "2022-01-10",
+  "eligible_stocks": 101,
+  "basket_trailing_volatility": 0.4290803865163348,
+  "long_target": 0.46611312538375876,
+  "short_target": 0.5,
+  "full_path_sharpe": 1.4541785197214596,
+  "full_path_cagr": 0.27794400652644247,
+  "full_path_max_drawdown": -0.1456000051646471,
+  "max_saved_path_error": 0.0,
+  "example_end_nav": 1001233.2088687615,
+  "example_initial_nav": 1000000.0,
+  "scope": "Saved historical forecasts, reconstructed ranks and accounting replay. No new model training or live trades. End NAV includes January 10 rebalance costs."
+}

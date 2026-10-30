@@ -1,0 +1,13 @@
+group,account,max_daily_error
+original_five,equal5/full/original_five,0.0
+original_five,equal5/basketvol20_target20_weekly/original_five,0.0
+original_five,baseline/original_five/c1/b0.03,0.0
+original_five,always/hedge50/original_five/c1/b0.03,0.0
+new_five,equal5/full/new_five,0.0
+new_five,equal5/basketvol20_target20_weekly/new_five,0.0
+new_five,baseline/new_five/c1/b0.03,0.0
+new_five,always/hedge50/new_five/c1/b0.03,0.0
+ten_seed,equal5/full/ten_seed,0.0
+ten_seed,equal5/basketvol20_target20_weekly/ten_seed,0.0
+ten_seed,baseline/ten_seed/c1/b0.03,0.0
+ten_seed,always/hedge50/ten_seed/c1/b0.03,0.0

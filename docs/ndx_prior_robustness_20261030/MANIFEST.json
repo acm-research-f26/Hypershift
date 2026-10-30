@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-10-30T08:40:20.268440+00:00",
+  "script_sha256": "c3feccdf83ff185a6fc3b46aecdb149a4ad3e41762fece9805984f8b726a1de3",
+  "source_sha256": {
+    "runs/ndx_prior_robustness_20261030/prior13/COMPLETE.json": "0fb01b76b308e4cea9cb1352e7a6eaddd74bf2ae9bbcc56574224c906d2b9a4d",
+    "runs/ndx_prior_robustness_20261030/prior26/COMPLETE.json": "d70593b72e9a36ab77b60902faa5e20592845972f0ede3f751f46829034a4cae",
+    "runs/ndx_prior_robustness_20261030/prior52/COMPLETE.json": "132c130354fbbbea6c8fe6e956fe7c5632a365d27b310ea8dafb5026cef07735",
+    "runs/ndx_prior_robustness_20261030/prior_full/COMPLETE.json": "376f93fa93a6c7e9855844aef68858d5990e35c3983a63b7626e0878ce11c460"
+  },
+  "output_sha256": {
+    "CONSISTENCY.csv": "4e5348ad30e68d4fe983e060717ce5edf1cee6a1537a461c7d48ab0f3793f767",
+    "CONTROLS.csv": "667baa83707fd1dfd7787a638aaf8f74bc362b2d3943e9201b3287f0390ec1d4",
+    "CONTROL_METRICS.csv": "45e34ba00b80c1a0d35c248bffe7c3f25ee2558a19b46691d3a654dbde0d2140",
+    "FREEZE.json": "0cba2bf740ab83294faabb3a940d316f6f3ee4bd191a717594ee0a1935bf31a6",
+    "METRICS.csv": "14eeec9db2a581200856957dd49f7dbde3b0f0db3a579bc9c9998afa899d1608",
+    "model_comparison.png": "c4907a7326b35a51d5e45201c4cb7c2e8b59208e766805111cd46faaa19efac5",
+    "PROTOCOL.json": "cdeffe6ea4824f189e4b912df213d8459c11fbe2ca33689b724f3bb81ad448db",
+    "REPORT.md": "ff6e20f2143c014d71a2940f82b6a405442b17d319113a2b86f87a719ccdd9e6",
+    "SELECTION.json": "18113cb9a7fd679839f63fb19b98e406a82269dc5a32f4ace7c0394d6fdfdba1",
+    "TRAINING_PRIORS.csv": "2c61b7c8d344ac005b8aaf7429248f51124c935861bb4815bf27da9dd0fcc1ec"
+  }
+}

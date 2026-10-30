@@ -1,0 +1,20 @@
+{
+  "study": "Replicate tom-shlom retention and continuous QQQ hedge in feat-rs",
+  "source_commit": "fca66ed0b577444928443847a6ec7f7fe21b102a",
+  "history": "2022-2025, 1003 sessions; repeatedly inspected development history",
+  "interpretation": "Replication after published outcomes were known; not preregistered confirmation",
+  "selection": "Five securities, tie-aware equal weights; add 0.02 to each previous decision's positive target before selection; current eligibility overrides retention; never reset at year boundaries",
+  "forecast": "Existing THINK+mixer AH+PM and restricted dynamic-hypergraph forecasts; within-seed eligible-stock percentile ranks, within-family seed averages, fixed 50:50 family blend",
+  "groups": ["original_five", "new_five", "ten_seed"],
+  "rules": ["issuer", "retention"],
+  "short_caps": [0.0, 0.25, 0.5, 0.75],
+  "borrow_rates": [0.03, 0.06],
+  "transaction_cost_multipliers": [1, 2],
+  "accounts": 96,
+  "exposure": "20-session basket volatility targeting 20% annualized, at most 100% long; continuously short min(cap, 1-long, 0.20/max(QQQ 20-session annualized volatility,0.05))",
+  "timing": "Inherited 09:20 ET decisions with AH/PM bars ending by 09:15, prior-close risk/NAV/share sizing, regular-close fills, every five sessions",
+  "costs": "Inherited 0.0007 + 0.0003*sqrt(participation/0.01) per traded dollar, 1% ADV order caps, calendar-day borrow, zero cash interest/rebate, source settlement and fee-reserve rules",
+  "checks": "Regenerate blend scores and retention targets from feat-rs inputs; reproduce six equal-five and six issuer source baselines; compare all 96 source schedules, daily returns, metrics, ledgers and calendar returns; independent dollar-position replay for all 96 accounts",
+  "tolerances": {"scores_targets_daily_returns": 1e-12, "baseline_daily_returns": 1e-10, "metrics_absolute": 1e-10, "metrics_relative": 1e-12, "ledger_dollars": 1e-5},
+  "scope": "No new model training, new parameter search, 2026 scoring, trades, prospective-policy changes or replacement of existing experiment outputs"
+}

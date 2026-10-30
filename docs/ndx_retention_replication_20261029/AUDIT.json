@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "accounts": 96,
+  "baseline_daily_paths": 12,
+  "source_commit": "fca66ed0b577444928443847a6ec7f7fe21b102a",
+  "score_checks": [
+    {
+      "group": "original_five",
+      "max_score_error": 0.0
+    },
+    {
+      "group": "new_five",
+      "max_score_error": 0.0
+    },
+    {
+      "group": "ten_seed",
+      "max_score_error": 0.0
+    }
+  ],
+  "calendar_returns": 384,
+  "max_source_daily_error": 0.0,
+  "max_independent_daily_error": 8.881784197001252e-16,
+  "max_source_target_error": 0.0,
+  "max_source_ledger_dollars_error": 4.656612873077393e-10,
+  "max_source_sharpe_error": 2.220446049250313e-16,
+  "scope": "Saved-export/target/accounting reproduction; no selected-checkpoint regeneration, new training, independent vendor-data or broker-execution validation"
+}
