@@ -1,0 +1,21 @@
+{
+  "accounts": 4,
+  "days": 1003,
+  "inputs": {
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\PATHS.npz": "f19f2162bbca076b4ce3639ceaff79b10848af393d0c2023eebc43957eed223c",
+    "docs\\rishi_mechanism_20261027\\execution_batch35_coverage_fee\\ACCOUNTS.csv": "da3e3a3ecfbce7b09121bf432b10d5b495ed8f7d183ca5d661e100bbe2f98874",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_coverage_trace.py": "a5e70b15382c8eade495af9da1234b40a64d475b516baf799050af352c677a98",
+    "docs\\rishi_mechanism_20261027\\COVERAGE_STOCK_TRACE_PROTOCOL.md": "632fb93d6c07d1a40bb381874efc671c84421e4a3e83fe1f0dee57db8fa17d15",
+    "research\\analysis\\rishi_leader_trace.py": "8f3f4e554aabe4980369ed83998c9cbf17bc5f8dff5ff5c911a25fca5de8530e",
+    "research\\core\\ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_coverage6_weights.npz": "89049e23f0e6729a5bd0ecf1792a2de1c9f60781d0fa27925750d4f0a7d5cbfa",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_original_ledger.csv": "7b7fe5b78ca44688f70f4f0133a6a9423c4ae80ea3e4fa41e158102ebb252e02",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_coverage6_ledger.csv": "5c3df89add24170ab010da338e9180f2cb5c01f924a0d307db84a19d56803ee9",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_Hlabel_ten_seed.npz": "783183f6ac1d32d871383e8961476fa52291404d101480d26497a5e4694fc004",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_Hlabel_coverage6_weights.npz": "078efa27dba5ee5faed86e103e5b7d038d7007157f04a53bceb24b8ca2f0ce9b",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_Hlabel_original_ledger.csv": "43a86dbd254554ac1a50f32cba1843c3e2b3be5fc6adab4c23433a6480b6dd8a",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_Hlabel_coverage6_ledger.csv": "5a7681db604c7bdc5c57ba8c5dc5848e8bac6563365d5ef6c398d6e436c2cf8e"
+  },
+  "limits": "Reconstructed accounting attribution of selected historical accounts, not a security-removal counterfactual"
+}

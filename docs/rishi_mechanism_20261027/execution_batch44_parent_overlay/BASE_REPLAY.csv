@@ -1,0 +1,13 @@
+group,allocation,policy,daily_error,nav_error
+original_five,equal5,vol20,0.0,4.656612873077392e-16
+original_five,equal5,vol25trend,0.0,4.656612873077392e-16
+original_five,issuer5,vol20,0.0,4.656612873077392e-16
+original_five,issuer5,vol25trend,0.0,4.656612873077392e-16
+new_five,equal5,vol20,0.0,2.328306436538696e-16
+new_five,equal5,vol25trend,0.0,4.656612873077392e-16
+new_five,issuer5,vol20,0.0,2.328306436538696e-16
+new_five,issuer5,vol25trend,0.0,4.656612873077392e-16
+ten_seed,equal5,vol20,0.0,4.656612873077392e-16
+ten_seed,equal5,vol25trend,0.0,4.656612873077392e-16
+ten_seed,issuer5,vol20,0.0,4.656612873077392e-16
+ten_seed,issuer5,vol25trend,0.0,4.656612873077392e-16

@@ -1,0 +1,16 @@
+{
+  "sessions": 1003,
+  "first": "2022-01-03",
+  "last": "2025-12-31",
+  "regressions": 20,
+  "input_sha256": {
+    "data\\factors\\F-F_Research_Data_5_Factors_2x3_daily.csv": "323ee3426ffa429ea2e3dacaac85a581e3968d319817efe0b4614c5e5adfddc1",
+    "data\\factors\\F-F_Momentum_Factor_daily.csv": "d4b3e98cb5afb1533af0d4568aa816de2aadac5bbff9a590c1c65e3392d7b05b",
+    "data\\factors\\F-F_ST_Reversal_Factor_daily.csv": "1b249758e86dbbd2b5924f93f77e8de9ebf143388e3d987bf4fbe726360b8db3",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\ACCOUNT_CURVES.csv": "4412eb1db2b988807a8b3dadabba14c8dd7a8debcd992c82bab6b229517f1097",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "research\\analysis\\rishi_factor_nw.py": "e4e561d627c11c6168b8b83ec623a099ad9eb8d2e986cbcfeba790afdf2d04b0",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_multifactor.py": "1b467b983070274399f4247aa326b41a6dff96b5b29c64d302f551b9316ecaf1",
+    "docs\\rishi_mechanism_20261027\\MULTIFACTOR_PROTOCOL.md": "d47035375735ce8ed16d3474e84c21c7a9d1bf1a66401ede4278d41bfc54d150"
+  }
+}

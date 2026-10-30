@@ -1,0 +1,13 @@
+group,arm,policy,daily_error,nav_error
+original_five,original,full,0.0,4.656612873077392e-16
+original_five,original,vol20,0.0,4.656612873077392e-16
+original_five,fixed,full,0.0,4.656612873077392e-16
+original_five,fixed,vol20,0.0,4.656612873077392e-16
+new_five,original,full,0.0,4.656612873077392e-16
+new_five,original,vol20,0.0,2.328306436538696e-16
+new_five,fixed,full,0.0,4.656612873077392e-16
+new_five,fixed,vol20,0.0,4.656612873077392e-16
+ten_seed,original,full,0.0,4.656612873077392e-16
+ten_seed,original,vol20,0.0,4.656612873077392e-16
+ten_seed,fixed,full,0.0,4.656612873077392e-16
+ten_seed,fixed,vol20,0.0,4.656612873077392e-16

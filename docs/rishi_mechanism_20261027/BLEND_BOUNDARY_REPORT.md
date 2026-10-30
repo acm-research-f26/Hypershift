@@ -1,6 +1,6 @@
 # How averaging ranks changes the portfolio
 
-2026-10-27. Research_Plan Phase C. **Disposition: changed selection beyond ordinary account diversification is demonstrated under the source model; incremental learned changing information remains unresolved.** Available boundary, pooling, identity-substitution, error-covariance and fixed-bundle diagnostics are delivered here. Exact category-level traded cost attribution and a training-prediction surrogate remain open.
+2026-10-27. Research_Plan Phase C. **Disposition: changed selection beyond ordinary account diversification is demonstrated under the source model; incremental learned changing information remains unresolved.** Available boundary, pooling, identity-substitution, error-covariance and fixed-bundle diagnostics are delivered here. Later [traded-category attribution](execution_batch12_boundary/REPORT.md) partitions cost and P&L under a declared convention; the training-prediction surrogate remains open.
 
 ## The blend is a selection operation
 
@@ -8,7 +8,7 @@ Each seed's predictions are percentile-ranked over the original inference-eligib
 
 For ten-seed/top10, the blend allocates 29.30% of target weight to names selected by both standalone models, 33.76% to parent-only names, 28.30% to dynamic-only names and 8.63% to names selected by neither standalone top10. At top5, the neither-selected fraction is 16.12%. A moderately high name in both families can outrank a name extreme in only one. This directly explains how rank blending creates a new basket.
 
-The boundary stock table preserves scores, weights, observed outcomes and masks at every original origin. Category label-return summaries are frictionless, not additive traded P&L. Full account fees and issuer concentration are reconciled separately. Assigning those fees/profits to changing promotion categories needs an explicit timing convention; it has not been silently inferred from label averages.
+The boundary stock table preserves scores, weights, observed outcomes and masks at every original origin. Category label-return summaries are frictionless, not additive traded P&L. The later [traded-category analysis](execution_batch12_boundary/REPORT.md) separately assigns fees and profits under an explicit timing convention; it does not infer them from label averages.
 
 ## Ordinary return diversification is insufficient
 
@@ -39,6 +39,6 @@ Twenty five-of-ten subsets were fixed before scoring, used identically across fa
 
 ## Remaining boundary requirements
 
-The training-only Hpred replacement, within-ID changing-score controls and compact surrogate depend on regenerated original training predictions. That numerical gate is still unresolved. Exact promotion-category cost/held-exposure attribution remains distinct from the completed issuer and membership-cohort P&L partition. The existing daily primary tests and financial-fitting rules are unchanged; selected history and source execution assumptions do not establish future alpha.
+The training-only Hpred replacement, within-ID changing-score controls and compact surrogate depend on regenerated original training predictions. That numerical gate is still unresolved. The exact traded category partition is now complete under its documented fee convention: see execution_batch12_boundary/REPORT.md. Its top10 both-model category contributes 15.42 percentage points of annual arithmetic net return with 29.20% mean exposure; neither-model contributes -0.63 points with 8.62% exposure. This partitions the historical book and is not a removal experiment. The existing daily primary tests and financial-fitting rules are unchanged; selected history and source execution assumptions do not establish future alpha.
 
 Evidence: BLEND_CONTROLS.csv; execution_batch4_capital_v2/REPORT.md; execution_batch5_behavior/REPORT.md; execution_batch9_leader_trace/REPORT.md; execution_batch10_selection/REPORT.md; execution_batch11_availability/REPORT.md. See IDENTITY_REPORT.md and COMPLETION_AUDIT.md for the unchanged open requirements.

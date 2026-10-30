@@ -1,0 +1,15 @@
+{
+  "inputs": {
+    "docs\\rishi_mechanism_20261027\\execution_batch21_saved_industry\\DETAIL.csv": "53e952ebd398acb848b35901cfaac2636dffd1a38b52e595fb9cbb515f936329",
+    "docs\\rishi_mechanism_20261027\\execution_batch21_saved_industry\\SUMMARY.csv": "b76ba1bdddff31c03750cf4916382266791276a7e670ae9fc2e45b58f43947f6",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_industry_time.py": "c159fa6e1d405eadb2cea0e35e41a9bc1027d4b82ccb833d138c79e5187e8183",
+    "docs\\rishi_mechanism_20261027\\SAVED_INDUSTRY_TIME_PROTOCOL.md": "52eb0e2f4ebb3a8a02987edf0355a30b002c0145a2f9a98f0d702a8e2e57669e",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_B_ten_seed.npz": "568dd8af251b262ee5af6d93b740dffe5ee2b07765d2ce6bb053aed8ffba8f5f",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_D_ten_seed.npz": "7303a593295720f6ad84f2ea6e2e2e00863200febc5487f82e944fc1decc9acb",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_Hlabel_ten_seed.npz": "f44e06a174cdd90639c25f89f7de2cba9ac9f24a42953392fee75e0c2beac0ea",
+    "research\\analysis\\rishi_saved_industry.py": "87d23e3eca28b1f9598cf5b32ddf0ab58205b8c254fec4718e19bfc21a80b836"
+  },
+  "rows": 804,
+  "limits": "First-origin SIC frozen for the year, new IDs unclassified; saved-score description only"
+}

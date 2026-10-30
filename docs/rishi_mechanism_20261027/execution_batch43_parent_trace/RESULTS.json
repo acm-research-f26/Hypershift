@@ -1,0 +1,28 @@
+{
+  "accounts": 6,
+  "target_change_rows": 717,
+  "input_sha256": {
+    "results\\RISHI_EXTENDED_PARENT_BLEND_20261028\\PATHS.npz": "4e255a2d3017ce926b3736faff032fb3b0f0ac4c4a7f32d75afcdc675f93abdb",
+    "results\\RISHI_EXTENDED_PARENT_BLEND_20261028\\TARGETS.npz": "e4d9c1d4add2a6922b7f91313cfeabe068275c86f9d94d67759f4b01b5c0ef18",
+    "docs\\rishi_mechanism_20261027\\execution_batch42_extended_parent\\CONTRASTS.csv": "9d3f155d0926a9e3073c6d48d9564094cb765e2dd14ce363dc50f4b71b62d871",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_extended_parent_trace.py": "79cef4637db6b5eda59535596f729152016d86f14df7eed37fc0f32c4860c48e",
+    "docs\\rishi_mechanism_20261027\\EXTENDED_PARENT_TRACE_PROTOCOL.md": "3b26af7c99c6859b43fe4ed602c531d5e808e1dbddbca375ac9bb781148219ce",
+    "research\\analysis\\rishi_leader_trace.py": "8f3f4e554aabe4980369ed83998c9cbf17bc5f8dff5ff5c911a25fca5de8530e",
+    "research\\core\\ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research\\core\\pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+    "research\\core\\research_engine.py": "82406389f66ae2e6b2c541a58517d5a1dba3308aba3397e3e02f44923ae95c80",
+    "data\\nasdaq_monthly_pit\\assembled\\manifest.json": "93fbae4b143f3dd742535c25aff4d3ae7d733f1bb8e027276ed5c6b525b79abe",
+    "data\\nasdaq_monthly_pit\\assembled\\economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data\\nasdaq_monthly_pit\\assembled\\dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data\\nasdaq_monthly_pit\\assembled\\tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "data\\nasdaq_monthly_pit\\assembled\\membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "results\\RISHI_EXTENDED_PARENT_BLEND_20261028\\daily__ten_seed__k5_ledger.csv": "3a68ee5982129ceac38ae3ec45873aaad0cde6175d70bb11d9b2425a1a1bce51",
+    "results\\RISHI_EXTENDED_PARENT_BLEND_20261028\\after_hours__ten_seed__k5_ledger.csv": "e72ea7ddd19a84d4cb0a866c8182060cc3c140d042a113b2038c59b34907931f",
+    "results\\RISHI_EXTENDED_PARENT_BLEND_20261028\\after_hours_premarket__ten_seed__k5_ledger.csv": "0742098e38e2a8dd61fd7f73d47fec93ff63c54155ae1c4a89184baac81b3d61",
+    "results\\RISHI_EXTENDED_PARENT_BLEND_20261028\\daily__ten_seed__k10_ledger.csv": "511973ebffa8cf04fc412ff221e6afbe38276fef55f24f0d593b58fe5ff77a8b",
+    "results\\RISHI_EXTENDED_PARENT_BLEND_20261028\\after_hours__ten_seed__k10_ledger.csv": "5fc64f563d2272ddb86c276339f3c9850a75f3774e0ce27698efea578ecd14ee",
+    "results\\RISHI_EXTENDED_PARENT_BLEND_20261028\\after_hours_premarket__ten_seed__k10_ledger.csv": "7b7fe5b78ca44688f70f4f0133a6a9423c4ae80ea3e4fa41e158102ebb252e02"
+  },
+  "limits": "Post-hoc saved-account attribution, not a causal AH/PM feature intervention"
+}

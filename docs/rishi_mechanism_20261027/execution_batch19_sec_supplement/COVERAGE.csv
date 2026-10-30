@@ -1,0 +1,3 @@
+year,baseline_matches,new_matches,combined_matches,unresolved,supplement_statuses
+2024,81,17,98,3,"{'matched': 17, 'ticker_not_tagged': 1, 'missing_or_ambiguous_sic': 1, 'no_current_candidate': 1}"
+2025,79,21,100,1,"{'matched': 21, 'missing_or_ambiguous_sic': 1}"

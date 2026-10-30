@@ -1,0 +1,15 @@
+{
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\original_five__original__full_ledger.csv": "321b165c136cd489bcdf811053c34cac6a7ab83c671a348ade5ff96f72cd6e2a",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\original_five__fixed__full_ledger.csv": "d822013e3b110b13cd775b49f3e154c27a8a5052dc3e4d9c8011c0c2025ec35d",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\original_five__original__vol20_ledger.csv": "54e97bfb90894bc4fcd9968edf669b0b508be69f1bb2f0c7208210368d53c218",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\original_five__fixed__vol20_ledger.csv": "5ab7c8d0bc9c3d9073b5efb63e0764b7af6a6e0fc7a297995024618bb34ea4a4",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\new_five__original__full_ledger.csv": "7bdc70047bf583cb41f8a65b9cbd057e380024203e87103977a3fface267729b",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\new_five__fixed__full_ledger.csv": "de76e9653d33a659d1e1923a0347f25cdb9f4d0257c8771d7e4adab57acdcbb3",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\new_five__original__vol20_ledger.csv": "848fbca54654001fa1b64cd827ca6a11449c668dd4c3056afba6dc3b0cf60b13",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\new_five__fixed__vol20_ledger.csv": "b6cada8c2fe9348f63c51f80905143261bbcb345dd2cd0f4fce22b2a2f702714",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\ten_seed__original__full_ledger.csv": "71afec68cebab8984b8b7fdc02376ff60897bf84dbd07e21aa7c46e6b0e54f62",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\ten_seed__fixed__full_ledger.csv": "0b55b5424fabcd1336b4dee5e3c17b9646456d316b45360306e954842be43f53",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\ten_seed__original__vol20_ledger.csv": "16302a251061a23fce1105d8ccfcc0e679cbcb9ea49e7e014c213dec71a08f30",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\ten_seed__fixed__vol20_ledger.csv": "4f48b61afc5a7045a544d1f21b6513f08058eba7de2c7855182b5faf5e7cf655",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\PATHS.npz": "6d0bb2357fb49b16bb4d2f308aeac738d573582001469d26fc17a0740d2ff4d8"
+}

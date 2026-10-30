@@ -1,0 +1,19 @@
+# Does the blend need the extended-hours parent?
+
+In the fixed ten-seed, top-ten comparison, replacing the parent trained with after-hours **and** premarket inputs with the separately trained daily-only parent did **not** reduce historical point performance of the blend. The daily-parent blend had **25.82% CAGR / 0.800 Sharpe**, versus **23.92% / 0.755** for the original AH+PM-parent blend. The paired return difference is uncertain: AH+PM minus daily was **−1.59 percentage points/year**, with a 95% block-21 interval of **[−4.95, +1.47] points**. This is not evidence of equivalence or a future performance claim.
+
+Protocol 0324d29 and code d471fb5 were fixed before these new account results. All comparisons retain the same saved dynamic-family ranks, 50:50 family weights, original eligibility, source top-k selection, $1m execution, modeled costs and zero-interest cash. Only the separately trained **parent** forecast view changes.
+
+| Parent in the ten-seed blend | Top-ten CAGR | Sharpe | Max drawdown | AH+PM blend minus this view, annual arithmetic net mean | 95% block-21 interval |
+|---|---:|---:|---:|---:|---:|
+| Daily only | 25.82% | 0.800 | -30.69% | -1.59 pp | [-4.95, +1.47] pp |
+| Daily + after-hours | 24.20% | 0.762 | -34.66% | -0.24 pp | [-2.33, +1.78] pp |
+| Daily + after-hours + premarket | 23.92% | 0.755 | -34.88% | — | — |
+
+The top-ten daily-parent blend shares an average **9.38 of 10 names** and **93.57% target weight** with the AH+PM-parent blend; the AH-only parent shares 9.71 names and 96.88% weight. This helps explain why the account paths can be similar, but overlap does not establish that the extra inputs contain no information. Both primary paired intervals include zero and extend beyond the proposed ±2 pp/year equivalence margin. Original-five/new-five and top-five results, block-5/63 sensitivities, turnover, fees and calendar paths are retained; these groups share the same market history.
+
+**Scope matters:** the dynamic family in all three blends still consumes AH/PM inputs. Thus the daily-parent blend is **not a daily-only system**. The parent views were separately trained, so their difference is a package comparison that can include changes in the trained core as well as the auxiliary branch. It cannot isolate a specific price channel from activity/coverage or prove the direct causal value of extended hours. The source standalone parent study likewise reported AH+PM minus daily **+0.74 pp/year [-3.10, +4.39]** under its own block-20 method; it does not settle this different blend comparison. Both studies use repeatedly inspected 2022–2025 development history, and original first-provider publication timing remains unverified.
+
+All **120** parent seed/fold prediction files match their source lock. All nine parent view/group rank ensembles and the existing AH+PM parent/blend score arrays reproduce; the six original blend paths reproduce within 1e-16 daily return and 4.66e-16 normalized NAV before other views are scored. An independent SciPy-rank audit verified all **3,618** target allocations, 18 account metrics/NAV paths and 36 paired mean intervals; score error was zero, maximum normalized NAV error 1.22e-14 and interval error 9.72e-17. Its first attempt used a different floating-point accumulation order and changed a boundary tie; reproducing the source's mean-after-ranking order restored exact score and target parity. No account was altered. Eleven focused source feature, ranking, component and execution tests passed.
+
+All account/contrast/calendar/overlap tables and input hashes are here; scores, weights, daily paths and ledgers are in ignored `results/RISHI_EXTENDED_PARENT_BLEND_20261028/`. No new neural fitting, checkpoint inference, protected-window scoring or change to the original primary gate occurred.

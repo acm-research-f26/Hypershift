@@ -1,0 +1,14 @@
+{
+  "inputs": {
+    "docs\\rishi_mechanism_20261027\\execution_batch15_dated_sic\\ELIGIBLE_JOIN.csv": "40ca34f3518766d2bc099fb353fbd12159f7fff1dbf8f06f1eef544824e12ce1",
+    "docs\\rishi_mechanism_20261027\\execution_batch20_sec_combined\\JOINED.csv": "4e63dbecbdfdbd86b620455a6570b506c474bb21fc0a5fb060781f8320628de7",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_saved_industry.py": "87d23e3eca28b1f9598cf5b32ddf0ab58205b8c254fec4718e19bfc21a80b836",
+    "docs\\rishi_mechanism_20261027\\SAVED_RANK_INDUSTRY_PROTOCOL.md": "2a3f9698686853ccacd4afeb4e7939cbdbdccd24c230abf7d49e1313146a8de0",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_B_ten_seed.npz": "568dd8af251b262ee5af6d93b740dffe5ee2b07765d2ce6bb053aed8ffba8f5f",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_D_ten_seed.npz": "7303a593295720f6ad84f2ea6e2e2e00863200febc5487f82e944fc1decc9acb",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_Hlabel_ten_seed.npz": "f44e06a174cdd90639c25f89f7de2cba9ac9f24a42953392fee75e0c2beac0ea",
+    "research\\core\\pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b"
+  },
+  "limits": "One-origin exploratory saved-score description, not causal or checkpoint training-prediction analysis"
+}

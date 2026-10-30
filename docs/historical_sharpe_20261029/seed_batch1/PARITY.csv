@@ -1,0 +1,10 @@
+group,recipe,max_error
+original_five,ret75,0.0
+original_five,ret50,0.0
+original_five,issuer75,0.0
+new_five,ret75,0.0
+new_five,ret50,0.0
+new_five,issuer75,0.0
+ten_seed,ret75,0.0
+ten_seed,ret50,0.0
+ten_seed,issuer75,0.0

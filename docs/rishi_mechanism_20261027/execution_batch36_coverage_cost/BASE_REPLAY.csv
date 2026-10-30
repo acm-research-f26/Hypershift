@@ -1,0 +1,5 @@
+model,arm,daily_error,relative_nav_error
+E,original,0.0,4.656612873077392e-16
+E,coverage6,0.0,2.328306436538696e-16
+E_Hlabel,original,0.0,4.656612873077392e-16
+E_Hlabel,coverage6,0.0,2.328306436538696e-16

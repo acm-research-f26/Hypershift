@@ -1,0 +1,17 @@
+{
+  "accounts": 4,
+  "pairs": 2,
+  "days": 1003,
+  "inputs": {
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\PATHS.npz": "f19f2162bbca076b4ce3639ceaff79b10848af393d0c2023eebc43957eed223c",
+    "docs\\rishi_mechanism_20261027\\execution_batch34_industry_coverage\\PAIRED_CONTRASTS.csv": "e153eb359417d76fef3dd5140c6dfe5e5ba2142466fa63b3b159174af79f637a",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_coverage_fee.py": "0728204c89c9b4a7cc93773b067785774c79918d6575637cc8a8d49bfb9787f0",
+    "docs\\rishi_mechanism_20261027\\COVERAGE_FEE_ATTRIBUTION_PROTOCOL.md": "559c5c4f9cf32db644f003fe5f377ab1412f6fcf5df2ecca04572f21d582581a",
+    "research\\analysis\\rishi_mechanism_batch1.py": "ca77e703da380f2621e218ec85f6f9643fecc220afee976f8db967518f19c9f8",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_original_ledger.csv": "7b7fe5b78ca44688f70f4f0133a6a9423c4ae80ea3e4fa41e158102ebb252e02",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_coverage6_ledger.csv": "5c3df89add24170ab010da338e9180f2cb5c01f924a0d307db84a19d56803ee9",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_Hlabel_original_ledger.csv": "43a86dbd254554ac1a50f32cba1843c3e2b3be5fc6adab4c23433a6480b6dd8a",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_Hlabel_coverage6_ledger.csv": "5a7681db604c7bdc5c57ba8c5dc5848e8bac6563365d5ef6c398d6e436c2cf8e"
+  },
+  "limits": "Fee accounting on fee-affected positions, not a no-fee replay"
+}

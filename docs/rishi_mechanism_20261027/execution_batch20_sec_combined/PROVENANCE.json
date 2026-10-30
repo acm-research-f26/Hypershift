@@ -1,0 +1,12 @@
+{
+  "inputs": {
+    "docs\\rishi_mechanism_20261027\\execution_batch17_sec_preference\\JOINED.csv": "d5817bf8cfc5c28671e21654c5d2e005dcd8650e989a0295251745429263e16c",
+    "docs\\rishi_mechanism_20261027\\execution_batch19_sec_supplement\\RECEIPTS.csv": "3a37280dc6c3355f2bdfd53dff1a1ef1f3f86156aafee7ce19eacb6f390303b0",
+    "docs\\rishi_mechanism_20261027\\execution_batch19_sec_supplement\\AUDIT.json": "31db93638384812b6f2155229284047e8b3eb2b9789c3f119e0c8cba0e224da7",
+    "docs\\rishi_mechanism_20261027\\execution_batch17_sec_preference\\SUMMARY.csv": "0f6f0194b40e8e2ef1a041742a727c4a1c42d3441c4ec6370a426abde4ff3502",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_sec_combined.py": "8ee65d1b39282bb44a5a9842ce7a5a81fa985f0a1be62c2cd61a62d32893169c",
+    "docs\\rishi_mechanism_20261027\\SEC_COMBINED_PREFERENCE_PROTOCOL.md": "7ad24de608274e181698917c3dd7ce8e278675ade48b43a204eadce7189098e4",
+    "research\\analysis\\rishi_dated_sic.py": "a8fbd93209bf988d55aeb98a8ef5bc620bcfe28b992619d8ef10633cd8875a85"
+  },
+  "scope": "Hlabel ranks, not neural predictions or financial returns; no independent NDX identity certification"
+}

@@ -1,0 +1,11 @@
+{
+  "data\\factors\\F-F_Research_Data_5_Factors_2x3_daily.csv": "323ee3426ffa429ea2e3dacaac85a581e3968d319817efe0b4614c5e5adfddc1",
+  "data\\factors\\F-F_Momentum_Factor_daily.csv": "d4b3e98cb5afb1533af0d4568aa816de2aadac5bbff9a590c1c65e3392d7b05b",
+  "data\\factors\\F-F_ST_Reversal_Factor_daily.csv": "1b249758e86dbbd2b5924f93f77e8de9ebf143388e3d987bf4fbe726360b8db3",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\PATHS.npz": "6d0bb2357fb49b16bb4d2f308aeac738d573582001469d26fc17a0740d2ff4d8",
+  "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+  "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_validation_fixed_factor.py": "ffa9faf7e1ebf860c6ca00cf234aeae2e54fb7505d66dec1769a76afe3831526",
+  "research\\analysis\\rishi_factor_nw.py": "e4e561d627c11c6168b8b83ec623a099ad9eb8d2e986cbcfeba790afdf2d04b0",
+  "research\\analysis\\rishi_multifactor.py": "1b467b983070274399f4247aa326b41a6dff96b5b29c64d302f551b9316ecaf1",
+  "docs\\rishi_mechanism_20261027\\VALIDATION_FIXED_FACTOR_PROTOCOL_20261029.md": "6234f41a385861c8578e409bfc2f287ed815a5efbabc9f5ad023f91db4795884"
+}

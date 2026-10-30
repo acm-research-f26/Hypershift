@@ -1,0 +1,11 @@
+{
+  "targets": 3618,
+  "accounts": 36,
+  "mean_intervals": 72,
+  "max_nav_error": 1.5832483768463135e-14,
+  "max_metric_error": 2.220446049250313e-16,
+  "max_target_exposure_error": 1.1102230246251565e-16,
+  "max_interval_error": 9.8879238130678e-17,
+  "paths_sha256": "4d784833d9206504559ee0c3ad01513d4233cbb3ab4a8f7682e2ea0602d14bb9",
+  "targets_sha256": "277fafc6d0397a4974111f8d34b4b0fe9d3ce3af0e6424d413042e8118b83fa5"
+}

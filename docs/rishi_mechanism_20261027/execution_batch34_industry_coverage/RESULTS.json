@@ -1,0 +1,22 @@
+{
+  "accounts": 2,
+  "group_constraints": 4420,
+  "max_group_error": 2.220446049250313e-16,
+  "input_sha256": {
+    "docs\\rishi_mechanism_20261027\\execution_batch21_saved_industry\\DETAIL.csv": "53e952ebd398acb848b35901cfaac2636dffd1a38b52e595fb9cbb515f936329",
+    "docs\\rishi_mechanism_20261027\\execution_batch21_saved_industry\\SUMMARY.csv": "b76ba1bdddff31c03750cf4916382266791276a7e670ae9fc2e45b58f43947f6",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\ACCOUNT_CURVES.csv": "4412eb1db2b988807a8b3dadabba14c8dd7a8debcd992c82bab6b229517f1097",
+    "docs\\rishi_mechanism_20261027\\execution_batch2_exports\\COMPARATOR_FALLBACKS.csv": "abf70b7e801ae8fda2802a18fd830aa9ae0f5e08f65032835ba2646d5afad230",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_industry_coverage.py": "2dc1618fdfc9b21523ba20d446ec5d0ee8779ade1341db3bec88644aecd5de43",
+    "docs\\rishi_mechanism_20261027\\INDUSTRY_COVERAGE_CONTROL_PROTOCOL.md": "a8b67a2e4301fdd34474e02dca4a682ceafc438d548b08f799afdf0f3e53f50d",
+    "research\\core\\ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research\\analysis\\rishi_industry_sparse.py": "7d7364831c34c03ea0ab20d3a0f70cff0416a140f6d8ca90ee0efe9145838855",
+    "research\\analysis\\rishi_industry_simple.py": "f1095f66145e185dfe1c199420ce42e20e9c9ec1546cf615d427e155af5d14cf",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\ledger_E_ten_seed_10.csv": "e59a9cf700e4bf826b36048525e53933088db447dbfdc27298dd90752203e81f",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_Hlabel_ten_seed.npz": "783183f6ac1d32d871383e8961476fa52291404d101480d26497a5e4694fc004",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\ledger_E_Hlabel_ten_seed_10.csv": "cef04c9ee98e581f0028d3b2478b7622614665df642b8ea51a9151ec4697201e",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_coverage6_ten_seed.npz": "74ccf063fb57f1fa969bc6cf0c13ad580bd6e8b6cefafb7db946ad6754c3cb27"
+  },
+  "limits": "Exploratory within-industry simple-signal controls, not neural causation or original mechanism gate"
+}

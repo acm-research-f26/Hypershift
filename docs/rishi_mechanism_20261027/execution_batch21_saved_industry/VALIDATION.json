@@ -1,0 +1,11 @@
+{
+  "independent_checks": "scipy rankdata, variance partition and unclassified top-k weights for all 16 model/year cells; all four Hlabel fractions match prior analyses",
+  "csv_parser": "pandas float_precision=round_trip required to preserve exact score ties",
+  "initial_default_parser": "failed rank consistency; preserved in progress, no results changed",
+  "output_sha256": {
+    "DETAIL.csv": "53e952ebd398acb848b35901cfaac2636dffd1a38b52e595fb9cbb515f936329",
+    "SUMMARY.csv": "b76ba1bdddff31c03750cf4916382266791276a7e670ae9fc2e45b58f43947f6",
+    "INDUSTRY_RANKS.csv": "02200fc09b116824b16ca1465714613b50fc4dc84662471251996d1b129f17ef",
+    "TARGET_INDUSTRY_MASS.csv": "d28fb4e068f7792476b7bb530ebe3fe0e03e38b666f46622e405af6a312f9fa5"
+  }
+}

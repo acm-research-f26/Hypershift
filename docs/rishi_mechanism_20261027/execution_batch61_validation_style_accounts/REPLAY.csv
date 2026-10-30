@@ -1,0 +1,13 @@
+group,kind,arm,daily_error,nav_error
+original_five,issuer5,original,0.0,4.656612873077392e-16
+original_five,issuer5,fixed,0.0,4.656612873077392e-16
+original_five,equal10,original,0.0,4.656612873077392e-16
+original_five,equal10,fixed,0.0,4.656612873077392e-16
+new_five,issuer5,original,0.0,2.328306436538696e-16
+new_five,issuer5,fixed,0.0,4.656612873077392e-16
+new_five,equal10,original,0.0,2.328306436538696e-16
+new_five,equal10,fixed,0.0,2.328306436538696e-16
+ten_seed,issuer5,original,0.0,4.656612873077392e-16
+ten_seed,issuer5,fixed,0.0,4.656612873077392e-16
+ten_seed,equal10,original,0.0,4.656612873077392e-16
+ten_seed,equal10,fixed,0.0,4.656612873077392e-16

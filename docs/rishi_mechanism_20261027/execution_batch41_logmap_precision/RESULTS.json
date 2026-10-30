@@ -1,0 +1,42 @@
+{
+  "environment": {
+    "device": "cuda",
+    "torch": "2.14.0+cu130",
+    "cuda_build": "13.0",
+    "deterministic_algorithms": true,
+    "precision": "float32, no AMP; TF32 disabled for CUDA",
+    "cublas_workspace_config": ":4096:8",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "gpu_memory_bytes": 4294443008,
+    "compute_capability": "8.6",
+    "cudnn_version": 92400
+  },
+  "eligible_cells": 714,
+  "max_saved_error": 0.00151824951171875,
+  "reference": {
+    "origin": 186,
+    "security_id": "ADBE",
+    "cpu_endpoint": 0.9999783039093018,
+    "cuda_endpoint": 0.9999783635139465,
+    "radius": 0.9999783635139465,
+    "band": ".9999-.99999",
+    "clipped": false,
+    "raw_delta": 5.960464477539063e-08,
+    "mapped_delta": 0.0013755315872669982,
+    "base_delta": 0.0013756752014160156,
+    "unclipped_derivative": 23109.362950362993,
+    "saved_error": 0.00151824951171875
+  },
+  "inputs": {
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_logmap_precision.py": "0355c4d013b2abeca604d92bb396da0b3c7adfacb7d93786b6ae51a39a06c771",
+    "docs\\rishi_mechanism_20261027\\LOGMAP_PRECISION_PROTOCOL.md": "1643b5bce2395a3e9980f84156e16ac187863af0c5d53d3b04d18482e2d1bba9",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\runs\\ndx_extended_hours_20261024\\after_hours_premarket\\2022\\7.pt": "7f4108a84cce7b6217cfe8945a18bc0810ea8641021ecd9205e98189e7fc7de8",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\runs\\ndx_extended_hours_20261024\\after_hours_premarket\\2022\\7_predictions.npz": "f39ac23618760c6a67ab22febfb3740fd6c338385ee3e44a7f54914ff3f58073",
+    "results\\RISHI_SOURCE_DEVICE_TRACE_LOCAL_20261028_V2\\FORECASTS.npz": "daf12d3baa0afd16950c395004859c3d07c509244c59a9c4353606749f71ab04",
+    "results\\RISHI_SOURCE_DEVICE_TRACE_LOCAL_20261028_V2\\ACTIVATIONS.npz": "33264c157c388004343bdb172bdb62e2e9f8f5f8cf0b03c467be80cc68700bf3",
+    "results\\RISHI_SOURCE_DEVICE_TRACE_LOCAL_20261028_V2\\TRACE.json": "28a2adf92413c1dc528d869bba534cbdc3ef08333cef05a441a9b0d778ed5ffb",
+    "research\\models\\think_model.py": "ee05058dba2be85fc6bde6d768a5f6397e078108037717dc5512c5dac7da85bb",
+    "research\\models\\ndx_extended_hours.py": "a1e1c9d23fa80c54c19f6dc3f061327a25183b2f6f15c23fdd96aae4d98d2ef9"
+  },
+  "limits": "Local numerical diagnosis only; original checkpoint acceptance unchanged"
+}

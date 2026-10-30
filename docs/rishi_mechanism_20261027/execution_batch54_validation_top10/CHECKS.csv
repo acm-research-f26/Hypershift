@@ -1,0 +1,7 @@
+group,kind,daily_error,nav_error
+original_five,saved_1x,0.0,4.656612873077392e-16
+original_five,independent_2x,6.661338147750939e-16,
+new_five,saved_1x,0.0,2.328306436538696e-16
+new_five,independent_2x,5.551115123125783e-16,
+ten_seed,saved_1x,0.0,4.656612873077392e-16
+ten_seed,independent_2x,5.551115123125783e-16,

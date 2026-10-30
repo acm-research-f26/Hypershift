@@ -1,0 +1,31 @@
+{
+  "receipts": 42,
+  "matches_verified": 38,
+  "current_list_sha256": "0c60eaeaedf80271b15c48d5d94998b98e9faca9bd0f203d0b825d0c0a73de1f",
+  "coverage": [
+    {
+      "year": 2024,
+      "baseline_matches": 81,
+      "new_matches": 17,
+      "combined_matches": 98,
+      "unresolved": 3,
+      "supplement_statuses": {
+        "matched": 17,
+        "ticker_not_tagged": 1,
+        "missing_or_ambiguous_sic": 1,
+        "no_current_candidate": 1
+      }
+    },
+    {
+      "year": 2025,
+      "baseline_matches": 79,
+      "new_matches": 21,
+      "combined_matches": 100,
+      "unresolved": 1,
+      "supplement_statuses": {
+        "matched": 21,
+        "missing_or_ambiguous_sic": 1
+      }
+    }
+  ]
+}

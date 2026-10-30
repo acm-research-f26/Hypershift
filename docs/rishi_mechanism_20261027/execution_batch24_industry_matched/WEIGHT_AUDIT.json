@@ -1,0 +1,11 @@
+{
+  "sha256": {
+    "results\\RISHI_INDUSTRY_MATCHED_20261028\\E_weights.npz": "35e8fbfa740a392ae829e3d9b5e4c06ece916e573d44834e0a0b7d0249820ccb",
+    "results\\RISHI_INDUSTRY_MATCHED_20261028\\E_Hlabel_weights.npz": "269224d4021a9aa3db3582edc3882dd53e87cabcc5da8ec05be293716dc4ed99"
+  },
+  "max_sum_errors": {
+    "results\\RISHI_INDUSTRY_MATCHED_20261028\\E_weights.npz": 4.440892098500626e-16,
+    "results\\RISHI_INDUSTRY_MATCHED_20261028\\E_Hlabel_weights.npz": 2.220446049250313e-16
+  },
+  "post_scoring_guard_fix": "no change to saved weights or account paths"
+}

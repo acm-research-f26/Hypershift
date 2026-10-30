@@ -1,0 +1,10 @@
+{
+  "rows": 1608,
+  "input_sha256": {
+    "docs\\rishi_mechanism_20261027\\execution_batch2_exports\\TRAINING_SUPPORT.csv": "9d907b9820538d93c6b75a7473a726a762da7727a51a134edc45b644503eb9d5",
+    "docs\\rishi_mechanism_20261027\\execution_batch2_exports\\COMPARATOR_FALLBACKS.csv": "abf70b7e801ae8fda2802a18fd830aa9ae0f5e08f65032835ba2646d5afad230",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_industry_simple_fallback.py": "b07aafea027260d25ba2f49447b965bddc979b8bdbb583b87796468bbb9e3a3f",
+    "research\\core\\pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b"
+  },
+  "definition": "Hlabel below 30 training labels; REV5/MOM126 unavailable raw scores; ridge source reports zero"
+}

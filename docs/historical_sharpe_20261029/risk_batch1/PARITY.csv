@@ -1,0 +1,7 @@
+group,rule,max_error
+original_five,equal,0.0
+original_five,retention,0.0
+new_five,equal,0.0
+new_five,retention,0.0
+ten_seed,equal,0.0
+ten_seed,retention,0.0

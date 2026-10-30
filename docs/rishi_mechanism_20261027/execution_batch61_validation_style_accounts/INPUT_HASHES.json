@@ -1,0 +1,10 @@
+{
+  "docs\\rishi_mechanism_20261027\\execution_batch58_validation_style_partial\\COMMON_STOCKS.csv": "7a727b324797c45d1ff2c71ee38b18ccd9fe70a767771d53c80d2dadeec08e4d",
+  "docs\\rishi_mechanism_20261027\\execution_batch60_validation_style_overlap\\ORIGINS.csv": "a47d91fdce82348f5a91af49db4dae57b41f0f518e1a79dd6aae4d4fecb508e1",
+  "docs\\rishi_mechanism_20261027\\VALIDATION_SIMPLE_STYLE_ACCOUNTS_PROTOCOL_20261029.md": "aeaf56379485417489edf1439637fc8aee837599a4163a110a4aae87ea001ed3",
+  "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_validation_simple_style_accounts.py": "8caec681ff8da0f4c0f896764ed3744f8e1252f8f834d825145e63bcb63f4a95",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\TARGETS.npz": "ae99d4a46b5e899f195e1ed8c5635a4e00f9035326183c40d740b84b2ae6ca2b",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\PATHS.npz": "6d0bb2357fb49b16bb4d2f308aeac738d573582001469d26fc17a0740d2ff4d8",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\TARGETS.npz": "b814e828fb6e438a8998e564a4cf4d969f2e73b6ffad84384480482a6367cc3a",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\PATHS.npz": "e0508991ccceddd2e8e1a0f1aa0d5ee591cbcc76e57b2fd2953b246cafbbc6e8"
+}

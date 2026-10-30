@@ -1,0 +1,15 @@
+{
+  "verified_matched_rows": 157,
+  "invalid_matches": 0,
+  "between_fraction_independent_recalculation": "passed",
+  "additional_input_sha256": {
+    "data\\nasdaq_monthly_pit\\assembled\\manifest.json": "93fbae4b143f3dd742535c25aff4d3ae7d733f1bb8e027276ed5c6b525b79abe",
+    "data\\nasdaq_monthly_pit\\assembled\\economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data\\nasdaq_monthly_pit\\assembled\\dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data\\nasdaq_monthly_pit\\assembled\\tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "data\\nasdaq_monthly_pit\\assembled\\membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "research\\core\\pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+    "docs\\rishi_mechanism_20261027\\execution_batch2_exports\\TRAINING_SUPPORT.csv": "9d907b9820538d93c6b75a7473a726a762da7727a51a134edc45b644503eb9d5"
+  }
+}

@@ -1,6 +1,8 @@
 # Why Rishi's models and portfolios perform: investigation and research plan
 
-**Date:** October 27, 2026. **Status:** initial investigation and context smoke tests complete; proposed full mechanism experiments have not been executed.
+**Date:** October 27, 2026. **Status updated October 29:** initial investigation, saved-output replay and substantial fixed attribution tests are complete; the full mechanism program is not complete. See [MEETING_BRIEF_20261029.md](MEETING_BRIEF_20261029.md) for the meeting synthesis, [MECHANISM_MAP.md](MECHANISM_MAP.md) for current evidence and [COMPLETION_AUDIT.md](COMPLETION_AUDIT.md) for remaining gates. Earlier sections below retain their original planning and smoke-test context.
+
+**After-meeting continuation:** first document the team's decisions. The original-machine trace is deferred at the user's request, and the strict checkpoint reproduction criterion remains unmet. Hpred, changing-score and trained-checkpoint interventions remain gated; financial retraining also requires the separately specified evidence and resource gates, which have not passed. The completed validation-preference controls are useful descriptive comparisons, not replacements for training Hpred. Historical NDX results remain exploratory; source publication timing, security identity and real execution remain unresolved. A prospective candidate, protected-window use, capital and external messages require their separate authorization and must not be inferred from this plan.
 
 **Goal:** determine which information, learned behavior and investment rules generate the reported returns, how much each contributes, and which explanation survives matched controls.
 
@@ -13,6 +15,20 @@
 **Scope:** Rishi source snapshot `d474406`, merged into `tom-shlom`; source/summary inspection and the bounded diagnostics below. No financial model training, 2026 strategy scoring, prospective activation or trading was performed. This is a research plan, not a preregistered performance claim or permission to run every proposed experiment.
 
 **Execution update:** the user's subsequent “after you finish the plan, start testing” authorizes beginning available tests. `EXECUTION_PROTOCOL.md` freezes the first bounded batch and prioritizes artifact replay plus blend/identity/risk attribution before conditional retraining. Different blend weights are omitted. The original analysis/evidence statements below describe the completed initial investigation; execution results are versioned separately in `execution_batch1/`.
+
+## Current synthesis — October 29 continuation
+
+The artifacts that were missing during the initial smoke tests were subsequently published and examined. Saved forecasts and simulated accounts have been independently replayed, and the published daily and extended-hours input arrays have been reconstructed from their available source files. These checks establish internal reproducibility within their stated scopes; they do not establish original provider publication times, historical identity correctness, actual execution, or numerical regeneration of every selected trained checkpoint. See [completion audit](COMPLETION_AUDIT.md) for the distinct evidence levels.
+
+The most defensible current explanation is a combination of portfolio construction and persistent stock preferences, with the trained networks' incremental information still unresolved. The searched volatility overlay increased the ten-seed issuer-limited historical Sharpe from 0.925 to 1.112 while lowering CAGR from 33.37% to 26.81%; matched risk tests show that similar rules can also improve several simpler portfolios. This is evidence about simulated allocation on selected history, not an isolated contribution of learned forecasting. [Risk attribution](RISK_ATTRIBUTION_REPORT.md) describes the matched comparisons and uncertainty.
+
+A fixed preference based on the checkpoint-selection validation fold achieved 26.71% CAGR and 1.080 Sharpe in the five-issuer volatility-targeted account, versus 26.81% and 1.112 for the changing-score model. Their annual mean return difference was -0.05 percentage points, with a wide 95% interval [-6.77, +6.99]. This neither establishes equivalence nor proves that changing scores add nothing. The fixed control is validation-selected and is not the planned training-prediction identity control. See [fixed-validation accounts](execution_batch49_validation_account/REPORT.md) and [top-ten comparison](execution_batch54_validation_top10/REPORT.md).
+
+Preferences have descriptive associations with liquidity and market beta, and a simple liquidity ranking overlaps much of the fixed basket. For five issuers, fixed validation beat that liquidity control historically; for ten full-exposure holdings, the direction reversed. The difference persists at zero modeled fees and shifts little under 2x/4x modeled cost stress ([cost sensitivity](execution_batch63_liquidity_cost/REPORT.md)). At 2x and 4x costs, the predeclared five-day-block intervals also include zero, unlike the 21-day intervals. Different baskets, exposures, post-selection controls and unadjusted intervals prevent causal or prospective claims. The issuer accounting includes substantial offsetting contributions, not a clean feature-level explanation ([trace](execution_batch62_liquidity_trace/REPORT.md)).
+
+**What remains decisive:** strict selected-checkpoint numerical regeneration has not met the preregistered tolerance. The original-machine trace is deferred by the user; do not loosen the tolerance or infer trained-component causality from saved-output replay. Training Hpred, changing-score and trained-checkpoint interventions remain gated. A future confirmation requires a frozen candidate, credible timing and identity evidence, a genuinely unused appropriate sample, and separate authorization for any protected window or prospective deployment. Financial retraining remains subject to the existing learner-power, data and budget gates. No additional inference about future alpha follows from accumulating exploratory comparisons.
+
+The sections below preserve the initial October 27 snapshot. Statements about missing artifacts, available checks and proposed next steps in those sections are historical; the synthesis above and linked later audits supersede them where they differ.
 
 ## 1. Working answer
 
@@ -27,7 +43,7 @@ Two findings deserve equal attention:
 
 **Recommended direction:** GO on a bounded mechanism/attribution program using existing predictions. DEFER a claim of learned relational alpha, new architecture expansion, or untouched confirmation until the required artifacts and controls exist.
 
-## 2. What was actually inspected and tested
+## 2. What was actually inspected and tested in the initial October 27 snapshot
 
 ### 2.1 Evidence levels
 

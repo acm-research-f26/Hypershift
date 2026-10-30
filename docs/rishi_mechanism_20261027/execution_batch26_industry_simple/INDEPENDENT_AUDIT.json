@@ -1,0 +1,17 @@
+{
+  "group_constraints": 17680,
+  "max_group_error": 2.220446049250313e-16,
+  "weights_sha256": {
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_Hlabel_weights.npz": "8a53fb9efa8fc5fd25c3f432e1bd61d7243800eb032cbaea81bb20dca5e147e8",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_REV5_weights.npz": "a9a44883e805c03829d7e12be465fe45ce721c0e54df3e087abd9c84b97d1389",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_MOM126_weights.npz": "d7fd00a05d2dbfd709ec0d0bcd8926ec4b34901753dc38c51a7a9b5ca44d54a3",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_ridge5_weights.npz": "8de37d2841c02511a77a1b908bb82d37dfae6e5f510a097fedd7cf509e9536e5",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_Hlabel_Hlabel_weights.npz": "8f4bc28639acc9b22a9224057346216343a82d91d36cfa0c52a57314bd7e1939",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_Hlabel_REV5_weights.npz": "c9768a08cb2930480fb90067f703c51c89b0d473a6fdfc7db5a983fd8f632dee",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_Hlabel_MOM126_weights.npz": "7cbe6f82182c5970bb9aae20dfda7e88a00abf3fbc21b58b3628549a45b75c26",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_Hlabel_ridge5_weights.npz": "8d4c134f2c83d2d55235b3cbb4813a23b1f0d96ffa9f3fa0cad215c7118b09c1"
+  },
+  "paths_sha256": "e5b83dcb816dbafa71c4f2e63995101610aa49e5c2c0c4fbeefd3df8cb8ddccb",
+  "account_paths": 8,
+  "paired_mean_intervals": 24
+}

@@ -1,0 +1,9 @@
+{
+  "group_records": 4420,
+  "max_group_error": 3.3306690738754696e-16,
+  "max_within_group_range": 0.0,
+  "mean_selected_count": 58.24129353233831,
+  "min_selected_count": 32,
+  "max_selected_count": 89,
+  "path_sha256": "03d7832ff6ecbad4a8a474791b042be315f3f0ef1ebf5f259c535dce44803f7a"
+}

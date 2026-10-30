@@ -1,0 +1,12 @@
+{
+  "cells": 1608,
+  "input_sha256": {
+    "docs\\rishi_mechanism_20261027\\execution_batch30_extended_association\\RANKS.csv": "53e674140f6f37b4480d97c42f7d0c7b31e720b1eab602949bacca9fa59462e7",
+    "docs\\rishi_mechanism_20261027\\execution_batch30_extended_association\\PER_ORIGIN.csv": "82fb6a24c4a08136dee5dabe75f1fcead0b012a475b0c64e44476086326b6bd6",
+    "docs\\rishi_mechanism_20261027\\execution_batch30_extended_association\\RESULTS.json": "847de77aa44dada24e526178dd9817d07ba83724106494dfda83b8986ec9fe81",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_extended_common_support.py": "5c1124840ed3611da37d27b56b2c9eb064eb2fa6a102e429342ae80163d99707",
+    "research\\analysis\\rishi_extended_association.py": "1ab7f52cac4b01b45a5945f9c94fc212513b81fd1f9bf19ca8e6e7e32194aea1",
+    "docs\\rishi_mechanism_20261027\\EXTENDED_COMMON_SUPPORT_PROTOCOL.md": "4d5b7f311bc08ea16d789c5e65059af64b4694357bd4b59051cec45e58418894"
+  },
+  "limitation": "Exploratory same-support correlations, no intervention or predictive outcome"
+}

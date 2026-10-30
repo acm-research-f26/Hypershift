@@ -2,26 +2,48 @@
 
 Updated October 27, 2026. Historical monthly NASDAQ-100 membership, January 3, 2022–December 31, 2025. Every path uses the same 1,003 sessions.
 
-## Highest observed Sharpe: model hedge experiment
+## Your experiments vs. Rishi’s results: retention and QQQ hedge
+
+![Historical retention and QQQ hedge comparison for original-five and ten-seed portfolios](docs/historical_sharpe_20261029/hedge_batch1/retention_hedge_comparison.png)
+
+**Your requested experiment’s highest observed Sharpe is 1.731** for the original-five blend with five-security retention, a 20% basket-volatility target and a continuous partial QQQ short: **33.11% CAGR / -13.36% maximum drawdown**. The matched ten-seed version reports **1.381 / 26.35% / -13.79%**; the new-five version reports **0.648 / 12.31% / -17.11%**.
+
+| Origin | Portfolio | Seed group | Sharpe | CAGR | Max drawdown |
+|---|---|---|---:|---:|---:|
+| Your experiment | Retention + continuous QQQ hedge | Original five | **1.731** | **33.11%** | **-13.36%** |
+| Your experiment | Retention, no hedge | Original five | 1.383 | 33.71% | -18.99% |
+| Rishi’s study | Continuous hedge, issuer-five | Original five | 1.454 | 27.79% | -14.56% |
+| Your experiment | Retention + continuous QQQ hedge | Ten seeds | **1.381** | 26.35% | -13.79% |
+| Your experiment | Retention, no hedge | Ten seeds | 1.158 | 28.22% | -17.81% |
+| Rishi’s study | Continuous hedge, issuer-five | Ten seeds | 1.325 | 24.83% | -14.78% |
+| Your experiment | Retention + continuous QQQ hedge | New five | 0.648 | 12.31% | -17.11% |
+
+**Attribution:** Rishi supplied the existing trained models, predictions and earlier issuer-five hedge study. Your requested follow-up added the retention rule and tested a higher QQQ-short cap using those same predictions; it did not retrain Rishi’s models. “Your experiment” means the follow-up performed in this workspace, not a claim that you personally wrote the code.
+
+Retention adds 0.02 to the score of each security selected at the previous decision; unlike the issuer-five comparison, it selects five **securities**, so share classes can both be selected. The hedge is continuously on, with a 75% maximum target short constrained by available gross budget and trailing QQQ volatility; actual mean short exposure is approximately 31%. It is not a model-generated hedge signal. Results include modeled trading costs and 3% annual borrow; the new portfolio has not been added to the older figures or workbook below. The original hedge source's daily archive was unavailable, so the prior hedge line is independently reconstructed from source targets and matches its reported aggregate metrics.
+
+These are selected results from repeatedly inspected 2022–2025 history. The groups share the same market history, and real short availability, borrow and execution are not established. [Hedge experiment and verification](docs/historical_sharpe_20261029/hedge_batch1/REPORT.md) · [Selection experiment](docs/historical_sharpe_20261029/selection_batch1/REPORT.md) · [All hedge metrics](docs/historical_sharpe_20261029/hedge_batch1/METRICS.csv).
+
+## Rishi’s October 27 published comparison: model hedge experiment
 
 ![Original-five and ten-seed model hedge comparisons with SPY and QQQ](docs/ndx_model_hedge_20261027/high_sharpe_comparison.png)
 
-**The new highest observed Sharpe is 1.454 for the original-five stock blend with a continuous partial QQQ hedge: 27.79% CAGR / −14.56% maximum drawdown. The ten-seed version reaches 1.325 Sharpe: 24.83% CAGR / −14.78% drawdown.** This is an always-on hedge control. Its timing does not come from the trained models.
+**The October 27 study’s highest observed Sharpe was 1.454 for the original-five stock blend with a continuous partial QQQ hedge: 27.79% CAGR / −14.56% maximum drawdown. The ten-seed version reaches 1.325 Sharpe: 24.83% CAGR / −14.78% drawdown.** This is an always-on hedge control. Its timing does not come from the trained models.
 
 **Our own models did not supply a useful hedge trigger in this test.** All four raw-forecast signals stayed off at all 201 rebalances in every seed group. Their account paths exactly match the unhedged baseline. All four bias-corrected signals fired at the same 50 rebalances in 2023 and stayed off in 2022/2024/2025. They missed 2022's weakness and hedged during 2023's rebound. The best active model-signal results were 1.111 Sharpe for original-five and 1.045 for ten seeds, below their unhedged 1.178/1.112 baselines. Equal-Sharpe calibrated variants are ties, not distinct replications.
 
-|Strategy|Seeds|Sharpe|CAGR|Max drawdown|95% SR interval|
-|---|---|---:|---:|---:|---|
-|Continuous / hedge up to 50%|Original five|1.454|27.79%|-14.56%|[0.463, 2.441]|
-|QQQ MA200 / hedge up to 50%|Original five|1.315|28.10%|-17.05%|[0.325, 2.309]|
-|Calibrated family agreement / hedge up to 50%|Original five|1.111|26.27%|-20.56%|[0.154, 2.078]|
-|Five issuers + 20% volatility target|Original five|1.178|28.57%|-20.56%|[0.223, 2.137]|
-|SPY|Benchmark|0.498|10.85%|-24.55%|[-0.367, 1.419]|
-|QQQ|Benchmark|0.469|11.93%|-34.87%|[-0.408, 1.394]|
-|Continuous / hedge up to 50%|Ten seeds|1.325|24.83%|-14.78%|[0.388, 2.238]|
-|QQQ MA200 / hedge up to 50%|Ten seeds|1.234|26.24%|-14.82%|[0.300, 2.178]|
-|Calibrated family agreement / hedge up to 25%|Ten seeds|1.045|24.64%|-21.69%|[0.130, 1.984]|
-|Five issuers + 20% volatility target|Ten seeds|1.112|26.81%|-21.69%|[0.190, 2.047]|
+| Strategy                                      | Seeds         | Sharpe |   CAGR | Max drawdown | 95% SR interval |
+| --------------------------------------------- | ------------- | -----: | -----: | -----------: | --------------- |
+| Continuous / hedge up to 50%                  | Original five |  1.454 | 27.79% |      -14.56% | [0.463, 2.441]  |
+| QQQ MA200 / hedge up to 50%                   | Original five |  1.315 | 28.10% |      -17.05% | [0.325, 2.309]  |
+| Calibrated family agreement / hedge up to 50% | Original five |  1.111 | 26.27% |      -20.56% | [0.154, 2.078]  |
+| Five issuers + 20% volatility target          | Original five |  1.178 | 28.57% |      -20.56% | [0.223, 2.137]  |
+| SPY                                           | Benchmark     |  0.498 | 10.85% |      -24.55% | [-0.367, 1.419] |
+| QQQ                                           | Benchmark     |  0.469 | 11.93% |      -34.87% | [-0.408, 1.394] |
+| Continuous / hedge up to 50%                  | Ten seeds     |  1.325 | 24.83% |      -14.78% | [0.388, 2.238]  |
+| QQQ MA200 / hedge up to 50%                   | Ten seeds     |  1.234 | 26.24% |      -14.82% | [0.300, 2.178]  |
+| Calibrated family agreement / hedge up to 25% | Ten seeds     |  1.045 | 24.64% |      -21.69% | [0.130, 1.984]  |
+| Five issuers + 20% volatility target          | Ten seeds     |  1.112 | 26.81% |      -21.69% | [0.190, 2.047]  |
 
 All neural rows select **five stock issuers**, regardless of seed count. Hedge rows add a short QQQ position capped at 25% or 50% NAV, available cash budget and a 20% QQQ volatility target. The highest-SR control keeps the 50% cap on continuously; the model rules use only their predictions to turn hedging on. QQQ's trailing volatility still sizes the short. Gross target exposure is capped at 100%; positions can drift between regular-close fills. Cash earns zero. Base modeled trading costs and assumed 3% annual borrow are included.
 
@@ -47,19 +69,19 @@ Updated October 26, 2026. Historical monthly NASDAQ-100 membership, January 3, 2
 
 **The highest observed Sharpe is now 1.199** for the original-five blend with a 20% basket-volatility target: **28.96% CAGR and -17.78% drawdown**. The **highest ten-seed Sharpe is 1.112**, using five-issuer selection plus a 20% volatility target: **26.81% CAGR and -21.69% drawdown**. The 25% target plus issuer/trend control retains more ten-seed return at **28.70% CAGR / 1.085 Sharpe / -22.98% drawdown**.
 
-| Strategy | Seed ensemble | Sharpe | CAGR | Max drawdown | 95% SR interval |
-| --- | --- | ---: | ---: | ---: | --- |
-| **20% basket volatility target** | **Original five** | **1.199** | **28.96%** | **-17.78%** | **[0.264, 2.146]** |
-| 25% volatility target + trend cap | Original five | 1.190 | 31.50% | -18.99% | [0.273, 2.118] |
-| 20% volatility target + trend cap | Original five | 1.190 | 28.08% | -17.16% | [0.254, 2.130] |
-| Five issuers + 25% volatility target + trend cap | Original five | 1.169 | 31.20% | -21.68% | [0.232, 2.110] |
-| Five issuers + 20% volatility target | Original five | 1.178 | 28.57% | -20.56% | [0.234, 2.147] |
-| **Five issuers + 20% volatility target** | **Ten seeds** | **1.112** | **26.81%** | **-21.69%** | **[0.209, 2.045]** |
-| Five issuers + 25% volatility target + trend cap | Ten seeds | 1.085 | 28.70% | -22.98% | [0.191, 1.998] |
-| Full-exposure blend | Original five | 0.919 | 32.94% | -34.89% | [0.041, 1.833] |
-| Full-exposure blend | Ten seeds | 0.896 | 31.87% | -40.94% | [0.001, 1.829] |
-| **SPY** | **Benchmark** | **0.498** | **10.85%** | **-24.55%** | **[-0.367, 1.419]** |
-| **QQQ** | **Benchmark** | **0.469** | **11.93%** | **-34.87%** | **[-0.408, 1.394]** |
+| Strategy                                         | Seed ensemble           |          Sharpe |             CAGR |      Max drawdown | 95% SR interval           |
+| ------------------------------------------------ | ----------------------- | --------------: | ---------------: | ----------------: | ------------------------- |
+| **20% basket volatility target**           | **Original five** | **1.199** | **28.96%** | **-17.78%** | **[0.264, 2.146]**  |
+| 25% volatility target + trend cap                | Original five           |           1.190 |           31.50% |           -18.99% | [0.273, 2.118]            |
+| 20% volatility target + trend cap                | Original five           |           1.190 |           28.08% |           -17.16% | [0.254, 2.130]            |
+| Five issuers + 25% volatility target + trend cap | Original five           |           1.169 |           31.20% |           -21.68% | [0.232, 2.110]            |
+| Five issuers + 20% volatility target             | Original five           |           1.178 |           28.57% |           -20.56% | [0.234, 2.147]            |
+| **Five issuers + 20% volatility target**   | **Ten seeds**     | **1.112** | **26.81%** | **-21.69%** | **[0.209, 2.045]**  |
+| Five issuers + 25% volatility target + trend cap | Ten seeds               |           1.085 |           28.70% |           -22.98% | [0.191, 1.998]            |
+| Full-exposure blend                              | Original five           |           0.919 |           32.94% |           -34.89% | [0.041, 1.833]            |
+| Full-exposure blend                              | Ten seeds               |           0.896 |           31.87% |           -40.94% | [0.001, 1.829]            |
+| **SPY**                                    | **Benchmark**     | **0.498** | **10.85%** | **-24.55%** | **[-0.367, 1.419]** |
+| **QQQ**                                    | **Benchmark**     | **0.469** | **11.93%** | **-34.87%** | **[-0.408, 1.394]** |
 
 The figure compares four new risk-control recipes, the corresponding full-exposure blend, and SPY/QQQ. Left: original five seeds; right: all ten seeds. Each panel has its own legend with full-period SR and CAGR for every line. Drawdown panels below the wealth charts show the percentage decline from each account's previous peak; 0% means a new or matched high. The original-five leader is a diagnostic ensemble; the ten-seed comparison remains the broader seed check.
 
@@ -101,7 +123,6 @@ The leader has both the highest Sharpe and highest CAGR across the 346 base-cost
 ![All 346 strategy paths, with the best historical model, SPY and QQQ shown as thick labeled lines](docs/strategy_comparison_20261024/overview_20261026/master_all_strategies.png)
 
 All 346 main base-cost strategies are included. The **best model is the thick blue line**, **SPY is the thick dashed red line**, and **QQQ is the thick purple line**; the other 343 paths are thin gray lines. Each starts with $100 before the common evaluation period and compounds its saved daily returns after modeled costs. Additional individual-seed and cost-stress diagnostics remain in the complete gallery below. [Figure provenance and verification](docs/strategy_comparison_20261024/overview_20261026/MANIFEST.json).
-
 
 ## What the dynamic hypergraph does, in plain language
 

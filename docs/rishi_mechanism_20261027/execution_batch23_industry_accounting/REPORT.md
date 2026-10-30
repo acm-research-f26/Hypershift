@@ -1,0 +1,16 @@
+# Industry accounting attribution for saved accounts
+
+Protocol ../INDUSTRY_ACCOUNTING_PROTOCOL.md was committed as dccc656 and implementation as e80825f before this calculation. We partitioned the existing reconciled ten-seed B/D/E/Hlabel/E_Hlabel economic stock-account traces, top5 and top10, into FF12 group 6 (computers, electronics and software), other classified names, and unclassified names. The first-signal classification snapshot is applied only after its signal date; before the next snapshot becomes available, the prior snapshot remains in force. Later entrants without a first-snapshot classification remain unclassified. This is a reporting convention over the existing account, not an industry deletion or hedging strategy.
+
+| Blend account | Group 6: annual net contribution | Other classified | Unclassified | Total annual net arithmetic return | Group 6 mean end-of-day exposure |
+|---|---:|---:|---:|---:|---:|
+| Top 5 | 26.41 pp | 4.86 pp | 2.20 pp | 33.46% | 83.90% |
+| Top 10 | 23.25 pp | 1.50 pp | 1.42 pp | 26.16% | 78.49% |
+
+In this accounting partition, group 6 contributes approximately 78.9% and 88.9% of the corresponding full-sample annualized arithmetic net return. These are not shares of CAGR, Sharpe or risk, and they are not causal estimates: a high exposure to historically strong securities can dominate realized profit even if model signals have other sources. Group 6 gross contributions were 28.09 and 24.46 pp/year, with modeled fee drags of 1.68 and 1.21 pp/year. Mean exposure is actual reconstructed end-of-day marked holdings / account NAV, rather than target weight; it includes cash, drift and terminal liquidation under the original engine.
+
+The top10 group's annualized arithmetic contribution was **−18.86 pp in 2022**, then **+45.02, +19.64 and +47.39 pp** in 2023–2025. Each subperiod is annualized using its own session count, so these four figures should not be added to obtain the full-period return. Group 6's 2022 loss and subsequent gains are descriptive calendar attribution, not evidence that it predicts markets or limits future drawdowns.
+
+For comparison, group 6 contributed 15.16 pp/year in the parent top10, 12.76 pp in dynamic top10, 19.03 pp in parent-plus-Hlabel top10 and 15.51 pp in Hlabel top10. Differences mix stock selection, holding periods, exposures, fees and other account effects; they do not isolate a neural or industry effect. All ten accounts, group fee/exposure components and calendar values are in FULL_SAMPLE.csv and CALENDAR.csv.
+
+All daily category net, gross-minus-fee, fee-dollar and exposure identities reconcile for all ten accounts: maximum errors are 5.98e-16 in net daily return, 2.78e-17 in category decomposition, $4.55e-13 in fees and 4.44e-16 in exposure. An independent pass rebuilt all 30 account/category net paths and sample contributions from the original trace; four focused tests passed. Daily arrays and category axes are preserved under ignored `results/RISHI_INDUSTRY_ACCOUNTING_20261028/`. Original economic adjusted-close units are reconstructed accounting quantities, not certified broker fills. SIC can become stale; filing-to-signal continuity, NDX price-series identity and as-published membership remain uncertified. No checkpoint gate, return model, account or protected window was changed.

@@ -1,0 +1,9 @@
+# Retention risk-control search
+
+2026-10-29. Protocol `099c382`, implementation `0dfc6c9`, frozen after selection results. All six original equal/retention vol20 account paths matched exactly before the new search. The grid contains 96 accounts: three overlapping seed groups, equal and retention portfolios, 20/60-day trailing risk, four targets and smoothing on/off. These trials reuse extensively inspected history and are not confirmation.
+
+The highest historical Sharpe among these accounts was **1.385** for original-five retention, 20-day risk, 15% target with smoothing: CAGR **26.65%**, maximum drawdown **-13.48%**, turnover **12.88**. The previously tested unsmoothed 20% target delivered **1.383**, **33.71%**, **-18.99%**, turnover **17.13**. The tiny Sharpe increase accompanies substantially lower growth; do not treat it as a meaningful improvement without further evidence.
+
+The same smoothed 15% rule gave ten-seed **1.147 Sharpe / 22.00% CAGR / -13.79% drawdown**, versus ten-seed retention's unsmoothed 20% **1.158 / 28.22% / -17.81%**. New-five produced **0.541 / 10.74% / -15.03%** under the 15% rule. Different seeds share one market history. A volatility target is not a guaranteed drawdown limit; trading costs, data timing and execution remain modeled assumptions. All 96 outcomes, turnovers and 384 annual returns are in adjacent CSVs; paths, exposures and ledgers are saved under `results/HISTORICAL_SHARPE_RISK_20261029/`.
+
+Two smoothing tests passed, including a future-input perturbation. Independent verifier `research/analysis/rishi_historical_risk_verify.py` reconstructs all 96 exposure schedules from trailing returns and target weights, all account NAV/Sharpe/CAGR/drawdown and 384 yearly returns, maximum error 1.42e-14. It does not independently reconstruct every share fill or certify source vintage. Six baseline maximum daily errors are zero. No new training or protected-window scoring occurred.

@@ -1,0 +1,12 @@
+{
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\original_five__original__vol20_ledger.csv": "54e97bfb90894bc4fcd9968edf669b0b508be69f1bb2f0c7208210368d53c218",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\original_five__fixed__vol20_ledger.csv": "5ab7c8d0bc9c3d9073b5efb63e0764b7af6a6e0fc7a297995024618bb34ea4a4",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\new_five__original__vol20_ledger.csv": "848fbca54654001fa1b64cd827ca6a11449c668dd4c3056afba6dc3b0cf60b13",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\new_five__fixed__vol20_ledger.csv": "b6cada8c2fe9348f63c51f80905143261bbcb345dd2cd0f4fce22b2a2f702714",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\ten_seed__original__vol20_ledger.csv": "16302a251061a23fce1105d8ccfcc0e679cbcb9ea49e7e014c213dec71a08f30",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\ten_seed__fixed__vol20_ledger.csv": "4f48b61afc5a7045a544d1f21b6513f08058eba7de2c7855182b5faf5e7cf655",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\PATHS.npz": "6d0bb2357fb49b16bb4d2f308aeac738d573582001469d26fc17a0740d2ff4d8",
+  "results\\RISHI_VALIDATION_FIXED_ACCOUNT_20261029\\TARGETS.npz": "ae99d4a46b5e899f195e1ed8c5635a4e00f9035326183c40d740b84b2ae6ca2b",
+  "docs\\rishi_mechanism_20261027\\VALIDATION_FIXED_TRACE_PROTOCOL_20261029.md": "58e1f4d74ca09e9a737e922f5b880495fbcf0a5f0b4ed65e33bfe3dc9db0afa1",
+  "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_validation_fixed_trace.py": "2ed124149fd282549c3294416988ca3f1010e359b4b94d98fbd56ceedccde43c"
+}

@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Updated 2026-10-27 after merging Rishi's artifact publication `origin/feat-rs` at `865dbb3` into `tom-shlom`.
+Updated 2026-10-29 after merging `origin/feat-rs` at `725af032` into `tom-shlom` as `0cc88a3`.
 
 ## Read in this order
 
@@ -16,18 +16,18 @@ Where these documents conflict, use START_HERE for research policy and the newes
 
 Find an implementable US-equity strategy with useful returns after realistic costs. The original THINK reproduction is closed; its negative results apply to the tested implementations and samples.
 
-- **Latest Rishi development:** `docs/ndx_drawdown_20261026/REPORT.md`, `PROTOCOL.json`, `AUDIT.json`, and `master_update/AUDIT.json`. The study searches allocation/exposure controls on the existing THINK+mixer AH+PM / dynamic rank blend; no model retraining.
+- **Latest Rishi development:** `docs/ndx_model_hedge_20261027/REPORT.md`, protocol and audit describe fixed own-model hedge signals and continuous/MA200 controls on the existing rank blend, without neural retraining. Source-reported continuous hedge SR is 1.454 original-five / 1.325 ten-seed; model timing did not improve Sharpe. This is selected historical evidence, not prospective validation. Source audit reports 42 replays; do not describe them as independently reproduced here. `docs/ndx_drawdown_20261026/REPORT.md` documents the preceding overlay search.
 - **Selected historical results, 2022-2025:** five issuers plus a 20% basket-volatility target reports ten-seed Sharpe **1.112**, net CAGR **26.81%**, maximum drawdown **-21.69%**. The 25% target plus QQQ/MA200 trend cap reports **1.085 / 28.70% / -22.98%**. Matched full-exposure ten-seed baseline: **0.896 / 31.87% / -40.94%**.
 - These are **305 searched recipes / 915 base-cost accounts**, plus 54 higher-cost accounts, on repeatedly inspected history. The new-five group remains weaker (Sharpe about **0.677 / 0.643** for those two leaders). The return-preserving candidate's paired Sharpe-difference interval includes zero. These results do not establish future alpha or a guaranteed drawdown limit.
 - The committed risk-study audit reports915metric recalculations and82account replays; attribute those counts to the source audit. Current independent mechanism work verifies all339contract and1184published artifacts, reproduces18original saved-forecast account paths/NAV/metrics/aggregate ledgers, reconstructs10stock-level accounting traces and executes12half-capital sleeves. See `docs/rishi_mechanism_20261027/COMPLETION_AUDIT.md` and the batch reports. The matched-risk continuation independently reproduces30source risk paths and executes525fixed accounts; see RISK_ATTRIBUTION_REPORT.md in the active study.70focused tests pass. These are distinct scopes. `COMPLETE.json` retains an earlier pending-audit status; consult the later passed `AUDIT.json` alongside it.
-- Earlier team assessment: `docs/team_audit_20261026/HYPERSHIFT_FINAL_RECOMMENDATION.md`, `HYPERSHIFT_NEXT_EXPERIMENT.md`, and `PROGRESS.md`. The missing saved-artifact blocker is resolved by865dbb3. Per-stock broker/order tapes were never saved; reconstructed economic fill traces now supply canonical accounting attribution. Original raw15minute chunks and first-provider-publication timestamps remain unavailable.
+- Earlier team assessment: `docs/team_audit_20261026/HYPERSHIFT_FINAL_RECOMMENDATION.md`, `HYPERSHIFT_NEXT_EXPERIMENT.md`, and `PROGRESS.md`. The missing saved-artifact blocker is resolved by865dbb3. Per-stock broker/order tapes were never saved; reconstructed economic fill traces supply accounting attribution. Raw 15-minute chunks are now published by `725af032`: all 2,660 supplement files passed the publication manifest, and 1,288 chunks matched their sidecar hashes and 10,839,262 line counts. Original statuses include 109 empty chunks requiring review; retrieval timestamps do not establish first-provider publication.
 - Strict selected-checkpoint numerical regeneration remains unresolved: parent CPU/CUDA values fail1e-6pp despite exact inputs;20dynamic CUDA checkpoints pass before a validation failure. Keep saved-export reproduction separate from checkpoint reproduction. Hpred/changing-score and trained-component interpretations remain gated; do not widen tolerance after seeing outcomes. Primary ten-seed/top10 E-minus-parent and E-minus-training-label-identity contrasts do not pass the declared Holm5%family. Conditional financial retraining is not triggered.
 - Keep original-five, new-five and ten-seed ensembles, top-five and top-ten portfolios, and parent/dynamic/blended models distinct. Earlier primary top-ten SR 0.755 and selected original-five/top-five SR 0.919 describe different cells from the new overlay leaders.
 
 ## Current source layout and commands
 
 - `latest/README.md`: latest dynamic-hypergraph study; `research/README.md`: shared NASDAQ-100 source map.
-- `charts.md`: primary visual entry point to the current results, including 364 main strategies, matched benchmarks, seed/cost diagnostics and links to provenance. Use it together with the underlying reports and audits; preserve the distinction between selected historical leaders and confirmation. `docs/NASDAQ100_strategy_comparison.xlsx` supplies the companion detailed comparison.
+- `charts.md`: primary visual entry point to the current results, including 472 main accounts, matched benchmarks, seed/cost diagnostics and links to provenance. Use it together with the underlying reports and audits; preserve the distinction between selected historical leaders and confirmation. `docs/NASDAQ100_strategy_comparison.xlsx` supplies the companion detailed comparison.
 - `docs/PROJECT_LAYOUT.md`, `config/README.md`, `requirements/README.md`: layout, frozen settings and dependencies.
 - Organized Rishi code lives in `research/` and `latest/`; Tom's earlier implementation lives in `src/hypershift/` and `scripts/`. Do not assume their launchers or evaluation contracts are interchangeable.
 - In PowerShell, run the existing environment directly from the repo root:
@@ -53,7 +53,7 @@ Find an implementable US-equity strategy with useful returns after realistic cos
 ## Coordination, Git and session close
 
 - Check status and current ownership before editing. Preserve unrelated changes and other worktrees; old worker entries do not authorize stopping processes.
-- Use `tom-shlom` for this checkout. Pull/merge only when authorized; **never push** under current research policy. The October 27 user request authorizes the latest `feat-rs` merge. Do not reset, rebase or discard local work to match Rishi's branch.
+- Use `tom-shlom` for this checkout. Pull/merge only when authorized; Push only with explicit user authorization. The October 29 user request authorizes publishing the current research to `origin/tom-shlom`. The October 27 user request authorizes the latest `feat-rs` merge. Do not reset, rebase or discard local work to match Rishi's branch.
 - Commit only explicit paths you changed. Leave `docs/HANDOFF.md` uncommitted by convention. Do not stage results, logs, compatibility copies or other sessions' work.
 - Before stopping, update `docs/HANDOFF.md` (date, Running now, Next steps, Open decisions) and the active study's `PROGRESS.md`; update START_HERE whenever the authoritative state changes. Latest investigation: `docs/rishi_mechanism_20261027/RESEARCH_PLAN.md`; active log: `docs/rishi_mechanism_20261027/PROGRESS.md`. Earlier team audit: `docs/team_audit_20261026/PROGRESS.md`.
 - Verify documentation links and relevant checks before claiming completion. Distinguish unit-test success from replaying a research result.

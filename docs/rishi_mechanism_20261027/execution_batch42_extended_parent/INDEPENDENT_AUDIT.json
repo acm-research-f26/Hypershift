@@ -1,0 +1,12 @@
+{
+  "parent_files": 120,
+  "target_allocations": 3618,
+  "accounts": 18,
+  "mean_intervals": 36,
+  "max_score_error": 0.0,
+  "max_nav_error": 1.210719347000122e-14,
+  "max_metric_error": 1.1102230246251565e-16,
+  "max_interval_error": 9.71445146547012e-17,
+  "paths_sha256": "4e255a2d3017ce926b3736faff032fb3b0f0ac4c4a7f32d75afcdc675f93abdb",
+  "targets_sha256": "e4d9c1d4add2a6922b7f91313cfeabe068275c86f9d94d67759f4b01b5c0ef18"
+}

@@ -1,0 +1,7 @@
+# Ten-stock fixed-validation factor comparison
+
+For the ten-seed full-exposure ten-stock accounts, the retrospective FF5 + momentum + short-reversal + QQQ regression estimates a changing-score model-minus-fixed-validation annualized intercept of **+5.54 percentage points**, with a 95% Newey–West interval **[-3.29, +14.36] pp** at lag 5. At lag 20 the interval is **[-3.99, +15.06] pp**. The FF7-only estimate is **+5.46 pp [-3.37, +14.29]** at lag 5. These wide intervals establish neither superiority nor equivalence.
+
+The accounts hold different stocks and have different turnover and modeled fees. Factor data are retrospective, slopes are constant, and sector, nonlinear and time-varying risks are not fully controlled. Validation selected the checkpoints; this is not training Hpred, a causal model ablation, a tradable hedge, or independently confirmed alpha. The study history has been repeatedly inspected; intervals are unadjusted and seed groups share one market history.
+
+The [protocol](../VALIDATION_TOP10_FACTOR_PROTOCOL_20261029.md) and implementation were committed as `641ed4b` and `30f6a29` before results. All **36** regressions and **306** coefficient/standard-error rows were independently reconstructed with a separate parser and two-sided HAC sum; maximum error was 1.13e-13. No financial model was fitted, account rerun, checkpoint intervened on, or protected window scored. Original primary and numerical gates remain unchanged.

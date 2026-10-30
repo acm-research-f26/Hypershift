@@ -1,0 +1,3 @@
+# Continuation verification — 2026-10-28
+
+The command in REPLAY_VERIFICATION.md for the prior 70 focused tests, plus `test_rishi_traded_boundary test_rishi_factor_nw test_rishi_parameter_forensics`, passed 79 tests in 3.425 seconds, exit 0. Independent review found no substantive accounting, HAC or initialization-control defect; it requested slope intervals and inverse-spectrum diagnostics, subsequently supplied. A vector-rotation test and inverse-statistics test failed before their respective fixes and passed afterward. Parameter v2 and v3 checkpoint, cohort, tensor, control and 43,680 per-ID rows compare identically. This is a focused suite, not full repository testing or checkpoint forward validation.

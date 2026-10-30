@@ -1,0 +1,10 @@
+{
+  "rows_checked": 202,
+  "recomputed_folds": 2,
+  "results_sha256": {
+    "docs\\rishi_mechanism_20261027\\execution_batch20_sec_combined\\JOINED.csv": "4e63dbecbdfdbd86b620455a6570b506c474bb21fc0a5fb060781f8320628de7",
+    "docs\\rishi_mechanism_20261027\\execution_batch20_sec_combined\\SUMMARY.csv": "493418c96b60f2fd8ffa4e620ecb0418fb8f681fcc0ec3833d1558c9143468cf",
+    "docs\\rishi_mechanism_20261027\\execution_batch20_sec_combined\\SOURCE_GROUPS.csv": "fbb9869ae87b815b1903c01ae5a6ec65bddc892170c9e554b88db41ea351abed",
+    "docs\\rishi_mechanism_20261027\\execution_batch20_sec_combined\\INDUSTRY_GROUPS.csv": "fb8ba4c1a689ed8fcefda45735a56057e33317dc1d18393d1018b85f5b72eaf2"
+  }
+}

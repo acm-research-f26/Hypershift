@@ -1,0 +1,240 @@
+{
+  "environment": {
+    "device": "cuda",
+    "torch": "2.14.0+cu130",
+    "cuda_build": "13.0",
+    "deterministic_algorithms": true,
+    "precision": "float32, no AMP; TF32 disabled for CUDA",
+    "cublas_workspace_config": ":4096:8",
+    "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+    "gpu_memory_bytes": 4294443008,
+    "compute_capability": "8.6",
+    "cudnn_version": 92400
+  },
+  "checkpoint": "B/2022/7",
+  "diagnostic_only": true,
+  "batch_origin_ids": [
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192
+  ],
+  "summary": [
+    {
+      "path": "cpu32",
+      "max_saved_error": 0.000148773193359375,
+      "reference_kind": "prior_full_cuda_maximum",
+      "reference_origin_id": 186,
+      "reference_stock": "ADBE",
+      "at_reference": 6.749912738800049
+    },
+    {
+      "path": "cuda32",
+      "max_saved_error": 0.00151824951171875,
+      "reference_kind": "prior_full_cuda_maximum",
+      "reference_origin_id": 186,
+      "reference_stock": "ADBE",
+      "at_reference": 6.751430988311768
+    },
+    {
+      "path": "cuda32_repeat",
+      "max_saved_error": 0.00151824951171875,
+      "reference_kind": "prior_full_cuda_maximum",
+      "reference_origin_id": 186,
+      "reference_stock": "ADBE",
+      "at_reference": 6.751430988311768
+    },
+    {
+      "path": "cpu64",
+      "max_saved_error": 0.0005877206175455285,
+      "reference_kind": "prior_full_cuda_maximum",
+      "reference_origin_id": 186,
+      "reference_stock": "ADBE",
+      "at_reference": 6.750500459417594
+    }
+  ],
+  "cuda_repeat_max_error": 0.0,
+  "cpu_batch_vs_prior_max_error": 0.0,
+  "layers": [
+    {
+      "module": "core.base.first.fc",
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 3.5762786865234375e-07,
+      "cpu32_cpu64_max_error": 2.0163975600687167e-07,
+      "max_last_axis_norm": 0.8848150366507138,
+      "fraction_norm_gt_0999": 0.0
+    },
+    {
+      "module": "core.base.first",
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 3.5762786865234375e-07,
+      "cpu32_cpu64_max_error": 2.0163975600687167e-07,
+      "max_last_axis_norm": 0.8848150366507138,
+      "fraction_norm_gt_0999": 0.0
+    },
+    {
+      "module": "core.base.spatial.fc",
+      "shape": [
+        28,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 3.2782554626464844e-07,
+      "cpu32_cpu64_max_error": 1.2276688027279548e-07,
+      "max_last_axis_norm": 0.7797541700149343,
+      "fraction_norm_gt_0999": 0.0
+    },
+    {
+      "module": "core.base.spatial",
+      "shape": [
+        7,
+        4,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 2.2994790924713016e-06,
+      "cpu32_cpu64_max_error": 4.164611248377545e-06,
+      "max_last_axis_norm": 0.9998682586617409,
+      "fraction_norm_gt_0999": 0.0006868131868131869
+    },
+    {
+      "module": "core.base.last.fc",
+      "shape": [
+        7,
+        1,
+        156,
+        1
+      ],
+      "cpu_cuda_max_error": 4.76837158203125e-07,
+      "cpu32_cpu64_max_error": 5.653240401359838e-07
+    },
+    {
+      "module": "core.base.last",
+      "shape": [
+        7,
+        1,
+        156,
+        1
+      ],
+      "cpu_cuda_max_error": 4.76837158203125e-07,
+      "cpu32_cpu64_max_error": 5.653240401359838e-07
+    },
+    {
+      "module": "core.base",
+      "shape": [
+        7,
+        156
+      ],
+      "cpu_cuda_max_error": 0.0013756752014160156,
+      "cpu32_cpu64_max_error": 0.0005326240407148575,
+      "max_last_axis_norm": 5.990301604086987,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core.market.0",
+      "shape": [
+        7,
+        16
+      ],
+      "cpu_cuda_max_error": 0.00017452239990234375,
+      "cpu32_cpu64_max_error": 6.744003667691345e-05,
+      "max_last_axis_norm": 3.3507800542368225,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core.market.1",
+      "shape": [
+        7,
+        16
+      ],
+      "cpu_cuda_max_error": 0.00019490718841552734,
+      "cpu32_cpu64_max_error": 7.527347352631608e-05,
+      "max_last_axis_norm": 2.650279688011707,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core.market.2",
+      "shape": [
+        7,
+        156
+      ],
+      "cpu_cuda_max_error": 0.00016176700592041016,
+      "cpu32_cpu64_max_error": 6.2485639524823e-05,
+      "max_last_axis_norm": 6.348785890671861,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core.market",
+      "shape": [
+        7,
+        156
+      ],
+      "cpu_cuda_max_error": 0.00016176700592041016,
+      "cpu32_cpu64_max_error": 6.2485639524823e-05,
+      "max_last_axis_norm": 6.348785890671861,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "core",
+      "shape": [
+        7,
+        156
+      ],
+      "cpu_cuda_max_error": 0.0015087127685546875,
+      "cpu32_cpu64_max_error": 0.0005839983313506991,
+      "max_last_axis_norm": 9.396333939700384,
+      "fraction_norm_gt_0999": 1.0
+    },
+    {
+      "module": "first",
+      "shape": [
+        7,
+        156,
+        16
+      ],
+      "cpu_cuda_max_error": 8.344650268554688e-07,
+      "cpu32_cpu64_max_error": 7.18904292540401e-07,
+      "max_last_axis_norm": 6.126084121264934,
+      "fraction_norm_gt_0999": 0.42765567765567764
+    },
+    {
+      "module": "last",
+      "shape": [
+        7,
+        156,
+        1
+      ],
+      "cpu_cuda_max_error": 1.1920928955078125e-07,
+      "cpu32_cpu64_max_error": 1.189274390078765e-07
+    }
+  ],
+  "limit": "FP64 is a diagnostic, not source replay. No acceptance tolerance or source implementation changed.",
+  "full_cuda": {
+    "validation": {
+      "max_error": 1.430511474609375e-05,
+      "repeat_error": 0.0,
+      "max_origin": 107,
+      "max_security_id": "ANSS"
+    },
+    "test": {
+      "max_error": 0.00151824951171875,
+      "repeat_error": 0.0,
+      "max_origin": 186,
+      "max_security_id": "ADBE",
+      "isolated_batch_difference": 0.0
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Validation-to-test upper-tail persistence
+
+For the ten-seed blend, the validation and test **five highest mean-rank securities** overlap by **2, 5, 5 and 5 out of five** across the 2022–2025 test folds. For the top ten, overlap is **7, 9, 8 and 10 out of ten**. All ten validation top-ten names in each fold remained above the median of the matched test securities. These are security-level rank summaries; for example GOOG and GOOGL are separate securities, not separate issuers.
+
+This is evidence of persistent upper-tail preferences in these saved forecasts. It does not establish that identity parameters, extended-hours signals or peer relationships caused the persistence, nor that a validation-selected basket earned comparable returns. Both top sets use full-period mean scores; the test list and common-ID filter are retrospective. Validation was used to select checkpoints, and seeds share market history. No independent predictive or alpha claim follows.
+
+The [protocol](../VALIDATION_TAIL_PROTOCOL_20261029.md) was frozen as `0860395` after the previous overall-rank results but before these tail results. All 72 fold/group/family/k cells and their full security lists are in `CELLS.csv`, with 80 input hashes. An independent pandas-based reconstruction verified all 72 sets, overlaps, Jaccard values and median fractions. No labels, financial scoring, checkpoint inference or training occurred; the Hpred and checkpoint gates remain unchanged.

@@ -1,0 +1,3 @@
+# Inverse snapshot operator completion
+
+This fresh, otherwise identical parameter-only run adds inverse-matrix spectral and conditioning fields required by ../PARAMETER_FORENSICS_PROTOCOL.md. The full parent-vector update correction and findings are explained in ../execution_batch14_parameters_v2/REPORT.md. All 80 unused-random-vector controls still pass; no forward calls or optimization occur. Each of the four inverse matrices has rank 156, singular minima approximately 1.000 and maxima 2.630–2.644, with condition numbers 2.630–2.644. These observations do not establish branch importance or checkpoint inference equivalence. SNAPSHOT_OPERATORS.csv and RESULTS.json contain the measurements and input/run hashes; all prior runs remain preserved.

@@ -1,0 +1,10 @@
+{
+  "targets": 2412,
+  "accounts": 12,
+  "intervals": 36,
+  "max_nav_error": 1.1175870895385742e-14,
+  "max_metric_error": 5.551115123125783e-17,
+  "max_boot_error": 9.71445146547012e-17,
+  "paths_sha256": "a9fd77e4a578863f4496326a1abd96ee19b922ec237e67141936f33984e134da",
+  "audit_sha256": "424afe4b46567d3defea496c5e912921f782288371b8341c6bfabe2d11a4e7e5"
+}

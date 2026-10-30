@@ -1,0 +1,13 @@
+{
+  "receipt_count": 202,
+  "matched_validated": 160,
+  "issues": [],
+  "input_sha256": {
+    "docs\\rishi_mechanism_20261027\\SEC_COVER_IDENTITY_PROTOCOL.md": "aa2c189e0448736646e60b2f9400193cf377fad6d6d8b99f191f232b2f0124e4",
+    "research\\analysis\\rishi_sec_cover.py": "4301945f4b3decddc59f1c16dcc63069867fb39b80c17e428f1a706785260aef",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\research\\analysis\\rishi_sec_cover_audit.py": "6ef0fc49dab3b295a7d178cee06aeff702f1b4cb497cb5b637c7bdbb583f965d",
+    "data\\edgar\\cik_map.json": "3be7b383df9205c36a2f6d39a831a8972d7ff3bd215a6d7730d837b497631f1f",
+    "docs\\rishi_mechanism_20261027\\execution_batch15_dated_sic\\ELIGIBLE_JOIN.csv": "40ca34f3518766d2bc099fb353fbd12159f7fff1dbf8f06f1eef544824e12ce1"
+  },
+  "limits": "Filing date evidence; no intervening change, NDX identity or index-vintage certification"
+}

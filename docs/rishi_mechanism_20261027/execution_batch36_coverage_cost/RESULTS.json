@@ -1,0 +1,26 @@
+{
+  "accounts": 16,
+  "days": 1003,
+  "input_sha256": {
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\PATHS.npz": "f19f2162bbca076b4ce3639ceaff79b10848af393d0c2023eebc43957eed223c",
+    "docs\\rishi_mechanism_20261027\\execution_batch34_industry_coverage\\PAIRED_CONTRASTS.csv": "e153eb359417d76fef3dd5140c6dfe5e5ba2142466fa63b3b159174af79f637a",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_coverage_cost_replay.py": "8e876d085272364fc1dc2cb4a48ea6e7efda44eda9f5f00ea101dba09e7edc58",
+    "docs\\rishi_mechanism_20261027\\COVERAGE_COST_REPLAY_PROTOCOL.md": "3a97ae50f869dabcc9e45a7ea5ac97b19b07233ea7b95c5d5bc0518a3cdaa97e",
+    "research\\analysis\\rishi_mechanism_risk.py": "c7bf8ff7607ee53733a0dcda2c17847c22e7a9ce14b3bfa8ab41149e0593f71f",
+    "research\\analysis\\rishi_mechanism_batch1.py": "ca77e703da380f2621e218ec85f6f9643fecc220afee976f8db967518f19c9f8",
+    "research\\core\\ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research\\core\\pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+    "research\\core\\research_engine.py": "82406389f66ae2e6b2c541a58517d5a1dba3308aba3397e3e02f44923ae95c80",
+    "data\\nasdaq_monthly_pit\\assembled\\manifest.json": "93fbae4b143f3dd742535c25aff4d3ae7d733f1bb8e027276ed5c6b525b79abe",
+    "data\\nasdaq_monthly_pit\\assembled\\economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data\\nasdaq_monthly_pit\\assembled\\dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data\\nasdaq_monthly_pit\\assembled\\tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "data\\nasdaq_monthly_pit\\assembled\\membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_coverage6_weights.npz": "89049e23f0e6729a5bd0ecf1792a2de1c9f60781d0fa27925750d4f0a7d5cbfa",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_Hlabel_ten_seed.npz": "783183f6ac1d32d871383e8961476fa52291404d101480d26497a5e4694fc004",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_Hlabel_coverage6_weights.npz": "078efa27dba5ee5faed86e103e5b7d038d7007157f04a53bceb24b8ca2f0ce9b"
+  },
+  "limits": "Fixed historical cost scenarios with source execution; zero cost is optimistic"
+}

@@ -1,0 +1,13 @@
+{
+  "inputs": {
+    "docs\\rishi_mechanism_20261027\\execution_batch15_dated_sic\\ELIGIBLE_JOIN.csv": "40ca34f3518766d2bc099fb353fbd12159f7fff1dbf8f06f1eef544824e12ce1",
+    "docs\\rishi_mechanism_20261027\\execution_batch16_sec_cover\\RECEIPTS.csv": "3dd07704e3603a4bb84da23d72f6022344de080d6066216c6d42d08285c9b690",
+    "docs\\rishi_mechanism_20261027\\execution_batch16_sec_cover\\AUDIT.json": "69dd04ee78d822b0d932b8fc21c70552b2c20f50bf97f93cd2c40f3c25584684",
+    "docs\\rishi_mechanism_20261027\\execution_batch2_exports\\TRAINING_SUPPORT.csv": "9d907b9820538d93c6b75a7473a726a762da7727a51a134edc45b644503eb9d5",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_sec_preference.py": "f3af14f4acec25607c3ccf5e974709be0a33e0c1ca6f02ad6d2c61860560d1ef",
+    "docs\\rishi_mechanism_20261027\\SEC_PREFERENCE_PROTOCOL.md": "9921b8eb592ab79a3e7286cda559f44f7795324a365b40c58d21f23b1147a857",
+    "research\\analysis\\rishi_dated_sic.py": "a8fbd93209bf988d55aeb98a8ef5bc620bcfe28b992619d8ef10633cd8875a85",
+    "src\\hypershift\\data\\edgar.py": "7fdbfff02b914c8840d47ba26d93da5f29e5734e0232bf07f484904d008510e1"
+  },
+  "scope": "Descriptive Hlabel ranks only; no neural causation, financial scoring or point-in-time NDX identity certification"
+}

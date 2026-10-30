@@ -1,0 +1,29 @@
+{
+  "accounts": 6,
+  "target_changes": 566,
+  "inputs": {
+    "results\\RISHI_PARENT_OVERLAY_20261028\\PATHS.npz": "4d784833d9206504559ee0c3ad01513d4233cbb3ab4a8f7682e2ea0602d14bb9",
+    "results\\RISHI_PARENT_OVERLAY_20261028\\TARGETS.npz": "277fafc6d0397a4974111f8d34b4b0fe9d3ce3af0e6424d413042e8118b83fa5",
+    "docs\\rishi_mechanism_20261027\\execution_batch44_parent_overlay\\CONTRASTS.csv": "4225ed0b01b0d31d6fbfacad25bdabb437c00f5783122a040e784b12cb75a143",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_parent_overlay_trace.py": "67b279d09be6f4256481a0a417dffd38768305489831e546024fb964eff3c5a6",
+    "docs\\rishi_mechanism_20261027\\PARENT_OVERLAY_TRACE_PROTOCOL.md": "36e3db86b14f0c1071e0271e016f80498b1efedbd1ef462f5ab1fd50d6f61e92",
+    "research\\analysis\\rishi_leader_trace.py": "8f3f4e554aabe4980369ed83998c9cbf17bc5f8dff5ff5c911a25fca5de8530e",
+    "research\\analysis\\rishi_mechanism_risk.py": "c7bf8ff7607ee53733a0dcda2c17847c22e7a9ce14b3bfa8ab41149e0593f71f",
+    "research\\core\\ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "research\\core\\pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+    "research\\core\\research_engine.py": "82406389f66ae2e6b2c541a58517d5a1dba3308aba3397e3e02f44923ae95c80",
+    "data\\nasdaq_monthly_pit\\assembled\\manifest.json": "93fbae4b143f3dd742535c25aff4d3ae7d733f1bb8e027276ed5c6b525b79abe",
+    "data\\nasdaq_monthly_pit\\assembled\\economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data\\nasdaq_monthly_pit\\assembled\\dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data\\nasdaq_monthly_pit\\assembled\\tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "data\\nasdaq_monthly_pit\\assembled\\membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "results\\RISHI_PARENT_OVERLAY_20261028\\daily__original_five__issuer5__vol20_ledger.csv": "2880f30f459b0590644b1b75e0174f6a9fc034780688ab450c82dc031717e6b9",
+    "results\\RISHI_PARENT_OVERLAY_20261028\\after_hours_premarket__original_five__issuer5__vol20_ledger.csv": "54e97bfb90894bc4fcd9968edf669b0b508be69f1bb2f0c7208210368d53c218",
+    "results\\RISHI_PARENT_OVERLAY_20261028\\daily__new_five__issuer5__vol20_ledger.csv": "2e2e87819ce4382553835ee3b10a84cf77a80f9f1951e21e9888e440aec8df10",
+    "results\\RISHI_PARENT_OVERLAY_20261028\\after_hours_premarket__new_five__issuer5__vol20_ledger.csv": "848fbca54654001fa1b64cd827ca6a11449c668dd4c3056afba6dc3b0cf60b13",
+    "results\\RISHI_PARENT_OVERLAY_20261028\\daily__ten_seed__issuer5__vol20_ledger.csv": "b6c7e4d8ba9c74ae61cbe1ebb63674fcf88ed4b93e49f84a43df07692812c116",
+    "results\\RISHI_PARENT_OVERLAY_20261028\\after_hours_premarket__ten_seed__issuer5__vol20_ledger.csv": "16302a251061a23fce1105d8ccfcc0e679cbcb9ea49e7e014c213dec71a08f30"
+  },
+  "limits": "Post-hoc subgroup accounting under basket-dependent risk overlays; not causal"
+}

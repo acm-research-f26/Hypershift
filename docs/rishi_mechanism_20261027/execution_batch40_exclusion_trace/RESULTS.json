@@ -1,0 +1,33 @@
+{
+  "accounts": 6,
+  "target_change_rows": 2276,
+  "inputs": {
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\PATHS.npz": "a9fd77e4a578863f4496326a1abd96ee19b922ec237e67141936f33984e134da",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_training_exclusion_trace.py": "ac05564202b498dbe7c5732fd62a458668c4267097cd8ccef869246c97387241",
+    "docs\\rishi_mechanism_20261027\\TRAINING_EXCLUSION_TRACE_PROTOCOL.md": "447b925241796ae8a24309478875c331f0246765e65384f7efa2de8c346033ec",
+    "research\\analysis\\rishi_leader_trace.py": "8f3f4e554aabe4980369ed83998c9cbf17bc5f8dff5ff5c911a25fca5de8530e",
+    "research\\core\\ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "docs\\rishi_mechanism_20261027\\execution_batch39_training_exclusion\\CONTRASTS.csv": "5e2e0635b91b442a29133720a4d1063c0fe336e035a10a508252ef5fb4d909ed",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_k10_exclude0_weights.npz": "fab141e01107ed4008c8b3f939b2d27dc70c15e9341ec02cba42628dad47c5c3",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_k10_exclude0_ledger.csv": "7b7fe5b78ca44688f70f4f0133a6a9423c4ae80ea3e4fa41e158102ebb252e02",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_k10_exclude1_weights.npz": "51a534877f715449e95a56d2bb38155eff8d845de6e1e515e1b072e9c4026aab",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_k10_exclude1_ledger.csv": "4f96ca0f5e8b5e913d2f519fa77c53c3b102915af6ceb45b7d61d423cfe8d6c7",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_k10_exclude3_weights.npz": "569d8774e1e6748ba77d4726edf80c01b3ac3243b332af64b57b6eb23994826b",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_k10_exclude3_ledger.csv": "ce87873742e72d498bd855dd6c4b749cee7c1f30cdbeb0fef66a405a6e83fd44",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_Hlabel_k10_exclude0_weights.npz": "f2c1e6f801b5f4c397b3f57f4da130ccc1bf053363d183ec25eb7a92446bee70",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_Hlabel_k10_exclude0_ledger.csv": "43a86dbd254554ac1a50f32cba1843c3e2b3be5fc6adab4c23433a6480b6dd8a",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_Hlabel_k10_exclude1_weights.npz": "c82d1f945b72177a54a129b5504c24714d85bee420bd8b77400f82d01335fbb9",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_Hlabel_k10_exclude1_ledger.csv": "f626e1e276037ab66738911d804e760c6995a2eb38af8cf3dbe5fc54f64e3756",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_Hlabel_k10_exclude3_weights.npz": "3f2d3fd102a6df25b5dbd009ee2dd99435e0c8ff9c7a2fd106c4a8661b818030",
+    "results\\RISHI_TRAINING_EXCLUSION_20261028\\E_Hlabel_k10_exclude3_ledger.csv": "08b61da4d7522ccf7abd2ae5c5d80e4e3a074162fe38465c1d927d2f59cf5184",
+    "research\\core\\pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+    "research\\core\\research_engine.py": "82406389f66ae2e6b2c541a58517d5a1dba3308aba3397e3e02f44923ae95c80",
+    "data\\nasdaq_monthly_pit\\assembled\\manifest.json": "93fbae4b143f3dd742535c25aff4d3ae7d733f1bb8e027276ed5c6b525b79abe",
+    "data\\nasdaq_monthly_pit\\assembled\\economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data\\nasdaq_monthly_pit\\assembled\\dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data\\nasdaq_monthly_pit\\assembled\\tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "data\\nasdaq_monthly_pit\\assembled\\membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990"
+  },
+  "limits": "Selected-history post-score accounting and target differences, not model re-inference"
+}

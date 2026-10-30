@@ -1,0 +1,7 @@
+group,kind,max_error
+original_five,issuer5,0.0
+original_five,equal10,0.0
+new_five,issuer5,0.0
+new_five,equal10,0.0
+ten_seed,issuer5,0.0
+ten_seed,equal10,0.0

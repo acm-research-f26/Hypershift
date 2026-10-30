@@ -1,0 +1,19 @@
+{
+  "cells": 108,
+  "individual_outputs": 432,
+  "finite_failures": 0,
+  "output_failures": 0,
+  "jacobian_failures": 0,
+  "inactive_max": 0.0,
+  "input_sha256": {
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_mask_jacobian.py": "43ec3b6b7fda7638dec33bb8c3fd14d57cd0489c94e5487380f4710550434716",
+    "docs\\rishi_mechanism_20261027\\JACOBIAN_TOY_PROTOCOL.md": "38de93a26a920913b37b769a46497a83b2fdb92f6a5d1c5bd6b7852913b7122e",
+    "docs\\rishi_mechanism_20261027\\MEMBER_COUNT_TOY_PROTOCOL.md": "5c29f2a7ab2b7da1dbb3ddbeae9ac68697078185fc1447b01cbebe17f3b6ca40",
+    "research\\analysis\\rishi_member_count.py": "4ba20a0e74268bdeada1baf53ca5868fa84a58d6f4a1f5547a32868ff91b6f23",
+    "research\\analysis\\rishi_synthetic_gate.py": "1f9adca3ceb238da4f9ceca49ae2dc7be9915517b7ea0ed71873a90202f31955",
+    "research\\analysis\\rishi_synthetic_robustness.py": "69c665099527c5dad89aef994a7fcbe4fe75b41bbf30e85eb8e4c448087f53d3",
+    "docs\\rishi_mechanism_20261027\\source_snapshot\\model.py": "5d52ca18f4098792c87f436c38e4dfbf198ab1dc627bd0a47424009cf1fb2788",
+    "docs\\rishi_mechanism_20261027\\source_snapshot\\layer.py": "f3b4f1301a0069f6476e65340781f76a8ae5773369ff18695516926df4266ab9",
+    "latest\\models\\ndx_reference_models.py": "1e25ed60e5d9f922f61cb2441a7a1232c1fcc033d28755a2abc00b87d8899535"
+  }
+}

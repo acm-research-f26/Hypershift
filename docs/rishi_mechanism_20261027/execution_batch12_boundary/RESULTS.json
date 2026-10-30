@@ -1,0 +1,19 @@
+{
+  "accounts": 2,
+  "categories": 6,
+  "calendar_rows": 48,
+  "input_sha256": {
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_B_ten_seed.npz": "568dd8af251b262ee5af6d93b740dffe5ee2b07765d2ce6bb053aed8ffba8f5f",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_D_ten_seed.npz": "7303a593295720f6ad84f2ea6e2e2e00863200febc5487f82e944fc1decc9acb",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\ACCOUNT_CURVES.csv": "4412eb1db2b988807a8b3dadabba14c8dd7a8debcd992c82bab6b229517f1097",
+    "results\\RISHI_MECHANISM_TRACE_20261027\\AXES.json": "89a04f86ec817bac1c189b8e737602ed11e8d6ab11988211d0d23be19af26c1e",
+    "results\\RISHI_MECHANISM_TRACE_20261027\\E_ten_seed_k5.npz": "e0d06114e95fd03d6ca2fe919cea4d8b56547e18ce10bc8595e0aaf9766935c2",
+    "results\\RISHI_MECHANISM_TRACE_20261027\\E_ten_seed_k5_fills.csv": "3ed51634f3bbebd8c616a5b81ea1ae879e42c0f37bfe72168ba9d4ae3e5a2406",
+    "results\\RISHI_MECHANISM_TRACE_20261027\\E_ten_seed_k10.npz": "151668410b75aa5db5fab8025d8b0db78021af3b111f9eb69a0a442d2e131963",
+    "results\\RISHI_MECHANISM_TRACE_20261027\\E_ten_seed_k10_fills.csv": "7bcd02554262e07af587f523da38a01b079f6b91b50f53f17e3f657b05647eaf",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_traded_boundary.py": "561bd999566997f35a146bae842f00f6c9614472d1256bed1689300fddc90b21",
+    "docs\\rishi_mechanism_20261027\\TRADED_BOUNDARY_PROTOCOL.md": "3e1f9f94c3d579980a42bd47e5bba3e6b9544c37a2007383774d2543c1a7df56"
+  },
+  "scope": "Exact additive convention on existing operations; no new strategy or causal category contribution"
+}

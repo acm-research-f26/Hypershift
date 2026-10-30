@@ -1,6 +1,6 @@
 # Stable stock preference versus changing information
 
-2026-10-27. Research_Plan Phase B. **Disposition: descriptive evidence supports persistent, concentrated exposure; the learned mechanism remains unresolved.** This report delivers the available identity, stock-P&L, selection, availability and membership analyses. It does not close missing Hpred, changing-score, dated-sector or causal style-control requirements.
+2026-10-27. Research_Plan Phase B. **Disposition: descriptive evidence supports persistent, concentrated exposure; the learned mechanism remains unresolved.** Subsequent work added retrospective dated-sector coverage and industry-matched controls, but Hpred, changing-score, complete point-in-time identity and causal style-control requirements remain open. See [mechanism map](MECHANISM_MAP.md) for current evidence.
 
 ## What is established
 
@@ -32,7 +32,7 @@ Per-origin outcomes tell the same limited story: the top10 label-return differen
 
 Hlabel ranks correlate positively with as-of beta, volatility and liquidity. Mean beta correlations are .506, .591, .080 and .368 across 2022–2025; volatility correlations are .386, .303, .066 and .208. Momentum is inconsistent across years. This makes risk/style preference a concrete competing explanation for a past-winner control's returns. These descriptive cross-sectional correlations do not establish that the neural model learned those same preferences or that its incremental returns survive a style-matched account.
 
-All feature windows end at the origin close, with explicit history/finite-price requirements. Reviewed NDX inputs contain no dated sector classification; current sector tags were not substituted. Dated-sector attribution and a causal style-matched performance comparison remain open. The first-publication availability of historical membership/provider bars is not independently certified.
+All feature windows end at the origin close, with explicit history/finite-price requirements. At this stage reviewed NDX inputs contained no dated sector classification; current sector tags were not substituted. Subsequent SEC-derived dated SIC work adds partial retrospective industry attribution and matched controls, with unresolved price identity, potentially stale classification and membership provenance; see [industry controls](execution_batch26_industry_simple/REPORT.md). A causal style-matched comparison and first-publication availability of historical membership/provider bars remain open.
 
 ## Availability and entry/exit sensitivities
 

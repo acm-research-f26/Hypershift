@@ -1,0 +1,24 @@
+{
+  "cells": 3216,
+  "rank_rows": 247028,
+  "inputs": {
+    "data\\nasdaq_monthly_pit\\extended_hours_features_20261024\\features.npz": "441e93cd966a1bfffc9c65ca946cf1a27bcff65c24044244f4a6dcb6906e5ef4",
+    "data\\nasdaq_monthly_pit\\extended_hours_features_20261024\\REVIEW.json": "872305021227e3f45182bd4ffa4bf3c9536e4fa549f2189bcbca71d763b3ffa3",
+    "runs\\ndx_extended_hours_20261024\\TIMING.csv": "39f9c64102824e5ce3840025cdb5e2a63b97b22318861e7d246abf567b0b7809",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_B_ten_seed.npz": "568dd8af251b262ee5af6d93b740dffe5ee2b07765d2ce6bb053aed8ffba8f5f",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_D_ten_seed.npz": "7303a593295720f6ad84f2ea6e2e2e00863200febc5487f82e944fc1decc9acb",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_Hlabel_ten_seed.npz": "f44e06a174cdd90639c25f89f7de2cba9ac9f24a42953392fee75e0c2beac0ea",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_extended_association.py": "1ab7f52cac4b01b45a5945f9c94fc212513b81fd1f9bf19ca8e6e7e32194aea1",
+    "docs\\rishi_mechanism_20261027\\EXTENDED_FEATURE_ASSOCIATION_PROTOCOL.md": "9457e772ad811de9b12c0c34cf8a8d7b6937476fe65daad4d187fcd3627bd22a",
+    "data\\nasdaq_monthly_pit\\assembled\\manifest.json": "93fbae4b143f3dd742535c25aff4d3ae7d733f1bb8e027276ed5c6b525b79abe",
+    "data\\nasdaq_monthly_pit\\assembled\\economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
+    "data\\nasdaq_monthly_pit\\assembled\\dollar_volume.csv": "d639c9009aebcf59cb102f3e3ec0ef313c83d37c9811a8469fe189ce37804aae",
+    "data\\nasdaq_monthly_pit\\assembled\\tradable.csv": "f3a349538841170bbafe41996d39a325ea16f0f6bbfbd659e012a32b7860c648",
+    "data\\nasdaq_monthly_pit\\assembled\\membership.csv": "d2f6d0f072a190aa87a7b98af5a4d2da3df1380f58a5f699fd2e899f47363725",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "research\\core\\pit_research_engine.py": "ff49ee570b88f875273201328a389b20fd7b85a1f06a223bbf5dead39eedf83b",
+    "research\\core\\research_engine.py": "82406389f66ae2e6b2c541a58517d5a1dba3308aba3397e3e02f44923ae95c80"
+  },
+  "scope": "Descriptive selected-history associations; no outcome or causal claim"
+}

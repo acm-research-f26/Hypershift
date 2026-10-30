@@ -1,0 +1,13 @@
+{
+  "regressions": 7,
+  "rows": 14,
+  "daily_sessions": 1003,
+  "source_sha256": {
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\ACCOUNT_CURVES.csv": "4412eb1db2b988807a8b3dadabba14c8dd7a8debcd992c82bab6b229517f1097",
+    "results\\RISHI_MECHANISM_RISK_20261027\\PATHS_PORTABLE.npz": "5ae199714482a6379391aa11fded24e1046f4c7339b6071c2a4dafaffd43e01e",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_factor_nw.py": "e4e561d627c11c6168b8b83ec623a099ad9eb8d2e986cbcfeba790afdf2d04b0",
+    "docs\\rishi_mechanism_20261027\\FACTOR_NW_PROTOCOL.md": "4f5b04a04c1c367a142651c41652aba6bf0751d7b0c49673a6ad97195ea59ce3"
+  },
+  "scope": "Selected-history explanatory regressions only; not traded alpha, comprehensive factors or a primary decision family"
+}

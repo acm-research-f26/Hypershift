@@ -1,0 +1,11 @@
+{
+  "group_constraints": 4420,
+  "max_group_error": 2.220446049250313e-16,
+  "weights_sha256": {
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_coverage6_weights.npz": "89049e23f0e6729a5bd0ecf1792a2de1c9f60781d0fa27925750d4f0a7d5cbfa",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\E_Hlabel_coverage6_weights.npz": "078efa27dba5ee5faed86e103e5b7d038d7007157f04a53bceb24b8ca2f0ce9b"
+  },
+  "paths_sha256": "f19f2162bbca076b4ce3639ceaff79b10848af393d0c2023eebc43957eed223c",
+  "account_paths": 2,
+  "paired_mean_intervals": 6
+}

@@ -1,0 +1,16 @@
+{
+  "accounts": 4,
+  "days": 1003,
+  "inputs": {
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\PATHS.npz": "e5b83dcb816dbafa71c4f2e63995101610aa49e5c2c0c4fbeefd3df8cb8ddccb",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_simple_trace.py": "a5754ff079b968a4a2e42011b70a2859f5cce80a00106a87b190969ef4016b84",
+    "docs\\rishi_mechanism_20261027\\INDUSTRY_SIMPLE_TRACE_PROTOCOL.md": "aff9a8741dbbf6705ef6e352619d1543b783a58c004665f8ce22e418c277fbb3",
+    "research\\analysis\\rishi_leader_trace.py": "8f3f4e554aabe4980369ed83998c9cbf17bc5f8dff5ff5c911a25fca5de8530e",
+    "research\\core\\ndx_drawdown_engine.py": "b714e6411fcd4afb04bbdf5ea9ace1e138d424874f0a70c3a23a7e0f3e8520a4",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_ten_seed.npz": "37df222e39b5cb60b2c1c741dcefa49226da2588ab9d551e58cc886136803c9c",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_Hlabel_weights.npz": "8a53fb9efa8fc5fd25c3f432e1bd61d7243800eb032cbaea81bb20dca5e147e8",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_E_Hlabel_ten_seed.npz": "783183f6ac1d32d871383e8961476fa52291404d101480d26497a5e4694fc004",
+    "results\\RISHI_INDUSTRY_SIMPLE_20261028\\E_Hlabel_Hlabel_weights.npz": "8f4bc28639acc9b22a9224057346216343a82d91d36cfa0c52a57314bd7e1939"
+  },
+  "limits": "Reconstructed accounting attribution of selected historical accounts, not a security-removal counterfactual"
+}

@@ -1,0 +1,18 @@
+{
+  "regressions": 24,
+  "sessions": 1003,
+  "max_prior_error": 4.218847493575595e-15,
+  "input_sha256": {
+    "data\\factors\\F-F_Research_Data_5_Factors_2x3_daily.csv": "323ee3426ffa429ea2e3dacaac85a581e3968d319817efe0b4614c5e5adfddc1",
+    "data\\factors\\F-F_Momentum_Factor_daily.csv": "d4b3e98cb5afb1533af0d4568aa816de2aadac5bbff9a590c1c65e3392d7b05b",
+    "data\\factors\\F-F_ST_Reversal_Factor_daily.csv": "1b249758e86dbbd2b5924f93f77e8de9ebf143388e3d987bf4fbe726360b8db3",
+    "results\\RISHI_INDUSTRY_COVERAGE_20261028\\PATHS.npz": "f19f2162bbca076b4ce3639ceaff79b10848af393d0c2023eebc43957eed223c",
+    "data\\nasdaq_monthly_pit\\assembled\\etf_adj_close.csv": "49dd869400b663455a25dd0a483fccf0e2a9385687ce44b75c367ed54d5fa990",
+    "docs\\rishi_mechanism_20261027\\execution_batch28_multifactor\\COEFFICIENTS.csv": "4ba3f9efa2d602c4096e38587ca7945388ea9e0a7fb75ec79edb4880376d4046",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_coverage_multifactor.py": "1a8f05b1efe7278b7a4020bc30c42385172a4d0db471b99dce20565edf0b2222",
+    "research\\analysis\\rishi_multifactor.py": "1b467b983070274399f4247aa326b41a6dff96b5b29c64d302f551b9316ecaf1",
+    "research\\analysis\\rishi_factor_nw.py": "e4e561d627c11c6168b8b83ec623a099ad9eb8d2e986cbcfeba790afdf2d04b0",
+    "docs\\rishi_mechanism_20261027\\COVERAGE_MULTIFACTOR_PROTOCOL.md": "9fa18454c0f29286d0c7dd4bb5f64f7bb60a49f1fc4a71b43a34cfa4c3460f83"
+  },
+  "limits": "Exploratory selected-history attribution, not causal or confirmed alpha"
+}

@@ -1,0 +1,11 @@
+{
+  "inputs": {
+    "data\\edgar\\cik_map.json": "3be7b383df9205c36a2f6d39a831a8972d7ff3bd215a6d7730d837b497631f1f",
+    "data\\edgar\\sic_hist.json": "a42f03d4c3048fc7a7cb79b9b23088ea069c97837b83e80e9157fb24eeb84c88",
+    "results\\RISHI_MECHANISM_REPLAY_20261027_EXPORTS\\scores_Hlabel_ten_seed.npz": "f44e06a174cdd90639c25f89f7de2cba9ac9f24a42953392fee75e0c2beac0ea",
+    "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_dated_sic.py": "a8fbd93209bf988d55aeb98a8ef5bc620bcfe28b992619d8ef10633cd8875a85",
+    "docs\\rishi_mechanism_20261027\\DATED_SIC_PROTOCOL.md": "8a76cb43dea2d53ab63d87a8624cc669379b220ca1afaa321f842f13d8919e40",
+    "src\\hypershift\\data\\edgar.py": "7fdbfff02b914c8840d47ba26d93da5f29e5734e0232bf07f484904d008510e1"
+  },
+  "limits": "Retrospective S&P-universe entity segments, not independent point-in-time NDX identity; SIC can become stale"
+}

@@ -1,0 +1,12 @@
+{
+  "results\\RISHI_VALIDATION_TOP10_20261029\\original_five__original__c1_ledger.csv": "9471e29bdf87d11e636c95b16d09c93f17c943872e6d6e1a247f615eb68984e9",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\original_five__fixed__c1_ledger.csv": "79ef2c564ea37a3494662a33b5b2708e360decfd1c1cdf12bc057d8afe23beb9",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\new_five__original__c1_ledger.csv": "a92b820334a3779fccdd12087638c882fd74fe7adc332635b278ed7555627bd9",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\new_five__fixed__c1_ledger.csv": "e2c39ba2f2d5c30177c44e3b31065e1ddfb35b80da557bf16003d0e13492fed8",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\ten_seed__original__c1_ledger.csv": "7b7fe5b78ca44688f70f4f0133a6a9423c4ae80ea3e4fa41e158102ebb252e02",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\ten_seed__fixed__c1_ledger.csv": "b9c7fd10a76fbda3aa6e3c2507d38e4205431c22e95f8b6d0c994ba85405c856",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\PATHS.npz": "e0508991ccceddd2e8e1a0f1aa0d5ee591cbcc76e57b2fd2953b246cafbbc6e8",
+  "results\\RISHI_VALIDATION_TOP10_20261029\\TARGETS.npz": "b814e828fb6e438a8998e564a4cf4d969f2e73b6ffad84384480482a6367cc3a",
+  "docs\\rishi_mechanism_20261027\\VALIDATION_TOP10_TRACE_PROTOCOL_20261029.md": "5d3cf327cc593168afc946a0e9e7d27152580f8751b990e6ae6db09a689f1f4e",
+  "C:\\Users\\Hi\\Projects - Coding\\Hypershift\\rishi_validation_top10_trace.py": "fac94feb6120fbc8cab66e49989b7827ea3cac729f7175f8c33955ca1d821dbe"
+}
