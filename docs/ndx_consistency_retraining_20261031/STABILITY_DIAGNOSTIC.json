@@ -1,0 +1,9 @@
+{
+  "source_sha256": "99b62cbc2edb3e4741faca913df4f34685456cc332bc90f33eaa3a1a2e63cc89",
+  "scope": "Descriptive diagnostics only; no candidate selection or changed accounts",
+  "output_sha256": {
+    "FORECAST_STABILITY.csv": "9221bd0b7d647c2df87baa23799ecbf0fb92a7cf506e7dc4361cab8e89706c1c",
+    "TARGET_STABILITY.csv": "2cac0082277276b57a50abaa6633c6372008a641351c007540dba201abfd7417",
+    "PAIRED_INTERVALS.csv": "1d043b3e65089b2ebf53af1e063dac6c8b659f8681122bbd53ac7706f3f0b73d"
+  }
+}

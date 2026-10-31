@@ -1,0 +1,7 @@
+{
+  "timestamp_utc": "2026-10-31T17:32:05.0716440Z",
+  "source_sha256": "b9605c37661c177feb3cfc9cdcda4d658948f259511b7cb183ef026e50fc66d2",
+  "experiment_protocol_sha256": "6a48cb7278104b6dd4201cac0b829ab8fb21aefc24f1473741441cfa04dea161",
+  "scope": "Verify all160matched pairs at every epoch,source forecast parity,and two actual epoch1-to3 resumed-training computations;diagnostics only;no training/model/selection/portfolio change",
+  "financial_accounts_absent": true
+}

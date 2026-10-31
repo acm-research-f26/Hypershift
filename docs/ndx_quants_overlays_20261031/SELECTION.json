@@ -1,0 +1,28 @@
+{
+  "passes": 0,
+  "selected": null,
+  "descriptive_best": {
+    "recipe": "drift_band02",
+    "min_all_sharpe": 1.202831709897768,
+    "mean_all_sharpe": 1.313226100255294,
+    "disjoint_gap": 0.17675907971899973,
+    "min_delta": -0.029834995955511534,
+    "groups_improved": 2,
+    "stress_min_delta": -0.026264001902312373,
+    "single_seed_min": 0.7383136498475164,
+    "single_seed_median": 1.072066248633731,
+    "single_seed_max": 1.434597664322952,
+    "single_seed_std": 0.18422252060889382,
+    "goal_passed": false,
+    "all_above_1_5": false,
+    "original_five": 1.293548835373935,
+    "new_five": 1.202831709897768,
+    "fresh_five": 1.3795907896167678,
+    "unused_five": 1.3000164235647906,
+    "ten_seed": 1.2741261763740326,
+    "fifteen_seed": 1.3541570409344454,
+    "expanded_twenty": 1.3883117260253175
+  },
+  "original_goal": "Every7group>=+0.02SR,disjointgap<=0.25,stressnotworse",
+  "untouched_confirmation": false
+}

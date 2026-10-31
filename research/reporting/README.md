@@ -6,7 +6,8 @@ builder live in `outputs/`. The repository-root `charts.md` is the master galler
 
 | Sources | Responsibility |
 | --- | --- |
-| [publish_ndx_model_guide.py](publish_ndx_model_guide.py) | Current model shortlist, plain-language explanations, and matched SPY/QQQ wealth/drawdown comparisons with benchmark replay |
+| [publish_ndx_model_guide.py](publish_ndx_model_guide.py) | Current fine-tuned/prior-model shortlist, all four trained variants, matched SPY/QQQ wealth/drawdown charts and tables, 70 checked continuation/reference paths, and master-chart introduction update with dated history preserved |
+| [analyze_ndx_consistency_stability.py](analyze_ndx_consistency_stability.py) | Descriptive all-seed forecast and issuer-target agreement plus all 49 predefined paired Sharpe contrasts; no seed selection or changed accounts |
 | [publish_ndx_seed_robustness.py](publish_ndx_seed_robustness.py) | Current confirmed-seed overview,63checked daily paths,all1,578account replays and164fit-lock verification |
 | [report_ndx_feature_prior_studies.py](report_ndx_feature_prior_studies.py) | Publish every shared-feature and training-prior comparison, including deterministic controls and failed candidates |
 | [report_ndx_portfolio_robustness.py](report_ndx_portfolio_robustness.py), [report_ndx_family_robustness.py](report_ndx_family_robustness.py) | Publish all fixed portfolio/shared-scorer and conditional family experiments, with matched saved wealth/drawdown paths and full failure disclosure. |

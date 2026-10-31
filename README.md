@@ -10,9 +10,26 @@ The current development comparison covers **2022–2025, 1,003 sessions**. These
 have been inspected repeatedly; none of the historical leaders is a confirmed
 outperformance result on a genuinely untouched period.
 
+The latest [fine-tuning comparison](docs/ndx_consistency_retraining_20261031/FINDINGS.md)
+adds **320 three-epoch continuation fits and 810 accounts** across all twenty
+seeds. Input-dropout fine-tuning with raw weights raises mean Sharpe across the
+seven overlapping ensemble groups **1.308 → 1.401**, and combined-twenty
+**1.367 → 1.455** (CAGR **26.20%**, drawdown **−11.37%**). All seven blended
+ensembles improve, including stressed costs. Only **11/20 individual seeds**
+improve, and cohort spread **0.267** exceeds the frozen **0.25** limit. This is
+the latest higher-average-SR research candidate; it has no new reserved-seed or
+market confirmation. EMA and consistency-penalty variants remain in the charts.
+
+The current prior-mixture strategy still uses **top-k = five companies per
+five-seed ensemble**. Twenty seeds form four fixed ensembles; each builds and
+risk-sizes its own portfolio, then their target weights are averaged equally
+and traded in one account. The combined account can hold more than five
+companies. See the [construction and actual example](charts.md#top-k-still-applies-five-companies-per-five-seed-ensemble).
+
 | Start here | Contents |
 | --- | --- |
-| [Plain-language model guide and SPY/QQQ comparisons](docs/ndx_model_guide_20261030/GUIDE.md) | Current high-SR shortlist, every seed ensemble against passive benchmarks, how the models work, and why the old 1.7 result was less consistent |
+| [New trained models, October 31](docs/ndx_consistency_retraining_20261031/FINDINGS.md) | All 320 continuation fits / 810 accounts; fine-tuned blend improves all seven ensembles, while the strict consistency gate fails; all EMA, consistency and individual-seed results retained |
+| [Plain-language model guide and SPY/QQQ comparisons](docs/ndx_model_guide_20261030/GUIDE.md) | Current high-SR shortlist, top-five selection within each seed ensemble, equal portfolio target averaging, a real allocation example, and benchmark comparisons |
 | [Seed-robustness improvement, October 30](docs/ndx_seed_robustness_20261030/REPORT.md) | 164 additional fits / 1,578 accounts; training-prior mixture improves all seven groups and a reserved cohort (0.877→1.322 SR), while the all-ensemble SR>1.5 target remains unmet |
 | [Latest dynamic-hypergraph study](latest/README.md) | Direct model code, training, protocols, tests and sealed summary results |
 | [Initialization attribution and retraining](docs/ndx_rank_retraining_20261029/FINDINGS.md) | 120 fits / 774 accounts across retraining and factor-control arms; cohort consistency improves but no recipe meets SR>1.5 across all ensembles |

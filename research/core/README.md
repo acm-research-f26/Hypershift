@@ -5,6 +5,7 @@ portfolio policies and economic accounting. They are imported by experiment runn
 
 | Module | Responsibility |
 | --- | --- |
+| [ndx_consistency_training.py](ndx_consistency_training.py) | Masked cross-sectional ranking consistency, matched stochastic input passes and parameter EMA for the October 31 continuation study |
 | [ndx_portfolio_robustness.py](ndx_portfolio_robustness.py) | Averaged signed targets, causal actual-holdings bands and audited self-financing replay |
 | [ndx_rank_prior.py](ndx_rank_prior.py) | Training-only return-rank priors, chronological exponential decay and neutral stock-history shrinkage |
 | [ndx_tabular_alpha.py](ndx_tabular_alpha.py) | Causal multi-horizon styles, eligible cross-sectional feature ranks, train-only scaling and date-normalized labels |

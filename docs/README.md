@@ -9,8 +9,10 @@ is the current cross-study visual record.
 
 | Document | Scope |
 | --- | --- |
-| [Current model guide with SPY/QQQ](ndx_model_guide_20261030/GUIDE.md) | Plain-language shortlist, matched wealth/drawdown charts, benchmark replay, every seed ensemble, and limits of the old1.7comparison |
-| [Confirmed seed-robustness improvement, October 30](ndx_seed_robustness_20261030/REPORT.md) | Current overview: four disjoint cohorts and ten/fifteen/twenty ensembles, reserved-five prior-mixture SR1.322 and full-twenty1.367; all164fit locks/1,578accounts checked; SR>1.5 still unmet |
+| [Fine-tuned models, October 31](ndx_consistency_retraining_20261031/FINDINGS.md) | 320 continuation fits / 810 accounts; raw-weight fine-tuning raises seven-group mean SR 1.308→1.401 and combined-twenty 1.367→1.455; all trained variants, seed/cost results and failed strict spread gate retained |
+| [Quants.md portfolio overlays, October 31](ndx_quants_overlays_20261031/REPORT.md) | 14 fixed recipes / 756 accounts across twenty seeds; inverse-volatility, risk-parity, momentum, trend and trading-band adaptations produce no all-group improvement |
+| [Current model guide with SPY/QQQ](ndx_model_guide_20261030/GUIDE.md) | Fine-tuned, EMA and consistency variants alongside the original prior mixture, older models and benchmarks; top-five portfolio construction, original allocation example and comparison limits |
+| [Confirmed seed-robustness improvement, October 30](ndx_seed_robustness_20261030/REPORT.md) | Original prior-mixture reference: four disjoint cohorts and ten/fifteen/twenty ensembles, reserved-five SR1.322 and full-twenty1.367; all164fit locks/1,578accounts checked; this confirmation predates fine-tuning |
 | [Training-prior regularization, October 30](ndx_prior_robustness_20261030/REPORT.md) | All264prior/control cases, including failed source goals and the development choice later frozen before reserved-seed scoring |
 | [Long-history shared-feature models, October 30](ndx_tabular_alpha_20261030/REPORT.md) | 60seeded forest models/four deterministic Ridge controls,282accounts; shared causal features do not improve the financial results |
 | [Family isolation and validation blends, October 30](ndx_family_robustness_20261030/REPORT.md) | 300 fixed diagnostic accounts; original families alone and validation-only blend weights fail to beat the fixed blend consistently |
@@ -26,7 +28,7 @@ is the current cross-study visual record.
 | [Matched controls and candidate freeze, October 27](ndx_matched_controls_20261027/REPORT.md) | 29 predeclared neural, QQQ and momentum strategies at three costs; frozen prospective policy and activation prerequisites |
 | [Drawdown-control study, October 26](ndx_drawdown_20261026/REPORT.md) | 305 risk-control recipes on saved blend forecasts; audited return, Sharpe, drawdown, seed and cost comparisons |
 | [Latest dynamic-hypergraph study](../latest/README.md) | Direct sources, frozen protocols, tests and portable results for the newest study |
-| [Master charts](../charts.md) | Latest retrained-model wealth/drawdown comparisons and seed results; earlier retention and October 27 galleries preserved |
+| [Master charts](../charts.md) | Latest fine-tuned-model wealth/drawdown, average-SR and seed comparisons; all earlier dated galleries preserved |
 | [NASDAQ100_strategy_comparison.xlsx](NASDAQ100_strategy_comparison.xlsx) | Thirteen tabs. Model hedges opens with the latest comparison; Hedge accounts retains all 495 cases and Hedge paths drives its editable charts. Prior ten tabs remain. |
 | [Comparison gallery](strategy_comparison_20261024/README.md) | Figure catalog, audit and chart coverage |
 | [Project layout and commands](PROJECT_LAYOUT.md) | Grouped sources, launcher and reproducibility |

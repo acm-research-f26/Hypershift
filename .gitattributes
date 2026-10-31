@@ -99,3 +99,9 @@
 /docs/ndx_seed_robustness_20261030/** -text
 /docs/ndx_model_guide_20261030/** -text
 /outputs/seed_robustness_20261030/** -text
+
+# October 31 experiment and publication manifests retain exact checksum bytes.
+/runs/ndx_quants_overlays_20261031/** -text
+/docs/ndx_quants_overlays_20261031/** -text
+/runs/ndx_consistency_retraining_20261031/** -text
+/docs/ndx_consistency_retraining_20261031/** -text

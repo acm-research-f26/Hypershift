@@ -24,7 +24,46 @@ All rows use the same1,003market sessions,20%stock-basket volatility target,cont
 
 The candidate combines50%eligible-stock percentile ranks of a training-history stock prior with25%meanTHINKseed ranks and25%mean dynamic-hypergraph seed ranks. The prior averages observed within-date training-return ranks with a26decision-week exponential half-life and20neutral0.5pseudo-observations per stock. It uses only the training portion of each annual fold, ending before its validation year. It is not a current-six-month momentum signal, and no retrospectively identified winners are named or favored. Unsupported stock histories get neutral priors.
 
-Each consecutive five-seed cohort selects five issuers and gets its own inherited risk sizing. The final account trades the equally averaged signed targets of those cohorts, nets trades and pays actual modeled execution/borrowing fees. The combined account may hold more than five issuers. It is not an arithmetic mean of saved account-return series.
+## Top-k still applies: five companies per five-seed ensemble
+
+**A committee is one fixed five-seed ensemble.** Each contains five THINK networks and five dynamic-hypergraph networks, one of each per seed. The twenty-seed strategy has four such ensembles, using the original, second, third and reserved groups of five. These groups are fixed; their historical Sharpe does not determine their weight.
+
+There are two averaging steps. **Within each ensemble**, average its five THINK percentile rankings and its five dynamic-model percentile rankings. Combine those with the shared training-history prior: **50% prior + 25% mean THINK rank + 25% mean dynamic rank**. Select the top **k = 5 companies**, then apply that ensemble's stock-volatility sizing and QQQ hedge. **Across ensembles**, equally average those completed portfolio target weights and execute the net orders in one account.
+
+```text
+Original five seeds -> rank stocks -> top 5 companies -> risk-sized targets A
+Second five seeds   -> rank stocks -> top 5 companies -> risk-sized targets B
+Third five seeds    -> rank stocks -> top 5 companies -> risk-sized targets C
+Reserved five seeds -> rank stocks -> top 5 companies -> risk-sized targets D
+Combined twenty     -> (A + B + C + D) / 4 -> one trading account
+```
+
+A target is a fraction of account value: positive for a stock holding and negative for a QQQ short. Average each security's signed weight, using zero when an ensemble does not hold it. Risk sizing happens before this averaging, so selected stocks can have different final weights. Every ensemble receives equal weight, including the weaker historical performers.
+
+| Current prior-mixture result | Five-seed portfolios averaged | Portfolio construction |
+|---|---:|---|
+| Each separate five-seed group | 1 | Its own top-five-company portfolio |
+| Combined ten | 2 | Original + second, each with 50% weight |
+| Combined fifteen | 3 | Original + second + third, each with one-third weight |
+| Combined twenty | 4 | Original + second + third + reserved, each with 25% weight |
+
+**The combined account can hold more than five companies.** GOOG and GOOGL share one company slot within each ensemble. The combined-twenty Sharpe of 1.367 is calculated from the daily returns of the resulting single account after modeled trading and borrowing costs. It is not the average of the four Sharpe ratios or four saved return series.
+
+**Actual example: January 6, 2025.** The original, second and reserved ensembles selected Adobe, Costco, Cintas, Meta and Nvidia; each targeted 92.05% in stocks and 7.95% short QQQ. The third ensemble selected Intuit instead of Cintas and targeted 97.92% in stocks and 2.08% short QQQ. Averaging their targets produced:
+
+| Position | Combined-twenty target |
+|---|---:|
+| Adobe (ADBE) | +18.70% |
+| Costco (COST) | +18.70% |
+| Meta (META) | +18.70% |
+| Nvidia (NVDA) | +18.70% |
+| Cintas (CTAS) | +13.81% |
+| Intuit (INTU) | +4.90% |
+| QQQ | -6.48% |
+
+Cintas receives three ensembles' allocations divided by four; Intuit receives one ensemble's allocation divided by four. Four shared names receive allocations from all four ensembles. The unrounded stock targets total 93.52%, alongside a 6.48% QQQ short. These are decision targets; execution prices and constraints can change realized closing weights.
+
+**Reading the comparisons:** the previous neural issuer baseline pools all participating seeds' rankings first, then selects one top-five-company portfolio. The current prior mixture builds each five-seed portfolio first and averages its targets. The historical-prior-only control has no seed ensembles to combine. These construction rules are specific to their labeled strategies; they should not be inferred for every curve in the historical gallery.
 
 On the reserved group there is only one five-seed cohort, so cohort averaging cannot explain the0.877→1.322gain. That comparison isolates the change to ranking through the training prior within the same issuer/risk/execution framework. The twenty-seed comparison additionally changes aggregation. The improvement is in the ranking/portfolio layer; the neural architectures and learned source checkpoints remain unchanged.
 

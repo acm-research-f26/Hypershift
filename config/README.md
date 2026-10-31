@@ -6,6 +6,12 @@ input, checkpoint and publication locks live under ignored `runs/` directories.
 
 ## Historical monthly NASDAQ-100 research
 
+The October 31 [continuation protocol](../docs/ndx_consistency_retraining_20261031/PROTOCOL.json)
+is frozen under its dated `runs/` directory and published with the findings:
+320 three-epoch fits, two matched input-dropout/consistency arms, raw/EMA outputs,
+twenty seeds and 810 accounts. The new models remain development candidates;
+the strict 0.25 cohort-spread gate fails. Existing completed protocols below are unchanged.
+
 | File | Scope |
 | --- | --- |
 | [ndx_tabular_alpha_20261030.json](ndx_tabular_alpha_20261030.json) | Fixed64fit/282account causal shared-feature forest/Ridge experiment; all seeds,controls and costs retained |

@@ -7,6 +7,7 @@ run-local locks are written under the ignored root `runs/`.
 
 | Entry points | Experiment |
 | --- | --- |
+| [run_ndx_consistency_retraining.py](run_ndx_consistency_retraining.py) | Frozen 320-fit / 810-account three-epoch continuation screen, matched input-dropout/consistency arms, raw/EMA checkpoint selection, twenty seeds and standalone-family diagnostics |
 | [run_ndx_tabular_alpha.py](run_ndx_tabular_alpha.py) | Fixed64fit/282account shared-feature forest/Ridge comparison; all fits lock before financial scoring |
 | [confirm_ndx_cohort_averaging.py](confirm_ndx_cohort_averaging.py), [confirm_ndx_portfolio_robustness.py](confirm_ndx_portfolio_robustness.py) | Frozen reserved-five source-model fitting and pooling confirmation; the pooling consistency goal fails and all seeds remain reported |
 | [resume_ndx_portfolio_robustness.py](resume_ndx_portfolio_robustness.py) | Execution-only atomic-file retry, complete-prefix preservation and exact resumed-epoch verification |

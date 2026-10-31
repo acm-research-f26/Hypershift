@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "2026-10-31T17:24:14.2583621Z",
+  "type": "Execution-only replacement worker",
+  "configured_workers": 4,
+  "replacement_job": "think/2024",
+  "replacement_command": ".venv/Scripts/python.exe -c import run_ndx_consistency_retraining as s; s.worker(think,2024)",
+  "reason": "Original worker advanced to another job without completing think/2024; same frozen worker invoked separately; no scientific code, RNG rule, source checkpoint, epoch budget or portfolio rule changed",
+  "temporary_maximum_workers": 5,
+  "completed_fits_preserved": true,
+  "original_failure_trace": "PermissionError WinError5 while creating fits/dropout_control/think/2024 before any fit epoch; outer process pool waited for other jobs, then propagated the exception. Replacement job completed all40same-configfits. All320scientific fits now exist; rerun train only verifies/reuses records and seals inventory.",
+  "financial_accounts_scored": 0
+}

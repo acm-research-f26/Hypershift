@@ -6,6 +6,12 @@ dynamic-hypergraph and PRISM-VQ transfers, alongside MSE/Huber/pseudo-Huber and
 optimizer controls. All development results use the previously inspected
 2022–2025 historical-monthly NASDAQ-100 universe.
 
+The October 31 [fine-tuning follow-up](../docs/ndx_consistency_retraining_20261031/FINDINGS.md)
+is implemented in shared `research/` sources. Its higher-average-SR trained blend,
+all EMA/consistency variants and seed limits now appear in the
+[current model guide](../docs/ndx_model_guide_20261030/GUIDE.md) and
+[master charts](../charts.md). The evidence below retains this folder's original study snapshot.
+
 | Folder | Contents |
 | --- | --- |
 | [models](models/README.md) | Reference-network adapters, losses and optimizer recipes |

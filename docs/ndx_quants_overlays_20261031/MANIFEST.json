@@ -1,0 +1,18 @@
+{
+  "run": "runs/ndx_quants_overlays_20261031",
+  "protocol_sha256": "b8209e99231037821df736937aea4e36a90b7f7a5e37fd6ac90569c23c11d68c",
+  "complete_sha256": "3dc15cc8f3984e0113ed8a9c83ee38d8c147dfd225710ec65e8809d567718d6d",
+  "output_sha256": {
+    "ACCOUNT_CHECKS.csv": "21620f6ace771659d81f064e2ad2e7dd8dc8715ac3243209b997d35b96f645dd",
+    "cohort_sharpe.png": "7eb3a1eeb848fdd68914a9bec49011fed796f86dc6ddd7deb0d464d63eb48437",
+    "combined_twenty.png": "f81bfb908fca62ecee859582d8cedf014b7617087454cbe4d8fa1d7d15d0045f",
+    "CONSISTENCY.csv": "19c1452da0e685e71e8eef5dbc88801b8a6d6eeeb0426531ac0b9b8826ea93d8",
+    "FREEZE.json": "b4b493b9b1c3c770f3803987edcadc770849f703bfc49473d180fe26ee07f485",
+    "METRICS.csv": "bca802e74b3e7e60cedfc21f87f4ead270ade6f2640b0f176127f47a47bfc3f1",
+    "PAIRED_INTERVALS.csv": "e02b3c9d7465477b50d0261d787d055d2d920662b98b96c26bbf88039c9eb2c1",
+    "PERIOD_METRICS.csv": "d74f04bf6e380283cbbf6f4108a0b71dee8d2baf09fa41854b8b618293526f8d",
+    "PROTOCOL.json": "b8209e99231037821df736937aea4e36a90b7f7a5e37fd6ac90569c23c11d68c",
+    "REPORT.md": "2a879f6299b7afd555baf71841c69edf1b57108ca000aa1b4d60992dc5b81d49",
+    "SELECTION.json": "0d61ab87b881afe5c3ca6103c979cb2c777786a77fd21ed4e3db235728f72a44"
+  }
+}

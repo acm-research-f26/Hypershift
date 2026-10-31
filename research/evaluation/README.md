@@ -4,6 +4,10 @@ This directory verifies forecast timing, saved checkpoints, portfolio accounting
 and published artifact hashes. An audit belongs to its own experiment and should
 not be interpreted as an independent replication on fresh dates.
 
+- [audit_ndx_consistency_retraining.py](audit_ndx_consistency_retraining.py) checks
+  all 160 paired initializations and per-epoch CPU/CUDA RNG states, and two actual
+  resumed-training computations. The completed [audit](../../docs/ndx_consistency_retraining_20261031/TRAINING_AUDIT.json)
+  reports exact parameter/EMA/forecast replay; these checks do not establish future financial performance.
 - `audit_historical_ndx*`, `audit_ndx_alpaca`, `audit_ndx_topk_pseudohuber` and
   `audit_ndx_long_short` verify the corresponding NASDAQ studies.
 - `audit_ndx_strategy_comparison_20261020` verifies the original cross-study

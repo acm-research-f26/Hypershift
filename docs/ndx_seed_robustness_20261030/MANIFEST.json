@@ -1,7 +1,10 @@
 {
-  "timestamp_utc": "2026-10-30T08:38:45.865574+00:00",
-  "script_sha256": "048613b4e3fe0c22b92508bd93719c49734b3fd2b81fa4dc49067c2c7bc427de",
+  "timestamp_utc": "2026-10-31T16:41:21.709872+00:00",
+  "script_sha256": "29088aa45c817a65a99eead95dcdaa2992b2655d64814a7af770a246a961fffd",
   "source_sha256": {
+    "runs/ndx_prior_robustness_20261030/prior26/TARGETS.npz": "5356236bb0238c4a45f0c714c73d1c6f277bf22a6f618ca98d7249b7814c6803",
+    "runs/ndx_prior_robustness_20261030/confirmation/TARGETS.npz": "4a062fae4f26cb43b94b09c42a44805e41d57dd47d62b75205b5ed9b16afc271",
+    "data/nasdaq_monthly_pit/assembled/economic_close.csv": "c452a29bd4adde132ded7dfc1bba2eb209f01d6a4049222f803bf2afb61ea258",
     "runs/ndx_rank_retraining_20261029/accounts/PATHS.npz": "dffa3d8efb99ca95262adb5aae2428a252d1ddb3338b4ab6ebb920072b782fb6",
     "runs/ndx_rank_retraining_20261029/METRICS.csv": "b063e65d6eef1ec4be8b92f01a93f3e5b6503aa4c5d6bb18bfa404acd022dfad",
     "runs/ndx_rank_retraining_20261029/COMPLETE.json": "8049417109b91f85562b3806fb49ba18b4c9c6aa49306cce6fda5fc046756dbe",
@@ -37,7 +40,7 @@
     "PRIOR_CONFIRMATION_FREEZE.json": "57029505c4c2113af222fea3f166803825859749664cc78a0e9f5406662a24e8",
     "PRIOR_CONFIRMATION_PROTOCOL.json": "79018d3aac9125cb09dddaa5d840b1520d9c8ea8865960dd6e4e38cd23742b78",
     "PRIOR_CONFIRMATION_RESULT.json": "4ca71e0b92a27ec1715a1d6a48f7a2902c5e5dc95c00d08cfc3439d9bf146d4e",
-    "REPORT.md": "5491cbd8880e5d4f593c105e06835ad57157c7476b1e2081a900b72f310998df",
+    "REPORT.md": "48e236bf7043a550ce0574101c22cd1fb8bd1c6bf232f92217800dc2a77be6fb",
     "RISK_CONSISTENCY.csv": "84fb19db49e0085addc1d406a45f43a1abe058e5d004f83a3ee99d3f056b23a5",
     "RISK_FREEZE.json": "d142936ddde5e3d27c010674548a09198e48c844118123977a554a47803acecd",
     "RISK_METRICS.csv": "7091dc491ca4bf326d78362d2349837799499e99992d11f20e8ce05653a70574",
