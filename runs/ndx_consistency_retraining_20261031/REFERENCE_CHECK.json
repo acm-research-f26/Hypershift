@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "reference_lock_sha256": "a13488ad141fab8830d18dcd3db9513674f7a2314e25c4a9aad7629c2a925d26",
+  "stage": "before_and_after_new_account_evaluation"
+}

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "secondary_confirmation": true,
+  "original_source_primary_passed": false,
+  "base_issuer_deltas": {
+    "unused_five": 0.4447669470452622,
+    "expanded_twenty": 0.12200468089070071
+  },
+  "stress_issuer_deltas": {
+    "unused_five": 0.46620825744484384,
+    "expanded_twenty": 0.16930971854265797
+  },
+  "four_disjoint_sharpes": [
+    1.272131141148024,
+    1.184080483720538,
+    1.4094257855722794,
+    1.321790756879412
+  ],
+  "disjoint_gap": 0.2253453018517413,
+  "candidate_sharpes": {
+    "unused_five": 1.321790756879412,
+    "expanded_twenty": 1.3670931906654369
+  },
+  "all_above_1_5": false,
+  "limits": "Seed-only confirmation of a secondary development-selected recipe; no untouched-market evidence"
+}

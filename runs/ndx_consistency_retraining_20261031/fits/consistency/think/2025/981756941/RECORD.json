@@ -1,0 +1,27 @@
+{
+  "arm": "consistency",
+  "family": "think",
+  "year": 2025,
+  "seed": 981756941,
+  "selected": {
+    "raw": 3,
+    "ema": 3
+  },
+  "seconds": 17.75,
+  "source_checkpoint": "runs/ndx_rank_retraining_20261029/fits/think/2025/981756941/epoch_12.pt",
+  "source_sha256": "2eac07c0b934774110b93ad6d2c2f7bb0a47953862d693f9b4c6099f8d37521c",
+  "hashes": {
+    "ema_predictions.npz": "f943ab42215e1af74326cd8144f557d6112417c792e85a3debce36a9b5e9b860",
+    "epoch_00.pt": "c449e6043c668f4c96e15ae492b5715be07a7f36439cb3f0ed04bf01f09385b2",
+    "epoch_01.pt": "6d888aacc1b65506876415f0b3bdee16c355335860777e962794e04cff5efd7a",
+    "epoch_02.pt": "1a09749fd9caa685d34e17e6ce8bb7f1b881a118319350e9ae97279ab1c49b01",
+    "epoch_03.pt": "3f8ceb2e97ea58df8907ab821fe833a5d0126902ce67d434306644eb2cbf975f",
+    "HISTORY.json": "3c8844d0ca98ca7cc631f01562650eb1ade56d3f4fb01559dbfabb36c3bc177d",
+    "INITIAL_PARITY.json": "7ecb2eea0662b0c77f85f1eb93144a186cb1bfd0bf2e7d7b2226d5e5decb55c6",
+    "raw_predictions.npz": "4eea36d6dd5d8eea052d830f52c36f1ae9502b89b4d487ff0cc14e4381bdc597",
+    "validation_00.npz": "8a0a353f82ad423e7352e4418e6cc94d75893489d90be17697b4f8b6e427f4af",
+    "validation_01.npz": "e4c488ebc03c3cddfea3a3d87070fc5270cf8a895fe985178859bfd61d91166a",
+    "validation_02.npz": "8067a45ae4cd57a98bc2a40173e1ef618c96789fab9b63c19d4379946da97c33",
+    "validation_03.npz": "4baa105a40e609138dc174097f2014889f812d9bdf21c772c0cbf8604b1230cc"
+  }
+}

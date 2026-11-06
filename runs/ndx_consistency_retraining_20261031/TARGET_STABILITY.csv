@@ -1,0 +1,16 @@
+mixture,method,mean_pairwise_issuer_target_jaccard,seed_pairs,decision_rows
+both,original,0.534203236683598,190,201
+both,dropout_control_raw,0.5410774590252202,190,201
+both,dropout_control_ema,0.5384205349798437,190,201
+both,consistency_raw,0.5395551520139108,190,201
+both,consistency_ema,0.5390041485819176,190,201
+think,original,0.8654080493711287,190,201
+think,dropout_control_raw,0.8622822839928104,190,201
+think,dropout_control_ema,0.8628833400023502,190,201
+think,consistency_raw,0.8659077013731374,190,201
+think,consistency_ema,0.8644430322376121,190,201
+dynamic,original,0.43337904065908783,190,201
+dynamic,dropout_control_raw,0.4471025693924358,190,201
+dynamic,dropout_control_ema,0.4495232163024779,190,201
+dynamic,consistency_raw,0.4445979196823658,190,201
+dynamic,consistency_ema,0.4508342259991906,190,201

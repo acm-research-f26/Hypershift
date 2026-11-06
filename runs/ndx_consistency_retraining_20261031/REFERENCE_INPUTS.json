@@ -1,0 +1,11 @@
+{
+  "timestamp_utc": "2026-10-31T17:49:07.9116353Z",
+  "baseline": "runs/ndx_beta_robustness_20261030",
+  "baseline_complete_sha256": "c64f1d8afbd286f544975af3f43c37bb590f19b9fd1ee7af4ec265da1aa10f7a",
+  "output_sha256": {
+    "METRICS.csv": "7091dc491ca4bf326d78362d2349837799499e99992d11f20e8ce05653a70574",
+    "PATHS.npz": "26526d6973b897dfee8cb7b021414c942290c6d12fbc8bdc51ca9dddd871b879"
+  },
+  "scope": "Original daily path parity checks only; model signals independently use the already pinned source forecasts and data",
+  "new_financial_accounts_absent": true
+}

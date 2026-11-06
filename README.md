@@ -128,6 +128,11 @@ and [evaluation commands](research/evaluation/README.md). Cloning the repository
 supplies these published snapshots, but not all historical parent runs or unrelated
 datasets.
 
+The [October 31 reproduction guide](docs/ndx_consistency_retraining_20261031/REPRODUCE.md)
+links the full continuation checkpoints, training traces, forecasts, account
+ledgers and frozen inputs. It includes commands to verify the snapshot and
+replay the 810 historical accounts from the saved forecasts.
+
 Unrelated cohort/NYSE studies, retired-universe reports, decks and scratch work
 are preserved in [archive/](archive/README.md). Archived sources are excluded from
 normal listings and tests; use `python -m hypershift --archived list` to opt in.

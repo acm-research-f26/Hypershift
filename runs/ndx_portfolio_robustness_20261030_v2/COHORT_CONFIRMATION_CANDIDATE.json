@@ -1,0 +1,15 @@
+{
+  "selected": {
+    "arm": "original",
+    "allocation": "retain5",
+    "aggregation": "cohort_targets",
+    "band": 0.0,
+    "original_five_sharpe": 1.168494819025813,
+    "new_five_sharpe": 1.269342955974229,
+    "fresh_five_sharpe": 1.3450354953760812,
+    "ten_seed_sharpe": 1.267170487438091,
+    "fifteen_seed_sharpe": 1.3299210660517382
+  },
+  "scope": "Original suggestion: no-band average of five-seed cohort targets. The source strict primary goal failed; this is a separate pooling-effect confirmation, not a claim it passed.",
+  "source_selection_sha256": "ff935d092768a59e590317f6f17e3e7f4d367c764ed3d88b8940e4ef4e32644c"
+}

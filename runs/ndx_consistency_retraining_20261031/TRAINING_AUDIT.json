@@ -1,0 +1,1320 @@
+{
+  "status": "passed",
+  "timestamp_utc": "2026-10-31T17:54:52.550185+00:00",
+  "paired_fits": 160,
+  "scientific_fits": 320,
+  "additional_actual_resume_diagnostics": 2,
+  "all_initial_parameters_exactly_matched": true,
+  "all_cpu_cuda_rng_states_equal_every_epoch": true,
+  "source_forecast_max_error": 0.0,
+  "checks": [
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 7,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 19,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 42,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 61,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 97,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 1828801906,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 1868046758,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 239154507,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 287727767,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 981756941,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 1847760412,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 1561637969,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 800300753,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 353601183,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 1532402804,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 1062654956,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 1924761289,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 861712994,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 194507142,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2022,
+      "seed": 1364609292,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 7,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 19,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 42,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 61,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 97,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 1828801906,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 1868046758,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 239154507,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 287727767,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 981756941,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 1847760412,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 1561637969,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 800300753,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 353601183,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 1532402804,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 1062654956,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 1924761289,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 861712994,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 194507142,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2023,
+      "seed": 1364609292,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 7,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 19,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 42,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 61,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 97,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 1828801906,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 1868046758,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 239154507,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 287727767,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 981756941,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 1847760412,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 1561637969,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 800300753,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 353601183,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 1532402804,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 1062654956,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 1924761289,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 861712994,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 194507142,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2024,
+      "seed": 1364609292,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 7,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 19,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 42,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 61,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 97,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 1828801906,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 1868046758,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 239154507,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 287727767,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 981756941,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 1847760412,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 1561637969,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 800300753,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 353601183,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 1532402804,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 1062654956,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 1924761289,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 861712994,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 194507142,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 1364609292,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 7,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 19,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 42,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 61,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 97,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 1828801906,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 1868046758,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 239154507,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 287727767,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 981756941,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 1847760412,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 1561637969,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 800300753,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 353601183,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 1532402804,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 1062654956,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 1924761289,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 861712994,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 194507142,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2022,
+      "seed": 1364609292,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 7,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 19,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 42,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 61,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 97,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 1828801906,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 1868046758,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 239154507,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 287727767,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 981756941,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 1847760412,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 1561637969,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 800300753,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 353601183,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 1532402804,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 1062654956,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 1924761289,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 861712994,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 194507142,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2023,
+      "seed": 1364609292,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 7,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 19,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 42,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 61,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 97,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 1828801906,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 1868046758,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 239154507,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 287727767,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 981756941,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 1847760412,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 1561637969,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 800300753,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 353601183,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 1532402804,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 1062654956,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 1924761289,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 861712994,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 194507142,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2024,
+      "seed": 1364609292,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 7,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 19,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 42,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 61,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 97,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 1828801906,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 1868046758,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 239154507,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 287727767,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 981756941,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 1847760412,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 1561637969,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 800300753,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 353601183,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 1532402804,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 1062654956,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 1924761289,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 861712994,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 194507142,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 1364609292,
+      "initial_parameter_max_error": 0.0,
+      "rng_equal_every_epoch": true,
+      "source_forecast_max_error": 0.0
+    }
+  ],
+  "actual_resumes": [
+    {
+      "family": "think",
+      "year": 2025,
+      "seed": 7,
+      "resumed_epochs": [
+        2,
+        3
+      ],
+      "parameter_error": 0.0,
+      "ema_error": 0.0,
+      "forecast_error": 0.0
+    },
+    {
+      "family": "dynamic",
+      "year": 2025,
+      "seed": 7,
+      "resumed_epochs": [
+        2,
+        3
+      ],
+      "parameter_error": 0.0,
+      "ema_error": 0.0,
+      "forecast_error": 0.0
+    }
+  ],
+  "source_sha256": "b9605c37661c177feb3cfc9cdcda4d658948f259511b7cb183ef026e50fc66d2",
+  "fit_lock_sha256": "df34a6d41d5a121094af8c5e7619a9657142b10c02547d15343de9ec3df4d24d"
+}
